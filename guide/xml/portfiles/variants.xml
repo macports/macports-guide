@@ -8,6 +8,17 @@
 		<para>DarwinPorts allows multiple versions of a port to be specified in a single Portfile. For example, vim can be built with and without x11 support. Rather than duplicate the whole port and have vim-x11 vim-nox ports DarwinPorts supports "variants". </para>
 
 	</sect1>
+
+	<sect1>
+		<title>Guidelines</title>
+		<para>There are some guidelines for using variants:</para>
+		<itemizedlist>
+			<listitem><para>Never change the version of a port inside a variant.</para></listitem>
+			<listitem><para>Heavy usage of variants is considered bad style - keep the number of variants low.</para></listitem>
+			<listitem><para>Prefer function restricting variants over function enhancing ones. Make the default installation the one that serves most purposes.</para></listitem>
+		</itemizedlist>
+	</sect1>
+
 	<sect1>
 		<title>Syntax</title> 
 		<para>The variants syntax is largely identical to the syntax in the main part of the Portfile. </para>
