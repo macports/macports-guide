@@ -397,6 +397,24 @@
 						<userinput>clean</userinput> option:</para>
 
 						<para><userinput>port clean vile</userinput></para>
+
+						<para>It is possible to make the <userinput>clean</userinput> option
+						remove the distfile, the archive and the work directory.</para>
+
+						<para>To remove the ports distfile</para>
+						<para><userinput>port clean --dist vile</userinput></para>
+
+						<para>To remove a archive created by a port</para>
+						<para><userinput>port clean --archive vile</userinput></para>
+
+						<para>To remove the working directory</para>
+						<para><userinput>port clean --work vile </userinput> or 
+						<userinput>port clean vile</userinput></para>
+
+						<para>If you want to do all of the above (remove the distfile and 
+						archive, and clean the workdirectory), you can:</para>
+						<para><userinput>port clean --all vile</userinput></para>
+
 					</listitem>
 				</varlistentry>
 
