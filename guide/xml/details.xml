@@ -838,7 +838,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 				<listitem>
 					<para>Target to pass to make for building everything. 
 					Defaults to all.</para>
-					<para><userinput>build.target.all all-src</userinput>
+					<para><userinput>build.target all-src</userinput>
 					</para>
 
 				</listitem>
