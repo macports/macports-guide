@@ -1,32 +1,46 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
-		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
 <book xmlns:xi="http://www.w3.org/2001/XInclude">
-<bookinfo>
-<title>DarwinPorts User Guide</title>
-<author>
-  <honorific>Dr</honorific>
-  <firstname>Michael</firstname>
-  <surname>Maibaum</surname>
-  <othername role='mi'>A</othername>
-  <email><link mailto='michaelm@opendarwin.org'>mike@opendarwin.org</link></email>
-</author> 
-</bookinfo>
-<preface>
-	<title>About this guide</title>
-	<para>This guide shows you how to use the DarwinPorts system and develop new DarwinPorts.</para>
-	<para>The Guide is still at an early draft stage, if you have any comments, corrections or (even bettter) contributions, please contact me by <email><link mailto='michaelm@opendarwin.org'>email</link></email>.
-	</para>
-</preface>
+  <bookinfo>
+    <title>DarwinPorts User Guide</title>
+      
+    <author>
+      <honorific>Dr</honorific>
+      <firstname>Michael</firstname>
+      <surname>Maibaum</surname>
+      <othername role='mi'>A</othername>
+      <affiliation>
+	<address><email>michaelm@opendarwin.org</email></address>
+      </affiliation>
+    </author>
 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="user.xml" /> 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="quick.xml" />
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="details.xml" /> 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="submission.xml" /> 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="special.xml" /> 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="variants.xml" />
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="style.xml" />
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="testing.xml" /> 
-<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="commands.xml" /> 
+    <copyright>
+      <year>2002</year>
+      <year>2003</year>
+      <holder>The OpenDarwin Project</holder>
+    </copyright>
+  </bookinfo>
 
-</book>
+  <preface>
+    <title>About this guide</title>
+      <para>This guide shows you how to use the DarwinPorts system and
+	develop new DarwinPorts.</para>
+
+      <para>The Guide is still at an early draft stage, if you have any
+	comments, corrections or (even bettter) contributions, please
+	contact the OpenDarwin Documentation Project at
+	<email>doc@opendarwin.org</email>.</para>
+  </preface>
+
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="user.xml" /> 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="quick.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="details.xml" /> 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="submission.xml" /> 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="special.xml" /> 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="variants.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="style.xml" />
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="testing.xml" /> 
+  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="commands.xml" /> 
+ </book>
