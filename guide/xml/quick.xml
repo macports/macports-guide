@@ -33,6 +33,8 @@
 				<title>Expat Portfile</title> 
 				<programlisting><![CDATA[
 ########################### libxslt Portfile ################################## 
+# &dollar;Id&dollar;
+
 PortSystem      1.0
 
 name            libxslt
@@ -162,6 +164,8 @@ xml files, comes with several useful binaries.
 					<title>Neon Portfile</title>
 					<programlisting><![CDATA[
 ###########################neon Portfile#################################### 
+# &dollar;Id&dollar;
+
 PortSystem 1.0 
 name            neon 
 version         0.23.4 
