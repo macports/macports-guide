@@ -3,10 +3,10 @@
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 <chapter id='details'>
-    <title>Portfile Details</title>
+    <title>Portfile details</title>
     <para> This Chapter describes in detail how each part of a portfile is works and is used. </para>
     <sect1>
-    	<title>General Syntax</title>
+    	<title>General dyntax</title>
     	<para>A Portfile is a TCL script, so the syntax used must be valid TCL or the Portfile will not work. The basic syntax of the Portfile has been designed so most tasks are performed using key value(s) combinations. Many people don't realise it is TCL until they want to do something more advanced and realise all that power is there.</para>
 		<para>All key value pairs in a Portfile are single lines so line breaks must be escaped with a back solidus '\'. </para>
 		<para>Variables syntax is ${foo} for the foo variant.</para>
@@ -21,7 +21,7 @@
 					</simplelist></para>
 		</sect2>
 		<sect2>
-			<title>Required Keys</title>
+			<title>Required keys</title>
 			<para>There is a small set of required key/value pairs without which a Portfile cannot be correct.</para>
 			<para>The required keys are 
 				<simplelist type="vert">
@@ -44,7 +44,7 @@
 		</sect2>
 	</sect1>
 	<sect1>
-		<title>Useful Preset Variables</title>
+		<title>Useful preset variables</title>
 		<para></para>
 		<variablelist>
 			<varlistentry id='prefix'>
@@ -57,7 +57,7 @@
 			<varlistentry id='libpath'>
 				<term>libpath</term>
 				<listitem>
-					<para>Path to the Darwinports TCL libraries. Read only.</para>
+					<para>Path to the DarwinPorts TCL libraries. Read only.</para>
 				</listitem>
 			</varlistentry>
 			
@@ -115,15 +115,15 @@
 	</sect1>
 
 	<sect1>
-		<title>Initialization Phase</title>
+		<title>Initialization phase</title>
 		<para>The first part of a Portfile deals with initialisation. Most of the keys (or options) in the initialisation phase  are required for all Portfiles. 
 		</para>
 		<variablelist>
 			<varlistentry id='PortSystem'>
 				<term>PortSystem</term>
 				<listitem>
-					<para>Determines which version of the portsystem the Portfile is compatible with. Darwinports supports versioning of the PortSystem so if new, backwards incompatible changes are introduced older Portfiles can continue to use the older version of the system. The PortSystem line wraps the loading of TCL libraries appropriate for that version of Darwinports. If you don't load the libraries, nothing else in the Portfile will work. Thus, the PortSystem should be the top line in the Portfile.</para>
-					<para>Currently Darwinports only has version 1.0 so you should put: <userinput>PortSystem 1.0</userinput> in your Portfile.
+					<para>Determines which version of the portsystem the Portfile is compatible with. DarwinPorts supports versioning of the PortSystem so if new, backwards incompatible changes are introduced older Portfiles can continue to use the older version of the system. The PortSystem line wraps the loading of TCL libraries appropriate for that version of DarwinPorts. If you don't load the libraries, nothing else in the Portfile will work. Thus, the PortSystem should be the top line in the Portfile.</para>
+					<para>Currently DarwinPorts only has version 1.0 so you should put: <userinput>PortSystem 1.0</userinput> in your Portfile.
 					</para>
 				</listitem>
 			</varlistentry>
@@ -228,7 +228,7 @@ This allows users to rapidly transform documentation into multiple formats. </us
 		</variablelist>
 	</sect1>
 	<sect1>
-		<title>Fetch Phase</title>
+		<title>Fetch phase</title>
 		<para></para>
 		<variablelist>	
 			<varlistentry id="master_sites">
@@ -259,7 +259,7 @@ http://www.someothersite.org/somesite_extras/:extras/</userinput></programlistin
 		</variablelist>
 	</sect1>
 	<sect1>
-		<title>Integrity Checking Phase</title>
+		<title>Integrity checking phase</title>
 		<para>Each file downloaded is integrity checked using a checksum. This is used to help prevent trojaned sources being downloaded. If you do not include the checksums line, the file will be downloaded and the checksum reported as a conenience to the Portfile author.</para>
 		<variablelist>
 			<varlistentry id='checksums'>
@@ -279,7 +279,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			</variablelist>
 	</sect1>
 	<sect1>
-		<title>Extract Phase</title>
+		<title>Extract phase</title>
 		<para></para>
 		<variablelist>
 			<varlistentry id='extract.only'>
@@ -329,7 +329,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			</variablelist>
 	</sect1>
 	<sect1>
-		<title>Patch Phase</title>
+		<title>Patch phase</title>
 		<para></para>
 			<variablelist>
 				<varlistentry id='patchfiles'>
@@ -344,11 +344,11 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			</variablelist>
 	</sect1>
 	<sect1>
-		<title>Configuration Phase</title>
+		<title>Configuration phase</title>
 		<para></para>
 			
 			<sect2>
-				<title> Automake and Autoconf</title>						
+				<title> Automake and autoconf</title>						
 					<variablelist>
 						<varlistentry id='use_automake'>
 							<term>use_automake</term>
@@ -458,7 +458,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 				
 	</sect1>
 	<sect1>
-		<title>Build Phase</title>
+		<title>Build phase</title>
 		<para></para>
 		
 		<variablelist>
@@ -511,7 +511,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 		</variablelist>
 	</sect1>
 	<sect1>
-		<title>Install Phase</title>
+		<title>Install phase</title>
 		
 		<variablelist>
 
@@ -582,7 +582,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			<para></para>
 		</sect2>
 		<sect2>
-			<title>Dependency Tests</title>
+			<title>Dependency tests</title>
 			<para></para>
 			<variablelist>
 				<varlistentry>
@@ -619,7 +619,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
         </sect2>
     </sect1>
 	<sect1>
-		<title>TCL Primitives</title>
+		<title>TCL primitives</title>
 			<para></para>
 		<sect2>
 			<title>reinplace</title>
@@ -638,7 +638,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 		<title>Other</title>
 		<para></para>
 		<sect2>
-			<title>Pre and Post Phase Steps</title>
+			<title>Pre and post phase steps</title>
 			<variablelist>
 				<varlistentry>
 					<term>Pre-*</term>
@@ -657,7 +657,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			</variablelist>
 		</sect2>
 		<sect2>
-			<title>Overriding a Phase</title>
+			<title>Overriding a phase</title>
 			<para>
 			</para>
 		</sect2>

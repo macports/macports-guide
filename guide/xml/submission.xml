@@ -15,21 +15,21 @@
 			</keyword>
 		</keywordset>
 	</chapterinfo>
-	<title>DarwinPorts Submissions</title> 
+	<title>DarwinPorts submissions</title> 
 	<sect1>
 		<title>Submitting a Port</title> 
 		<para>Using a standardised approach to submitting the Portfiles and associated patches scripts, etc allows us to keep track of port submissions, process them efficiently and get them submitted as quickly as possible to our dports CVS tree. The following sections will describe the standard port submission procedures. </para>
 		<sect2>
-			<title>Where to Submit</title>
-			<para> New ports should be submitted via the Darwinports <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
+			<title>Where to submit</title>
+			<para> New ports should be submitted via the DarwinPorts <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
 			<ulink url="mailto:darwinports@opendarwin.org">DarwinPorts</ulink> mailing list.</para>
 			<para>If you are submitting a modification to an existing port, please assign the port to the current maintainer in your bugzilla submission, so that the automatic email is directed to the maintainer, who will be best suited to deal with your submission.</para>
 		</sect2>
 		<sect2>
-			<title>Using Bugzilla to Submit a port</title>
+			<title>Using bugzilla to submit a Port</title>
 			<para>The following section describes in some more detail how to use Bugzilla to submit your port.</para>
 			<sect3>
-				<title>Submission Parameters</title>
+				<title>Submission parameters</title>
 				
 				<variablelist>
 					<varlistentry id='Project'>
@@ -37,7 +37,7 @@
 							Project:
 						</term>
 						<listitem>
-							<para>Make sure you select the Darwinports project.
+							<para>Make sure you select the DarwinPorts project.
 							</para>
 						</listitem>
 					</varlistentry>
@@ -151,7 +151,7 @@ your sig if you'd like
 				</variablelist>
 			</sect3>
 			<sect3>
-				<title>Final Comments on Port Submission</title>
+				<title>Final comments on Port submission</title>
 				<para>The following general points should also be borne in mind when submitting to bugzilla:
 					<simplelist type="vert">
 						<member>Small changes or portfiles should be inlined. </member>

@@ -2,13 +2,25 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <book xmlns:xi="http://www.w3.org/2001/XInclude">
-<title>Darwinports User Guide</title>
+<bookinfo>
+<title>DarwinPorts User Guide</title>
+<author>
+  <honorific>Dr</honorific>
+  <firstname>Michael</firstname>
+  <surname>Maibaum</surname>
+  <othername role='mi'>A</othername>
+  <email><link mailto='michaelm@opendarwin.org'>mike@opendarwin.org</link></email>
+</author> 
+</bookinfo>
 <preface>
-	<title>About this Guide</title>
-	<para>This guide shows you how to use the Darwinports system and develop new Darwinports.</para>
+	<title>About this guide</title>
+	<para>This guide shows you how to use the DarwinPorts system and develop new DarwinPorts.</para>
+	<para>The Guide is still at an early draft stage, if you have any comments, corrections or (even bettter) contributions, please contact me by <email><link mailto='michaelm@opendarwin.org'>email</link></email>.
+	</para>
 </preface>
 
-<xi:include  href="quick.xml" />
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="user.xml" /> 
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="quick.xml" />
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="details.xml" /> 
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="submission.xml" /> 
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="special.xml" /> 

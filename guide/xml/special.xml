@@ -3,9 +3,9 @@
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 <chapter>
-    <title>Special Considerations</title>
+    <title>Special considerations</title>
     <sect1>
-    	<title>OS X Applications</title>
+    	<title>Mac OS X applications</title>
     	<para></para>
 		<sect2>
 			<title>Installation</title>
@@ -13,7 +13,7 @@
 		</sect2>
 	</sect1>
 	<sect1>
-		<title>XFree86 Servers</title>
+		<title>XFree86 servers</title>
     	<para></para>
 		<sect2>
 			<title>Prefix</title>
@@ -21,7 +21,7 @@
 		</sect2>
 	</sect1>
 	<sect1>
-		<title>Perl Modules and Other Language Libraries and Plug-ins</title>
+		<title>Perl modules and other language libraries and plug-ins</title>
     	<para></para>
 		<sect2>
 			<title>Perl</title>

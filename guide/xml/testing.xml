@@ -3,7 +3,7 @@
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
 <chapter>
-    <title>Testing and Troubleshooting</title>
+    <title>Testing and troubleshooting</title>
     <sect1>
     	<title>Testing a Port</title>
     	<para></para>
@@ -28,7 +28,7 @@
 		<title>Troubleshooting</title>
     	<para></para>
 		<sect2>
-			<title>Uninstall Failures</title>
+			<title>Uninstall failures</title>
 			<para></para>
 		</sect2>
 		<sect2>

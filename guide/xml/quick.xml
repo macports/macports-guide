@@ -15,7 +15,7 @@
 			</keyword>
 		</keywordset>
 	</chapterinfo>
-	<title>Quick Start</title> 
+	<title>Quick start</title> 
 	<sect1>
 		<title>Introduction to a Portfile</title> 
 		<para>
@@ -28,12 +28,12 @@
 			This is the first example, Expat. 
 		</para>
 		<sect2>
-			<title> Example Portfile 1</title> 
+			<title> Example Portfile: expat</title> 
 			<example>
 				<title>Expat Portfile</title> 
 				<programlisting><![CDATA[
 ########################### libxslt Portfile ################################## 
-# $Id: quick.xml,v 1.9 2003/05/14 16:05:51 michaelm Exp $
+# $Id: quick.xml,v 1.10 2003/05/16 10:43:20 michaelm Exp $
 
 PortSystem      1.0
 
@@ -62,7 +62,7 @@ xml files, comes with several useful binaries.
 				The Portfile uses key value pairs to define how it is executed. Below is a list of some of the simple terms. Line up each of the values with tabs in a "table" type of format. 
 			</para>
 			<variablelist>
-				<title> Portfile Keys 1</title> 
+				<title> Portfile keys 1</title> 
 				<varlistentry>
 					<term>
 						PortSystem 
@@ -156,7 +156,7 @@ xml files, comes with several useful binaries.
 			</variablelist>
 			</sect2>
 			<sect2>
-				<title> Example Portfile 2</title> 
+				<title> Example Portfile: neon</title> 
 				<para>
 					A second example Portfile will give you an idea of how to deal with slightly more complicated ports. 
 				</para>
@@ -164,7 +164,7 @@ xml files, comes with several useful binaries.
 					<title>Neon Portfile</title>
 					<programlisting><![CDATA[
 ###########################neon Portfile#################################### 
-# $Id: quick.xml,v 1.9 2003/05/14 16:05:51 michaelm Exp $
+# $Id: quick.xml,v 1.10 2003/05/16 10:43:20 michaelm Exp $
 
 PortSystem 1.0 
 name            neon 
@@ -193,7 +193,7 @@ configure.args  --with-ssl \
 					Many of the components of this port are the same as those in the first example. This port is more complicated as it requires something else to be installed, needs certain environmental variables to be set prior to configuring and the configure script is being passed arguments. 
 				</para>
 				<variablelist>
-					<title> Portfile Keys 2</title> 
+					<title> Portfile keys 2</title> 
 					<varlistentry>
 						<term> configure.env </term>
 						<listitem>
@@ -214,7 +214,7 @@ configure.args  --with-ssl \
 				</sect2>
 				</sect1>
 				<sect1>
-					<title>Common Mistakes</title> 
+					<title>Common mistakes</title> 
 					<sect2>
 						<title>Don't quote or wrap items in '{}'.</title> 
 						<para> Frequently people submit ports with the description or configure arguments quoted, or wrapped in curly brackets. In general this is not correct.  </para> </sect2>
@@ -253,12 +253,12 @@ configure.args  --with-ssl \
 					</orderedlist>
 				</sect1>
 				<sect1>
-					<title>Where can I ask for Advice?</title> 
+					<title>Where can I ask for advice?</title> 
 					<para>Either on the <email>darwinports@opendarwin.org</email> mailing list, or on the #opendarwin channel on irc.freenode.net. Don't be afraid to ask questions! You should also look at the later sections of the <link linkend="details">guide</link>, the Portfile <ulink url="http:http://www.opendarwin.org/projects/darwinports/en/portfileHOWTO.php">HOWTO</ulink> and the portfile(7) and portstyle(7) manpages for more information. </para>
 				</sect1>
 				<sect1>
 					<title>How do I submit my Ports</title>
-					<para>See the <link linkend="submission">Submission Chapter</link> for all the infromation on how to submit a port properly.
+					<para>See the <link linkend="submission">submission chapter</link> for all the infromation on how to submit a port properly.
 					</para>
 				</sect1>
 </chapter>

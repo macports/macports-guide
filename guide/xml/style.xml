@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <chapter>
-	<title>Style Guide</title> 
+	<title>Style guide</title> 
 	<sect1>
 		<title>Overview</title> 
 		<para>A port consists of a directory and its contents, within a category subdirectory of the root of the ports tree.  This document serves as a reference for the directory structure of a single port and the layout of the files within.
@@ -18,12 +18,12 @@
 	<sect1>
 		<title>Specifics</title> 
 		<sect2>
-			<title># $Id: style.xml,v 1.5 2003/05/14 16:05:52 michaelm Exp $</title> 
+			<title>CVS ID tags</title> 
 			<para>On the first line of the Portfile you should put a cvs ID tag. This tag will be expanded by cvs when the Portfile is committed and allows people to see at a glance details like who was the last person to commit to a port and when the last commit was performed.
 			</para>
 		</sect2>
 		<sect2>
-			<title>Portsystem</title> 
+			<title>PortSystem</title> 
 			<para>
 				At the top of the port file is the requirement statement. There is a single space between the "PortSystem" statement and the version number. 
 			</para>
@@ -41,13 +41,13 @@
 			</para>
 		</sect2>
 		<sect2>
-			<title>Items Across Multipl Lines</title> 
+			<title>Items across multiple lines</title> 
 			<para>
 				When items require multiple lines, they can be separated from the previous and next items with a blank line. Indent the additional lines to the same column that the right side begins on in the first line. If a single statement needs to span multiple lines, use a 2 space indentation from the first line for all additional lines. 
 			</para>
 		</sect2>
 		<sect2>
-			<title>Braces or Curly Brackets "{}"</title> 
+			<title>Braces or curly brackets "{}"</title> 
 			<para>
 				the braces may appear on the first and last lines rather than on their own lines. This is done because the right side of the port file is already indented, and to make port file read like a table. Use a single space after the brace. Indent additional lines to this same column. 
 			</para>
@@ -59,7 +59,7 @@
 			</para>
 		</sect2>
 		<sect2>
-			<title>Patch Files</title> 
+			<title>Patch files</title> 
 			<para>
 				Patch files reside in the files/ directory in the port's base directory. There should be one patch file for every file that needs to be patched. It is perfectly reasonable to use provided patches that affect multiple files, but do not create new patches that do so. Their names should begin with "patch-". The rest of the name should come from the name of the file that they apply to. In many cases just the base name of the file being patched is enough. For files such as "Makefile" this may not be the case. In this case, use enough components of the file's path to uniquely distinguish the file. Separate the components with '-' characters. The patch should apply with "patch -p0" from the working source directory of the port. 
 			</para>

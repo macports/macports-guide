@@ -22,9 +22,9 @@
 	
 	
 	<sect1>
-		<title>About this Chapter</title>
+		<title>About this chapter</title>
 		 
-		<para>This document will provide a short guide to the basics of the DarwinPorts system. The first section will provide a short description of the goals of the project and a brief comparison with other systems. Subsequent sections will describe how to get, install and use DarwinPorts on your own machines.
+		<para>This document provides a short guide to the basics of the DarwinPorts system. The first section provides a short description of the goals of the project and a brief comparison with other systems. Subsequent sections describe how to get, install, and use DarwinPorts on your own machines. 
 		</para>
 		
 	</sect1>
@@ -33,31 +33,31 @@
 	<sect1 id='about_dports'>
 		<title>About DarwinPorts</title> 
 		
-		<para>The aim of the DarwinPorts project is to develop a second generation system for the building, installation and management of third party software. DarwinPorts is mainly developed on Mac OS X, however by design it is quite portable and is intended to work on other unix-like systems, especially *BSD and hopefully linux based systems.  
+		<para>The aim of the DarwinPorts project is to develop a second-generation system for the building, installation and management of third party software. DarwinPorts is mainly developed on Mac OS X, however by design it is quite portable and is intended to work on other UNIX-like systems, especially *BSD and hopefully Linux-based systems.  
 		</para>
 		
-		<para>DarwinPorts is probably best described by comparison:  It's sort of like the <ulink url='http://www.freebsd.org/ports'>FreeBSD ports collection</ulink> or <ulink url='http://fink.sf.org/'>fink</ulink> in that it automates the process of building 3rd party software for Mac OS X (and other operating systems).  It also tracks all dependency information for a given piece of software. In other words, it knows what it needs to build and install and in what order for the piece of software you want to work properly. Darwinports knows how to make it build and install it to a specific location, meaning that software installed via DarwinPorts doesn't simply scatter itself all over the system or require user knowledge of what to install in what order. 
+		<para>DarwinPorts is probably best described by comparison:  It's sort of like the <ulink url='http://www.freebsd.org/ports'>FreeBSD ports collection</ulink> or <ulink url='http://fink.sf.org/'>Fink</ulink> in that it automates the process of building third party software for Mac OS X and other operating systems.  DarwinPorts also tracks all dependency information for a given piece of software. In other words, it knows what it needs to build and install and in what order for the piece of software you want to work properly. DarwinPorts knows how to make, build and install the software to a specific location, meaning that software installed via DarwinPorts doesn't simply scatter itself all over the system or require user knowledge of dependencies in what order. 
 		</para>
 		
-		<para>FreeBSD Ports is a large collection of software ported to run on FreeBSD, the ports collection is also used on the other 'Free' BSDs. FreeBSD Ports is based on a large tree of ports where each piece of software has a directory withing a category (like mail or graphics). That directory contains the information needed to build the piece of software. DarwinPorts also uses a directory structure like this, although unlike FreeBSD ports the intention is to not require a complete copy of the 'Ports Tree' on every users machine.  FreeBSD ports is essentially implemented as some very impressive but hairy BSD make(1)'s macros and can be  opaque and non-extensible from the perspective of someone looking to extend or re-factor parts of the system.  Given that Makefiles aren't the easiest thing to parse, or for non-developers to understand, it is also harder to "mine" the FreeBSD ports collection for data to use for other purposes, such as generating documentation indexes or arbitrary front-ends for creating or managing ports. 
+		<para>The FreeBSD Ports Collection is a large set of software packages ported to FreeBSD. The ports collection is also used on the other "free" BSDs. The FreeBSD Ports Collection is based on a large tree of ports where each software has a directory within a category (like mail or graphics). That directory contains the information needed to build the piece of software. DarwinPorts also uses a directory structure like this, although unlike FreeBSD ports the intention is to avoid requiring a complete copy of the 'Ports Tree' on every user's machine.  The FreeBSD Ports Collection is essentially implemented as some very impressive but hairy BSD make(1)'s macros and can be  opaque and non-extensible from the perspective of someone looking to extend or refactor parts of the system.  Given that makefiles aren't the easiest thing to parse or for non-developers to understand, it is also harder to "mine" the FreeBSD ports collection for data to use for other purposes such as generating documentation indexes or arbitrary front-ends for creating or managing ports. 
 		</para>
 
 		<para>A ports collection can be considered an 'expert system' that knows the sources, dependencies, and other information necessary to *build* a given Open Source project.  A package management system relies on similar dependency information, but is focused on safely installing (and de-installing) software.   Before DarwinPorts, most systems did both at once; DarwinPorts, however, is explicitly designed as a pure ports collection which can use various package management systems.  
 		</para>
 		
-		<para>Even discounting some of the limitations of FreeBSD ports described above, the "science" of creating automated build systems is rather more complex than it looks at first glance and there's always room for fresh approaches to the problem, which is what we set out to do with DarwinPorts. There are certainly other systems, some of which have already been mentioned, which have made their own attempts at solving this problem and there will likely be many more such systems in the future since trying to find a single solution which pleases everyone is rather like trying to find a single programming language which pleases everyone - it's more or less impossible. 
+		<para>Even discounting some of the limitations of The FreeBSD Ports Collection described above, creating automated build systems is rather more complex than it looks at first glance and there's always room for fresh approaches to the problem.  Which is what we have set out to do with DarwinPorts. There are certainly other systems, some of which have already been mentioned, which have made their own attempts at solving this problem. There will likely be many more such systems in the future since trying to find a single solution which pleases everyone is rather like trying to find a single programming language which pleases everyone - it's more or less impossible. 
 		</para>
 		
-		<para>DarwinPorts has been written in Tcl with some components having been written in C. Tcl was chosen to allow DarwinPorts to be readily embeded in other applications (e.g. a Cocoa GUI) and to allow flexible, but easy to read Portfiles. 
+		<para>DarwinPorts is mostly written in Tcl, with some components written in C. Tcl was chosen to allow DarwinPorts to be readily embedded in other applications (e.g. a Cocoa GUI) and to allow flexible, but easy to read Portfiles. 
 		</para>
 		
-		<para>Even though DarwinPorts is written in Tcl, a user also does not need to know Tcl in order to use the system or even to add new ports.  Port description files, though they are actually full Tcl programs in their own right, are designed to look like nothing more than a list of key/value pairs. 
+		<para>Even though DarwinPorts is written in Tcl, users do not need to know Tcl in order to use the system or even to add new ports.  Port description files, though they are actually full Tcl programs in their own right, are designed to look like a simple list of key/value pairs. 
 		</para>
 	</sect1>
 	
 	
 	<sect1 id='setup'>
-		<title>Installing Darwinports</title>
+		<title>Installing DarwinPorts</title>
 		
 		<sect2 id='prerequisites'>
 			<title>What you need</title>
@@ -73,7 +73,7 @@
 		<sect2 id='getting_dports'>
 			<title>Obtaining DarwinPorts</title>	
 			
-			<para>Currently the main way to get DarwinPorts is by using the Concurrent Versioning System (cvs). CVS is installed with the Developers Tools on Mac OS X. To download DarwinPorts using cvs you should use the following Terminal commands. At this time you must keep the darwinports directoy that is downloaded on your machine, even after installation as it also contains all the port description files (Portfiles). In the future these will be automatically downloaded as they are needed so you won't need to keep the directory. Choose a location for darwinports where you won't want/need to move it. For the rest of the document I will assume the user name is 'mike' and the darwinports infrastructure is going to be downloaded to a directory (folder) called darwinports in your home directory (i.e. /Users/mike/darwinports/) you should replace the username with your own username and edit the commands I give so they work correctly on your installation. <programlisting><![CDATA[
+			<para>Currently the main way to get DarwinPorts is by using the Concurrent Versioning System (cvs). CVS is installed with the Developers Tools on Mac OS X. To download DarwinPorts using cvs you should use the following Terminal commands. At this time you must keep the darwinports directoy that is downloaded on your machine, even after installation as it also contains all the port description files (Portfiles). In the future these will be automatically downloaded as they are needed so you won't need to keep the directory. Choose a location for DarwinPorts where you won't want/need to move it. For the rest of the document I will assume the user name is 'mike' and the DarwinPorts infrastructure is going to be downloaded to a directory (folder) called darwinports in your home directory (i.e. /Users/mike/darwinports/) you should replace the username with your own username and edit the commands I give so they work correctly on your installation. <programlisting><![CDATA[
  
 % cd ~/
 % cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od login
@@ -122,7 +122,7 @@
 		<title>Using DarwinPorts</title>
 		
 		<sect2 id='port'>
-			<title>port Command</title>
+			<title>The port command</title>
 			
 			<para>Using DarwinPorts is very straightforward, most of the time all you need to do is execute a single command to install a port. For example, if you want to install the text editor vile, you'd simply execute the command <userinput>sudo port install vile</userinput>. That will fetch, build and install vim and anything else vim needs to work. All of the examples below use the vim port as an example, you should use whatever port you actually want to install.
 			</para>
@@ -136,7 +136,7 @@
 			<para>You may break up the installation of a port into a number of steps, fetch, checksum, configure, build, and finally install. Each of these steps performs a part of the process to install a port, using the steps individually is however not normally needed unless you are developing a new port or are trying to diagnose a problem. 
 			</para>
 			
-			<para>Once the port has been installed, you may want to delete all the intermediate files that Darwinports has created while building the port, to do this you should enter: <userinput>port clean vile</userinput>.
+			<para>Once the port has been installed, you may want to delete all the intermediate files that DarwinPorts has created while building the port, to do this you should enter: <userinput>port clean vile</userinput>.
 			</para>
 			
 			<para>For more information you should look at the port manpage by entering: <userinput>man port</userinput>.
@@ -145,7 +145,7 @@
 		</sect2>
 		
 		<sect2 id='portindex'>
-			<title>portindex Command</title>
+			<title>The portindex command</title>
 			
 			<para>Most of the time you won't need to use this command as it is used to build the index of all the available ports, but sometimes the index you have is out of date or innacurate for some reason. When this occurs you will get an error message like 'port search failed: expected integer but got "PortIndex"'. You can fix problem by moving to the dports directory (/Users/mike/darwinports/dports in our examples) and executing: <userinput>portindex</userinput>. This will go through all the available ports in the dport directory and build an index file called PortIndex.
 			</para>
@@ -155,7 +155,7 @@
 		<sect2  id='updating_dports'>
 			<title>Updating DarwinPorts</title>
 			
-			<para>New ports are always being added to the darwinports dports tree, you should regularly update your tree to get access to new ports, and (hopefully) improved versions of current ports. Currently the simplest way you can update the dports tree is to use cvs. You should change directory to the dports directory and then execute: <userinput>cvs -z3 update -dP</userinput>. You should see a set of lines printed out in the terminal as the update progresses. You may need to update your PortIndex as mentioned previously: <userinput>portindex</userinput>. 
+			<para>New ports are always being added to the DarwinPorts dports tree, you should regularly update your tree to get access to new ports, and (hopefully) improved versions of current ports. Currently the simplest way you can update the dports tree is to use cvs. You should change directory to the dports directory and then execute: <userinput>cvs -z3 update -dP</userinput>. You should see a set of lines printed out in the terminal as the update progresses. You may need to update your PortIndex as mentioned previously: <userinput>portindex</userinput>. 
 			</para>
 			
 			<para>You can also use cvs to fetch an new version of the DarwinPorts infrastructure (eg the port command and associated libraries). To do this you should change directories to the darwinports/base directory and execute the following commands:<programlisting><![CDATA[
@@ -171,14 +171,14 @@
 		</sect2>
 		
 		<sect2 id='uninstall_dports'>
-			<title>Removing Ports</title>
+			<title>Removing ports</title>
 			
 			<para>Ports are removed using the port command described above, simply execute the command: <userinput>sudo port uninstall vile</userinput></para>
 
 		</sect2>
 		
 		<sect2 id='upgrade_dports'>
-			<title>Upgrading Ports</title>
+			<title>Upgrading ports</title>
 			
 			<para>At the moment there is not a 'port upgrade' command so to upgrade a port you must uninstall and then install it again. <programlisting><![CDATA[
  
@@ -198,7 +198,7 @@
 		<para>There are a number of common problems so before you report a problem (details on how to <link linkend='user_bugs'>report problems</link> follow) check that the problem is described here, or in the <ulink url='http://www.opendarwin.org/projects/darwinports/en/faq.php'>FAQ</ulink> first.
 		</para>
 		<sect2>
-			<title>Common Errors and Problems</title>
+			<title>Common errors and problems</title>
 					
 			<sect3 id='E_port_search'>
 				<title>port search failed: expected integer but got "PortIndex"</title>
@@ -210,14 +210,14 @@
 		</sect2>
 		
 		<sect2 id='user_bugs'>
-			<title>Bug Reports</title>
+			<title>Bug reports</title>
 			<para>If the you have updated your ports tree, searched the darwinports@opendarwin.org mailling list archives and read the common problems and the FAQ and you still can't find the answer to the problem, you should submit a bug report via bugzilla.
 			</para>
 
 			<para>The following section describes in some more detail how to use Bugzilla to submit your port.</para>
 
 			<sect3>
-				<title>Submission Parameters</title>
+				<title>Submission parameters</title>
 				
 				<variablelist>
 					<varlistentry id='Project'>
@@ -225,7 +225,7 @@
 							Project:
 						</term>
 						<listitem>
-							<para>Make sure you select the Darwinports project.
+							<para>Make sure you select the DarwinPorts project.
 							</para>
 						</listitem>
 					</varlistentry>
@@ -303,7 +303,7 @@ your sig if you'd like
 	<sect1 id='portsmanager'>
 		<title>Ports Manager.app</title>
 		
-		<para>Ports Manager.app is a Cocoa GUI for the DarwinPorts project, it allows users to browse through available ports and their descriptions and to download, install and uninstall the software. Ports Manager.app is currently under development and is less reliable in use than the command line tools. There is a Port for the application so you can actually use Darwinports to install it for you! <userinput>sudo port install 'PortsManager'</userinput>. Ports Manager.app will be installed in your /Applications/Utilities folder. You must have the DarwinPorts Tcl libraries installed to use the Ports Manager.app. A <ulink url='http://www.opendarwin.org/~fkr/portsmanager.png'>screen shot is available</ulink> of Ports Manager.app in action. 
+		<para>Ports Manager.app is a Cocoa GUI for the DarwinPorts project, it allows users to browse through available ports and their descriptions and to download, install and uninstall the software. Ports Manager.app is currently under development and is less reliable in use than the command line tools. There is a Port for the application so you can actually use DarwinPorts to install it for you! <userinput>sudo port install 'PortsManager'</userinput>. Ports Manager.app will be installed in your /Applications/Utilities folder. You must have the DarwinPorts Tcl libraries installed to use the Ports Manager.app. A <ulink url='http://www.opendarwin.org/~fkr/portsmanager.png'>screen shot is available</ulink> of Ports Manager.app in action. 
 		</para>
 		
 		<para>We will also be providing a binary installer (a '.pkg') file in the near future for Ports Manager.app.
