@@ -139,12 +139,12 @@ xml files, comes with several useful binaries.
 						<para> A list of patches to be applied to the port (needed for the software to compile/run or install correctly). Patches are usually provided in a files directory in the same directory as the Portfile. </para>
 					</listitem>
 				</varlistentry>
+				<varlistentry>
 					<term> long_description </term>
 					<listitem>
 						<para> Longer description of the software and the porting/packaging changes needed, if any. Long lines should be split with escaped newlines.</para>
 					</listitem>
 				</varlistentry>
-				<varlistentry>
 				<varlistentry>
 					<term> prefix </term>
 					<listitem>
