@@ -562,7 +562,21 @@
 				<para>This means your PortIndex file is incorrect or 
 				potentially corrupted, run the <link linkend='portindex'>
 				portindex</link> command</para>
+			</sect3>
 
+			<sect3 id='E_port_activation'>
+				<title>port activate failed: Image error: "filename" is being 
+				used by the active "portname" port. Please deactivate 
+				this port first.</title>
+
+				<para>This means that the port your are trying to install wants to 
+				overwrite a file that is installed already. You can :</para>
+
+				<para>Force activation by using -f like: <userinput>sudo port -f 
+				activate vile</userinput> remember to take caution when using force.</para>
+
+				<para>Try to figure out why the conflict occurs and email the 
+				port maintainer a fix, or even better submit the fix to Bugzilla.</para>
 				
 			</sect3>
 		</sect2>
