@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter id="testing">
+    <title>Testing and troubleshooting</title>
+    <sect1>
+    	<title>Testing a Port</title>
+    	<para></para>
+		<sect2>
+			<title>Installation</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Use</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Uninstall</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Package</title>
+			<para></para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>Troubleshooting</title>
+    	<para></para>
+		<sect2>
+			<title>Uninstall failures</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Hardcoding ${prefix}</title>
+			<para></para>
+		</sect2>
+	</sect1>
+</chapter>

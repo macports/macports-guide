@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="roadmap">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts Roadmap</title> 
+
+  <sect1>
+    <title>About this Chapter</title>
+
+    <para>This is the DarwinPorts roadmap for future development.  This
+      chapter will contain a verbose TODO list for the project, as well
+      as (once these goals are acheived) a place where new features
+      and/or changes will be documented prior to their incorporation
+      into the Guide as a whole.</para>
+  </sect1>
+
+  <sect1>
+    <title>Remove cruft from DarwinPorts API</title>
+
+    <para>Most of the DarwinPorts API (<function>dportsearch</function>,
+      etc) is intended for use by external applications, such as Ports
+      Manager and <command>port</command>(1).  However, the DarwinPorts
+      "API" has grown organically, and there is a lot of cruft and clean
+      up that could be done. One piece of low hanging fruit would be to
+      use Tcl namespaces to properly remove the DarwinPorts API from the
+      global namespace, and only namespace export the dport*
+      procedures.</para>
+  </sect1>
+</chapter>

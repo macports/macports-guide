@@ -1,0 +1,100 @@
+/*
+ * DarwinPorts Guide Stylesheet
+ */
+
+* {
+	font-family: Georgia, "New Century Schoolbook", "Times New Roman", Times, serif;
+}
+
+body {
+	background: #e3f1c7;
+	width: 720px;
+	margin: 15px auto 15px auto;
+	font-size: 12px;
+        line-height: 1.2;
+}
+
+a:link {
+	color: #669;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #c63;
+}
+
+a:visited {
+	color: #888;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #669;
+}
+
+a:hover {
+	color: #c63;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #369;
+}
+
+hr { 
+	display: none;
+}
+
+h3.title {
+	color: #879880;
+	margin: 1em 0 1em 0;
+	padding: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+h4.title {
+	color: #999;
+	margin: 0 auto;
+	padding: 0;
+}
+
+h1.title, h2.title {
+	color: #669;
+	margin: 5px 0 5px 0;
+	padding: 10px 0 0 0;
+	border-bottom: 1px solid #bbb;
+}
+
+.navheader, 
+.navfooter, 
+div.book,
+div.part,
+div.chapter,
+div.preface,
+div.sect1 {
+	background: #fff;
+	padding: 0.5em 2em;
+	margin: 0.5em; 
+	border: 1px solid #bbb;
+}
+
+div.chapter div.sect1, div.preface div.sect1 {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+div.sect2, div.sect3 {
+	margin: 0 1em;
+}
+
+pre.programlisting {
+	color: #669;
+	font-family: "Courier New", Courier;	
+}
+
+.userinput {
+	color: #669;
+}
+
+tt {
+	font-family: "Courier New", Courier;	
+}
+
+.filename {
+	color: #673;
+}

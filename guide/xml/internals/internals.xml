@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="internals">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts APIs</title> 
+
+  <sect1 id="about">
+    <title>About This Chapter</title>
+
+    <para>DarwinPorts contains two application programming interfaces
+    (APIs), written in Tcl.</para>
+    
+    <para>The Ports API is an internal API used to run individual
+      Portfiles.  The DarwinPorts (dport*) API is a high-level API used by
+      client applications such as DarwinPorts Manager.app or
+      <command>port</command>.</para>
+  </sect1>
+
+  <sect1 id="ports-api">
+    <title>Ports API</title>
+
+    <para>The code for the Port API is located in
+      <filename>base/src/port1.0</filename>.  The Port API performs the
+      following functions:</para>
+
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>Manages target registrations.  All targets register
+            themselves with the Port API.  Accordingly, the Port API
+            creates pre-/post-/main overrides for each of the targets.</para>
+        </listitem>
+
+        <listitem>
+          <para>Option/Default handling.  All
+            <filename>Portfile</filename> options
+            (<function>name</function>, <function>version</function>,
+            <function>revision</function> ...) are registered by targets.
+            The Port API creates procedures for these options, and sets
+            up the complex variable traces necessary to support option
+            defaults.</para>
+        </listitem>
+
+        <listitem>
+          <para>Executes target procedures, including the pre/post/main
+            routines.</para>
+        </listitem>
+
+        <listitem>
+          <para>Manages a state file containing information about what
+            variants were specified and what targets have run
+            successfully.</para>
+        </listitem>
+
+        <listitem>
+          <para>Provides essential portfile primitives (such as
+            <function>reinplace</function>).</para>
+        </listitem>
+
+        <listitem>
+          <para>Provides simple access to the ui_event mechanism by
+            providing the various ui_ procedures (i.e.,
+            <function>ui_msg</function>,
+            <function>ui_error</function>).</para>
+        </listitem>
+
+      </itemizedlist>
+    </para>
+
+  </sect1>
+
+  <sect1 id="dp_api">
+    <title>DarwinPorts API</title>
+
+    <para>The code for the DarwinPorts API is located in
+      base/src/darwinports1.0. The DarwinPorts API performs the
+      following functions:</para>
+
+    <para>
+      <itemizedlist>
+        <listitem>
+          <para>Dependency implementation. This portion is implemented
+            in a highly generic fashion, and is used throughout the
+            system. The dependency functions are exported to the Port
+            API, and the Port API uses them execute targets in the
+            correct order.</para>
+        </listitem>
+
+        <listitem>
+          <para>Software dependencies. Software dependencies are handled
+            at this layer using the dependency implementation.</para>
+        </listitem>
+
+        <listitem>
+          <para>UI abstractions. UI Abstractions are handled at this
+            layer. Each port action is provided a context, and a
+            mechanism for posting user interface events is exported to
+            the Port API (<function>ui_event</function>).</para>
+        </listitem>
+
+        <listitem>
+          <para>Registry management routines. Manages the rudimentary
+            port registry in
+            <filename>${prefix}/var/db/dports/receipts/</filename>.</para>
+
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para><function>dportregistry::new</function>: create a
+                  new port registry entry</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportregistry::exists</function>: check
+                  if a port registry entry exists (either versioned or
+                  not)</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportregistry::delete</function>: delete
+                  an existing registry entry</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportregistry::close</function>: closes
+                  a new registry entry</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>Exports the "darwinports" API for use by client
+            applications:</para>
+
+          <para>
+            <itemizedlist>
+              <listitem>
+                <para><function>dportinit</function>: Initializes the
+                  darwinports system. Should be called before trying to
+                  use any other procedure</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportsearch</function>: Given a regexp,
+                  searches the PortIndex for ports with matching
+                  names</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportopen</function>: Given a URI to a
+                  port, opens the port and returns an opaque handle to
+                  it</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportclose</function>: Given a port
+                  handle, closes the port.</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportexec</function>: Given a port
+                  handle, executes a target (i.e. install)</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dportinfo</function>: Given a port
+                  handle, this returns the PortInfo array (as a flat
+                  list of array elements). This is a little tricky and
+                  unstable and only used by the 'portindex'
+                  command</para>
+              </listitem>
+
+              <listitem>
+                <para><function>dpoprtdepends</function>: Given a port
+                  handle, returns a list of ports the specified port
+                  depends upon</para>
+              </listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+      </itemizedlist>
+    </para>
+    
+    <para>An example of how the DarwinPorts API is used:</para>
+
+    <para><function>dportsearch</function> returns an arbitrary number
+      of Tcl arrays containing data from the
+      <filename>PortIndex</filename>. The returned data includes the
+      port name, version, revision, epoch, variants, depends, etc. When
+      one executes <userinput>port install cm3</userinput>, the
+      <command>port</command> utility uses the
+      <function>dportsearch</function> function to find the first port
+      that matches the name "cm3", uses <function>dportopen</function>
+      to open the port, and then uses <function>dportexec</function> to
+      execute the install target in the port. Then, it uses
+      <function>dportclose</function> to close the port. When one
+      executes <userinput>port search cm3</userinput>, the port utility
+      uses <function>dportsearch</function>, takes the list of arrays,
+      and formats the data for human consumption.</para>
+  </sect1>
+</chapter>

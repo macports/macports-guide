@@ -2,10 +2,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
   "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-
-<book xmln:xi="http://www.w3.org/2001/XInclude">
+<book xmlns:xi="http://www.w3.org/2001/XInclude">
   <bookinfo>
-    <title>DarwinPorts User Guide</title>
+    <title>DarwinPorts Guide</title>
       
     <author>
       <honorific>Dr</honorific>
@@ -17,6 +16,14 @@
       </affiliation>
     </author>
 
+		<author>
+			<firstname>Will</firstname>
+			<surname>Barton</surname>
+			<affiliation>
+				<address><email>wbb4@opendarwin.org</email></address>
+			</affiliation>
+		</author>
+
     <copyright>
       <year>2002</year>
       <year>2003</year>
@@ -26,8 +33,11 @@
 
   <preface>
     <title>About this guide</title>
-      <para>This guide shows you how to use the DarwinPorts system and
-	develop new DarwinPorts.</para>
+      <para>Part I of this guide is intended to help you use
+        to DarwinPorts system.  The Part II is directed towards
+        users who wish to add their favorite software to DarwinPorts.
+        The Part III is intended for developers interested in extending
+        the DarwinPorts system.</para>
 
       <para>The Guide is still at an early draft stage, if you have any
 	comments, corrections or (even bettter) contributions, please
@@ -35,13 +45,47 @@
 	<email>doc@opendarwin.org</email>.</para>
   </preface>
 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="user.xml" /> 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="quick.xml" />
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="details.xml" /> 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="submission.xml" /> 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="special.xml" /> 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="variants.xml" />
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="style.xml" />
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="testing.xml" /> 
-  <xi:include xmlns:xi="http://www.w3.org/2001/XInclude" href="commands.xml" /> 
+  <part>
+    <title>Using DarwinPorts</title>
+
+    <xi:include href="user/user.xml" /> 
+
+    <xi:include href="user/dp_manager.xml" /> 
+  </part>
+
+  <part>
+    <title>DarwinPorts Portfiles</title>
+    
+    <xi:include href="portfiles/quick.xml" />
+    
+		<xi:include href="portfiles/details.xml" /> 
+    
+		<xi:include href="portfiles/hier.xml" /> 
+
+    <xi:include href="portfiles/special.xml" /> 
+
+    <xi:include href="portfiles/variants.xml" />
+
+    <xi:include href="portfiles/style.xml" />
+
+    <xi:include href="portfiles/testing.xml" /> 
+    
+    <xi:include href="portfiles/commands.xml" /> 
+  </part>
+
+  <part>
+    <title>DarwinPorts Internals</title>
+  
+    <xi:include href="internals/internals.xml" /> 
+	</part>
+
+	<part>
+		<title>The DarwinPorts Project</title>
+
+    <xi:include href="project/roadmap.xml" /> 
+
+    <xi:include href="project/policies.xml" /> 
+
+    <xi:include href="project/submission.xml" /> 
+  </part>
  </book>

@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter id="heir">
+	<title>Ports Filesystem Layout</title>
+
+	<sect1>
+		<title>Overview</title>
+			
+		<para>Portfile authors are expected to make sure that a port, when
+		installed conforms to specific filesystem hierarchy guidelines.
+		These guidelines define where certain files should be installed in
+		the DarwinPorts filesystem.</para>
+	</sect1>
+	
+	<sect1>
+		<title>DarwinPorts Base, ${prefix}</title>
+
+		<variablelist>
+			<varlistentry>
+				<term><filename>/<variable>${prefix}</variable></filename></term>
+
+				<listitem>
+					<para>The base of the DarwinPorts filesystem
+					hierarchy.</para>
+
+					<para>Default: <filename>/opt/local</filename></para>
+
+					<variablelist>
+						<varlistentry>
+							<term><filename>bin/</filename></term>
+
+							<listitem>
+								<para>Common utilities, programming tools, and
+								applications.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>etc/</filename></term>
+
+							<listitem>
+								<para>System configuration files and scripts.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>games/</filename></term>
+
+							<listitem>
+								<para>Useful and semi-frivolous programs.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>include/</filename></term>
+
+							<listitem>
+								<para>Standard C include files.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>java/</filename></term>
+
+							<listitem>
+								<para>Applications based on Java.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>libexec/</filename></term>
+
+							<listitem>
+								<para>System daemons and system utilities (executed by
+								other programs).</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>sbin/</filename></term>
+
+							<listitem>
+								<para>System programs and administration
+								utilities.</para>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>share/</filename></term>
+
+							<listitem>
+								<para>Architecture-independent files.</para>
+							
+								<variablelist>
+									<varlistentry>
+										<term><filename>doc/</filename></term>
+
+										<listitem><para>Miscellaneous
+										documentation</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>examples/</filename></term>
+
+										<listitem><para>Various examples for users and
+										programmers.</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>info/</filename></term>
+
+										<listitem><para>GNU Info hypertext
+											system</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>locale/</filename></term>
+
+										<listitem><para>Localization
+										files.</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>man/</filename></term>
+
+										<listitem><para>Manual pages.</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>misc/</filename></term>
+
+										<listitem><para>Misc. system-wide ASCII text
+										files.</para></listitem>
+									</varlistentry>
+								</variablelist>
+							</listitem>
+						</varlistentry>
+
+						<varlistentry>
+							<term><filename>var/</filename></term>
+
+							<listitem>
+								<para>Multi-purpose log, temporary, transient and
+								spool files.</para>
+								
+								<variablelist>
+
+									<varlistentry>
+										<term><filename>db/</filename></term>
+
+										<listitem>
+											<para>Misc. automatically generated
+											system-specific database files.</para>
+											<variablelist>
+												<varlistentry>
+													<term><filename>dports/</filename></term>
+
+													<listitem><para>DarwinPorts runtime
+													data.</para></listitem>
+												</varlistentry>
+											</variablelist>
+										</listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>spool/</filename></term>
+
+										<listitem>
+											<para>Directory containing output spool
+											files.</para>
+										</listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>log/</filename></term>
+
+										<listitem><para>Misc. system log
+										files.</para></listitem>
+									</varlistentry>
+
+									<varlistentry>
+										<term><filename>run/</filename></term>
+
+										<listitem><para>System information files
+										describing various info about system since it was
+										booted.</para></listitem>
+									</varlistentry>
+								</variablelist>
+							</listitem>
+						</varlistentry>
+				
+					</variablelist>
+
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><filename>/Applications/DarwinPorts/</filename></term>
+
+				<listitem>
+					<para>Native Mac OS X applications.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+
+	</sect1>
+</chapter>

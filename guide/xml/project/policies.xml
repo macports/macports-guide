@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="policies">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts Policies</title> 
+
+  <sect1>
+    <title>About this Chapter</title>
+
+		<para>This chapter contains policies and procedures, as well as
+		responsbilities for the DarwinPorts Project.</para>
+  </sect1>
+
+  <sect1>
+    <title>Commiter's Category Responsibility List</title>
+
+		<para>DarwinPorts has at least one commiter responsible for each
+		category of ports (<filename>www</filename>,
+		<filename>textproc</filename>, etc).  This is a list of those
+		commiters.</para>
+
+		<table frame="all">
+			<title>Commiter's Category Responsibility List</title>
+			<tgroup cols="3" align="left" colsep="1" rowsep="1">
+				<colspec colname="category"/>
+				<colspec colname="commitera"/>
+				<colspac colname="commiterb"/>
+				<thead>
+					<row>
+						<entry>Category</entry>
+						<entry>Commiter A</entry>
+						<entry>Commiter B</entry>
+					</row>
+				</thead>
+				<tbody>
+					<row>
+						<entry>archives</entry>
+						<entry>waqar [at] opendarwin.org</entry>
+						<entry></entry>
+					</row>
+					<row>
+						<entry>audio</entry>
+						<entry>macdome [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>comms</entry>
+						<entry>fenner [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>databases</entry>
+						<entry>cms [at] opendarwin.org</entry>
+						<entry>macdome [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>devel</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>editors</entry>
+						<entry>waqar [at] opendarwin.org</entry>
+						<entry>olegb [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>emulators</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>games</entry>
+						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>gnome</entry>
+						<entry>olegb [at] opendarwin.org</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>graphics</entry>
+						<entry>jkh [at] opendarwin.org</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>irc</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>lang</entry>
+						<entry>gwright [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>mail</entry>
+						<entry>cms [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>math</entry>
+						<entry>gwright [at] opendarwin.org</entry>
+						<entry>macdome [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>net</entry>
+						<entry>fenner [at] opendarwin.org</entry>
+						<entry>fkr [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>print</entry>
+						<entry>cms [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>python</entry>
+						<entry>mww [at ] opendarwin.org</entry>
+						<entry>rshaw [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>science</entry>
+						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>shells</entry>
+						<entry>waqar [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>sysutils</entry>
+						<entry>ssen [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>textproc</entry>
+						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>www</entry>
+						<entry>cms [at] opendarwin.org</entry>
+						<entry>wbb4 [at] opendarwin.org</entry>
+					</row>
+					<row>
+						<entry>x11</entry>
+						<entry>jkh [at] opendarwin.org</entry>
+						<entry>olegb [at] opendarwin.org</entry>
+					</row>
+				</tbody>
+			</tgroup>
+		</table>
+
+  </sect1>
+</chapter>

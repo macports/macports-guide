@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="dp_manager">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+	usage
+      </keyword>
+      
+      <keyword>
+	introduction
+      </keyword>
+		      
+      <keyword>
+        user
+      </keyword>
+      
+      <keyword>
+	manual
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts Manager</title> 
+  
+  <sect1>
+    <title>About this chapter</title>
+
+    <para>This chapter provides an overview of the DarwinPorts Manager
+      application and how to use it as an alternative to the command-line 
+      tools for DarwinPorts.</para>
+
+  </sect1>
+	
+  <sect1 id='darwinportsmanager'>
+    <title>DarwinPorts Manager.app</title>
+    
+    <para>DarwinPorts Manager.app is a Cocoa GUI for the DarwinPorts
+      project.  It will allow users to browse through available ports and
+      their descriptions and to download, install, and uninstall the
+      software.  DarwinPorts Manager.app is currently under development,
+      and is based on the older Ports Manager.app.  There is a Port for
+      the older Ports Manager.app, and will be in the future for
+      DarwinPorts Manager.app, so you can use DarwinPorts to install it
+      for you!  <userinput>sudo port install PortsManager</userinput>.
+      Ports Manager.app will be installed in your
+      <filename>/Applications/Utilities</filename> folder.  A <ulink
+      url='http://www.opendarwin.org/~fkr/portsmanager.png'>screen shot
+      is available</ulink> of Ports Manager.app in action.</para>
+
+    <para>We will also be providing a binary installer (a '.pkg') file in
+      the near future for DarwinPorts Manager.app.</para>
+  </sect1>
+</chapter>
