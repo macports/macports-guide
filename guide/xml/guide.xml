@@ -35,13 +35,13 @@
   <preface>
     <title>About this guide</title>
       <para>Part I of this guide is intended to help you use
-        to DarwinPorts system.  The Part II is directed towards
+        the DarwinPorts system. Part II is directed towards
         users who wish to add their favorite software to DarwinPorts.
-        The Part III is intended for developers interested in extending
+        Part III is intended for developers interested in extending
         the DarwinPorts system.</para>
 
-      <para>The Guide is still at an early draft stage, if you have any
-	comments, corrections or (even bettter) contributions, please
+      <para>The Guide is still at an early draft stage, so if you have any
+	comments, corrections or (even better) contributions, please
 	contact the OpenDarwin Documentation Project at
 	<email>doc@opendarwin.org</email>.</para>
   </preface>
