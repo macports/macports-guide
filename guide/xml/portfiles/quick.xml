@@ -438,7 +438,7 @@ http://distfiles.opendarwin.org/</programlisting>
 
       <variablelist>
         <varlistentry>
-          <term><varname>distfile</varname></term>
+          <term><varname>distfiles</varname></term>
 
           <listitem>
             <para><varname>distfile</varname> is the name and version
