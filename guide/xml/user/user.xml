@@ -514,6 +514,13 @@
 			of the port, you can get it to uninstall the old version by using
 			the -u option:</para>
 			<userinput>sudo port -u upgrade gnome</userinput>
+			<para>Using force</para>
+			While upgrading you can run into cases when you have to use force 
+			(-f). This is especially true if you are upgrading a port that 
+			wants to install a file that another port allready has installed, 
+			or if you use the -u option to upgrade (and uninstall) a port 
+			that could be installed as a dependency. Allways remember to use 
+			the -f option with caution.
 		</sect2>
 	</sect1>
 	
