@@ -19,6 +19,89 @@
   </sect1>
 
   <sect1>
+	  <title>Port Maintenance Protocol</title>
+	  <para>
+		  DarwinPorts does not enforce exclusive write access to the maintainer
+		  of a given Port, however it is normal practice to inform the maintainer
+		  before making any changes to a Port. Detailed procedures are described 
+		  below.   
+	  </para>
+	  <sect2>
+		  <title>Updating Ports You Do Not Maintain</title>
+		  <para>
+			  If you have identified a port for which you have a 
+			  suggestion, because it is broken, insecure, out of date or 
+			  could be enhanced in some way you should:
+		  </para>
+		  <orderedlist numeration='arabic'>
+			  <listitem>
+				  Write patch for the port that resolves the issue, 
+				  and email maintainer or file a bug in Bugzilla. If 
+				  you can't write a patch, file a bug and ignore the 
+				  following steps...
+			  </listitem>
+			  <listitem>
+				  Wait for response from maintainer. You should receive 
+				  a response within 72hrs. Once you are in a dialog with 
+				  a maintainer, the maintainer should review and apply 
+				  patches.
+			  </listitem>
+			  <listitem>
+				  If a response is not received within 72hrs another 
+				  committer should  review the patches and update the port 
+				  (this may be the person originally submitting the patches). 
+				  If the person suggesting the changes does not have 
+				  write-access to the repository, they should send an 
+				  email to darwinports@opendarwin.org with a summary of the 
+				  bug and a reference to a bugzilla bug.
+			  </listitem>
+
+		  </orderedlist>
+		  <para>
+			  There are several situations in which this procedure can be waived:
+		  </para>
+
+		  <orderedlist>
+			  <listitem>
+				  A mass update to darwinports which touches many ports 
+				  (usually because of a change in the darwinports 
+				  infrastructure)
+			  </listitem>
+			  <listitem>
+				  The port is broken in a way that requires urgent action. 
+				  This may be because the port breaks system functionality 
+				  or the current version has a serious security problem.
+			  </listitem>
+			  <listitem>
+				  The port maintainer is not defined or is assigned to 
+				  darwinports@opendarwin.org. Feel free to take over 
+				  such ports!
+			  </listitem>
+			  <listitem>
+				  The port is abandoned by it's current maintainer. 
+				  i.e. Any Port with a 'Port Abandoned' bug (explained below)
+				  can be updated without contacting the maintainer.
+			  </listitem>
+		  </orderedlist>
+	  </sect2>
+	  <sect2>
+		  <title>Port Abandonment</title>
+		  <para>
+			  Abandonment is defined as when a bug has not been acknowledged 
+			  for more than 3 weeks after the bug was filed. If this occurs 
+			  a new bug should be filed in bugzilla against the port with 
+			  the subject: [Port Abandoned] and that port should reference 
+			  the ignored bug.
+		  </para>
+		  <para>
+			  The Port Abandoned bug should be resolved when a new maintainer 
+			  is assigned.
+		  </para>
+	  </sect2>
+  </sect1>
+
+
+  <sect1>
     <title>Commiter's Category Responsibility List</title>
 
 		<para>DarwinPorts has at least one commiter responsible for each
