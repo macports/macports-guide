@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<chapter>
+<chapter id="considerations">
     <title>Special considerations</title>
     <sect1>
     	<title>Mac OS X applications</title>

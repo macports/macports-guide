@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<chapter>
+<chapter id="testing">
     <title>Testing and troubleshooting</title>
     <sect1>
     	<title>Testing a Port</title>
