@@ -496,13 +496,24 @@
 		
 		<sect2 id='upgrade_dports'>
 			<title>Upgrading ports</title>
-			
-			<para>At the moment there is not a 'port upgrade' command so 
-			to upgrade a port you must uninstall and then install it again. 
-			<programlisting><![CDATA[% sudo port uninstall vile
-% sudo port install vile]]></programlisting></para>
-
-			
+			<para>You can check if a port is outdated with the following command:
+			</para>
+			<userinput>port outdated gnome</userinput>
+			<para>To check if you have any outdated ports:</para>
+			<userinput>port outdated</userinput>
+			<para>To upgrade a port execute:</para>
+			<userinput>sudo port upgrade gnome</userinput>
+			<para>This will deactivate the old version and install the new, and 
+			also install the newer versions of the dependencies of the port.</para>
+			<para>If you would like to upgrade the port, but not the dependencies 
+			of the port, you can:</para>
+			<userinput>sudo port -n upgrade gnome</userinput>
+			<para>To upgrade all installed ports simply do:.</para>
+			<userinput>sudo port -a upgrade</userinput>
+			<para>If you dont like that upgrade just deactivates the old version
+			of the port, you can get it to uninstall the old version by using
+			the -u option:</para>
+			<userinput>sudo port -u upgrade gnome</userinput>
 		</sect2>
 	</sect1>
 	
