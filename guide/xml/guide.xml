@@ -2,7 +2,7 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
   "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<book xmlns:xi="http://www.w3.org/2003/XInclude">
+<book xmlns:xi="http://www.w3.org/2001/XInclude">
   <bookinfo>
     <title>DarwinPorts Guide</title>
       
