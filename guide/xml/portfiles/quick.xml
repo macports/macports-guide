@@ -299,10 +299,10 @@ Done</literallayout></computeroutput></para>
         option in order to correctly install into the
         <varname>destroot</varname>.</para>
 
-      <programlisting>install.destroot     mandir=${destroot}${prefix}/man prefix=${destroot}${prefix}</programlisting>
+      <programlisting>destroot.destdir     mandir=${destroot}${prefix}/man prefix=${destroot}${prefix}</programlisting>
 
       <para>Take a look at some of our ports to see more examples on
-        how to use the <varname>install.destroot</varname>
+        how to use the <varname>destroot.destdir</varname>
         option.</para>
 
       <para>Now we have a complete <filename>Portfile</filename>.

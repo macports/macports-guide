@@ -387,85 +387,70 @@
     </sect2>
 
     <sect2>
-      <title>Install Options</title>
+      <title>Destroot Options</title>
 
       <variablelist>
         <varlistentry>
-          <term>install.cmd</term>
+          <term>destroot.cmd</term>
 
           <listitem>
             <synopsis>cmdType: optional, Default: ${build.cmd}</synopsis>
 
             <para>Install command to run relative to ${worksrcdir}.</para>
 
-            <para><userinput>install.cmd pbxbuild</userinput></para>
+            <para><userinput>destroot.cmd pbxbuild</userinput></para>
 
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>install.type</term>
+          <term>destroot.pre_args</term>
 
           <listitem>
-            <synopsis>Type: optional Default: ${build.type}</synopsis>
+            <synopsis>Type: read-only Default: ${destroot.target}</synopsis>
 
-            <para>Defines which 'make' is required, either 'gnu' or 'bsd' 
-            Sets build.cmd to either 'gnumake' or 'bsdmake' 
-            accordingly. </para>
-
-            <para><userinput>install.type gnu</userinput></para>
-
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>install.pre_args</term>
-
-          <listitem>
-            <synopsis>Type: read-only Default: ${install.target}</synopsis>
-
-            <para>Arguments to pass to ${install.cmd} before 
-            ${install.args}.</para>
+            <para>Arguments to pass to ${destroot.cmd} before 
+            ${destroot.args}.</para>
             
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>install.args</term>
+          <term>destroot.args</term>
 
           <listitem>
             <synopsis>Type: optional</synopsis>
 
-            <para>Arguments to pass to ${install.cmd}.</para>
+            <para>Arguments to pass to ${destroot.cmd}.</para>
 
-            <para><userinput>build.args -DNOWARN</userinput></para>
+            <para><userinput>destroot.args -DNOWARN</userinput></para>
 
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>install.target</term>
+          <term>destroot.target</term>
 
           <listitem>
             <synopsis>Type: optional Default: install</synopsis>
 
-            <para>Install target to pass to ${install.cmd}.</para>
+            <para>Install target to pass to ${destroot.cmd}.</para>
 
-            <para><userinput>install.target install-src</userinput></para>
+            <para><userinput>destroot.target install-src</userinput></para>
 
           </listitem>
         </varlistentry>
 
-		<varlistentry>
-          <term>install.destroot</term>
+	<varlistentry>
+          <term>destroot.destdir</term>
 
           <listitem>
             <synopsis>Type: optional Default: DESTDIR='${destroot}'</synopsis>
 
-            <para>Arguement passed to ${install.cmd} to cause port to 
+            <para>Arguement passed to ${destroot.cmd} to cause port to 
             install via the temporary destroot.</para>
 
-            <para><userinput>install.destroot prefix='${destroot}'
+            <para><userinput>destroot.destdir prefix='${destroot}'
             </userinput></para>
 
           </listitem>
