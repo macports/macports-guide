@@ -1063,6 +1063,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 					<para>command to call to restart the daemon etc.; defaults to execute stop, start on self</para>
 				</listitem>
 			</varlistentry>
+			</variablelist>
 
 	</sect1>
 
