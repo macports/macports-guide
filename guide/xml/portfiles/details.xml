@@ -559,10 +559,10 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 						Specify the filename, the checksum type and the 
 						checksum.</para>
 						
-						<para><programlisting><userinput>
-						${distname}-${extract.suffix} md5 65b89365a65dcad71d4402b48 \
+						<para><userinput>
+						${distname}-${extract.sufx} md5 65b89365a65dcad71d4402b48 \
 						foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
-							</programlisting></para>
+						</para>
 
 						<tip><para>If you only have one file being fetched the 
 						filename can be omitted. </para>
