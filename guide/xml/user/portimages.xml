@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="portimages">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+				images
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts Port Images</title> 
+  
+  <sect1>
+    <title>About this chapter</title>
+
+		<para>This chapter provides an overview of the DarwinPorts Port
+			Image model of installing and using ports for users of
+			DarwinPorts.  A more complete overview of Port Images can be found
+			in the DarwinPorts Internals part of this Guide.</para>
+  </sect1>
+	
+  <sect1 id='what'>
+    <title>What Are Port Images?</title>
+   
+		<para>Port Images are a new model for installing and using your
+			ported software.  At the most basic level, Port Images are a
+			solution to the problem of needing or wanting multiple different
+			versions, revisions, and/or variants of the same port installed at
+			the same time.  This is accomplished by installing the port into a
+			repository location and then create links, or aliases, from that
+			repository location into the <varname>${prefix}</varname> from
+			where you can use the DarwinPorts ports.</para>
+
+		<para>Port Images provide the ability to test new versions of a
+			port, or different variants of a port, without having to uninstall
+			a previous and/or working version of that port.  This is
+			accomplished using one of the key concepts of Images:
+			<emphasis>activation</emphasis>.</para>
+  </sect1>
+	<sect1 id="activation">
+		<title>Port Image Activation</title>
+
+		<para>With Port Images in DarwinPorts, the port is installed as an
+			<emphasis>image</emphasis> to the DarwinPorts <emphasis>image
+			repository</emphasis>.  This repository can be thought of as an
+			library of ports that actually contains all of the files belonging
+			to that port.  Once the port is installed as an image, the port
+			can be <emphasis>activated</emphasis>.</para>
+			
+		<para>Activation simply creates the links into the
+			<varname>${prefix}</varname> of DarwinPorts.  DarwinPorts manages
+			any conflicts between any ports that are activated, and will
+			inform you if one port is attempting to link a file that already
+			exists and belongs to another port.  You have the option to force
+			DarwinPorts to go ahead and activate the port in the event of a
+			conflict, and DarwinPorts will continue, moving the old file out
+			of the way.</para>
+
+		<para>By default, DarwinPorts will go ahead and activate a port when
+			you run <userinput>port install vim</userinput>.  Once a port is
+			installed and activated, you can <emphasis>deactivate</emphasis>,
+			in addition to <emphasis>uninstalling</emphasis> it.  If you wish
+			to move one port out of the way of another port or another variant
+			or version of the same port, you can <emphasis>deactivate
+			it</emphasis>.  When you do this, the port is still installed in
+			the <emphasis>image repository</emphasis>, but simply not linked
+			into <varname>${prefix}</varname>.</para>
+	</sect1>
+	
+	<sect1 id="using_images">
+		<title>Using Port Images</title>
+
+		<para>DarwinPorts uses Port Images by default now, so if you are
+			using a recent release of DarwinPorts, you are using Port Images!
+			Port Images will work transparently for users used to the old
+			installation model of DarwinPorts, as well as those familiar with
+			other port systems.  If you wish to use the advanced features that
+			Port Images provide, namely activation and deactivation, the
+			following commands are available:</para>
+
+		<variablelist>
+			<varlistentry>
+				<term><userinput>port installed vim</userinput></term>
+					
+				<listitem>
+					<para>This command will list all installed versions and
+					variants of the <varname>vim</varname> port.  You can use this
+					command to find the version string the port if you have
+					multiple versions installed and wish to activate or deactivate
+					one version.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><userinput>port activate vim</userinput></term>
+					
+				<listitem>
+					<para>This command will activate the <varname>vim</varname>
+					port.  If there are multiple versions of the
+					<varname>vim</varname> port installed, you will need to
+					provide the version string of the port you wish to
+					activate.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><userinput>port activate vim 6.2.532+gtk2</userinput></term>
+					
+				<listitem>
+					<para>This command will activate the specific version of the
+					<varname>vim</varname> given using the version string.  This
+					is how you activate one version of a port out of two or more
+					installed versions of that port.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><userinput>port deactivate vim</userinput></term>
+					
+				<listitem>
+					<para>This command will deactivate the <varname>vim</varname>
+					port.  If there are multiple versions of the
+					<varname>vim</varname> port installed, you will need to
+					provide the version string of the port you wish to
+					deactivate.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><userinput>port deactivate vim 6.2.532+gtk2</userinput></term>
+					
+				<listitem>
+					<para>This command will deactivate the specific version of the
+					<varname>vim</varname> given using the version string.  This
+					is how you deactivate one version of a port out of two or more
+					installed versions of that port.</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><userinput>port location vim</userinput></term>
+					
+				<listitem>
+					<para>This command will simply give you the full path to the
+					image location where the <varname>vim</varname> port is
+					installed.  If you have more than one version or variants of a
+					single port installed, you can specify the version string of
+					the port as the last argument, similar to the above examples
+					of activation and deactivation.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</sect1>
+</chapter>
