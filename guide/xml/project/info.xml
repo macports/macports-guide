@@ -77,10 +77,11 @@
 	<sect1>
 		<title>DarwinPorts PortMgr</title>
 
-		<para>The DarwinPorts PortMgr Group is responsible for the overall
-			direction of DarwinPorts, as well as managing the DarwinPorts
-			website, approving cvs accounts, maintaining the DarwinPorts
-			mailing lists, and other organizational functions.</para>
+		<para>The DarwinPorts PortMgr Group is primarily responsible for 
+				the administritive decision making of DarwinPorts. For 
+				example managing the DarwinPorts website, approving cvs accounts,
+				maintaining the DarwinPorts mailing lists, and other 
+				organizational functions.</para>
 
 		<sect2>
 			<title>PortMgr Group</title>
@@ -104,11 +105,6 @@
 				<listitem>
 					<para><emphasis>Jim Mock</emphasis>, mij [at] opendarwin DOT
 					org</para>
-				</listitem>
-
-				<listitem>
-					<para><emphasis>Will Barton</emphasis>, wbb4 [at] opendarwin
-					DOT org</para>
 				</listitem>
 
 				<listitem>
