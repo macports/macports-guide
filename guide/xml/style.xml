@@ -5,33 +5,33 @@
 	<title>Style Guide</title> 
 	<sect1>
 		<title>Overview</title> 
-		<para>
-			A port consists of a directory and its contents, within a category subdirectory of the root of the ports tree. This document serves as a reference for the directory structure of a single port and the layout of the files within. 
+		<para>A port consists of a directory and its contents, within a category subdirectory of the root of the ports tree.  This document serves as a reference for the directory structure of a single port and the layout of the files within.
 		</para>
-		<para>
-			The only required file in a port is Portfile. The port file should be thought of as a set of declarations rather than a piece of code. It is best to format the port file is if it were a table consisting of keys and values. In fact, the simplest of ports will only contain a small block of values. Therefore, whitespace should not be strown about haphazardly. Nicely formatted compact tables will result in more values being visible at the same time. 
+		<para>The only required file in a port is Portfile.  The port file should be thought of as a set of declarations rather than a piece of code.  It is best to format the port file is if it were a table consisting of keys and values.  In fact, the simplest of ports will only contain a small block of values.  Therefore, whitespace should not be strown about haphazardly. Nicely formatted compact tables will result in more values being visible at the same time.
 		</para>
-		<para>
-			Use tabs to align items into columns. The left side should consist of single words, and will be separated from the more complex right side by a number of tabs that will result in all items begining on the same column. 
+		<para>Try to adhere to these guidelines, but remember that this is only a guide.  No set of rules can adequately cover all cases, and in some cases the best solution is to break the rules.
 		</para>
+			
+			
+			
 	</sect1>
 	<sect1>
 		<title>Specifics</title> 
 		<sect2>
-			<title></title> 
-			<para>
+			<title># $Id: style.xml,v 1.5 2003/05/14 16:05:52 michaelm Exp $</title> 
+			<para>On the first line of the Portfile you should put a cvs ID tag. This tag will be expanded by cvs when the Portfile is committed and allows people to see at a glance details like who was the last person to commit to a port and when the last commit was performed.
 			</para>
 		</sect2>
 		<sect2>
 			<title>Portsystem</title> 
 			<para>
-				At the top of the port file is the requirement statement. There is a single space between the &ldquo;PortSystem&rdquo; statement and the version number. 
+				At the top of the port file is the requirement statement. There is a single space between the "PortSystem" statement and the version number. 
 			</para>
 		</sect2>
 		<sect2>
 			<title>Variable assignments</title> 
 			<para>
-				Variable assignments such as &ldquo;set libver&rdquo; can be considered a single word on the left side, with a single space between &ldquo;set&rdquo; and the variable name, followed by tabs to line up with the right side. 
+				Variable assignments such as "set libver" can be considered a single word on the left side, with a single space between "set" and the variable name, followed by tabs to line up with the right side. 
 			</para>
 		</sect2>
 		<sect2>
@@ -47,7 +47,7 @@
 			</para>
 		</sect2>
 		<sect2>
-			<title>Braces or Curly Brackets &ldquo;&lcub;&rcub;&rdquo;</title> 
+			<title>Braces or Curly Brackets "{}"</title> 
 			<para>
 				the braces may appear on the first and last lines rather than on their own lines. This is done because the right side of the port file is already indented, and to make port file read like a table. Use a single space after the brace. Indent additional lines to this same column. 
 			</para>
@@ -55,24 +55,13 @@
 		<sect2>
 			<title>Variants</title> 
 			<para>
-				Variants are like any other part of the port file. Space, indent, and format them the same way other sections are formatted. The actual vari- ant statement, &ldquo;variant&rdquo; followed by the name of the variant, can be treated as a single statement and thus placed together on the left side and separated by a single space. 
+				Variants are like any other part of the port file. Space, indent, and format them the same way other sections are formatted. The actual variant statement, "variant" followed by the name of the variant, can be treated as a single statement and thus placed together on the left side and separated by a single space. 
 			</para>
-		</sect2>
-		<sect2>
-			<title>Contents Lists</title> 
-			<para>
-				Short contents lists should appear within the port file, listing each file on a single line, using backslashes to continue the list over the line breaks. If the list is long, it is often better to place the contents in another file named something like &ldquo;contents&rdquo; and pull it into the port file with an &ldquo;include&rdquo; statement. If a variant changes the items installed the variant content file should be named &ldquo;contents-foo&rdquo;, where foo is the name of the variant. 
-			</para>
-			<tip>
-				<para>
-					In general you do not want to list configuration files and directories that the user may modify. The user will not want you to remove their carefully handcrafted httpd.conf, for example.
-				</para>
-			</tip>
 		</sect2>
 		<sect2>
 			<title>Patch Files</title> 
 			<para>
-				Patch files reside in the files/ directory in the port's base directory. There should be one patch file for every file that needs to be patched. It is perfectly reasonable to use provided patches that affect multiple files, but do not create new patches that do so. Their names should begin with &ldquo;patch-&rdquo;. The rest of the name should come from the name of the file that they apply to. In many cases just the base name of the file being patched is enough. For files such as &ldquo;Makefile&rdquo; this may not be the case. In this case, use enough components of the file's path to uniquely distinguish the file. Separate the components with &rsquo;-&rsquo; characters. The patch should apply with &ldquo;patch -p0&rdquo; from the working source directory of the port. 
+				Patch files reside in the files/ directory in the port's base directory. There should be one patch file for every file that needs to be patched. It is perfectly reasonable to use provided patches that affect multiple files, but do not create new patches that do so. Their names should begin with "patch-". The rest of the name should come from the name of the file that they apply to. In many cases just the base name of the file being patched is enough. For files such as "Makefile" this may not be the case. In this case, use enough components of the file's path to uniquely distinguish the file. Separate the components with '-' characters. The patch should apply with "patch -p0" from the working source directory of the port. 
 			</para>
 		</sect2>
 	</sect1>

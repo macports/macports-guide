@@ -6,7 +6,7 @@
 	<sect1>
 		<title>What are Variants?</title> 
 		<para>
-			Darwinports allows multiple versions of a port to be specified in a single Portfile. For example, vim can be built with and without x11 support. Rather than duplicate the whole port and have vim-x11 vim-nox ports Darwinports supports &ldquo;variants&rdquo;. 
+			Darwinports allows multiple versions of a port to be specified in a single Portfile. For example, vim can be built with and without x11 support. Rather than duplicate the whole port and have vim-x11 vim-nox ports Darwinports supports "variants". 
 		</para>
 	</sect1>
 	<sect1>
@@ -68,16 +68,6 @@ variant gnome    { configure.args-delete --without-gnome}
 					</para>
 				</listitem>
 			</varlistentry>
-			<varlistentry id='variant-contents'>
-				<term>
-					foo-contents 
-				</term>
-				<listitem>
-					<para>
-						If a variant changes the installed files you should list the contents in a file named &lt;variant&gt;-contents.
-					</para>
-				</listitem>
-			</varlistentry>
 		</variablelist>
 	</sect1>
 	<sect1>
@@ -122,7 +112,7 @@ variant gnome    { configure.args-delete --without-gnome}
 					</para>
 					<para>
 						<userinput>
-							variant foo darwin &lcub;[variant code]&rcub; 
+							variant foo darwin {[variant code]} 
 						</userinput>
 					</para>
 				</listitem>

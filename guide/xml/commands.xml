@@ -6,153 +6,147 @@
 
   <sect1>
     <title>Commands</title>
-
+    
     <sect2>
-      <title>Build Options</title>
+      <title>Fetch Options</title>
+
+      <para>
+      </para>
+    </sect2>
+    
+    <sect2>
+      <title>Extract Options</title>
 
       <variablelist>
         <varlistentry>
-          <term>build.cmd</term>
+          <term>extract.only</term>
 
           <listitem>
-            <synopsis>cmdType: optional, Default: make</synopsis>
+            <synopsis>Type: Optional Default: ${distfiles}</synopsis>
 
-            <para>Make command to run relative to ${worksrcdir}.</para>
+            <para>List of files to extract into ${workpath}.</para>
 
             <para>
-              <userinput>build.cmd pbxbuild</userinput>
+              <userinput>extract.only worksrc-1.4.4.tar.gz</userinput>
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>build.type</term>
+          <term>extract.cmd</term>
 
           <listitem>
-            <synopsis>Type: optional Default: make</synopsis>
+            <synopsis>Type: optional Default: gzip</synopsis>
 
-            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+            <para>Command to perform extract.</para>
 
             <para>
-              <userinput>build.type bsd</userinput>
+              <userinput>extract.cmd bzip2</userinput>
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>build.pre_args</term>
+          <term>extract.pre_args</term>
 
           <listitem>
-            <synopsis>Type: read-only Default: ${build.target}</synopsis>
+            <synopsis>Type: optional Default: -dc</synopsis>
 
-            <para>Arguments to pass to ${build.cmd} before ${build.args}.</para>
+            <para>Arguments added to ${extract.cmd} before a file name.</para>
+
+            <para>
+              <userinput>extract.pre_args -cd</userinput>
+            </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>build.args</term>
+          <term>extract.args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${distpath}/${distfile}</synopsis>
+
+            <para>Arguments to ${extract.cmd}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.post_args</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: | tar -xf -</synopsis>
+
+            <para>Arguments added to extract command after a file name.</para>
+
+            <para>
+              <userinput>extract.post_args | tar -x -s@bladeenc-0.94.2/other_makefiles/BladeEnc..@@p -f -</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.sufx</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: .tar.gz</synopsis>
+
+            <para>Suffix to append to ${distname}</para>
+
+            <para>
+              <userinput>extract.sufx .tgz</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_zip</term>
 
           <listitem>
             <synopsis>Type: optional</synopsis>
 
-            <para>Arguments to pass to ${build.cmd}.</para>
+            <para>Sets extract.sufx to: .zip Sets extract.cmd to: unzip Sets extract.pre_args to: -q Sets extract.post_args to: "-d $portpath/$workdir"</para>
 
             <para>
-              <userinput>build.args -DNOWARN</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>build.target</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: all</synopsis>
-
-            <para>Target to pass to make for building everything.</para>
-
-            <para>
-              <userinput>build.target all-src</userinput>
+              <userinput>use_zip yes</userinput>
             </para>
           </listitem>
         </varlistentry>
       </variablelist>
     </sect2>
-
+    
     <sect2>
-      <title>Install Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term>install.cmd</term>
-
-          <listitem>
-            <synopsis>cmdType: optional, Default: &dollar;&lcub;build.cmd&rcub;</synopsis>
-
-            <para>Install command to run relative to ${worksrcdir}.</para>
-
-            <para>
-              <userinput>install.cmd pbxbuild</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>install.type</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: &dollar;&lcub;build.type&rcub;</synopsis>
-
-            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
-
-            <para>
-              <userinput>install.type gnu</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>install.pre_args</term>
-
-          <listitem>
-            <synopsis>Type: read-only Default: ${install.target}</synopsis>
-
-            <para>Arguments to pass to ${install.cmd} before ${install.args}.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>install.args</term>
-
-          <listitem>
-            <synopsis>Type: optional</synopsis>
-
-            <para>Arguments to pass to ${install.cmd}.</para>
-
-            <para>
-              <userinput>build.args -DNOWARN</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>install.target</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: install</synopsis>
-
-            <para>Install target to pass to ${install.cmd}.</para>
-
-            <para>
-              <userinput>install.target install-src</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
+      <title>File Verification Options</title>
+		<variablelist>
+		  <varlistentry>
+			  <term>checksums</term>
+	
+			  <listitem>
+				<synopsis>Type: optional</synopsis>
+				
+				<para>List of checksums in the format: &lt;file name&gt; &lt;checksum type&gt; &lt;checksum&gt; Currently, the only supported checksum type is md5. If only one file is downloaded, the filename may be ommitted.
+				</para>
+				<para>
+				<userinput>checksums dictd-1.7.1.tar.gz md5 81317b86ea0a5df0163900ad2e6bb12c</userinput>
+				</para>
+			  </listitem>
+			</varlistentry>
       </variablelist>
     </sect2>
 
     <sect2>
+      <title>CVS Options</title>
+
+      <para>
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>Patch Options</title>
+
+      <para>
+      </para>
+    </sect2>
+	<sect2>
       <title>Configure Options</title>
 
       <variablelist>
@@ -323,6 +317,164 @@
         </varlistentry>
       </variablelist>
     </sect2>
+    
+    <sect2>
+      <title>Build Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>build.cmd</term>
+
+          <listitem>
+            <synopsis>cmdType: optional, Default: make</synopsis>
+
+            <para>Make command to run relative to ${worksrcdir}.</para>
+
+            <para>
+              <userinput>build.cmd pbxbuild</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.type</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: make</synopsis>
+
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+
+            <para>
+              <userinput>build.type bsd</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${build.target}</synopsis>
+
+            <para>Arguments to pass to ${build.cmd} before ${build.args}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${build.cmd}.</para>
+
+            <para>
+              <userinput>build.args -DNOWARN</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.target</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: all</synopsis>
+
+            <para>Target to pass to make for building everything.</para>
+
+            <para>
+              <userinput>build.target all-src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Install Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>install.cmd</term>
+
+          <listitem>
+            <synopsis>cmdType: optional, Default: ${build.cmd}</synopsis>
+
+            <para>Install command to run relative to ${worksrcdir}.</para>
+
+            <para>
+              <userinput>install.cmd pbxbuild</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.type</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: ${build.type}</synopsis>
+
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+
+            <para>
+              <userinput>install.type gnu</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${install.target}</synopsis>
+
+            <para>Arguments to pass to ${install.cmd} before ${install.args}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${install.cmd}.</para>
+
+            <para>
+              <userinput>build.args -DNOWARN</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.target</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: install</synopsis>
+
+            <para>Install target to pass to ${install.cmd}.</para>
+
+            <para>
+              <userinput>install.target install-src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+		<varlistentry>
+          <term>install.destroot</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: DESTDIR='${destroot}'</synopsis>
+
+            <para>Arguement passed to ${install.cmd} to cause port to install via the temporary destroot.</para>
+
+            <para>
+              <userinput>install.destroot prefix='${destroot}'</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
 
     <sect2>
       <title>Xmkmf Options</title>
@@ -356,127 +508,6 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    </sect2>
-
-    <sect2>
-      <title>Extract Options</title>
-
-      <variablelist>
-        <varlistentry>
-          <term>extract.only</term>
-
-          <listitem>
-            <synopsis>Type: Optional Default: ${distfiles}</synopsis>
-
-            <para>List of files to extract into ${workpath}.</para>
-
-            <para>
-              <userinput>extract.only worksrc-1.4.4.tar.gz</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.cmd</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: gzip</synopsis>
-
-            <para>Command to perform extract.</para>
-
-            <para>
-              <userinput>extract.cmd bzip2</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.pre_args</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: -dc</synopsis>
-
-            <para>Arguments added to ${extract.cmd} before a file name.</para>
-
-            <para>
-              <userinput>extract.pre_args -cd</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.args</term>
-
-          <listitem>
-            <synopsis>Type: read-only Default: ${distpath}/${distfile}</synopsis>
-
-            <para>Arguments to ${extract.cmd}.</para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.post_args</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: | tar -xf -</synopsis>
-
-            <para>Arguments added to extract command after a file name.</para>
-
-            <para>
-              <userinput>extract.post_args | tar -x -s@bladeenc-0.94.2/other_makefiles/BladeEnc..@@p -f -</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.sufx</term>
-
-          <listitem>
-            <synopsis>Type: optional Default: .tar.gz</synopsis>
-
-            <para>Suffix to append to ${distname}</para>
-
-            <para>
-              <userinput>extract.sufx .tgz</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>use_zip</term>
-
-          <listitem>
-            <synopsis>Type: optional</synopsis>
-
-            <para>Sets extract.sufx to: .zip Sets extract.cmd to: unzip Sets extract.pre_args to: -q Sets extract.post_args to: "-d $portpath/$workdir"</para>
-
-            <para>
-              <userinput>use_zip yes</userinput>
-            </para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </sect2>
-
-    <sect2>
-      <title>CVS Options</title>
-
-      <para>
-      </para>
-    </sect2>
-
-    <sect2>
-      <title>Fetch Options</title>
-
-      <para>
-      </para>
-    </sect2>
-
-    <sect2>
-      <title>Patch Options</title>
-
-      <para>
-      </para>
     </sect2>
   </sect1>
 </chapter>

@@ -33,7 +33,7 @@
 				<title>Expat Portfile</title> 
 				<programlisting><![CDATA[
 ########################### libxslt Portfile ################################## 
-# &dollar;Id&dollar;
+# $Id: quick.xml,v 1.9 2003/05/14 16:05:51 michaelm Exp $
 
 PortSystem      1.0
 
@@ -59,7 +59,7 @@ xml files, comes with several useful binaries.
 				</programlisting>
 			</example>
 			<para>
-				The Portfile uses key value pairs to define how it is executed. Below is a list of some of the simple terms. Line up each of the values with tabs in a &ldquo;table&rdquo; type of format. 
+				The Portfile uses key value pairs to define how it is executed. Below is a list of some of the simple terms. Line up each of the values with tabs in a "table" type of format. 
 			</para>
 			<variablelist>
 				<title> Portfile Keys 1</title> 
@@ -69,7 +69,7 @@ xml files, comes with several useful binaries.
 					</term>
 					<listitem>
 						<para>
-							The version of darwinports that the port depends on. If a later release introduces a function that isn't in version 1.0, you can specify the version of darwinports that the Port requires. The PortSystem value is 1.0 (at the moment there is no &quot;higher&quot; version of darwinports. 
+							The version of darwinports that the port depends on. If a later release introduces a function that isn't in version 1.0, you can specify the version of darwinports that the Port requires. The PortSystem value is 1.0 (at the moment there is no &quot;higher&quot; version of darwinports). 
 						</para>
 					</listitem>
 				</varlistentry>
@@ -123,7 +123,7 @@ xml files, comes with several useful binaries.
 					<term> checksums </term>
 					<listitem>
 						<para> The md5 checksum of the distfiles. If you have more than one file being fetched you should specify the checksum for each in the form: </para> 
-                                                <simplelist type="vert">
+                        <simplelist type="vert">
 							<member> foo md5 ....  </member>
 							<member> bar md5 ....  </member>
 						</simplelist>
@@ -164,7 +164,7 @@ xml files, comes with several useful binaries.
 					<title>Neon Portfile</title>
 					<programlisting><![CDATA[
 ###########################neon Portfile#################################### 
-# &dollar;Id&dollar;
+# $Id: quick.xml,v 1.9 2003/05/14 16:05:51 michaelm Exp $
 
 PortSystem 1.0 
 name            neon 
@@ -204,9 +204,9 @@ configure.args  --with-ssl \
 						<term> configure.args </term>
 						<listitem>
 							<para> If you need to specify additional configure arguments you should place them on a single line. As with other settings, newlines may be escaped to break up long lines. Note the continuing lines are indented two spaces.  </para>
-							<para> By default the configure script is passed --prefix=&dollar;&lcub;prefix&rcub; where ${prefix} is replaced with the prefix darwinports is configured to install into.  </para>
+							<para> By default the configure script is passed --prefix=${prefix} where ${prefix} is replaced with the prefix darwinports is configured to install into.  </para>
 							<tip>
-								<para> In general you should quote variables like &lcub;prefix&rcub; in case the path has a space in it.  </para>
+								<para> In general you should quote variables like }prefix} in case the path has a space in it.  </para>
 							</tip>
 						</listitem>
 					</varlistentry>
@@ -226,18 +226,14 @@ configure.args  --with-ssl \
 							<para> Enable debugging and verbose messages from the darwinports engine. Edit /etc/ports/ports.conf and set:<userinput>debug yes </userinput>and <userinput>verbose yes </userinput>.  </para>
 						</listitem>
 						<listitem>
-							<para> Enable a local source repository and comment out the remote repository. Edit /etc/ports/sources.conf and set:<userinput>file:///usr/dports</userinput> (or wherever your copy of the dport tree is).  </para>
+							<para> Enable a seccond local source (Portfile) repository for your uncommitted ports.  Edit /etc/ports/sources.conf and add:<userinput>file:///User/foo/dports-dev</userinput> (or wherever your local dport tree is).  </para>
 						</listitem>
 						<listitem>
-							<para> From the local source repository root, create an index file. This will also syntax check portfiles contained.  </para>
+							<para> Create an index file from the local source repository root. This will also perfom a simple syntax check portfiles contained.  </para>
 							<para> <userinput> portindex </userinput> </para>
 						</listitem>
 						<listitem>
-							<para> Sync the index </para>
-							<para> <userinput> port sync </userinput> </para>
-						</listitem>
-						<listitem>
-							<para> Install port </para>
+							<para> Install port, first run port install without root privileges, this is a good way to check that the port installs into the destroot and not directly into the main prefix directory, or elsewhere in the system.  This should succeed up to the point darwinports attempts to copy the port from the destroot into the darwinports prefix. Once you are confident the port is correctly destrooted install the port into the darwinports prefix using root privileges. </para>
 							<para> <userinput> sudo port install foo </userinput> </para>
 						</listitem>
 						<listitem>
@@ -245,7 +241,7 @@ configure.args  --with-ssl \
 							<para> <userinput> sudo port uninstall foo </userinput> </para>
 						</listitem>
 						<listitem>
-							<para> Make sure the port builds, installs and uninstalls on a &quot;clean machine&quot;. A clean machine should have a clean install of the OS, to avoid missing dependencies.  </para>
+							<para> Make sure the port builds, installs and uninstalls on a &quot;clean machine&quot;. A clean machine should have a clean install of the OS, to avoid missing dependencies.  Using a chrooted version of the OS to install and test ports makes this much easier, see the chroot <ulink url="http://darwinports.gene-hacker.net/docs/howto/chroot-howto.html">HOWTO</ulink> for more details on how to set up the chroot. </para>
 						</listitem>
 						<listitem>
 							<para> Ensure the Port installs into the destroot and does not install anything onto the system directly, most software that uses autoconf should behave correctly automatically as darwinports sets DESTDIR by default. If files are directly installed to the system they will not be registered and packaging will fail.	</para>
@@ -257,11 +253,12 @@ configure.args  --with-ssl \
 					</orderedlist>
 				</sect1>
 				<sect1>
-					<title>Where to submit</title> 
-					<para> Email your submission to <email>darwinports@opendarwin.org</email> mailing <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports">list</ulink>. In general the Portfile should be inlined in the email, rather than as an attatchment. This allows people to view and give feedback on the Portfile more easily. If there is a large contents list and/or patchfiles these may be attatched to the email as a tarred and gzipped archive.  </para>
+					<title>Where can I ask for Advice?</title> 
+					<para>Either on the <email>darwinports@opendarwin.org</email> mailing list, or on the #opendarwin channel on irc.freenode.net. Don't be afraid to ask questions! You should also look at the later sections of the <link linkend="details">guide</link>, the Portfile <ulink url="http:http://www.opendarwin.org/projects/darwinports/en/portfileHOWTO.php">HOWTO</ulink> and the portfile(7) and portstyle(7) manpages for more information. </para>
 				</sect1>
 				<sect1>
-					<title>Where can I ask for Advice?</title> 
-					<para>Either on the <email>darwinports@opendarwin.org</email> mailing list, or on the #opendarwin channel on irc.openprojects.net. Don't be afraid to ask questions!  </para>
+					<title>How do I submit my Ports</title>
+					<para>See the <link linkend="submission">Submission Chapter</link> for all the infromation on how to submit a port properly.
+					</para>
 				</sect1>
-				</chapter>
+</chapter>

@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="submission">
+	<chapterinfo>
+		<keywordset>
+			<keyword>
+				portfile
+			</keyword>
+			<keyword>
+				submissions
+			</keyword>
+			<keyword>
+				maintainer
+			</keyword>
+		</keywordset>
+	</chapterinfo>
+	<title>DarwinPorts Submissions</title> 
+	<sect1>
+		<title>Submitting a Port</title> 
+		<para>Using a standardised approach to submitting the Portfiles and associated patches scripts, etc allows us to keep track of port submissions, process them efficiently and get them submitted as quickly as possible to our dports CVS tree. The following sections will describe the standard port submission procedures. </para>
+		<sect2>
+			<title>Where to Submit</title>
+			<para> New ports should be submitted via the Darwinports <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
+			<ulink url="mailto:darwinports@opendarwin.org">DarwinPorts</ulink> mailing list.</para>
+			<para>If you are submitting a modification to an existing port, please assign the port to the current maintainer in your bugzilla submission, so that the automatic email is directed to the maintainer, who will be best suited to deal with your submission.</para>
+		</sect2>
+		<sect2>
+			<title>Using Bugzilla to Submit a port</title>
+			<para>The following section describes in some more detail how to use Bugzilla to submit your port.</para>
+			<sect3>
+				<title>Submission Parameters</title>
+				
+				<variablelist>
+					<varlistentry id='Project'>
+						<term>
+							Project:
+						</term>
+						<listitem>
+							<para>Make sure you select the Darwinports project.
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry id='Component'>
+						<term>
+							Component:
+						</term>
+						<listitem>
+							<para>Select "dports" as the component. 
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry id='Assigned_to'>
+						<term>
+							Assigned to: 
+						</term>
+						<listitem>
+							<para>Please assign updates and comments on existing ports to the maintainer. Otherwise, if this is a new port or an RFC, please leave blank
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry id='URL'>
+						<term>
+							URL:
+						</term>
+						<listitem>
+							<para>You may use this field to point to the portfile if it is available online, or to point to the homepage of the program project.
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry id='Summary'>
+						<term>
+							Summary:
+						</term>
+						<listitem>
+							<para>The summary field should one of a number of standardised elements, 
+							</para>
+								<variablelist>
+									<varlistentry id='NEW_portname'>
+										<term>NEW: portname-1.2.3
+										</term>
+										<listitem>
+											<para>Please use this format for the submission of new ports.
+											</para>
+										</listitem>	
+									</varlistentry>
+									<varlistentry id='UPDATE_portname'>
+										<term>UPDATE portname-1.2.3
+										</term>
+										<listitem>
+											<para>Please use this format for the submission of updates to ports.
+											</para>
+										</listitem>	
+									</varlistentry>
+									<varlistentry id='REVISION_portname'>
+										<term>REVISION: portname-1.2.3
+										</term>
+										<listitem>
+											<para>Please use this format for the submission of changes to a current, uncommitted port submission
+											</para>
+										</listitem>	
+									</varlistentry>
+									<varlistentry id='RFC_portname'>
+										<term>RFC: portname-1.2.3
+										</term>
+										<listitem>
+											<para>Please use this format for the submission of Request for Comments on a Portfile.
+											</para>
+										</listitem>	
+									</varlistentry>
+									<varlistentry id='ATTACHMENT_portname'>
+										<term>ATTACHMENT: portname-1.2.3
+										</term>
+										<listitem>
+											<para>to add an attachment you will have use the query tool. Once you have selected the correct port, please use this format in the summary field for your submission.
+											</para>
+										</listitem>	
+									</varlistentry>
+								</variablelist>
+								
+						</listitem>
+					</varlistentry>
+					<varlistentry id='Description'>
+						<term>
+							Description:
+						</term>
+						<listitem>
+							<para>The description field should contain the following information as per the example given here here. 
+							</para>
+								<programlisting>
+<![CDATA[
+Portname-1.2.3
+
+the portfile can be found here: URL or ATTACHED or INLINE
+
+Description: What does this program do in a nutshell,
+briefly what changes were made, or what files you are attaching in the tarball.
+
+Homepage: URL of project or program itself, not the portfile
+
+Comments: Any comments you have about your port, concerns, lookouts, dependencies that you may want to mention
+
+================INLINE CONTENT================
+-- 
+your sig if you'd like
+]]> 
+						</programlisting>
+								
+						</listitem>
+					</varlistentry>
+				</variablelist>
+			</sect3>
+			<sect3>
+				<title>Final Comments on Port Submission</title>
+				<para>The following general points should also be borne in mind when submitting to bugzilla:
+					<simplelist type="vert">
+						<member>Small changes or portfiles should be inlined. </member>
+						<member>Larger changes should be attached as a single file, tar works wonderfully for this. </member>
+						<member>Multiple patched files should be bundled together using tar and attached to the submission</member>
+						<member>Currently attachments must be sent in using the current bug number, remeber to query bugzilla to find out the current bug number, select that bug and use the 'Create a New Attachment' link.</member>
+					</simplelist>
+				</para>
+			</sect3>
+		</sect2>
+	</sect1>
+</chapter>
