@@ -165,7 +165,7 @@
 			'checkout' (download) DarwinPorts. </para>
 
 			<para>There is also a <ulink 
-			url='http://www.opendarwin.org/~fkr/snapshots/'> cvs snapshot</ulink> 
+			url='http://darwinports.opendarwin.org/darwinports-nightly-cvs-snapshot.tar.gz'> cvs snapshot</ulink> 
 			available that is made from cvs every 6 hours. The tarball is made 
 			from a anonymous checkout of DarwinPorts so you can still use the 
 			commands below for <link linkend='updating_dports'>updating</link>. 
