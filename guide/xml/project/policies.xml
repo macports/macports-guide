@@ -129,7 +129,7 @@
 						<entry/>
 					</row>
 					<row>
-						<entry>archives</entry>
+						<entry>archivers</entry>
 						<entry>waqar [at] opendarwin.org</entry>
 						<entry></entry>
 					</row>
@@ -199,6 +199,11 @@
 						<entry/>
 					</row>
 					<row>
+						<entry>java</entry>
+						<entry>mww [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
 						<entry>lang</entry>
 						<entry>gwright [at] opendarwin.org</entry>
 						<entry/>
@@ -229,6 +234,11 @@
 						<entry/>
 					</row>
 					<row>
+						<entry>palm</entry>
+						<entry/>
+						<entry/>
+					</row>
+					<row>
 						<entry>perl</entry>
 						<entry>rshaw [at] opendarwin.org</entry>
 						<entry>toby [at] opendarwin.org</entry>
@@ -240,7 +250,7 @@
 					</row>
 					<row>
 						<entry>python</entry>
-						<entry>mww [at ] opendarwin.org</entry>
+						<entry>mww [at] opendarwin.org</entry>
 						<entry>rshaw [at] opendarwin.org</entry>
 					</row>
 					<row>
