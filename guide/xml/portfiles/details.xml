@@ -675,7 +675,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 						directory where the port was extracted, with a command
 						similar to the following:</para>
 
-						<para><userinput>diff -u -b -w path/to/filename.org
+						<para><userinput>diff -u -b -w path/to/filename.orig
 						path/to/filename >
 						../../files/patch-filename.diff</userinput></para>
 
