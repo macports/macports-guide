@@ -41,6 +41,9 @@
 		
 		<para>FreeBSD Ports is a large collection of software ported to run on FreeBSD, the ports collection is also used on the other 'Free' BSDs. FreeBSD Ports is based on a large tree of ports where each piece of software has a directory withing a category (like mail or graphics). That directory contains the information needed to build the piece of software. DarwinPorts also uses a directory structure like this, although unlike FreeBSD ports the intention is to not require a complete copy of the 'Ports Tree' on every users machine.  FreeBSD ports is essentially implemented as some very impressive but hairy BSD make(1)'s macros and can be  opaque and non-extensible from the perspective of someone looking to extend or re-factor parts of the system.  Given that Makefiles aren't the easiest thing to parse, or for non-developers to understand, it is also harder to "mine" the FreeBSD ports collection for data to use for other purposes, such as generating documentation indexes or arbitrary front-ends for creating or managing ports. 
 		</para>
+
+		<para>A ports collection can be considered an 'expert system' that knows the sources, dependencies, and other information necessary to *build* a given Open Source project.  A package management system relies on similar dependency information, but is focused on safely installing (and de-installing) software.   Before DarwinPorts, most systems did both at once; DarwinPorts, however, is explicitly designed as a pure ports collection which can use various package management systems.  
+		</para>
 		
 		<para>Even discounting some of the limitations of FreeBSD ports described above, the "science" of creating automated build systems is rather more complex than it looks at first glance and there's always room for fresh approaches to the problem, which is what we set out to do with DarwinPorts. There are certainly other systems, some of which have already been mentioned, which have made their own attempts at solving this problem and there will likely be many more such systems in the future since trying to find a single solution which pleases everyone is rather like trying to find a single programming language which pleases everyone - it's more or less impossible. 
 		</para>
@@ -59,7 +62,8 @@
 		<sect2 id='prerequisites'>
 			<title>What you need</title>
 			
-			<para>Currently the only officially supported system is Mac OS X 10.2 or later, DarwinPorts will work on FreeBSD and NetBSD most of the time, however those platforms are not as well tested, users of the *BSDs should be able to get DarwinPorts working fairly easily based on these instructions.</para>
+			<para>Currently DarwinPorts is only supported on Mac OS X 10.2 or later (i.e., Darwin 6.0 or later).   However, these instructions should also enable it to  work on FreeBSD and NetBSD, at least most of the time; not every build of DarwinPorts is tested on those platforms, so some minor breakage may creep in from time to time.
+			</para>
 
 			<para>To install and use DarwinPorts you must install the Developer tools (gcc, autoconf etc on other platforms). All the other prerequisites are pre-installed on Mac OS X 10.2 and later. On other platforms you will need to ensure you have installed Tcl (8.3 or later). 
 			</para>
@@ -299,7 +303,7 @@ your sig if you'd like
 	<sect1 id='portsmanager'>
 		<title>Ports Manager.app</title>
 		
-		<para>Ports Manager.app is a Cocoa GUI for the DarwinPorts project, it allows users to browse through available ports and their descriptions and to download, install and uninstall the software. Ports Manager.app is currently under development and is less reliable in use than the command line tools. There is a Port for the application so you can actually use Darwinports to install it for you! <userinput>sudo port install 'PortsManager'</userinput>. Ports Manager.app will be installed in your /Applications/Utilities folder. 
+		<para>Ports Manager.app is a Cocoa GUI for the DarwinPorts project, it allows users to browse through available ports and their descriptions and to download, install and uninstall the software. Ports Manager.app is currently under development and is less reliable in use than the command line tools. There is a Port for the application so you can actually use Darwinports to install it for you! <userinput>sudo port install 'PortsManager'</userinput>. Ports Manager.app will be installed in your /Applications/Utilities folder. You must have the DarwinPorts Tcl libraries installed to use the Ports Manager.app. A <ulink url='http://www.opendarwin.org/~fkr/portsmanager.png'>screen shot is available</ulink> of Ports Manager.app in action. 
 		</para>
 		
 		<para>We will also be providing a binary installer (a '.pkg') file in the near future for Ports Manager.app.
