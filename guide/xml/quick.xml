@@ -1,319 +1,362 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
-
 <chapter id="quickstart">
 	<chapterinfo>
 		<keywordset>
-			<keyword>portfile</keyword>
-			<keyword>introduction</keyword>
-			<keyword>maintainer</keyword>
+			<keyword>
+				portfile
+			</keyword>
+			<keyword>
+				introduction
+			</keyword>
+			<keyword>
+				maintainer
+			</keyword>
 		</keywordset>
 	</chapterinfo>
-    <title>Quick Start</title>
-    <sect1>
-        <title>Introduction to a Portfile</title>
-        <para> This document will provide a short guide to the basics of the darwinports Portfile. A
-            Portfile is actually a TCL script run by the port system, despite this the Portfile
-            Syntax is very straightforward. To begin with we are going to look at a simple example
-            Portfile and then explain the syntax that is used. </para>
-    </sect1>
-    <sect1>
-        <title>Basic Portfile</title>
-        <para> This is the first example (A real Portfile doesn't have the line numbers, they are
-            used for clarity in the explanation only). </para>
-        <sect2>
-            <title> Example Portfile 1</title>
-            <example>
-            	<title>Expat Portfile</title>
-                <programlisting><![CDATA[
+	<title>Quick Start</title> 
+	<sect1>
+		<title>Introduction to a Portfile</title> 
+		<para>
+			This document will provide a short guide to the basics of the darwinports Portfile. A Portfile is actually a TCL script run by the port system, despite this the Portfile Syntax is very straightforward. To begin with we are going to look at a simple example Portfile and then explain the syntax that is used. 
+		</para>
+	</sect1>
+	<sect1>
+		<title>Basic Portfile</title> 
+		<para>
+			This is the first example, Expat. 
+		</para>
+		<sect2>
+			<title> Example Portfile 1</title> 
+			<example>
+				<title>Expat Portfile</title> 
+				<programlisting><![CDATA[
 ########################### expat Portfile ################################## 
-01> PortSystem 1.0 
-02> name expat 
-03> version 1.95.5 
-04>  
-05> categories textproc  
-06> maintainers rooneg@electricjellyfish.net  
-07> description An XML 1.0 parser written in C  
-08>  
-09> master_sites ftp://eu.dl.sourceforge.net/pub/sourceforge/expat/  
-10> checksums md5 6500d7d8c6c2c985cc0be257c9840cb4  
-11>  
-12>  
-13>  
-14> contents { bin/xmlwf  
-15> include/expat.h  
-16> lib/libexpat.0.4.0.dylib  
-17> lib/libexpat.a  
-18> lib/libexpat.la  
-19> lib/libexpat.0.dylib  
-20> lib/libexpat.dylib  
-21> }  
-22> 
-########################################################################### 
-]]></programlisting>
-            </example>
-            <para> The Portfile uses key value pairs to define how it is executed. Below is a list
-                of some of the simple terms </para>
-            <variablelist>
-                <title> Portfile Keys 1</title>
-                <varlistentry>
-                    <term> PortSystem </term>
-                    <listitem>
-                        <para> The version of darwinports that the port depends on. If a later
-                            release introduces a function that isn't in version 1.0, you can specify
-                            the version of darwinports that the Port requires. The PortSystem value
-                            is 1.0 (at the moment there is no &quot;higher&quot; version of
-                            darwinports. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> categories </term>
-                    <listitem>
-                        <para> Each port must have at least one category and may have more than one.
-                            The primary category should be listed first. (The primary category is 
-                            also the directory under which the port is stored). </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> maintainers </term>
-                    <listitem>
-                        <para> The email address of the maintainer (or maintainers) of the port. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> name </term>
-                    <term> version </term>
-                    <listitem>
-                        <para> name is the name of the port, usually also the name of the
-                            distribution file (distfile). In the example port the name is expat. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> version </term>
-                    <listitem>
-                        <para> version is the version of the distribution being ported. In the
-                            example port the version is 1.95.5. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> distfile </term>
-                    <listitem>
-                        <para> The name and version are combined with the extract_sufx (by
-                            default .tar.gz) this is used by default as the &quot;distfile&quot;
-                            name and used by darwinports to fetch the distribution file. If the name
-                            of the file on the server is not the same as the
-                            name-version.tar.gz you can override the default behavior by
-                            defining the distfile name. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> master_sites </term>
-                    <listitem>
-                        <para> A list of URLs from which to fetch the distfile. The URLs must be
-                            separated by spaces and on one line (or with new lines escaped with
-                            '\'). </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> checksums </term>
-                    <listitem>
-                        <para> The md5 checksum of the distfiles. If you have more than one file
-                            being fetched you should specify the checksum for each in the form: </para>
-                        <simplelist type="vert">
-                            <member> foo md5 .... </member>
-                            <member> bar md5 .... </member>
-                        </simplelist>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> contents </term>
-                    <listitem>
-                        <para> A list of all the files installed by the port. The files should be on
-                            a single line, newlines escaped with '\' or wrapped in '{}' as in the
-                            example port. The contents list should not include the prefix into which
-                            the port will be installed (for example /opt/local/) and must not
-                            include directories that will contain things installed by other ports. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> prefix </term>
-                    <listitem>
-                        <para> This variable is the filesystem location relative to which files are
-                            installed by the ports system. The prefix is '/opt/local' by default but
-                            Portfile authors should always refer to it by the variable name
-                            ${prefix}. </para>
-                    </listitem>
-                </varlistentry>
-            </variablelist>
-        </sect2>
-        <sect2>
-            <title> Example Portfile 2</title>
-            <para> A second example Portfile will give you an idea of how to deal with slightly more
-                complicated ports. </para>
-            <example>   
-            	<title>Neon Portfile</title>
-                <programlisting><![CDATA[
-###########################neon Portfile#################################### 
-01> PortSystem 1.0 
-02> name neon 
-03> version 0.23.4 
-04> 
-05> categories www 
-06> maintainers rooneg@electricjellyfish.net 
-07> description An HTTP and WebDAV client library with a C interface 
-08> 
-09> master_sites http://www.webdav.org/neon/
-10> checksums md5 56b380a7352c68d425b1d3d3d610f994 
-11> 
-12> depends_lib lib:libexpat.0.4:expat 
-13> configure.env LDFLAGS=-L$prefix/lib CPPFLAGS=-I$prefix/include 
-14> configure.args --with-ssl \ 
-15> --with-force-ssl \ 
-16> --enable-xml \ 
-17> --enable-shared \ 
-18> --with-expat 
-19> 
-20> 
-21> include contents 
-############################################################################
-]]></programlisting>
-            </example>
-            <para> Many of the components of this port are the same as those in the first example.
-                This port is more complicated as it requires something else to be installed, needs
-                certain environmental variables to be set prior to configuring and the configure
-                script is being passed arguments. </para>
-            <variablelist>
-                <title> Portfile Keys 2</title>
-                <varlistentry>
-                    <term> depends_lib </term>
-                    <listitem>
-                        <para> This is probably the most common kind of dependency. The port depends
-                            on libraries or binaries to be installed during configuration and to
-                            run. depends_lib takes three terms, separated by colons. The first term
-                            is 'bin' or 'lib'. This defines the search path the port system will
-                            look for the dependency in. If bin is specified $PATH is searched for
-                            the dependency, if lib is specified, the library path is searched
-                            instead. The second term is a regular expression that is used to search
-                            the path defined in the first term for the dependency. Usually the name
-                            of the library is a good enough. The port system will append .dylib to
-                            the regex so only dynamic libraries will be matched. The third term is
-                            the name of the port that can provide the dependency. If the dependency
-                            is not satisfied by something already installed on the system the port
-                            listed here will installed before the port. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> configure.env </term>
-                    <listitem>
-                        <para> You may have to set environment variables for the configure script to
-                            set library paths, compiler settings or some other configuration
-                            variable. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> configure.args </term>
-                    <listitem>
-                        <para> If you need to specify additional configure arguments you should
-                            place them on a single line. As with other settings, newlines may be
-                            escaped to break up long lines. </para>
-                        <para> By default the configure script is passed --prefix=${prefix} where
-                            ${prefix} is replaced with the prefix darwinports is configured to
-                            install into. </para>
-                    </listitem>
-                </varlistentry>
-                <varlistentry>
-                    <term> Include </term>
-                    <listitem>
-                        <para> In this Portfile there is not contents directive, the contents are
-                            included from a separate file. This is the preferred method if the
-                            contents list is more than a few items. </para>
-                        <para> The contents file has precisely the same format as the contents
-                            section of the first example Portfile. </para>
-                    </listitem>
-                </varlistentry>
-            </variablelist>
-        </sect2>
-    </sect1>
+PortSystem 1.0 
+name            expat 
+version         1.95.5 
+ 
+categories      textproc  
+maintainers     rooneg@electricjellyfish.net  
+description     An XML 1.0 parser written in C  
+ 
+master_sites    ftp://eu.dl.sourceforge.net/pub/sourceforge/expat/  
+checksums       md5 6500d7d8c6c2c985cc0be257c9840cb4  
+ 
+ 
+ 
+contents        bin/xmlwf  \
+                  include/expat.h \ 
+                  lib/libexpat.0.4.0.dylib \  
+                  lib/libexpat.a  \
+                  lib/libexpat.la  \
+                  lib/libexpat.0.dylib  \
+                  lib/libexpat.dylib  
 
- 	<sect1>
-        <title>Common Mistakes</title>
-        <sect2>
-            <title>Don't quote or wrap items in '{}'.</title>
-            <para> Frequently people submit ports with the description or configure arguments
-                quoted, or wrapped in curly brackets. In general this is not correct. The exception
-                is contents lists, which have been specifically designed to handle the list being
-                wrapped in curly brackets because of the very large number of files some ports
-                install make escaping all the newlines extremely irritating. </para>
-        </sect2>
-    </sect1>
-    <sect1>
-        <title>How to test</title>
-        <orderedlist>
-            <listitem>
-                <para> Enable debugging and verbose messages from the darwinports engine. Edit
-                    /etc/ports/ports.conf and set <userinput>debug yes </userinput>and
-                        <userinput>verbose yes </userinput>. </para>
-            </listitem>
-            <listitem>
-                <para> Enable a local source repository and comment out the remote repository. Edit
-                    /etc/ports/sources.conf and set <userinput>file:///usr/dports </userinput> (or
-                    wherever your copy of the dport tree is). </para>
-            </listitem>
-            <listitem>
-                <para> From the local source repository root, create an index file. This will also
-                    syntax check portfiles contained. </para>
-                <para>
-                    <userinput>portindex</userinput>
-                </para>
-            </listitem>
-            <listitem>
-                <para> Sync the index </para>
-                <para>
-                    <userinput>port sync</userinput>
-                </para>
-            </listitem>
-            <listitem>
-                <para> Install port </para>
-                <para>
-                    <userinput>sudo port install foo</userinput>
-                </para>
-            </listitem>
-            <listitem>
-                <para> Uninstall the port </para>
-                <para>
-                    <userinput>sudo port uninstall foo </userinput>
-                </para>
-            </listitem>
-            <listitem>
-                <para> Make sure the port builds, installs and uninstalls on a &quot;clean
-                    machine&quot;. A clean machine should have a clean install of the OS, to avoid
-                    missing dependencies. </para>
-            </listitem>
-            <listitem>
-                <para> Make sure the contents list is correct. Ensure all the files installed are
-                    listed and directories are listed after their contents, so they are empty when
-                    the port system attempts to remove them. </para>
-            </listitem>
-            <listitem>
-                <para> Clean the working source directory for a port. This will allow a clean
-                    reinstall if an error was encountered earlier in the build process. </para>
-                <para>
-                    <userinput>port clean foo</userinput>
-                </para>
-            </listitem>
-        </orderedlist>
-    </sect1>
-    <sect1>
-        <title>Where to submit</title>
-        <para> Email your submission to <email>darwinports@opendarwin.org</email> mailing <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports">list</ulink>. In general the Portfile should be inlined in the email,
-            rather than as an attatchment. This allows people to view and give feedback on the
-            Portfile more easily. If there is a large contents list and/or patchfiles these may be
-            attatched to the email as a tarred and gzipped archive. </para>
-    </sect1>
-    <sect1>
-        <title>Where can I ask for Advice?</title>
-        <para> Either on the <email>darwinports@opendarwin.org</email> mailing list, or on the
-            #opendarwin channel on irc.openprojects.net. Don't be afraid to ask questions! </para>
-    </sect1>
-</chapter>
+
+########################################################################### 
+]]>
+				</programlisting>
+			</example>
+			<para>
+				The Portfile uses key value pairs to define how it is executed. Below is a list of some of the simple terms. Line up each of the values with tabs in a &ldquo;table&rdquo; type of format. 
+			</para>
+			<variablelist>
+				<title> Portfile Keys 1</title> 
+				<varlistentry>
+					<term>
+						PortSystem 
+					</term>
+					<listitem>
+						<para>
+							The version of darwinports that the port depends on. If a later release introduces a function that isn't in version 1.0, you can specify the version of darwinports that the Port requires. The PortSystem value is 1.0 (at the moment there is no &quot;higher&quot; version of darwinports. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						categories 
+					</term>
+					<listitem>
+						<para>
+							Each port must have at least one category and may have more than one. The primary category should be listed first. (The primary category is also the directory under which the port is stored).
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						maintainers 
+					</term>
+					<listitem>
+						<para>
+							The email address of the maintainer (or maintainers) of the port. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						name 
+					</term>
+					<term>
+						version 
+					</term>
+					<listitem>
+						<para>
+							name is the name of the port, usually also the name of the distribution file (distfile). In the example port the name is expat. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						version 
+					</term>
+					<listitem>
+						<para>
+							version is the version of the distribution being ported. In the example port the version is 1.95.5. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						distfile 
+					</term>
+					<listitem>
+						<para>
+							The name and version are combined with the extract_sufx (by default .tar.gz) this is used by default as the &quot;distfile&quot; name and used by darwinports to fetch the distribution file. If the name of the file on the server is not the same as the name-version.tar.gz you can override the default behavior by defining the distfile name. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						master_sites 
+					</term>
+					<listitem>
+						<para>
+							A list of URLs from which to fetch the distfile. The URLs must be separated by spaces and on one line (or with new lines escaped with '\'). 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						checksums 
+					</term>
+					<listitem>
+						<para>
+							The md5 checksum of the distfiles. If you have more than one file being fetched you should specify the checksum for each in the form: 
+						</para>
+						<simplelist type="vert">
+							<member>
+								foo md5 .... 
+							</member>
+							<member>
+								bar md5 .... 
+							</member>
+						</simplelist>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						contents 
+					</term>
+					<listitem>
+						<para>
+							A list of all the files installed by the port. The files should be on a single line, newlines escaped with '\'. The contents list should not include the prefix into which the port will be installed (for example /opt/local/) and must not include directories that will contain things installed by other ports. 
+						</para>
+					</listitem>
+				</varlistentry>
+				<varlistentry>
+					<term>
+						prefix 
+					</term>
+					<listitem>
+						<para>
+							This variable is the filesystem location relative to which files are installed by the ports system. The prefix is '/opt/local' by default but Portfile authors should always refer to it by the variable name ${prefix}. 
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+			</sect2>
+			<sect2>
+				<title> Example Portfile 2</title> 
+				<para>
+					A second example Portfile will give you an idea of how to deal with slightly more complicated ports. 
+				</para>
+				<example>
+					<title>Neon Portfile</title>
+					<programlisting><![CDATA[
+###########################neon Portfile#################################### 
+PortSystem 1.0 
+name            neon 
+version         0.23.4 
+
+categories      www 
+maintainers     rooneg@electricjellyfish.net 
+description     An HTTP and WebDAV client library with a C interface 
+
+master_sites    http://www.webdav.org/neon/
+checksums       md5 56b380a7352c68d425b1d3d3d610f994 
+
+depends_lib     lib:libexpat.0.4:expat 
+configure.env   LDFLAGS=-L$prefix/lib CPPFLAGS=-I$prefix/include 
+
+configure.args  --with-ssl \ 
+                  --with-force-ssl \ 
+                  --enable-xml \ 
+                  --enable-shared \ 
+                  --with-expat	
+
+include         contents 
+############################################################################
+]]>					</programlisting>
+				</example>
+				<para>
+					Many of the components of this port are the same as those in the first example. This port is more complicated as it requires something else to be installed, needs certain environmental variables to be set prior to configuring and the configure script is being passed arguments. 
+				</para>
+				<variablelist>
+					<title> Portfile Keys 2</title> 
+					<varlistentry>
+						<term>
+							depends_lib 
+						</term>
+						<listitem>
+							<para>
+								This is probably the most common kind of dependency. The port depends on libraries or binaries to be installed during configuration and to run. depends_lib takes three terms, separated by colons. The first term is 'bin' or 'lib'. This defines the search path the port system will look for the dependency in. If bin is specified $PATH is searched for the dependency, if lib is specified, the library path is searched instead. The second term is a regular expression that is used to search the path defined in the first term for the dependency. Usually the name of the library is a good enough. The port system will append .dylib to the regex so only dynamic libraries will be matched. The third term is the name of the port that can provide the dependency. If the dependency is not satisfied by something already installed on the system the port listed here will installed before the port. 
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>
+							configure.env 
+						</term>
+						<listitem>
+							<para>
+								You may have to set environment variables for the configure script to set library paths, compiler settings or some other configuration variable. 
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>
+							configure.args 
+						</term>
+						<listitem>
+							<para>
+								If you need to specify additional configure arguments you should place them on a single line. As with other settings, newlines may be escaped to break up long lines. Note the continuing lines are indented two spaces.
+							</para>
+							<para>
+								By default the configure script is passed --prefix=${prefix} where ${prefix} is replaced with the prefix darwinports is configured to install into. 
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry>
+						<term>
+							Include 
+						</term>
+						<listitem>
+							<para>
+								In this Portfile there is not contents directive, the contents are included from a separate file. This is the preferred method if the contents list is more than a few items. 
+							</para>
+							<para>
+								The contents file has precisely the same format as the contents section of the first example Portfile. 
+							</para>
+						</listitem>
+					</varlistentry>
+				</variablelist>
+				</sect2>
+				</sect1>
+				<sect1>
+					<title>Common Mistakes</title> 
+					<sect2>
+						<title>Don't quote or wrap items in '{}'.</title> 
+						<para>
+							Frequently people submit ports with the description or configure arguments quoted, or wrapped in curly brackets. In general this is not correct. The exception is contents lists, which have been specifically designed to handle the list being wrapped in curly brackets because of the very large number of files some ports install make escaping all the newlines extremely irritating. 
+						</para>
+					</sect2>
+				</sect1>
+				<sect1>
+					<title>How to test</title> 
+					<orderedlist>
+						<listitem>
+							<para>
+								Enable debugging and verbose messages from the darwinports engine. Edit /etc/ports/ports.conf and set:<userinput>debug yes </userinput>and <userinput>verbose yes </userinput>. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Enable a local source repository and comment out the remote repository. Edit /etc/ports/sources.conf and set:<userinput>file:///usr/dports</userinput> (or wherever your copy of the dport tree is). 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								From the local source repository root, create an index file. This will also syntax check portfiles contained. 
+							</para>
+							<para>
+								<userinput>
+									portindex
+								</userinput>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Sync the index 
+							</para>
+							<para>
+								<userinput>
+									port sync
+								</userinput>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Install port 
+							</para>
+							<para>
+								<userinput>
+									sudo port install foo
+								</userinput>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Uninstall the port 
+							</para>
+							<para>
+								<userinput>
+									sudo port uninstall foo 
+								</userinput>
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Make sure the port builds, installs and uninstalls on a &quot;clean machine&quot;. A clean machine should have a clean install of the OS, to avoid missing dependencies. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Make sure the contents list is correct. Ensure all the files installed are listed and directories are listed after their contents, so they are empty when the port system attempts to remove them. 
+							</para>
+						</listitem>
+						<listitem>
+							<para>
+								Clean the working source directory for a port. This will allow a clean reinstall if an error was encountered earlier in the build process. 
+							</para>
+							<para>
+								<userinput>
+									port clean foo
+								</userinput>
+							</para>
+						</listitem>
+					</orderedlist>
+				</sect1>
+				<sect1>
+					<title>Where to submit</title> 
+					<para>
+						Email your submission to <email>darwinports@opendarwin.org</email> mailing <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports">list</ulink>. In general the Portfile should be inlined in the email, rather than as an attatchment. This allows people to view and give feedback on the Portfile more easily. If there is a large contents list and/or patchfiles these may be attatched to the email as a tarred and gzipped archive. 
+					</para>
+				</sect1>
+				<sect1>
+					<title>Where can I ask for Advice?</title> 
+					<para>Either on the <email>darwinports@opendarwin.org</email> mailing list, or on the #opendarwin channel on irc.openprojects.net. Don't be afraid to ask questions! 
+					</para>
+				</sect1>
+				</chapter>
