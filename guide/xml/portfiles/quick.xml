@@ -617,7 +617,7 @@ http://distfiles.opendarwin.org/</programlisting>
     <example id="expat">
       <title>Expat <filename>Portfile</filename></title>
       <programlisting><![CDATA[
-# &dollar;Id: Portfile,v 1.14 2003/07/30 14:35:39 fkr Exp &dollar;
+# ]]>&dollar;<![CDATA[Id: Portfile,v 1.14 2003/07/30 14:35:39 fkr Exp ]]>&dollar;<![CDATA[
 
 PortSystem      1.0
 
