@@ -388,19 +388,38 @@ variant ipv6 {
 
       <para>It is possible to use predefined lists of mirror sites in
         your <filename>Portfile</filename>, such as SourceForge or GNU
-        mirrors.  A full list of mirror site types is available in
-        Chapter 3, 'Fetch phase'.  The straight-forward usage is:</para>
+        mirrors.  The straight-forward usage is:</para>
 
       <programlisting>master_sites                sourceforge http://distfiles.opendarwin.org/
 master_sites.mirror_subdir  ${name}</programlisting>
 
+      <para>In this example, <varname>sourceforge</varname> is the name
+        of the mirror site list (See Chapter 3, 'Fetch Phase' for a list
+        of all available mirror site lists),
+        <varname>http://distfiles.opendarwin.org/</varname> is a normal
+        <varname>master_sites</varname> URL, and
+        <varname>${name}</varname> (the value of the
+        <varname>name</varname> keyword in the
+        <filename>Portfile</filename>) is the subdirectory to append to
+        any mirror site lists specified.</para>
+
       <para>This will search all of the mirror sites for SourceForge and
         then http://distfiles.opendarwin.org, appending 
         <varname>${name}</varname> to the end of each SoureForge mirror
-        site in the list, for example:</para>
+        site in the list.  This example will try to fetch from:</para>
 
-      <programlisting>http://us.dl.sourceforge.net/${name}
-ftp://us.dl.sourceforge.net/pub/sourceforge/${name}</programlisting>
+      <programlisting>http://us.dl.sourceforge.net/${name}/
+ftp://us.dl.sourceforge.net/pub/sourceforge/${name}/
+...
+http://distfiles.opendarwin.org/</programlisting>
+
+      <para>Note that the value of
+        <varname>master_sites.mirror_subdir</varname> is
+        <emphasis>not</emphasis> appended to
+        <varname>http://distfiles.opendarwin.org/</varname>, this URL is
+        treated normally.  In this example
+        <varname>master_sites.mirror_subdir</varname> is a required
+        key.</para>
 
       <para>You can also use the mirror site lists in
         <varname>patch_sites</varname> and use
@@ -598,7 +617,7 @@ ftp://us.dl.sourceforge.net/pub/sourceforge/${name}</programlisting>
     <example id="expat">
       <title>Expat <filename>Portfile</filename></title>
       <programlisting><![CDATA[########################### libxslt Portfile ##################################
-# $Id: quick.xml,v 1.13 2003/07/20 17:00:53 fkr Exp $
+# $Id: quick.xml,v 1.14 2003/07/30 14:35:39 fkr Exp $
 
 PortSystem      1.0
 
@@ -626,7 +645,7 @@ long_description Gnome library for applying XSL stylesheet transformations to \
       <title>Neon <filename>Portfile</filename></title>
 
 <programlisting><![CDATA[###########################neon Portfile####################################
-# $Id: quick.xml,v 1.13 2003/07/20 17:00:53 fkr Exp $
+# $Id: quick.xml,v 1.14 2003/07/30 14:35:39 fkr Exp $
           
 PortSystem 1.0 
 name            neon 

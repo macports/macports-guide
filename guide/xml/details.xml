@@ -17,14 +17,14 @@
     	something more advanced and realise all that power is there.</para>
     	
 		<para>All key value pairs in a Portfile are single lines so line breaks 
-		must be escaped with a back solidus '\'. </para>
+		must be escaped with a back slash ('\'). </para>
 		<para>Variables syntax is ${foo} for the foo variant.</para>
     	<sect2>
 			<title>Special characters</title>
 			<para>As the Portfile is a TCL script certain charachters are 
 			"special". These have a special meaning in TCL and if you dont 
 			want that special meaning, they must be escaped. In general a 
-			charachter is escaped using the back solidus '\'. The main 
+			character is escaped using the back slash ('\'). The main 
 			characters you need to be careful with are 
 			<simplelist type="inline">
 					<member>$</member>
@@ -361,7 +361,7 @@ formats. </userinput></programlisting></para>
                 <programlisting><userinput>master_sites   http://www.somesite.org/files/ \
                http://www.somemirror.org/somesite_org/files/</userinput></programlisting>
 
-					<tip><para>Always put the trailing forward solidus at the 
+					<tip><para>Always put the trailing forward slash at the 
 					end of a url, and remember to not include the filename 
 					itself.</para></tip>
 					
