@@ -28,7 +28,7 @@
 			<para>If you have any questions regarding DarwinPorts, you may
 				email the DarwinPorts mailing list: 
 				<ulink
-						to="mailto:darwinports@opendarwin.org">
+						url="mailto:darwinports@opendarwin.org">
 					darwinports@opendarwin.org
 				</ulink>
 			</para>
