@@ -78,7 +78,7 @@
 					
 				</listitem>
 			</varlistentry>
-			
+
 			<varlistentry id='binpath'>
 				<term>binpath</term>
 				<listitem>
@@ -126,6 +126,24 @@
 				<term>workpath</term>
 				<listitem>
 					<para>Full path to work directory. Read only.</para>
+					
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='worksrcpath'>
+				<term>worksrcpath</term>
+				<listitem>
+					<para>Full path to extracted source code.
+					Equivalent to ${workpath}/${worksrcdir}.</para>
+					
+				</listitem>
+			</varlistentry>
+
+			<varlistentry id='destroot'>
+				<term>destroot</term>
+				<listitem>
+					<para>Full path into which software will be destrooted.
+					Equivalent to ${workpath}/destroot. Read only.</para>
 					
 				</listitem>
 			</varlistentry>
