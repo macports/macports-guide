@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.5 2003/06/04 16:00:08 michaelm Exp $
+# $Id: Makefile,v 1.6 2003/06/06 16:05:21 michaelm Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
@@ -22,7 +22,7 @@
 
 # To use local dtd catalogs you must first create the catalog, I currently assume
 # the catalogs are in ${prefix}/etc/xml, if yours are elswhere you should alter
-# the $SGML_CATALOG_FILES variable. 
+# the $XML_CATALOG_FILES variable. 
 
 # set XML_DEBUG_CATALOG= to see catalog debugging info
 
@@ -33,7 +33,7 @@ HTMLDIR?=		html
 XHTMLDIR?=		xhtml
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
-SGML_CATALOG_FILES?=    ${PREFIX}/etc/xml
+XML_CATALOG_FILES?=    ${PREFIX}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 
 .PHONY : all
@@ -52,7 +52,6 @@ html:
 	xsltproc --xinclude -o "${HTMLDIR}/" "${STYLESHEET}" "${SOURCEDIR}/guide.xml"
 	
 xhtml: 
-
 	mkdir -p ${XHTMLDIR}
 	xsltproc --xinclude -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
 
