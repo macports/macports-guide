@@ -224,9 +224,10 @@ your sig if you'd like
 				<para>The following general points should also be borne in 
 				mind when submitting to bugzilla:
 					<simplelist type="vert">
-						<member>Small changes should be inlined.</member>
+						<member>Small changes may be attached or included
+						in the description field.</member>
 						<member>Larger changes should be attached as a 
-						single file, tar works wonderfully for this.</member>
+						single file.</member>
 						<member>Multiple patched files should be bundled 
 						together using tar and attached to the submission.</member>
 						<member>Currently attachments must be sent in 
