@@ -21,9 +21,10 @@
 		<para>Using a standardised approach to submitting the Portfiles and associated patches scripts, etc allows us to keep track of port submissions, process them efficiently and get them submitted as quickly as possible to our dports CVS tree. The following sections will describe the standard port submission procedures. </para>
 		<sect2>
 			<title>Where to submit</title>
-			<para> New ports should be submitted via the DarwinPorts <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
+			<para> All ports should be submitted via the DarwinPorts <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
 			<ulink url="mailto:darwinports@opendarwin.org">DarwinPorts</ulink> mailing list.</para>
-			<para>If you are submitting a modification to an existing port, please assign the port to the current maintainer in your bugzilla submission, so that the automatic email is directed to the maintainer, who will be best suited to deal with your submission.</para>
+			<para>If you are submitting a modification, or an update to an existing port, please assign the port to the current maintainer in your bugzilla submission, so that the automatic email is directed to the maintainer, who will be best suited to deal with your submission.</para>
+			<para>Updates and modifications should be submitted as diffs. see updating a port below</para>
 		</sect2>
 		<sect2>
 			<title>Using bugzilla to submit a Port</title>
@@ -55,7 +56,7 @@
 							Assigned to: 
 						</term>
 						<listitem>
-							<para>Please assign updates and comments on existing ports to the maintainer. Otherwise, if this is a new port or an RFC, please leave blank
+							<para>Please assign UPDATEs and COMMENTs on existing ports to the maintainer. Otherwise, if this is a NEW port or an RFC, please leave blank
 							</para>
 						</listitem>
 					</varlistentry>
@@ -88,7 +89,7 @@
 										<term>UPDATE portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of updates to ports.
+											<para>Please use this format for the submission of updates to ports. Please use diffs!
 											</para>
 										</listitem>	
 									</varlistentry>
@@ -113,6 +114,14 @@
 										</term>
 										<listitem>
 											<para>to add an attachment you will have use the query tool. Once you have selected the correct port, please use this format in the summary field for your submission.
+											</para>
+										</listitem>	
+									</varlistentry>
+									<varlistentry id='COMMENT_portname'>
+										<term>COMMENT: portname-1.2.3
+										</term>
+										<listitem>
+											<para>Please use this format for the submission of comments on existing ports or submissions. Most comments should be directed to the maintainer, or the mailing lists. Some comments are of a critical nature and should be logged.
 											</para>
 										</listitem>	
 									</varlistentry>
@@ -161,6 +170,32 @@ your sig if you'd like
 					</simplelist>
 				</para>
 			</sect3>
+		</sect2>
+		<sect2>
+			<title>Updating a port</title>
+			<para>The following guidelines are for submitting updates to ports that are currently in the tree
+			</para>
+			<para>All updates and modifications to existing ports should be sent in as diffs.</para>
+			<para>There are a couple of ways to obtain correct diff formats</para>
+			<para>Using diff:
+				<simplelist type="vert">
+					<member>Obtain the original file (oldfile)</member>
+					<member>cp oldfile oldfile.new</member>
+					<member>edit oldfile.new and save your changes</member>
+					<member>diff -u oldfile oldfile.new > oldfile.diff</member>
+					<member>Use bugzilla to submit your port UDPATE</member>
+				</simplelist>
+			</para>
+			<para>Or using cvs diff:
+				<simplelist type="vert">
+					<member>checkout the original source using cvs</member>
+					<member>edit the files and save your changes</member>
+					<member>cvs diff -u sourcefile > sourcefile.diff</member>
+					<member>use bugzilla to submit your port UPDATE</member>
+				</simplelist>
+			</para>
+			<para>Lastly, if your update consists of several files, use tar to bundle them into one file for submission
+			</para>
 		</sect2>
 	</sect1>
 </chapter>
