@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.6 2003/06/06 16:05:21 michaelm Exp $
+# $Id: Makefile,v 1.7 2003/07/20 17:00:51 fkr Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
@@ -26,14 +26,13 @@
 
 # set XML_DEBUG_CATALOG= to see catalog debugging info
 
-
 SOURCEDIR?=		xml
-DOCBOOK_XSL?=	        ${PREFIX}/share/xsl/docbook-xsl/1.61.0
+DOCBOOK_XSL?=	        ${prefix}/share/xsl/docbook-xsl/1.61.0
 HTMLDIR?=		html
 XHTMLDIR?=		xhtml
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
-XML_CATALOG_FILES?=    ${PREFIX}/etc/xml/catalog
+XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 
 .PHONY : all
@@ -68,4 +67,4 @@ tidy:
 clean:
 	rm -fr ${HTMLDIR} ${XHTMLDIR}
 	
-include ../../base/Mk/dports.mk
+include ../../base/Mk/dports.autoconf.mk

@@ -345,7 +345,8 @@ formats. </userinput></programlisting></para>
 	</sect1>
 	<sect1>
 		<title>Fetch phase</title>
-		<para></para>
+          
+             
 		<variablelist>	
 			<varlistentry id="master_sites">
 				<term>master_sites</term>
@@ -354,14 +355,11 @@ formats. </userinput></programlisting></para>
 					source of the port can be retrieved. The URL should not 
 					include the name of the file being retrieved.</para>
 					
-					<para><userinput></userinput></para>
-					
 					<para>If you have multiple sites you should break up 
 					long lines with escapend newlines. </para>
-					<para><programlisting><userinput>master_sites 
-					http://www.somesite.org/files/ \
-                    http://www.somemirror.org/somesite_org/files/</userinput>
-                    </programlisting></para>
+		
+                <programlisting><userinput>master_sites   http://www.somesite.org/files/ \
+               http://www.somemirror.org/somesite_org/files/</userinput></programlisting>
 
 					<tip><para>Always put the trailing forward solidus at the 
 					end of a url, and remember to not include the filename 
@@ -369,29 +367,169 @@ formats. </userinput></programlisting></para>
 					
 					<para>If you need to retrieve files from different 
 					sites you can label the urls with tags.</para>
-					<para><programlisting><userinput>
-					master_sites http://www.somesite.org/files/:source \
-					http://www.someothersite.org/somesite_extras/:extras/
-					</userinput></programlisting></para>
 
+                <programlisting><userinput>master_sites   http://www.somesite.org/files/:source \
+               http://www.someothersite.org/somesite_extras/:extras</userinput></programlisting>
+	      </listitem>
+	    </varlistentry>
+			
+	    <varlistentry id='master_sites_subdir'>
+              <term>master_sites.mirror_subdir</term>
+	      
+              <listitem>
+                <para>Subdirectory to add to mirror sites taken from a
+                  mirror sites list.  Please see the section below on
+                  Mirror Site Lists for more details.</para>
 				</listitem>
 			</varlistentry>
 			
 				<varlistentry id='patchsites'>
 					<term>patch_sites</term>
+	      
 					<listitem>
 						<para>List sites from which to download patchfiles 
 						from, syntax is the same as master_sites. See the 
 						Patch phase below for more information. </para>
-						<para><userinput>
-						patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches
-						</userinput></para>
 
+                <programlisting><userinput>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</userinput></programlisting>
 					</listitem>
 				</varlistentry>
 				
+            <varlistentry id='patchsites_subdir'>
+	      <term>patch_sites.mirror_subdir</term>
+	      
+              <listitem>
+                <para>Subdirectory to add to mirror sites taken from a
+                  mirror sites list.  Please see the section below on
+                  Mirror Site Lists for more details.</para>
+	      </listitem>
+	    </varlistentry>
 		</variablelist>
+          
+          <sect2>
+            <title>Mirror Site Lists</title>
+
+            <para>Mirror site lists are, as one might guess, predefined
+              lists of mirror sites for use in
+              <varname>master_sites</varname> or
+              <varname>patch_sites</varname>.  The basic usage of mirror
+              site lists in a <filename>Portfile</filename> is:</para>
+
+            <programlisting><userinput>master_sites                sourceforge http://distfiles.opendarwin.org/
+master_sites.mirror_subdir  ${name}</userinput></programlisting>
+
+            <para>Where '<varname>sourceforge</varname>' is the name of
+              the mirror list which specifies SourceForge mirrors.
+              <varname>master_sites.mirror_subdir</varname> is used to
+              specify the subdirectory of <emphasis>all</emphasis> sites
+              in in any mirror lists in which the file is found.  The
+              above example is equivalent to:</para>
+
+            <programlisting><userinput>master_sites  http://us.dl.sourceforge.net/${name}/ \
+              http://eu.dl.sourceforge.net/${name}/ \
+              ftp://us.dl.sourceforge.net/pub/sourceforge/${name}/ \
+              ...
+              http://distfiles.opendarwin.org/</userinput></programlisting>
+
+            <para>There are two potential problems when using mirror
+              site lists as described above.  First, if you are using
+              multiple mirror site lists, such as
+              <varname>sourceforge</varname> and <varname>gnu</varname>,
+              the subdirectory might not always be the same.  Second, if
+              you have multiple distfiles and are using distfile tags to
+              specify which site in <varname>master_sites</varname> to
+              download which file from.</para>
+            
+            <para>Fortunately DarwinPorts also provides a much more
+              powerful and flexible syntax for mirror site lists.</para>
+
+            <programlisting><userinput>distfiles                   file_one.tar.gz:tagone file_two.tar.gz:tagtwo file_three.tar.gz
+master_sites                sourceforge::tagone gnu:directory:tagtwo \
+                            http://distfiles.opendarwin.org/
+master_sites.mirror_subdir  ${name}</userinput></programlisting>
+
+            <para>At first glance, this example is probably quite
+              confusing.  Basically, the advanced syntax is
+              <varname>list:subdirectory:tag</varname>.  The above
+              example shows the many ways this can be used.  The above
+              example will:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Look for <filename>file_one.tar.gz</filename>
+                  in:</para>
+
+                <programlisting>http://us.dl.sourceforge.net/${name}/
+http://eu.dl.sourceforge.net/${name}/
+ftp://us.dl.sourceforge.net/pub/sourceforge/${name}/
+...</programlisting>
+              </listitem>
+
+              <listitem>
+                <para>Look for <filename>file_two.tar.gz</filename>
+                  in:</para>
+
+                <programlisting>ftp://ftp.gnu.org/gnu/directory/${name}/
+ftp://gatekeeper.dec.com/pub/GNU/directory/${name}/
+ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
+...</programlisting>
+              </listitem>
+
+              <listitem>
+                <para>Look for <filename>file_three.tar.gz</filename>
+                  in:</para>
+
+                <programlisting>http://distfiles.opendarwin.org/</programlisting>
+              </listitem>
+            </itemizedlist>
+
+            <para>There are a few important points to remember when
+              using this syntax.  The subdirectory specified with the
+              list
+              (<varname>gnu:<emphasis>directory</emphasis></varname>) is
+              appended to all of the mirror sites in that list
+              <emphasis>before</emphasis> the
+              <varname>master_sites.mirror_subdir</varname>, and
+              <varname>master_sites.mirror_subdir</varname> is
+              <emphasis>always</emphasis> appended to the end of the
+              mirror site.  When using tags, you are not required to
+              specify a subdirectory
+              (<varname>sourceforge::tagone</varname>).
+              <varname>master_sites.mirror_subdir</varname> is also not
+              required when specifying a subdirectory with the
+              list.</para>
+
+            <para>The original example could also be have been written
+              using this syntax without the need of
+              <varname>master_sites.mirror_subdir</varname> like
+              this:</para>
+
+            <programlisting><userinput>master_sites   sourceforge:${name} http://distfiles.opendarwin.org/</userinput></programlisting>
+
+            <para>The mirror site lists functionality also works exactly
+              the same for <varname>patch_sites</varname> and
+              <varname>patch_sites.mirror_subdir</varname>.</para>
+
+            <para>Below is a list of the mirror site lists that can be
+              used.</para>
+
+            <itemizedlist>
+              <listitem><para><varname>apache</varname></para></listitem>
+              <listitem><para><varname>gnome</varname></para></listitem>
+              <listitem><para><varname>gnu</varname></para></listitem>
+              <listitem><para><varname>isc</varname></para></listitem>
+              <listitem><para><varname>kde</varname></para></listitem>
+              <listitem><para><varname>perl_cpan</varname></para></listitem>
+              <listitem><para><varname>ruby</varname></para></listitem>
+              <listitem><para><varname>sourceforge</varname></para></listitem>
+              <listitem><para><varname>sunsite</varname></para></listitem>
+              <listitem><para><varname>tcltk</varname></para></listitem>
+              <listitem><para><varname>xcontrib</varname></para></listitem>
+              <listitem><para><varname>xfree</varname></para></listitem>
+            </itemizedlist>
+          </sect2>
 	</sect1>
+
 	<sect1>
 		<title>Integrity checking phase</title>
 		<para>Each file downloaded is integrity checked using a checksum. 
