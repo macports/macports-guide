@@ -198,7 +198,7 @@
 <![CDATA[
 Portname-1.2.3
 
-the portfile can be found here: URL or ATTACHED or INLINE
+the portfile can be found here: URL or ATTACHED
 
 Description: What does this program do in a nutshell,
 briefly what changes were made, or what files you are attaching in the tarball.
@@ -207,8 +207,6 @@ Homepage: URL of project or program itself, not the portfile
 
 Comments: Any comments you have about your port, concerns, lookouts, 
 dependencies that you may want to mention
-
-================INLINE CONTENT================
 -- 
 your sig if you'd like
 ]]> 
@@ -226,20 +224,16 @@ your sig if you'd like
 				<para>The following general points should also be borne in 
 				mind when submitting to bugzilla:
 					<simplelist type="vert">
-						<member>Small changes or portfiles should be 
-						inlined. </member>
+						<member>Small changes should be inlined.</member>
 						<member>Larger changes should be attached as a 
-						single file, tar works wonderfully for this. </member>
-						
+						single file, tar works wonderfully for this.</member>
 						<member>Multiple patched files should be bundled 
-						together using tar and attached to the submission</member>
-						
+						together using tar and attached to the submission.</member>
 						<member>Currently attachments must be sent in 
 						using the current bug number, remeber to query 
 						bugzilla to find out the current bug number, select
 						 that bug and use the 'Create a New Attachment' 
 						 link.</member>
-						 
 					</simplelist></para>
 
 			</sect3>
