@@ -1,27 +1,24 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <chapter id="variants">
 	<title>Variants</title> 
 	<sect1>
 		<title>What are variants?</title> 
-		<para>
-			DarwinPorts allows multiple versions of a port to be specified in a single Portfile. For example, vim can be built with and without x11 support. Rather than duplicate the whole port and have vim-x11 vim-nox ports DarwinPorts supports "variants". 
-		</para>
+		<para>DarwinPorts allows multiple versions of a port to be specified in a single Portfile. For example, vim can be built with and without x11 support. Rather than duplicate the whole port and have vim-x11 vim-nox ports DarwinPorts supports "variants". </para>
+
 	</sect1>
 	<sect1>
 		<title>Syntax</title> 
-		<para>
-			The variants syntax is largely identical to the syntax in the main part of the Portfile. 
-		</para>
+		<para>The variants syntax is largely identical to the syntax in the main part of the Portfile. </para>
+
 		<variablelist>
 			<varlistentry id='variant'>
 				<term>
 					variant 
 				</term>
 				<listitem>
-					<para>
-						The key variant is used to begin the foo variant as shown in the example. 
+					<para>The key variant is used to begin the foo variant as shown in the example. 
 						<programlisting>
 <![CDATA[
 variant foo    { 
@@ -29,11 +26,10 @@ variant foo    {
 			      [more variant code]
                  }
 ]]> 
-						</programlisting>
-					</para>
-					<para>
-						Within the variant block essentially all of the keys available in the main section are available. Using a key used in the main section will overwrite it. 
-					</para>
+						</programlisting></para>
+
+					<para>Within the variant block essentially all of the keys available in the main section are available. Using a key used in the main section will overwrite it. </para>
+
 				</listitem>
 			</varlistentry>
 			<varlistentry id='append'>
@@ -41,15 +37,14 @@ variant foo    {
 					append 
 				</term>
 				<listitem>
-					<para>
-						For most of the keys you can append additional terms. 
+					<para>For most of the keys you can append additional terms. 
 						<programlisting>
 <![CDATA[
 variant foo    { configure.args-append --with-x}
 
 ]]> 
-						</programlisting>
-					</para>
+						</programlisting></para>
+
 				</listitem>
 			</varlistentry>
 			<varlistentry id='delete'>
@@ -57,38 +52,34 @@ variant foo    { configure.args-append --with-x}
 					delete 
 				</term>
 				<listitem>
-					<para>
-						For most of the keys you can delete terms. The item being deleted should match a string in the option being deleted exactly. 
+					<para>For most of the keys you can delete terms. The item being deleted should match a string in the option being deleted exactly. 
 						<programlisting>
 <![CDATA[
 variant gnome    { configure.args-delete --without-gnome}
 
 ]]> 
-						</programlisting>
-					</para>
+						</programlisting></para>
+
 				</listitem>
 			</varlistentry>
 		</variablelist>
 	</sect1>
 	<sect1>
 		<title>Advanced variants</title> 
-		<para>
-			For the most part, variants are quite straightforward to use. Several more advanced features of variants are also available. 
-		</para>
+		<para>For the most part, variants are quite straightforward to use. Several more advanced features of variants are also available. </para>
+
 		<variablelist>
 			<varlistentry id='default_variants'>
 				<term>
 					default_variants 
 				</term>
 				<listitem>
-					<para>
-						In some cases you may want a variant or variants to be executed by default. For example w3m is distributed with a patch to add international text support. This is a vendor provided patch, but not a core part of the program. In this case it makes sense to make the internationalised version the default, but keep the vanilla w3m as the main port. The default_variants key is used in the main section of a Portfile, not in a variant. 
-					</para>
-					<para>
-						<userinput>
+					<para>In some cases you may want a variant or variants to be executed by default. For example w3m is distributed with a patch to add international text support. This is a vendor provided patch, but not a core part of the program. In this case it makes sense to make the internationalised version the default, but keep the vanilla w3m as the main port. The default_variants key is used in the main section of a Portfile, not in a variant. </para>
+
+					<para><userinput>
 							default_variants +foo +bar 
-						</userinput>
-					</para>
+						</userinput></para>
+
 				</listitem>
 			</varlistentry>
 			<varlistentry id='platform_variants'>
@@ -96,8 +87,7 @@ variant gnome    { configure.args-delete --without-gnome}
 					platform_variants 
 				</term>
 				<listitem>
-					<para>
-						Platform specific variants are automatically executed on that platform, without needing any intervention from the user. Currently available platforms are: 
+					<para>Platform specific variants are automatically executed on that platform, without needing any intervention from the user. Currently available platforms are: 
 						<simplelist>
 							<member>
 								darwin
@@ -108,13 +98,12 @@ variant gnome    { configure.args-delete --without-gnome}
 							<member>
 								linux
 							</member>
-						</simplelist>
-					</para>
-					<para>
-						<userinput>
+						</simplelist></para>
+
+					<para><userinput>
 							variant foo darwin {[variant code]} 
-						</userinput>
-					</para>
+						</userinput></para>
+
 				</listitem>
 			</varlistentry>
 		</variablelist>

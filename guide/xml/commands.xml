@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <chapter id="commands">
@@ -10,8 +10,8 @@
     <sect2>
       <title>Fetch Options</title>
 
-      <para>
-      </para>
+      <para></para>
+
     </sect2>
     
     <sect2>
@@ -26,9 +26,9 @@
 
             <para>List of files to extract into ${workpath}.</para>
 
-            <para>
-              <userinput>extract.only worksrc-1.4.4.tar.gz</userinput>
-            </para>
+            <para><userinput>extract.only worksrc-1.4.4.tar.gz
+            </userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -40,9 +40,8 @@
 
             <para>Command to perform extract.</para>
 
-            <para>
-              <userinput>extract.cmd bzip2</userinput>
-            </para>
+            <para><userinput>extract.cmd bzip2</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -54,9 +53,8 @@
 
             <para>Arguments added to ${extract.cmd} before a file name.</para>
 
-            <para>
-              <userinput>extract.pre_args -cd</userinput>
-            </para>
+            <para><userinput>extract.pre_args -cd</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -78,9 +76,10 @@
 
             <para>Arguments added to extract command after a file name.</para>
 
-            <para>
-              <userinput>extract.post_args | tar -x -s@bladeenc-0.94.2/other_makefiles/BladeEnc..@@p -f -</userinput>
-            </para>
+            <para><userinput>
+            extract.post_args | tar -x -s@bladeenc-0.94.2/other_makefiles/BladeEnc..@@p -f -
+            </userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -92,9 +91,8 @@
 
             <para>Suffix to append to ${distname}</para>
 
-            <para>
-              <userinput>extract.sufx .tgz</userinput>
-            </para>
+            <para><userinput>extract.sufx .tgz</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -104,11 +102,12 @@
           <listitem>
             <synopsis>Type: optional</synopsis>
 
-            <para>Sets extract.sufx to: .zip Sets extract.cmd to: unzip Sets extract.pre_args to: -q Sets extract.post_args to: "-d $portpath/$workdir"</para>
+            <para>Sets extract.sufx to: .zip Sets extract.cmd to: 
+            unzip Sets extract.pre_args to: -q Sets extract.post_args 
+            to: "-d $portpath/$workdir"</para>
 
-            <para>
-              <userinput>use_zip yes</userinput>
-            </para>
+            <para><userinput>use_zip yes</userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>
@@ -123,11 +122,14 @@
 			  <listitem>
 				<synopsis>Type: optional</synopsis>
 				
-				<para>List of checksums in the format: &lt;file name&gt; &lt;checksum type&gt; &lt;checksum&gt; Currently, the only supported checksum type is md5. If only one file is downloaded, the filename may be ommitted.
-				</para>
-				<para>
-				<userinput>checksums dictd-1.7.1.tar.gz md5 81317b86ea0a5df0163900ad2e6bb12c</userinput>
-				</para>
+				<para>List of checksums in the format: &lt;file name&gt; 
+				&lt;checksum type&gt; &lt;checksum&gt; Currently, the only 
+				supported checksum type is md5. If only one file is 
+				downloaded, the filename may be ommitted.</para>
+
+				<para><userinput>checksums dictd-1.7.1.tar.gz 
+				md5 81317b86ea0a5df0163900ad2e6bb12c</userinput></para>
+
 			  </listitem>
 			</varlistentry>
       </variablelist>
@@ -136,15 +138,15 @@
     <sect2>
       <title>CVS Options</title>
 
-      <para>
-      </para>
+      <para></para>
+
     </sect2>
 
     <sect2>
       <title>Patch Options</title>
 
-      <para>
-      </para>
+      <para></para>
+
     </sect2>
 	<sect2>
       <title>Configure Options</title>
@@ -156,11 +158,12 @@
           <listitem>
             <synopsis>Type: optional</synopsis>
 
-            <para>Arguments added to configure command before ${configure.args}.</para>
+            <para>Arguments added to configure command before 
+            ${configure.args}.</para>
 
-            <para>
-              <userinput>configure.pre_args --prefix=${prefix}/etc</userinput>
-            </para>
+            <para><userinput>configure.pre_args 
+            --prefix=${prefix}/etc</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -172,9 +175,9 @@
 
             <para>Arguments to pass to ${configure.cmd}.</para>
 
-            <para>
-              <userinput>configure.args --etcdir=${prefix}/etc</userinput>
-            </para>
+            <para><userinput>configure.args 
+            --etcdir=${prefix}/etc</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -186,9 +189,8 @@
 
             <para>Directory in which to run ${configure-cmd}.</para>
 
-            <para>
-              <userinput>configure.dir src</userinput>
-            </para>
+            <para><userinput>configure.dir src</userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>
@@ -202,13 +204,13 @@
           <term>use_automake</term>
 
           <listitem>
-            <synopsis>Type: optional Default: ${workpath}/${worksrcdir}</synopsis>
+            <synopsis>Type: optional Default: ${workpath}/${worksrcdir}
+            </synopsis>
 
             <para>If set to yes, use ${automake.cmd}.</para>
 
-            <para>
-              <userinput>use_automake yes</userinput>
-            </para>
+            <para><userinput>use_automake yes</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -220,9 +222,9 @@
 
             <para>Environmental variables to pass to ${automake.cmd}.</para>
 
-            <para>
-              <userinput>automake.env CFLAGS=-I${prefix}/include/gtk12</userinput>
-            </para>
+            <para><userinput>automake.env 
+            CFLAGS=-I${prefix}/include/gtk12</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -234,9 +236,8 @@
 
             <para>Arguments to pass to ${automake.cmd}.</para>
 
-            <para>
-              <userinput>automake.args --foreign</userinput>
-            </para>
+            <para><userinput>automake.args --foreign</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -244,13 +245,13 @@
           <term>automake.dir</term>
 
           <listitem>
-            <synopsis>Type: optional Default: ${workpath}/${worksrcdir}</synopsis>
+            <synopsis>Type: optional Default: 
+            ${workpath}/${worksrcdir}</synopsis>
 
             <para>Directory in which to run ${automake.cmd}.</para>
 
-            <para>
-              <userinput>automake.dir src</userinput>
-            </para>
+            <para><userinput>automake.dir src</userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>
@@ -268,9 +269,8 @@
 
             <para>If set to yes, run ${autoconf.cmd}.</para>
 
-            <para>
-              <userinput>use_autoconf yes</userinput>
-            </para>
+            <para><userinput>use_autoconf yes</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -282,9 +282,9 @@
 
             <para>Environment variables to pass to ${autoconf.cmd}.</para>
 
-            <para>
-              <userinput>autoconf.env CFLAGS=-I${prefix}/include/gtk12</userinput>
-            </para>
+            <para><userinput>autoconf.env 
+            CFLAGS=-I${prefix}/include/gtk12</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -296,9 +296,9 @@
 
             <para>Arguments to pass to ${autoconf.cmd}.</para>
 
-            <para>
-              <userinput>autoconf.args -l src/aclocaldir</userinput>
-            </para>
+            <para><userinput>autoconf.args -l 
+            src/aclocaldir</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -310,9 +310,8 @@
 
             <para>Directory in which to run ${autoconf.cmd}.</para>
 
-            <para>
-              <userinput>autoconf.dir src</userinput>
-            </para>
+            <para><userinput>autoconf.dir src</userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>
@@ -330,9 +329,8 @@
 
             <para>Make command to run relative to ${worksrcdir}.</para>
 
-            <para>
-              <userinput>build.cmd pbxbuild</userinput>
-            </para>
+            <para><userinput>build.cmd pbxbuild</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -342,11 +340,11 @@
           <listitem>
             <synopsis>Type: optional Default: make</synopsis>
 
-            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' 
+            Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
 
-            <para>
-              <userinput>build.type bsd</userinput>
-            </para>
+            <para><userinput>build.type bsd</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -368,9 +366,8 @@
 
             <para>Arguments to pass to ${build.cmd}.</para>
 
-            <para>
-              <userinput>build.args -DNOWARN</userinput>
-            </para>
+            <para><userinput>build.args -DNOWARN</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -382,9 +379,8 @@
 
             <para>Target to pass to make for building everything.</para>
 
-            <para>
-              <userinput>build.target all-src</userinput>
-            </para>
+            <para><userinput>build.target all-src</userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>
@@ -402,9 +398,8 @@
 
             <para>Install command to run relative to ${worksrcdir}.</para>
 
-            <para>
-              <userinput>install.cmd pbxbuild</userinput>
-            </para>
+            <para><userinput>install.cmd pbxbuild</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -414,11 +409,12 @@
           <listitem>
             <synopsis>Type: optional Default: ${build.type}</synopsis>
 
-            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' 
+            Sets build.cmd to either 'gnumake' or 'bsdmake' 
+            accordingly. </para>
 
-            <para>
-              <userinput>install.type gnu</userinput>
-            </para>
+            <para><userinput>install.type gnu</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -428,7 +424,9 @@
           <listitem>
             <synopsis>Type: read-only Default: ${install.target}</synopsis>
 
-            <para>Arguments to pass to ${install.cmd} before ${install.args}.</para>
+            <para>Arguments to pass to ${install.cmd} before 
+            ${install.args}.</para>
+            
           </listitem>
         </varlistentry>
 
@@ -440,9 +438,8 @@
 
             <para>Arguments to pass to ${install.cmd}.</para>
 
-            <para>
-              <userinput>build.args -DNOWARN</userinput>
-            </para>
+            <para><userinput>build.args -DNOWARN</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -454,9 +451,8 @@
 
             <para>Install target to pass to ${install.cmd}.</para>
 
-            <para>
-              <userinput>install.target install-src</userinput>
-            </para>
+            <para><userinput>install.target install-src</userinput></para>
+
           </listitem>
         </varlistentry>
 
@@ -466,11 +462,12 @@
           <listitem>
             <synopsis>Type: optional Default: DESTDIR='${destroot}'</synopsis>
 
-            <para>Arguement passed to ${install.cmd} to cause port to install via the temporary destroot.</para>
+            <para>Arguement passed to ${install.cmd} to cause port to 
+            install via the temporary destroot.</para>
 
-            <para>
-              <userinput>install.destroot prefix='${destroot}'</userinput>
-            </para>
+            <para><userinput>install.destroot prefix='${destroot}'
+            </userinput></para>
+
           </listitem>
         </varlistentry>
       </variablelist>

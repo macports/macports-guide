@@ -1,68 +1,119 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <chapter id="portstyle">
 	<title>Style guide</title> 
 	<sect1>
 		<title>Overview</title> 
-		<para>A port consists of a directory and its contents, within a category subdirectory of the root of the ports tree.  This document serves as a reference for the directory structure of a single port and the layout of the files within.
-		</para>
-		<para>The only required file in a port is Portfile.  The port file should be thought of as a set of declarations rather than a piece of code.  It is best to format the port file is if it were a table consisting of keys and values.  In fact, the simplest of ports will only contain a small block of values.  Therefore, whitespace should not be strown about haphazardly. Nicely formatted compact tables will result in more values being visible at the same time.
-		</para>
-		<para>Try to adhere to these guidelines, but remember that this is only a guide.  No set of rules can adequately cover all cases, and in some cases the best solution is to break the rules.
-		</para>
-			
-			
-			
+		<para>A port consists of a directory and its contents, within a 
+		category subdirectory of the root of the ports tree.  This document 
+		serves as a reference for the directory structure of a single port 
+		and the layout of the files within.</para>
+
+		<para>The only required file in a port is Portfile.  The port file 
+		should be thought of as a set of declarations rather than a piece 
+		of code.  It is best to format the port file is if it were a table 
+		consisting of keys and values.  In fact, the simplest of ports 
+		will only contain a small block of values.  Therefore, whitespace 
+		should not be strown about haphazardly. Nicely formatted compact 
+		tables will result in more values being visible at the same 
+		time. </para>
+
+		<para>Try to adhere to these guidelines, but remember that this 
+		is only a guide.  No set of rules can adequately cover all cases, 
+		and in some cases the best solution is to break the rules.</para>
+
 	</sect1>
+	
 	<sect1>
 		<title>Specifics</title> 
+		
 		<sect2>
 			<title>CVS ID tags</title> 
-			<para>On the first line of the Portfile you should put a cvs ID tag. This tag will be expanded by cvs when the Portfile is committed and allows people to see at a glance details like who was the last person to commit to a port and when the last commit was performed.
-			</para>
+			<para>On the first line of the Portfile you should put a cvs 
+			ID tag. This tag will be expanded by cvs when the Portfile is 
+			committed and allows people to see at a glance details like 
+			who was the last person to commit to a port and when the last 
+			commit was performed.</para>
+
 		</sect2>
+
 		<sect2>
 			<title>PortSystem</title> 
-			<para>
-				At the top of the port file is the requirement statement. There is a single space between the "PortSystem" statement and the version number. 
-			</para>
+			<para>At the top of the port file is the requirement statement. 
+			There is a single space between the "PortSystem" statement and 
+			the version number. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Variable assignments</title> 
-			<para>
-				Variable assignments such as "set libver" can be considered a single word on the left side, with a single space between "set" and the variable name, followed by tabs to line up with the right side. 
-			</para>
+			<para>Variable assignments such as "set libver" can be 
+			considered a single word on the left side, with a single 
+			space between "set" and the variable name, followed by tabs to 
+			line up with the right side. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Categories</title> 
-			<para>
-				The first category listed for a port is the port's primary category and should coincide with the subdirectory that the port resides in. Additional categories can be listed, but should be descriptive and accurate. 
-			</para>
+			<para>The first category listed for a port is the port's 
+			primary category and should coincide with the subdirectory t
+			hat the port resides in. Additional categories can be listed, 
+			but should be descriptive and accurate. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Items across multiple lines</title> 
-			<para>
-				When items require multiple lines, they can be separated from the previous and next items with a blank line. Indent the additional lines to the same column that the right side begins on in the first line. If a single statement needs to span multiple lines, use a 2 space indentation from the first line for all additional lines. 
-			</para>
+			<para>When items require multiple lines, they can be separated 
+			from the previous and next items with a blank line. Indent the 
+			additional lines to the same column that the right side begins 
+			on in the first line. If a single statement needs to span 
+			multiple lines, use a 2 space indentation from the first line 
+			for all additional lines. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Braces or curly brackets "{}"</title> 
-			<para>
-				the braces may appear on the first and last lines rather than on their own lines. This is done because the right side of the port file is already indented, and to make port file read like a table. Use a single space after the brace. Indent additional lines to this same column. 
-			</para>
+			<para>the braces may appear on the first and last lines rather 
+			than on their own lines. This is done because the right side of 
+			the port file is already indented, and to make port file read 
+			like a table. Use a single space after the brace. Indent 
+			additional lines to this same column. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Variants</title> 
-			<para>
-				Variants are like any other part of the port file. Space, indent, and format them the same way other sections are formatted. The actual variant statement, "variant" followed by the name of the variant, can be treated as a single statement and thus placed together on the left side and separated by a single space. 
-			</para>
+			<para>Variants are like any other part of the port file. Space, 
+			indent, and format them the same way other sections are 
+			formatted. The actual variant statement, "variant" followed 
+			by the name of the variant, can be treated as a single 
+			statement and thus placed together on the left side and 
+			separated by a single space. </para>
+
 		</sect2>
+
 		<sect2>
 			<title>Patch files</title> 
-			<para>
-				Patch files reside in the files/ directory in the port's base directory. There should be one patch file for every file that needs to be patched. It is perfectly reasonable to use provided patches that affect multiple files, but do not create new patches that do so. Their names should begin with "patch-". The rest of the name should come from the name of the file that they apply to. In many cases just the base name of the file being patched is enough. For files such as "Makefile" this may not be the case. In this case, use enough components of the file's path to uniquely distinguish the file. Separate the components with '-' characters. The patch should apply with "patch -p0" from the working source directory of the port. 
-			</para>
+			<para>Patch files reside in the files/ directory in the port's 
+			base directory. There should be one patch file for every file 
+			that needs to be patched. It is perfectly reasonable to use 
+			provided patches that affect multiple files, but do not 
+			create new patches that do so. Their names should begin 
+			with "patch-". The rest of the name should come from the 
+			name of the file that they apply to. In many cases just the 
+			base name of the file being patched is enough. For files 
+			such as "Makefile" this may not be the case. In this case, 
+			use enough components of the file's path to uniquely 
+			distinguish the file. Separate the components with '-' 
+			characters. The patch should apply with "patch -p0" from the 
+			working source directory of the port. </para>
+
 		</sect2>
+
 	</sect1>
+
 </chapter>

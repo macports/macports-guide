@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="iso-8859-1" ?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 <chapter id="submission">
@@ -18,17 +18,45 @@
 	<title>DarwinPorts submissions</title> 
 	<sect1>
 		<title>Submitting a Port</title> 
-		<para>Using a standardised approach to submitting the Portfiles and associated patches scripts, etc allows us to keep track of port submissions, process them efficiently and get them submitted as quickly as possible to our dports CVS tree. The following sections will describe the standard port submission procedures. </para>
+		
+		<para>Using a standardised approach to submitting the Portfiles and 
+		associated patches scripts, etc allows us to keep track of port 
+		submissions, process them efficiently and get them submitted as 
+		quickly as possible to our dports CVS tree. The following sections 
+		will describe the standard port submission procedures. </para>
+		
 		<sect2>
 			<title>Where to submit</title>
-			<para> All ports should be submitted via the DarwinPorts <ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool</ulink>. Your submission will be automatically emailled to the members of the <ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">darwinports-bugs</ulink> mailing list. If you are uncertain about any aspect of your port, you may also want to email it with your questions and the bug number to  
-			<ulink url="mailto:darwinports@opendarwin.org">DarwinPorts</ulink> mailing list.</para>
-			<para>If you are submitting a modification, or an update to an existing port, please assign the port to the current maintainer in your bugzilla submission, so that the automatic email is directed to the maintainer, who will be best suited to deal with your submission.</para>
-			<para>Updates and modifications should be submitted as diffs. see updating a port below</para>
+			
+			<para> All ports should be submitted via the DarwinPorts 
+			<ulink url="http://www.opendarwin.org/bugzilla/">bugzilla tool
+			</ulink>. Your submission will be automatically emailled to the 
+			members of the 
+			<ulink url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs/">
+			darwinports-bugs</ulink> mailing list. If you are uncertain about 
+			any aspect of your port, you may also want to email it with your 
+			questions and the bug number to  
+			<ulink url="mailto:darwinports@opendarwin.org">DarwinPorts</ulink> 
+			mailing list.</para>
+			
+			<para>If you are submitting a modification, or an update to an 
+			existing port, please assign the port to the current maintainer 
+			in your bugzilla submission, so that the automatic email is 
+			directed to the maintainer, who will be best suited to deal 
+			with your submission.</para>
+			
+			<para>Updates and modifications should be submitted as diffs. See 
+			updating a port below</para>
+			
 		</sect2>
+		
 		<sect2>
+		
 			<title>Using bugzilla to submit a Port</title>
-			<para>The following section describes in some more detail how to use Bugzilla to submit your port.</para>
+			
+			<para>The following section describes in some more detail how to 
+			use Bugzilla to submit your port.</para>
+			
 			<sect3>
 				<title>Submission parameters</title>
 				
@@ -38,26 +66,32 @@
 							Project:
 						</term>
 						<listitem>
-							<para>Make sure you select the DarwinPorts project.
-							</para>
+							<para>Make sure you select the DarwinPorts 
+							project.</para>
+
 						</listitem>
 					</varlistentry>
+					
 					<varlistentry id='Component'>
 						<term>
 							Component:
 						</term>
 						<listitem>
-							<para>Select "dports" as the component. 
-							</para>
+							<para>Select "dports" as the component. </para>
+
 						</listitem>
 					</varlistentry>
+					
 					<varlistentry id='Assigned_to'>
 						<term>
 							Assigned to: 
 						</term>
 						<listitem>
-							<para>Please assign UPDATEs and COMMENTs on existing ports to the maintainer. Otherwise, if this is a NEW port or an RFC, please leave blank
-							</para>
+							<para>Please assign UPDATEs and COMMENTs on 
+							existing ports to the maintainer. Otherwise, if 
+							this is a NEW port or an RFC, please leave 
+							blank. </para>
+
 						</listitem>
 					</varlistentry>
 					<varlistentry id='URL'>
@@ -65,8 +99,10 @@
 							URL:
 						</term>
 						<listitem>
-							<para>You may use this field to point to the portfile if it is available online, or to point to the homepage of the program project.
-							</para>
+							<para>You may use this field to point to the 
+							portfile if it is available online, or to point 
+							to the homepage of the program project.</para>
+
 						</listitem>
 					</varlistentry>
 					<varlistentry id='Summary'>
@@ -74,55 +110,75 @@
 							Summary:
 						</term>
 						<listitem>
-							<para>The summary field should one of a number of standardised elements, 
-							</para>
+							<para>The summary field should one of a number 
+							of standardised elements, </para>
+
 								<variablelist>
 									<varlistentry id='NEW_portname'>
 										<term>NEW: portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of new ports.
-											</para>
+											<para>Please use this format for 
+											the submission of new ports.</para>
+
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='UPDATE_portname'>
 										<term>UPDATE portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of updates to ports. Please use diffs!
-											</para>
+											<para>Please use this format for 
+											the submission of updates to ports. 
+											Please use diffs!</para>
+
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='REVISION_portname'>
 										<term>REVISION: portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of changes to a current, uncommitted port submission
-											</para>
+											<para>Please use this format for the 
+											submission of changes to a current, 
+											uncommitted port submission</para>
+
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='RFC_portname'>
 										<term>RFC: portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of Request for Comments on a Portfile.
-											</para>
+											<para>Please use this format for 
+											the submission of Request for 
+											Comments on a Portfile.</para>
+
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='ATTACHMENT_portname'>
 										<term>ATTACHMENT: portname-1.2.3
 										</term>
 										<listitem>
-											<para>to add an attachment you will have use the query tool. Once you have selected the correct port, please use this format in the summary field for your submission.
-											</para>
+											<para>to add an attachment you 
+											will have use the query tool. 
+											Once you have selected the correct 
+											port, please use this format in the 
+											summary field for your 
+											submission. </para>
+
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='COMMENT_portname'>
 										<term>COMMENT: portname-1.2.3
 										</term>
 										<listitem>
-											<para>Please use this format for the submission of comments on existing ports or submissions. Most comments should be directed to the maintainer, or the mailing lists. Some comments are of a critical nature and should be logged.
-											</para>
+											<para>Please use this format for 
+											the submission of comments on 
+											existing ports or submissions. 
+											Most comments should be directed 
+											to the maintainer, or the mailing 
+											lists. Some comments are of a 
+											critical nature and should be 
+											logged.</para>
+
 										</listitem>	
 									</varlistentry>
 								</variablelist>
@@ -134,8 +190,10 @@
 							Description:
 						</term>
 						<listitem>
-							<para>The description field should contain the following information as per the example given here here. 
-							</para>
+							<para>The description field should contain the 
+							following information as per the example given 
+							here here. </para>
+
 								<programlisting>
 <![CDATA[
 Portname-1.2.3
@@ -147,7 +205,8 @@ briefly what changes were made, or what files you are attaching in the tarball.
 
 Homepage: URL of project or program itself, not the portfile
 
-Comments: Any comments you have about your port, concerns, lookouts, dependencies that you may want to mention
+Comments: Any comments you have about your port, concerns, lookouts, 
+dependencies that you may want to mention
 
 ================INLINE CONTENT================
 -- 
@@ -158,44 +217,67 @@ your sig if you'd like
 						</listitem>
 					</varlistentry>
 				</variablelist>
+				
 			</sect3>
+			
 			<sect3>
 				<title>Final comments on Port submission</title>
-				<para>The following general points should also be borne in mind when submitting to bugzilla:
+			
+				<para>The following general points should also be borne in 
+				mind when submitting to bugzilla:
 					<simplelist type="vert">
-						<member>Small changes or portfiles should be inlined. </member>
-						<member>Larger changes should be attached as a single file, tar works wonderfully for this. </member>
-						<member>Multiple patched files should be bundled together using tar and attached to the submission</member>
-						<member>Currently attachments must be sent in using the current bug number, remeber to query bugzilla to find out the current bug number, select that bug and use the 'Create a New Attachment' link.</member>
-					</simplelist>
-				</para>
+						<member>Small changes or portfiles should be 
+						inlined. </member>
+						<member>Larger changes should be attached as a 
+						single file, tar works wonderfully for this. </member>
+						
+						<member>Multiple patched files should be bundled 
+						together using tar and attached to the submission</member>
+						
+						<member>Currently attachments must be sent in 
+						using the current bug number, remeber to query 
+						bugzilla to find out the current bug number, select
+						 that bug and use the 'Create a New Attachment' 
+						 link.</member>
+						 
+					</simplelist></para>
+
 			</sect3>
 		</sect2>
 		<sect2>
 			<title>Updating a port</title>
-			<para>The following guidelines are for submitting updates to ports that are currently in the tree
-			</para>
-			<para>All updates and modifications to existing ports should be sent in as diffs.</para>
-			<para>There are a couple of ways to obtain correct diff formats</para>
+			<para>The following guidelines are for submitting updates to 
+			ports that are currently in the tree</para>
+
+			<para>All updates and modifications to existing ports should 
+			be sent in as diffs.</para>
+			<para>There are a couple of ways to obtain correct diff 
+			formats</para>
 			<para>Using diff:
 				<simplelist type="vert">
 					<member>Obtain the original file (oldfile)</member>
+					
 					<member>cp oldfile oldfile.new</member>
+					
 					<member>edit oldfile.new and save your changes</member>
+					
 					<member>diff -u oldfile oldfile.new > oldfile.diff</member>
+					
 					<member>Use bugzilla to submit your port UDPATE</member>
-				</simplelist>
-			</para>
+					
+				</simplelist></para>
+
 			<para>Or using cvs diff:
 				<simplelist type="vert">
 					<member>checkout the original source using cvs</member>
 					<member>edit the files and save your changes</member>
 					<member>cvs diff -u sourcefile > sourcefile.diff</member>
 					<member>use bugzilla to submit your port UPDATE</member>
-				</simplelist>
-			</para>
-			<para>Lastly, if your update consists of several files, use tar to bundle them into one file for submission
-			</para>
+				</simplelist></para>
+
+			<para>Lastly, if your update consists of several files, use tar 
+			to bundle them into one file for submission</para>
+
 		</sect2>
 	</sect1>
 </chapter>
