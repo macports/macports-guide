@@ -210,6 +210,10 @@
 			edit the file you must use a command line text editor like pico 
 			or vi. </para>
 
+			<para>Please note, if you are using Mac OS X 10.2 "Jaguar", then
+				you will need to edit <file>/etc/ports/ports.conf</file> and
+				change: <computeroutput>portinstalltype image</computeroutput>
+				to: <userinput>portinstalltype direct</userinput></para>
 			
 			<para>You should add /opt/local/bin (or wherever you chose to 
 			install DarwinPorts) to your path. If you aren't sure how, add 
