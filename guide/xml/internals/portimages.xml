@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="portimages_internals">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+				images
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>DarwinPorts Port Images</title> 
+
+  <sect1 id="about">
+    <title>About This Chapter</title>
+
+		<para>This chapter provides a detailed overview of the DarwinPorts
+			Port Images for DarwinPorts Infrastructure developers.</para>
+  </sect1>
+
+</chapter>

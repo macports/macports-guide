@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter id="registry">
+  <chapterinfo>
+    <keywordset>
+      <keyword>
+				images
+      </keyword>
+    </keywordset>
+  </chapterinfo>
+  
+  <title>The DarwinPorts Registry</title> 
+
+  <sect1 id="about">
+    <title>About This Chapter</title>
+
+		<para>This chapter provides a detailed overview of the new DarwinPorts
+			Registry package and its API.  This package is queried by the
+			DarwinPorts tools for information about installed ports for
+			information related to dependencies, port images, and simple user
+			information about what is installed.</para>
+
+		<para>The DarwinPorts Registry contains an abstraction layer which
+			allows for alternative storage mechanisms for receipts.  This
+			chapter will also provide an overview of this, and how to write a
+			receipt storage module.</para>
+  </sect1>
+
+	<sect1 id="registry_intro">
+		<title>Introduction To The New Registry</title>
+
+		<para>The new DarwinPorts Registry solves many problems with the old
+			registry:</para>
+
+		<itemizedlist>
+			<listitem><para>The old registry provided no mechanism for
+				modifying a receipt after installation.</para></listitem>
+			<listitem><para>The old registry kept no global database of 
+				all installed files and ports that could be queried by the port
+				system to check for conflicts, or by the user to check which
+				port installed a file.</para></listitem>
+			<listitem><para>The old registry was tied to flat-file receipts,
+				and provided no abstraction of open and close calls to receipt
+				files.</para></listitem>
+		</itemizedlist>
+
+		<para>The new registry allows for modification of receipts, to
+			reflect and changes made to installed ports being maintained by
+			DarwinPorts.  It also provides global file and dependencies
+			databases that can be queried to check if installed files conflict
+			with each other, and to maintain dependency trees of installed
+			ports.  It also provides abstraction over a modular receipt
+			storage layer, allowing for flat-file receipts, as well as
+			receipts stored in a SQLite database.</para>
+	</sect1>
+
+	<sect1 id="registry_api">
+		<title>API For Accessing The Registry</title>
+
+		<para>The DarwinPorts Registry provides a public API in the
+			<varname>registry1.0</varname> Tcl package.  Using this API you
+			can access the DarwinPorts Registry using the storage mechanism
+			the DarwinPorts user has chosen for receipt storage.</para>
+
+		<variablelist>
+			<varlistentry>
+				<term><computeroutput>registry::new_entry {name version
+					{revision 0} {variants ""}}</computeroutput></term>
+
+				<listitem>
+					<para>Begin the creation of a new registry entry for the given
+						port.</para>
+					<para>Returns a reference ID to the registry entry
+						created.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::open_entry {name {version 0}
+					{revision 0} {variants ""}}</computeroutput></term>
+
+				<listitem>
+					<para>Opens an existing registry entry.</para>
+					<para>Returns a reference ID to the registry entry that was
+						opened.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::entry_exists {name version
+					{revision 0} {variants ""}}</computeroutput></term>
+
+				<listitem>
+					<para>Checks to see if a port exists in the registry.</para>
+					<para>Returns 1 if the entry exists, 0 if not.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput></computeroutput></term>
+
+				<listitem>
+				</listitem>
+			</varlistentry>
+
+
+
+
+
+
+
+		</variablelist>
+
+	</sect1>
+
+</chapter>
