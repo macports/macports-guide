@@ -192,13 +192,105 @@
 		
 		<para>There are a number of common problems so before you report a problem (details on how to <link linkend='user_bugs'>report problems</link> follow) check that the problem is described here, or in the <ulink url='http://www.opendarwin.org/projects/darwinports/en/faq.php'>FAQ</ulink> first.
 		</para>
+		<sect2>
+			<title>Common Errors and Problems</title>
+					
+			<sect3 id='E_port_search'>
+				<title>port search failed: expected integer but got "PortIndex"</title>
+	
+				<para>This means your PortIndex file is incorrect or potentially corrupted, run the <link linkend='portindex'>portindex</link> command
+				</para>
+				
+			</sect3>
+		</sect2>
 		
-		<sect2 id='E_port_search'>
-			<title>port search failed: expected integer but got "PortIndex"</title>
-
-			<para>This means your PortIndex file is incorrect or potentially corrupted, run the <link linkend='portindex'>portindex</link> command
+		<sect2 id='user_bugs'>
+			<title>Bug Reports</title>
+			<para>If the you have updated your ports tree, searched the darwinports@opendarwin.org mailling list archives and read the common problems and the FAQ and you still can't find the answer to the problem, you should submit a bug report via bugzilla.
 			</para>
-			
+
+			<para>The following section describes in some more detail how to use Bugzilla to submit your port.</para>
+
+			<sect3>
+				<title>Submission Parameters</title>
+				
+				<variablelist>
+					<varlistentry id='Project'>
+						<term>
+							Project:
+						</term>
+						<listitem>
+							<para>Make sure you select the Darwinports project.
+							</para>
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='Component'>
+						<term>
+							Component:
+						</term>
+						<listitem>
+							<para>Select "dports" as the component. 
+							</para>
+						</listitem>
+					</varlistentry>
+					<varlistentry id='Assigned_to'>
+						<term>
+							Assigned to: 
+						</term>
+						<listitem>
+							<para>Please assign updates, bug reports and comments on existing ports to the maintainer. Otherwise, if this is a new port or an RFC, please leave blank
+							</para>
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='URL'>
+						<term>
+							URL:
+						</term>
+						<listitem>
+							<para>You may use this field to point to the port output if it is available online.
+							</para>
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='Summary'>
+						<term>
+							Summary:
+						</term>
+						<listitem>
+						<para>Please use this format <userinput>BUG: portname-1.2.3</userinput> for the submission of port installation failures. 
+						</para>
+						</listitem>	
+					</varlistentry>
+
+					<varlistentry id='Description'>
+						<term>
+							Description:
+						</term>
+						<listitem>
+							<para>The description field should contain the following information as per the example given here here. 
+							</para>
+								<programlisting>
+<![CDATA[
+Portname-1.2.3
+
+the error log can be found here: URL or ATTACHED or INLINE
+
+Description: What the problem was in a nutshell,
+
+Comments: Any comments you have about the port, bug diagnosis steps,concerns, lookouts, dependencies that you may want to mention.
+
+================INLINE CONTENT================
+-- 
+your sig if you'd like
+]]> 
+						</programlisting>
+								
+						</listitem>
+					</varlistentry>
+				</variablelist>
+			</sect3>
 		</sect2>
 	</sect1>
 	
