@@ -24,6 +24,16 @@
 			</affiliation>
 		</author>
 
+		<legalnotice>
+			<para>If you have any questions regarding DarwinPorts, you may
+				email the DarwinPorts mailing list: 
+				<ulink
+						to="mailto:darwinports@opendarwin.org">
+					darwinports@opendarwin.org
+				</ulink>
+			</para>
+		</legalnotice>
+
     <copyright>
       <year>2002</year>
       <year>2003</year>
