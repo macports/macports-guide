@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+  "http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<article>
+  <articleinfo>
+    <title>DarwinPorts FAQ</title>
+
+ 		<author>
+			<firstname>Jordan</firstname>
+			<surname>Hubbard</surname>
+			<affiliation>
+				<address><email>jkh@opendarwin.org</email></address>
+			</affiliation>
+		</author>
+
+		<author>
+			<firstname>Will</firstname>
+			<surname>Barton</surname>
+			<affiliation>
+				<address><email>wbb4@opendarwin.org</email></address>
+			</affiliation>
+		</author>
+
+    <copyright>
+      <year>2002</year>
+      <year>2003</year>
+      <year>2004</year>
+      <holder>The OpenDarwin Project</holder>
+    </copyright>
+  </articleinfo>
+
+	<abstract>
+		<para>The DarwinPorts Frequently Asked Questions will attempt to
+			answer some questions that are often asked about DarwinPorts.</para>
+	</abstract>
+
+	<qandaset defaultlabel="general">
+		<qandadiv>
+			<title>General Questions</title>
+
+			<qandaentry>
+				<question>
+					<para>What IS DarwinPorts?</para>
+				</question>
+
+				<answer>
+					<para>DarwinPorts is probably best described by comparison:  It's
+						sort of like the FreeBSD ports collection or fink in
+						that it automates the process of building 3rd party
+						software for Mac OS X.  It also tracks all dependency
+						information for a given piece of software and knows how to
+						make it build under Mac OS X and install it to a common
+						location, meaning that software installed via DarwinPorts
+						doesn't simply scatter itself all over the system or
+						require user knowledge of what to install in what order.</para>
+				</answer>
+			</qandaentry>
+
+			<qandaentry>
+				<question>
+					<para>How does DarwinPorts compare to FreeBSD ports?</para>
+				</question>
+		
+				<answer>
+					<para>FreeBSD ports is essentially implemented as some very
+						impressive but hairy BSD make(1)'s macros and can be a
+						little opaque and non-extensible from the perspective of
+						someone looking to extend or re-factor parts of the system.
+						Given that Makefiles aren't the easiest thing to parse, it is
+						also harder to "mine" the FreeBSD ports collection for data to
+						use for other purposes, such as generating documentation indexes
+						or arbitrary front-ends for creating or managing ports.</para>
+				</answer>
+			</qandaentry>
+
+			<qandaentry>
+				<question>
+					<para>Why did DarwinPorts start from scratch rather than
+					adopting something like FreeBSD ports?</para>
+				</question>
+		
+				<answer>
+					<para>Even discounting some of the limitations of FreeBSD
+					ports         described above, the "science" of creating
+					automated build         systems is rather more complex than it
+					looks at first glance and         there's always room for
+					fresh approaches to the problem, which         is what we set
+					out to do with DarwinPorts. There are certainly         other
+					systems, some of which have already been mentioned, which
+					have made their own attempts at solving this problem and there
+					will likely be many more such systems in the future since
+					trying         to find a single solution which pleases
+					everyone is rather like         trying to find a single
+					programmin language which pleases         everyone - it's more
+					or less impossible.  We urge people to         judge
+					DarwinPorts' design on its own merits and consider it a
+					parallel rather than a competing effort since there's more
+					software out there than any one system can ever manage to
+					encapsulate and automate. </para>
+				</answer>
+			</qandaentry>
+
+			<qandaentry>
+				<question>
+					<para>Will DarwinPorts run on any other Operating System?</para>
+				</question>
+		
+				<answer>
+					<para>DarwinPorts was designed to be as portable as possible.
+					Though our target platforms are Mac OS X and Darwin,
+					DarwinPorts is known to work on FreeBSD, OpenBSD, NetBSD and
+					Solaris.  We also provide individual ports with ways of
+					specifying platform-specific rules that are only invoked on
+					that particular platform.</para>
+				</answer>
+			</qandaentry>
+
+			<qandaentry>
+				<question>
+					<para>Does DarwinPorts also do Package Management?</para>
+				</question>
+		
+				<answer>
+					<para>DarwinPorts works by first building software and
+					installing it into a <varname>destroot</varname>, a
+					fake-installation location, then installing it into the
+					DarwinPorts prefix (<filename>/opt/local</filename> by
+					default).  It records this installation in its registry, and
+					you can query the installed port and uninstall it through
+					DarwinPorts.  Work is underway to add full package management
+					features to DarwinPorts.</para>
+
+					<para>You can also have DarwinPorts build a Mac OS X
+					<filename>.pkg</filename> file of the port, and install it
+					using the Mac OS X Installer.  If that package has
+					dependencies, then you can also build a multi-part package
+					(<filename>.mpkg</filename>) which contains them as well.  You
+					can also build RPM packages from DarwinPorts.</para>
+				</answer>
+			</qandaentry>
+
+			<qandaentry>
+				<question>
+					<para>Why does DarwinPorts install everything into
+					<filename>/opt/local</filename> by default?</para>
+				</question>
+		
+				<answer>
+					<para>First, this location can be set to anything you like by
+					editing /etc/ports/ports.conf or specifying
+					<varname>--prefix</varname> during the
+					<filename>./configure</filename> phase of the DarwinPorts
+					installation, so nothing           is fixed
+					in place.  Even the basic DarwinPorts infrastructure,
+					which installs into /opt/local by           default, can be
+					installed elsewhere by overriding the value of
+					PREFIX on the command line (see the           README file for
+					details).  Second, we had           to pick SOME location for
+					things to install into so that they           would not
+					collide with system components or things already
+					installed in /usr/local, so we elected to           loosely
+					follow Sun's convention and go with
+					/opt/local.</para>
+				</answer>
+			</qandaentry>
+
+		</qandadiv>
+	</qandaset>
+
+	<qandaset defaultlabel="general">
+		<qandadiv>
+			<title>Common Problems</title>
+
+		</qandadiv>
+	</qandaset>
+</article>
