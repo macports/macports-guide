@@ -119,20 +119,21 @@
 		<sect2 id='prerequisites'>
 			<title>What you need</title>
 			
-			<para>Currently DarwinPorts is only supported on Mac OS X 10.2 or later 
-			(i.e., Darwin 6.0 or later).   However, these instructions should also 
-			enable it to  work on FreeBSD and NetBSD, at least most of the time; 
-			not every build of DarwinPorts is tested on those platforms, so some 
-			minor breakage may creep in from time to time.</para>
-
+			<para>DarwinPorts primary target platform is Mac OS X 10.3
+			"Panther" or later (i.e. Darwin 7.0 or later).  However,
+			DarwinPorts should still work on Mac OS X 10.2 "Jaguar", although
+			most ports are no longer tested on Jaguar.  DarwinPorts is also
+			known to work on various other operating systems such as FreeBSD,
+			NetBSD, OpenBSD, and various Linux distributions.  These
+			instructions should enable DarwinPorts to be installed on any of
+			these platforms.</para>
 
 			<para>To install and use DarwinPorts you must install the Developer 
-			tools (gcc, autoconf etc on other platforms). All the other 
-			prerequisites are pre-installed on Mac OS X 10.2 and later. On other 
-			platforms you will need to ensure you have installed Tcl (8.3 or 
-			later). </para>
+			tools (gcc, autoconf etc on other platforms, also known as the
+			"Xcode tools" on Mac OS X 10.3.)  All the other prerequisites are
+			pre-installed on Mac OS X 10.2 and later. On other platforms you
+			will need to ensure you have installed Tcl (8.3 or later). </para>
 
-			
 		</sect2>
 		
 		<sect2 id='getting_dports'>
@@ -151,14 +152,9 @@
 			downloaded to a directory (folder) called darwinports in your home 
 			directory (i.e. /Users/mike/darwinports/) you should replace the username 
 			with your own username and edit the commands I give so they work 
-			correctly on your installation. <programlisting><![CDATA[
- 
-% cd ~/
+			correctly on your installation. <programlisting><![CDATA[% cd ~/
 % cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od login
-% cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od co -P darwinports 
-]]>
-				</programlisting></para>
-	
+% cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od co -P darwinports ]]></programlisting></para>
 			
 			<para>These commands first ensure you are currently in your home 
 			directory, then log onto the opendarwin cvs server and finally 
@@ -177,7 +173,6 @@
 			remain important for users who want to closely track the latest 
 			ports as it can be used to update your port descriptions (and 
 			is currently the only way to do so). </para>
-
 			
 		</sect2>
 		
@@ -189,51 +184,113 @@
 			out the darwinports tree from CVS in your home directory.  Modify
 			the <userinput>cd</userinput> command appropriately if you did
 			otherwise.
-			<programlisting><![CDATA[
-% cd ~/darwinports/base
+			<programlisting><![CDATA[% cd ~/darwinports/base
 % ./configure 
 % make
-% sudo make install
-]]>
-			</programlisting>
+% sudo make install]]></programlisting>
 			This will compile and install all the necessary software. In order 
 			to install DarwinPorts on *BSD the default group-ownership must be 
 			passed to each make command: <userinput>make DSTGRP=wheel
 			</userinput>.</para>
+		</sect2>
 
+		<sect2 id='configure_dports'>
+			<title>Configuring for DarwinPorts</title>
 			
-			<para>To configure DarwinPorts you should edit 
-			/etc/ports/sources.conf. The sources.conf lists the location of 
-			both local and remote port software hierarchies (Currently there is 
-			not a remote repository). Add an entry for your local ports tree: 
-			<userinput>file:///Users/mike/darwinports/dports</userinput>. To 
-			edit the file you must use a command line text editor like pico 
-			or vi. </para>
+			<para>It is no longer necessary to edit
+			<filename>/etc/ports/sources.conf</filename> after installing
+			DarwinPorts.  If you change the location of the
+			<filename>dports</filename> directory, which was in
+			<filename>~/darwinports/dports</filename> based on the above
+			examples, then you will still need to edit
+			<filename>/etc/ports/sources.conf</filename> and modify the
+			<userinput>file:///Users/mike/darwinports/dports</userinput> line
+			to reflect the new location.  To edit the file you must use a
+			command line text editor like pico or vi. </para>
 
-			<para>Please note, if you are using Mac OS X 10.2 "Jaguar", then
-				you will need to edit <file>/etc/ports/ports.conf</file> and
+			<note><para>Please note, if you are using Mac OS X 10.2 "Jaguar", then
+				you will need to edit <filename>/etc/ports/ports.conf</filename> and
 				change: <computeroutput>portinstalltype image</computeroutput>
-				to: <userinput>portinstalltype direct</userinput></para>
+				to: <userinput>portinstalltype direct</userinput></para></note>
 			
 			<para>You should add /opt/local/bin (or wherever you chose to 
-			install DarwinPorts) to your path. If you aren't sure how, add 
-			<userinput>set path=($path /opt/local/bin)</userinput> to your 
-			.cshrc file. You may need to create the file first if you 
-			haven't set one up before. Then close the Terminal window and 
-			open a new one so the new path setting takes effect.</para>
+			install DarwinPorts) to your shell's path.</para>
 
-			
+			<para>If you are using Mac OS X 10.3 "Panther" or a Bourne shell
+			(bash, zsh), add the following line to your
+			<filename>~/.profile</filename>:</para>
+
+			<para><userinput>export PATH=$PATH:/opt/local/bin</userinput></para>
+
+			<para>If you are using Mac OS X 10.2 "Jaguar" or a C shell (tcsh),
+			add the following line to your
+			<filename>~/.cshrc</filename>:</para>
+
+			<para><userinput>set path=($path /opt/local/bin)</userinput></para>
+	
+			<para>These changes will not take effect until you have opened a
+			new shell.</para>
+
 			<para>Once you have got this far, you should have a working 
 			installation of DarwinPorts, you have installed the 'port' 
-			command (by default this installed as /opt/local/bin/port) 
-			and the libraries it needs (in /opt/local/share/darwinports 
-			and /System/Library/Tcl/8.3/darwinports1.0 by default. 
+			command (by default this installed as
+			<filename>/opt/local/bin/port</filename>) 
+			and the libraries it needs (in
+			<filename>/opt/local/share/darwinports</filename> 
+			and <filename>/Library/Tcl/darwinports1.0</filename> by
+			default.) 
 			</para>
 
 			
 		</sect2>
+
+		<sect2  id='updating_dports'>
+			<title>Updating DarwinPorts</title>
+			
+			<para>New ports are always being added to the DarwinPorts dports 
+			tree, you should regularly update your tree to get access to new 
+			ports, and (hopefully) improved versions of current ports.  Currently 
+			the simplest way you can update the dports tree is to use
+			<command>cvs</command>.  You can also use <command>cvs</command>
+			to fetch a new version of the DarwinPorts infrastructure (eg the
+			<command>port</command> command and associated libraries).</para>
+
+			<variablelist>
+				<varlistentry>
+					<term>Updating your DarwinPorts ports</term>
+
+					<listitem>
+						<para>To get the latest Portfiles (the instructions for
+							building ports), you need to update your
+							<filename>dports</filename> tree from
+							<command>cvs</command>:
+							<programlisting><![CDATA[% cd ~/darwinports/dports
+% cvs -q -z3 update -dP]]></programlisting></para>
+
+						<para>By using the -q flag to
+							<command>cvs</command>, you will see in the output what
+							Ports have changed or have been added.</para>
+					</listitem>		
+				</varlistentry>
+
+				<varlistentry>
+					<term>Updating your DarwinPorts infrastructure</term>
+
+					<listitem>
+						<para>To get the latest DarwinPorts infrastructure (or
+							"base") for building ports, you need to update your
+							<filename>base</filename> from <command>cvs</command>:
+							<programlisting><![CDATA[% cd ~/darwinports/base
+% cvs -q -z3 update -dP
+% ./configure
+% make clean && make
+% sudo make install]]></programlisting></para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</sect2>
+
 	</sect1>
-	
 	
 	<sect1>
 		<title>Using DarwinPorts</title>
@@ -344,6 +401,18 @@
 				</varlistentry>
 
 				<varlistentry>
+					<term>Getting Info about a Port</term>
+
+					<listitem>
+						<para>You may want to get information about a port, such as
+						a description, its maintainer, and more.  You can do this by
+						using the <userinput>info</userinput> option:</para>
+
+						<para><userinput>port info vim</userinput></para>
+					</listitem>
+				</varlistentry>
+
+				<varlistentry>
 					<term>Listing Ports</term>
 
 					<listitem>
@@ -413,61 +482,9 @@
 			through all the available ports in the dport directory and 
 			build an index file called PortIndex.</para>
 
-			
 		</sect2>
 		
-		<sect2  id='updating_dports'>
-			<title>Updating DarwinPorts</title>
-			
-			<para>New ports are always being added to the DarwinPorts dports 
-			tree, you should regularly update your tree to get access to new 
-			ports, and (hopefully) improved versions of current ports.  Currently 
-			the simplest way you can update the dports tree is to use
-			<command>cvs</command>.  You can also use <command>cvs</command>
-			to fetch a new version of the DarwinPorts infrastructure (eg the
-			<command>port</command> command and associated libraries).</para>
-
-			<variablelist>
-				<varlistentry>
-					<term>Updating your DarwinPorts ports</term>
-
-					<listitem>
-						<para>To get the latest Portfiles (the instructions for
-							building ports), you need to update your
-							<filename>dports</filename> tree from
-							<command>cvs</command>:
-							<programlisting><![CDATA[
-% cd ~/darwinports/dports
-% cvs -q -z3 update -dP
-]]>
-							</programlisting></para>
-
-						<para>By using the -q flag to
-							<command>cvs</command>, you will see in the output what
-							Ports have changed or have been added.</para>
-					</listitem>		
-				</varlistentry>
-
-				<varlistentry>
-					<term>Updating your DarwinPorts infrastructure</term>
-
-					<listitem>
-						<para>To get the latest DarwinPorts infrastructure (or
-							"base") for building ports, you need to update your
-							<filename>base</filename> from <command>cvs</command>:
-							<programlisting><![CDATA[
-% cd ~/darwinports/base
-% cvs -q -z3 update -dP
-% ./configure
-% make clean && make
-% sudo make install
-]]>
-							</programlisting></para>
-					</listitem>
-				</varlistentry>
-			</variablelist>
-		</sect2>
-		
+	
 		<sect2 id='uninstall_dports'>
 			<title>Removing ports</title>
 			
@@ -482,12 +499,8 @@
 			
 			<para>At the moment there is not a 'port upgrade' command so 
 			to upgrade a port you must uninstall and then install it again. 
-			<programlisting><![CDATA[
- 
-% sudo port uninstall vile
-% sudo port install vile
-]]>
-				</programlisting></para>
+			<programlisting><![CDATA[% sudo port uninstall vile
+% sudo port install vile]]></programlisting></para>
 
 			
 		</sect2>
@@ -599,8 +612,7 @@
 							here here. </para>
 
 								<programlisting>
-<![CDATA[
-Portname-1.2.3
+<![CDATA[Portname-1.2.3
 
 the error log can be found here: URL or ATTACHED or INLINE
 
@@ -611,9 +623,7 @@ concerns, lookouts, dependencies that you may want to mention.
 
 ================INLINE CONTENT================
 -- 
-your sig if you'd like
-]]> 
-						</programlisting>
+your sig if you'd like]]> </programlisting>
 								
 						</listitem>
 					</varlistentry>
