@@ -203,7 +203,7 @@
 			/etc/ports/sources.conf. The sources.conf lists the location of 
 			both local and remote port software hierarchies (Currently there is 
 			not a remote repository). Add an entry for your local ports tree: 
-			<userinput>file://Users/mike/darwinports/dports</userinput>. To 
+			<userinput>file:///Users/mike/darwinports/dports</userinput>. To 
 			edit the file you must use a command line text editor like pico 
 			or vi. </para>
 
