@@ -545,12 +545,17 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
               used.</para>
 
             <itemizedlist>
+              <listitem><para><varname>afterstep</varname></para></listitem>
               <listitem><para><varname>apache</varname></para></listitem>
+              <listitem><para><varname>freebsd</varname></para></listitem>
               <listitem><para><varname>gnome</varname></para></listitem>
               <listitem><para><varname>gnu</varname></para></listitem>
               <listitem><para><varname>isc</varname></para></listitem>
               <listitem><para><varname>kde</varname></para></listitem>
+              <listitem><para><varname>openbsd</varname></para></listitem>
+              <listitem><para><varname>opendarwin</varname></para></listitem>
               <listitem><para><varname>perl_cpan</varname></para></listitem>
+              <listitem><para><varname>postgresql</varname></para></listitem>
               <listitem><para><varname>ruby</varname></para></listitem>
               <listitem><para><varname>sourceforge</varname></para></listitem>
               <listitem><para><varname>sunsite</varname></para></listitem>
