@@ -442,7 +442,7 @@ http://distfiles.opendarwin.org/</programlisting>
 
           <listitem>
             <para><varname>distfile</varname> is the name and version
-              combined with the <varname>extract_sufx</varname> (by
+              combined with the <varname>extract.suffix</varname> (by
               default <filename>${name}-${version}.tar.gz</filename>) 
               by default, and is used by DarwinPorts to fetch the 
               distribution file.  If the name of the file on the server 
