@@ -1028,38 +1028,55 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 		<title>StartupItems</title>
 			<para>To create StartupItems for your port, use these directives. It is considered good style to use the startupitem commands instead of creating a rc.s-tyle script.</para>
 			<variablelist>
-				<varlistentry id="startupitem.create">
+				<varlistentry id='startupitem.create'>
 					<term>startupitem.create</term>
 					<listitem>
-						<para>this triggers the creation of a StartupItem (yes/no)</para>
+						<para>This triggers the creation of a StartupItem, defaults to <userinput>no</userinput>.</para>
 					</listitem>
 				</varlistentry>
 
-				<varlistentry id="startupitem.name">
+				<varlistentry id='startupitem.name'>
 					<term>startupitem.name</term>
 					<listitem>
-						<para>sets the name for the StartupItem, defaults to ${portname}</para>
+						<para>sets the name for the StartupItem, defaults to <userinput>${portname}</userinput></para>
 					</listitem>
 				</varlistentry>
 
-				<varlistentry id="startupitem.start">
+				<varlistentry id='startupitem.init'>
+					<term>startupitem.init</term>
+					<listitem>
+						<para>commands that will get executes on initialization of StartupItem, e. g. assign common variables. Default is empty.</para>
+						<para>Common usage would be to define the location of the pidfile, like <userinput>PIDFILE=${prefix}/var/run/food.pid</userinput>.</para>
+					</listitem>
+				</varlistentry>
+
+				<varlistentry id='startupitem.start'>
 					<term>startupitem.start</term>
 					<listitem>
-						<para>command to call to start the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh start</para>
+						<para>command to call to start the daemon etc.; defaults to <userinput>${prefix}/etc/rc.d/${portname}.sh start</userinput></para>
+						<para>The common unix daemon would just have something like <userinput>${prefix}/sbin/food</userinput></para>
 					</listitem>
 				</varlistentry>
 
-				<varlistentry id="startupitem.stop">
+				<varlistentry id='startupitem.stop'>
 					<term>startupitem.stop</term>
 					<listitem>
-						<para>command to call to stop the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh stop</para>
+						<para>command to call to stop the daemon etc.; defaults to <userinput>${prefix}/etc/rc.d/${portname}.sh stop</userinput></para>
+						<para>The common schema on this command is to call <userinput>kill</userinput> on the daemons pid. If you have a pid-file, you would use something like <userinput>kill \$(cat ${prefix}/var/run/food.pid)</userinput>.</para>
 					</listitem>
 				</varlistentry>
 
-				<varlistentry id="startupitem.restart">
+				<varlistentry id='startupitem.restart'>
 					<term>startupitem.restart</term>
 					<listitem>
-						<para>command to call to restart the daemon etc.; defaults to execute stop, start on self</para>
+						<para>command to call to restart the daemon etc.; defaults to <userinput>StopService; StartService</userinput> (execute stop, start on self).</para>
+					</listitem>
+				</varlistentry>
+
+				<varlistentry id='startupitem.requires'>
+					<term>startupitem.requires</term>
+					<listitem>
+						<para>The required services to run this daemon, defaults to <userinput>"Disk" "NFS"</userinput>.</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>
