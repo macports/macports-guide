@@ -44,6 +44,7 @@
 						<entry>aqua</entry>
 						<entry/>
 						<entry/>
+					</row>
 					<row>
 						<entry>archives</entry>
 						<entry>waqar [at] opendarwin.org</entry>
@@ -93,6 +94,7 @@
 						<entry>genealogy</entry>
 						<entry/>
 						<entry/>
+					</row>
 					<row>
 						<entry>gnome</entry>
 						<entry>olegb [at] opendarwin.org</entry>
@@ -127,6 +129,7 @@
 						<entry>multimedia</entry>
 						<entry/>
 						<entry/>
+					</row>
 					<row>
 						<entry>net</entry>
 						<entry>fenner [at] opendarwin.org</entry>
@@ -136,6 +139,7 @@
 						<entry>news</entry>
 						<entry/>
 						<entry/>
+					</row>
 					<row>
 						<entry>print</entry>
 						<entry>cms [at] opendarwin.org</entry>
@@ -148,8 +152,9 @@
 					</row>
 					<row>
 						<entry>ruby</entry>
+						<entry>rshaw [at] opendarwin.org</entry>
 						<entry></entry>
-						<entry></entry>
+					</row>
 					<row>
 						<entry>science</entry>
 						<entry>wbb4 [at] opendarwin.org</entry>
