@@ -258,7 +258,7 @@ your sig if you'd like
 					
 					<member>diff -u oldfile oldfile.new > oldfile.diff</member>
 					
-					<member>use bugzilla to submit your port UDPATE, assigning the bug to the corresponding port maintainer.</member>
+					<member>use bugzilla to submit your port UPDATE, assigning the bug to the corresponding port maintainer.</member>
 					
 				</simplelist></para>
 
