@@ -6,7 +6,7 @@
 	<sect1>
 		<title>Overview</title> 
 		<para>
-			A port consists of a directory and its contents, within a category subdi- rectory of the root of the ports tree. This document serves as a refer- ence for the directory structure of a single port and the layout of the files within. 
+			A port consists of a directory and its contents, within a category subdirectory of the root of the ports tree. This document serves as a reference for the directory structure of a single port and the layout of the files within. 
 		</para>
 		<para>
 			The only required file in a port is Portfile. The port file should be thought of as a set of declarations rather than a piece of code. It is best to format the port file is if it were a table consisting of keys and values. In fact, the simplest of ports will only contain a small block of values. Therefore, whitespace should not be strown about haphazardly. Nicely formatted compact tables will result in more values being visible at the same time. 
