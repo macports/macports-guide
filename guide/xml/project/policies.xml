@@ -36,7 +36,8 @@
 		  <orderedlist numeration='arabic'>
 			  <listitem>
 				  Write patch for the port that resolves the issue, 
-				  and email maintainer or file a bug in Bugzilla. If 
+				  and email maintainer or file a bug in Bugzilla,
+				  appropriately assigned to the maintainer of the port. If 
 				  you can't write a patch, file a bug and ignore the 
 				  following steps...
 			  </listitem>
