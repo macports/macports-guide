@@ -81,8 +81,8 @@
     <title>DarwinPorts Internals</title>
   
     <xi:include href="internals/internals.xml" /> 
-    <!-- <xi:include href="internals/portimages.xml" /> 
-    <xi:include href="internals/registry.xml" /> -->
+    <!-- <xi:include href="internals/portimages.xml" />  -->
+    <xi:include href="internals/registry.xml" />
 	</part>
 
 	<part>

@@ -98,89 +98,221 @@
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::write_entry
+					{ref}</computeroutput></term>
 
 				<listitem>
+					<para>Writes the receipt associated with the given
+						reference.</para>
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::delete_entry
+					{ref}</computeroutput></term>
 
 				<listitem>
-				</listitem>
-			</varlistentry>
-
-			<varlistentry>
-				<term><computeroutput></computeroutput></term>
-
-				<listitem>
-				</listitem>
-			</varlistentry>
-
-			<varlistentry>
-				<term><computeroutput></computeroutput></term>
-
-				<listitem>
+					<para>Deletes the receipt associated with the given
+						reference.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::property_store {ref property
+					value}</computeroutput></term>
 
 				<listitem>
+					<para>Store the given value with the property name in the
+						receipt associated with the given reference.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::property_retrieve {ref
+					property}</computeroutput></term>
 
 				<listitem>
+					<para>Retrieve the property name from the receipt associated
+						with the given reference.</para>
+					<para>Returns the value of the property, if the property
+						exists.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::installed {{name ""} {version
+					""}}</computeroutput></term>
 
 				<listitem>
+					<para>Get all installed ports, optionally all installed ports
+						matching the given name, or the given name and version.</para>
+					<para>Returns a list of the installed ports.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::location {portname
+					portversion}</computeroutput></term>
 
 				<listitem>
+					<para>Returns the physical location the port is installed in on
+						the disk.  This is primarily useful for finding out where a
+						port image is installed.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::open_file_map
+					{args}</computeroutput></term>
 
 				<listitem>
+					<para>Opens the file map that contains file-port
+						relationships.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::file_registered
+					{file}</computeroutput></term>
 
 				<listitem>
+					<para>Returns the name of the port that owns the given file,
+						if the file is registered as installed, and 0 otherwise.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry>
-				<term><computeroutput></computeroutput></term>
+				<term><computeroutput>registry::port_registered
+					{name}</computeroutput></term>
 
 				<listitem>
+					<para>Returns a list of all files associated with the given
+						port if that port is installed, and 0 otherwise.</para>
 				</listitem>
 			</varlistentry>
 
+			<varlistentry>
+				<term><computeroutput>registry::register_file {file
+					port}</computeroutput></term>
 
+				<listitem>
+					<para>Registeres the given file in the file map as belonging
+						to the given port.</para>
+				</listitem>
+			</varlistentry>
 
+			<varlistentry>
+				<term><computeroutput>registry::unregister_file
+					{file}</computeroutput></term>
 
+				<listitem>
+					<para>Removes the file from the file map.</para>
+				</listitem>
+			</varlistentry>
 
+			<varlistentry>
+				<term><computeroutput>registry::write_file_map
+					{args}</computeroutput></term>
 
+				<listitem>
+					<para>Write the changes to the file map.</para>
+				</listitem>
+			</varlistentry>
 
+			<varlistentry>
+				<term><computeroutput>registry::open_dep_map
+					{args}</computeroutput></term>
+
+				<listitem>
+					<para>Opens the dependency map that contains port dependency
+						relationships.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::fileinfo_for_file {fname}</computeroutput></term>
+
+				<listitem>
+					<para>Returns a list for the given file name representing all
+						data currently known about the file.  This is a 6-tuple in the
+						form of:</para>
+					<orderedlist>
+						<listitem>file path</listitem>
+						<listitem>uid</listitem>
+						<listitem>gid</listitem>
+						<listitem>mode</listitem>
+						<listitem>size</listitem>
+						<listitem>md5 checksum</listitem>
+					</orderedlist>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::fileinfo_for_index {flist}</computeroutput></term>
+
+				<listitem>
+					<para>Returns a list of information concerning each file in
+						the given file list, if that file exists in the registry.  The
+						information if obtained through
+						<varname>registry::fileinfo_for_file</varname></para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::list_depends
+					{name}</computeroutput></term>
+
+				<listitem>
+					<para>Returns a list of all the ports that given port name
+						depends on.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::list_dependents
+					{name}</computeroutput></term>
+
+				<listitem>
+					<para>Returns a list of all the ports that depend on the given
+						port name.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::register_dep {dep type
+					port}</computeroutput></term>
+
+				<listitem>
+					<para>Registers the given dependency as the given type of
+						dependency with the given port.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::unregister_dep {dep type
+					port}</computeroutput></term>
+
+				<listitem>
+					<para>Unregisters the given dependency of the given type as a
+						dependency of the given port.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry>
+				<term><computeroutput>registry::write_dep_map
+					{args}</computeroutput></term>
+
+				<listitem>
+					<para>Write changes to the dependency map.</para>
+				</listitem>
+			</varlistentry>
 		</variablelist>
-
 	</sect1>
+
+	<!-- <sect1 id="receipt_modules">
+		<title>New Registry Receipt Modules</title>
+
+		<para>Writing a receipt module for the new registry is very easy.
+			The new registry makes </para>
+	</sect1> -->
 
 </chapter>
