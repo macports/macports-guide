@@ -508,7 +508,7 @@
 			<para>If you would like to upgrade the port, but not the dependencies 
 			of the port, you can:</para>
 			<userinput>sudo port -n upgrade gnome</userinput>
-			<para>To upgrade all installed ports simply do:.</para>
+			<para>To upgrade all installed ports simply do:</para>
 			<userinput>sudo port -a upgrade</userinput>
 			<para>If you dont like that upgrade just deactivates the old version
 			of the port, you can get it to uninstall the old version by using
