@@ -198,7 +198,7 @@ master_sites    http://www.webdav.org/neon/
 checksums       md5 56b380a7352c68d425b1d3d3d610f994 
 
 depends_lib     lib:libexpat.0.4:expat 
-configure.env   LDFLAGS=-L$prefix/lib CPPFLAGS=-I$prefix/include 
+configure.env   LDFLAGS='-L"${prefix}/lib"' CPPFLAGS='-I"${prefix}/include"'
 
 configure.args  --with-ssl \ 
                   --with-force-ssl \ 
@@ -244,8 +244,13 @@ include         contents
 								If you need to specify additional configure arguments you should place them on a single line. As with other settings, newlines may be escaped to break up long lines. Note the continuing lines are indented two spaces.
 							</para>
 							<para>
-								By default the configure script is passed --prefix=${prefix} where ${prefix} is replaced with the prefix darwinports is configured to install into. 
+								By default the configure script is passed --prefix=&dollar;&lcub;prefix&rcub; where ${prefix} is replaced with the prefix darwinports is configured to install into. 
 							</para>
+							<tip>
+								<para>
+									In general you should quote variables like &lcub;prefix&rcub; in case the path has a space in it.
+								</para>
+							</tip>
 						</listitem>
 					</varlistentry>
 					<varlistentry>

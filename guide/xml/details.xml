@@ -28,6 +28,7 @@
 					<member>PortSystem</member>
 					<member>name</member>
 					<member>version</member>
+					<member>platforms</member>
 					<member>maintainers</member>
 					<member>categories</member>
 					<member>description</member>
@@ -35,7 +36,7 @@
 					<member>checksums</member>
 					<member>contents</member>
 				</simplelist>
-			Each of these keys is described below. 
+			Each of these keys is described in the following pages of the guide. 
 			</para>
 				
 		</sect2>
@@ -136,6 +137,13 @@
 				<listitem>
 					<para>The version of the Port. By default this is used to build the url from which the Port is fetched. </para>
 					<para><userinput>version 1.23.45</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='platforms'>
+				<term>platforms</term>
+				<listitem>
+					<para>The platforms on which the port has been tested. </para>
+					<para><userinput>platforms darwin freebsd</userinput></para>
 				</listitem>
 			</varlistentry>
 			<varlistentry id='categories'>
@@ -353,7 +361,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							<term>automake.env</term>
 							<listitem>
 								<para>Environmental variables to pass to automake</para>
-								<para><userinput>CFLAGS=&ldquo;-I&dollar;&lcub;prefix&rcub;/include&rdquo;</userinput>
+								<para><userinput>CFLAGS=&ldquo;-I&lsquo;&dollar;&lcub;prefix&rcub;/include&rsquo;&rdquo;</userinput>
 								</para>
 							</listitem>
 						</varlistentry>
@@ -389,7 +397,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							<term>autoconf.env</term>
 							<listitem>
 								<para>Environmental variables to pass to autoconf</para>
-								<para><userinput>autoconf.env   CFLAGS=I&dollar;&lcub;prefix&rcub;/include/gtk12</userinput>
+								<para><userinput>autoconf.env   CFLAGS=-I&lsquo;&dollar;&lcub;prefix&rcub;/include/gtk12&rsquo;</userinput>
 								</para>
 							</listitem>
 						</varlistentry>
@@ -421,7 +429,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							<term>configure.env</term>
 							<listitem>
 								<para>Set environment variables for configure.</para>
-								<para><userinput>configure.env CFLAGS=&ldquo;-I&dollar;&lcub;prefix&rcub;/include&rdquo;</userinput>
+								<para><userinput>configure.env CFLAGS=&ldquo;-I&lsquo;&dollar;&lcub;prefix&rcub;/include&rsquo;&rdquo;</userinput>
 								</para>
 							</listitem>
 						</varlistentry>
@@ -430,7 +438,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							<term>configure.pre_args</term>
 							<listitem>
 								<para>Arguments added to configure command before &dollar;&lcub;configure.args&rcub;. Defaults to --prefix=&dollar;&lcub;prefix&rcub;. </para>
-								<para><userinput>configure.pre_args       --prefix=&dollar;&lcub;prefix&rcub;/apache2</userinput>
+								<para><userinput>configure.pre_args       --prefix=&ldquo;&dollar;&lcub;prefix&rcub;/apache2&rdquo;</userinput>
 								</para>
 							</listitem>
 						</varlistentry>
@@ -439,7 +447,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							<term>configure.args</term>
 							<listitem>
 								<para>Arguments to pass to configure.</para>
-								<para><userinput>configure.args      --etcdir=&dollar;&lcub;prefix&rcub;/etc</userinput>
+								<para><userinput>configure.args      --etcdir=&ldquo;&dollar;&lcub;prefix&rcub;/etc&rdquo;</userinput>
 								</para>
 							</listitem>
 						</varlistentry>

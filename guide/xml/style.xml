@@ -63,6 +63,11 @@
 			<para>
 				Short contents lists should appear within the port file, listing each file on a single line, using backslashes to continue the list over the line breaks. If the list is long, it is often better to place the contents in another file named something like &ldquo;contents&rdquo; and pull it into the port file with an &ldquo;include&rdquo; statement. In these cases it may also make sense to use &ldquo;&lcub;&rcub;&rdquo; braces to group the file names instead of continuing across lines by escaping newlines, although this breaks the consistancy of symbol usage within the port file. If a variant changes the items installed the variant content file should be named &ldquo;contents-foo&rdquo;, where foo is the name of the variant. 
 			</para>
+			<tip>
+				<para>
+					In general you do not want to list configuration files and directories that the user may modify. The user will not want you to remove their carefully handcrafted httpd.conf, for example.
+				</para>
+			</tip>
 		</sect2>
 		<sect2>
 			<title>Patch Files</title> 
