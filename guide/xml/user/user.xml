@@ -595,29 +595,4 @@ your sig if you'd like
 			</sect3>
 		</sect2>
 	</sect1>
-	
-	
-	<sect1 id='portsmanager'>
-		<title>Ports Manager.app</title>
-		
-		<para>Ports Manager.app is a Cocoa GUI for the DarwinPorts project, 
-		it allows users to browse through available ports and their 
-		descriptions and to download, install and uninstall the software. 
-		Ports Manager.app is currently under development and is less 
-		reliable in use than the command line tools. There is a Port for 
-		the application so you can actually use DarwinPorts to install 
-		it for you! <userinput>sudo port install 'PortsManager'</userinput>. 
-		Ports Manager.app will be installed in your /Applications/Utilities 
-		folder. You must have the DarwinPorts Tcl libraries installed to 
-		use the Ports Manager.app. A 
-		<ulink url='http://www.opendarwin.org/~fkr/portsmanager.png'>
-		screen shot is available</ulink> of Ports Manager.app in 
-		action. </para>
-
-		
-		<para>We will also be providing a binary installer (a '.pkg') file in
-		 the near future for Ports Manager.app.</para>
-
-		
-	</sect1>
 </chapter>
