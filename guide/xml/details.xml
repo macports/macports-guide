@@ -97,8 +97,8 @@
 				</listitem>
 			</varlistentry>
 			
-			<varlistentry id='filedir'>
-				<term>filedir</term>
+			<varlistentry id='filesdir'>
+				<term>filesdir</term>
 				<listitem>
 					<para>Path to port files relative to ${portpath}. 
 					Read Only.</para>
