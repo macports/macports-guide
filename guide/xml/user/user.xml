@@ -185,12 +185,15 @@
 			<title>Installing DarwinPorts</title>
 			
 			<para>To install DarwinPorts execute the following commands from the 
-			darwinports/base directory.<programlisting><![CDATA[
-
+			darwinports/base directory.  These commands assume that you checked
+			out the darwinports tree from CVS in your home directory.  Modify
+			the <userinput>cd</userinput> command appropriately if you did
+			otherwise.
+			<programlisting><![CDATA[
+% cd ~/darwinports/base
 % ./configure 
 % make
 % sudo make install
-
 ]]>
 			</programlisting>
 			This will compile and install all the necessary software. In order 
@@ -414,32 +417,51 @@
 			
 			<para>New ports are always being added to the DarwinPorts dports 
 			tree, you should regularly update your tree to get access to new 
-			ports, and (hopefully) improved versions of current ports. Currently 
-			the simplest way you can update the dports tree is to use cvs. You 
-			should change directory to the dports directory and then execute: 
-			<userinput>cvs -z3 update -dP</userinput>. You should see a set of 
-			lines printed out in the terminal as the update progresses. You 
-			may need to update your PortIndex as mentioned previously: 
-			<userinput>portindex</userinput>. </para>
+			ports, and (hopefully) improved versions of current ports.  Currently 
+			the simplest way you can update the dports tree is to use
+			<command>cvs</command>.  You can also use <command>cvs</command>
+			to fetch a new version of the DarwinPorts infrastructure (eg the
+			<command>port</command> command and associated libraries).</para>
 
-			
-			<para>You can also use cvs to fetch an new version of the 
-			DarwinPorts infrastructure (eg the port command and associated 
-			libraries). To do this you should change directories to the 
-			darwinports/base directory and execute the following commands:
-			<programlisting><![CDATA[
- 
-% cvs -z3 update -dP
+			<variablelist>
+				<varlistentry>
+					<term>Updating your DarwinPorts ports</term>
+
+					<listitem>
+						<para>To get the latest Portfiles (the instructions for
+							building ports), you need to update your
+							<filename>dports</filename> tree from
+							<command>cvs</command>:
+							<programlisting><![CDATA[
+% cd ~/darwinports/dports
+% cvs -q -z3 update -dP
+]]>
+							</programlisting></para>
+
+						<para>By using the -q flag to
+							<command>cvs</command>, you will see in the output what
+							Ports have changed or have been added.</para>
+					</listitem>		
+				</varlistentry>
+
+				<varlistentry>
+					<term>Updating your DarwinPorts infrastructure</term>
+
+					<listitem>
+						<para>To get the latest DarwinPorts infrastructure (or
+							"base") for building ports, you need to update your
+							<filename>base</filename> from <command>cvs</command>:
+							<programlisting><![CDATA[
+% cd ~/darwinports/base
+% cvs -q -z3 update -dP
 % ./configure
 % make clean && make
 % sudo make install
 ]]>
-				</programlisting>This will build and install the new version 
-				of DarwinPorts. You don't need to do this very often, although 
-				DarwinPorts is a young project and continually improving so we 
-				encourage you to keep up to date. </para>
-
-			
+							</programlisting></para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
 		</sect2>
 		
 		<sect2 id='uninstall_dports'>
