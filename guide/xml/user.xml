@@ -69,7 +69,7 @@
 		<sect2 id='getting_dports'>
 			<title>Obtaining DarwinPorts</title>	
 			
-			<para>Currently the only way to get DarwinPorts is by using the Concurrent Versioning System (cvs). CVS is installed with the Developers Tools on Mac OS X. To download DarwinPorts using cvs you should use the following Terminal commands. At this time you must keep the darwinports directoy that is downloaded on your machine, even after installation as it also contains all the port description files (Portfiles). In the future these will be automatically downloaded as they are needed so you won't need to keep the directory. Choose a location for darwinports where you won't want/need to move it. For the rest of the document I will assume the user name is 'mike' and the darwinports infrastructure is going to be downloaded to a directory (folder) called darwinports in your home directory (i.e. /Users/mike/darwinports/) you should replace the username with your own username and edit the commands I give so they work correctly on your installation. <programlisting><![CDATA[
+			<para>Currently the main way to get DarwinPorts is by using the Concurrent Versioning System (cvs). CVS is installed with the Developers Tools on Mac OS X. To download DarwinPorts using cvs you should use the following Terminal commands. At this time you must keep the darwinports directoy that is downloaded on your machine, even after installation as it also contains all the port description files (Portfiles). In the future these will be automatically downloaded as they are needed so you won't need to keep the directory. Choose a location for darwinports where you won't want/need to move it. For the rest of the document I will assume the user name is 'mike' and the darwinports infrastructure is going to be downloaded to a directory (folder) called darwinports in your home directory (i.e. /Users/mike/darwinports/) you should replace the username with your own username and edit the commands I give so they work correctly on your installation. <programlisting><![CDATA[
  
 % cd ~/
 % cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od login
@@ -80,7 +80,8 @@
 			
 			<para>These commands first ensure you are currently in your home directory, then log onto the opendarwin cvs server and finally 'checkout' (download) DarwinPorts.
 			</para>
-			
+			<para>There is also a <ulink url='http://www.opendarwin.org/~fkr/snapshots/'>cvs snapshot</ulink> available that is made from cvs every 6 hours. The tarball is made from a anonymous checkout of DarwinPorts so you can still use the commands below for <link linkend='updating_dports'>updating</link>. 
+			</para>	
 			<para>In the near future we will provide a binary installer for DarwinPorts and the source files downloadable directly from the website rather than requiring users to use cvs. CVS is likely to remain important for users who want to closely track the latest ports as it can be used to update your port descriptions (and is currently the only way to do so). 
 			</para>
 			
