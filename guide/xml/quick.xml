@@ -442,7 +442,7 @@ http://distfiles.opendarwin.org/</programlisting>
 
           <listitem>
             <para><varname>distfile</varname> is the name and version
-              combined with the <varname>extract_sufx</varname> (by
+              combined with the <varname>extract.suffix</varname> (by
               default <filename>${name}-${version}.tar.gz</filename>) 
               by default, and is used by DarwinPorts to fetch the 
               distribution file.  If the name of the file on the server 
@@ -617,7 +617,7 @@ http://distfiles.opendarwin.org/</programlisting>
     <example id="expat">
       <title>Expat <filename>Portfile</filename></title>
       <programlisting><![CDATA[########################### libxslt Portfile ##################################
-# $Id: quick.xml,v 1.14 2003/07/30 14:35:39 fkr Exp $
+# $Id: quick.xml,v 1.15 2003/11/17 21:19:52 jkh Exp $
 
 PortSystem      1.0
 
@@ -645,7 +645,7 @@ long_description Gnome library for applying XSL stylesheet transformations to \
       <title>Neon <filename>Portfile</filename></title>
 
 <programlisting><![CDATA[###########################neon Portfile####################################
-# $Id: quick.xml,v 1.14 2003/07/30 14:35:39 fkr Exp $
+# $Id: quick.xml,v 1.15 2003/11/17 21:19:52 jkh Exp $
           
 PortSystem 1.0 
 name            neon 

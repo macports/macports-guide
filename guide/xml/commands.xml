@@ -84,14 +84,14 @@
         </varlistentry>
 
         <varlistentry>
-          <term>extract.sufx</term>
+          <term>extract.suffix</term>
 
           <listitem>
             <synopsis>Type: optional Default: .tar.gz</synopsis>
 
             <para>Suffix to append to ${distname}</para>
 
-            <para><userinput>extract.sufx .tgz</userinput></para>
+            <para><userinput>extract.suffix .tgz</userinput></para>
 
           </listitem>
         </varlistentry>
@@ -102,7 +102,7 @@
           <listitem>
             <synopsis>Type: optional</synopsis>
 
-            <para>Sets extract.sufx to: .zip Sets extract.cmd to: 
+            <para>Sets extract.suffix to: .zip Sets extract.cmd to: 
             unzip Sets extract.pre_args to: -q Sets extract.post_args 
             to: "-d $portpath/$workdir"</para>
 

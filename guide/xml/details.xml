@@ -267,14 +267,14 @@ formats. </userinput></programlisting></para>
 					
 				</listitem>
 			</varlistentry>
-			<varlistentry id='extract.sufx'>
-				<term>extract.sufx</term>
+			<varlistentry id='extract.suffix'>
+				<term>extract.suffix</term>
 				<listitem>
-					<para>By default the value of ${extract.sufx} is .tar.gz. 
-					Specifying extract.sufx is optional, only use it if the 
+					<para>By default the value of ${extract.suffix} is .tar.gz. 
+					Specifying extract.suffix is optional, only use it if the 
 					suffix is not 'tar.gz.'. </para>
 					
-					<para><userinput>extract.sufx .tgz</userinput></para>
+					<para><userinput>extract.suffix .tgz</userinput></para>
 					
 				</listitem>
 			</varlistentry>
@@ -284,7 +284,7 @@ formats. </userinput></programlisting></para>
 					<para>By default distname is ${name}-${version}. 
 					Specifying distname is optional, only use it if the 
 					file that contains the port is not ${name}-${version} 
-					(without the extract.sufx).</para>
+					(without the extract.suffix).</para>
 					
 					<para><userinput>distname ${name}_${version}</userinput></para>
 					
@@ -294,12 +294,12 @@ formats. </userinput></programlisting></para>
 			<varlistentry id='distfiles'>
 				<term>distfiles</term>
 				<listitem>
-					<para>Defaults to ${distname}.${extract.sufx}. Specifying 
+					<para>Defaults to ${distname}.${extract.suffix}. Specifying 
 					distfiles is optional, only use it if the file that 
-					contains the port is not ${distname}.${extract.sufx} 
+					contains the port is not ${distname}.${extract.suffix} 
 					or more than one file needs to be retirieved. </para>
 					
-					<para><userinput>distfiles stable.${extract.sufx} 
+					<para><userinput>distfiles stable.${extract.suffix} 
 					installer.sh</userinput></para>
 					
 					<para>Some ports require multiple items to be fetched 
@@ -310,7 +310,7 @@ formats. </userinput></programlisting></para>
 					long lines should be broken up with escaped 
 					newlines. </para>
 					<para><userinput>distfiles 
-					stable.${extract.sufx}:source 
+					stable.${extract.suffix}:source 
 					installer.sh:install</userinput></para>
 				</listitem>
 			</varlistentry>
@@ -320,7 +320,7 @@ formats. </userinput></programlisting></para>
 				<listitem>
 					<para>Specifying use_zip is optional, only use it if 
 					the file downloades is zipped rather than tarred and 
-					gziped. use_zip set ${extract.sufx} to .zip and 
+					gziped. use_zip set ${extract.suffix} to .zip and 
 					extract.cmd to unzip, extract.pre_args to -q and 
 					extract.post_args to "-d $portpath/$workdir".</para>
 					
@@ -333,7 +333,7 @@ formats. </userinput></programlisting></para>
 				<listitem>
 					<para>Specifying use_bzip2 is optional, only use it 
 					if the file downloades is bzipped rather than tarred 
-					and gziped. use_bzip2 set ${extract.sufx} to .bzip2 
+					and gziped. use_bzip2 set ${extract.suffix} to .bzip2 
 					and extract.cmd to bzip2.</para>
 					
 					<para><userinput>use_bzip2 yes</userinput></para>
@@ -547,7 +547,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 						checksum.</para>
 						
 						<para><programlisting><userinput>
-						${distname}-${extract.sufx} md5 65b89365a65dcad71d4402b48 \
+						${distname}-${extract.suffix} md5 65b89365a65dcad71d4402b48 \
 						foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 							</programlisting></para>
 
