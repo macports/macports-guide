@@ -6,7 +6,7 @@
     <title>Portfile details</title>
     <para> This Chapter describes in detail how each part of a portfile is works and is used. </para>
     <sect1>
-    	<title>General dyntax</title>
+    	<title>General syntax</title>
     	<para>A Portfile is a TCL script, so the syntax used must be valid TCL or the Portfile will not work. The basic syntax of the Portfile has been designed so most tasks are performed using key value(s) combinations. Many people don't realise it is TCL until they want to do something more advanced and realise all that power is there.</para>
 		<para>All key value pairs in a Portfile are single lines so line breaks must be escaped with a back solidus '\'. </para>
 		<para>Variables syntax is ${foo} for the foo variant.</para>
