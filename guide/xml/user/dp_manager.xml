@@ -40,16 +40,9 @@
       project.  It will allow users to browse through available ports and
       their descriptions and to download, install, and uninstall the
       software.  DarwinPorts Manager.app is currently under development,
-      and is based on the older Ports Manager.app.  There is a Port for
-      the older Ports Manager.app, and will be in the future for
-      DarwinPorts Manager.app, so you can use DarwinPorts to install it
-      for you!  <userinput>sudo port install PortsManager</userinput>.
-      Ports Manager.app will be installed in your
-      <filename>/Applications/Utilities</filename> folder.  A <ulink
-      url='http://www.opendarwin.org/~fkr/portsmanager.png'>screen shot
-      is available</ulink> of Ports Manager.app in action.</para>
+      and is based on the older Ports Manager.app.</para>
 
-    <para>We will also be providing a binary installer (a '.pkg') file in
+    <para>We will be providing a binary installer (a '.pkg') file in
       the near future for DarwinPorts Manager.app.</para>
   </sect1>
 </chapter>
