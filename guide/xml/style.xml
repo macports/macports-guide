@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter>
+	<title>Style Guide</title> 
+	<sect1>
+		<title>Overview</title> 
+		<para>
+			A port consists of a directory and its contents, within a category subdi- rectory of the root of the ports tree. This document serves as a refer- ence for the directory structure of a single port and the layout of the files within. 
+		</para>
+		<para>
+			The only required file in a port is Portfile. The port file should be thought of as a set of declarations rather than a piece of code. It is best to format the port file is if it were a table consisting of keys and values. In fact, the simplest of ports will only contain a small block of values. Therefore, whitespace should not be strown about haphazardly. Nicely formatted compact tables will result in more values being visible at the same time. 
+		</para>
+		<para>
+			Use tabs to align items into columns. The left side should consist of single words, and will be separated from the more complex right side by a number of tabs that will result in all items begining on the same column. 
+		</para>
+	</sect1>
+	<sect1>
+		<title>Specifics</title> 
+		<sect2>
+			<title></title> 
+			<para>
+			</para>
+		</sect2>
+		<sect2>
+			<title>Portsystem</title> 
+			<para>
+				At the top of the port file is the requirement statement. There is a single space between the &ldquo;PortSystem&rdquo; statement and the version number. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Variable assignments</title> 
+			<para>
+				Variable assignments such as &ldquo;set libver&rdquo; can be considered a single word on the left side, with a single space between &ldquo;set&rdquo; and the variable name, followed by tabs to line up with the right side. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Categories</title> 
+			<para>
+				The first category listed for a port is the port's primary category and should coincide with the subdirectory that the port resides in. Additional categories can be listed, but should be descriptive and accurate. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Items Across Multipl Lines</title> 
+			<para>
+				When items require multiple lines, they can be separated from the previous and next items with a blank line. Indent the additional lines to the same column that the right side begins on in the first line. If a single statement needs to span multiple lines, use a 2 space indentation from the first line for all additional lines. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Braces or Curly Brackets &ldquo;&lcub;&rcub;&rdquo;</title> 
+			<para>
+				the braces may appear on the first and last lines rather than on their own lines. This is done because the right side of the port file is already indented, and to make port file read like a table. Use a single space after the brace. Indent additional lines to this same column. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Variants</title> 
+			<para>
+				Variants are like any other part of the port file. Space, indent, and format them the same way other sections are formatted. The actual vari- ant statement, &ldquo;variant&rdquo; followed by the name of the variant, can be treated as a single statement and thus placed together on the left side and separated by a single space. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Contents Lists</title> 
+			<para>
+				Short contents lists should appear within the port file, listing each file on a single line, using backslashes to continue the list over the line breaks. If the list is long, it is often better to place the contents in another file named something like &ldquo;contents&rdquo; and pull it into the port file with an &ldquo;include&rdquo; statement. In these cases it may also make sense to use &ldquo;&lcub;&rcub;&rdquo; braces to group the file names instead of continuing across lines by escaping newlines, although this breaks the consistancy of symbol usage within the port file. If a variant changes the items installed the variant content file should be named &ldquo;contents-foo&rdquo;, where foo is the name of the variant. 
+			</para>
+		</sect2>
+		<sect2>
+			<title>Patch Files</title> 
+			<para>
+				Patch files reside in the files/ directory in the port's base directory. There should be one patch file for every file that needs to be patched. It is perfectly reasonable to use provided patches that affect multiple files, but do not create new patches that do so. Their names should begin with &ldquo;patch-&rdquo;. The rest of the name should come from the name of the file that they apply to. In many cases just the base name of the file being patched is enough. For files such as &ldquo;Makefile&rdquo; this may not be the case. In this case, use enough components of the file's path to uniquely distinguish the file. Separate the components with &rsquo;-&rsquo; characters. The patch should apply with &ldquo;patch -p0&rdquo; from the working source directory of the port. 
+			</para>
+		</sect2>
+	</sect1>
+</chapter>

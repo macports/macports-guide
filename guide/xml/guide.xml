@@ -12,6 +12,8 @@
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="quick.xml" />
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="details.xml" /> 
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="special.xml" /> 
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="variants.xml" />
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="style.xml" />
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="testing.xml" /> 
 <xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="commands.xml" /> 
 
