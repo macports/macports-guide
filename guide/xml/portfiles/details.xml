@@ -1024,47 +1024,45 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
             destroot keys in their place.</para>
 		</sect1>
 
-		<sect1>
-			  <title>StartupItems</title>
+	<sect1>
+		<title>StartupItems</title>
 			<para>To create StartupItems for your port, use these directives. It is considered good style to use the startupitem commands instead of creating a rc.s-tyle script.</para>
-
 			<variablelist>
-			<varlistentry id="startupitem.create">
-				<term>startupitem.create</term>
-				<listitem>
-					<para>this triggers the creation of a StartupItem (yes/no)</para>
-				</listitem>
-			</varlistentry>
+				<varlistentry id="startupitem.create">
+					<term>startupitem.create</term>
+					<listitem>
+						<para>this triggers the creation of a StartupItem (yes/no)</para>
+					</listitem>
+				</varlistentry>
 
-			<varlistentry id="startupitem.name">
-				<term>startupitem.name</term>
-				<listitem>
-					<para>sets the name for the StartupItem, defaults to ${portname}</para>
-				</listitem>
-			</varlistentry>
+				<varlistentry id="startupitem.name">
+					<term>startupitem.name</term>
+					<listitem>
+						<para>sets the name for the StartupItem, defaults to ${portname}</para>
+					</listitem>
+				</varlistentry>
 
-			<varlistentry id="startupitem.start">
-				<term>startupitem.start</term>
-				<listitem>
-					<para>command to call to start the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh start</para>
-				</listitem>
-			</varlistentry>
+				<varlistentry id="startupitem.start">
+					<term>startupitem.start</term>
+					<listitem>
+						<para>command to call to start the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh start</para>
+					</listitem>
+				</varlistentry>
 
-			<varlistentry id="startupitem.stop">
-				<term>startupitem.start</term>
-				<listitem>
-					<para>command to call to stop the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh stop</para>
-				</listitem>
-			</varlistentry>
+				<varlistentry id="startupitem.stop">
+					<term>startupitem.stop</term>
+					<listitem>
+						<para>command to call to stop the daemon etc.; defaults to ${prefix}/etc/rc.d/${portname}.sh stop</para>
+					</listitem>
+				</varlistentry>
 
-			<varlistentry id="startupitem.restart">
-				<term>startupitem.start</term>
-				<listitem>
-					<para>command to call to restart the daemon etc.; defaults to execute stop, start on self</para>
-				</listitem>
-			</varlistentry>
+				<varlistentry id="startupitem.restart">
+					<term>startupitem.restart</term>
+					<listitem>
+						<para>command to call to restart the daemon etc.; defaults to execute stop, start on self</para>
+					</listitem>
+				</varlistentry>
 			</variablelist>
-
 	</sect1>
 
 	<sect1>
