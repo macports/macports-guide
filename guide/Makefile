@@ -1,34 +1,69 @@
-# $Id: Makefile,v 1.2 2003/03/25 07:44:41 michaelm Exp $
+# $Id: Makefile,v 1.3 2003/05/14 16:04:23 michaelm Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
 
+## Targets
+#
+# html  : Makes unformated, chunked html for xml
+# xhtml : Makes unformated, chunked xhtml for xml
+# tidy  : Tidies (formats, indents) xhtml and html
+# clean : Deletes html and xhtml
+# all   : html, xhtml and tidy
+
+## Details and Caveats
+#@
+# Requires docbook-xsl and docbook-xml ports to have been installed (or the 
+# stylesheets and dtds to have been installed elswhere.
+# This Makefile assumes things have been installed using prefix, you may want
+# to override some of the variables below to match your local installation. 
+
+# To use local dtd catalogs you must first create the catalog, I currently assume
+# the catalogs are in ${prefix}/etc/xml, if yours are elswhere you should alter
+# the $SGML_CATALOG_FILES variable. 
+
 # set XML_DEBUG_CATALOG= to see catalog debugging info
+
+
+SOURCEDIR?=		xml
+DOCBOOK_XSL?=	        ${PREFIX}/share/xsl/docbook-xsl/1.55.0
+HTMLDIR?=		html
+XHTMLDIR?=		xhtml
+STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
+XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
+SGML_CATALOG_FILES?=    ${PREFIX}/etc/xml
+XML_DEBUG_CATALOG?=
 
 .PHONY : all
 .PHONY : clean
-.PHONY : install
+#.PHONY : install
 .PHONY : html
 .PHONY : xhtml
+.PHONY : check
+.PHONY : tidy
 
-SOURCEDIR?=		xml
-DOCBOOK_XSL?=	${PREFIX}/share/xsl/docbook-xsl/1.55.0
-HTMLDIR?=		html
-XHTMLDIR?=		xhtml
-STYLESHEET?=	${DOCBOOK_XSL}/html/chunk.xsl
-XSTYLESHEET?=	${DOCBOOK_XSL}/xhtml/chunk.xsl
-
+check:
+	xmllint --xinclude --noout "${SOURCEDIR}/guide.xml"
 
 html:
-
 	mkdir -p html
 	xsltproc --xinclude -o "${HTMLDIR}/" "${STYLESHEET}" "${SOURCEDIR}/guide.xml"
 	
-xhtml:
+xhtml: 
 
 	mkdir -p xhtml
 	xsltproc --xinclude -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
-	
-all: html xhtml
+
+all: html xhtml tidy
+
+tidy:
+# This target will *only* work if you have installed the tidy program from
+# http://tidy.sourceforge.net/ somewhere in your path.
+
+	-tidy -quiet -modify -indent ${HTMLDIR}/*
+	-tidy -quiet -modify -indent -xml ${XHTMLDIR}/*
+
+clean:
+	rm -fr html xhtml
 	
 include ../../base/Mk/dports.mk
