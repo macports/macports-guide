@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.3 2003/05/14 16:04:23 michaelm Exp $
+# $Id: Makefile,v 1.4 2003/05/16 06:34:57 mij Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
@@ -12,9 +12,11 @@
 # all   : html, xhtml and tidy
 
 ## Details and Caveats
-#@
+# 
 # Requires docbook-xsl and docbook-xml ports to have been installed (or the 
-# stylesheets and dtds to have been installed elswhere.
+# stylesheets and dtds to have been installed elswhere, and requires the
+# libxslt port to be installed.
+
 # This Makefile assumes things have been installed using prefix, you may want
 # to override some of the variables below to match your local installation. 
 
@@ -57,8 +59,9 @@ xhtml:
 all: html xhtml tidy
 
 tidy:
-# This target will *only* work if you have installed the tidy program from
-# http://tidy.sourceforge.net/ somewhere in your path.
+# This target will *only* work if you have installed the www/tidy port
+# or if have tidy from http://tidy.sourceforge.net/ installed somewhere
+# in your path.
 
 	-tidy -quiet -modify -indent ${HTMLDIR}/*
 	-tidy -quiet -modify -indent -xml ${XHTMLDIR}/*
