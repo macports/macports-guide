@@ -538,14 +538,6 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 						<para><userinput>include contents</userinput>
 						</para>
 						<tip>
-							<para>Escaping a lot of lines in a contents file can be rather irritating, so the list can be wrapped in curly brackets.</para>
-							<para><programlisting>
-contents &lcub;
-bin/foo
-lib/foolib
-man/man1/foo.1.gz
-&rcub;
-							</programlisting></para>
 							<para>The following is very useful for partly automating the contents list creation process. The snippet assumes you are installing in the default &dollar;&lcub;prefix&rcub; /opt/local. You must only include files that your port should uninstall so leave out directories like bin or share. Also, don't include reciept or Portfile directories under &dollar;&lcub;prefix&rcub;/var/db/dports. </para>
 							<programlisting>
 % find -d /opt/local &gt; /tmp/existing.files

@@ -274,7 +274,7 @@ include         contents
 					<sect2>
 						<title>Don't quote or wrap items in '{}'.</title> 
 						<para>
-							Frequently people submit ports with the description or configure arguments quoted, or wrapped in curly brackets. In general this is not correct. The exception is contents lists, which have been specifically designed to handle the list being wrapped in curly brackets because of the very large number of files some ports install make escaping all the newlines extremely irritating. 
+							Frequently people submit ports with the description or configure arguments quoted, or wrapped in curly brackets. In general this is not correct.
 						</para>
 					</sect2>
 				</sect1>
