@@ -51,6 +51,8 @@
 
     <xi:include href="user/user.xml" /> 
 
+    <xi:include href="user/portimages.xml" /> 
+
     <xi:include href="user/dp_manager.xml" /> 
   </part>
 
@@ -79,6 +81,8 @@
     <title>DarwinPorts Internals</title>
   
     <xi:include href="internals/internals.xml" /> 
+    <!-- <xi:include href="internals/portimages.xml" /> 
+    <xi:include href="internals/registry.xml" /> -->
 	</part>
 
 	<part>
