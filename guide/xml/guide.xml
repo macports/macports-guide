@@ -71,7 +71,8 @@
 
     <xi:include href="portfiles/testing.xml" /> 
     
-    <xi:include href="portfiles/commands.xml" /> 
+		<!-- This chapter seems like a dup of the Details chapter -->
+    <!-- <xi:include href="portfiles/commands.xml" /> -->
   </part>
 
   <part>
