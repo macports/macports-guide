@@ -340,7 +340,7 @@ Done</literallayout></computeroutput></para>
 
       <programlisting>post-configure {
     reinplace "s|change.this.to.a.server|irc.openprojects.net|g" \
-              "${workdir}/${worksrcdir}/config.h"
+              "${worksrcpath}/config.h"
 }</programlisting>
 
       <para>This example replaces the occurrence of
