@@ -104,22 +104,22 @@
   <sect1>
     <title>Committer's Category Responsibility List</title>
 
-		<para>DarwinPorts has at least one comitter responsible for each
+		<para>DarwinPorts has at least one committer responsible for each
 		category of ports (<filename>www</filename>,
 		<filename>textproc</filename>, etc).  This is a list of those
-		comitters.</para>
+		committers.</para>
 
 		<table frame="all">
 			<title>Committer's Category Responsibility List</title>
 			<tgroup cols="3" align="left" colsep="1" rowsep="1">
 				<colspec colname="category"/>
-				<colspec colname="comittera"/>
-				<colspac colname="comitterb"/>
+				<colspec colname="committera"/>
+				<colspac colname="committerb"/>
 				<thead>
 					<row>
 						<entry>Category</entry>
-						<entry>Comitter A</entry>
-						<entry>Comitter B</entry>
+						<entry>Committer A</entry>
+						<entry>Committer B</entry>
 					</row>
 				</thead>
 				<tbody>
