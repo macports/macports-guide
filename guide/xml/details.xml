@@ -79,6 +79,13 @@
 				</listitem>
 			</varlistentry>
 			
+			<varlistentry id='binpath'>
+				<term>binpath</term>
+				<listitem>
+					<para>Default PATH to use in finding executables. Read only.</para>
+				</listitem>
+			</varlistentry>
+
 			<varlistentry id='libpath'>
 				<term>libpath</term>
 				<listitem>

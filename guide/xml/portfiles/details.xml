@@ -79,11 +79,18 @@
 				</listitem>
 			</varlistentry>
 			
+			<varlistentry id='binpath'>
+				<term>binpath</term>
+				<listitem>
+					<para>Default PATH to use in finding executables. Read only.</para>
+					
+				</listitem>
+			</varlistentry>
+
 			<varlistentry id='libpath'>
 				<term>libpath</term>
 				<listitem>
-					<para>Path to the DarwinPorts TCL libraries. Read 
-					only.</para>
+					<para>Path to the DarwinPorts TCL libraries. Read only.</para>
 					
 				</listitem>
 			</varlistentry>
