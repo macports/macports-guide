@@ -139,7 +139,7 @@
 				</listitem>
 			</varlistentry>
 			
-			<varlistentry id='os_arch'>
+			<varlistentry id='os.arch'>
 				<term>os_arch</term>
 				<listitem>
 					<para>Identifies hardware type (ie, "Power Macintosh"). 
@@ -148,7 +148,7 @@
 				</listitem>
 			</varlistentry>
 			
-			<varlistentry id='os_version'>
+			<varlistentry id='os.version'>
 				<term>os_version</term>
 				<listitem>
 					<para>Version number of operating system (ie "6.0"). 
