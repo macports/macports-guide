@@ -142,7 +142,7 @@
 			<varlistentry id='os.arch'>
 				<term>os_arch</term>
 				<listitem>
-					<para>Identifies hardware type (ie, "Power Macintosh"). 
+					<para>Identifies hardware type (ie, "powerpc"). 
 					Read Only</para>
 					
 				</listitem>
