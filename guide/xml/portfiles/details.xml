@@ -652,11 +652,24 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 						If the filename is ambiguous because there are 
 						multiple files with that name in the distribution, 
 						supply the path components to uniquely identify the 
-						file being patched. Diffs should be created with 
-						<userinput>diff -u file1 
-						file2 >../../files/patch-file.diff</userinput>. 
-						Patches downloaded from patchsites must have 
+						file being patched. Diffs should be created from the top
+						level of <varname>worksrcdir</varname>, the working source
+						directory where the port was extracted, with a command
+						similar to the following:</para>
+
+						<para><userinput>diff -u -b -w path/to/filename.org
+						path/to/filename >
+						../../files/patch-filename.diff</userinput></para>
+
+						<para>If, for example the original file is
+						<filename>path/to/filename.orig</filename> and the file that
+						was changed is <filename>path/to/filename</filename>.</para>
+						
+						<para>Patches downloaded from patchsites must have 
 						checksumes.</para>
+
+						<para>To specify patchfiles in a portfile:</para>
+
 						<para><userinput>patchfiles patch-Makefile.in 
 						patch-source.c</userinput></para>
 
@@ -908,8 +921,8 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
               </listitem>
             </varlistentry>
 
-            <varlistentry id='destroot.destroot'>
-              <term>destroot.destroot</term>
+            <varlistentry id='destroot.destdir'>
+              <term>destroot.destdir</term>
               <listitem>
                 <para>Arguments passed to ${destroot.cmd} in order to 
                   install correctly into the destroot.</para>
