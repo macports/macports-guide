@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Special Considerations</title>
+    <sect1>
+    	<title>OS X Applications</title>
+    	<para></para>
+		<sect2>
+			<title>Installation</title>
+			<para></para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>XFree86 Servers</title>
+    	<para></para>
+		<sect2>
+			<title>Prefix</title>
+			<para></para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>Perl Modules and Other Language Libraries and Plug-ins</title>
+    	<para></para>
+		<sect2>
+			<title>Perl</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>TCL</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Ruby</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Python</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Others</title>
+			<para></para>
+		</sect2>
+	</sect1>
+	
+	
+</chapter>

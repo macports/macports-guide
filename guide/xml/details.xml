@@ -1,0 +1,652 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Portfile Details</title>
+    <para> This Chapter describes in detail how each part of a portfile is works and is used. </para>
+    <sect1>
+    	<title>General Syntax</title>
+    	<para>A Portfile is a TCL script, so the syntax used must be valid TCL or the Portfile will not work. The basic syntax of the Portfile has been designed so most tasks are performed using key value&lpar;s&rpar; combinations. Many people don't realise it is TCL until they want to do something more advanced and realise all that power is there.</para>
+		<para>All key value pairs in a Portfile are single lines so line breaks must be escaped with a back solidus &lsquo;&bsol;&rsquo;. </para>
+		<para>Variables syntax is &dollar;&lcub;foo&rcub; for the foo variant.</para>
+    	<sect2>
+			<title>Special characters</title>
+			<para>As the Portfile is a TCL script certain charachters are &ldquo;special&rdquo;. These have a special meaning in TCL and if you dont want that special meaning, they must be escaped. In general a charachter is escaped using the back solidus &lsquo;&bsol;&rsquo;. The main characters you need to be careful with are <simplelist type="inline">
+					<member>&dollar;</member>
+					<member>&lcub;</member>
+					<member>&rcub;</member>
+					<member>&lsqb;</member>
+					<member>&rsqb;</member>
+					</simplelist></para>
+		</sect2>
+		<sect2>
+			<title>Required Keys</title>
+			<para>There is a small set of required key/value pairs without which a Portfile cannot be correct.</para>
+			<para>The required keys are 
+				<simplelist type="vert">
+					<member>PortSystem</member>
+					<member>name</member>
+					<member>version</member>
+					<member>maintainers</member>
+					<member>categories</member>
+					<member>description</member>
+					<member>master_sites</member>
+					<member>checksums</member>
+					<member>contents</member>
+				</simplelist>
+			Each of these keys is described below. 
+			</para>
+				
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>Useful Preset Variables</title>
+		<para></para>
+		<variablelist>
+			<varlistentry id='prefix'>
+				<term>prefix</term>
+				<listitem>
+					<para>Installation prefix, set in the systemwide configuration file /etc/ports/ports.conf. Can be overridden on a per port basis. For example XFree86 needs to install in the /usr tree, or aqua applications are installed in /Applications/Ports</para>
+					<para><userinput>prefix /Applications/Ports</userinput></para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='libpath'>
+				<term>libpath</term>
+				<listitem>
+					<para>Path to the Darwinports TCL libraries. Read only.</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='portpath'>
+				<term>portpath</term>
+				<listitem>
+					<para>Path to the directory containing the downloaded Portfiles. Read Only.</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='filedir'>
+				<term>filedir</term>
+				<listitem>
+					<para>Path to port files relative to &dollar;&lcub;portpath&rcub;. Read Only.</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='workdir'>
+				<term>workdir</term>
+				<listitem>
+					<para>Path to work directory relative to &dollar;&lcub;portpath&rcub;. Read Only</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='workpath'>
+				<term>workpath</term>
+				<listitem>
+					<para>Full path to work directory. Read only.</para>
+				</listitem>
+			</varlistentry>
+						
+			<varlistentry id='distpath'>
+				<term>distpath</term>
+				<listitem>
+					<para>Location to store downloaded distfiles. Read Only</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='os_arch'>
+				<term>os_arch</term>
+				<listitem>
+					<para>Identifies hardware type (ie, "Power Macintosh"). Read Only</para>
+					<para><userinput></userinput></para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='os_version'>
+				<term>os_version</term>
+				<listitem>
+					<para>Version number of operating system (ie "6.0"). Read Only.</para>
+				</listitem>
+			</varlistentry>
+		</variablelist>
+	</sect1>
+
+	<sect1>
+		<title>Initialization Phase</title>
+		<para>The first part of a Portfile deals with initialisation. Most of the keys (or options) in the initialisation phase  are required for all Portfiles. 
+		</para>
+		<variablelist>
+			<varlistentry id='PortSystem'>
+				<term>PortSystem</term>
+				<listitem>
+					<para>Determines which version of the portsystem the Portfile is compatible with. Darwinports supports versioning of the PortSystem so if new, backwards incompatible changes are introduced older Portfiles can continue to use the older version of the system. The PortSystem line wraps the loading of TCL libraries appropriate for that version of Darwinports. If you don't load the libraries, nothing else in the Portfile will work. Thus, the PortSystem should be the top line in the Portfile.</para>
+					<para>Currently Darwinports only has version 1.0 so you should put: <userinput>PortSystem 1.0</userinput> in your Portfile.
+					</para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='name'>
+				<term>name</term>
+				<listitem>
+					<para>The name of the Port. By default this is used to build the url from which the Port is fetched. The name should be lowercase.</para>
+					<para><userinput>name foo</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='version'>
+				<term>version</term>
+				<listitem>
+					<para>The version of the Port. By default this is used to build the url from which the Port is fetched. </para>
+					<para><userinput>version 1.23.45</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='categories'>
+				<term>categories</term>
+				<listitem>
+					<para>The type of Port. The first category should be the same as the directory in which the Portfile is stored and therefore should be chosen with care. A Port may have more that one category but is not required to.</para>
+					<para><userinput>categories foo bar</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='description'>
+				<term>description</term>
+				<listitem>
+					<para>One sentence describing what the port is, use long_description for more detail. If you use long_description you must still use description.</para>
+					<para><userinput>description foo performs the transformation of bar into xml</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='long_description'>
+				<term>long_description</term>
+				<listitem>
+					<para>Description of what the port is/does. Long lines can be broken with escaped newlines. </para>
+					<para><programlisting><userinput>long_description foo performs the transformation of bar into xml &bsol;
+This allows users to rapidly transform documentation into multiple formats. </userinput></programlisting></para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='maintainers'>
+				<term>maintainers</term>
+				<listitem>
+					<para>List the email address or addresses of the Portfile maintainer(s)</para>
+					<para><userinput>maintainers joeblogs@somerandom.domain.com</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='revision'>
+				<term>revision</term>
+				<listitem>
+					<para>Local revision number of portfile.  Increment for port revisions. The default for this is 0. It should be incremented for revisions that change the installed port.</para>
+					<para><userinput>revision 1.1</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='extract.sufx'>
+				<term>extract.sufx</term>
+				<listitem>
+					<para>By default the value of &dollar;&lcub;extract.sufx&rcub; is .tar.gz. Specifying extract.sufx is optional, only use it if the suffix is not &lsquo;tar.gz.&rsquo;. </para>
+					<para><userinput>extract.sufx .tgz</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='distname'>
+				<term>distname</term>
+				<listitem>
+					<para>By default distname is &dollar;&lcub;name&rcub;-&dollar;&lcub;version&rcub;. Specifying distname is optional, only use it if the file that contains the port is not &dollar;&lcub;name&rcub;-&dollar;&lcub;version&rcub; (without the extract.sufx).</para>
+					<para><userinput>distname &dollar;&lcub;name&rcub;_&dollar;&lcub;version&rcub;</userinput></para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='distfiles'>
+				<term>distfiles</term>
+				<listitem>
+					<para>Defaults to &dollar;&lcub;distname&rcub;.&dollar;&lcub;extract.sufx&rcub;. Specifying distfiles is optional, only use it if the file that contains the port is not &dollar;&lcub;distname&rcub;.&dollar;&lcub;extract.sufx&rcub; or more than one file needs to be retirieved. </para>
+					<para><userinput>distfiles stable.&dollar;&lcub;extract.sufx&rcub; installer.sh</userinput></para>
+					<para>Some ports require multiple items to be fetched from different sites, this can be achieved using tags. The tags are then used to identify which of the master_sites to fetch the file from.see master_sites below for more information. As with long_description, long lines should be broken up with escaped newlines. </para>
+					<para><userinput>distfiles stable.&dollar;&lcub;extract.sufx&rcub;:source installer.sh:install</userinput></para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='use_zip'>
+				<term>use_zip</term>
+				<listitem>
+					<para>Specifying use_zip is optional, only use it if the file downloades is zipped rather than tarred and gziped. use_zip set &dollar;&lcub;extract.sufx&rcub; to .zip and extract.cmd to unzip, extract.pre_args to -q and extract.post_args to &rdquo;-d &dollar;portpath/&dollar;workdir&ldquo;.</para>
+					<para><userinput>use_zip yes</userinput></para>
+				</listitem>
+			</varlistentry>
+			<varlistentry id='use_bzip2'>
+				<term>use_bzip2</term>
+				<listitem>
+					<para>Specifying use_bzip2 is optional, only use it if the file downloades is bzipped rather than tarred and gziped. use_bzip2 set &dollar;&lcub;extract.sufx&rcub; to .bzip2 and extract.cmd to bzip2.</para>
+					<para><userinput>use_bzip2 yes</userinput></para>
+				</listitem>
+			</varlistentry>
+			
+		</variablelist>
+	</sect1>
+	<sect1>
+		<title>Fetch Phase</title>
+		<para></para>
+		<variablelist>	
+			<varlistentry id="master_sites">
+				<term>master_sites</term>
+				<listitem>
+					<para> A whitespace delimited list of urls from which the source of the port can be retrieved. The URL should not include the name of the file being retrieved.</para>
+					<para><userinput></userinput></para>
+					<para>If you have multiple sites you should break up long lines with escapend newlines. </para>
+					<para><programlisting><userinput>master_sites http://www.somesite.org/files/ &bsol;
+http://www.somemirror.org/somesite_org/files/</userinput></programlisting></para>
+					<tip><para>Always put the trailing forward solidus at the end of a url, and remember to not include the filename itself.</para></tip>
+					<para>If you need to retrieve files from different sites you can label the urls with tags.</para>
+					<para><programlisting><userinput>master_sites http://www.somesite.org/files/:source &bsol;
+http://www.someothersite.org/somesite_extras/:extras/</userinput></programlisting></para>
+
+				</listitem>
+			</varlistentry>
+			
+				<varlistentry id='patchsites'>
+					<term>patch_sites</term>
+					<listitem>
+						<para>List sites from which to download patchfiles from, syntax is the same as master_sites. See the Patch phase below for more information. </para>
+						<para><userinput>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+		</variablelist>
+	</sect1>
+	<sect1>
+		<title>Integrity Checking Phase</title>
+		<para>Each file downloaded is integrity checked using a checksum. This is used to help prevent trojaned sources being downloaded. If you do not include the checksums line, the file will be downloaded and the checksum reported as a conenience to the Portfile author.</para>
+		<variablelist>
+			<varlistentry id='checksums'>
+					<term>checksums</term>
+					<listitem>
+						<para>Currently only the md5 checksum is supported. Specify the filename, the checksum type and the checksum.</para>
+						<para>
+							<programlisting><userinput>
+&dollar;&lcub;distname&rcub;-&dollar;&lcub;extract.sufx&rcub; md5 65b89365a65dcad71d4402b48 &bsol;
+foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
+							</programlisting>
+						</para>
+						<tip><para>If you only have one file being fetched the filename can be omitted. </para>
+						<para><userinput>md5 65b89365a65dcad71d4402b48</userinput></para></tip>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+	</sect1>
+	<sect1>
+		<title>Extract Phase</title>
+		<para></para>
+		<variablelist>
+			<varlistentry id='extract.only'>
+					<term>extract.only</term>
+					<listitem>
+						<para>List of files to extract into &dollar;&lcub;workpath&rcub;, defaults to &dollar;&lcub;distfiles&rcub;. Useful when some files are not compressed. Only use extract.only if the default does not do the right thing.</para>
+						<para><userinput>extract.only foo.tar.gz bar.tar.gz</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+				<varlistentry id='extract.cmd'>
+					<term>extract.cmd</term>
+					<listitem>
+						<para>Command to perform extraction. Defaults to gzip. </para>
+						<para><userinput>extract.cmd gunzip</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+				<varlistentry id='extract.pre_args'>
+					<term>extract.pre_args</term>
+					<listitem>
+						<para>Arguments added to extract command before a file name. Defaults to -dc. </para>
+						<para><userinput>extract.pre_args    -cd</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+				<varlistentry id='extract.args'>
+					<term>extract.args</term>
+					<listitem>
+						<para>Arguments to extract.cmd, Read Only. The value is &dollar;&lcub;distpath&rcub;/&dollar;&lcub;distfile&rcub;
+						</para>
+					</listitem>
+				</varlistentry>
+				
+				<varlistentry id='extract.post_args'>
+					<term>extract.post_args></term>
+					<listitem>
+						<para>Arguments added to extract command after a file name. Defaults to &ldquo;| tar -xf&rdquo;. </para>
+						<para><userinput>extract.post_args   | tar -xf</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+			</variablelist>
+	</sect1>
+	<sect1>
+		<title>Patch Phase</title>
+		<para></para>
+			<variablelist>
+				<varlistentry id='patchfiles'>
+					<term>patchfiles</term>
+					<listitem>
+						<para>List of patch files to apply to source. Patch files can be supplied in a port in a directory named files within the port directory or fetched from &dollar;&lcub;patchsites&rcub;. Each patchfile supplied by the Portfile author should patch a single file. diffs should be created with <userinput>diff -u file1 file2 >../../files/patch-file</userinput>. Patches downloaded from patchsites must have checksumes.</para>
+						<para><userinput>patchfiles patch-Makefile.in patch-source.c</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+				
+			</variablelist>
+	</sect1>
+	<sect1>
+		<title>Configuration Phase</title>
+		<para></para>
+			
+			<sect2>
+				<title> Automake and Autoconf</title>						
+					<variablelist>
+						<varlistentry id='use_automake'>
+							<term>use_automake</term>
+							<listitem>
+								<para>If set to yes, use automake</para>
+								<para><userinput>use_automake yes</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='automake.env'>
+							<term>automake.env</term>
+							<listitem>
+								<para>Environmental variables to pass to automake</para>
+								<para><userinput>CFLAGS=&ldquo;-I&dollar;&lcub;prefix&rcub;/include&rdquo;</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='automake.args'>
+							<term>automake.args</term>
+							<listitem>
+								<para>Arguments to pass to automake. </para>
+								<para><userinput>automake.args  --foreign</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='automake.dir'>
+							<term>automake.dir</term>
+							<listitem>
+								<para>Directory in which to run &dollar;&lcub;automake.cmd&rcub;. Defaults to &dollar;&lcub;worksrcpath&rcub;</para>
+								<para><userinput>automake.dir</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='use_autoconf'>
+							<term>use_autoconf</term>
+							<listitem>
+								<para>If set to yes, run autoconf. </para>
+								<para><userinput>use_autoconf   yes</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='autoconf.env'>
+							<term>autoconf.env</term>
+							<listitem>
+								<para>Environmental variables to pass to autoconf</para>
+								<para><userinput>autoconf.env   CFLAGS=I&dollar;&lcub;prefix&rcub;/include/gtk12</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='autoconf.args'>
+							<term>autoconf.args</term>
+							<listitem>
+								<para>Arguments to pass to autoconf. </para>
+								<para><userinput>autoconf.args  -l src/aclocaldir</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='autoconf.dir'>
+							<term>autoconf.dir</term>
+							<listitem>
+								<para>Directory in which to run &dollar;&lcub;autoconf.cmd&rcub;. </para>
+								<para><userinput>autoconf.dir   src</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+					</variablelist>
+				</sect2>
+				<sect2>
+					<title>configure</title>
+					<variablelist>
+						<varlistentry id='configure.env'>
+							<term>configure.env</term>
+							<listitem>
+								<para>Set environment variables for configure.</para>
+								<para><userinput>configure.env CFLAGS=&ldquo;-I&dollar;&lcub;prefix&rcub;/include&rdquo;</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='configure.pre_args'>
+							<term>configure.pre_args</term>
+							<listitem>
+								<para>Arguments added to configure command before &dollar;&lcub;configure.args&rcub;. Defaults to --prefix=&dollar;&lcub;prefix&rcub;. </para>
+								<para><userinput>configure.pre_args       --prefix=&dollar;&lcub;prefix&rcub;/apache2</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+						
+						<varlistentry id='configure.args'>
+							<term>configure.args</term>
+							<listitem>
+								<para>Arguments to pass to configure.</para>
+								<para><userinput>configure.args      --etcdir=&dollar;&lcub;prefix&rcub;/etc</userinput>
+								</para>
+							</listitem>
+						</varlistentry>
+					</variablelist>
+				</sect2>
+				
+	</sect1>
+	<sect1>
+		<title>Build Phase</title>
+		<para></para>
+		
+		<variablelist>
+			
+			<varlistentry id='build.cmd'>
+				<term>build.cmd</term>
+				<listitem>
+					<para>Make command to run relative to &dollar;&lcub;worksrcdir&rcub;. Defaults to make.</para>
+					<para><userinput>build.cmd pbxbuild</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='build.type'>
+				<term>build.type</term>
+				<listitem>
+					<para>Type of make required, either 'gnu' or 'bsd' Sets build.cmd to either
+	 'gnumake' or 'bsdmake' accordingly</para>
+					<para><userinput>build.type     gnu</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='build.pre_args'>
+				<term>build.pre_args</term>
+				<listitem>
+					<para>Arguments to pass to &dollar;&lcub;build.cmd&rcub; before &dollar;&lcub;build.args&rcub;. Read only. Set to  &dollar;&lcub;build.target.current&rcub;
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='build.args'>
+				<term>build.args</term>
+				<listitem>
+					<para>Arguments to pass to &dollar;&lcub;build.cmd&rcub;</para>
+					<para><userinput>build.args     -DNOWARN</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='build.target.all'>
+				<term>build.target.all</term>
+				<listitem>
+					<para>Target to pass to make for building everything. Defaults to all.</para>
+					<para><userinput>build.target.all all-src</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+
+		</variablelist>
+	</sect1>
+	<sect1>
+		<title>Install Phase</title>
+		<para></para>
+		
+		<variablelist>
+			<varlistentry id='build.target.install'>
+					<term>build.target.install</term>
+					<listitem>
+						<para>Install target to pass to &dollar;&lcub;build.cmd&rcub;. Defaults to all.</para>
+						<para><userinput>build.target.install     install-src</userinput>
+						</para>
+					</listitem>
+				</varlistentry>
+			
+		</variablelist>
+	</sect1>
+	<sect1>
+		<title>Register Phase</title>
+		<para></para>
+		<variablelist>
+			<varlistentry id='contents'>
+					<term>contents</term>
+					<listitem>
+						<para>List of files to be installed by the port Files are assumed to be relative to &dollar;&lcub;prefix&rcub; unless the first character is a '/'.  </para>
+						<para><userinput>contents       bin/ls man/man1/ls.1.gz</userinput>
+						</para>
+						<para>All but the shortest contents lists should be included from a separate file. The other file should begin with the contents key, and have the same format as an inline contents list.</para>
+						<para><userinput>include contents</userinput>
+						</para>
+						<tip>
+							<para>Escaping a lot of lines in a contents file can be rather irritating, so the list can be wrapped in curly brackets.</para>
+							<para><programlisting>
+contents &lcub;
+bin/foo
+lib/foolib
+man/man1/foo.1.gz
+&rcub;
+							</programlisting></para>
+							<para>The following is very useful for partly automating the contents list creation process. The snippet assumes you are installing in the default &dollar;&lcub;prefix&rcub; /opt/local. You must only include files that your port should uninstall so leave out directories like bin or share. Also, don't include reciept or Portfile directories under &dollar;&lcub;prefix&rcub;/var/db/dports. </para>
+							<programlisting>
+% find -d /opt/local &gt; /tmp/existing.files
+% sudo port install
+% find -d /opt/local &gt; /tmp/more.files
+% diff -u /tmp/existing.files /tmp/more.files | grep ^\+\/ | \
+sed -e 's|^\+/opt/local/*||g' &gt; contents
+							</programlisting>
+						</tip>
+						 
+					</listitem>
+				</varlistentry>
+			
+		</variablelist>
+
+	</sect1>
+	
+
+	<sect1>
+    	<title>Dependencies</title>
+    	<para></para>    		
+    	<sect2>
+			<title>Principles</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Dependency Tests</title>
+			<para></para>
+			<variablelist>
+				<varlistentry>
+						<term> depends_fetch </term>
+						<listitem>
+						<para></para>
+						</listitem>
+				</varlistentry>
+				<varlistentry>
+						<term> depends_extract </term>
+						<listitem>
+						<para></para>
+						</listitem>
+				</varlistentry>
+				<varlistentry>
+						<term> depends_lib </term>
+						<listitem>
+						<para></para>
+						</listitem>
+				</varlistentry>
+				<varlistentry>
+						<term> depends_build </term>
+						<listitem>
+						<para></para>
+						</listitem>
+				</varlistentry>
+				<varlistentry>
+						<term> depends_run </term>
+						<listitem>
+							<para></para>
+						</listitem>
+				</varlistentry>	
+            </variablelist>
+        </sect2>
+    </sect1>
+	<sect1>
+		<title>TCL Primitives</title>
+			<para></para>
+		<sect2>
+			<title>reinplace</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>system</title>
+			<para></para>
+		</sect2>		
+		<sect2>
+			<title>file</title>
+			<para></para>
+		</sect2>
+	</sect1>
+	<sect1>
+		<title>Other</title>
+		<para></para>
+		<sect2>
+			<title>Pre and Post Phase Steps</title>
+			<variablelist>
+				<varlistentry>
+					<term>Pre-*</term>
+					<listitem>
+						<para></para>
+					</listitem>
+				</varlistentry>
+				
+				<varlistentry>
+					<term>Post-*</term>
+					<listitem>
+						<para>
+						</para>
+					</listitem>
+				</varlistentry>
+			</variablelist>
+		</sect2>
+		<sect2>
+			<title>Overriding a Phase</title>
+			<para>
+			</para>
+		</sect2>
+			
+    </sect1>
+ </chapter>
+    	
+
+		
+		

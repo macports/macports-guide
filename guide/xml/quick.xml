@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="iso-8859-1" ?>
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
 		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
 
-<chapter>
+<chapter id="quickstart">
+	<chapterinfo>
+		<keywordset>
+			<keyword>portfile</keyword>
+			<keyword>introduction</keyword>
+			<keyword>maintainer</keyword>
+		</keywordset>
+	</chapterinfo>
     <title>Quick Start</title>
     <sect1>
         <title>Introduction to a Portfile</title>
@@ -11,13 +18,14 @@
             Syntax is very straightforward. To begin with we are going to look at a simple example
             Portfile and then explain the syntax that is used. </para>
     </sect1>
-    <sect2>
+    <sect1>
         <title>Basic Portfile</title>
         <para> This is the first example (A real Portfile doesn't have the line numbers, they are
             used for clarity in the explanation only). </para>
-        <sect3>
+        <sect2>
             <title> Example Portfile 1</title>
-            <example label="expat-portfile">
+            <example>
+            	<title>Expat Portfile</title>
                 <programlisting><![CDATA[
 ########################### expat Portfile ################################## 
 01> PortSystem 1.0 
@@ -63,7 +71,8 @@
                     <term> categories </term>
                     <listitem>
                         <para> Each port must have at least one category and may have more than one.
-                            The primary category should be listed first. </para>
+                            The primary category should be listed first. (The primary category is 
+                            also the directory under which the port is stored). </para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
@@ -137,12 +146,13 @@
                     </listitem>
                 </varlistentry>
             </variablelist>
-        </sect3>
-        <sect3>
-            <title> Example Portfile 2></title>
+        </sect2>
+        <sect2>
+            <title> Example Portfile 2</title>
             <para> A second example Portfile will give you an idea of how to deal with slightly more
                 complicated ports. </para>
-            <example label="neon-portfile">
+            <example>   
+            	<title>Neon Portfile</title>
                 <programlisting><![CDATA[
 ###########################neon Portfile#################################### 
 01> PortSystem 1.0 
@@ -159,8 +169,8 @@
 12> depends_lib lib:libexpat.0.4:expat 
 13> configure.env LDFLAGS=-L$prefix/lib CPPFLAGS=-I$prefix/include 
 14> configure.args --with-ssl \ 
-15> --with-force-ssl \ 1
-6> --enable-xml \ 
+15> --with-force-ssl \ 
+16> --enable-xml \ 
 17> --enable-shared \ 
 18> --with-expat 
 19> 
@@ -223,19 +233,20 @@
                     </listitem>
                 </varlistentry>
             </variablelist>
-        </sect3>
-    </sect2>
-    <sect2>
+        </sect2>
+    </sect1>
+
+ 	<sect1>
         <title>Common Mistakes</title>
-        <sect3>
+        <sect2>
             <title>Don't quote or wrap items in '{}'.</title>
             <para> Frequently people submit ports with the description or configure arguments
                 quoted, or wrapped in curly brackets. In general this is not correct. The exception
                 is contents lists, which have been specifically designed to handle the list being
                 wrapped in curly brackets because of the very large number of files some ports
                 install make escaping all the newlines extremely irritating. </para>
-        </sect3>
-    </sect2>
+        </sect2>
+    </sect1>
     <sect1>
         <title>How to test</title>
         <orderedlist>

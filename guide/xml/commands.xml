@@ -1,0 +1,425 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+<chapter>
+  <title>Portfile Command Reference</title>
+
+  <sect1>
+    <title>Commands</title>
+
+    <sect2>
+      <title>Build Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>build.cmd</term>
+
+          <listitem>
+            <synopsis>cmdType: optional, Default: make</synopsis>
+
+            <para>Make command to run relative to ${worksrcdir}.</para>
+
+            <para>
+              <userinput>build.cmd pbxbuild</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.type</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: make</synopsis>
+
+            <para>Type of make required, either 'gnu' or 'bsd'. Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly.</para>
+
+            <para>
+              <userinput>build.type gnu</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${build.target.current}</synopsis>
+
+            <para>Arguments to pass to ${build.cmd} before ${build.args}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${build.cmd}.</para>
+
+            <para>
+              <userinput>build.args -DNOWARN</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.target.all</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: all</synopsis>
+
+            <para>Target to pass to make for building everything.</para>
+
+            <para>
+              <userinput>build.target.all all-src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.target.install</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: install</synopsis>
+
+            <para>Install target to pass to ${build.cmd}.</para>
+
+            <para>
+              <userinput>build.target.install install-src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Configure Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments added to configure command before ${configure.args}.</para>
+
+            <para>
+              <userinput>configure.pre_args --prefix=${prefix}/etc</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${configure.cmd}.</para>
+
+            <para>
+              <userinput>configure.args --etcdir=${prefix}/etc</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.dir</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Directory in which to run ${configure-cmd}.</para>
+
+            <para>
+              <userinput>configure.dir src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Automake Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>use_automake</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: ${workpath}/${worksrcdir}</synopsis>
+
+            <para>If set to yes, use ${automake.cmd}.</para>
+
+            <para>
+              <userinput>use_automake yes</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>automake.env</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Environmental variables to pass to ${automake.cmd}.</para>
+
+            <para>
+              <userinput>automake.env CFLAGS=-I${prefix}/include/gtk12</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>automake.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${automake.cmd}.</para>
+
+            <para>
+              <userinput>automake.args --foreign</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>automake.dir</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: ${workpath}/${worksrcdir}</synopsis>
+
+            <para>Directory in which to run ${automake.cmd}.</para>
+
+            <para>
+              <userinput>automake.dir src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Autoconf Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>use_autoconf</term>
+
+          <listitem>
+            <synopsis>Type: Optional</synopsis>
+
+            <para>If set to yes, run ${autoconf.cmd}.</para>
+
+            <para>
+              <userinput>use_autoconf yes</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>autoconf.env</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Environment variables to pass to ${autoconf.cmd}.</para>
+
+            <para>
+              <userinput>autoconf.env CFLAGS=-I${prefix}/include/gtk12</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>autoconf.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${autoconf.cmd}.</para>
+
+            <para>
+              <userinput>autoconf.args -l src/aclocaldir</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>autoconf.dir</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: ${autoconf.dir}</synopsis>
+
+            <para>Directory in which to run ${autoconf.cmd}.</para>
+
+            <para>
+              <userinput>autoconf.dir src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Xmkmf Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>xmkmf</term>
+
+          <listitem>
+            <synopsis>
+            </synopsis>
+
+            <para>Does nothing.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Libtool Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>libtool</term>
+
+          <listitem>
+            <synopsis>
+            </synopsis>
+
+            <para>Does nothing.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Extract Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>extract.only</term>
+
+          <listitem>
+            <synopsis>Type: Optional Default: ${distfiles}</synopsis>
+
+            <para>List of files to extract into ${workpath}.</para>
+
+            <para>
+              <userinput>extract.only worksrc-1.4.4.tar.gz</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.cmd</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: gzip</synopsis>
+
+            <para>Command to perform extract.</para>
+
+            <para>
+              <userinput>extract.cmd bzip2</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: -dc</synopsis>
+
+            <para>Arguments added to ${extract.cmd} before a file name.</para>
+
+            <para>
+              <userinput>extract.pre_args -cd</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${distpath}/${distfile}</synopsis>
+
+            <para>Arguments to ${extract.cmd}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.post_args</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: | tar -xf -</synopsis>
+
+            <para>Arguments added to extract command after a file name.</para>
+
+            <para>
+              <userinput>extract.post_args | tar -x -s@bladeenc-0.94.2/other_makefiles/BladeEnc..@@p -f -</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.sufx</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: .tar.gz</synopsis>
+
+            <para>Suffix to append to ${distname}</para>
+
+            <para>
+              <userinput>extract.sufx .tgz</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_zip</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Sets extract.sufx to: .zip Sets extract.cmd to: unzip Sets extract.pre_args to: -q Sets extract.post_args to: "-d $portpath/$workdir"</para>
+
+            <para>
+              <userinput>use_zip yes</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>CVS Options</title>
+
+      <para>
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>Fetch Options</title>
+
+      <para>
+      </para>
+    </sect2>
+
+    <sect2>
+      <title>Patch Options</title>
+
+      <para>
+      </para>
+    </sect2>
+  </sect1>
+</chapter>
+
+

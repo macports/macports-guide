@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<book>
+<title>Darwinports User Guide</title>
+<preface>
+	<title>About this Guide</title>
+	<para>This guide shows you how to use the Darwinports system and develop new Darwinports.</para>
+</preface>
+
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="quick.xml" />
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="details.xml" /> 
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="special.xml" /> 
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="testing.xml" /> 
+<xi:include  xmlns:xi="http://www.w3.org/2001/XInclude"  href="commands.xml" /> 
+
+</book>

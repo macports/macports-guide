@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1" ?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.2//EN"
+		"http://www.oasis-open.org/docbook/xml/4.2/docbookx.dtd">
+
+<chapter>
+    <title>Variants</title>
+    <sect1>
+    	<title>What are Variants?</title>
+    	<para></para>
+		<sect2>
+			<title>Syntax</title>
+			<para></para>
+			<sect3>
+				<title>*-append and *-delete</title>
+				<para></para>
+			</sect3>
+		</sect2>
+	</sect1>
+	<sect1>
+    	<title>Advanced Variants</title>
+    	<para></para>
+		<sect2>
+			<title>Architechture Specific Variants</title>
+			<para></para>
+		</sect2>
+		<sect2>
+			<title>Default Variants</title>
+			<para></para>
+		</sect2>
+	</sect1>
+</chapter>
+
