@@ -31,10 +31,10 @@
           <listitem>
             <synopsis>Type: optional Default: make</synopsis>
 
-            <para>Type of make required, either 'gnu' or 'bsd'. Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly.</para>
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
 
             <para>
-              <userinput>build.type gnu</userinput>
+              <userinput>build.type bsd</userinput>
             </para>
           </listitem>
         </varlistentry>
@@ -43,7 +43,7 @@
           <term>build.pre_args</term>
 
           <listitem>
-            <synopsis>Type: read-only Default: ${build.target.current}</synopsis>
+            <synopsis>Type: read-only Default: ${build.target}</synopsis>
 
             <para>Arguments to pass to ${build.cmd} before ${build.args}.</para>
           </listitem>
@@ -64,7 +64,7 @@
         </varlistentry>
 
         <varlistentry>
-          <term>build.target.all</term>
+          <term>build.target</term>
 
           <listitem>
             <synopsis>Type: optional Default: all</synopsis>
@@ -72,24 +72,83 @@
             <para>Target to pass to make for building everything.</para>
 
             <para>
-              <userinput>build.target.all all-src</userinput>
+              <userinput>build.target all-src</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </sect2>
+
+    <sect2>
+      <title>Install Options</title>
+
+      <variablelist>
+        <varlistentry>
+          <term>install.cmd</term>
+
+          <listitem>
+            <synopsis>cmdType: optional, Default: &dollar;&lcub;build.cmd&rcub;</synopsis>
+
+            <para>Install command to run relative to ${worksrcdir}.</para>
+
+            <para>
+              <userinput>install.cmd pbxbuild</userinput>
             </para>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>build.target.install</term>
+          <term>install.type</term>
+
+          <listitem>
+            <synopsis>Type: optional Default: &dollar;&lcub;build.type&rcub;</synopsis>
+
+            <para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either 'gnumake' or 'bsdmake' accordingly</para>
+
+            <para>
+              <userinput>install.type gnu</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.pre_args</term>
+
+          <listitem>
+            <synopsis>Type: read-only Default: ${install.target}</synopsis>
+
+            <para>Arguments to pass to ${install.cmd} before ${install.args}.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.args</term>
+
+          <listitem>
+            <synopsis>Type: optional</synopsis>
+
+            <para>Arguments to pass to ${install.cmd}.</para>
+
+            <para>
+              <userinput>build.args -DNOWARN</userinput>
+            </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>install.target</term>
 
           <listitem>
             <synopsis>Type: optional Default: install</synopsis>
 
-            <para>Install target to pass to ${build.cmd}.</para>
+            <para>Install target to pass to ${install.cmd}.</para>
 
             <para>
-              <userinput>build.target.install install-src</userinput>
+              <userinput>install.target install-src</userinput>
             </para>
           </listitem>
         </varlistentry>
+
       </variablelist>
     </sect2>
 

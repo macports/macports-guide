@@ -473,8 +473,8 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 			<varlistentry id='build.type'>
 				<term>build.type</term>
 				<listitem>
-					<para>Type of make required, either 'gnu' or 'bsd' Sets build.cmd to either
-	 'gnumake' or 'bsdmake' accordingly</para>
+					<para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets build.cmd to either
+						'gnumake' or 'bsdmake' accordingly</para>
 					<para><userinput>build.type     gnu</userinput>
 					</para>
 				</listitem>
@@ -497,7 +497,7 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 				</listitem>
 			</varlistentry>
 			
-			<varlistentry id='build.target.all'>
+			<varlistentry id='build.target'>
 				<term>build.target.all</term>
 				<listitem>
 					<para>Target to pass to make for building everything. Defaults to all.</para>
@@ -510,19 +510,54 @@ foo.tar.gz md5 65b89365a65dcad71d4402b44</userinput>
 	</sect1>
 	<sect1>
 		<title>Install Phase</title>
-		<para></para>
 		
 		<variablelist>
-			<varlistentry id='build.target.install'>
-					<term>build.target.install</term>
-					<listitem>
-						<para>Install target to pass to &dollar;&lcub;build.cmd&rcub;. Defaults to all.</para>
-						<para><userinput>build.target.install     install-src</userinput>
-						</para>
-					</listitem>
-				</varlistentry>
+
+			<varlistentry id='install.cmd'>
+				<term>install.cmd</term>
+				<listitem>
+					<para>Install command to run relative to &dollar;&lcub;worksrcdir&rcub;. Defaults to &dollar;&lcub;build.cmd&rcub;.</para>
+					<para><userinput>install.cmd pbxbuild</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
 			
-		</variablelist>
+			<varlistentry id='install.type'>
+				<term>install.type</term>
+				<listitem>
+					<para>Defines which 'make' is required, either 'gnu' or 'bsd' Sets install.cmd to either
+						'gnumake' or 'bsdmake' accordingly</para>
+					<para><userinput>install.type     gnu</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='install.pre_args'>
+				<term>install.pre_args</term>
+				<listitem>
+					<para>Arguments to pass to &dollar;&lcub;install.cmd&rcub; before &dollar;&lcub;install.args&rcub;. Read only. Set to  &dollar;&lcub;install.target&rcub;
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='install.args'>
+				<term>install.args</term>
+				<listitem>
+					<para>Arguments to pass to &dollar;&lcub;install.cmd&rcub;</para>
+					<para><userinput>install.args     -DNOWARN</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+			
+			<varlistentry id='install.target'>
+				<term>install.target</term>
+				<listitem>
+					<para>Install target to pass to ${install.cmd}.</para>
+					<para><userinput>install.target all-src</userinput>
+					</para>
+				</listitem>
+			</varlistentry>
+<para></para>
 	</sect1>
 	<sect1>
 		<title>Register Phase</title>
