@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.8 2004/01/06 09:19:36 fkr Exp $
+# $Id: Makefile,v 1.9 2004/01/12 21:18:11 wbb4 Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
@@ -34,7 +34,9 @@ STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
 XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
-STRINGPARAMS?=		--stringparam html.stylesheet docbook.css 
+CSS_STYLESHEET?=	docbook.css
+RESOURCES?=		resources/
+STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET}
 
 .PHONY : all
 .PHONY : clean
@@ -53,6 +55,7 @@ html:
 	
 xhtml: 
 	mkdir -p ${XHTMLDIR}
+	cp ${RESOURCES}${CSS_STYLESHEET} ${XHTMLDIR}
 	xsltproc --xinclude ${STRINGPARAMS} -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
