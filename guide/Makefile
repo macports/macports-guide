@@ -1,12 +1,12 @@
-# $Id: Makefile,v 1.4 2003/05/16 06:34:57 mij Exp $
+# $Id: Makefile,v 1.5 2003/06/04 16:00:08 michaelm Exp $
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
 
 ## Targets
 #
-# html  : Makes unformated, chunked html for xml
-# xhtml : Makes unformated, chunked xhtml for xml
+# html  : Makes unformated, chunked html from xml
+# xhtml : Makes unformated, chunked xhtml from xml
 # tidy  : Tidies (formats, indents) xhtml and html
 # clean : Deletes html and xhtml
 # all   : html, xhtml and tidy
@@ -28,7 +28,7 @@
 
 
 SOURCEDIR?=		xml
-DOCBOOK_XSL?=	        ${PREFIX}/share/xsl/docbook-xsl/1.55.0
+DOCBOOK_XSL?=	        ${PREFIX}/share/xsl/docbook-xsl/1.61.0
 HTMLDIR?=		html
 XHTMLDIR?=		xhtml
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
@@ -48,12 +48,12 @@ check:
 	xmllint --xinclude --noout "${SOURCEDIR}/guide.xml"
 
 html:
-	mkdir -p html
+	mkdir -p ${HTMLDIR}
 	xsltproc --xinclude -o "${HTMLDIR}/" "${STYLESHEET}" "${SOURCEDIR}/guide.xml"
 	
 xhtml: 
 
-	mkdir -p xhtml
+	mkdir -p ${XHTMLDIR}
 	xsltproc --xinclude -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
@@ -67,6 +67,6 @@ tidy:
 	-tidy -quiet -modify -indent -xml ${XHTMLDIR}/*
 
 clean:
-	rm -fr html xhtml
+	rm -fr ${HTMLDIR} ${XHTMLDIR}
 	
 include ../../base/Mk/dports.mk
