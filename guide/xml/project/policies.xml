@@ -41,6 +41,10 @@
 				</thead>
 				<tbody>
 					<row>
+						<entry>aqua</entry>
+						<entry/>
+						<entry/>
+					<row>
 						<entry>archives</entry>
 						<entry>waqar [at] opendarwin.org</entry>
 						<entry></entry>
@@ -48,6 +52,11 @@
 					<row>
 						<entry>audio</entry>
 						<entry>macdome [at] opendarwin.org</entry>
+						<entry/>
+					</row>
+					<row>
+						<entry>benchmarks</entry>
+						<entry>toby [at] opendarwin.org</entry>
 						<entry/>
 					</row>
 					<row>
@@ -77,9 +86,13 @@
 					</row>
 					<row>
 						<entry>games</entry>
-						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry>toby [at] opendarwin.org</entry>
 						<entry/>
 					</row>
+					<row>
+						<entry>genealogy</entry>
+						<entry/>
+						<entry/>
 					<row>
 						<entry>gnome</entry>
 						<entry>olegb [at] opendarwin.org</entry>
@@ -111,10 +124,18 @@
 						<entry>macdome [at] opendarwin.org</entry>
 					</row>
 					<row>
+						<entry>multimedia</entry>
+						<entry/>
+						<entry/>
+					<row>
 						<entry>net</entry>
 						<entry>fenner [at] opendarwin.org</entry>
 						<entry>fkr [at] opendarwin.org</entry>
 					</row>
+					<row>
+						<entry>news</entry>
+						<entry/>
+						<entry/>
 					<row>
 						<entry>print</entry>
 						<entry>cms [at] opendarwin.org</entry>
@@ -125,6 +146,10 @@
 						<entry>mww [at ] opendarwin.org</entry>
 						<entry>rshaw [at] opendarwin.org</entry>
 					</row>
+					<row>
+						<entry>ruby</entry>
+						<entry></entry>
+						<entry></entry>
 					<row>
 						<entry>science</entry>
 						<entry>wbb4 [at] opendarwin.org</entry>
