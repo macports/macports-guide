@@ -959,7 +959,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
                   of these, you'll have to figure out what to do yourself. 
                   Some ports use another term, others require you to patch 
                   the Makefile (or other build related script). </para>
-                <para><userinput>destroot.destroot prefix=${destroot}${prefix}
+                <para><userinput>destroot.destdir prefix=${destroot}${prefix}
                     </userinput></para>
               </listitem>
             </varlistentry>
