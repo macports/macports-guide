@@ -158,7 +158,8 @@
 			
 			<para>These commands first ensure you are currently in your home 
 			directory, then log onto the opendarwin cvs server and finally 
-			'checkout' (download) DarwinPorts. </para>
+            'checkout' (download) DarwinPorts. The login command will prompt 
+            for a password, just press 'return' to give a blank password. </para>
 
 			<para>There is also a <ulink 
 			url='http://darwinports.opendarwin.org/darwinports-nightly-cvs-snapshot.tar.gz'> cvs snapshot</ulink> 
