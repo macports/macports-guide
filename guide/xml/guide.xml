@@ -63,7 +63,6 @@
 
     <xi:include href="user/portimages.xml" /> 
 
-    <xi:include href="user/dp_manager.xml" /> 
   </part>
 
   <part>
