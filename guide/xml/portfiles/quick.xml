@@ -596,7 +596,7 @@ http://distfiles.opendarwin.org/</programlisting>
     <title>Where can I ask for advice?</title> 
 
     <para>Either on the <email>darwinports@opendarwin.org</email>
-      mailing list, or on the #opendarwin channel on irc.freenode.net.
+      mailing list, or on the #darwinports channel on irc.freenode.net.
       Don't be afraid to ask questions! You should also look at the
       later sections of the <link linkend="details">guide</link>and the
       <filename>portfile</filename>(7) and
