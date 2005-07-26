@@ -28,7 +28,7 @@
 			characters you need to be careful with are 
 			<simplelist type="inline">
 					<member>$</member>
-					<member>}</member>
+					<member>{</member>
 					<member>}</member>
 					<member>[</member>
 					<member>]</member>
