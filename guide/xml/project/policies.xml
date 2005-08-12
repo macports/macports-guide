@@ -161,7 +161,7 @@
 					</row>
 					<row>
 						<entry>devel</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry/>
 					</row>
 					<row>
@@ -171,7 +171,7 @@
 					</row>
 					<row>
 						<entry>emulators</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry/>
 					</row>
 					<row>
@@ -187,20 +187,21 @@
 					<row>
 						<entry>gnome</entry>
 						<entry>olegb [at] opendarwin.org</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>graphics</entry>
 						<entry>jkh [at] opendarwin.org</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>irc</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry/>
 					</row>
 					<row>
 						<entry>java</entry>
+						<entry>jberry [at] opendarwin.org</entry>
 						<entry>mww [at] opendarwin.org</entry>
 						<entry/>
 					</row>
@@ -227,7 +228,7 @@
 					<row>
 						<entry>net</entry>
 						<entry>fenner [at] opendarwin.org</entry>
-						<entry>fkr [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>news</entry>
@@ -241,8 +242,8 @@
 					</row>
 					<row>
 						<entry>perl</entry>
-						<entry>rshaw [at] opendarwin.org</entry>
 						<entry>toby [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>print</entry>
@@ -252,16 +253,16 @@
 					<row>
 						<entry>python</entry>
 						<entry>mww [at] opendarwin.org</entry>
-						<entry>rshaw [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>ruby</entry>
-						<entry>rshaw [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry></entry>
 					</row>
 					<row>
 						<entry>science</entry>
-						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry/>
 					</row>
 					<row>
@@ -281,13 +282,13 @@
 					</row>
 					<row>
 						<entry>textproc</entry>
-						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry></entry>
 						<entry/>
 					</row>
 					<row>
 						<entry>www</entry>
 						<entry>cms [at] opendarwin.org</entry>
-						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry></entry>
 					</row>
 					<row>
 						<entry>x11</entry>
@@ -296,8 +297,8 @@
 					</row>
 					<row>
 						<entry>zope</entry>
-						<entry>rshaw [at] opendarwin.org</entry>
-						<entry>wbb4 [at] opendarwin.org</entry>
+						<entry></entry>
+						<entry></entry>
 					</row>
 				</tbody>
 			</tgroup>
