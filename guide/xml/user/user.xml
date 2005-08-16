@@ -119,10 +119,11 @@
 		<sect2 id='prerequisites'>
 			<title>What you need</title>
 			
-			<para>DarwinPorts primary target platform is Mac OS X 10.3
-			"Panther" or later (i.e. Darwin 7.0 or later).  However,
+			<para>DarwinPorts primary target platform is Mac OS X 10.4
+			"Tiger" and Mac OS X 10.3 "Panther" (i. e. Darwin 8.x and 7.x).
+			However,
 			DarwinPorts should still work on Mac OS X 10.2 "Jaguar", although
-			most ports are no longer tested on Jaguar.  DarwinPorts is also
+			most ports are no longer tested on Jaguar. DarwinPorts is also
 			known to work on various other operating systems such as FreeBSD,
 			NetBSD, OpenBSD, and various Linux distributions.  These
 			instructions should enable DarwinPorts to be installed on any of
@@ -130,7 +131,8 @@
 
 			<para>To install and use DarwinPorts you must install the Developer 
 			tools (gcc, autoconf etc on other platforms, also known as the
-			"Xcode tools" on Mac OS X 10.3.)  All the other prerequisites are
+			"Xcode tools" on Mac OS X 10.3 and 10.4.).
+			All the other prerequisites are
 			pre-installed on Mac OS X 10.2 and later. On other platforms you
 			will need to ensure you have installed Tcl (8.3 or later). </para>
 
@@ -217,8 +219,8 @@
 			<para>You should add /opt/local/bin (or wherever you chose to 
 			install DarwinPorts) to your shell's path.</para>
 
-			<para>If you are using Mac OS X 10.3 "Panther" or a Bourne shell
-			(bash, zsh), add the following line to your
+			<para>If you are using Mac OS X 10.3 "Panther", Mac OS X 10.4 "Tiger"
+			 or a Bourne shell (bash, zsh), add the following line to your
 			<filename>~/.profile</filename>:</para>
 
 			<para><userinput>export PATH=$PATH:/opt/local/bin</userinput></para>
@@ -230,7 +232,8 @@
 			<para><userinput>set path=($path /opt/local/bin)</userinput></para>
 	
 			<para>These changes will not take effect until you have opened a
-			new shell.</para>
+			new shell. If you upgraded your Mac OS X installation from 10.2,
+			you might still have a C shell as login shell.</para>
 
 			<para>Once you have got this far, you should have a working 
 			installation of DarwinPorts, you have installed the 'port' 
