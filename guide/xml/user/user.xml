@@ -141,50 +141,29 @@
 		<sect2 id='getting_dports'>
 			<title>Obtaining DarwinPorts</title>	
 			
-			<para>Currently the main way to get DarwinPorts is by using the Concurrent 
-			Versioning System (cvs). CVS is installed with the Developers Tools on Mac 
-			OS X. To download DarwinPorts using cvs you should use the following 
-			Terminal commands. At this time you must keep the darwinports directoy 
-			that is downloaded on your machine, even after installation as it also 
-			contains all the port description files (Portfiles). In the future these 
-			will be automatically downloaded as they are needed so you won't need to 
-			keep the directory. Choose a location for DarwinPorts where you won't 
-			want/need to move it. For the rest of the document I will assume the user 
-			name is 'mike' and the DarwinPorts infrastructure is going to be 
-			downloaded to a directory (folder) called darwinports in your home 
-			directory (i.e. /Users/mike/darwinports/) you should replace the username 
-			with your own username and edit the commands I give so they work 
-			correctly on your installation. <programlisting><![CDATA[% cd ~/
-% cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od login
-% cvs -d :pserver:anonymous@anoncvs.opendarwin.org:/Volumes/src/cvs/od co -P darwinports ]]></programlisting></para>
-			
-			<para>These commands first ensure you are currently in your home 
-			directory, then log onto the opendarwin cvs server and finally 
-            'checkout' (download) DarwinPorts. The login command will prompt 
-            for a password, just press 'return' to give a blank password. </para>
+			<para>Currently there are basically two ways to obtain DarwinPorts.
+			Either download the sources as a tarball or get the binary
+			installer via the downloadable disk image (both available in the
+			<ulink url='http://darwinports.opendarwin.org/downloads/'>download
+			section</ulink>). If you choose the binary installer, you can skip
+			the next sections.</para>
 
-			<para>There is also a <ulink 
-			url='http://darwinports.opendarwin.org/darwinports-nightly-cvs-snapshot.tar.gz'> cvs snapshot</ulink> 
-			available that is made from cvs every 6 hours. The tarball is made 
-			from a anonymous checkout of DarwinPorts so you can still use the 
-			commands below for <link linkend='updating_dports'>updating</link>. 
+			<para>If you want greater control and want to e. g. specify one of
+			the various install-time options, you need to get the sources.
 			</para>
-	
-			<para>In the near future we will provide a binary installer for 
-			DarwinPorts and the source files downloadable directly from the 
-			website rather than requiring users to use cvs. CVS is likely to 
-			remain important for users who want to closely track the latest 
-			ports as it can be used to update your port descriptions (and 
-			is currently the only way to do so). </para>
-			
+						  	
+			<para>If you want to very closely track the latest ports and use
+			the latest experimental features of the port tool, you may want to
+			use cvs to check out the sources from our cvs repository.</para>
 		</sect2>
 		
 		<sect2 id='install_dports'>
-			<title>Installing DarwinPorts</title>
+			<title>Installing DarwinPorts from sources</title>
 			
 			<para>To install DarwinPorts execute the following commands from the 
 			darwinports/base directory.  These commands assume that you checked
-			out the darwinports tree from CVS in your home directory.  Modify
+			out the darwinports tree from CVS or downloaded and extracted the
+			tarball in your home directory.  Modify
 			the <userinput>cd</userinput> command appropriately if you did
 			otherwise.
 			<programlisting><![CDATA[% cd ~/darwinports/base
@@ -253,11 +232,20 @@
 			
 			<para>New ports are always being added to the DarwinPorts dports 
 			tree, you should regularly update your tree to get access to new 
-			ports, and (hopefully) improved versions of current ports.  Currently 
-			the simplest way you can update the dports tree is to use
-			<command>cvs</command>.  You can also use <command>cvs</command>
-			to fetch a new version of the DarwinPorts infrastructure (eg the
-			<command>port</command> command and associated libraries).</para>
+			ports, and (hopefully) improved versions of current ports. 
+			Currently the simplest way you can update the dports tree is to use
+			the selfupdate feature of port.
+			To start a (rsync based) selfupdate, just issue
+			<command>port sync</command>.
+			</para>
+
+			<para>Updating your port tool is equally easy to accomplish. If
+			you are using at least version 1.0 of port,
+			<command>port selfupdate</command>
+			will update the sources of port, recompile and install them for you
+			with the same options you installed your current version of port.
+			</para>
+
 
 			<variablelist>
 				<varlistentry>
@@ -266,14 +254,10 @@
 					<listitem>
 						<para>To get the latest Portfiles (the instructions for
 							building ports), you need to update your
-							<filename>dports</filename> tree from
-							<command>cvs</command>:
-							<programlisting><![CDATA[% cd ~/darwinports/dports
-% cvs -q -z3 update -dP]]></programlisting></para>
+							<filename>dports</filename> tree via
+							<programlisting><![CDATA[%port sync]]></programlisting>
+						</para>
 
-						<para>By using the -q flag to
-							<command>cvs</command>, you will see in the output what
-							Ports have changed or have been added.</para>
 					</listitem>		
 				</varlistentry>
 
@@ -283,12 +267,9 @@
 					<listitem>
 						<para>To get the latest DarwinPorts infrastructure (or
 							"base") for building ports, you need to update your
-							<filename>base</filename> from <command>cvs</command>:
-							<programlisting><![CDATA[% cd ~/darwinports/base
-% cvs -q -z3 update -dP
-% ./configure
-% make clean && make
-% sudo make install]]></programlisting></para>
+							<filename>base</filename> via
+							<programlisting><![CDATA[% port selfupdate]]></programlisting>
+						</para>
 					</listitem>
 				</varlistentry>
 			</variablelist>
