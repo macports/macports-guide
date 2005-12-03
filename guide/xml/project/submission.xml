@@ -181,6 +181,15 @@
 
 										</listitem>	
 									</varlistentry>
+									<varlistentry id='TAKEOVER_portname'>
+										<term>TAKEOVER: portname
+										</term>
+										<listitem>
+											<para>Use this term if you want to take over maintainership of an (probably) abandoned Port. If the current maintainer does not react on this for 4 weeks, you are free to change ownership of this Port.
+											</para>
+
+										</listitem>	
+									</varlistentry>
 								</variablelist>
 								
 						</listitem>
