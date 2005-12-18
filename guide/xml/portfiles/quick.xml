@@ -525,10 +525,14 @@ http://distfiles.opendarwin.org/</programlisting>
 
       <para> Enable a second local source
         (<filename>Portfile</filename>) repository for your
-        uncommitted ports.  Edit
-        <filename>/etc/ports/sources.conf</filename> and
+        uncommitted ports.  Edit your
+        <filename>sources.conf</filename> file and
         add:<userinput>file:///User/foo/dports-dev</userinput> (or
-        wherever your local dport tree is).</para>
+        wherever your local dport tree is). Place all your <filename>Portfiles</filename>
+        inside their corresponding portdirs (reflecting the name
+        of the port), which should in turn be placed inside directories
+        that reflect their primary category (the first one listed for their
+        <programlisting>categories</programlisting> entry).</para>
 
       <para> Create an index file from the local source repository
         root. This will also perform a simple syntax check Portfiles
