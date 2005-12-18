@@ -535,8 +535,8 @@ http://distfiles.opendarwin.org/</programlisting>
         <programlisting>categories</programlisting> entry).</para>
 
       <para> Create an index file from the local source repository
-        root. This will also perform a simple syntax check Portfiles
-        contained.</para>
+        root. This will also perform a simple syntax check on the Portfiles
+        contained therein.</para>
 	
       <para><userinput>portindex</userinput></para>
     </sect2>
