@@ -404,7 +404,7 @@
 				</varlistentry>
 
 				<varlistentry>
-					<term>Getting Info about a Port</term>
+					<term>Getting Information about a Port</term>
 
 					<listitem>
 						<para>You may want to get information about a port, such as
@@ -416,7 +416,7 @@
 				</varlistentry>
 
 				<varlistentry>
-					<term>Listing Ports</term>
+					<term>Listing available Ports</term>
 
 					<listitem>
 						<para>You may want a list of all the ports that are
@@ -429,6 +429,34 @@
 						option:</para>
 
 						<para><userinput>port list</userinput></para>
+					</listitem>
+				</varlistentry>
+
+				<varlistentry>
+					<term>Discovering which ports are installed</term>
+
+					<listitem>
+						<para>To determine which ports have been installed, and
+						what their versions are, use:</para>
+
+						<para><userinput>port installed</userinput></para>
+
+						<para>To determine the installed version of a particular port,
+						use:</para>
+
+						<para><userinput>port installed &lt;portname&gt;</userinput></para>
+					</listitem>
+				</varlistentry>
+
+				<varlistentry>
+					<term>Discovering which ports are out-of-date</term>
+
+					<listitem>
+						<para>To determine which ports are out-of-date (the current
+						Portfile provides a newer version than the installed version
+						of the port) use:</para>
+
+						<para><userinput>port outdated</userinput></para>
 					</listitem>
 				</varlistentry>
 
@@ -462,6 +490,11 @@
 						check:</para>
 
 						<para><userinput>port deps vile</userinput></para>
+
+						<para>If you want to find out which ports depends on a 
+						port you have installed, use:</para>
+
+						<para><userinput>port dependents gettext</userinput></para>
 					</listitem>
 				</varlistentry>
 			</variablelist>
@@ -512,7 +545,7 @@
 			of the port, you can:</para>
 			<userinput>sudo port -n upgrade gnome</userinput>
 			<para>To upgrade all installed ports simply do:</para>
-			<userinput>sudo port -a upgrade</userinput>
+			<userinput>sudo port upgrade installed</userinput>
 			<para>If you dont like that upgrade just deactivates the old version
 			of the port, you can get it to uninstall the old version by using
 			the -u option:</para>
