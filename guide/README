@@ -1,2 +1,5 @@
+# $Id: README,v 1.2 2006/01/07 08:37:09 olegb Exp $
+
+
 To build the documentation you must have installed
 the port: docbook-xsl
