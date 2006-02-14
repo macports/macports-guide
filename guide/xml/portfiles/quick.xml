@@ -272,7 +272,7 @@ Done</literallayout></computeroutput></para>
 
       <para>To build, type the following:</para>
       
-      <para><userinput>port build -v -d</userinput></para>
+      <para><userinput>port -d build</userinput></para>
 
       <para>By default, the build phase executes the system's
         <command>make</command>(1) utility.  (This can be changed with
