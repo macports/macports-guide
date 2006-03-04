@@ -21,7 +21,7 @@
   <title>Quick Start</title> 
 
   <sect1 id="getting_started">
-    <title>Getting Stated With DarwinPorts</title>
+    <title>Getting Started With DarwinPorts</title>
 
     <para>This document will provide a short guide to the basics of a
       DarwinPorts <filename>Portfile</filename>.  A
