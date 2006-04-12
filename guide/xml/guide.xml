@@ -111,5 +111,7 @@
     <xi:include href="project/policies.xml" /> 
 
     <xi:include href="project/submission.xml" /> 
+
+    <xi:include href="project/membership.xml" />
   </part>
  </book>
