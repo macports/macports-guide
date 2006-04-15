@@ -18,9 +18,9 @@
 
 		<para>Becoming a member of the DarwinPorts project with commit access
 		to our CVS repository is pretty much a matter of involvement in any of
-		the project areas and the record you can establish thereof. We encourage
-		any developer and/or volunteer to apply for a CVS account if certain simple
-		requirements are met:</para>
+		the areas of the project and the record you can establish thereof. We
+		encourage any developer and/or volunteer to apply for a CVS account
+		if certain simple requirements are met:</para>
 
 		<variablelist>
 			<varlistentry id='list'>
@@ -46,28 +46,29 @@
 					preferable. This can be accomplished either through the inheritance
 					of abandoned ports (those with the sole darwinports [at] opendarwin DOT org
 					maintainer address) or through writing your own from scratch. If instead
-					you plan to apply to any other area, like "base" or "www", contributions
+					you plan to apply to any other area of the project, like "base" or "www", contributions
 					in the form of patches that can vouch for your skills on the aspects you
 					plan to help with are certainly a big plus. In all cases, submissions to
 					the project should be processed per the instructions detailed on the
-					<ulink url="/docs/ch15.html">"DarwinPorts Submissions"</ulink> chapter.</para>
+					"<ulink url="/docs/ch15.html">DarwinPorts Submissions</ulink>" chapter.</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
 
-		<para>If you feel you meet and comply with these requirements and wish to
-		become a member of the group to help out personally, do feel free to send
-		a note to the portmgr [at] opendarwin DOT org steering committee explaining
-		your contributions, how long you've been involved and why you'd make a good
-		committer. The sole purpose of said forum is overseeing the general evolution
-		of the project, so they are the ones to turn to for membership requests.</para>
+		<para>If you feel like you meet and comply with these requirements and wish
+		to become a member of the group to help out personally, do feel free to send
+		a note to the <ulink href="/docs/ch12s03.html">portmgr [at] opendarwin DOT org</ulink>
+		steering committee explaining your contributions, how long you've been involved
+		with the project and why you'd make a good committer. The sole purpose of said
+		forum is overseeing the general evolution of DarwinPorts, so they are the one
+		to turn to for membership requests.</para>
 
 		<para>For a brief listing of the duties &amp; benefits resulting from holding
 		an OpenDarwin account, along with a short jump start on CVS primaries, read
 		OpenDarwin's <ulink url="http://opendarwin.org/en/articles/committer_guide/ar01s02.html">Committer's Guide</ulink>
-		for account applicants. The <ulink url="http://wiki.opendarwin.org/index.php/Darwinports:New_committers_guide">New Committer's Guide</ulink>
-		is also a must read for new comers to become acquainted with our procedures and
-		guidelines.</para>
+		for account applicants. The DarwinPorts' specific <ulink url="http://wiki.opendarwin.org/index.php/Darwinports:New_committers_guide">New Committer's Guide</ulink>
+		is also a must read for new comers to become acquainted with our own procedures
+		and guidelines.</para>
 
 	</sect1>
 </chapter>
