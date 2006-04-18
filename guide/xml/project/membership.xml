@@ -57,11 +57,11 @@
 
 		<para>If you feel like you meet and comply with these requirements and wish
 		to become a member of the group to help out personally, do feel free to send
-		a note to the <ulink href="/docs/ch12s03.html">portmgr [at] opendarwin DOT org</ulink>
+		a note to the <ulink href="/docs/ch12s03.html">PortMgr</ulink>
 		steering committee explaining your contributions, how long you've been involved
-		with the project and why you'd make a good committer. The sole purpose of said
-		forum is overseeing the general evolution of DarwinPorts, so they are the one
-		to turn to for membership requests.</para>
+		with the project and why think you'd make a good committer. The sole purpose of
+		said forum is overseeing the general evolution of DarwinPorts, so it is where you
+		should turn to for membership requests.</para>
 
 		<para>For a brief listing of the duties &amp; benefits resulting from holding
 		an OpenDarwin account, along with a short jump start on CVS primaries, read
