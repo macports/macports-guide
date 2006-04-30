@@ -104,7 +104,7 @@
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term><userinput>port activate vim 6.2.532+gtk2</userinput></term>
+				<term><userinput>port activate vim @6.2.532+gtk2</userinput></term>
 					
 				<listitem>
 					<para>This command will activate the specific version of the
@@ -125,7 +125,7 @@
 				</listitem>
 			</varlistentry>
 			<varlistentry>
-				<term><userinput>port deactivate vim 6.2.532+gtk2</userinput></term>
+				<term><userinput>port deactivate vim @6.2.532+gtk2</userinput></term>
 					
 				<listitem>
 					<para>This command will deactivate the specific version of the
