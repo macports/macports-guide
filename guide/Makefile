@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.9 2004/01/12 21:18:11 wbb4 Exp $
+# $Id$
 
 # To build DarwinPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org

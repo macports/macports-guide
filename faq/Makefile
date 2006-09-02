@@ -1,4 +1,4 @@
-# $Id: Makefile,v 1.1 2004/02/05 05:36:36 wbb4 Exp $
+# $Id$
 
 # To build DarwinPorts FAQ files from the source docbook xml.
 # michaelm@opendarwin.org, wbb4@opendarwin.org
