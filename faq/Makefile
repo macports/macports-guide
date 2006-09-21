@@ -24,7 +24,7 @@
 # the catalogs are in ${prefix}/etc/xml, if yours are elswhere you should alter
 # the $XML_CATALOG_FILES variable. 
 
-# set XML_DEBUG_CATALOG= to see catalog debugging info
+# Set XML_DEBUG_CATALOG= to see catalog debugging info.
 
 SOURCEDIR?=		xml
 DOCBOOK_XSL?=	        ${prefix}/share/xsl/docbook-xsl/
