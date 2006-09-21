@@ -54,7 +54,7 @@ check:
 html:
 	mkdir -p ${HTMLDIR}
 	xsltproc --xinclude -o "${HTMLDIR}/" "${STYLESHEET}" "${SOURCEDIR}/faq.xml"
-	
+
 xhtml: 
 	mkdir -p ${XHTMLDIR}
 	cp ${RESOURCES}${CSS_STYLESHEET} ${XHTMLDIR}
@@ -72,5 +72,5 @@ tidy:
 
 clean:
 	rm -fr ${HTMLDIR} ${XHTMLDIR}
-	
+
 include ../../base/Mk/dports.autoconf.mk
