@@ -10,7 +10,7 @@
 		<sect2>
 			<title>Installation</title>
 			<para>Mac OS X applications should install to
-                          <filename>/Applications/DarwinPorts/</filename>.
+                          <filename>/Applications/MacPorts/</filename>.
                         </para>
 		</sect2>
 	</sect1>

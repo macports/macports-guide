@@ -197,7 +197,7 @@
 			</varlistentry>
 
 			<varlistentry>
-				<term><filename>/Applications/DarwinPorts/</filename></term>
+				<term><filename>/Applications/MacPorts/</filename></term>
 
 				<listitem>
 					<para>Native Mac OS X applications.</para>
