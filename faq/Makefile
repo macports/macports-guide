@@ -1,6 +1,6 @@
 # $Id$
 
-# To build DarwinPorts FAQ files from the source docbook xml.
+# To build MacPorts FAQ files from the source docbook xml.
 # michaelm@opendarwin.org, wbb4@opendarwin.org
 
 ## Targets

@@ -12,14 +12,14 @@
 			</keyword>
 		</keywordset>
 	</chapterinfo>
-	<title>DarwinPorts membership</title> 
+	<title>MacPorts membership</title> 
 	<sect1>
-		<title>Becoming a DarwinPorts committer</title>
+		<title>Becoming a MacPorts committer</title>
 
-		<para>Becoming a member of the DarwinPorts project with commit access
-		to our CVS repository is pretty much a matter of involvement in any of
+		<para>Becoming a member of the MacPorts project with commit access
+		to our Subversion repository is pretty much a matter of involvement in any of
 		the areas of the project and the record you can establish thereof. We
-		encourage any developer and/or volunteer to apply for a CVS account
+		encourage any developer and/or volunteer to apply for a Subversion account
 		if certain simple requirements are met:</para>
 
 		<variablelist>
@@ -28,10 +28,10 @@
 					Involvement on the List:
 				</term>
 				<listitem>
-					<para>One key attribute of any DarwinPorts committer must be
+					<para>One key attribute of any MacPorts committer must be
 					enthusiasm for the project, so therefore we appreciate applicants
 					who've shown their involvement through active participation
-					on the <ulink url="http://opendarwin.org/mailman/listinfo/darwinports">main user list</ulink>,
+					on the <ulink url="http://opendarwin.org/mailman/listinfo/macports">main user list</ulink>,
 					either through general user support and/or project roadmap discussion
 					and brainstorming.</para>
 				</listitem>
@@ -41,16 +41,16 @@
 					Contribution record:
 				</term>
 				<listitem>
-					<para>If applying for access to the "dports" section of the project,
+					<para>If applying for access to the "mports" section of the project,
 					an established record as a maintainer of already existing ports is
 					preferable. This can be accomplished either through the inheritance
-					of abandoned ports (those with the sole darwinports [at] opendarwin DOT org
+					of abandoned ports (those with the sole nomaintainer [at] macports DOT org
 					maintainer address) or through writing your own from scratch. If instead
 					you plan to apply to any other area of the project, like "base" or "www", contributions
 					in the form of patches that can vouch for your skills on the aspects you
 					plan to help with are certainly a big plus. In all cases, submissions to
 					the project should be processed per the instructions detailed on the
-					"<ulink url="/docs/ch15.html">DarwinPorts Submissions</ulink>" chapter.</para>
+					"<ulink url="/docs/ch15.html">MacPorts Submissions</ulink>" chapter.</para>
 				</listitem>
 			</varlistentry>
 		</variablelist>
@@ -60,13 +60,13 @@
 		a note to the <ulink href="/docs/ch12s03.html">PortMgr</ulink>
 		steering committee explaining your contributions, how long you've been involved
 		with the project and why think you'd make a good committer. The sole purpose of
-		said forum is overseeing the general evolution of DarwinPorts, so it is where you
+		said forum is overseeing the general evolution of MacPorts, so it is where you
 		should turn to for membership requests.</para>
 
 		<para>For a brief listing of the duties &amp; benefits resulting from holding
-		an OpenDarwin account, along with a short jump start on CVS primaries, read
+		an OpenDarwin account, along with a short jump start on Subversion primaries, read
 		OpenDarwin's <ulink url="http://opendarwin.org/en/articles/committer_guide/ar01s02.html">Committer's Guide</ulink>
-		for account applicants. The DarwinPorts' specific <ulink url="http://wiki.opendarwin.org/index.php/Darwinports:New_committers_guide">New Committer's Guide</ulink>
+		for account applicants. The MacPorts' specific <ulink url="http://wiki.opendarwin.org/index.php/Darwinports:New_committers_guide">New Committer's Guide</ulink>
 		is also a must read for new comers to become acquainted with our own procedures
 		and guidelines.</para>
 

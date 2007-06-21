@@ -11,18 +11,18 @@
 		<para>Portfile authors are expected to make sure that a port, when
 		installed conforms to specific filesystem hierarchy guidelines.
 		These guidelines define where certain files should be installed in
-		the DarwinPorts filesystem.</para>
+		the MacPorts filesystem.</para>
 	</sect1>
 	
 	<sect1>
-		<title>DarwinPorts Base, ${prefix}</title>
+		<title>MacPorts Base, ${prefix}</title>
 
 		<variablelist>
 			<varlistentry>
 				<term><filename>/<variable>${prefix}</variable></filename></term>
 
 				<listitem>
-					<para>The base of the DarwinPorts filesystem
+					<para>The base of the MacPorts filesystem
 					hierarchy.</para>
 
 					<para>Default: <filename>/opt/local</filename></para>
@@ -155,9 +155,9 @@
 											system-specific database files.</para>
 											<variablelist>
 												<varlistentry>
-													<term><filename>dports/</filename></term>
+													<term><filename>mports/</filename></term>
 
-													<listitem><para>DarwinPorts runtime
+													<listitem><para>MacPorts runtime
 													data.</para></listitem>
 												</varlistentry>
 											</variablelist>

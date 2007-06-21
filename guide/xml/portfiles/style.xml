@@ -29,9 +29,9 @@
 		<title>Specifics</title> 
 		
 		<sect2>
-			<title>CVS ID tags</title> 
-			<para>On the first line of the Portfile you should put a cvs 
-			ID tag. This tag will be expanded by cvs when the Portfile is 
+			<title>Subversion ID tags</title> 
+			<para>On the first line of the Portfile you should put a svn 
+			ID tag. This tag will be expanded by svn when the Portfile is 
 			committed and allows people to see at a glance details like 
 			who was the last person to commit to a port and when the last 
 			commit was performed.</para>

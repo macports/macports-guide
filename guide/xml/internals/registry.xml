@@ -10,18 +10,18 @@
     </keywordset>
   </chapterinfo>
   
-  <title>The DarwinPorts Registry</title> 
+  <title>The MacPorts Registry</title> 
 
   <sect1 id="about">
     <title>About This Chapter</title>
 
-		<para>This chapter provides a detailed overview of the new DarwinPorts
+		<para>This chapter provides a detailed overview of the new MacPorts
 			Registry package and its API.  This package is queried by the
-			DarwinPorts tools for information about installed ports for
+			MacPorts tools for information about installed ports for
 			information related to dependencies, port images, and simple user
 			information about what is installed.</para>
 
-		<para>The DarwinPorts Registry contains an abstraction layer which
+		<para>The MacPorts Registry contains an abstraction layer which
 			allows for alternative storage mechanisms for receipts.  This
 			chapter will also provide an overview of this, and how to write a
 			receipt storage module.</para>
@@ -30,7 +30,7 @@
 	<sect1 id="registry_intro">
 		<title>Introduction To The New Registry</title>
 
-		<para>The new DarwinPorts Registry solves many problems with the old
+		<para>The new MacPorts Registry solves many problems with the old
 			registry:</para>
 
 		<itemizedlist>
@@ -47,7 +47,7 @@
 
 		<para>The new registry allows for modification of receipts, to
 			reflect and changes made to installed ports being maintained by
-			DarwinPorts.  It also provides global file and dependencies
+			MacPorts.  It also provides global file and dependencies
 			databases that can be queried to check if installed files conflict
 			with each other, and to maintain dependency trees of installed
 			ports.  It also provides abstraction over a modular receipt
@@ -58,10 +58,10 @@
 	<sect1 id="registry_api">
 		<title>API For Accessing The Registry</title>
 
-		<para>The DarwinPorts Registry provides a public API in the
+		<para>The MacPorts Registry provides a public API in the
 			<varname>registry1.0</varname> Tcl package.  Using this API you
-			can access the DarwinPorts Registry using the storage mechanism
-			the DarwinPorts user has chosen for receipt storage.</para>
+			can access the MacPorts Registry using the storage mechanism
+			the MacPorts user has chosen for receipt storage.</para>
 
 		<variablelist>
 			<varlistentry>

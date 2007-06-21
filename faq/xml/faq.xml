@@ -4,7 +4,7 @@
 
 <article>
   <articleinfo>
-    <title>DarwinPorts FAQ</title>
+    <title>MacPorts FAQ</title>
 
  		<author>
 			<firstname>Jordan</firstname>
@@ -31,8 +31,8 @@
   </articleinfo>
 
 	<abstract>
-		<para>The DarwinPorts Frequently Asked Questions will attempt to
-			answer some questions that are often asked about DarwinPorts.</para>
+		<para>The MacPorts Frequently Asked Questions will attempt to
+			answer some questions that are often asked about MacPorts.</para>
 	</abstract>
 
 	<qandaset defaultlabel="general">
@@ -41,17 +41,17 @@
 
 			<qandaentry>
 				<question>
-					<para>What IS DarwinPorts?</para>
+					<para>What IS MacPorts?</para>
 				</question>
 
 				<answer>
-					<para>DarwinPorts is probably best described by comparison:  It's
+					<para>MacPorts is probably best described by comparison:  It's
 						sort of like the FreeBSD ports collection or fink in
 						that it automates the process of building 3rd party
 						software for Mac OS X.  It also tracks all dependency
 						information for a given piece of software and knows how to
 						make it build under Mac OS X and install it to a common
-						location, meaning that software installed via DarwinPorts
+						location, meaning that software installed via MacPorts
 						doesn't simply scatter itself all over the system or
 						require user knowledge of what to install in what order.</para>
 				</answer>
@@ -59,7 +59,7 @@
 
 			<qandaentry>
 				<question>
-					<para>How does DarwinPorts compare to FreeBSD ports?</para>
+					<para>How does MacPorts compare to FreeBSD ports?</para>
 				</question>
 		
 				<answer>
@@ -76,7 +76,7 @@
 
 			<qandaentry>
 				<question>
-					<para>Why did DarwinPorts start from scratch rather than
+					<para>Why did MacPorts start from scratch rather than
 					adopting something like FreeBSD ports?</para>
 				</question>
 		
@@ -86,7 +86,7 @@
 					automated build         systems is rather more complex than it
 					looks at first glance and         there's always room for
 					fresh approaches to the problem, which         is what we set
-					out to do with DarwinPorts. There are certainly         other
+					out to do with MacPorts. There are certainly         other
 					systems, some of which have already been mentioned, which
 					have made their own attempts at solving this problem and there
 					will likely be many more such systems in the future since
@@ -94,7 +94,7 @@
 					everyone is rather like         trying to find a single
 					programmin language which pleases         everyone - it's more
 					or less impossible.  We urge people to         judge
-					DarwinPorts' design on its own merits and consider it a
+					MacPorts' design on its own merits and consider it a
 					parallel rather than a competing effort since there's more
 					software out there than any one system can ever manage to
 					encapsulate and automate. </para>
@@ -103,13 +103,13 @@
 
 			<qandaentry>
 				<question>
-					<para>Will DarwinPorts run on any other Operating System?</para>
+					<para>Will MacPorts run on any other Operating System?</para>
 				</question>
 		
 				<answer>
-					<para>DarwinPorts was designed to be as portable as possible.
+					<para>MacPorts was designed to be as portable as possible.
 					Though our target platforms are Mac OS X and Darwin,
-					DarwinPorts is known to work on FreeBSD, OpenBSD, NetBSD and
+					MacPorts is known to work on FreeBSD, OpenBSD, NetBSD and
 					Solaris.  We also provide individual ports with ways of
 					specifying platform-specific rules that are only invoked on
 					that particular platform.</para>
@@ -118,31 +118,31 @@
 
 			<qandaentry>
 				<question>
-					<para>Does DarwinPorts also do Package Management?</para>
+					<para>Does MacPorts also do Package Management?</para>
 				</question>
 		
 				<answer>
-					<para>DarwinPorts works by first building software and
+					<para>MacPorts works by first building software and
 					installing it into a <varname>destroot</varname>, a
 					fake-installation location, then installing it into the
-					DarwinPorts prefix (<filename>/opt/local</filename> by
+					MacPorts prefix (<filename>/opt/local</filename> by
 					default).  It records this installation in its registry, and
 					you can query the installed port and uninstall it through
-					DarwinPorts.  Work is underway to add full package management
-					features to DarwinPorts.</para>
+					MacPorts.  Work is underway to add full package management
+					features to MacPorts.</para>
 
-					<para>You can also have DarwinPorts build a Mac OS X
+					<para>You can also have MacPorts build a Mac OS X
 					<filename>.pkg</filename> file of the port, and install it
 					using the Mac OS X Installer.  If that package has
 					dependencies, then you can also build a multi-part package
 					(<filename>.mpkg</filename>) which contains them as well.  You
-					can also build RPM packages from DarwinPorts.</para>
+					can also build RPM packages from MacPorts.</para>
 				</answer>
 			</qandaentry>
 
 			<qandaentry>
 				<question>
-					<para>Why does DarwinPorts install everything into
+					<para>Why does MacPorts install everything into
 					<filename>/opt/local</filename> by default?</para>
 				</question>
 		
@@ -150,9 +150,9 @@
 					<para>First, this location can be set to anything you like by
 					editing /etc/ports/ports.conf or specifying
 					<varname>--prefix</varname> during the
-					<filename>./configure</filename> phase of the DarwinPorts
+					<filename>./configure</filename> phase of the MacPorts
 					installation, so nothing           is fixed
-					in place.  Even the basic DarwinPorts infrastructure,
+					in place.  Even the basic MacPorts infrastructure,
 					which installs into /opt/local by           default, can be
 					installed elsewhere by overriding the value of
 					PREFIX on the command line (see the           README file for

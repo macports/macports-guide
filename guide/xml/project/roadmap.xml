@@ -9,12 +9,12 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts Roadmap</title> 
+  <title>MacPorts Roadmap</title> 
 
   <sect1>
     <title>About this Chapter</title>
 
-    <para>This is the DarwinPorts roadmap for future development.  This
+    <para>This is the MacPorts roadmap for future development.  This
       chapter will contain a verbose TODO list for the project, as well
       as (once these goals are acheived) a place where new features
       and/or changes will be documented prior to their incorporation
@@ -22,15 +22,15 @@
   </sect1>
 
   <sect1>
-    <title>Remove cruft from DarwinPorts API</title>
+    <title>Remove cruft from MacPorts API</title>
 
-    <para>Most of the DarwinPorts API (<function>dportsearch</function>,
+    <para>Most of the MacPorts API (<function>mportsearch</function>,
       etc) is intended for use by external applications, such as Ports
-      Manager and <command>port</command>(1).  However, the DarwinPorts
+      Manager and <command>port</command>(1).  However, the MacPorts
       "API" has grown organically, and there is a lot of cruft and clean
       up that could be done. One piece of low hanging fruit would be to
-      use Tcl namespaces to properly remove the DarwinPorts API from the
-      global namespace, and only namespace export the dport*
+      use Tcl namespaces to properly remove the MacPorts API from the
+      global namespace, and only namespace export the mport*
       procedures.</para>
   </sect1>
 </chapter>

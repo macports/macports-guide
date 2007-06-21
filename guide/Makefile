@@ -1,6 +1,6 @@
 # $Id$
 
-# To build DarwinPorts  guide files from the source docbook xml.
+# To build MacPorts  guide files from the source docbook xml.
 # michaelm@opendarwin.org
 
 ## Targets

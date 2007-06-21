@@ -10,13 +10,13 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts Port Images</title> 
+  <title>MacPorts Port Images</title> 
 
   <sect1 id="about">
     <title>About This Chapter</title>
 
-		<para>This chapter provides a detailed overview of the DarwinPorts
-			Port Images for DarwinPorts Infrastructure developers.</para>
+		<para>This chapter provides a detailed overview of the MacPorts
+			Port Images for MacPorts Infrastructure developers.</para>
   </sect1>
 
 </chapter>

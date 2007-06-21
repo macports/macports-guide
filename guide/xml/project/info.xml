@@ -9,63 +9,63 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts Project Info</title> 
+  <title>MacPorts Project Info</title> 
 
   <sect1>
     <title>About this Chapter</title>
 
-		<para>This chapter contains basic information about the DarwinPorts
+		<para>This chapter contains basic information about the MacPorts
 		project.</para>
   </sect1>
 
   <sect1>
 	  <title>Mailing Lists</title>
-	  <para>The DarwinPorts project is organized through mailing lists,
+	  <para>The MacPorts project is organized through mailing lists,
 		and discussion on those lists ranges from new user help to bugs and
-		fixes to discussions about the future direction of DarwinPorts.
+		fixes to discussions about the future direction of MacPorts.
 	  </para>
 		<variablelist>
-			<varlistentry id='darwinports_at'>
+			<varlistentry id='macports_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/darwinports">darwinports
+				url="http://www.opendarwin.org/mailman/listinfo/macports">macports
 				[at] opendarwin DOT org</ulink></term>
 				<listitem>
-					<para>General discussion about DarwinPorts development, new
+					<para>General discussion about MacPorts development, new
 					user help, and most all discussion surrounding
-					DarwinPorts.</para>
+					MacPorts.</para>
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='darwinports_bugs_at'>
+			<varlistentry id='macports_bugs_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/darwinports-bugs">darwinports-bugs
+				url="http://www.opendarwin.org/mailman/listinfo/macports-bugs">macports-tickets
 				[at] opendarwin DOT org</ulink></term>
 				<listitem>
-					<para>All bugs entered in Bugzilla at OpenDarwin.org for
-						DarwinPorts... very little real communication goes on on
-						this list, it is used for DarwinPorts developers to view
+					<para>All bugs entered in Trac at macports.org for
+						MacPorts... very little real communication goes on on
+						this list, it is used for MacPorts developers to view
 						new bugs that are automatically assigned to this mailing
 						list.</para>
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='cvs_darwinports_all_at'>
+			<varlistentry id='svn_macports_all_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/cvs-darwinports-all">cvs-darwinports-all
-				[at] opendarwin DOT org</ulink></term>
+				url="http://www.opendarwin.org/mailman/listinfo/svn-macports-all">macports-changes
+				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
-					<para>CVS Commit messages are sent to this list, and
+					<para>Subversion commit messages are sent to this list, and
 					occasionally there is some discussion about a commit.  This is
-					mainly a list for DarwinPorts developers, however if you want
-					to track changes to DarwinPorts, you can subscribe to this
+					mainly a list for MacPorts developers, however if you want
+					to track changes to MacPorts, you can subscribe to this
 					list.</para>
 				</listitem>
 			</varlistentry>
 
 			<varlistentry id='portmgr_at'>
-				<term>portmgr [at] opendarwin DOT org</term>
+				<term>portmgr [at] lists DOT macosforge DOT org</term>
 				<listitem>
-					<para>This list is closed and is the home of the DarwinPorts
+					<para>This list is closed and is the home of the MacPorts
 						PortMgr steering group.  If you have an issue that needs to
 						be brought to the attention of PortMgr, send a mail to this
 						list.</para>
@@ -75,12 +75,12 @@
   </sect1>
 
 	<sect1>
-		<title>DarwinPorts PortMgr</title>
+		<title>MacPorts PortMgr</title>
 
-		<para>The DarwinPorts PortMgr Group is primarily responsible for 
-				the administritive decision making of DarwinPorts. For 
-				example managing the DarwinPorts website, approving cvs accounts,
-				maintaining the DarwinPorts mailing lists, and other 
+		<para>The MacPorts PortMgr Group is primarily responsible for 
+				the administritive decision making of MacPorts. For 
+				example managing the MacPorts website, approving svn accounts,
+				maintaining the MacPorts mailing lists, and other 
 				organizational functions. Send mail to portmgr [at]
 				opendarwin DOT org to get in contact with it.</para>
 
@@ -89,17 +89,17 @@
 			
 			<itemizedlist>
 				<listitem>
-					<para><emphasis>Markus W. Weissmann</emphasis>, mww [at] opendarwin
+					<para><emphasis>Markus W. Weissmann</emphasis>, mww [at] macports
 					DOT org</para>
 				</listitem>
 
 				<listitem>
-					<para><emphasis>Juan M. Palacios</emphasis>, jmpp [at] opendarwin
-					DOT org</para>
+					<para><emphasis>Juan M. Palacios</emphasis>, jmpp [at] macports
+                    DOT org</para>
 				</listitem>
 
 				<listitem>
-					<para><emphasis>James D. Berry</emphasis>, jberry [at] opendarwin
+					<para><emphasis>James D. Berry</emphasis>, jberry [at] macports
 					DOT org</para>
 				</listitem>
 

@@ -22,27 +22,27 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts Manager</title> 
+  <title>MacPorts Manager</title> 
   
   <sect1>
     <title>About this chapter</title>
 
-    <para>This chapter provides an overview of the DarwinPorts Manager
+    <para>This chapter provides an overview of the MacPorts Manager
       application and how to use it as an alternative to the command-line 
-      tools for DarwinPorts.</para>
+      tools for MacPorts.</para>
 
   </sect1>
 	
-  <sect1 id='darwinportsmanager'>
-    <title>DarwinPorts Manager.app</title>
+  <sect1 id='macportsmanager'>
+    <title>MacPorts Manager.app</title>
     
-    <para>DarwinPorts Manager.app is a Cocoa GUI for the DarwinPorts
+    <para>MacPorts Manager.app is a Cocoa GUI for the MacPorts
       project.  It will allow users to browse through available ports and
       their descriptions and to download, install, and uninstall the
-      software.  DarwinPorts Manager.app is currently under development,
+      software.  MacPorts Manager.app is currently under development,
       and is based on the older Ports Manager.app.</para>
 
     <para>We will be providing a binary installer (a '.pkg') file in
-      the near future for DarwinPorts Manager.app.</para>
+      the near future for MacPorts Manager.app.</para>
   </sect1>
 </chapter>

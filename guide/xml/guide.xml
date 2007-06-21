@@ -4,7 +4,7 @@
 
 <book xmlns:xi="http://www.w3.org/2001/XInclude">
   <bookinfo>
-    <title>DarwinPorts Guide</title>
+    <title>MacPorts Guide</title>
       
     <author>
       <honorific>Dr</honorific>
@@ -25,18 +25,18 @@
 		</author>
 
 		<legalnotice>
-			<para>If you have any questions regarding DarwinPorts, you may
-				email the DarwinPorts mailing list: 
+			<para>If you have any questions regarding MacPorts, you may
+				email the MacPorts mailing list: 
 				<ulink
-						url="mailto:darwinports@opendarwin.org">
-					darwinports@opendarwin.org
+						url="mailto:macports-users@lists.macosforge.org">
+					macports-users@opendarwin.org
 				</ulink>
 				Please be aware that you are not allowed mail to the list
 				without first subscribing to it. This us due to spam. You may
 				subscribe to the list here:
 				<ulink
-						url="http://www.opendarwin.org/mailman/listinfo/darwinports">
-						OpenDarwin mailman: DarwinPorts
+						url="http://www.opendarwin.org/mailman/listinfo/macports">
+						MacOSforge mailman: MacPorts
 				</ulink>
 			</para>
 		</legalnotice>
@@ -52,19 +52,19 @@
   <preface>
     <title>About this guide</title>
       <para>Part I of this guide is intended to help you use
-        the DarwinPorts system. Part II is directed towards
-        users who wish to add their favorite software to DarwinPorts.
+        the MacPorts system. Part II is directed towards
+        users who wish to add their favorite software to MacPorts.
         Part III is intended for developers interested in extending
-        the DarwinPorts system.</para>
+        the MacPorts system.</para>
 
       <para>The Guide is still at an early draft stage, so if you have any
 	comments, corrections or (even better) contributions, please
-	contact the OpenDarwin Documentation Project at
-	<email>doc@opendarwin.org</email>.</para>
+	contact the MacPorts Documentation Project at
+	<email>macports-docs@lists.macosforge.org</email>.</para>
   </preface>
 
   <part>
-    <title>Using DarwinPorts</title>
+    <title>Using MacPorts</title>
 
     <xi:include href="user/user.xml" /> 
 
@@ -73,7 +73,7 @@
   </part>
 
   <part>
-    <title>DarwinPorts Portfiles</title>
+    <title>MacPorts Portfiles</title>
     
     <xi:include href="portfiles/quick.xml" />
     
@@ -94,7 +94,7 @@
   </part>
 
   <part>
-    <title>DarwinPorts Internals</title>
+    <title>MacPorts Internals</title>
   
     <xi:include href="internals/internals.xml" /> 
     <!-- <xi:include href="internals/portimages.xml" />  -->
@@ -102,7 +102,7 @@
 	</part>
 
 	<part>
-		<title>The DarwinPorts Project</title>
+		<title>The MacPorts Project</title>
 
 		<xi:include href="project/info.xml" />
 

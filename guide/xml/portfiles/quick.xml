@@ -21,19 +21,19 @@
   <title>Quick Start</title> 
 
   <sect1 id="getting_started">
-    <title>Getting Started With DarwinPorts</title>
+    <title>Getting Started With MacPorts</title>
 
     <para>This document will provide a short guide to the basics of a
-      DarwinPorts <filename>Portfile</filename>.  A
+      MacPorts <filename>Portfile</filename>.  A
       <filename>Portfile</filename> is actually a Tcl script run by the
       <command>port</command> system.  Despite this, the
       <filename>Portfile</filename> syntax is very
       straightforward.</para>
     
-    <para>In order to work with DarwinPorts, you will need to download and
-      install it on your system.  The <link linkend='getting_dports'> 
-      Obtaining</link> and <link linkend='install_dports'>Installing  
-      DarwinPorts</link> sections of this guide describes the process in
+    <para>In order to work with MacPorts, you will need to download and
+      install it on your system.  The <link linkend='getting_mports'> 
+      Obtaining</link> and <link linkend='install_mports'>Installing  
+      MacPorts</link> sections of this guide describes the process in
       detail. </para>
 
     <para>Since you're interested in writing a
@@ -41,7 +41,7 @@
       <command>port</command> with the <option>-v</option> (verbose
       output) and the <option>-d</option> (debugging option) switches.
       This will display useful messages that are usually suppressed
-      while running DarwinPorts.</para>
+      while running MacPorts.</para>
   </sect1>
 
   <sect1 id="basics">
@@ -90,7 +90,7 @@ master_sites      ftp://ircftp.au.eterna.com.au/pub/ircII/</programlisting>
             <para>Every <filename>Portfile</filename> starts with
               <varname>#&#x0024;Id: &#x0024;</varname>. This is a RCS
               <varname>Id</varname> tag (commented out with the '#' character
-              so that DarwinPorts is not confused by the tag). </para>
+              so that MacPorts is not confused by the tag). </para>
           </listitem>
         </varlistentry>
 
@@ -170,12 +170,12 @@ master_sites      ftp://ircftp.au.eterna.com.au/pub/ircII/</programlisting>
         </varlistentry>
       </variablelist>
       
-      <para>DarwinPorts uses the terms 'keys' and 'options'
+      <para>MacPorts uses the terms 'keys' and 'options'
         interchangeably since most keys are used as options of a
         particular task in the porting process.</para>
       
       <para>At this point, the <filename>Portfile</filename> is complete
-        enough to download ircII.  By default, DarwinPorts will append
+        enough to download ircII.  By default, MacPorts will append
         the <varname>version</varname> to <varname>name</varname> and
         assume sources are in a gzipped tar archive with the 
         <filename>.tar.gz</filename> suffix. </para>
@@ -189,7 +189,7 @@ master_sites      ftp://ircftp.au.eterna.com.au/pub/ircII/</programlisting>
 
       <para><computeroutput><literallayout>DEBUG: Executing com.apple.main (ircii)
 DEBUG: Executing com.apple.fetch (ircii)
---->  ircii-20020912.tar.gz doesn't seem to exist in /opt/local/var/db/dports/distfiles
+--->  ircii-20020912.tar.gz doesn't seem to exist in /opt/local/var/db/mports/distfiles
 --->  Attempting to fetch ircii-20020912.tar.gz from ftp://ircftp.au.eterna.com.au/pub/ircII/
 DEBUG: Executing com.apple.checksum (ircii)
 Error: No checksums statement in Portfile.  File checksums are:
@@ -201,13 +201,13 @@ Error: Target error: com.apple.checksum returned: No checksums statement in Port
     <sect2 id="checksums">
       <title>Verifying the Downloaded File</title>
 
-      <para>Notice that DarwinPorts first checks for a local copy of
+      <para>Notice that MacPorts first checks for a local copy of
         <filename>ircii-20020912.tar.gz</filename> and doesn't find it,
         so it then downloads from the remove site.  The port doesn't
         finish because of an error: <computeroutput>No checksums
           statement in Portfile.</computeroutput>
         Portfiles must contain an md5 checksum of all distribution
-        files--this allows DarwinPorts to verify the accuracy and
+        files--this allows MacPorts to verify the accuracy and
         authenticity of the sources.  For convenience, an md5 checksum
         of the downloaded files is printed when the
         <varname>checksums</varname> argument is not specified.  Go back
@@ -242,7 +242,7 @@ DEBUG: Executing com.apple.checksum (ircii)
 DEBUG: Executing com.apple.extract (ircii)
 --->  Extracting for ircii-20020912
 --->  Extracting ircii-20020912.tar.gz ... DEBUG: Assembled command: 'cd
-/Users/kevin/opendarwin/proj/darwinports/dports/irc/ircii/work &amp;&amp; gzip -dc /opt/local/var/db/dports/distfiles/ircii-20020912.tar.gz | tar -xf -'
+/Users/kevin/opendarwin/proj/macports/mports/irc/ircii/work &amp;&amp; gzip -dc /opt/local/var/db/mports/distfiles/ircii-20020912.tar.gz | tar -xf -'
 Done</literallayout></computeroutput></para>
     </sect2>
 
@@ -252,12 +252,12 @@ Done</literallayout></computeroutput></para>
       <para>Now that the sources have been extracted into a
         <filename>work</filename> directory in the Portfile
         directory, we can configure the sources to compile with the
-        desired options.  By default DarwinPorts assumes the software
+        desired options.  By default MacPorts assumes the software
         you're porting uses an autoconf <filename>configure</filename>
         script and  will pass the <option>--prefix=${prefix}</option> 
         argument to <filename>configure</filename>, specifying that the 
         software should be installed in the directory tree used by
-        DarwinPorts.</para>
+        MacPorts.</para>
 
       <para>ircII's standard set of options is fine for a base
         install on Darwin, so we won't add anything to the
@@ -444,7 +444,7 @@ http://distfiles.opendarwin.org/</programlisting>
             <para><varname>distfile</varname> is the name and version
               combined with the <varname>extract.suffix</varname> (by
               default <filename>${name}-${version}.tar.gz</filename>) 
-              by default, and is used by DarwinPorts to fetch the 
+              by default, and is used by MacPorts to fetch the 
               distribution file.  If the name of the file on the server 
               is not the same as <filename>${name}-${version}.tar.gz
               </filename> you can use this option to override the default
@@ -527,8 +527,8 @@ http://distfiles.opendarwin.org/</programlisting>
         (<filename>Portfile</filename>) repository for your
         uncommitted ports.  Edit your
         <filename>sources.conf</filename> file and
-        add:<userinput>file:///User/foo/dports-dev</userinput> (or
-        wherever your local dport tree is). Place all your <filename>Portfiles</filename>
+        add:<userinput>file:///User/foo/mports-dev</userinput> (or
+        wherever your local mport tree is). Place all your <filename>Portfiles</filename>
         inside their corresponding portdirs (reflecting the name
         of the port), which should in turn be placed inside directories
         that reflect their primary category (the first one listed for their
@@ -547,10 +547,10 @@ http://distfiles.opendarwin.org/</programlisting>
       <para>First run port install without root privileges, this is a
         good way to check that the port installs into the destroot and
         not directly into the main prefix directory, or elsewhere in
-        the system.  This should succeed up to the point darwinports
+        the system.  This should succeed up to the point macports
         attempts to copy the port from the destroot into the
-        darwinports prefix. Once you are confident the port is
-        correctly destrooted install the port into the darwinports
+        macports prefix. Once you are confident the port is
+        correctly destrooted install the port into the macports
         prefix using root privileges. </para>
       
       <para><userinput>sudo port install foo</userinput></para>
@@ -558,7 +558,7 @@ http://distfiles.opendarwin.org/</programlisting>
       <para> Ensure the Port installs into the destroot and does not
         install anything onto the system directly, most software that
         uses autoconf should behave correctly automatically as
-        darwinports sets DESTDIR by default. If files are directly
+        macports sets DESTDIR by default. If files are directly
         installed to the system they will not be registered and
         packaging will fail. </para>
     </sect2>
@@ -579,7 +579,7 @@ http://distfiles.opendarwin.org/</programlisting>
       clean install of the OS, to avoid missing dependencies.  
       Using a chrooted version of the OS to install and test ports 
       makes this much easier, see the chroot 
-      <ulink url="http://darwinports.gene-hacker.net/docs/howto/chroot_10.2/index.html">
+      <ulink url="http://macports.gene-hacker.net/docs/howto/chroot_10.2/index.html">
       HOWTO</ulink> for more details on how to set up the chroot. </para>
     </sect2>
         
@@ -599,8 +599,8 @@ http://distfiles.opendarwin.org/</programlisting>
   <sect1 id="advice">
     <title>Where can I ask for advice?</title> 
 
-    <para>Either on the <email>darwinports@opendarwin.org</email>
-      mailing list, or on the #darwinports channel on irc.freenode.net.
+    <para>Either on the <email>macports-dev@lists.macosforge.org</email>
+      mailing list, or on the #macports channel on irc.freenode.net.
       Don't be afraid to ask questions! You should also look at the
       later sections of the <link linkend="details">guide</link>and the
       <filename>portfile</filename>(7) and
@@ -675,7 +675,7 @@ configure.args  --with-ssl \
     </example>
 
     <para>For more examples, you can browse the directory tree of
-      DarwinPorts' <filename>dports</filename> directory and have a look
+      MacPorts' <filename>mports</filename> directory and have a look
       at the <filename>Portfile</filename>s of your favorite
       ports.</para>
     

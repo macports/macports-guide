@@ -9,17 +9,17 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts APIs</title> 
+  <title>MacPorts APIs</title> 
 
   <sect1 id="about">
     <title>About This Chapter</title>
 
-    <para>DarwinPorts contains two application programming interfaces
+    <para>MacPorts contains two application programming interfaces
     (APIs), written in Tcl.</para>
     
     <para>The Ports API is an internal API used to run individual
-      Portfiles.  The DarwinPorts (dport*) API is a high-level API used by
-      client applications such as DarwinPorts Manager.app or
+      Portfiles.  The MacPorts (mport*) API is a high-level API used by
+      client applications such as MacPorts Manager.app or
       <command>port</command>.</para>
   </sect1>
 
@@ -77,10 +77,10 @@
   </sect1>
 
   <sect1 id="dp_api">
-    <title>DarwinPorts API</title>
+    <title>MacPorts API</title>
 
-    <para>The code for the DarwinPorts API is located in
-      base/src/darwinports1.0. The DarwinPorts API performs the
+    <para>The code for the MacPorts API is located in
+      base/src/macports1.0. The MacPorts API performs the
       following functions:</para>
 
     <para>
@@ -108,28 +108,28 @@
         <listitem>
           <para>Registry management routines. Manages the rudimentary
             port registry in
-            <filename>${prefix}/var/db/dports/receipts/</filename>.</para>
+            <filename>${prefix}/var/db/mports/receipts/</filename>.</para>
 
           <para>
             <itemizedlist>
               <listitem>
-                <para><function>dportregistry::new</function>: create a
+                <para><function>mportregistry::new</function>: create a
                   new port registry entry</para>
               </listitem>
 
               <listitem>
-                <para><function>dportregistry::exists</function>: check
+                <para><function>mportregistry::exists</function>: check
                   if a port registry entry exists (either versioned or
                   not)</para>
               </listitem>
 
               <listitem>
-                <para><function>dportregistry::delete</function>: delete
+                <para><function>mportregistry::delete</function>: delete
                   an existing registry entry</para>
               </listitem>
 
               <listitem>
-                <para><function>dportregistry::close</function>: closes
+                <para><function>mportregistry::close</function>: closes
                   a new registry entry</para>
               </listitem>
             </itemizedlist>
@@ -137,41 +137,41 @@
         </listitem>
 
         <listitem>
-          <para>Exports the "darwinports" API for use by client
+          <para>Exports the "macports" API for use by client
             applications:</para>
 
           <para>
             <itemizedlist>
               <listitem>
-                <para><function>dportinit</function>: Initializes the
-                  darwinports system. Should be called before trying to
+                <para><function>mportinit</function>: Initializes the
+                  macports system. Should be called before trying to
                   use any other procedure</para>
               </listitem>
 
               <listitem>
-                <para><function>dportsearch</function>: Given a regexp,
+                <para><function>mportsearch</function>: Given a regexp,
                   searches the PortIndex for ports with matching
                   names</para>
               </listitem>
 
               <listitem>
-                <para><function>dportopen</function>: Given a URI to a
+                <para><function>mportopen</function>: Given a URI to a
                   port, opens the port and returns an opaque handle to
                   it</para>
               </listitem>
 
               <listitem>
-                <para><function>dportclose</function>: Given a port
+                <para><function>mportclose</function>: Given a port
                   handle, closes the port.</para>
               </listitem>
 
               <listitem>
-                <para><function>dportexec</function>: Given a port
+                <para><function>mportexec</function>: Given a port
                   handle, executes a target (i.e. install)</para>
               </listitem>
 
               <listitem>
-                <para><function>dportinfo</function>: Given a port
+                <para><function>mportinfo</function>: Given a port
                   handle, this returns the PortInfo array (as a flat
                   list of array elements). This is a little tricky and
                   unstable and only used by the 'portindex'
@@ -189,21 +189,21 @@
       </itemizedlist>
     </para>
     
-    <para>An example of how the DarwinPorts API is used:</para>
+    <para>An example of how the MacPorts API is used:</para>
 
-    <para><function>dportsearch</function> returns an arbitrary number
+    <para><function>mportsearch</function> returns an arbitrary number
       of Tcl arrays containing data from the
       <filename>PortIndex</filename>. The returned data includes the
       port name, version, revision, epoch, variants, depends, etc. When
       one executes <userinput>port install cm3</userinput>, the
       <command>port</command> utility uses the
-      <function>dportsearch</function> function to find the first port
-      that matches the name "cm3", uses <function>dportopen</function>
-      to open the port, and then uses <function>dportexec</function> to
+      <function>mportsearch</function> function to find the first port
+      that matches the name "cm3", uses <function>mportopen</function>
+      to open the port, and then uses <function>mportexec</function> to
       execute the install target in the port. Then, it uses
-      <function>dportclose</function> to close the port. When one
+      <function>mportclose</function> to close the port. When one
       executes <userinput>port search cm3</userinput>, the port utility
-      uses <function>dportsearch</function>, takes the list of arrays,
+      uses <function>mportsearch</function>, takes the list of arrays,
       and formats the data for human consumption.</para>
   </sect1>
 </chapter>

@@ -9,19 +9,19 @@
     </keywordset>
   </chapterinfo>
   
-  <title>DarwinPorts Policies</title> 
+  <title>MacPorts Policies</title> 
 
   <sect1>
     <title>About this Chapter</title>
 
 		<para>This chapter contains policies and procedures, as well as
-		responsbilities for the DarwinPorts Project.</para>
+		responsbilities for the MacPorts Project.</para>
   </sect1>
 
   <sect1>
 	  <title>Port Maintenance Protocol</title>
 	  <para>
-		  DarwinPorts does not enforce exclusive write access to the maintainer
+		  MacPorts does not enforce exclusive write access to the maintainer
 		  of a given Port, however it is normal practice to inform the maintainer
 		  before making any changes to a Port. Detailed procedures are described 
 		  below.   
@@ -36,7 +36,7 @@
 		  <orderedlist numeration='arabic'>
 			  <listitem>
 				  Write patch for the port that resolves the issue, 
-				  and email maintainer or file a bug in Bugzilla,
+				  and email maintainer or file a bug in Trac,
 				  appropriately assigned to the maintainer of the port. If 
 				  you can't write a patch, file a bug and ignore the 
 				  following steps...
@@ -53,8 +53,8 @@
 				  (this may be the person originally submitting the patches). 
 				  If the person suggesting the changes does not have 
 				  write-access to the repository, they should send an 
-				  email to darwinports@opendarwin.org with a summary of the 
-				  bug and a reference to a bugzilla bug.
+				  email to macports-dev@lists.macosforge.org with a summary of the 
+				  bug and a reference to a Trac bug.
 			  </listitem>
 
 		  </orderedlist>
@@ -64,8 +64,8 @@
 
 		  <orderedlist>
 			  <listitem>
-				  A mass update to darwinports which touches many ports 
-				  (usually because of a change in the darwinports 
+				  A mass update to macports which touches many ports 
+				  (usually because of a change in the macports 
 				  infrastructure)
 			  </listitem>
 			  <listitem>
@@ -75,7 +75,7 @@
 			  </listitem>
 			  <listitem>
 				  The port maintainer is not defined or is assigned to 
-				  darwinports@opendarwin.org. Feel free to take over 
+				  nomaintainer@macports.org. Feel free to take over 
 				  such ports!
 			  </listitem>
 			  <listitem>
@@ -90,7 +90,7 @@
 		  <para>
 			  Abandonment is defined as when a bug has not been acknowledged 
 			  for more than 3 weeks after the bug was filed. If this occurs 
-			  a new bug should be filed in bugzilla against the port with 
+			  a new bug should be filed in Trac against the port with 
 			  the subject: [Port Abandoned] and that port should reference 
 			  the ignored bug.
 		  </para>
@@ -105,7 +105,7 @@
   <sect1>
     <title>Committer's Category Responsibility List</title>
 
-		<para>DarwinPorts has at least one committer responsible for each
+		<para>MacPorts has at least one committer responsible for each
 		category of ports (<filename>www</filename>,
 		<filename>textproc</filename>, etc).  This is a list of those
 		committers.</para>

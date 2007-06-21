@@ -90,7 +90,7 @@
 			<varlistentry id='libpath'>
 				<term>libpath</term>
 				<listitem>
-					<para>Path to the DarwinPorts TCL libraries. Read only.</para>
+					<para>Path to the MacPorts TCL libraries. Read only.</para>
 					
 				</listitem>
 			</varlistentry>
@@ -189,17 +189,17 @@
 				<term>PortSystem</term>
 				<listitem>
 					<para>Determines which version of the portsystem the 
-					Portfile is compatible with. DarwinPorts supports 
+					Portfile is compatible with. MacPorts supports 
 					versioning of the PortSystem so if new, backwards 
 					incompatible changes are introduced older Portfiles 
 					can continue to use the older version of the system. 
 					The PortSystem line wraps the loading of TCL libraries 
-					appropriate for that version of DarwinPorts. If you 
+					appropriate for that version of MacPorts. If you 
 					don't load the libraries, nothing else in the Portfile 
 					will work. Thus, the PortSystem should be the top line 
 					in the Portfile.</para>
 					
-					<para>Currently DarwinPorts only has version 1.0 so you 
+					<para>Currently MacPorts only has version 1.0 so you 
 					should put: <userinput>PortSystem 1.0</userinput> in your 
 					Portfile.</para>
 
@@ -471,7 +471,7 @@ master_sites.mirror_subdir  ${name}</userinput></programlisting>
               specify which site in <varname>master_sites</varname> to
               download which file from.</para>
             
-            <para>Fortunately DarwinPorts also provides a much more
+            <para>Fortunately MacPorts also provides a much more
               powerful and flexible syntax for mirror site lists.</para>
 
             <programlisting><userinput>distfiles                   file_one.tar.gz:tagone file_two.tar.gz:tagtwo file_three.tar.gz
@@ -553,7 +553,6 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
               <listitem><para><varname>isc</varname></para></listitem>
               <listitem><para><varname>kde</varname></para></listitem>
               <listitem><para><varname>openbsd</varname></para></listitem>
-              <listitem><para><varname>opendarwin</varname></para></listitem>
               <listitem><para><varname>perl_cpan</varname></para></listitem>
               <listitem><para><varname>postgresql</varname></para></listitem>
               <listitem><para><varname>ruby</varname></para></listitem>
@@ -950,7 +949,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
                 <para>Arguments passed to ${destroot.cmd} in order to 
                   install correctly into the destroot.</para>
                 <para>All ports must install via the 'destroot' so 
-                  that the DarwinPorts infrastructure can register each 
+                  that the MacPorts infrastructure can register each 
                   file and directory a port installs. Most autoconf based 
                   build systems will behave correctly and respect DESTDIR, 
                   however some will not. Most of those that do not respect 
@@ -1129,7 +1128,7 @@ ftp://ftp.uu.net/archive/systems/gnu/directory/${name}/
 
 	<sect1>
           <title>TCL primitives</title>
-          <para>DarwinPorts provides several useful TCL primitives for
+          <para>MacPorts provides several useful TCL primitives for
             use within Portfiles.</para>
 
           <sect2>
