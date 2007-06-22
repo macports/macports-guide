@@ -179,7 +179,7 @@
               </listitem>
 
               <listitem>
-                <para><function>dpoprtdepends</function>: Given a port
+                <para><function>mportdepends</function>: Given a port
                   handle, returns a list of ports the specified port
                   depends upon</para>
               </listitem>

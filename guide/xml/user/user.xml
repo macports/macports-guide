@@ -593,7 +593,7 @@
 				activate vile</userinput> remember to take caution when using force.</para>
 
 				<para>Try to figure out why the conflict occurs and email the 
-				port maintainer a fix, or even better submit the fix to Bugzilla.</para>
+				port maintainer a fix, or even better submit the fix to Trac.</para>
 				
 			</sect3>
 		</sect2>
@@ -607,7 +607,7 @@
 
 
 			<para>The following section describes in some more detail how 
-			to use Bugzilla to submit your port.</para>
+			to use Trac to submit your port.</para>
 
 			<sect3>
 				<title>Submission parameters</title>

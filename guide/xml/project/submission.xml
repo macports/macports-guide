@@ -29,10 +29,10 @@
 			<title>Where to submit</title>
 			
 			<para> All ports should be submitted via the MacPorts 
-			<ulink url="http://www.opendarwin.org/bugzilla/">Trac tool
+			<ulink url="http://trac.macports.org/project/macports/newticket">Trac tool
 			</ulink>. Your submission will be automatically emailled to the 
 			members of the 
-			<ulink url="http://www.opendarwin.org/mailman/listinfo/macports-tickets/">
+			<ulink url="http://www.macosforge.org/mailman/listinfo/macports-tickets/">
 			macports-tickets</ulink> mailing list. If you are uncertain about 
 			any aspect of your port, you may also want to email it with your 
 			questions and the bug number to  
@@ -46,7 +46,7 @@
 			with your submission.</para>
 			
 			<para>Updates and modifications should be submitted as diffs. See 
-			updating a port below</para>
+			updating a port below.</para>
 			
 		</sect2>
 		
@@ -124,7 +124,7 @@
 										</listitem>	
 									</varlistentry>
 									<varlistentry id='UPDATE_portname'>
-										<term>UPDATE portname-1.2.3
+										<term>UPDATE: portname-1.2.3
 										</term>
 										<listitem>
 											<para>Please use this format for 

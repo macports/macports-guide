@@ -25,21 +25,29 @@
 		fixes to discussions about the future direction of MacPorts.
 	  </para>
 		<variablelist>
-			<varlistentry id='macports_at'>
+			<varlistentry id='macports_dev_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/macports">macports
-				[at] opendarwin DOT org</ulink></term>
+				url="http://www.macosforge.org/mailman/listinfo/macports-dev">macports-dev
+				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
-					<para>General discussion about MacPorts development, new
-					user help, and most all discussion surrounding
+					<para>General discussion about MacPorts development.</para>
+				</listitem>
+			</varlistentry>
+
+			<varlistentry id='macports_users_at'>
+				<term><ulink
+				url="http://www.macosforge.org/mailman/listinfo/macports-users">macports-users
+				[at] lists DOT macosforge DOT org</ulink></term>
+				<listitem>
+					<para>New user help, and most all discussion surrounding
 					MacPorts.</para>
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='macports_bugs_at'>
+			<varlistentry id='macports_tickets_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/macports-bugs">macports-tickets
-				[at] opendarwin DOT org</ulink></term>
+				url="http://www.macosforge.org/mailman/listinfo/macports-tickets">macports-tickets
+				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
 					<para>All bugs entered in Trac at macports.org for
 						MacPorts... very little real communication goes on on
@@ -82,7 +90,7 @@
 				example managing the MacPorts website, approving svn accounts,
 				maintaining the MacPorts mailing lists, and other 
 				organizational functions. Send mail to portmgr [at]
-				opendarwin DOT org to get in contact with it.</para>
+				macports DOT org to get in contact with it.</para>
 
 		<sect2>
 			<title>PortMgr Group</title>
