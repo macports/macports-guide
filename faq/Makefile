@@ -73,4 +73,4 @@ tidy:
 clean:
 	rm -fr ${HTMLDIR} ${XHTMLDIR}
 
-include ../../base/Mk/dports.autoconf.mk
+include ../../base/Mk/macports.autoconf.mk
