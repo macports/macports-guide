@@ -36,12 +36,28 @@
       MacPorts</link> sections of this guide describes the process in
       detail. </para>
 
+    <para>In order for these commands to work, you're going to need
+      permission to write to certain areas of your MacPorts tree. You
+      need to be able to write
+      to <filename>${prefix}/var/macports/build</filename> and
+      <filename>${prefix}/var/macports/distfiles</filename>. You
+      could run all of these commands as a superuser (prefix the
+      commands with <command>sudo</command>), but you might
+      accidentally install a broken package that way, or otherwise
+      damage up your MacPorts installation. Another option is to change
+      the owner of just those directories to your user, so you can
+      write to those directories but not your whole
+      <filename>${prefix}</filename> tree. To do this,
+      run <userinput>chown username
+      ${prefix}/var/macports/build</userinput> and <userinput>chown
+      -R username ${prefix}/var/macports/distfiles</userinput>.</para>
+
     <para>Since you're interested in writing a
       <filename>Portfile</filename>, you should invoke the
-      <command>port</command> with the <option>-v</option> (verbose
-      output) and the <option>-d</option> (debugging option) switches.
-      This will display useful messages that are usually suppressed
+      <command>port</command> with the <option>-d</option> (debugging option)
+      switch. This will display useful messages that are usually suppressed
       while running MacPorts.</para>
+
   </sect1>
 
   <sect1 id="basics">
