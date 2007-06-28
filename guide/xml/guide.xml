@@ -29,14 +29,14 @@
 				email the MacPorts mailing list: 
 				<ulink
 						url="mailto:macports-users@lists.macosforge.org">
-					macports-users@opendarwin.org
+					macports-users@lists.macosforge.org
 				</ulink>
 				Please be aware that you are not allowed mail to the list
 				without first subscribing to it. This us due to spam. You may
 				subscribe to the list here:
 				<ulink
-						url="http://www.opendarwin.org/mailman/listinfo/macports">
-						MacOSforge mailman: MacPorts
+						url="http://lists.macosforge.org/mailman/listinfo/macports-users">
+						MacOSforge mailman: macports-users
 				</ulink>
 			</para>
 		</legalnotice>
