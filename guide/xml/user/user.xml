@@ -179,18 +179,18 @@
 			<title>Configuring for MacPorts</title>
 			
 			<para>It is no longer necessary to edit
-			<filename>${prefix}/etc/ports/sources.conf</filename> after installing
+			<filename>${prefix}/etc/macports/sources.conf</filename> after installing
 			MacPorts.  If you change the location of the
 			<filename>mports</filename> directory, which was in
 			<filename>~/macports/mports</filename> based on the above
 			examples, then you will still need to edit
-			<filename>${prefix}/etc/ports/sources.conf</filename> and modify the
+			<filename>${prefix}/etc/macports/sources.conf</filename> and modify the
 			<userinput>file:///Users/mike/macports/mports</userinput> line
 			to reflect the new location.  To edit the file you must use a
 			command line text editor like pico or vi. </para>
 
 			<note><para>Please note, if you are using Mac OS X 10.2 "Jaguar", then
-				you will need to edit <filename>${prefix}/etc/ports/macports.conf</filename> and
+				you will need to edit <filename>${prefix}/etc/macports/macports.conf</filename> and
 				change: <computeroutput>portinstalltype image</computeroutput>
 				to: <userinput>portinstalltype direct</userinput></para></note>
 			
