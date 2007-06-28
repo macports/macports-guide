@@ -46,8 +46,8 @@
 
 		
 		<para>MacPorts is probably best described by comparison:  It's sort 
-		of like the <ulink url='http://www.freebsd.org/ports'>FreeBSD ports 
-		collection</ulink> or <ulink url='http://fink.sf.org/'>Fink</ulink> 
+		of like the <ulink url='http://www.freebsd.org/ports/'>FreeBSD ports 
+		collection</ulink> or <ulink url='http://www.finkproject.org/'>Fink</ulink> 
 		in that it automates the process of building third party software for 
 		Mac OS X and other operating systems.  MacPorts also tracks all 
 		dependency information for a given piece of software. In other words, 
@@ -143,8 +143,8 @@
 			<para>Currently there are basically two ways to obtain MacPorts.
 			Either download the sources as a tarball or get the binary
 			installer via the downloadable disk image (both available in the
-			<ulink url='http://www.macports.org/downloads/'>download
-			section</ulink>). If you choose the binary installer, you can skip
+			<ulink url='http://trac.macports.org/projects/macports/browser/downloads/'>
+			download section</ulink>). If you choose the binary installer, you can skip
 			the next sections.</para>
 
 			<para>If you want greater control and want to e. g. specify one of
@@ -190,7 +190,7 @@
 			command line text editor like pico or vi. </para>
 
 			<note><para>Please note, if you are using Mac OS X 10.2 "Jaguar", then
-				you will need to edit <filename>${prefix}/etc/ports/ports.conf</filename> and
+				you will need to edit <filename>${prefix}/etc/ports/macports.conf</filename> and
 				change: <computeroutput>portinstalltype image</computeroutput>
 				to: <userinput>portinstalltype direct</userinput></para></note>
 			
@@ -269,6 +269,10 @@
 							<filename>base</filename> via
 							<programlisting><![CDATA[% port selfupdate]]></programlisting>
 						</para>
+						<!--
+							More comments here about what to expect of port
+							selfupdate
+						-->
 					</listitem>
 				</varlistentry>
 			</variablelist>
@@ -350,6 +354,10 @@
 						<para>The search facility uses standard regular expression
 						syntax, so you can also do much more complex
 						searches.</para>
+						<!--
+							Examples of such regexs, and where to go to learn
+							more about them.
+						-->
 					</listitem>
 				</varlistentry>
 
@@ -365,7 +373,7 @@
 						<userinput>destroot</userinput> and finally
 						<userinput>install</userinput> are all available and perform
 						part of the build or install process.  Using the steps
-						individually is not normally needeed unless you are
+						individually is not normally needed unless you are
 						developing a new port or trying to diagnose a
 						problem.</para>
 					</listitem>
@@ -494,6 +502,10 @@
 						port you have installed, use:</para>
 
 						<para><userinput>port dependents gettext</userinput></para>
+						<!--
+							Clarification that it is only the _installed_ ports
+							that depend on gettext, not all the ones that can?
+						-->
 					</listitem>
 				</varlistentry>
 			</variablelist>
@@ -566,7 +578,7 @@
 		<para>There are a number of common problems so before you report a 
 		problem (details on how to <link linkend='user_bugs'>report problems</link>
 		 follow) check that the problem is described here, or in the 
-		 <ulink url='http://www.opendarwin.org/projects/macports/en/faq.php'>
+		 <ulink url='http://trac.macports.org/projects/macports/wiki/FAQ'>
 		 FAQ</ulink> first.</para>
 
 		<sect2>
@@ -610,6 +622,9 @@
 			to use Trac to submit your port.</para>
 
 			<sect3>
+			<!--
+				 More details are needed for this in general
+			-->
 				<title>Submission parameters</title>
 				
 				<variablelist>
@@ -642,7 +657,9 @@
 							comments on existing ports to the maintainer. 
 							Otherwise, if this is a new port or an RFC, 
 							please leave blank</para>
-
+						<!--
+							Is this still the procedure we wish to recommend?
+						-->
 						</listitem>
 					</varlistentry>
 
