@@ -31,7 +31,8 @@
 					<para>One key attribute of any MacPorts committer must be
 					enthusiasm for the project, so therefore we appreciate applicants
 					who've shown their involvement through active participation
-					on the <ulink url="http://opendarwin.org/mailman/listinfo/macports">main user list</ulink>,
+					on the <ulink
+                    url="http://lists.macosforge.org/mailman/listinfo/macports-users">main user list</ulink>,
 					either through general user support and/or project roadmap discussion
 					and brainstorming.</para>
 				</listitem>
@@ -66,7 +67,7 @@
 		<para>For a brief listing of the duties &amp; benefits resulting from holding
 		an OpenDarwin account, along with a short jump start on Subversion primaries, read
 		OpenDarwin's <ulink url="http://opendarwin.org/en/articles/committer_guide/ar01s02.html">Committer's Guide</ulink>
-		for account applicants. The MacPorts' specific <ulink url="http://wiki.opendarwin.org/index.php/Darwinports:New_committers_guide">New Committer's Guide</ulink>
+		for account applicants. The MacPorts' specific <ulink url="http://trac.macports.org/projects/macports/wiki/NewCommittersGuide">New Committer's Guide</ulink>
 		is also a must read for new comers to become acquainted with our own procedures
 		and guidelines.</para>
 

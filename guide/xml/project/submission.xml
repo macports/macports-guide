@@ -32,7 +32,7 @@
 			<ulink url="http://trac.macports.org/project/macports/newticket">Trac tool
 			</ulink>. Your submission will be automatically emailled to the 
 			members of the 
-			<ulink url="http://www.macosforge.org/mailman/listinfo/macports-tickets/">
+			<ulink url="http://lists.macosforge.org/mailman/listinfo/macports-tickets">
 			macports-tickets</ulink> mailing list. If you are uncertain about 
 			any aspect of your port, you may also want to email it with your 
 			questions and the bug number to  

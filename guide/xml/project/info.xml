@@ -25,18 +25,18 @@
 		fixes to discussions about the future direction of MacPorts.
 	  </para>
 		<variablelist>
-			<varlistentry id='macports_dev_at'>
+			<varlistentry id='macports-dev_at'>
 				<term><ulink
-				url="http://www.macosforge.org/mailman/listinfo/macports-dev">macports-dev
+				url="http://lists.macosforge.org/mailman/listinfo/macports-dev">macports-dev
 				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
 					<para>General discussion about MacPorts development.</para>
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='macports_users_at'>
+			<varlistentry id='macports-users_at'>
 				<term><ulink
-				url="http://www.macosforge.org/mailman/listinfo/macports-users">macports-users
+				url="http://lists.macosforge.org/mailman/listinfo/macports-users">macports-users
 				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
 					<para>New user help, and most all discussion surrounding
@@ -44,9 +44,9 @@
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='macports_tickets_at'>
+			<varlistentry id='macports-tickets_at'>
 				<term><ulink
-				url="http://www.macosforge.org/mailman/listinfo/macports-tickets">macports-tickets
+				url="http://lists.macosforge.org/mailman/listinfo/macports-tickets">macports-tickets
 				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
 					<para>All bugs entered in Trac at macports.org for
@@ -57,9 +57,9 @@
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='svn_macports_all_at'>
+			<varlistentry id='macports-changes_at'>
 				<term><ulink
-				url="http://www.opendarwin.org/mailman/listinfo/svn-macports-all">macports-changes
+				url="http://lists.macosforge.org/mailman/listinfo/macports-changes">macports-changes
 				[at] lists DOT macosforge DOT org</ulink></term>
 				<listitem>
 					<para>Subversion commit messages are sent to this list, and
@@ -70,8 +70,8 @@
 				</listitem>
 			</varlistentry>
 
-			<varlistentry id='portmgr_at'>
-				<term>portmgr [at] lists DOT macosforge DOT org</term>
+			<varlistentry id='macports-mgr_at'>
+				<term>macports-mgr [at] lists DOT macosforge DOT org</term>
 				<listitem>
 					<para>This list is closed and is the home of the MacPorts
 						PortMgr steering group.  If you have an issue that needs to
@@ -89,7 +89,7 @@
 				the administritive decision making of MacPorts. For 
 				example managing the MacPorts website, approving svn accounts,
 				maintaining the MacPorts mailing lists, and other 
-				organizational functions. Send mail to portmgr [at]
+				organizational functions. Send mail to macports-mgr [at]
 				macports DOT org to get in contact with it.</para>
 
 		<sect2>
