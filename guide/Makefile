@@ -36,7 +36,7 @@ XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 CSS_STYLESHEET?=	docbook.css
 RESOURCES?=		resources/
-STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET}
+STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
 
 .PHONY : all
 .PHONY : clean
