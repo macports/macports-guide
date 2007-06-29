@@ -284,14 +284,14 @@ your sig if you'd like
 
 		</sect2>
 	</sect1>
-	<section1>
+	<sect1>
 		<title>Submission to other project areas</title>
 
 		<para>If you instead plan to contribute to the project by making a submission
-		to any other of its areas, like the "base" section holding the MacPorts
+		to any other of its areas, like the &#34;base&#34; section holding the MacPorts
 		sources themselves, the guidelines for such are very similar to those outlined
-		above. Just be sure to choose the correct component (be that "base", "doc",
-		"www" or any other) of the MacPorts product when creating the Trac entry.</para>
+		above. Just be sure to choose the correct component (be that &#34;base&#34;, &#34;doc&#34;,
+		&#34;www&#34; or any other) of the MacPorts product when creating the Trac entry.</para>
 
-	</section1>
+	</sect1>
 </chapter>
