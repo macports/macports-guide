@@ -22,7 +22,7 @@
 		<para>Using a standardised approach to submitting the Portfiles and 
 		associated patches scripts, etc allows us to keep track of port 
 		submissions, process them efficiently and get them submitted as 
-		quickly as possible to our mports Subversion tree. The following sections 
+		quickly as possible to our ports tree in Subversion. The following sections 
 		will describe the standard port submission procedures. </para>
 		
 		<sect2>
@@ -30,12 +30,9 @@
 			
 			<para> All ports should be submitted via the MacPorts 
 			<ulink url="http://trac.macports.org/project/macports/newticket">Trac tool
-			</ulink>. Your submission will be automatically emailled to the 
-			members of the 
-			<ulink url="http://lists.macosforge.org/mailman/listinfo/macports-tickets">
-			macports-tickets</ulink> mailing list. If you are uncertain about 
+			</ulink>. If you are uncertain about 
 			any aspect of your port, you may also want to email it with your 
-			questions and the bug number to  
+			questions and the ticket number to  
 			<ulink url="mailto:macports-dev@lists.macosforge.org">MacPorts</ulink> 
 			mailing list.</para>
 			
@@ -43,7 +40,9 @@
 			existing port, please assign the port to the current maintainer 
 			in your Trac submission, so that the automatic email is 
 			directed to the maintainer, who will be best suited to deal 
-			with your submission.</para>
+			with your submission. Also, due to a current misconfiguration in Trac,
+			add the current maintainer to the <guilabel>Cc</guilabel> field, to make
+			sure they are notified.</para>
 			
 			<para>Updates and modifications should be submitted as diffs. See 
 			updating a port below.</para>
@@ -61,30 +60,84 @@
 				<title>Submission parameters</title>
 				
 				<variablelist>
-					<varlistentry id='Project'>
+					
+					<varlistentry id='Summary'>
 						<term>
-							Project:
+							Short summary:
 						</term>
 						<listitem>
-							<para>Make sure you select the MacPorts 
-							project.</para>
-
+							<para>The summary field should provide a brief explanation 
+							of purpose of the ticket. </para>
 						</listitem>
 					</varlistentry>
-					
+
+					<varlistentry id='Type'>
+						<term>
+							Type:
+						</term>
+						<listitem>
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='Description'>
+						<term>
+							Full description:
+						</term>
+						<listitem>
+							<para>The description field should contain the 
+							following information as per the example given 
+							here. </para>
+
+								<programlisting>
+<![CDATA[
+Portname-1.2.3
+
+the portfile can be found here: URL or ATTACHED
+
+Description: What does this program do in a nutshell,
+briefly what changes were made, or what files you are attaching in the tarball.
+
+Homepage: URL of project or program itself, not the portfile
+
+Comments: Any comments you have about your port, concerns, lookouts, 
+dependencies that you may want to mention
+-- 
+your sig if you'd like
+]]>
+						</programlisting>
+								
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='Priority'>
+						<term>
+							Priority:
+						</term>
+						<listitem>
+						</listitem>
+					</varlistentry>
+
 					<varlistentry id='Component'>
 						<term>
 							Component:
 						</term>
 						<listitem>
-							<para>Select "mports" as the component. </para>
+							<para>Select "ports" as the component if you're submitting a change to an existing port or a new port. Select the appropriate component if you're submitting a change to a different part of the project.</para>
 
 						</listitem>
 					</varlistentry>
-					
-					<varlistentry id='Assigned_to'>
+
+                                        <varlistentry id='Severity'>
 						<term>
-							Assigned to: 
+							Severity:
+						</term>
+						<listitem>
+						</listitem>
+                                        </varlistentry>
+
+                                        <varlistentry id='Assing_to'>
+						<term>
+							Assign to: 
 						</term>
 						<listitem>
 							<para>Please assign UPDATEs and COMMENTs on 
@@ -93,26 +146,14 @@
 							blank. </para>
 
 						</listitem>
-					</varlistentry>
-					<varlistentry id='URL'>
+                                        </varlistentry>
+
+					<varlistentry id='Milestone'>
 						<term>
-							URL:
+							Milestone:
 						</term>
 						<listitem>
-							<para>You may use this field to point to the 
-							portfile if it is available online, or to point 
-							to the homepage of the program project.</para>
-
-						</listitem>
-					</varlistentry>
-					<varlistentry id='Summary'>
-						<term>
-							Summary:
-						</term>
-						<listitem>
-							<para>The summary field should one of a number 
-							of standardised elements, </para>
-
+							<para>Milestone explanation here!</para>
 								<variablelist>
 									<varlistentry id='NEW_portname'>
 										<term>NEW: portname-1.2.3
@@ -191,38 +232,33 @@
 										</listitem>	
 									</varlistentry>
 								</variablelist>
-								
 						</listitem>
 					</varlistentry>
-					<varlistentry id='Description'>
+
+					<varlistentry id='Version'>
 						<term>
-							Description:
+							Version:
 						</term>
 						<listitem>
-							<para>The description field should contain the 
-							following information as per the example given 
-							here here. </para>
-
-								<programlisting>
-<![CDATA[
-Portname-1.2.3
-
-the portfile can be found here: URL or ATTACHED
-
-Description: What does this program do in a nutshell,
-briefly what changes were made, or what files you are attaching in the tarball.
-
-Homepage: URL of project or program itself, not the portfile
-
-Comments: Any comments you have about your port, concerns, lookouts, 
-dependencies that you may want to mention
--- 
-your sig if you'd like
-]]> 
-						</programlisting>
-								
 						</listitem>
 					</varlistentry>
+
+					<varlistentry id='Keywords'>
+						<term>
+							Keywords:
+						</term>
+						<listitem>
+						</listitem>
+					</varlistentry>
+
+					<varlistentry id='Cc'>
+						<term>
+							Cc:
+						</term>
+						<listitem>
+						</listitem>
+					</varlistentry>
+					
 				</variablelist>
 				
 			</sect3>
