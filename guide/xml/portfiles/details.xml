@@ -350,8 +350,8 @@ formats. </userinput></programlisting></para>
 				<term>use_zip</term>
 				<listitem>
 					<para>Specifying use_zip is optional, only use it if 
-					the file downloades is zipped rather than tarred and 
-					gziped. use_zip set ${extract.suffix} to .zip and 
+					the file downloads are zipped rather than tarred and 
+					gzipped. use_zip sets ${extract.suffix} to .zip and 
 					extract.cmd to unzip, extract.pre_args to -q and 
 					extract.post_args to "-d $portpath/$workdir".</para>
 					
@@ -363,9 +363,9 @@ formats. </userinput></programlisting></para>
 				<term>use_bzip2</term>
 				<listitem>
 					<para>Specifying use_bzip2 is optional, only use it 
-					if the file downloades is bzipped rather than tarred 
-					and gziped. use_bzip2 set ${extract.suffix} to .bzip2 
-					and extract.cmd to bzip2.</para>
+					if the file downloads are tarred and bzipped rather
+					than gzipped. use_bzip2 sets ${extract.suffix} to
+					.tar.bz2 and extract.cmd to bzip2.</para>
 					
 					<para><userinput>use_bzip2 yes</userinput></para>
 					
