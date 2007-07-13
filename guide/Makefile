@@ -30,19 +30,24 @@ SOURCEDIR?=		xml
 DOCBOOK_XSL?=	        ${prefix}/share/xsl/docbook-xsl/
 HTMLDIR?=		html
 XHTMLDIR?=		xhtml
+NEWHTMLDIR?=		new
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
+NEWSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/docbook.xsl
 XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 CSS_STYLESHEET?=	docbook.css
+NEWCSS_STYLESHEET?=	newdocbook.css
 RESOURCES?=		resources/
 STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
+NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${NEWCSS_STYLESHEET} --stringparam section.autolabel 1
 
 .PHONY : all
 .PHONY : clean
 #.PHONY : install
 .PHONY : html
 .PHONY : xhtml
+.PHONY : new
 .PHONY : check
 .PHONY : tidy
 
@@ -58,6 +63,11 @@ xhtml:
 	cp ${RESOURCES}${CSS_STYLESHEET} ${XHTMLDIR}
 	xsltproc --xinclude ${STRINGPARAMS} -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
 
+new:
+	mkdir -p ${NEWHTMLDIR}
+	cp ${RESOURCES}${NEWCSS_STYLESHEET} ${NEWHTMLDIR}
+	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${SOURCEDIR}/newguide.xml"
+
 all: html xhtml tidy
 
 tidy:
@@ -69,6 +79,6 @@ tidy:
 	-tidy -quiet -modify -indent -xml ${XHTMLDIR}/*
 
 clean:
-	rm -fr ${HTMLDIR} ${XHTMLDIR}
+	rm -fr ${HTMLDIR} ${XHTMLDIR} ${NEWHTMLDIR}
 
 include ../../base/Mk/macports.autoconf.mk
