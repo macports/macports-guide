@@ -1,0 +1,3327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<article>
+  <title>MacPorts Guide</title>
+
+  <section>
+    <title>MacPorts Introduction</title>
+
+    <para>MacPorts is a system for building, installing, and managing
+    third-party software, and may also be used to create binary packages. It
+    is developed on Mac OS X, though it is designed to be portable so it can
+    work on other Unix-like systems, especially *BSD. A MacPorts "port"
+    consists of a <filename>Portfile</filename> that defines the
+    characteristics of a corresponding application, so that MacPorts knows how
+    to fetch, compile, and install it. It is also important to know that
+    MacPorts adds several very important features.</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>It provides automatic uninstalls and upgrades of ported
+        software.</para>
+      </listitem>
+
+      <listitem>
+        <para>It confines ported applications to a private "sandbox" that
+        keeps ported software from intermingling with your operating system
+        and its vendor-supplied libraries to prevent them from becoming
+        corrupted.</para>
+      </listitem>
+    </itemizedlist>
+  </section>
+
+  <section>
+    <title>Installing MacPorts</title>
+
+    <para>Follow these steps to install MacPorts and its prerequisites. Note
+    that steps 2.1–2.4 are Mac OS X specific. If you wish to install MacPorts
+    on FreeBSD, first make sure you have gcc and X11 installed, and then begin
+    with step 2.5.</para>
+
+    <section>
+      <title>Install Xcode Tools</title>
+
+      <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Download and install the latest version of <ulink
+          url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink>
+          —do not install an older version from the OS X 10.4 install disk or
+          some ports may fail to install.</para>
+        </listitem>
+
+        <listitem>
+          <para>Run the binary installer.</para>
+        </listitem>
+
+        <listitem>
+          <para>Click the button Customize, expand the Applications category
+          and click the check box beside X11 SDK to add it to the default
+          items.</para>
+        </listitem>
+
+        <listitem>
+          <para>Click "Install" to install Xcode Tools and the X11 SDK.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>Xcode Tools is not updated via OS X's Software Update
+        utility.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Install X11</title>
+
+      <para>On OS X 10.4, Apple's X Window System (X11) is an optional install
+      (Apple's X11 is currently recommended over the MacPorts X11 port). It is
+      recommended that you install it even if you don't plan to run X11
+      applications immediately.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Insert the "Mac OS X Install Disk 1" and run the package named
+          "Optional Installs".</para>
+        </listitem>
+
+        <listitem>
+          <para>At the software selection window expand the Applications
+          category and click the check box beside X11 (and nothing
+          else).</para>
+        </listitem>
+
+        <listitem>
+          <para>Click the Install button to install X11.</para>
+        </listitem>
+
+        <listitem>
+          <para>Drag the <filename>/Applications/Utilities/X11</filename> icon
+          to your dock —you must open X11 before launching an X11
+          application.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>To check or verify that X11 and the X11SDK are installed, you
+        may check for the presence of files <filename>X11User.pkg</filename>
+        and <filename>X11SDK.pkg</filename> respectively in
+        <filename>/Library/Receipts/</filename>.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Optional X11 Settings</title>
+
+      <para>To launch X11 applications directly from an X11 window (instead of
+      a terminal window), you need to have the MacPorts paths imported into
+      X11 sessions when they are opened. This is a two step process.</para>
+
+      <para>First, tell X11 about your <filename>~/.profile</filename> file by
+      editing the file <filename>/etc/X11/xinit/xinitrc</filename> and adding
+      this line near the top.</para>
+
+      <programlisting>source ~/.profile</programlisting>
+
+      <para>Now finish the process by making subsequent X11 sessions opened
+      using the menu bar respect your <filename>.profile</filename>
+      file.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Open X11 and select "Customize Menu ..." from the Applications
+          menu.</para>
+        </listitem>
+
+        <listitem>
+          <para>Double-click the menu item "Terminal" and change: "xterm" to
+          "xterm -ls"</para>
+        </listitem>
+
+        <listitem>
+          <para>Click "Done" to save the change.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>Install MacPorts via Binary</title>
+
+      <para>If you wish to install MacPorts to a path other than
+      <filename>/opt/local</filename> do not install the MacPorts binary —skip
+      this section and proceed to the next to install MacPorts from the source
+      code. The MacPorts binary installer will only install to
+      <filename>/opt/local</filename>.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Download the latest MacPorts .dmg disk image from the <ulink
+          url="http://svn.macosforge.org/repository/macports/downloads/">MacPorts
+          download directory</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Run the binary installer.</para>
+        </listitem>
+
+        <listitem>
+          <para>Perform the default “easy” install.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>A MacPorts selfupdate operation (see below) will automatically
+        update to the latest release if the binary .dmg image is behind the
+        latest released tarball.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Install MacPorts via Source</title>
+
+      <para>Installing from source on Mac OS X is only necessary If you wish
+      to install to a path other than <filename>/opt/local</filename>, so If
+      you installed MacPorts using the binary installer, skip this section. If
+      you wish to install MacPorts on FreeBSD you must install from
+      source.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Download and unzip the latest MacPorts tarball from the <ulink
+          url="http://svn.macosforge.org/repository/macports/downloads/">MacPorts
+          download directory</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Perform these commands in a terminal window.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.4.0/</userinput>
+<prompt>%%</prompt> <userinput>./configure</userinput>
+<prompt>%%</prompt> <userinput>make</userinput>
+<prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>A MacPorts' selfupdate (see below) will automatically update to
+        the latest release if the binary .dmg image is behind the latest
+        released tarball.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Set the Bash Shell</title>
+
+      <para>The MacPorts binary installer places a
+      <filename>.profile</filename> file in your home directory (view files
+      with a dot using <command>ls -a</command>). The contents of the
+      <filename>~/.profile</filename> adds the MacPorts paths in front of the
+      standard Unix paths for the default Bash shell so that MacPorts
+      libraries will take precedence over vendor-supplied libraries if both
+      are present.</para>
+
+      <para>The path statement in the MacPorts-installed .profile is set as
+      shown.</para>
+
+      <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+
+      <para>You must add this <varname>DISPLAY</varname> variable for
+      X11.</para>
+
+      <programlisting>export DISPLAY=:0.0</programlisting>
+
+      <para>Add the <varname>EDITOR</varname> variable to use your favorite
+      text editor. A complete <filename>~/.profile</filename> file with the
+      added variables is shown below.</para>
+
+      <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export DISPLAY=:0.0
+export EDITOR=/usr/bin/pico
+</programlisting>
+
+      <para>Changes to <filename>~/.profile</filename> do not take effect
+      until a new terminal session is opened. Type <command>env</command> in
+      the terminal to verify the current environment settings. Example output
+      of <command>env</command> is below.</para>
+
+      <screen>TERM_PROGRAM=Apple_Terminal
+TERM=xterm-color
+SHELL=/bin/bash
+TERM_PROGRAM_VERSION=133
+USER=joebob
+__CF_USER_TEXT_ENCODING=0x1FC:0:0
+PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+PWD=/Users/joebob
+EDITOR=/usr/bin/pico
+SHLVL=1
+HOME=/Users/joebob
+LOGNAME=joebob
+DISPLAY=:0.0
+SECURITYSESSIONID=b0cea0
+_=/usr/bin/env</screen>
+
+      <note>
+        <para>If you have either a <filename>.bash_login</filename> or a
+        <filename>.bash_profile</filename> file in your home directory, they
+        may take precedence over <filename>.profile</filename>.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>MacPorts Selfupdate</title>
+
+      <para>You must always do a selfupdate after a new MacPorts install, and
+      you should also do it frequently thereafter. The command updates
+      MacPorts with the latest port revisions, and, if necessary, updates
+      MacPorts to the latest release.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Open a terminal window.</para>
+        </listitem>
+
+        <listitem>
+          <para>Execute the MacPorts selfupdate command.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
+
+          <para>Use the debug flag for verbose output.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>sudo port -d selfupdate</userinput></programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+  </section>
+
+  <section>
+    <title>Using MacPorts</title>
+
+    <para>This section describes the MacPorts file hierarchy, using the
+    <command>port</command> command, and creating port binaries and source
+    packages.</para>
+
+    <section>
+      <title>The port Command</title>
+
+      <para>The MacPorts <command>port</command> command is the main utility
+      used to interact with MacPorts. It is used to update
+      <filename>Portfile</filename>s and the MacPorts infrastructure, and
+      install and manage ports.</para>
+
+      <section>
+        <title>selfupdate</title>
+
+        <para>The selfupdate option should be used regularly to download new
+        ports and updated versions of current ports. It also checks for later
+        revisions of the MacPorts infrastructure and updates it when
+        necessary.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
+
+        <screen>DEBUG: Rebuilding the MacPorts base system if needed.
+DEBUG: Synchronizing ports tree(s)
+Synchronizing from rsync://rsync.macports.org/release/ports/
+DEBUG: /usr/bin/rsync -rtzv rsync://rsync.macports.org/release/ports/
+receiving file list ... done
+
+[ ... trimmed ... ]
+
+Downloaded MacPorts base version 1.5
+The MacPorts installation is not outdated and so was not updated
+DEBUG: Setting ownership to root
+selfupdate done!</screen>
+      </section>
+
+      <section>
+        <title>list</title>
+
+        <para>The <userinput>list</userinput> option is used to get a list of
+        all available ports.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
+      </section>
+
+      <section>
+        <title>search</title>
+
+        <para>The <userinput>search</userinput> option is very useful to find
+        port names by partial matches.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port search rrd</userinput></programlisting>
+
+        <screen>rrdtool          net/rrdtool       1.2.23    Round Robin Database
+php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
+      </section>
+
+      <section>
+        <title>install</title>
+
+        <para>The option <userinput>install</userinput> is used to install a
+        port.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>sudo port install vile</userinput></programlisting>
+
+        <note>
+          <para>You may break up a port's installation into smaller steps for
+          troubleshooting by passing <command>port</command> a prior
+          installation phase such as <userinput>fetch</userinput>,
+          <userinput>configure</userinput>, <userinput>build</userinput>, or
+          <userinput>destroot</userinput>.</para>
+        </note>
+      </section>
+
+      <section>
+        <title>clean</title>
+
+        <para>The option <userinput>clean</userinput> deletes all intermediate
+        files that MacPorts creates while building a port. A <userinput>port
+        clean</userinput> is also often necessary to remove corrupted tarballs
+        after a failed <userinput>fetch</userinput> phase.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port clean --all vile</userinput></programlisting>
+
+        <note>
+          <para>You may also clean files selectively by using options
+          <userinput>--dist</userinput>, <userinput>--archive</userinput>, or
+          <userinput>--work</userinput>.</para>
+        </note>
+      </section>
+
+      <section>
+        <title>uninstall</title>
+
+        <para>The <userinput>uninstall</userinput> option will uninstall an
+        installed port.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port uninstall vile</userinput></programlisting>
+
+        <note>
+          <para>If a port as installed as a dependecy of another port,
+          uninstall will not remove it unless you remove the dependent ports
+          first. To override this behavior, use the -f (force) switch. But
+          some ports need to be rebuilt if dependencies change, so you should
+          know what you are doing if you force uninstall ports.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>port -f uninstall vile</userinput></programlisting>
+        </note>
+      </section>
+
+      <section>
+        <title>contents</title>
+
+        <para>The <userinput>contents</userinput> option displays the files
+        that have been installed by a given port.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port contents render</userinput></programlisting>
+
+        <screen>Port render contains:
+  /opt/local/include/X11/extensions/render.h
+  /opt/local/include/X11/extensions/renderproto.h
+  /opt/local/lib/pkgconfig/render.pc
+  /opt/local/share/doc/render/library
+  /opt/local/share/doc/render/protocol</screen>
+      </section>
+
+      <section>
+        <title>installed</title>
+
+        <para>The <userinput>installed</userinput> option displays all
+        installed ports.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port installed</userinput></programlisting>
+
+        <screen>The following ports are currently installed:
+  aalib @1.4rc5_2 (active)
+  apr @1.2.8_0 (active)
+  apr-util @1.2.8_2 (active)
+  atk @1.18.0_0 (active)
+
+[ ... trimmed ...]
+
+  wxWidgets @2.8.4_2+darwin_8 (active)
+  Xft2 @2.1.7_0 (active)
+  xrender @0.9.0_0+darwin_8 (active)
+  zlib @1.2.3_1 (active)</screen>
+      </section>
+
+      <section>
+        <title>outdated</title>
+
+        <para>The <userinput>outdated</userinput> option checks your installed
+        ports against the MacPorts repository to see if updated
+        <filename>Portfile</filename>s have been released since your ports
+        were installed.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
+
+        <screen>apr                            1.2.8_0 &lt; 1.2.9_0
+autoconf                       2.61_0 &lt; 2.61_1
+gimp                           2.2.14_0 &lt; 2.2.16_0
+libtool                        1.5.22_0 &lt; 1.5.24_0
+pkgconfig                      0.21_0 &lt; 0.22_0</screen>
+      </section>
+
+      <section>
+        <title>upgrade</title>
+
+        <para>The <userinput>upgrade</userinput> option upgrades installed
+        ports and their dependencies when a <filename>Portfile</filename> in
+        the repository has been updated after a port was installed.</para>
+
+        <programlisting><userinput>%%</userinput> <userinput>port upgrade gnome</userinput></programlisting>
+
+        <para>If you wish not to upgrade a port's dependencies, use the -n
+        option.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port -n upgrade gnome</userinput></programlisting>
+
+        <para>If you'd like to upgrade all outdated ports, use this
+        command.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port upgrade outdated</userinput></programlisting>
+
+        <note>
+          <para>The <userinput>upgrade</userinput> option by default does not
+          uninstall an upgraded port —it deactivates it (see section Port
+          Installation Phases below). If you wish to uninstall the old version
+          use the -u option.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
+        </note>
+      </section>
+
+      <section>
+        <title>info</title>
+
+        <para>The <userinput>info</userinput> option is used to get
+        information about a port: description, maintainer, etc.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port info flowd</userinput></programlisting>
+
+        <screen>flowd 0.9, net/flowd (Variants: universal, darwin_8)
+http://www.mindrot.org/flowd.html
+
+flowd is a small, fast and secure NetFlow collector.
+
+Platforms: darwin
+Maintainers: nomaintainer@macports.org</screen>
+      </section>
+
+      <section>
+        <title>variants</title>
+
+        <para>The <userinput>variants</userinput> option allows you to check
+        what variations of a port are available before you install it.
+        Variants provide additional configuration options for a port.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port variants apache2</userinput></programlisting>
+      </section>
+
+      <section>
+        <title>deps</title>
+
+        <para>The <userinput>deps</userinput> option shows you the
+        dependencies of a port; dependencies are explicitly declared in
+        Portfiles. </para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port deps apache2</userinput></programlisting>
+
+        <screen>apache2 has library dependencies on:
+        apr
+        apr-util
+        expat
+        openssl
+        pcre</screen>
+      </section>
+
+      <section>
+        <title>dependents</title>
+
+        <para>The <userinput>dependents</userinput> option shows you what
+        ports depend on a given port, if any.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port dependents openssl</userinput></programlisting>
+
+        <screen>neon depends on openssl
+gnome-vfs depends on openssl
+libdap depends on openssl</screen>
+
+        <note>
+          <para>Only installed ports will list any dependents. This is because
+          MacPorts learns about dependents during port installation.</para>
+        </note>
+      </section>
+
+      <section>
+        <title>livecheck</title>
+
+        <para></para>
+      </section>
+    </section>
+
+    <section>
+      <title>Port Binaries</title>
+
+      <para>MacPorts can pre-compile ports into binaries so applications need
+      not be compiled when intalling on a target system. MacPorts may create
+      two types of binaries: archives and packages.</para>
+
+      <section>
+        <title>Binary Archives</title>
+
+        <para>Binary archives can only be used on a target system running
+        MacPorts. Binary archives allow MacPorts utilities to begin
+        installation after the destroot phase and install and activate a port
+        on the target system. Binary archives are created using the
+        <command>port</command> command as shown.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port -d archive logrotate</userinput></programlisting>
+
+        <para>Debug output is shown below.</para>
+
+        <screen>---&gt;  Creating logrotate-3.7_0.i386.tgz
+
+[ ... trimmed ... ]
+
+DEBUG:
+./
+./+COMMENT
+./+CONTENTS
+./+DESC
+./+PORTFILE
+./+STATE
+./opt/
+./opt/local/
+./opt/local/etc/
+./opt/local/etc/logrotate.conf
+./opt/local/man/
+./opt/local/man/man8/
+./opt/local/man/man8/logrotate.8
+./opt/local/sbin/
+./opt/local/sbin/logrotate
+---&gt;  Archive logrotate-3.7_0.i386.tgz packaged
+DEBUG: Executing archive_finish
+---&gt;  Archive for logrotate 3.7_0 packaged</screen>
+
+        <para>Binary archive files are placed in
+        <filename>${prefix}/var/macports/packages/</filename>. The archive
+        file type is set in the <filename>macports.conf</filename> file. The
+        default format is .tgz; other options are: tar, tbz, tbz2, xar, zip,
+        cpgz, cpio.</para>
+      </section>
+
+      <section>
+        <title>Binary Packages</title>
+
+        <para>Binary packages are standalone binary installers that are
+        precompiled; they do not require MacPorts on the target system. Binary
+        files created with MacPorts may be either .pkg (Mac OS X Installer
+        Packages), or RPM (RPM Package Manager) format. MacPorts may also
+        process a .pkg package into an OS X .dmg disk image file. You may
+        create binary packages with the <command>port</command> command as
+        shown in these examples.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port pkg pstree</userinput></programlisting>
+
+        <para>You may create an OS X .dmg disk image file as shown.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port dmg pstree</userinput></programlisting>
+
+        <para>You may compile a port into an RPM file as shown, in order to
+        install it onto a target that has RPM utilities or a full package
+        management system that can install RPMs.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port rpm pstree</userinput></programlisting>
+
+        <para>All packages are placed in a port's work directory.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Port Source Packages</title>
+
+      <para>Source packages are bundles consisting of a
+      <filename>Portfile</filename>, patches if needed, and any other files
+      required to install the port. Port source packages are mainly used by
+      developers of package management and port submission frameworks. Port
+      source packages may be in either .portpkg (XAR) or .nosrc.rpm (SRPM)
+      format.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Port Installation Phases</title>
+
+    <para>A MacPorts port has six distinct phases. These phases automatically
+    perform default operations for applications that use the standard
+    <command>configure</command>, <command>make</command>, <command>make
+    install</command> steps, but for applications that do not conform to this
+    behavior, any installation phase may be augmented using pre- and/or post-
+    phases or overridden entirely. See the "Example Portfiles" section for
+    details.</para>
+
+    <section>
+      <title>Fetch</title>
+
+      <para>Overview: Fetch the <varname>${distfiles}</varname> from
+      <varname>${master_sites}</varname> and place it in
+      <filename>${prefix}/var/db/macports/distfiles</filename>.</para>
+    </section>
+
+    <section>
+      <title>Checksum</title>
+
+      <para>Overview: Compare <varname>${checksums}</varname> specified in a
+      <filename>Portfile</filename> to the checksums of the fetched
+      ${distfiles}.</para>
+    </section>
+
+    <section>
+      <title>Extract</title>
+
+      <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
+      the path ${prefix}/var/db/macports/build/???-???/work</para>
+    </section>
+
+    <section>
+      <title>Patch</title>
+
+      <para>Overview: Apply optional <ulink
+      url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
+      specified in <varname>${patchfiles}</varname> to modify a port's source
+      code file(s).</para>
+
+      <para>Details: Patch files are made using the <ulink
+      url="http://en.wikipedia.org/wiki/Diff">diff</ulink> command, and
+      MacPorts patches should be created as <ulink
+      url="http://en.wikipedia.org/wiki/Diff#Unified_format">unified
+      diffs</ulink>.</para>
+    </section>
+
+    <section>
+      <title>Configure</title>
+
+      <para>Overview: Execute the command "configure" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section>
+      <title>Build</title>
+
+      <para>Overview: Execute the command "make" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section>
+      <title>Destroot</title>
+
+      <para>Overview: Execute the command <command>make install
+      DESTDIR=${destroot}</command> in <varname>${workpath}</varname>.</para>
+
+      <para>Details: Understanding the destroot phase is critical to
+      understanding MacPorts, because, unlike some port systems, MacPorts
+      "stages" an installation into an intermediate location —not the final
+      file destination. There are two main advantages to this method.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>A port's files may be cleanly uninstalled because all files
+          and locations are tracked.</para>
+        </listitem>
+
+        <listitem>
+          <para>Since a port's files are not installed into MacPorts directory
+          structure until an activation phase, a port may be deactivated
+          through MacPorts to allow activation of a different version of the
+          same port, thus allowing two versions of a port to be present,
+          though not both active, on a given host.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>The <varname>$(DESTDIR)</varname> variable must be supported in
+        an application's Makefile for the MacPorts destroot phase to work
+        properly. Urge developers to fully support
+        <varname>$(DESTDIR)</varname> in their Makefiles.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Archive</title>
+
+      <para>Overview: Use tar to create a tarball of a port's destrooted files
+      and copy it to
+      <filename>${prefix}/var/db/macports/packages/</filename>.</para>
+    </section>
+
+    <section>
+      <title>Install</title>
+
+      <para>Overview: Copy a port's destrooted files into
+      <filename>${prefix}/var/db/macports/software</filename>. See "Port
+      Images" in section "MacPorts Internals" for details.</para>
+    </section>
+
+    <section>
+      <title>Activate</title>
+
+      <para>Overview: Set <ulink
+      url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
+      to ${prefix}/var/db/macports/software to point to ${prefix}.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Portfile Development</title>
+
+    <para>This section is an introduction to creating
+    <filename>Portfile</filename>s by a simple port of an application that
+    uses the standard <command>configure</command>, <command>make</command>,
+    and <command>make install</command> steps, so you might want to look at a
+    variety other <filename>Portfile</filename>s to learn how port authors
+    port more complex applications.</para>
+
+    <section>
+      <title>Introduction</title>
+
+      <para>A MacPorts <filename>Portfile</filename> fully defines a given
+      port. A <filename>Portfile</filename> is the only necessary component of
+      a port, though ports may also include patchfiles or other textfiles as
+      desired by a port author.</para>
+    </section>
+
+    <section>
+      <title>A Local Portfile Repository</title>
+
+      <para>To create and test <filename>Portfile</filename>s that are not yet
+      committed to subversion, you may create a local
+      <filename>Portfile</filename> repository as shown.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Open the <filename>sources.conf</filename> file in a text
+          editor.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
+<prompt>%%</prompt> <userinput>pico sources.conf</userinput></programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Insert a URL pointing to the local repository location before
+          the rsync URL as shown.</para>
+
+          <programlisting>file:///Users/joebob/ports
+rsync://rsync.macports.org/release/ports
+</programlisting>
+
+          <note>
+            <para>The file URL should always appear before the rsync URL so
+            that local <filename>Portfile</filename>s can be tested that are
+            duplicated in the MacPorts tree, because the
+            <command>port</command> command will always operate on the first
+            <filename>Portfile</filename> it encounters.</para>
+          </note>
+        </listitem>
+
+        <listitem>
+          <para>Place the <filename>Portfile</filename>s you create inside a
+          directory whose name matches the port, which should in turn be
+          placed inside a directory that reflect the port's primary category
+          (the first category entry in the
+          <filename>Portfile</filename>).</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd /Users/joebob</userinput>
+<prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
+        </listitem>
+
+        <listitem>
+          <para>After a <filename>Portfile</filename> is created (see below),
+          use the MacPorts <command>portindex</command> command in the local
+          repository's directory to install it into the
+          <filename>Portindex</filename>.</para>
+
+          <programlisting>%% <userinput>cd /Users/joebob/ports</userinput>
+%% <userinput>portindex</userinput></programlisting>
+
+          <screen>Creating software index in /Users/joebob/ports
+Adding port games/bestevergame
+
+Total number of ports parsed:   1 
+Ports successfully parsed:      1        
+Ports failed:                   0</screen>
+        </listitem>
+      </orderedlist>
+
+      <para>Once the local port is added to the
+      <filename>Portindex</filename>, it becomes available for searching or
+      installation as with any other <filename>Portfile</filename> in the
+      MacPorts tree as shown.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
+
+      <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
+    </section>
+
+    <section>
+      <title>Creating a Portfile</title>
+
+      <para>Here we list the individual <filename>Portfile</filename>
+      components for a port that conforms to the default
+      <filename>Portfile</filename> options. For non-default options, see the
+      section Optional Portfile Keywords.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Subversion ID tag line</para>
+
+          <para>The first line of a new <filename>Portfile</filename> must be
+          set as shown. When a port is committed to subversion, ID tags are
+          expanded to include the last person to commit and the commit
+          time.</para>
+
+          <programlisting># $Id$</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>PortSystem line</para>
+
+          <para>This statement is required for all ports.</para>
+
+          <programlisting>PortSystem        1.0</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port name</para>
+
+          <programlisting>name              rrdtool</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port version</para>
+
+          <programlisting>version           1.2.23</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port categories</para>
+
+          <para>A port may belong to more than one category, but the first
+          (primary) category should match the directory name in the ports tree
+          where the <filename>Portfile</filename> is to reside.</para>
+
+          <programlisting>categories        net</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port maintainers</para>
+
+          <para>A port's maintainer is who takes responsibility for the port;
+          ports that are not maintained and fair game to be modified by any
+          committer use <email>nomaintainer@macports.org</email>.</para>
+
+          <programlisting>maintainers       joebob@macports.org</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port description</para>
+
+          <programlisting>description       Round Robin Database</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port long_description</para>
+
+          <programlisting>long_description  RRDtool is a system to store and display time-series data</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>A port's application homepage</para>
+
+          <programlisting>homepage          http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Platform statement</para>
+
+          <programlisting>platforms         darwin</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>A port's download URLs</para>
+
+          <programlisting>master_sites      http://oss.oetiker.ch/rrdtool/pub/ \
+                  ftp://ftp.pucpr.br/rrdtool/</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port checksums</para>
+
+          <para>The checksums specified in a <filename>Portfile</filename> are
+          checked with the fetched tarball for security.</para>
+
+          <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port dependencies</para>
+
+          <para>A port's dependencies are ports that must be installed before
+          another port is installed.</para>
+
+          <programlisting>depends_lib       port:perl5.8 \
+                  port:tcl \
+                  port:zlib</programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Port configure arguments (optional)</para>
+
+          <programlisting>configure.args    --prefix=${prefix} \
+                  --enable-perl-site-install \
+                  --mandir=${prefix}/share/man</programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>Example Portfiles</title>
+
+      <para>In this section we take a look at a complete simple Portfile, and
+      then pre- and post- phase definitions to augment and override the
+      MacPorts default phases respectively.</para>
+
+      <section>
+        <title>A Simple Portfile</title>
+
+        <para></para>
+
+        <programlisting># Id$
+PortSystem      1.0
+
+name                    rrdtool
+version                 1.2.23
+categories              net
+maintainers             joebob@macports.org
+description             Round Robin Database
+long_description        RRDtool is a system to store and display time-series data
+homepage                http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+platforms               darwin
+master_sites            http://oss.oetiker.ch/rrdtool/pub/ \
+                        ftp://ftp.pucpr.br/rrdtool/
+
+checksums               md5 dafa161bc9c61e57636a6085c87c1fe8
+
+depends_lib             port:perl5.8 \
+                        port:tcl \
+                        port:zlib
+
+configure.args          --prefix=${prefix} \
+                        --enable-perl-site-install \
+                        --mandir=${prefix}/share/man</programlisting>
+      </section>
+
+      <section>
+        <title>Portfile Using Pre- / Post- Phases</title>
+
+        <para>To augment a port's installation phase, and not override it, you
+        may use pre- and post- installation phases as shown in this
+        example.</para>
+
+        <programlisting>post-destroot {
+# Install example files not installed by the Makefile
+        file mkdir ${destroot}${prefix}/share/doc/${name}/examples
+        file copy ${worksrcpath}/examples/ \
+             ${destroot}${prefix}/share/doc/${name}/examples
+}</programlisting>
+      </section>
+
+      <section>
+        <title>Portfile that Overrides Default Phases</title>
+
+        <para>To override the automatic MacPorts installation phase
+        processing, define your own installation phases as shown in this
+        example.</para>
+
+        <programlisting>destroot {
+        xinstall -m 755 -d ${destroot}${prefix}/bin
+        xinstall -m 755 ${worksrcpath}/cdpr ${destroot}${prefix}/bin
+}</programlisting>
+      </section>
+
+      <section>
+        <title>Portfile Using a Variant</title>
+
+        <para>Here is an example of a port providing four variants that add
+        additional configure arguments to a port. See the section Keyword in
+        Portfile Reference section for more keywords that modify dependency
+        and configure options, which are commonly used with variants.</para>
+
+        <programlisting>variant pop     { configure.args-append --enable-pop }
+variant imap    { configure.args-append --enable-imap }
+variant ssl     { configure.args-append --with-ssl }
+variant debug   { configure.args-append --enable-debug }</programlisting>
+      </section>
+
+      <section>
+        <title>Portfile Using a StartupItem</title>
+
+        <para>Startupitems may be placed in the global section of a
+        Portfile.</para>
+
+        <programlisting>startupitem.create      yes
+startupitem.name        nmicmpd
+startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+
+        <para>Startupitems keywords may also be used within a variant
+        definition to make their installation conditional.</para>
+
+        <programlisting>variant server {
+    startupitem.create    yes
+    startupitem.start "${prefix}/share/${name}/vm-pop3d.init start"
+    startupitem.stop "${prefix}/share/${name}/vm-pop3d.init stop"
+}</programlisting>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <title>Portfile Reference</title>
+
+    <para>This section serves as a reference for the major classes of
+    <filename>Portfile</filename> elements: variables, keywords, Tcl
+    primitives, and StartupItems.</para>
+
+    <section>
+      <title>Variables</title>
+
+      <para>This section describes the MacPorts preset variables that may be
+      used within <filename>Portfile</filename>s.</para>
+
+      <section>
+        <title>General</title>
+
+        <para>These are the variables available to any
+        <filename>Portfile</filename>.</para>
+
+        <para><variablelist>
+            <varlistentry>
+              <term>prefix</term>
+
+              <listitem>
+                <para>Installation prefix, set in the system-wide
+                configuration file
+                <filename>${prefix}/etc/macports/macports.conf</filename> —may
+                be overridden on a per port basis. For example, aqua
+                applications are installed in
+                <filename>/Applications/MacPorts</filename>.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>binpath</term>
+
+              <listitem>
+                <para>Default PATH to use in finding executables. Read
+                only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>libpath</term>
+
+              <listitem>
+                <para>Path to the MacPorts TCL libraries. Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>portpath</term>
+
+              <listitem>
+                <para>Path to the directory containing the downloaded
+                <filename>Portfile</filename>s. Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>filesdir</term>
+
+              <listitem>
+                <para>Path to port files relative to
+                <varname>${portpath}</varname>. Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>workpath</term>
+
+              <listitem>
+                <para>Full path to work directory. Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>worksrcpath</term>
+
+              <listitem>
+                <para>Full path to extracted source code. Equivalent to
+                <varname>${workpath}/${worksrcdir}</varname>.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>destroot</term>
+
+              <listitem>
+                <para>Full path into which software will be destrooted.
+                Equivalent to <filename>${workpath}/destroot</filename>. Read
+                only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>distpath</term>
+
+              <listitem>
+                <para>Location to store downloaded distfiles. Read
+                only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>os.platform</term>
+
+              <listitem>
+                <para>Identifies platform type (ie, "darwin", "freebsd", etc).
+                Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>os.arch</term>
+
+              <listitem>
+                <para>Identifies hardware type (ie, "powerpc", "intel"). Read
+                only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>os.version</term>
+
+              <listitem>
+                <para>The version number of the host operating system (ie
+                "8.0" for Darwin 8.0). Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist><variablelist>
+            <varlistentry>
+              <term>os.major</term>
+
+              <listitem>
+                <para>The major version number of the host operating system
+                (ie "8" for Darwin 8.0). Read only.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist></para>
+      </section>
+
+      <section>
+        <title>PortGroup</title>
+
+        <para>In addition to the general <filename>Portfile</filename> type
+        for standard Unix applications and libraries, there are six optional
+        PortGroup types that provide special <filename>Portfile</filename>
+        handling to make creating <filename>a Portfile</filename>
+        easier.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>perl5</para>
+          </listitem>
+
+          <listitem>
+            <para>python24 and python25</para>
+          </listitem>
+
+          <listitem>
+            <para>ruby</para>
+          </listitem>
+
+          <listitem>
+            <para>xcode</para>
+          </listitem>
+
+          <listitem>
+            <para>gnustep</para>
+          </listitem>
+
+          <listitem>
+            <para>zope</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>The common PortGroup variables are listed in the sections below
+        for perl5, python, and ruby. See the port Tcl group code in
+        <filename>${prefix}/share/macports/resources/port1.0/group</filename>
+        for details on all PortGroups.</para>
+
+        <section>
+          <title>PortGroup perl5</title>
+
+          <para>These are the variables available to a
+          <filename>Portfile</filename> when the <literal>PortGroup
+          perl5</literal> keyword is declared.</para>
+
+          <variablelist>
+            <varlistentry>
+              <term>perl5.version</term>
+
+              <listitem>
+                <para>The MacPorts Perl version.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>perl5.bin</term>
+
+              <listitem>
+                <para>The Perl binary path (ie,
+                <filename>${prefix}/bin/perl</filename>).</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>perl5.lib</term>
+
+              <listitem>
+                <para>Path to the Perl vendor directory.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>perl5.archlib</term>
+
+              <listitem>
+                <para>Path to the Perl architecture-dependent modules
+                directory.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </section>
+
+        <section>
+          <title>PortGroup python2x</title>
+
+          <para>These are the variables available to a
+          <filename>Portfile</filename> when the <literal>PortGroup
+          python2x</literal> keyword is declared.</para>
+
+          <variablelist>
+            <varlistentry>
+              <term>python.bin</term>
+
+              <listitem>
+                <para>The MacPorts Python binary location.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>python.lib</term>
+
+              <listitem>
+                <para>The Python dynamic library and path (ie,
+                <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>python.pkgd</term>
+
+              <listitem>
+                <para>Path to the Python site-packages directory. (ie,
+                <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>python.include</term>
+
+              <listitem>
+                <para>Path to the Python include directory.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </section>
+
+        <section>
+          <title>PortGroup ruby</title>
+
+          <para>These are the variables available to a
+          <filename>Portfile</filename> when the <literal>PortGroup
+          ruby</literal> keyword is declared.</para>
+
+          <variablelist>
+            <varlistentry>
+              <term>ruby.version</term>
+
+              <listitem>
+                <para>The MacPorts Ruby version.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>ruby.bin</term>
+
+              <listitem>
+                <para>The Ruby binary location.</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>ruby.lib</term>
+
+              <listitem>
+                <para>Path to the Ruby vendorlibdir directory (ie,
+                <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+
+          <variablelist>
+            <varlistentry>
+              <term>ruby.archlib</term>
+
+              <listitem>
+                <para>Path to the Ruby vendor archdir (ie,
+                <filename>${ruby.lib}/${ruby.arch}</filename>).</para>
+              </listitem>
+            </varlistentry>
+          </variablelist>
+        </section>
+      </section>
+    </section>
+
+    <section>
+      <title>Keywords</title>
+
+      <para>This section lists MacPorts keywords by the installation phase
+      that corresponds to their use. These keywords are used to specify
+      non-default options for <filename>a
+      <filename>Portfile</filename>.</filename></para>
+
+      <section>
+        <title>Global</title>
+
+        <para>Global keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>name</term>
+
+            <listitem>
+              <para>Port name.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>version</term>
+
+            <listitem>
+              <para>Port version.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>categories</term>
+
+            <listitem>
+              <para>Port category(s).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>maintainers</term>
+
+            <listitem>
+              <para>Port maintainer(s).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>description</term>
+
+            <listitem>
+              <para>Short description.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>long_description</term>
+
+            <listitem>
+              <para>Long description.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>homepage</term>
+
+            <listitem>
+              <para>Port application's homepage.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>platforms</term>
+
+            <listitem>
+              <para>Platform(s) supported.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>master_sites</term>
+
+            <listitem>
+              <para>Download site(s) for the distribution files.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>checksums</term>
+
+            <listitem>
+              <para>Checksum(s) of the distribution files.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>depends_lib</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>depends_build</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>depends_run</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Fetch</title>
+
+        <para>Fetch phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>fetch.keyword1</term>
+
+            <listitem>
+              <para>Description fetch keyword 1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Checksum</title>
+
+        <para>Checksum phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>checksum.keyword1</term>
+
+            <listitem>
+              <para>Description checksum keyword 1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Extract</title>
+
+        <para>Extract phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>extract.keyword1</term>
+
+            <listitem>
+              <para>Description extract keyword 1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Patch</title>
+
+        <para>Patch phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>patch.keyword1</term>
+
+            <listitem>
+              <para>Description patch keyword1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Configuration</title>
+
+        <para>Configuration phase keywords. Avoid using keywords with defaults
+        defined or you will overwrite the default variables.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>configure.env</term>
+
+            <listitem>
+              <para>Configure environment variables.</para>
+
+              <para>Defaults: CFLAGS=-I<filename>${prefix}/include</filename>
+              LDFLAGS=-L<filename>${prefix}/lib</filename></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>configure.cflags-append</term>
+
+            <listitem>
+              <para>Set additional CFLAGS to be added to the variable
+              defaults.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>configure.ldflags-append</term>
+
+            <listitem>
+              <para>Set additional LDFLAGS to be added to the variable
+              defaults.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Build</title>
+
+        <para>Build phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>build.keyword1</term>
+
+            <listitem>
+              <para>Description build.keyword 1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Destroot</title>
+
+        <para>Destroot phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>destroot.keyword1</term>
+
+            <listitem>
+              <para>Description destroot keyword1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>Install</title>
+
+        <para>Install phase keywords.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>install.keyword1</term>
+
+            <listitem>
+              <para>Description install.keyword 1.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+    </section>
+
+    <section>
+      <title>Tcl Primitives</title>
+
+      <para>A MacPorts <filename>Portfile</filename> is interpreted as Tcl
+      code, and it may contain the Tcl primitives listed below.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>reinplace</term>
+
+          <listitem>
+            <para>Description reinplace.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>xinstall</term>
+
+          <listitem>
+            <para>Description xinstall.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>file copy</term>
+
+          <listitem>
+            <para>Description file copy.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>file delete</term>
+
+          <listitem>
+            <para>Description file delete.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>StartupItems</title>
+
+      <para>To create OS X LaunchDaemons for your port, choose from the
+      following keywords.</para>
+
+      <para><variablelist>
+          <varlistentry>
+            <term>startupitem.create</term>
+
+            <listitem>
+              <para>This triggers the creation of a StartupItem, defaults to
+              "no".</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.name</term>
+
+            <listitem>
+              <para>Sets the name for the StartupItem, defaults to
+              ${portname}.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.executable</term>
+
+            <listitem>
+              <para>The name of the daemon to be run in the background. This
+              is the preferred type of startup item and may not be used
+              together with any other startupitem. This option may contain
+              multiple arguments, but they must be appropriate for a call to
+              exec; they may not contain arbitrary shell code.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.init</term>
+
+            <listitem>
+              <para>Shell code that will be executed prior to any of the
+              options startupitem.start, startupitem.stop and
+              startupitem.restart. Typically a startup script is
+              specified.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.start</term>
+
+            <listitem>
+              <para>Shell code executed to start the daemon.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.stop</term>
+
+            <listitem>
+              <para>Shell code executed to stop the daemon.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.restart</term>
+
+            <listitem>
+              <para>Shell code executed to restart the daemon. In the absence
+              of this key, the daemon will be restarted by taking the stop
+              action, followed by taking the start action.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.pidfile</term>
+
+            <listitem>
+              <para>Specification for pidfile handling. It is useful in
+              conjunction with the startupitem.executable key, because it is
+              important that the startupitem know how to track the executable.
+              This keyword specifies whether the daemon generates its own
+              pidfile (auto), whether it generates its own but forgets to
+              delete it, so that the startupitem should delete it (clean), or
+              whether it never generates one, in which case the startupitem
+              should manage the pidfile on its own (manual), or whether no
+              pidfile should be used at all (none).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.logfile</term>
+
+            <listitem>
+              <para>Path to a logfile for logging events about the lifetime of
+              the startupitem. Depending on the type of startupitem, and the
+              manner in which it is started, standard output from the daemon
+              may also be directed to the logfile.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>startupitem.logevents</term>
+
+            <listitem>
+              <para>Control whether or not to log events to the log file. If
+              logevents is set, events with timestamps are logged to the
+              logfile.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+  </section>
+
+  <section>
+    <title>MacPorts Internals</title>
+
+    <para>This section is to help gain a greater understanding of MacPorts or
+    to learn how to configure MacPorts for non-default operation.</para>
+
+    <section>
+      <title>MacPorts File Hierarchy</title>
+
+      <para>MacPorts port authors install files according to guidelines that
+      define where ports should install the various classes of files in the
+      MacPorts file hierarchy. These guidelines are listed below.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term><varname>${prefix}</varname></term>
+
+          <listitem>
+            <para>The base of the MacPorts filesystem hierarchy.</para>
+
+            <para>Default: <filename>/opt/local/</filename></para>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>bin/</filename></term>
+
+                <listitem>
+                  <para>Common utilities, programming tools, and
+                  applications.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>etc/</filename></term>
+
+                <listitem>
+                  <para>System configuration files and scripts.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>games/</filename></term>
+
+                <listitem>
+                  <para>Useful and semi-frivolous programs.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>include/</filename></term>
+
+                <listitem>
+                  <para>Standard C include files.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>java/</filename></term>
+
+                <listitem>
+                  <para>Applications based on Java.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>libexec/</filename></term>
+
+                <listitem>
+                  <para>System daemons and system utilities (executed by other
+                  programs).</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>sbin/</filename></term>
+
+                <listitem>
+                  <para>System programs and administration utilities.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term><filename>share/</filename></term>
+
+                <listitem>
+                  <para>Architecture-independent files.</para>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>doc/</filename></term>
+
+                      <listitem>
+                        <para>Miscellaneous documentation.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>examples/</filename></term>
+
+                      <listitem>
+                        <para>Examples for users and programmers.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>info/</filename></term>
+
+                      <listitem>
+                        <para>GNU Info hypertext system.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>locale/</filename></term>
+
+                      <listitem>
+                        <para>Localization files.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>man/</filename></term>
+
+                      <listitem>
+                        <para>Manual pages.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>misc/</filename></term>
+
+                      <listitem>
+                        <para>Miscellaneous system-wide ASCII text
+                        files.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+                </listitem>
+              </varlistentry>
+
+              <varlistentry>
+                <term><filename>var/</filename></term>
+
+                <listitem>
+                  <para>Multi-purpose log, temporary, transient and spool
+                  files.</para>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>db/</filename></term>
+
+                      <listitem>
+                        <para>Miscellaneous automatically generated
+                        system-specific database files.</para>
+
+                        <variablelist>
+                          <varlistentry>
+                            <term><filename>mports/</filename></term>
+
+                            <listitem>
+                              <para>MacPorts runtime data.</para>
+                            </listitem>
+                          </varlistentry>
+                        </variablelist>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>spool/</filename></term>
+
+                      <listitem>
+                        <para>Directory containing output spool files.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>log/</filename></term>
+
+                      <listitem>
+                        <para>Miscellaneous system log files.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+
+                  <variablelist>
+                    <varlistentry>
+                      <term><filename>run/</filename></term>
+
+                      <listitem>
+                        <para>System information files describing various
+                        information about the system since it was
+                        booted.</para>
+                      </listitem>
+                    </varlistentry>
+                  </variablelist>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term><filename>/Applications/MacPorts/</filename></term>
+
+          <listitem>
+            <para>Native Mac OS X applications.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Configuration Files</title>
+
+      <para>The MacPorts configuration files do not need to be modified for
+      the general end user. They contain options that may be of use to
+      advanced users and port developers. All the MacPorts configuration files
+      are located in <filename>/opt/local/etc/macports</filename>.</para>
+
+      <section>
+        <title>sources.conf</title>
+
+        <para><filename>sources.conf</filename> is where the location(s) to
+        retrieve the MacPorts <filename>Portfile</filename>s is set.</para>
+      </section>
+
+      <section>
+        <title>macports.conf</title>
+
+        <para><filename>macports.conf</filename> contains advanced MacPorts
+        configuration options. See the file comments for instructions.</para>
+      </section>
+
+      <section>
+        <title>variants.conf</title>
+
+        <para><filename>variants.conf</filename> is used to specify variants
+        to be used for all ports where they exist.</para>
+      </section>
+    </section>
+
+    <section>
+      <title>Port Images</title>
+
+      <para>MacPorts has a unique ability to allow for multiple versions,
+      revisions, and variants of the same port installed at the same time, so
+      you may test new port versions without uninstalling a previous working
+      version.</para>
+
+      <para>This capability derives from the fact that a MacPorts port by
+      default is not installed into its final or "activated" location, but
+      rather to an intermediate location that is only made available to other
+      ports and end-users after an activation phase that makes hard links of
+      all its files in <varname>${prefix}</varname> that point to the port's
+      files in the image repository. Therefore deactivating a port image to
+      install a different version only removes the hard links in
+      <varname>${prefix}</varname> pointing to the previous port version's
+      image —the deactivated port's image is not disturbed.</para>
+
+      <note>
+        <para>MacPorts image mode may be turned off in favor of direct mode by
+        setting the portinstalltype variable in the
+        <filename>macports.conf</filename> file "direct". But unless you know
+        what you're doing, don't change it.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>MacPorts APIs</title>
+
+      <para>MacPorts contains two application programming interfaces (APIs),
+      written in Tcl: The Ports API and the MacPorts (mport*) API. The former
+      is an internal API used for individual <filename>Portfile</filename>s.
+      The latter is a high-level API used by client applications such as the
+      MacPorts port utility.</para>
+
+      <section>
+        <title>Ports API</title>
+
+        <para>The code for the Port API is located in
+        <filename>base/src/port1.0</filename> and performs the following
+        functions:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Manages target registrations. All targets register
+            themselves with the Port API. Accordingly, the Port API creates
+            pre-/post-/main overrides for each of the targets.</para>
+          </listitem>
+
+          <listitem>
+            <para>Option/Default handling. All <filename>Portfile</filename>
+            options (name, version, revision ...) are registered by targets.
+            The Port API creates procedures for these options, and sets up the
+            complex variable traces necessary to support option
+            defaults.</para>
+          </listitem>
+
+          <listitem>
+            <para>Executes target procedures, including the pre/post/main
+            routines.</para>
+          </listitem>
+
+          <listitem>
+            <para>Manages a state file containing information about what
+            variants were specified and what targets have run
+            successfully.</para>
+          </listitem>
+
+          <listitem>
+            <para>Provides essential Portfile Tcl primitives (reinplace,
+            xinstall, etc).</para>
+          </listitem>
+
+          <listitem>
+            <para>Provides simple access to the ui_event mechanism by
+            providing the various ui_ procedures (i.e., ui_msg,
+            ui_error).</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+
+      <section>
+        <title>MacPorts API</title>
+
+        <para>The code for the MacPorts API is located in
+        <filename>base/src/macports1.0</filename>. The MacPorts API performs
+        the following functions:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Dependency implementation. This portion is implemented in a
+            highly generic fashion, and is used throughout the system. The
+            dependency functions are exported to the Port API, and the Port
+            API uses them to execute targets in the correct order.</para>
+          </listitem>
+
+          <listitem>
+            <para>Software dependencies. Software dependencies are handled at
+            this layer using the dependency implementation.</para>
+          </listitem>
+
+          <listitem>
+            <para>UI abstractions. UI Abstractions are handled at this layer.
+            Each port action is provided a context, and a mechanism for
+            posting user interface events is exported to the Port API
+            (ui_event).</para>
+          </listitem>
+
+          <listitem>
+            <para>Registry management routines. Manages the rudimentary port
+            registry in
+            <filename>${prefix}/var/db/mports/receipts/</filename>.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>mportregistry::new: create a new port registry
+                entry.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportregistry::exists: check if a port registry entry
+                exists (either versioned or not).</para>
+              </listitem>
+
+              <listitem>
+                <para>mportregistry::delete: delete an existing registry
+                entry.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportregistry::close: closes a new registry
+                entry.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+
+          <listitem>
+            <para>Exports the MacPorts API for use by client
+            applications:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>mportinit: Initializes the MacPorts system. Should be
+                called before trying to use any other procedure.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportsearch: Given a regexp, searches the PortIndex for
+                ports with matching names.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportopen: Given a URI to a port, opens the port and
+                returns an opaque handle to it.</para>
+              </listitem>
+
+              <listitem>
+                <para>portclose: Given a port handle, closes the port.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportexec: Given a port handle, executes a target (i.e.
+                install).</para>
+              </listitem>
+
+              <listitem>
+                <para>mportinfo: Given a port handle, this returns the
+                PortInfo array (as a flat list of array elements). This is a
+                little tricky and unstable and only used by the
+                <command>portindex</command> command.</para>
+              </listitem>
+
+              <listitem>
+                <para>mportdepends: Given a port handle, returns a list of
+                ports upon which the specified port depends.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </itemizedlist>
+
+        <para>For an example of the MacPorts API, when one executes
+        <command>port search cm3</command>, the port utility:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Calls the mportsearch function to find all ports containing
+            "cm3".</para>
+          </listitem>
+
+          <listitem>
+            <para>Returns Tcl array(s) containing data from the
+            <filename>PortIndex</filename>: port name, version, revision,
+            variants, etc.</para>
+          </listitem>
+
+          <listitem>
+            <para>Formats the list of arrays in the standard viewing
+            format.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>For another MacPorts API example, when one executes
+        <command>port install cm3</command>, the port utility:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Calls the mportsearch function to find the first port that
+            matches the name "cm3".</para>
+          </listitem>
+
+          <listitem>
+            <para>Calls the mportopen function to open the port.</para>
+          </listitem>
+
+          <listitem>
+            <para>Calls the mportexec function to execute the install target
+            in the port.</para>
+          </listitem>
+
+          <listitem>
+            <para>Calls the mportclose function to close the port.</para>
+          </listitem>
+        </itemizedlist>
+      </section>
+    </section>
+
+    <section>
+      <title>The MacPorts Registry</title>
+
+      <para>This chapter provides a detailed overview of the MacPorts registry
+      and its API. The registry is queried by MacPorts utilities for
+      information about installed ports related to dependencies, port images,
+      and simple user information about what is installed. It also provides
+      abstraction over a modular receipt storage layer, allowing for flat-file
+      receipts, as well as receipts stored in a SQLite database.</para>
+
+      <para>The registry allows MacPorts utilities to:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Modify receipts to reflect changes made to installed ports
+          being maintained by MacPorts.</para>
+        </listitem>
+
+        <listitem>
+          <para>Query the global file and dependency databases for file
+          conflicts between a port being installed and a port already
+          installed.</para>
+        </listitem>
+
+        <listitem>
+          <para>Maintain dependency trees of installed ports.</para>
+        </listitem>
+      </itemizedlist>
+
+      <section>
+        <title>The Registry API</title>
+
+        <para>The MacPorts Registry provides a public API in the registry1.0
+        Tcl package. Using this API listed below you can access the MacPorts
+        Registry using the default receipt storage mechanism chosen in
+        <filename>macports.conf</filename>.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::new_entry {name version {revision
+            0} {variants ""}}</computeroutput></term>
+
+            <listitem>
+              <para>Begin the creation of a new registry entry for the given
+              port. Returns a reference ID to the registry entry
+              created.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::open_entry {name {version 0}
+            {revision 0} {variants ""}}</computeroutput></term>
+
+            <listitem>
+              <para>Opens an existing registry entry. Returns a reference ID
+              to the registry entry that was opened.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::entry_exists {name version
+            {revision 0} {variants ""}}</computeroutput></term>
+
+            <listitem>
+              <para>Checks to see if a port exists in the registry. Returns 1
+              if the entry exists, 0 if not.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::write_entry
+            {ref}</computeroutput></term>
+
+            <listitem>
+              <para>Writes the receipt associated with the given
+              reference.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::delete_entry
+            {ref}</computeroutput></term>
+
+            <listitem>
+              <para>Deletes the receipt associated with the given
+              reference.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::property_store {ref property
+            value}</computeroutput></term>
+
+            <listitem>
+              <para>Store the given value with the property name in the
+              receipt associated with the given reference.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::property_retrieve {ref
+            property}</computeroutput></term>
+
+            <listitem>
+              <para>Retrieve the property name from the receipt associated
+              with the given reference. Returns the value of the property, if
+              the property exists.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::installed {{name ""} {version
+            ""}}</computeroutput></term>
+
+            <listitem>
+              <para>Get all installed ports, optionally all installed ports
+              matching the given name, or the given name and version. Returns
+              a list of the installed ports.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::location {portname
+            portversion}</computeroutput></term>
+
+            <listitem>
+              <para>Returns the physical location the port is installed in on
+              the disk. This is primarily useful for finding out where a port
+              image is installed.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::open_file_map
+            {args}</computeroutput></term>
+
+            <listitem>
+              <para>Opens the file map that contains file-port
+              relationships.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::file_registered
+            {file}</computeroutput></term>
+
+            <listitem>
+              <para>Returns the name of the port that owns the given file, if
+              the file is registered as installed, and 0 otherwise.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::port_registered
+            {name}</computeroutput></term>
+
+            <listitem>
+              <para>Returns a list of all files associated with the given port
+              if that port is installed, and 0 otherwise.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::register_file {file
+            port}</computeroutput></term>
+
+            <listitem>
+              <para>Registers the given file in the file map as belonging to
+              the given port.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::unregister_file
+            {file}</computeroutput></term>
+
+            <listitem>
+              <para>Removes the file from the file map.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::write_file_map
+            {args}</computeroutput></term>
+
+            <listitem>
+              <para>Write the changes to the file map.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::open_dep_map
+            {args}</computeroutput></term>
+
+            <listitem>
+              <para>Opens the dependency map that contains port dependency
+              relationships.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::fileinfo_for_file
+            {fname}</computeroutput></term>
+
+            <listitem>
+              <para>Returns a list for the given file name representing all
+              data currently known about the file. This is a 6-tuple in the
+              form of:</para>
+
+              <orderedlist>
+                <listitem>
+                  <para>file path</para>
+                </listitem>
+
+                <listitem>
+                  <para>uid</para>
+                </listitem>
+
+                <listitem>
+                  <para>gid</para>
+                </listitem>
+
+                <listitem>
+                  <para>mode</para>
+                </listitem>
+
+                <listitem>
+                  <para>size</para>
+                </listitem>
+
+                <listitem>
+                  <para>md5 checksum</para>
+                </listitem>
+              </orderedlist>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::fileinfo_for_index
+            {flist}</computeroutput></term>
+
+            <listitem>
+              <para>Returns a list of information concerning each file in the
+              given file list, if that file exists in the registry. The
+              information if obtained through
+              registry::fileinfo_for_file</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::list_depends
+            {name}</computeroutput></term>
+
+            <listitem>
+              <para>Returns a list of all the ports that given port name
+              depends on.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::list_dependents
+            {name}</computeroutput></term>
+
+            <listitem>
+              <para>Returns a list of all the ports that depend on the given
+              port name.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::register_dep {dep type
+            port}</computeroutput></term>
+
+            <listitem>
+              <para>Registers the given dependency as the given type of
+              dependency with the given port.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::unregister_dep {dep type
+            port}</computeroutput></term>
+
+            <listitem>
+              <para>Unregister the given dependency of the given type as a
+              dependency of the given port.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term><computeroutput>registry::write_dep_map
+            {args}</computeroutput></term>
+
+            <listitem>
+              <para>Write changes to the dependency map.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <title>MacPorts Project</title>
+
+    <para></para>
+
+    <section>
+      <title>Submitting Bug Reports</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Submitting Ports</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Port Update Policies</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>MacPorts Committer Status</title>
+
+      <para></para>
+    </section>
+  </section>
+</article>
