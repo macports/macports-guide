@@ -681,7 +681,7 @@ DEBUG: Executing archive_finish
 
       <para>Overview: Fetch the <varname>${distfiles}</varname> from
       <varname>${master_sites}</varname> and place it in
-      <filename>${prefix}/var/db/macports/distfiles</filename>.</para>
+      <filename>${prefix}/var/macports/distfiles</filename>.</para>
     </section>
 
     <section>
@@ -696,7 +696,7 @@ DEBUG: Executing archive_finish
       <title>Extract</title>
 
       <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
-      the path ${prefix}/var/db/macports/build/???-???/work</para>
+      the path ${prefix}/var/macports/build/..../work</para>
     </section>
 
     <section>
@@ -767,14 +767,14 @@ DEBUG: Executing archive_finish
 
       <para>Overview: Use tar to create a tarball of a port's destrooted files
       and copy it to
-      <filename>${prefix}/var/db/macports/packages/</filename>.</para>
+      <filename>${prefix}/var/macports/packages/</filename>.</para>
     </section>
 
     <section>
       <title>Install</title>
 
       <para>Overview: Copy a port's destrooted files into
-      <filename>${prefix}/var/db/macports/software</filename>. See "Port
+      <filename>${prefix}/var/macports/software</filename>. See "Port
       Images" in section "MacPorts Internals" for details.</para>
     </section>
 
@@ -783,7 +783,7 @@ DEBUG: Executing archive_finish
 
       <para>Overview: Set <ulink
       url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
-      to ${prefix}/var/db/macports/software to point to ${prefix}.</para>
+      to ${prefix}/var/macports/software to point to ${prefix}.</para>
     </section>
   </section>
 
@@ -2848,7 +2848,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
           <listitem>
             <para>Registry management routines. Manages the rudimentary port
             registry in
-            <filename>${prefix}/var/db/mports/receipts/</filename>.</para>
+            <filename>${prefix}/var/mports/receipts/</filename>.</para>
 
             <itemizedlist>
               <listitem>
