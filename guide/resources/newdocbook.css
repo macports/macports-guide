@@ -1,0 +1,182 @@
+/*
+ * MacPorts Guide Stylesheet
+ */
+
+* {
+	font-family: Georgia, "New Century Schoolbook", "Times New Roman", Times, serif;
+}
+
+body {
+	background: #e3f1c7;
+	width: 720px;
+	margin: 15px auto 15px auto;
+	font-size: 14px;
+        line-height: 1.4;
+}
+
+a:link {
+	color: #669;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #c63;
+}
+
+a:visited {
+	color: #888;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #669;
+}
+
+a:hover {
+	color: #c63;
+	text-decoration: none;
+	font-weight: bold;
+	border-bottom: 1px dotted #369;
+}
+
+hr { 
+	display: none;
+}
+
+h3.title {
+	color: #879880;
+	margin: 1em 0 1em 0;
+	padding: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+h4.title {
+	color: #999;
+	margin: 0 auto;
+	padding: 0;
+}
+
+h1.title, h2.title {
+	color: #669;
+	margin: 5px 0 5px 0;
+	padding: 10px 0 0 0;
+	border-bottom: 1px solid #bbb;
+}
+
+.navheader, 
+.navfooter, 
+div.book,
+div.part,
+div.chapter,
+div.preface,
+div.sect1 {
+	background: #fff;
+	padding: 0.5em 2em;
+	margin: 0.5em; 
+	border: 1px solid #bbb;
+}
+
+div.chapter div.sect1, div.preface div.sect1 {
+	border: 0;
+	padding: 0;
+	margin: 0;
+}
+
+div.sect2, div.sect3 {
+	margin: 0 1em;
+}
+
+pre.programlisting {
+	color: #669;
+	font-family: "Courier New", Courier;	
+}
+
+.programlisting {
+        font-family: monospace;
+	font-size: 12px;
+        background-color: #E6E6E6;
+        border: thin black inset
+}
+
+.screen {font-family: monospace;
+	font-size: 12px;
+	border: thin black inset;
+	background-color: #ccdfff;} 
+
+.userinput {
+	color: #669;
+}
+
+.term {
+	font-weight: bold;
+}
+
+tt {
+	font-family: "Courier New", Courier;	
+}
+
+.filename {
+	color: #673;
+}
+
+div.article {
+	margin-left: 220px;
+}
+
+div.toc {
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	background-color: white;
+/*	background-image: url(images/hexley.png); */
+	background-repeat: no-repeat;
+	background-position: center top;
+
+	font-size: 10px;
+	font-family: Verdana, Arial, sans-serif;
+	color: black;
+	left: 8px;
+	width: 245px;
+	padding-left: 4px;
+	padding-top: 5px;
+	height: 540px;
+	float: left;
+	overflow: scroll;
+	position: fixed;
+	top: 12px;
+
+/* IE hack */
+
+	position: expression("absolute");
+	top: expression(document.body.scrollTop+this.offsetHeight-this.offsetHeight);
+}
+
+/* Definitions for non-Safari/non-IE toc sections */
+div.toc dt {
+	font-size: 12px;
+	line-height: 22px;
+}
+
+/* Definitions for non-Safari/non-IE toc subsections */
+div.toc dd dl dt {
+	font-size: 11px;
+	line-height: 14px;
+}
+
+/* Definitions for toc sections using Safari Stokely hack */
+html*.toc dt {
+/* Seen by Safari */
+	font-size: 12px;
+	line-height: 16px;
+/* Seen by IE */
+	_font-size: 12px;
+	_line-height: 22px;
+}
+
+/* Definitions for toc subsections using Safari Stokely hack */
+html*.toc dd dl dt {
+/* Seen by Safari */
+	font-size: 11px;
+	line-height: 13px;
+	padding-bottom: 0px;
+/* Seen by IE */
+	_font-size: 11px;
+	_line-height: 14px;
+	_padding-bottom: 0px;
+}
