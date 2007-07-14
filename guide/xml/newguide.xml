@@ -82,7 +82,7 @@
       </orderedlist>
 
       <note>
-        <para>Xcode Tools is not updated via OS X's Software Update
+        <para>Xcode Tools are not updated via OS X's Software Update
         utility.</para>
       </note>
     </section>
@@ -119,8 +119,8 @@
       </orderedlist>
 
       <note>
-        <para>To check or verify that X11 and the X11SDK are installed, you
-        may check for the presence of files <filename>X11User.pkg</filename>
+        <para>To see if X11 and the X11SDK are installed, check for
+        the presence of files <filename>X11User.pkg</filename>
         and <filename>X11SDK.pkg</filename> respectively in
         <filename>/Library/Receipts/</filename>.</para>
       </note>
