@@ -2,18 +2,52 @@
 <!DOCTYPE article PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <article>
-  <articleinfo>
   <title>MacPorts Guide</title>
+
+  <articleinfo>
+    <author>
+      <firstname>first</firstname>
+
+      <surname>last</surname>
+
+      <email>author1@macports.org</email>
+    </author>
+
+    <author>
+      <firstname>first</firstname>
+
+      <surname>last</surname>
+
+      <email>author2@macports.org</email>
+     </author>
+
+    <author>
+      <firstname>first</firstname>
+
+      <surname>last</surname>
+
+      <email>author3@macports.org</email>
+    </author>
+
+    <legalnotice>
+      <para></para>
+    </legalnotice>
 
     <copyright>
       <year>2006</year>
+ 
       <year>2007</year>
+
       <holder>MacPorts organization</holder>
     </copyright>
+
     <copyright>
       <year>2002</year>
+
       <year>2003</year>
+
       <year>2004</year>
+
       <holder>The OpenDarwin Project</holder>
     </copyright>
   </articleinfo>
