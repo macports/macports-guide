@@ -1,0 +1,193 @@
+/*
+ * MacPorts Guide Stylesheet
+ */
+
+body {
+   font-family: Verdana, Arial, sans-serif;
+   font-size: 14px;
+   line-height: 1.4;
+   color: #696969;
+}
+
+.author { font-size: 12px; }
+
+.copyright {
+	font-size: 12px;
+	font-family: times;
+}
+
+div.book div.titlepage h1 {
+	font-family: Verdana, Arial, Utopia, sans-serif;
+        font-size: 24pt;
+	color: black;
+	font-weight: bold;
+	text-align: left;
+}
+
+div.book div.titlepage h2 {
+        font-family: Verdana, Arial, Utopia, sans-serif;
+        font-size: 18pt;
+	color: black;
+        font-weight: bold;
+        text-align: left;
+}
+
+div.section div.titlepage h2 {
+	font-family: Verdana, Arial, Utopia, sans-serif;
+        font-size: 16pt;
+        color: black;
+	text-align: left;
+}
+
+div.section div.titlepage h3 {
+        font-family: Verdana, Arial, Utopia, sans-serif;
+        font-size: 14pt;
+        color: black;
+        font-weight: bold;
+	text-align: left;   
+}
+
+div.section div.titlepage h4 {
+        font-family: Verdana, Arial, Utopia, sans-serif;
+        font-size: 12pt;
+        color: black;
+        font-weight: bold;
+        text-align: left;
+}
+
+div.note h3.title {color: #C00;}
+
+.programlisting {font-family: monospace;
+                 font-size: medium;
+                 background-color: #E6E6E6;
+                 border: thin black inset}
+
+.filename {
+	color: #673;
+}
+
+.screen {font-family: monospace;
+	font-size: medium;
+	border: thin black inset;
+	background-color: white;} 
+
+div.screenshot div.mediaobject {
+	text-align: center;
+	margin: auto
+}
+
+div.mediaobject {
+	text-align: center;
+	margin: auto;
+}
+
+p { margin-bottom: 14pt; }
+
+span.term { 
+    font-weight: bold; 
+}
+
+div.sidebar { 
+    background: #F0F0F0; 
+    border: 1px solid gray; 
+    padding: 5px; 
+    margin: 20px; 
+}
+
+div.toc {
+	border-width: 1px;
+	border-color: black;
+	border-style: solid;
+	background-color: #9FB6CD;
+/*	background-image: url(images/hexley.png); */
+	background-repeat: no-repeat;
+	background-position: center top;
+
+	font-size: 10px;
+	font-family: Verdana, Arial, sans-serif;
+	color: black;
+	left: 8px;
+	width: 240px;
+	padding-left: 4px;
+	padding-top: 0px;
+	height: 96%;
+	float: left;
+	overflow: scroll;
+	position: fixed;
+	top: 12px;
+
+/* IE hack */
+
+	position: expression("absolute");
+	top: expression(document.body.scrollTop+this.offsetHeight-this.offsetHeight);
+}
+
+/* Definitions for non-Safari/non-IE toc sections */
+div.toc dt {
+	font-size: 12px;
+	line-height: 22px;
+}
+
+/* Definitions for non-Safari/non-IE toc subsections */
+div.toc dd dl dt {
+	font-size: 11px;
+	line-height: 14px;
+}
+
+/* Definitions for toc sections using Safari Stokely hack */
+html*.toc dt {
+/* Seen by Safari */
+	font-size: 12px;
+	line-height: 16px;
+/* Seen by IE */
+	_font-size: 12px;
+	_line-height: 22px;
+}
+
+/* Definitions for toc subsections using Safari Stokely hack */
+html*.toc dd dl dt {
+/* Seen by Safari */
+	font-size: 11px;
+	line-height: 13px;
+	padding-bottom: 0px;
+/* Seen by IE */
+	_font-size: 11px;
+	_line-height: 14px;
+	_padding-bottom: 0px;
+}
+
+div.toc a:link { color: royalblue; }
+div.toc a:hover { color: #D00; }
+div.toc a:visited { color: black; text-decoration: none}
+
+/* TOC Section Links */
+div.toc dt a:link { color: white; text-decoration: none;}
+div.toc dt a:hover { color: brown; }
+
+/* TOC Subsubsection Links */
+div.toc dd dl dt a:link { color: black; text-decoration: none;}
+div.toc dd dl dt a:hover { color: brown; }
+
+div.book {
+	margin-left: 260px;
+}
+
+/* 
+div.toc:before {
+	font-family: Palatino, Bookman, serif;
+	font-size: 16px;
+	font-weight: bold;
+	text-align: center;
+	display: block;
+	color: black;
+	content: "MacPorts Guide Contents";
+} */
+
+a:link {
+	color: blue;
+	text-decoration: underline;
+	}
+
+a:visited {
+	color: blue;
+}

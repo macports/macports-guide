@@ -1,0 +1,351 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>PortFile Development</title>
+
+  <para>This chapter gives an introduction to port phases, creating a local
+  Portfile repository for development, and shows how to create
+  <filename>Portfile</filename>s by example.</para>
+
+  <section>
+    <title>PortFile Introduction</title>
+
+    <para>A MacPorts <filename>Portfile</filename> fully defines a given port;
+    it is also the only necessary component of a port, though ports may also
+    include patchfiles or other textfiles as desired by a port author.</para>
+
+    <para>A MacPorts port has ten distinct phases, but the main ones you to be
+    aware of when making Portfiles are these:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Fetch</para>
+      </listitem>
+
+      <listitem>
+        <para>Extract</para>
+      </listitem>
+
+      <listitem>
+        <para>Patch</para>
+      </listitem>
+
+      <listitem>
+        <para>Configure</para>
+      </listitem>
+
+      <listitem>
+        <para>Build</para>
+      </listitem>
+
+      <listitem>
+        <para>Destroot</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>These phases automatically perform default operations for
+    applications that use the standard <command>configure</command>,
+    <command>make</command>, and <command>make install</command> steps, which
+    conform to phases configure, build, and destroot respectively. For
+    applications that do not conform to this behavior, any installation phase
+    may be augmented using pre- and/or post- phases or overridden entirely.
+    See the section "Example Portfiles" below.</para>
+
+    <note>
+      <para>For a detailed description of all port phases, see the section
+      "Portfile Reference".</para>
+    </note>
+  </section>
+
+  <section>
+    <title>A Local PortFile Repository</title>
+
+    <para>To create and test <filename>Portfile</filename>s that are not yet
+    committed to subversion, you may create a local
+    <filename>Portfile</filename> repository as shown.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Open the <filename>sources.conf</filename> file in a text
+        editor.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
+<prompt>%%</prompt> <userinput>pico sources.conf</userinput></programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Insert a URL pointing to the local repository location before
+        the rsync URL as shown.</para>
+
+        <programlisting>file:///Users/joebob/ports
+rsync://rsync.macports.org/release/ports
+</programlisting>
+
+        <note>
+          <para>The file URL should always appear before the rsync URL so that
+          local <filename>Portfile</filename>s can be tested that are
+          duplicated in the MacPorts tree, because the <command>port</command>
+          command will always operate on the first
+          <filename>Portfile</filename> it encounters.</para>
+        </note>
+      </listitem>
+
+      <listitem>
+        <para>Place the <filename>Portfile</filename>s you create inside a
+        directory whose name matches the port, which should in turn be placed
+        inside a directory that reflect the port's primary category (the first
+        category entry in the <filename>Portfile</filename>).</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>cd /Users/joebob</userinput>
+<prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
+      </listitem>
+
+      <listitem>
+        <para>After a <filename>Portfile</filename> is created (see below),
+        use the MacPorts <command>portindex</command> command in the local
+        repository's directory to install it into the
+        <filename>Portindex</filename>.</para>
+
+        <programlisting>%% <userinput>cd /Users/joebob/ports</userinput>
+%% <userinput>portindex</userinput></programlisting>
+
+        <screen>Creating software index in /Users/joebob/ports
+Adding port games/bestevergame
+
+Total number of ports parsed:   1 
+Ports successfully parsed:      1        
+Ports failed:                   0</screen>
+      </listitem>
+    </orderedlist>
+
+    <para>Once the local port is added to the <filename>Portindex</filename>,
+    it becomes available for searching or installation as with any other
+    <filename>Portfile</filename> in the MacPorts tree as shown.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
+
+    <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
+  </section>
+
+  <section>
+    <title>Creating a PortFile</title>
+
+    <para>Here we list the individual <filename>Portfile</filename> components
+    for a port that conforms to the default <filename>Portfile</filename>
+    options. For non-default options, see the section Optional Portfile
+    Keywords.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Subversion ID tag line</para>
+
+        <para>The first line of a new <filename>Portfile</filename> must be
+        set as shown. When a port is committed to subversion, ID tags are
+        expanded to include the last person to commit and the commit
+        time.</para>
+
+        <programlisting># $Id$</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>PortSystem line</para>
+
+        <para>This statement is required for all ports.</para>
+
+        <programlisting>PortSystem        1.0</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port name</para>
+
+        <programlisting>name              rrdtool</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port version</para>
+
+        <programlisting>version           1.2.23</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port categories</para>
+
+        <para>A port may belong to more than one category, but the first
+        (primary) category should match the directory name in the ports tree
+        where the <filename>Portfile</filename> is to reside.</para>
+
+        <programlisting>categories        net</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port maintainers</para>
+
+        <para>A port's maintainer is who takes responsibility for the port;
+        ports that are not maintained and fair game to be modified by any
+        committer use <email>nomaintainer@macports.org</email>.</para>
+
+        <programlisting>maintainers       joebob@macports.org</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port description</para>
+
+        <programlisting>description       Round Robin Database</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port long_description</para>
+
+        <programlisting>long_description  RRDtool is a system to store and display time-series data</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>A port's application homepage</para>
+
+        <programlisting>homepage          http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Platform statement</para>
+
+        <programlisting>platforms         darwin</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>A port's download URLs</para>
+
+        <programlisting>master_sites      http://oss.oetiker.ch/rrdtool/pub/ \
+                  ftp://ftp.pucpr.br/rrdtool/</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port checksums</para>
+
+        <para>The checksums specified in a <filename>Portfile</filename> are
+        checked with the fetched tarball for security.</para>
+
+        <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port dependencies</para>
+
+        <para>A port's dependencies are ports that must be installed before
+        another port is installed.</para>
+
+        <programlisting>depends_lib       port:perl5.8 \
+                  port:tcl \
+                  port:zlib</programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Port configure arguments (optional)</para>
+
+        <programlisting>configure.args    --prefix=${prefix} \
+                  --enable-perl-site-install \
+                  --mandir=${prefix}/share/man</programlisting>
+      </listitem>
+    </orderedlist>
+  </section>
+
+  <section>
+    <title>Example PortFiles</title>
+
+    <para>In this section we take a look at a complete simple Portfile, and
+    then pre- and post- phase definitions to augment and override the MacPorts
+    default phases respectively.</para>
+
+    <section>
+      <title>A Simple PortFile</title>
+
+      <para></para>
+
+      <programlisting># Id$
+PortSystem      1.0
+
+name                    rrdtool
+version                 1.2.23
+categories              net
+maintainers             joebob@macports.org
+description             Round Robin Database
+long_description        RRDtool is a system to store and display time-series data
+homepage                http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+platforms               darwin
+master_sites            http://oss.oetiker.ch/rrdtool/pub/ \
+                        ftp://ftp.pucpr.br/rrdtool/
+
+checksums               md5 dafa161bc9c61e57636a6085c87c1fe8
+
+depends_lib             port:perl5.8 \
+                        port:tcl \
+                        port:zlib
+
+configure.args          --prefix=${prefix} \
+                        --enable-perl-site-install \
+                        --mandir=${prefix}/share/man</programlisting>
+    </section>
+
+    <section>
+      <title>PortFile Using Pre- / Post- Phases</title>
+
+      <para>To augment a port's installation phase, and not override it, you
+      may use pre- and post- installation phases as shown in this
+      example.</para>
+
+      <programlisting>post-destroot {
+# Install example files not installed by the Makefile
+        file mkdir ${destroot}${prefix}/share/doc/${name}/examples
+        file copy ${worksrcpath}/examples/ \
+             ${destroot}${prefix}/share/doc/${name}/examples
+}</programlisting>
+    </section>
+
+    <section>
+      <title>PortFile that Overrides Default Phases</title>
+
+      <para>To override the automatic MacPorts installation phase processing,
+      define your own installation phases as shown in this example.</para>
+
+      <programlisting>destroot {
+        xinstall -m 755 -d ${destroot}${prefix}/bin
+        xinstall -m 755 ${worksrcpath}/cdpr ${destroot}${prefix}/bin
+}</programlisting>
+    </section>
+
+    <section>
+      <title>PortFile Using a Variant</title>
+
+      <para>Here is an example of a port providing four variants that add
+      additional configure arguments to a port. See "Variants" in the Portfile
+      Reference section for full information.</para>
+
+      <programlisting>variant pop     { configure.args-append --enable-pop }
+variant imap    { configure.args-append --enable-imap }
+variant ssl     { configure.args-append --with-ssl }
+variant debug   { configure.args-append --enable-debug }</programlisting>
+    </section>
+
+    <section>
+      <title>PortFile Using a StartupItem</title>
+
+      <para>Startupitems may be placed in the global section of a
+      Portfile.</para>
+
+      <programlisting>startupitem.create      yes
+startupitem.name        nmicmpd
+startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+
+      <para>Startupitems keywords may also be used within a variant definition
+      to make their installation conditional.</para>
+
+      <programlisting>variant server {
+    startupitem.create    yes
+    startupitem.start "${prefix}/share/${name}/vm-pop3d.init start"
+    startupitem.stop "${prefix}/share/${name}/vm-pop3d.init stop"
+}</programlisting>
+    </section>
+  </section>
+</chapter>

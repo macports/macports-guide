@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>MacPorts Project</title>
+
+  <section>
+    <title>Submitting Bug Reports</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Submitting Ports</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>Port Update Policies</title>
+
+    <para></para>
+  </section>
+
+  <section>
+    <title>MacPorts Membership</title>
+
+    <para></para>
+  </section>
+</chapter>

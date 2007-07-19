@@ -1,0 +1,1539 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>PortFile Reference</title>
+
+  <para>This chapter serves as a reference for the major elements of a
+  <filename>Portfile</filename>: port phases, variants, StartupItems,
+  variables, keywords, and Tcl primitives.</para>
+
+  <section>
+    <title>Port Phases</title>
+
+    <para>A MacPorts port has ten distinct phases. These phases automatically
+    perform default operations for applications that use the standard
+    <command>configure</command>, <command>make</command>, and <command>make
+    install</command> steps, but for applications that do not conform to this
+    behavior, any installation phase may be augmented using pre- and/or post-
+    phases or overridden entirely.</para>
+
+    <section>
+      <title>Fetch</title>
+
+      <para>Overview: Fetch the <varname>${distfiles}</varname> from
+      <varname>${master_sites}</varname> and place it in
+      <filename>${prefix}/var/macports/distfiles</filename>.</para>
+    </section>
+
+    <section>
+      <title>Checksum</title>
+
+      <para>Overview: Compare <varname>${checksums}</varname> specified in a
+      <filename>Portfile</filename> to the checksums of the fetched
+      ${distfiles}.</para>
+    </section>
+
+    <section>
+      <title>Extract</title>
+
+      <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
+      the path ${prefix}/var/macports/build/..../work</para>
+    </section>
+
+    <section>
+      <title>Patch</title>
+
+      <para>Overview: Apply optional <ulink
+      url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
+      specified in <varname>${patchfiles}</varname> to modify a port's source
+      code file(s).</para>
+
+      <para>Details: Patch files are made using the <ulink
+      url="http://en.wikipedia.org/wiki/Diff">diff</ulink> command, and
+      MacPorts patches should be created as <ulink
+      url="http://en.wikipedia.org/wiki/Diff#Unified_format">unified
+      diffs</ulink>.</para>
+    </section>
+
+    <section>
+      <title>Configure</title>
+
+      <para>Overview: Execute the command "configure" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section>
+      <title>Build</title>
+
+      <para>Overview: Execute the command "make" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section>
+      <title>Destroot</title>
+
+      <para>Overview: Execute the command <command>make install
+      DESTDIR=${destroot}</command> in <varname>${workpath}</varname>.</para>
+
+      <para>Details: Understanding the destroot phase is critical to
+      understanding MacPorts, because, unlike some port systems, MacPorts
+      "stages" an installation into an intermediate location —not the final
+      file destination. There are two main advantages to this method.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>A port's files may be cleanly uninstalled because all files
+          and locations are tracked.</para>
+        </listitem>
+
+        <listitem>
+          <para>Since a port's files are not installed into MacPorts directory
+          structure until an activation phase, a port may be deactivated
+          through MacPorts to allow activation of a different version of the
+          same port, thus allowing two versions of a port to be present,
+          though not both active, on a given host.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>The <varname>$(DESTDIR)</varname> variable must be supported in
+        an application's Makefile for the MacPorts destroot phase to work
+        properly. Urge developers to fully support
+        <varname>$(DESTDIR)</varname> in their Makefiles.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Archive</title>
+
+      <para>Overview: Use tar to create a tarball of a port's destrooted files
+      and copy it to
+      <filename>${prefix}/var/macports/packages/</filename>.</para>
+    </section>
+
+    <section>
+      <title>Install</title>
+
+      <para>Overview: Copy a port's destrooted files into
+      <filename>${prefix}/var/macports/software</filename>. See "Port Images"
+      in section "MacPorts Internals" for details.</para>
+    </section>
+
+    <section>
+      <title>Activate</title>
+
+      <para>Overview: Set <ulink
+      url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
+      to ${prefix}/var/macports/software to point to ${prefix}.</para>
+    </section>
+  </section>
+
+  <section>
+    <title>Variants</title>
+
+    <para>Variants are a way for port authors to provide options that may be
+    invoked at install time. They are declared in a Portfile's global section
+    using the "variant" keyword and may provide a description.</para>
+
+    <section>
+      <title>Append / Delete Keywords</title>
+
+      <para>The most common use for a variant is to add or remove
+      dependencies, configure arguments, and build arguments from the global
+      Portfile section. In the example below, the global configure argument
+      --without-x11 is removed and others are appended.</para>
+
+      <programlisting>variant x11 description {Builds port as an X11 program with Lucid widgets} {
+    configure.args-delete   --without-x
+    configure.args-append   --with-x-toolkit=lucid \
+                            --without-carbon \
+                            --with-xpm \
+                            --with-jpeg \
+                            --with-tiff \
+                            --with-gif \
+                            --with-png
+    depends_lib-append      lib:libX11:XFree86 \
+                            lib:libXpm:XFree86 \
+                            port:jpeg \
+                            port:tiff \
+                            port:libungif \
+                            port:libpng
+}</programlisting>
+    </section>
+
+    <section>
+      <title>Variant Actions in Port Phases</title>
+
+      <para>If a variant requires options in addition to those provided by
+      keywords using -append and/or -delete, or actions that would normally
+      take place within a port installation phase or its pre- and post-
+      phases, do not try to do this within the variant declaration. Rather,
+      modify the behavior of any affected phases when the variant is invoked
+      using the variant_isset keyword.</para>
+
+      <programlisting>post-destroot {
+    xinstall -m 755 -d ${destroot}${prefix}/etc/
+    xinstall ${worksrcpath}/examples/foo.conf \
+        ${destroot}${prefix}/etc/
+
+    if {[variant_isset] carbon]} {
+        delete ${destroot}${prefix}/bin/emacs
+        delete ${destroot}${prefix}/bin/emacs-${version}
+    }
+}</programlisting>
+    </section>
+  </section>
+
+  <section>
+    <title>StartupItems</title>
+
+    <para>StartupItems are keywords that create Mac OS X LaunchDaemon startup
+    scripts. To create these startup scripts for a port, choose from the
+    following keywords.</para>
+
+    <para><variablelist>
+        <varlistentry>
+          <term>startupitem.create</term>
+
+          <listitem>
+            <para>This triggers the creation of a StartupItem, defaults to
+            "no".</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.name</term>
+
+          <listitem>
+            <para>Sets the name for the StartupItem, defaults to
+            ${portname}.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.executable</term>
+
+          <listitem>
+            <para>The name of the daemon to be run in the background. This is
+            the preferred type of startup item and may not be used together
+            with any other startupitem. This option may contain multiple
+            arguments, but they must be appropriate for a call to exec; they
+            may not contain arbitrary shell code.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.init</term>
+
+          <listitem>
+            <para>Shell code that will be executed prior to any of the options
+            startupitem.start, startupitem.stop and startupitem.restart.
+            Typically a startup script is specified.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.start</term>
+
+          <listitem>
+            <para>Shell code executed to start the daemon.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.stop</term>
+
+          <listitem>
+            <para>Shell code executed to stop the daemon.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.restart</term>
+
+          <listitem>
+            <para>Shell code executed to restart the daemon. In the absence of
+            this key, the daemon will be restarted by taking the stop action,
+            followed by taking the start action.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.pidfile</term>
+
+          <listitem>
+            <para>Specification for pidfile handling. It is useful in
+            conjunction with the startupitem.executable key, because it is
+            important that the startupitem know how to track the executable.
+            This keyword specifies whether the daemon generates its own
+            pidfile (auto), whether it generates its own but forgets to delete
+            it, so that the startupitem should delete it (clean), or whether
+            it never generates one, in which case the startupitem should
+            manage the pidfile on its own (manual), or whether no pidfile
+            should be used at all (none).</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.logfile</term>
+
+          <listitem>
+            <para>Path to a logfile for logging events about the lifetime of
+            the startupitem. Depending on the type of startupitem, and the
+            manner in which it is started, standard output from the daemon may
+            also be directed to the logfile.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist><variablelist>
+        <varlistentry>
+          <term>startupitem.logevents</term>
+
+          <listitem>
+            <para>Control whether or not to log events to the log file. If
+            logevents is set, events with timestamps are logged to the
+            logfile.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist></para>
+  </section>
+
+  <section>
+    <title>Variables</title>
+
+    <para>This section describes the MacPorts preset variables that may be
+    used within <filename>Portfile</filename>s.</para>
+
+    <section>
+      <title>General</title>
+
+      <para>These are the variables available to any
+      <filename>Portfile</filename>.</para>
+
+      <para><variablelist>
+          <varlistentry>
+            <term>prefix</term>
+
+            <listitem>
+              <para>Installation prefix, set in the system-wide configuration
+              file <filename>${prefix}/etc/macports/macports.conf</filename>
+              —may be overridden on a per port basis. For example, aqua
+              applications are installed in
+              <filename>/Applications/MacPorts</filename>.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>binpath</term>
+
+            <listitem>
+              <para>Default PATH to use in finding executables. Read
+              only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>libpath</term>
+
+            <listitem>
+              <para>Path to the MacPorts TCL libraries. Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>portpath</term>
+
+            <listitem>
+              <para>Path to the directory containing the downloaded
+              <filename>Portfile</filename>s. Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>filesdir</term>
+
+            <listitem>
+              <para>Path to port files relative to
+              <varname>${portpath}</varname>. Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>workpath</term>
+
+            <listitem>
+              <para>Full path to work directory. Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>worksrcpath</term>
+
+            <listitem>
+              <para>Full path to extracted source code. Equivalent to
+              <varname>${workpath}/${worksrcdir}</varname>.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>destroot</term>
+
+            <listitem>
+              <para>Full path into which software will be destrooted.
+              Equivalent to <filename>${workpath}/destroot</filename>. Read
+              only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>distpath</term>
+
+            <listitem>
+              <para>Location to store downloaded distfiles. Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>os.platform</term>
+
+            <listitem>
+              <para>Identifies platform type (ie, "darwin", "freebsd", etc).
+              Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>os.arch</term>
+
+            <listitem>
+              <para>Identifies hardware type (ie, "powerpc", "intel"). Read
+              only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>os.version</term>
+
+            <listitem>
+              <para>The version number of the host operating system (ie "8.0"
+              for Darwin 8.0). Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>os.major</term>
+
+            <listitem>
+              <para>The major version number of the host operating system (ie
+              "8" for Darwin 8.0). Read only.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+    </section>
+
+    <section>
+      <title>PortGroup</title>
+
+      <para>In addition to the general <filename>Portfile</filename> type for
+      standard Unix applications and libraries, there are six optional
+      PortGroup types that provide special <filename>Portfile</filename>
+      handling to make creating <filename>a Portfile</filename> easier.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>perl5</para>
+        </listitem>
+
+        <listitem>
+          <para>python24 and python25</para>
+        </listitem>
+
+        <listitem>
+          <para>ruby</para>
+        </listitem>
+
+        <listitem>
+          <para>xcode</para>
+        </listitem>
+
+        <listitem>
+          <para>gnustep</para>
+        </listitem>
+
+        <listitem>
+          <para>zope</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>The common PortGroup variables are listed in the sections below
+      for perl5, python, and ruby. See the port Tcl group code in
+      <filename>${prefix}/share/macports/resources/port1.0/group</filename>
+      for details on all PortGroups.</para>
+
+      <section>
+        <title>PortGroup perl5</title>
+
+        <para>These are the variables available to a
+        <filename>Portfile</filename> when the <literal>PortGroup
+        perl5</literal> keyword is declared.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>perl5.version</term>
+
+            <listitem>
+              <para>The MacPorts Perl version.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>perl5.bin</term>
+
+            <listitem>
+              <para>The Perl binary path (ie,
+              <filename>${prefix}/bin/perl</filename>).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>perl5.lib</term>
+
+            <listitem>
+              <para>Path to the Perl vendor directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>perl5.archlib</term>
+
+            <listitem>
+              <para>Path to the Perl architecture-dependent modules
+              directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>PortGroup python2x</title>
+
+        <para>These are the variables available to a
+        <filename>Portfile</filename> when the <literal>PortGroup
+        python2x</literal> keyword is declared.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>python.bin</term>
+
+            <listitem>
+              <para>The MacPorts Python binary location.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>python.lib</term>
+
+            <listitem>
+              <para>The Python dynamic library and path (ie,
+              <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>python.pkgd</term>
+
+            <listitem>
+              <para>Path to the Python site-packages directory. (ie,
+              <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>python.include</term>
+
+            <listitem>
+              <para>Path to the Python include directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+
+      <section>
+        <title>PortGroup ruby</title>
+
+        <para>These are the variables available to a
+        <filename>Portfile</filename> when the <literal>PortGroup
+        ruby</literal> keyword is declared.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>ruby.version</term>
+
+            <listitem>
+              <para>The MacPorts Ruby version.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>ruby.bin</term>
+
+            <listitem>
+              <para>The Ruby binary location.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>ruby.lib</term>
+
+            <listitem>
+              <para>Path to the Ruby vendorlibdir directory (ie,
+              <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>ruby.archlib</term>
+
+            <listitem>
+              <para>Path to the Ruby vendor archdir (ie,
+              <filename>${ruby.lib}/${ruby.arch}</filename>).</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </section>
+    </section>
+  </section>
+
+  <section>
+    <title>Keywords</title>
+
+    <para>This section lists MacPorts keywords by the installation phase that
+    corresponds to their use. These keywords are used to specify non-default
+    options for <filename>a <filename>Portfile</filename>.</filename></para>
+
+    <section>
+      <title>Global</title>
+
+      <para>Global keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>name</term>
+
+          <listitem>
+            <para>Port name.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>version</term>
+
+          <listitem>
+            <para>Port version.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>categories</term>
+
+          <listitem>
+            <para>Port category(s).</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>maintainers</term>
+
+          <listitem>
+            <para>Port maintainer(s).</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>description</term>
+
+          <listitem>
+            <para>Short description.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>long_description</term>
+
+          <listitem>
+            <para>Long description.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>homepage</term>
+
+          <listitem>
+            <para>Port application's homepage.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>platforms</term>
+
+          <listitem>
+            <para>Platform(s) supported.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>master_sites</term>
+
+          <listitem>
+            <para>Download site(s) for the distribution files.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>checksums</term>
+
+          <listitem>
+            <para>Checksum(s) of the distribution files.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>depends_lib</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>depends_build</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>depends_run</term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Fetch</title>
+
+      <para>Fetch phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>fetch.keyword1</term>
+
+          <listitem>
+            <para>Description fetch keyword 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Checksum</title>
+
+      <para>Checksum phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>checksum.keyword1</term>
+
+          <listitem>
+            <para>Description checksum keyword 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Extract</title>
+
+      <para>Extract phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>extract.keyword1</term>
+
+          <listitem>
+            <para>Description extract keyword 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Patch</title>
+
+      <para>Patch phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>patch.keyword1</term>
+
+          <listitem>
+            <para>Description patch keyword1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Configuration</title>
+
+      <para>Configuration phase keywords. Avoid using keywords with defaults
+      defined or you will overwrite the default variables.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.env</term>
+
+          <listitem>
+            <para>Configure environment variables.</para>
+
+            <para>Defaults: CFLAGS=-I<filename>${prefix}/include</filename>
+            LDFLAGS=-L<filename>${prefix}/lib</filename></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.cflags-append</term>
+
+          <listitem>
+            <para>Set additional CFLAGS to be added to the variable
+            defaults.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.ldflags-append</term>
+
+          <listitem>
+            <para>Set additional LDFLAGS to be added to the variable
+            defaults.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Build</title>
+
+      <para>Build phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>build.keyword1</term>
+
+          <listitem>
+            <para>Description build.keyword 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Destroot</title>
+
+      <para>Destroot phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>destroot.keyword1</term>
+
+          <listitem>
+            <para>Description destroot keyword1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Install</title>
+
+      <para>Install phase keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>install.keyword1</term>
+
+          <listitem>
+            <para>Description install.keyword 1.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+
+  <section>
+    <title>Tcl Primitives</title>
+
+    <para>A MacPorts <filename>Portfile</filename> is interpreted as Tcl code,
+    and it may contain the Tcl primitives listed below.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>reinplace</term>
+
+        <listitem>
+          <para>Description reinplace.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term>xinstall</term>
+
+        <listitem>
+          <para>Description xinstall.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term>file copy</term>
+
+        <listitem>
+          <para>Description file copy.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term>file delete</term>
+
+        <listitem>
+          <para>Description file delete.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term></term>
+
+        <listitem>
+          <para></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</chapter>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter>
+  <title>Introduction</title>
+
+  <para>MacPorts is a system for building, installing, and managing free and
+  open source software. It is developed on Mac OS X, though it is designed to
+  be portable so it can work on other Unix-like systems, especially *BSD. A
+  MacPorts "port" consists of a <filename>Portfile</filename> that defines the
+  characteristics of the application to which it corresponds, so that MacPorts
+  may be used to fetch, compile, and install it. MacPorts provides several
+  significant advantages over installing free and open source software
+  manually.</para>
+
+  <itemizedlist>
+    <listitem>
+      <para>It provides automatic uninstalls and upgrades of ported
+      software.</para>
+    </listitem>
+
+    <listitem>
+      <para>It confines ported applications to a private "sandbox" that keeps
+      ported software from intermingling with your operating system and its
+      vendor-supplied libraries to prevent them from becoming
+      corrupted.</para>
+    </listitem>
+  </itemizedlist>
+</chapter>
