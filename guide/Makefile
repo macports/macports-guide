@@ -27,20 +27,22 @@
 # set XML_DEBUG_CATALOG= to see catalog debugging info
 
 SOURCEDIR?=		xml
+NEWSOURCEDIR?=		new/xml
 DOCBOOK_XSL?=	        ${prefix}/share/xsl/docbook-xsl/
 HTMLDIR?=		html
+NEWHTMLDIR?=            new/html
 XHTMLDIR?=		xhtml
-NEWHTMLDIR?=		new
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
 NEWSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/docbook.xsl
 XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 CSS_STYLESHEET?=	docbook.css
-NEWCSS_STYLESHEET?=	newdocbook.css
+NEWCSS_STYLESHEET?=	docbook.css
 RESOURCES?=		resources/
+NEWRESOURCES?=		new/resources/
 STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
-NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${NEWCSS_STYLESHEET} --stringparam section.autolabel 1
+NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${NEWCSS_STYLESHEET} --stringparam section.autolabel 1 --stringparam toc.section.depth 1 --stringparam generate.toc "book toc"
 
 .PHONY : all
 .PHONY : clean
@@ -65,8 +67,8 @@ xhtml:
 
 new:
 	mkdir -p ${NEWHTMLDIR}
-	cp ${RESOURCES}${NEWCSS_STYLESHEET} ${NEWHTMLDIR}
-	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${SOURCEDIR}/newguide.xml"
+	cp ${NEWRESOURCES}${NEWCSS_STYLESHEET} ${NEWHTMLDIR}
+	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
 
