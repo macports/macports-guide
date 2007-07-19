@@ -38,11 +38,10 @@ NEWSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/docbook.xsl
 XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 CSS_STYLESHEET?=	docbook.css
-NEWCSS_STYLESHEET?=	docbook.css
 RESOURCES?=		resources/
 NEWRESOURCES?=		new/resources/
 STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
-NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${NEWCSS_STYLESHEET} --stringparam section.autolabel 1 --stringparam toc.section.depth 1 --stringparam generate.toc "book toc"
+NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam section.autolabel 1 --stringparam toc.section.depth 1 --stringparam generate.toc "book toc"
 
 .PHONY : all
 .PHONY : clean
@@ -67,7 +66,7 @@ xhtml:
 
 new:
 	mkdir -p ${NEWHTMLDIR}
-	cp ${NEWRESOURCES}${NEWCSS_STYLESHEET} ${NEWHTMLDIR}
+	cp ${NEWRESOURCES}${CSS_STYLESHEET} ${NEWHTMLDIR}
 	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
