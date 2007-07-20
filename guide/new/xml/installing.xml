@@ -117,7 +117,7 @@
   </section>
 
   <section>
-    <title>Install MacPorts via Binary</title>
+    <title>Install MacPorts - Binary</title>
 
     <para>If you wish to install MacPorts to a path other than
     <filename>/opt/local</filename> do not install the MacPorts binary —skip
@@ -149,7 +149,7 @@
   </section>
 
   <section>
-    <title>Install MacPorts via Source</title>
+    <title>Install MacPorts - Source</title>
 
     <para>Installing from source on Mac OS X is only necessary If you wish to
     install to a path other than <filename>/opt/local</filename>, so If you
