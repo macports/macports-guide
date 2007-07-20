@@ -26,4 +26,17 @@
       corrupted.</para>
     </listitem>
   </itemizedlist>
+
+  <section>
+    <title>Document Conventions</title>
+
+    <para>Here are the conventions used to distinguish Unix terminal window
+    input and output.</para>
+
+    <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
+
+    <screen>Command output to a terminal window.</screen>
+
+    <programlisting>File text.</programlisting>
+  </section>
 </chapter>
