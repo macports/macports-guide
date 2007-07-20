@@ -6,12 +6,38 @@
    CSS design by Mark Duling
 */
 
+a:link { color: #6298E5; text-decoration: none; }
+a:visited { color: #6298E5; text-decoration: none;}
+a:hover { text-decoration: underline; }
+ 
+.filename { color: #8B1A1A; }
+
+/* span.term { font-weight: #D2B48C; } */
+
+.programlisting {
+	font-family: monospace;
+	font-size: medium;
+	background-color: #E6E6E6;
+	border: thin black inset }
+
+.screen {
+	font-family: monospace;
+	font-size: medium;
+	border: thin black inset;
+	background-color: white; }
+
+div.screenshot div.mediaobject {
+	text-align: center;
+	margin: auto }
+
 body {
    font-family: Verdana, Arial, sans-serif;
    font-size: 14px;
    line-height: 1.4;
    color: #696969;
 }
+
+div.note h3.title { color: #C00; }
 
 .author { font-size: 12px; }
 
@@ -59,27 +85,6 @@ div.section div.titlepage h4 {
         text-align: left;
 }
 
-div.note h3.title {color: #C00;}
-
-.programlisting {font-family: monospace;
-                 font-size: medium;
-                 background-color: #E6E6E6;
-                 border: thin black inset}
-
-.filename {
-	color: #673;
-}
-
-.screen {font-family: monospace;
-	font-size: medium;
-	border: thin black inset;
-	background-color: white;} 
-
-div.screenshot div.mediaobject {
-	text-align: center;
-	margin: auto
-}
-
 div.mediaobject {
 	text-align: center;
 	margin: auto;
@@ -87,22 +92,12 @@ div.mediaobject {
 
 p { margin-bottom: 14pt; }
 
-span.term { 
-    font-weight: bold; 
-}
-
-div.sidebar { 
-    background: #F0F0F0; 
-    border: 1px solid gray; 
-    padding: 5px; 
-    margin: 20px; 
-}
-
 div.toc {
 	border-width: 1px;
 	border-color: black;
 	border-style: solid;
-	background-color: #C2CAD8;
+/*	background-color: #C2CAD8; Color of macosforge.org sidebar */
+	background-color: #9FB6CD;
 	background-repeat: no-repeat;
 	background-position: center top;
 
@@ -159,9 +154,12 @@ html*.toc dd dl dt {
 	_padding-bottom: 0px;
 }
 
+/* TOC All Links */
+/*
 div.toc a:link { color: royalblue; }
 div.toc a:hover { color: #D00; }
-div.toc a:visited { color: black; text-decoration: none}
+div.toc a:visited { color: black; text-decoration: none;}
+*/
 
 /* TOC Section Links */
 div.toc dt a:link { color: #F4F6F8; text-decoration: none;}
@@ -186,11 +184,3 @@ div.toc:before {
 	content: "MacPorts Guide Contents";
 } */
 
-a:link {
-	color: blue;
-	text-decoration: underline;
-	}
-
-a:visited {
-	color: blue;
-}
