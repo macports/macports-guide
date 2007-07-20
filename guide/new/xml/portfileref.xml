@@ -2,7 +2,7 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter>
-  <title>PortFile Reference</title>
+  <title>Portfile Reference</title>
 
   <para>This chapter serves as a reference for the major elements of a
   <filename>Portfile</filename>: port phases, variants, StartupItems,
