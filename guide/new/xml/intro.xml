@@ -30,13 +30,29 @@
   <section>
     <title>Document Conventions</title>
 
-    <para>Here are the conventions used to distinguish Unix terminal window
-    input and output.</para>
+    <para>There are conventions used in this document to distinguish between
+    terminal input/output, file text, and other data types.</para>
 
-    <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
+    <section>
+      <title>Terminal I/O and File Text</title>
 
-    <screen>Command output to a terminal window.</screen>
+      <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
 
-    <programlisting>File text.</programlisting>
+      <screen>Command output to a terminal window.</screen>
+
+      <programlisting>File text.</programlisting>
+    </section>
+
+    <section>
+      <title>Other Data Types</title>
+
+      <para>A hyperlink: <ulink
+      url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
+      combustion</ulink>.</para>
+
+      <para>A file: <filename>/var/log/system.log</filename>.</para>
+
+      <para>A command: <command>ifconfig</command>.</para>
+    </section>
   </section>
 </chapter>
