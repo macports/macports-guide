@@ -2,6 +2,10 @@
  * MacPorts Guide Stylesheet
  */
 
+/*
+   CSS design by Mark Duling
+*/
+
 body {
    font-family: Verdana, Arial, sans-serif;
    font-size: 14px;
@@ -98,8 +102,7 @@ div.toc {
 	border-width: 1px;
 	border-color: black;
 	border-style: solid;
-	background-color: #9FB6CD;
-/*	background-image: url(images/hexley.png); */
+	background-color: #C2CAD8;
 	background-repeat: no-repeat;
 	background-position: center top;
 
@@ -107,7 +110,7 @@ div.toc {
 	font-family: Verdana, Arial, sans-serif;
 	color: black;
 	left: 8px;
-	width: 240px;
+	width: 227px;
 	padding-left: 4px;
 	padding-top: 0px;
 	height: 96%;
@@ -137,10 +140,10 @@ div.toc dd dl dt {
 /* Definitions for toc sections using Safari Stokely hack */
 html*.toc dt {
 /* Seen by Safari */
-	font-size: 12px;
+	font-size: 14px;
 	line-height: 16px;
 /* Seen by IE */
-	_font-size: 12px;
+	_font-size: 14px;
 	_line-height: 22px;
 }
 
@@ -161,15 +164,15 @@ div.toc a:hover { color: #D00; }
 div.toc a:visited { color: black; text-decoration: none}
 
 /* TOC Section Links */
-div.toc dt a:link { color: white; text-decoration: none;}
-div.toc dt a:hover { color: brown; }
+div.toc dt a:link { color: #F4F6F8; text-decoration: none;}
+div.toc dt a:hover { color: gray; }
 
 /* TOC Subsubsection Links */
 div.toc dd dl dt a:link { color: black; text-decoration: none;}
-div.toc dd dl dt a:hover { color: brown; }
+div.toc dd dl dt a:hover { color: gray; }
 
 div.book {
-	margin-left: 260px;
+	margin-left: 247px;
 }
 
 /* 
