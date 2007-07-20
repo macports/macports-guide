@@ -30,29 +30,31 @@
   <section>
     <title>Document Conventions</title>
 
-    <para>There are conventions used in this document to distinguish between
-    terminal input/output, file text, and other data types.</para>
+    <para>The MacPorts Guide uses some notational conventions to distinguish
+    between terminal input/output, file text, and other data types.</para>
 
-    <section>
-      <title>Terminal I/O and File Text</title>
+    <itemizedlist>
+      <listitem>
+        <para>Terminal I/O and file text.</para>
 
-      <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
+        <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
 
-      <screen>Command output to a terminal window.</screen>
+        <screen>Command output to a terminal window.</screen>
 
-      <programlisting>File text.</programlisting>
-    </section>
+        <programlisting>File text.</programlisting>
+      </listitem>
 
-    <section>
-      <title>Other Data Types</title>
+      <listitem>
+        <para>Other data types.</para>
 
-      <para>A hyperlink: <ulink
-      url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
-      combustion</ulink>.</para>
+        <para>A hyperlink: <ulink
+        url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
+        combustion</ulink>.</para>
 
-      <para>A file: <filename>/var/log/system.log</filename>.</para>
+        <para>A file: <filename>/var/log/system.log</filename>.</para>
 
-      <para>A command: <command>ifconfig</command>.</para>
-    </section>
+        <para>A command: <command>ifconfig</command>.</para>
+      </listitem>
+    </itemizedlist>
   </section>
 </chapter>
