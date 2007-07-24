@@ -39,7 +39,11 @@ body {
 
 div.note h3.title { color: #C00; }
 
-.author { font-size: 12px; }
+.author {
+	font-size: 14px;
+	color: #6298E5;
+	font-weight: bold;
+}
 
 .copyright {
 	font-size: 12px;
@@ -105,8 +109,8 @@ div.toc {
 	font-family: Verdana, Arial, sans-serif;
 	color: black;
 	left: 8px;
-	width: 227px;
-	padding-left: 4px;
+	width: 234px;
+	padding-left: 2px;
 	padding-top: 0px;
 	height: 96%;
 	float: left;
