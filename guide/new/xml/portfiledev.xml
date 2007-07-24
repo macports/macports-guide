@@ -2,14 +2,14 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter>
-  <title>Portfile Development</title>
+  <title>PortFile Development</title>
 
   <para>This chapter gives an introduction to port phases, creating a local
   Portfile repository for development, and shows how to create
   <filename>Portfile</filename>s by example.</para>
 
   <section>
-    <title>Portfile Introduction</title>
+    <title>PortFile Introduction</title>
 
     <para>A MacPorts <filename>Portfile</filename> fully defines a given port;
     it is also the only necessary component of a port, though ports may also
@@ -59,7 +59,7 @@
   </section>
 
   <section>
-    <title>A Local Portfile Repository</title>
+    <title>Local PortFile Repositories</title>
 
     <para>To create and test <filename>Portfile</filename>s that are not yet
     committed to subversion, you may create a local
@@ -131,7 +131,7 @@ Ports failed:                   0</screen>
   </section>
 
   <section>
-    <title>Creating a Portfile</title>
+    <title>Creating a PortFile</title>
 
     <para>Here we list the individual <filename>Portfile</filename> components
     for a port that conforms to the default <filename>Portfile</filename>
@@ -252,14 +252,14 @@ Ports failed:                   0</screen>
   </section>
 
   <section>
-    <title>Example Portfiles</title>
+    <title>Example PortFiles</title>
 
     <para>In this section we take a look at a complete simple Portfile, and
     then pre- and post- phase definitions to augment and override the MacPorts
     default phases respectively.</para>
 
     <section>
-      <title>A Simple Portfile</title>
+      <title>A Simple PortFile</title>
 
       <para></para>
 
@@ -289,7 +289,7 @@ configure.args          --prefix=${prefix} \
     </section>
 
     <section>
-      <title>Portfile Using Pre- / Post- Phases</title>
+      <title>PortFile Using Pre- / Post- Phases</title>
 
       <para>To augment a port's installation phase, and not override it, you
       may use pre- and post- installation phases as shown in this
@@ -304,7 +304,7 @@ configure.args          --prefix=${prefix} \
     </section>
 
     <section>
-      <title>Portfile that Overrides Default Phases</title>
+      <title>PortFile that Overrides Default Phases</title>
 
       <para>To override the automatic MacPorts installation phase processing,
       define your own installation phases as shown in this example.</para>
@@ -316,7 +316,7 @@ configure.args          --prefix=${prefix} \
     </section>
 
     <section>
-      <title>Portfile Using a Variant</title>
+      <title>PortFile Using a Variant</title>
 
       <para>Here is an example of a port providing four variants that add
       additional configure arguments to a port. See "Variants" in the Portfile
@@ -329,7 +329,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     </section>
 
     <section>
-      <title>Portfile Using a StartupItem</title>
+      <title>PortFile Using a StartupItem</title>
 
       <para>Startupitems may be placed in the global section of a
       Portfile.</para>
