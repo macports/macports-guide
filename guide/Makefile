@@ -41,7 +41,7 @@ CSS_STYLESHEET?=	docbook.css
 RESOURCES?=		resources/
 NEWRESOURCES?=		new/resources/
 STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
-NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam section.autolabel 1 --stringparam toc.section.depth 1 --stringparam generate.toc "book toc"
+NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam section.autolabel 1 --stringparam toc.section.depth 1 --stringparam generate.toc "book toc" --stringparam section.label.includes.component.label 1
 
 .PHONY : all
 .PHONY : clean
