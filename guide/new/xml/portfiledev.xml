@@ -355,19 +355,20 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     <para>Patch files are files created with the Unix command
     <command>diff</command> that are applied using the command
     <command>patch</command> to modify text files to fix bugs or extend
-    functionality. </para>
+    functionality.</para>
 
     <section>
       <title>Portfile Patches</title>
 
-      <para>If you wish to contribute modifications or fixes to a Portfile,
-      you should do so in the form of a patch.</para>
+      <para>If you wish to contribute modifications or fixes to a
+      <filename>Portfile</filename>, you should do so in the form of a
+      patch.</para>
 
       <orderedlist>
         <listitem>
-          <para>Make a copy of the Portfile you wish to modify. Both the
-          Portfile and its copy must be in the same directory, though it may
-          be any directory.</para>
+          <para>Make a copy of the <filename>Portfile</filename> you wish to
+          modify; both files must be in the same directory, though it may be
+          any directory.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cp Portfile Portfile.org</userinput></programlisting>
         </listitem>
@@ -378,15 +379,15 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>Now use the Unix command diff to create a "unified" diff patch
-          file.</para>
+          <para>Now use the Unix command <command>diff</command> to create a
+          "unified" diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.org Portfile &gt; Portfile.diff</userinput></programlisting>
         </listitem>
       </orderedlist>
 
-      <para>Now you may attach the Portfile.diff to a MacPorts Trac ticket for
-      the port author to evaluate.</para>
+      <para>Now you may attach the <filename>Portfile.diff</filename> to a
+      MacPorts Trac ticket for the port author to evaluate.</para>
     </section>
 
     <section>
@@ -413,24 +414,25 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>Now use the Unix command diff to create a "unified" diff patch
-          file.</para>
+          <para>Now use the Unix command <command>diff</command> to create a
+          "unified" diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34</userinput>
 <prompt>%%</prompt> <userinput>diff -u Makefile.in.org Makefile.in &gt; patch-Makefile.in</userinput></programlisting>
 
           <note>
-            <para>You must execute the diff command in the top-level of the
-            unpacked source code. Otherwise the patch command will look for
-            the file to be patched in the wrong place and fail.</para>
+            <para>You must execute the <command>diff</command> command in the
+            top-level of the unpacked source code. Otherwise the
+            <command>patch</command> command will look for the file to be
+            patched in the wrong place and fail.</para>
           </note>
         </listitem>
 
         <listitem>
           <para>A patch made using "-u" ("unified") is the easiest to
           interpret by humans and this type should always be used for ports.
-          See the example below where a patch file adds DESTDIR support to a
-          <filename>Makefile.in</filename> file.</para>
+          See the example below where a patch adds <varname>DESTDIR</varname>
+          support to a <filename>Makefile.in</filename> file.</para>
 
           <programlisting>--- Makefile.in.org   2007-06-01 16:30:47.000000000 -0700
 +++ Makefile.in       2007-06-20 10:10:59.000000000 -0700
@@ -446,9 +448,10 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>Now you may use the patch file
-          <filename>patch-Makefile.in</filename> in a port using the
-          patchfiles keyword.</para>
+          <para>Now you may place the patch
+          <filename>patch-Makefile.in</filename> in the path ${portpath}/files
+          of a local repository (or commit it to subversion) and use it in a
+          port using the patchfiles keyword.</para>
 
           <programlisting>patchfiles              patch-Makefile.in</programlisting>
         </listitem>
