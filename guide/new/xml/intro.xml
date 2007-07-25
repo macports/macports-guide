@@ -7,12 +7,12 @@
   <para>MacPorts is a system for building, installing, and managing free and
   open source software. It is developed on Mac OS X, though it is designed to
   be portable so it can work on other Unix-like systems, especially those
-  descended from the Berkeley Software Distribution (BSD). A MacPorts "port"
-  is an application that has been defined within the ports hierarchy by
-  describing its characteristics and anything required to install it within a
-  file named <filename>Portfile</filename>, so MacPorts may be used to
-  automatically fetch, patch, compile, and install the application. MacPorts
-  provides two major advantages over installing free and open source software
+  descended from the Berkeley Software Distribution (BSD). MacPorts "ports"
+  are definitions of applications, their characteristics, and any files or
+  special instructions required to install them in files named
+  <filename>Portfile</filename>s, so MacPorts may automatically fetch, patch,
+  compile, and install these "ported" applications. MacPorts provides two
+  major advantages over installing free and open source software
   manually.</para>
 
   <itemizedlist>
