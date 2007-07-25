@@ -6,50 +6,42 @@
 
   <bookinfo>
     <author>
-      <firstname>first</firstname>
+      <firstname>Mark</firstname>
 
-      <surname>last</surname>
-
-      <email>author1@macports.org</email>
+      <surname>Duling</surname>
     </author>
 
     <author>
-      <firstname>first</firstname>
+      <honorific>Dr</honorific>
 
-      <surname>last</surname>
+      <firstname>Michael</firstname>
 
-      <email>author2@macports.org</email>
+      <surname>Maibaum</surname>
+
+      <othername role="mi">A</othername>
     </author>
 
     <author>
-      <firstname>first</firstname>
+      <firstname>Will</firstname>
 
-      <surname>last</surname>
-
-      <email>author3@macports.org</email>
+      <surname>Barton</surname>
     </author>
+
+    <copyright>
+      <year>2007</year>
+
+      <holder>The MacPorts Project</holder>
+    </copyright>
+
+    <copyright>
+      <year>2002, 2003, 2004</year>
+
+      <holder>The OpenDarwin Project</holder>
+    </copyright>
 
     <legalnotice>
       <para></para>
     </legalnotice>
-
-    <copyright>
-      <year>2006</year>
-
-      <year>2007</year>
-
-      <holder>MacPorts organization</holder>
-    </copyright>
-
-    <copyright>
-      <year>2002</year>
-
-      <year>2003</year>
-
-      <year>2004</year>
-
-      <holder>The OpenDarwin Project</holder>
-    </copyright>
   </bookinfo>
 
   <xi:include href="intro.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
