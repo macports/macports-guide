@@ -133,16 +133,18 @@
     <title>Variants</title>
 
     <para>Variants are a way for port authors to provide options that may be
-    invoked at install time. They are declared in a Portfile's global section
-    using the "variant" keyword and may provide a description.</para>
+    invoked at install time. They are declared in a
+    <filename>Portfile</filename>'s global section using the "variant" keyword
+    and may provide a description.</para>
 
     <section>
       <title>Append / Delete Keywords</title>
 
       <para>The most common use for a variant is to add or remove
       dependencies, configure arguments, and build arguments from the global
-      Portfile section. In the example below, the global configure argument
-      --without-x11 is removed and others are appended.</para>
+      <filename>Portfile</filename> section. In the example below, the global
+      configure argument --without-x11 is removed and others are
+      appended.</para>
 
       <programlisting>variant x11 description {Builds port as an X11 program with Lucid widgets} {
     configure.args-delete   --without-x
@@ -182,6 +184,22 @@
         delete ${destroot}${prefix}/bin/emacs-${version}
     }
 }</programlisting>
+    </section>
+
+    <section>
+      <title>Default Variants</title>
+
+      <para>Variants are used to specify actions that lie outside the core
+      functions of an application or port, but there may be some cases where
+      you wish to specify these non-core functions by default. For this
+      purpose you may use the keyword default_variants.</para>
+
+      <programlisting>default_variants +foo +bar</programlisting>
+
+      <note>
+        <para>The default_variant keyword may only be used in the global
+        <filename>Portfile</filename> section.</para>
+      </note>
     </section>
   </section>
 
