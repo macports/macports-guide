@@ -379,10 +379,39 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>Now use the Unix command <command>diff</command> to create a
-          "unified" diff patch file.</para>
+          <para>Now use the Unix command <command>diff -u </command>to create
+          a "unified" diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.org Portfile &gt; Portfile.diff</userinput></programlisting>
+        </listitem>
+
+        <listitem>
+          <para>A patch file that is a "unified" diff file is the easiest to
+          interpret by humans and this type should always be used for ports.
+          The <filename>Portfile</filename> patch below will change the
+          version and checksums when applied.</para>
+
+          <programlisting>--- Portfile.org        2007-07-25 18:52:12.000000000 -0700
++++ Portfile    2007-07-25 18:53:35.000000000 -0700
+@@ -2,7 +2,7 @@
+ PortSystem             1.0
+ 
+ name                   nefu
+-version                        1.4.0
++version                        1.3.0
+ categories             net
+ maintainers            nomaintainer@macports.org
+ description            A network monitoring daemon.
+@@ -13,9 +13,9 @@
+
+ homepage               http://rsug.itd.umich.edu/software/${name}
+
+ master_sites           ${homepage}/files/
+-checksums              md5 f0953b21cdb5eb327e40d4b215110b71 \
++checksums              md5 01532e67a596bfff6a54aa36face26ae \
+ extract.suffix  .tgz
+ platforms              darwin
+</programlisting>
         </listitem>
       </orderedlist>
 
@@ -414,8 +443,8 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>Now use the Unix command <command>diff</command> to create a
-          "unified" diff patch file.</para>
+          <para>Now use the Unix command <command>diff -u</command> to create
+          a "unified" diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34</userinput>
 <prompt>%%</prompt> <userinput>diff -u Makefile.in.org Makefile.in &gt; patch-Makefile.in</userinput></programlisting>
@@ -429,7 +458,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
         </listitem>
 
         <listitem>
-          <para>A patch made using "-u" ("unified") is the easiest to
+          <para>A patch file that is a "unified" diff file is the easiest to
           interpret by humans and this type should always be used for ports.
           See the example below where a patch adds <varname>DESTDIR</varname>
           support to a <filename>Makefile.in</filename> file.</para>
