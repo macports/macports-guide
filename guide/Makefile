@@ -45,8 +45,7 @@ NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${CSS_STYLESHEET} \
 			--stringparam section.autolabel 1 \
 			--stringparam toc.section.depth 1 \
 			--stringparam generate.toc "book toc" \
-			--stringparam section.label.includes.component.label 1 \
-			--stringparam img.src.path ../resources/images/
+			--stringparam section.label.includes.component.label 1
 
 .PHONY : all
 .PHONY : clean
@@ -72,6 +71,7 @@ xhtml:
 new:
 	mkdir -p ${NEWHTMLDIR}
 	cp ${NEWRESOURCES}${CSS_STYLESHEET} ${NEWHTMLDIR}
+	cp ${NEWRESOURCES}/images/* ${NEWHTMLDIR}
 	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
