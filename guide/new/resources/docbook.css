@@ -12,13 +12,15 @@ div.mediaobject {
         border: thin black inset;
 }
 
+.emphasis { font-weight: bold ; color: black; }
+
 a:link { color: #6298E5; text-decoration: none; }
 a:visited { color: #6298E5; text-decoration: none;}
 a:hover { text-decoration: underline; }
  
 .filename { color: #8B1A1A; }
 
-/* span.term { font-weight: #D2B48C; } */
+span.term { color: black; }
 
 .programlisting {
 	font-family: monospace;
