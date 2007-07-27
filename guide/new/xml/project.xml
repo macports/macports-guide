@@ -328,10 +328,17 @@
 
       <itemizedlist>
         <listitem>
-          <para>A port's maintainer is set to
-          <email>openmaintainer@macports.org</email> or
-          <email>nomaintainer@macports.org</email>. Feel free to take over
-          these ports.</para>
+          <para>A port's maintainer is
+          <email>nomaintainer@macports.org</email>: feel free to make updates
+          and/or take maintainership of these ports.</para>
+        </listitem>
+
+        <listitem>
+          <para>A port's maintainer contains the address
+          <email>openmaintainer@macports.org</email>: these ports are
+          maintained, but the author allows updates to the port without
+          contacting him first. But permission should still be sought for
+          major changes.</para>
         </listitem>
 
         <listitem>
