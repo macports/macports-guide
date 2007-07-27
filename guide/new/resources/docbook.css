@@ -6,6 +6,12 @@
    CSS design by Mark Duling
 */
 
+div.mediaobject {
+        text-align: center;
+        margin: auto;
+        border: thin black inset;
+}
+
 a:link { color: #6298E5; text-decoration: none; }
 a:visited { color: #6298E5; text-decoration: none;}
 a:hover { text-decoration: underline; }
