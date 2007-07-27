@@ -4,27 +4,401 @@
 <chapter>
   <title>MacPorts Project</title>
 
-  <section>
-    <title>Submitting Bug Reports</title>
+  <para>The MacPorts Project uses a system called <ulink
+  url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
+  and enhancement requests. Trac also provides an interface to browse the
+  <ulink url="http://trac.macosforge.org/projects/macports/browser/">MacPorts
+  Subversion repository</ulink>. Though anyone may search Trac for tickets,
+  you must <ulink
+  url="http://www.macosforge.org/wp-register.php">register</ulink> for a Trac
+  account to create tickets.</para>
 
-    <para></para>
+  <section>
+    <title>Creating Trac Tickets</title>
+
+    <para>Once you are logged into Trac, you may click <emphasis>View Tickets
+    -&gt; New Ticket</emphasis> and you will be presented with a new ticket
+    window shown in the graphic below. Follow the Trac ticket guidelines below
+    to fill out the form.</para>
+
+    <screenshot>
+      <screeninfo>A new Trac ticket</screeninfo>
+
+      <mediaobject>
+        <imageobject>
+          <imagedata fileref="trac-default.png" />
+        </imageobject>
+      </mediaobject>
+    </screenshot>
+
+    <section>
+      <title>Trac Ticket Guidelines</title>
+
+      <para>There are certain conventions used to ensure that Trac tickets
+      convey as much accurate information as possible so problems and
+      contributions may be acted upon efficiently.</para>
+
+      <itemizedlist>
+        <listitem>
+          <para><emphasis>Short Summary:</emphasis> [port] [version] [concise
+          description]</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Example: "rrdtool-1.2.23 Configure error - build
+              failure"</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Type:</emphasis> There are two main types of
+          tickets.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>defect - The default; any port/MacPorts build/runtime
+              failures and/or documentation corrections.</para>
+            </listitem>
+
+            <listitem>
+              <para>enhancement - Tickets, with or without patches, created to
+              enhance something that isn't failing its intended
+              purpose.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Full Description:</emphasis> All details that might
+          be relevant to someone reading the ticket. <ulink
+          url="http://trac.macports.org/projects/macports/wiki/WikiFormatting">Wiki
+          formatting</ulink> or attached log files should be used for large
+          text blocks.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Priority:</emphasis> Assign a priority level to the
+          ticket.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>High - For core MacPorts build/runtime failures and/or
+              critical enhancement requests.</para>
+            </listitem>
+
+            <listitem>
+              <para>Normal - The default. For normal port failures,
+              non-critical enhancement requests, non-critical port
+              failures.</para>
+            </listitem>
+
+            <listitem>
+              <para>Low - For mostly cosmetic improvements, documentation
+              corrections/improvements, etc.</para>
+            </listitem>
+
+            <listitem>
+              <para>Not set - Anything that doesn't fit the categories high,
+              normal, or low.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Component:</emphasis> Set what part of the MacPorts
+          project the ticket is to be filed against.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>ports - Tickets related to ports.</para>
+            </listitem>
+
+            <listitem>
+              <para>base - Tickets related to MacPorts base code.</para>
+            </listitem>
+
+            <listitem>
+              <para>guide - Documentation errors, corrections, or patches to
+              the MacPorts Guide.</para>
+            </listitem>
+
+            <listitem>
+              <para>www - MacPorts website errors.</para>
+            </listitem>
+
+            <listitem>
+              <para>infrastructure - Reserved for MacPorts Portmgr team
+              members.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Assign To:</emphasis> For tickets on ports, select
+          the port maintainer's email address (use <command>port info
+          &lt;portname&gt;</command>). If the maintainer's email address is
+          <email>nomaintainer@macports.org</email>, select
+          <email>macports-dev@lists.macosforge.org</email>.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Milestone:</emphasis> This is a ticket category that
+          allows for search and sorting tickets efficiently.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Documentation</para>
+            </listitem>
+
+            <listitem>
+              <para>MacPorts core enhancements</para>
+            </listitem>
+
+            <listitem>
+              <para>MacPorts core bugs</para>
+            </listitem>
+
+            <listitem>
+              <para>MacPorts x.y</para>
+            </listitem>
+
+            <listitem>
+              <para>Port Bugs</para>
+            </listitem>
+
+            <listitem>
+              <para>Port Enhancements</para>
+            </listitem>
+
+            <listitem>
+              <para>Port Requests</para>
+            </listitem>
+
+            <listitem>
+              <para>Submissions</para>
+            </listitem>
+
+            <listitem>
+              <para>Port Submissions</para>
+            </listitem>
+
+            <listitem>
+              <para>Port Updates</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Version:</emphasis> Select the MacPorts version you
+          are using when it is applicable.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Keywords:</emphasis> Type any keywords that might
+          help when searching for tickets (portname, type of problem,
+          etc).</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Cc:</emphasis> The reporter should enter his or her
+          email address and the maintainer's email address to notify both
+          parties when updates to the ticket occur. This is important, because
+          Trac currently only sends emails to addresses on the Cc list, not to
+          the reporter or the assignee.</para>
+        </listitem>
+
+        <listitem>
+          <para><emphasis>Attachments</emphasis> - Files may be attached only
+          after a ticket has been submitted. Once the ticket has been created
+          you will see the file attachment button.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
   </section>
 
   <section>
-    <title>Submitting Ports</title>
+    <title>Contributing to MacPorts</title>
 
-    <para></para>
+    <para>You may contribute new ports and port updates to current ports using
+    Trac tickets.</para>
+
+    <section>
+      <title>New Ports</title>
+
+      <para>Ports are contributed by following these steps. See Ticket
+      Submission Guidelines above for a description of all fields.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Create a Trac ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the type to <guilabel>enhancement</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the milestone to <guilabel>Port
+          Submissions</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Attach the <filename>Portfile</filename> and any required
+          patchfiles to the ticket.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>Port Updates</title>
+
+      <para>Portfile updates should always be contributed as
+      <filename>Portfile</filename> patches. Ports are contributed by
+      following these steps. See Ticket Submission Guidelines above for a
+      description of all fields.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Create a <filename>Portfile</filename> patch with your changes
+          as described in Portfile Development.</para>
+        </listitem>
+
+        <listitem>
+          <para>Create a Trac ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the type to <guilabel>enhancement</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the milestone to <guilabel>Port
+          Enhancements</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Attach your Portfile patch file and any new or changed patch
+          files (don't patch patches) to the ticket.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
 
   <section>
     <title>Port Update Policies</title>
 
-    <para></para>
+    <para>Port maintainers normally are given commit privileges to the
+    Subversion repository so they can make updates to their own ports.
+    However, the MacPorts project does not restrict commit privileges for
+    maintainers, so before a person other than a port's maintainer updates a
+    port it is a good practice to inform a port's maintainer. See details
+    below.</para>
+
+    <section>
+      <title>Non-Maintainer Port Updates</title>
+
+      <para>If you have a port update or bugfix for a port you do not
+      maintain, to respect the rights of the port maintainer you should folow
+      the following protocol:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Create patch file(s) as necessary, attach them to a Trac
+          ticket, and assign the ticket to the maintainer and Cc him or
+          her.</para>
+        </listitem>
+
+        <listitem>
+          <para>Wait for a response from the maintainer. The maintainer may
+          apply the patches and close the ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>If the maintainer does not respond within 72 hours, you or
+          another committer may review the patches and update the port. If you
+          are not a committer, you may email
+          <email>macports-dev@lists.macosforge.org</email> and request the
+          updates be committed.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>There are circumstances for which the protocol may be
+      waived:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>A port's maintainer is set to
+          <email>openmaintainer@macports.org</email> or
+          <email>nomaintainer@macports.org</email>. Feel free to take over
+          these ports.</para>
+        </listitem>
+
+        <listitem>
+          <para>A port is abandoned by it's current maintainer. A port against
+          which a Port Abandoned ticket has been filed (see below) can be
+          updated without contacting the maintainer.</para>
+        </listitem>
+
+        <listitem>
+          <para>A critical port is broken that affects many users.</para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section>
+      <title>Port Abandonment</title>
+
+      <para>A port may be considered abandoned if a bug has not been
+      acknowledged for more than three weeks after a ticket is filed. If this
+      time period has passed and you wish to initiate the Port Abandonment
+      protocol and volunteer as the new maintainer:</para>
+
+      <orderedlist>
+        <listitem>
+          <para>File a new Trac ticket with the summary line [Port
+          Abandoned].</para>
+        </listitem>
+
+        <listitem>
+          <para>Refer to the original unacknowledged ticket in the Port
+          Abandoned ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>The Port Abandoned ticket may be closed when the new
+          maintainer is assigned, and the original ticket with the updates may
+          be resolved when the updates attached to the original ticket are
+          committed.</para>
+        </listitem>
+      </orderedlist>
+    </section>
   </section>
 
   <section>
     <title>MacPorts Membership</title>
 
-    <para></para>
+    <para>A requirement for a person to become a MacPorts committer is to
+    first become involved and contribute to the project. This may be done by
+    having a record of contributing to the project in several of the following
+    ways:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>Contributing new ports.</para>
+      </listitem>
+
+      <listitem>
+        <para>Fixing bugs in existing ports.</para>
+      </listitem>
+
+      <listitem>
+        <para>Volunteering as a maintainer of non-maintained ports.</para>
+      </listitem>
+
+      <listitem>
+        <para>Involvement on MacPorts support lists.</para>
+      </listitem>
+    </itemizedlist>
   </section>
 </chapter>
