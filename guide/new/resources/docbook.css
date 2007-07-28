@@ -167,19 +167,21 @@ html*.toc dd dl dt {
 }
 
 /* TOC All Links */
-/*
-div.toc a:link { color: royalblue; }
-div.toc a:hover { color: #D00; }
-div.toc a:visited { color: black; text-decoration: none;}
-*/
+/* div.toc a:link { color: royalblue; } */
+/* div.toc a:hover { color: #D00; } */
+/* div.toc a:visited { color: black; text-decoration: none; } */
+
 
 /* TOC Section Links */
-div.toc dt a:link { color: #F4F6F8; text-decoration: none;}
+div.toc dt a:link { color: #F4F6F8; text-decoration: none; }
 div.toc dt a:hover { color: gray; }
+dic.toc dt a:visited { color: #F4F6F8; text-decoration: none; }
+
 
 /* TOC Subsubsection Links */
-div.toc dd dl dt a:link { color: black; text-decoration: none;}
+div.toc dd dl dt a:link { color: black; text-decoration: none; }
 div.toc dd dl dt a:hover { color: gray; }
+div.toc dd dl dt a:visited { color: black; text-decoration: none; }
 
 div.book {
 	margin-left: 247px;
