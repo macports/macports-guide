@@ -175,7 +175,7 @@ html*.toc dd dl dt {
 /* TOC Section Links */
 div.toc dt a:link { color: #F4F6F8; text-decoration: none; }
 div.toc dt a:hover { color: gray; }
-dic.toc dt a:visited { color: #F4F6F8; text-decoration: none; }
+div.toc dt a:visited { color: #F4F6F8; text-decoration: none; }
 
 
 /* TOC Subsubsection Links */
