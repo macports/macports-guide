@@ -407,5 +407,10 @@
         <para>Involvement on MacPorts support lists.</para>
       </listitem>
     </itemizedlist>
+    <para>To apply for MacPorts commit rights, send a brief email to
+    <email>macports-mgr@lists.macosforge.org</email> entitled &ldquo;Request
+    for commit rights&rdquo; detailing the reasons for your application and why
+    you think you deserve commit rights (including evidence of contributions to
+    MacPorts as described above).</para>
   </section>
 </chapter>
