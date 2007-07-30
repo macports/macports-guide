@@ -223,6 +223,9 @@
     <para>You may contribute new ports and port updates to current ports using
     Trac tickets.</para>
 
+    <!-- Should we have similar sections about committing to base sources and
+    documentation, or alternatively add this to the following? -->
+
     <section>
       <title>New Ports</title>
 
