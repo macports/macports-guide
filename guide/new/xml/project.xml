@@ -148,31 +148,45 @@
 
           <itemizedlist>
             <listitem>
-              <para>Documentation</para>
+              <para>Documentation - for tickets relating to the documentation
+              for Macports, including the MacPorts guide, wiki and man
+              pages.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts core enhancements</para>
+              <para>MacPorts core enhancements - for tickets requesting or
+              providing improvements to the functionality of the MacPorts
+              system.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts core bugs</para>
+              <para>MacPorts core bugs - for tickets reporting or fixing bugs in
+              the MacPorts system.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts x.y</para>
+              <para>MacPorts x.y - indicates tickets against the MacPorts core
+                that have been accepted and scheduled for inclusion or fixing in
+                the x.y MacPorts release series.  <emphasis>Note that this
+                milestone is therefore only to be applied to tickets by
+                MacPorts team members.  Users should file tickets against one
+                of the other milestones listed here.</emphasis>
+                </para>
             </listitem>
 
             <listitem>
-              <para>Port Bugs</para>
+              <para>Port Bugs - for tickets reporting or fixing bugs in ports
+              provided by MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Enhancements</para>
+              <para>Port Enhancements - for submissions providing enhancements
+              to ports provided by MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Requests</para>
+              <para>Port Requests - for requests for ports to be added to
+              MacPorts.</para>
             </listitem>
 
             <listitem>
@@ -180,11 +194,13 @@
             </listitem>
 
             <listitem>
-              <para>Port Submissions</para>
+              <para>Port Submissions - for submissions that add a port to 
+              MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Updates</para>
+              <para>Port Updates - for submissions that update a port provided
+              by MacPorts.</para>
             </listitem>
           </itemizedlist>
         </listitem>
