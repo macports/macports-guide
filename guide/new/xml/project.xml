@@ -330,9 +330,10 @@
 
         <listitem>
           <para>If a port's maintainer contains the address
-          <email>openmaintainer@macports.org</email>: this signals that the
-          author allows updates to the port without contacting him first. But
-          permission should still be sought for major changes.</para>
+          <email>openmaintainer@macports.org</email>, this means that the
+          author allows minor updates to the port without contacting him
+          first. But permission should still be sought for major
+          changes.</para>
         </listitem>
 
         <listitem>
