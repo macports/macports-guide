@@ -20,7 +20,11 @@ a:hover { text-decoration: underline; }
  
 .filename { color: #8B1A1A; }
 
-span.term { color: black; }
+span.term { font-weight: bold; }
+
+span.guilabel { font-weight: bold; }
+
+span.guimenu { font-weight: bold; }
 
 .programlisting {
 	font-family: monospace;
