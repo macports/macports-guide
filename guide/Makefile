@@ -72,7 +72,7 @@ new:
 	mkdir -p ${NEWHTMLDIR}
 	cp ${NEWRESOURCES}${CSS_STYLESHEET} ${NEWHTMLDIR}
 	cp ${NEWRESOURCES}/images/* ${NEWHTMLDIR}
-	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
+	xsltproc --nonet --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
 
 all: html xhtml tidy
 
