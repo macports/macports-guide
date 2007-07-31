@@ -40,7 +40,7 @@
 
       <itemizedlist>
         <listitem>
-          <para><emphasis>Short Summary:</emphasis> [port] [version] [concise
+          <para><guilabel>Short Summary:</guilabel> [port] [version] [concise
           description]</para>
 
           <itemizedlist>
@@ -52,25 +52,25 @@
         </listitem>
 
         <listitem>
-          <para><emphasis>Type:</emphasis> There are two main types of
+          <para><guilabel>Type:</guilabel> There are two main types of
           tickets.</para>
 
           <itemizedlist>
             <listitem>
-              <para>defect - The default; any port/MacPorts build/runtime
-              failures and/or documentation corrections.</para>
+              <para><guimenu>defect</guimenu> - The default; any port/MacPorts
+              build/runtime failures and/or documentation corrections.</para>
             </listitem>
 
             <listitem>
-              <para>enhancement - Tickets, with or without patches, created to
-              enhance something that isn't failing its intended
-              purpose.</para>
+              <para><guimenu>enhancement</guimenu> - Tickets, with or without
+              patches, created to enhance something that isn't failing its
+              intended purpose.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><emphasis>Full Description:</emphasis> All details that might
+          <para><guilabel>Full Description:</guilabel> All details that might
           be relevant to someone reading the ticket. <ulink
           url="http://trac.macports.org/projects/macports/wiki/WikiFormatting">Wiki
           formatting</ulink> or attached log files should be used for large
@@ -78,64 +78,66 @@
         </listitem>
 
         <listitem>
-          <para><emphasis>Priority:</emphasis> Assign a priority level to the
+          <para><guilabel>Priority:</guilabel> Assign a priority level to the
           ticket.</para>
 
           <itemizedlist>
             <listitem>
-              <para>High - For core MacPorts build/runtime failures and/or
-              critical enhancement requests.</para>
+              <para><guimenu>High</guimenu> - For core MacPorts build/runtime
+              failures and/or critical enhancement requests.</para>
             </listitem>
 
             <listitem>
-              <para>Normal - The default. For normal port failures,
-              non-critical enhancement requests, non-critical port
+              <para><guimenu>Normal</guimenu> - The default. For normal port
+              failures, non-critical enhancement requests, non-critical port
               failures.</para>
             </listitem>
 
             <listitem>
-              <para>Low - For mostly cosmetic improvements, documentation
-              corrections/improvements, etc.</para>
+              <para><guimenu>Low</guimenu> - For mostly cosmetic improvements,
+              documentation corrections/improvements, etc.</para>
             </listitem>
 
             <listitem>
-              <para>Not set - Anything that doesn't fit the categories high,
+              <para>Blank - Anything that doesn't fit the categories high,
               normal, or low.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><emphasis>Component:</emphasis> Set what part of the MacPorts
+          <para><guilabel>Component:</guilabel> Set what part of the MacPorts
           project the ticket is to be filed against.</para>
 
           <itemizedlist>
             <listitem>
-              <para>ports - Tickets related to ports.</para>
+              <para><guimenu>ports</guimenu> - Tickets related to
+              ports.</para>
             </listitem>
 
             <listitem>
-              <para>base - Tickets related to MacPorts base code.</para>
+              <para><guimenu>base</guimenu> - Tickets related to MacPorts base
+              code.</para>
             </listitem>
 
             <listitem>
-              <para>guide - Documentation errors, corrections, or patches to
-              the MacPorts Guide.</para>
+              <para><guimenu>guide</guimenu> - Documentation errors,
+              corrections, or patches to the MacPorts Guide.</para>
             </listitem>
 
             <listitem>
-              <para>www - MacPorts website errors.</para>
+              <para><guimenu>www</guimenu> - MacPorts website errors.</para>
             </listitem>
 
             <listitem>
-              <para>infrastructure - Reserved for MacPorts Portmgr team
-              members.</para>
+              <para><guimenu>infrastructure</guimenu> - Reserved for MacPorts
+              Portmgr team members.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><emphasis>Assign To:</emphasis> For tickets on ports, select
+          <para><guilabel>Assign To:</guilabel> For tickets on ports, select
           the port maintainer's email address (use <command>port info
           &lt;portname&gt;</command>). If the maintainer's email address is
           <email>nomaintainer@macports.org</email>, select
@@ -143,77 +145,79 @@
         </listitem>
 
         <listitem>
-          <para><emphasis>Milestone:</emphasis> This is a ticket category that
+          <para><guilabel>Milestone:</guilabel> This is a ticket category that
           allows for search and sorting tickets efficiently.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Documentation - for tickets relating to the documentation
-              for Macports, including the MacPorts guide, wiki and man
-              pages.</para>
+              <para><guimenu>Documentation</guimenu> - for tickets relating to
+              the documentation for Macports, including the MacPorts guide,
+              wiki and man pages.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts core enhancements - for tickets requesting or
-              providing improvements to the functionality of the MacPorts
-              system.</para>
+              <para><guimenu>MacPorts core enhancements</guimenu> - for
+              tickets requesting or providing improvements to the
+              functionality of the MacPorts system.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts core bugs - for tickets reporting or fixing bugs in
-              the MacPorts system.</para>
+              <para><guimenu>MacPorts core bugs</guimenu> - for tickets
+              reporting or fixing bugs in the MacPorts system.</para>
             </listitem>
 
             <listitem>
-              <para>MacPorts x.y - indicates tickets against the MacPorts core
-                that have been accepted and scheduled for inclusion or fixing in
-                the x.y MacPorts release series.  <emphasis>Note that this
-                milestone is therefore only to be applied to tickets by
-                MacPorts team members.  Users should file tickets against one
-                of the other milestones listed here.</emphasis>
-                </para>
+              <para><guimenu>MacPorts x.y</guimenu> - indicates tickets
+              against the MacPorts core that have been accepted and scheduled
+              for inclusion or fixing in the x.y MacPorts release
+              series.</para>
+
+              <note>
+                <para>This milestone may only be applied by MacPorts team
+                members.</para>
+              </note>
             </listitem>
 
             <listitem>
-              <para>Port Bugs - for tickets reporting or fixing bugs in ports
-              provided by MacPorts.</para>
+              <para><guimenu>Port Bugs</guimenu> - for tickets reporting or
+              fixing bugs in ports provided by MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Enhancements - for submissions providing enhancements
-              to ports provided by MacPorts.</para>
+              <para><guimenu>Port Enhancements</guimenu> - for submissions
+              providing enhancements to ports provided by MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Requests - for requests for ports to be added to
-              MacPorts.</para>
+              <para><guimenu>Port Requests</guimenu> - for requests for ports
+              to be added to MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Submissions - for submissions that add a port to 
-              MacPorts.</para>
+              <para><guimenu>Port Submissions</guimenu> - for submissions that
+              add a port to MacPorts.</para>
             </listitem>
 
             <listitem>
-              <para>Port Updates - for submissions that update a port provided
-              by MacPorts.</para>
+              <para><guimenu>Port Updates</guimenu> - for submissions that
+              update a port provided by MacPorts.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><emphasis>Version:</emphasis> Select the MacPorts version you
+          <para><guilabel>Version:</guilabel> Select the MacPorts version you
           are using when it is applicable.</para>
         </listitem>
 
         <listitem>
-          <para><emphasis>Keywords:</emphasis> Type any keywords that might
+          <para><guilabel>Keywords:</guilabel> Type any keywords that might
           help when searching for tickets (portname, type of problem,
           etc).</para>
         </listitem>
 
         <listitem>
-          <para><emphasis>Cc:</emphasis> The reporter should enter his or her
+          <para><guilabel>Cc:</guilabel> The reporter should enter his or her
           email address and the maintainer's email address to notify both
           parties when updates to the ticket occur. This is important, because
           Trac currently only sends emails to addresses on the Cc list, not to
@@ -221,7 +225,7 @@
         </listitem>
 
         <listitem>
-          <para><emphasis>Attachments</emphasis> - Files may be attached only
+          <para><guilabel>Attachments:</guilabel> Files may be attached only
           after a ticket has been submitted. Once the ticket has been created
           you will see the file attachment button.</para>
         </listitem>
@@ -314,10 +318,23 @@
       <title>Non-Maintainer Port Updates</title>
 
       <para>If you have a port update or bugfix for a port you do not
-      maintain, to respect the rights of the port maintainer you should folow
-      the following protocol:</para>
+      maintain, to respect the rights of the port maintainer you should follow
+      the following guidelines:</para>
 
       <orderedlist>
+        <listitem>
+          <para>If a port's maintainer is
+          <email>nomaintainer@macports.org</email>, you may feel free to make
+          updates and/or take maintainership of the port.</para>
+        </listitem>
+
+        <listitem>
+          <para>If a port's maintainer contains the address
+          <email>openmaintainer@macports.org</email>: this signals that the
+          author allows updates to the port without contacting him first. But
+          permission should still be sought for major changes.</para>
+        </listitem>
+
         <listitem>
           <para>Create patch file(s) as necessary, attach them to a Trac
           ticket, and assign the ticket to the maintainer and Cc him or
@@ -325,35 +342,22 @@
         </listitem>
 
         <listitem>
-          <para>Wait for a response from the maintainer. The maintainer may
-          apply the patches and close the ticket.</para>
+          <para>Wait for a response from the maintainer. The maintainer should
+          apply the patches and close the ticket within 72 hours.</para>
         </listitem>
+      </orderedlist>
 
+      <para>However, for maintained ports without
+      <email>openmaintainer@macports.org</email>, there are some conditions
+      under which maintainer permission may be waived:</para>
+
+      <itemizedlist>
         <listitem>
           <para>If the maintainer does not respond within 72 hours, you or
           another committer may review the patches and update the port. If you
           are not a committer, you may email
           <email>macports-dev@lists.macosforge.org</email> and request the
           updates be committed.</para>
-        </listitem>
-      </orderedlist>
-
-      <para>There are circumstances for which the protocol may be
-      waived:</para>
-
-      <itemizedlist>
-        <listitem>
-          <para>A port's maintainer is
-          <email>nomaintainer@macports.org</email>: feel free to make updates
-          and/or take maintainership of these ports.</para>
-        </listitem>
-
-        <listitem>
-          <para>A port's maintainer contains the address
-          <email>openmaintainer@macports.org</email>: these ports are
-          maintained, but the author allows updates to the port without
-          contacting him first. But permission should still be sought for
-          major changes.</para>
         </listitem>
 
         <listitem>
@@ -422,10 +426,11 @@
         <para>Involvement on MacPorts support lists.</para>
       </listitem>
     </itemizedlist>
+
     <para>To apply for MacPorts commit rights, send a brief email to
-    <email>macports-mgr@lists.macosforge.org</email> entitled &ldquo;Request
-    for commit rights&rdquo; detailing the reasons for your application and why
-    you think you deserve commit rights (including evidence of contributions to
+    <email>macports-mgr@lists.macosforge.org</email> entitled “Request for
+    commit rights” detailing the reasons for your application and why you
+    think you deserve commit rights (including evidence of contributions to
     MacPorts as described above).</para>
   </section>
 </chapter>
