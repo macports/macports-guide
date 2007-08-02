@@ -450,7 +450,7 @@
     </section>
 
     <section>
-      <title>PortGroup</title>
+      <title>PortGroup Variables</title>
 
       <para>In addition to the general <filename>Portfile</filename> type for
       standard Unix applications and libraries, there are six optional
@@ -483,160 +483,173 @@
         </listitem>
       </itemizedlist>
 
-      <para>The common PortGroup variables are listed in the sections below
-      for perl5, python, and ruby. See the port Tcl group code in
-      <filename>${prefix}/share/macports/resources/port1.0/group</filename>
-      for details on all PortGroups.</para>
+      <para>Some PortGroups provide additional variables when the group is
+      declared within a Portfile. The additional variables provided by
+      PortGroups perl5, python, and ruby are listed below. You may view the
+      port Tcl code for each group in the
+      directory<filename>${prefix}/share/macports/resources/port1.0/group</filename>.</para>
 
-      <section>
-        <title>PortGroup perl5</title>
+      <variablelist>
+        <varlistentry>
+          <term>PortGroup perl5</term>
 
-        <para>These are the variables available to a
-        <filename>Portfile</filename> when the <literal>PortGroup
-        perl5</literal> keyword is declared.</para>
+          <listitem>
+            <para>Description: The variables available to a
+            <filename>Portfile</filename> when the <literal>PortGroup
+            perl5</literal> keyword is declared.</para>
 
-        <variablelist>
-          <varlistentry>
-            <term>perl5.version</term>
+            <variablelist>
+              <varlistentry>
+                <term>perl5.version</term>
 
-            <listitem>
-              <para>The MacPorts Perl version.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The MacPorts Perl version.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>perl5.bin</term>
+            <variablelist>
+              <varlistentry>
+                <term>perl5.bin</term>
 
-            <listitem>
-              <para>The Perl binary path (ie,
-              <filename>${prefix}/bin/perl</filename>).</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The Perl binary path (ie,
+                  <filename>${prefix}/bin/perl</filename>).</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>perl5.lib</term>
+            <variablelist>
+              <varlistentry>
+                <term>perl5.lib</term>
 
-            <listitem>
-              <para>Path to the Perl vendor directory.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>Path to the Perl vendor directory.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>perl5.archlib</term>
+            <variablelist>
+              <varlistentry>
+                <term>perl5.archlib</term>
 
-            <listitem>
-              <para>Path to the Perl architecture-dependent modules
-              directory.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
+                <listitem>
+                  <para>Path to the Perl architecture-dependent modules
+                  directory.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
 
-      <section>
-        <title>PortGroup python2x</title>
+      <variablelist>
+        <varlistentry>
+          <term>PortGroup python2x</term>
 
-        <para>These are the variables available to a
-        <filename>Portfile</filename> when the <literal>PortGroup
-        python2x</literal> keyword is declared.</para>
+          <listitem>
+            <para>Description: The variables available to a
+            <filename>Portfile</filename> when the <literal>PortGroup
+            python2x</literal> keyword is declared.</para>
 
-        <variablelist>
-          <varlistentry>
-            <term>python.bin</term>
+            <variablelist>
+              <varlistentry>
+                <term>python.bin</term>
 
-            <listitem>
-              <para>The MacPorts Python binary location.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The MacPorts Python binary location.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>python.lib</term>
+            <variablelist>
+              <varlistentry>
+                <term>python.lib</term>
 
-            <listitem>
-              <para>The Python dynamic library and path (ie,
-              <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The Python dynamic library and path (ie,
+                  <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>python.pkgd</term>
+            <variablelist>
+              <varlistentry>
+                <term>python.include</term>
 
-            <listitem>
-              <para>Path to the Python site-packages directory. (ie,
-              <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>Path to the Python include directory.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>python.include</term>
+            <variablelist>
+              <varlistentry>
+                <term>python.pkgd</term>
 
-            <listitem>
-              <para>Path to the Python include directory.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
+                <listitem>
+                  <para>Path to the Python site-packages directory. (ie,
+                  <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
 
-      <section>
-        <title>PortGroup ruby</title>
+      <variablelist>
+        <varlistentry>
+          <term>PortGroup ruby</term>
 
-        <para>These are the variables available to a
-        <filename>Portfile</filename> when the <literal>PortGroup
-        ruby</literal> keyword is declared.</para>
+          <listitem>
+            <para>Description: The variables available to a
+            <filename>Portfile</filename> when the <literal>PortGroup
+            ruby</literal> keyword is declared.</para>
 
-        <variablelist>
-          <varlistentry>
-            <term>ruby.version</term>
+            <variablelist>
+              <varlistentry>
+                <term>ruby.version</term>
 
-            <listitem>
-              <para>The MacPorts Ruby version.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The MacPorts Ruby version.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>ruby.bin</term>
+            <variablelist>
+              <varlistentry>
+                <term>ruby.bin</term>
 
-            <listitem>
-              <para>The Ruby binary location.</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>The Ruby binary location.</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>ruby.lib</term>
+            <variablelist>
+              <varlistentry>
+                <term>ruby.lib</term>
 
-            <listitem>
-              <para>Path to the Ruby vendorlibdir directory (ie,
-              <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
+                <listitem>
+                  <para>Path to the Ruby vendorlibdir directory (ie,
+                  <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-        <variablelist>
-          <varlistentry>
-            <term>ruby.archlib</term>
+            <variablelist>
+              <varlistentry>
+                <term>ruby.archlib</term>
 
-            <listitem>
-              <para>Path to the Ruby vendor archdir (ie,
-              <filename>${ruby.lib}/${ruby.arch}</filename>).</para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
+                <listitem>
+                  <para>Path to the Ruby vendor archdir (ie,
+                  <filename>${ruby.lib}/${ruby.arch}</filename>).</para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
   </section>
 
