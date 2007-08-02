@@ -483,11 +483,11 @@
         </listitem>
       </itemizedlist>
 
-      <para>Some PortGroups provide additional variables when the group is
+      <para>Some PortGroups provide additional variables when they are
       declared within a Portfile. The additional variables provided by
       PortGroups perl5, python, and ruby are listed below. You may view the
-      port Tcl code for each group in the
-      directory<filename>${prefix}/share/macports/resources/port1.0/group</filename>.</para>
+      port Tcl code for each group in the directory<filename>
+      ${prefix}/share/macports/resources/port1.0/group</filename>.</para>
 
       <variablelist>
         <varlistentry>
