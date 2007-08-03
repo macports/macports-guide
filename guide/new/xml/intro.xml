@@ -5,29 +5,40 @@
   <title>Introduction</title>
 
   <para>MacPorts is a system for building, installing, and managing free and
-  open source software. It is developed on Mac OS X, though it is designed to
-  be portable so it can work on other Unix-like systems, especially those
-  descended from the Berkeley Software Distribution (BSD). MacPorts "ports"
-  are definitions of applications, their characteristics, and any files or
-  special instructions required to install them in files named
-  <filename>Portfile</filename>s, so MacPorts may automatically fetch, patch,
-  compile, and install these "ported" applications. MacPorts provides two
-  major advantages over installing free and open source software
-  manually.</para>
+  open source software. MacPorts "ports" are definitions of applications,
+  their characteristics, and any files or special instructions required to
+  install them in files named <filename>Portfile</filename>s, so MacPorts may
+  automatically fetch, patch, compile, and install ported applications.</para>
+
+  <para>MacPorts may also be used to pre-compile ported applications into
+  binaries that may be installed on remote computers. Binaries of ported
+  applications may be installed very quickly since the steps required to
+  install ports from source code have all been performed in advance. MacPorts
+  provides several major advantages over installing free and open source
+  software manually.</para>
 
   <itemizedlist>
     <listitem>
-      <para>It provides automatic uninstalls and upgrades of ported
-      software.</para>
+      <para>MacPorts automatically installs a given port's required support
+      applications or libraries, known as "dependencies".</para>
     </listitem>
 
     <listitem>
-      <para>It confines ported applications to a private "sandbox" that keeps
-      ported software from intermingling with your operating system and its
-      vendor-supplied libraries, thus preventing them from becoming
+      <para>MacPorts confines ported software to a private "sandbox" that
+      keeps it from intermingling with your operating system and its
+      vendor-supplied libraries and prevents them from becoming
       corrupted.</para>
     </listitem>
+
+    <listitem>
+      <para>MacPorts provides automatic uninstalls and upgrades of ported
+      software.</para>
+    </listitem>
   </itemizedlist>
+
+  <para>MacPorts is developed on Mac OS X, though it is designed to be
+  portable so it can work on other Unix-like systems, especially those
+  descended from the Berkeley Software Distribution (BSD).</para>
 
   <section>
     <title>Document Conventions</title>
