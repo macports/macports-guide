@@ -7,7 +7,7 @@
   <para>The MacPorts Project uses a system called <ulink
   url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
   and enhancement requests. Trac also provides an interface to browse the
-  <ulink url="http://trac.macosforge.org/projects/macports/browser/">MacPorts
+  <ulink url="http://trac.macports.org/projects/macports/browser/">MacPorts
   Subversion repository</ulink>. Though anyone may search Trac for tickets,
   you must <ulink
   url="http://www.macosforge.org/wp-register.php">register</ulink> for a Trac
