@@ -83,8 +83,8 @@
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>High</guimenu> - For core MacPorts build/runtime
-              failures and/or critical enhancement requests.</para>
+              <para><guimenu>High</guimenu> - For MacPorts base build/runtime
+              failures and critical enhancement requests.</para>
             </listitem>
 
             <listitem>
@@ -121,8 +121,8 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>guide</guimenu> - Documentation errors,
-              corrections, or patches to the MacPorts Guide.</para>
+              <para><guimenu>guide</guimenu> - Documentation enhancements and
+              error corrections, or patches to the MacPorts Guide.</para>
             </listitem>
 
             <listitem>
@@ -156,20 +156,20 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>MacPorts core enhancements</guimenu> - for
+              <para><guimenu>MacPorts base enhancements</guimenu> - for
               tickets requesting or providing improvements to the
               functionality of the MacPorts system.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>MacPorts core bugs</guimenu> - for tickets
+              <para><guimenu>MacPorts base bugs</guimenu> - for tickets
               reporting or fixing bugs in the MacPorts system.</para>
             </listitem>
 
             <listitem>
               <para><guimenu>MacPorts x.y</guimenu> - indicates tickets
-              against the MacPorts core that have been accepted and scheduled
-              for inclusion or fixing in the x.y MacPorts release
+              against the MacPorts base code that have been accepted and
+              scheduled for inclusion or fixing in the x.y MacPorts release
               series.</para>
 
               <note>
