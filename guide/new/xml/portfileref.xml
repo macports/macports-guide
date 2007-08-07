@@ -11,12 +11,13 @@
   <section>
     <title>Port Phases</title>
 
-    <para>A MacPorts port has ten distinct phases. These phases automatically
-    perform default operations for applications that use the standard
+    <para>A MacPorts port has ten distinct phases. The MacPorts base is set to
+    performs default operations for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, but for applications that do not conform to this
-    behavior, any installation phase may be augmented using pre- and/or post-
-    phases or overridden entirely.</para>
+    behavior, installation phases may be explicitly declared in a Portfile to
+    override or eliminate the default behavior, or augment it using pre-
+    and/or post- phases as shown in the section "Portfile Development".</para>
 
     <section>
       <title>Fetch</title>
@@ -320,7 +321,7 @@
     <title>Variables</title>
 
     <para>This section describes the MacPorts preset variables that may be
-    used within <filename>Portfile</filename>s.</para>
+    used within Portfiles.</para>
 
     <section>
       <title>General</title>
@@ -656,9 +657,19 @@
   <section>
     <title>Keywords</title>
 
-    <para>This section lists MacPorts keywords by the installation phase that
-    corresponds to their use. These keywords are used to specify non-default
-    options for <filename>a <filename>Portfile</filename>.</filename></para>
+    <para>MacPorts keywords are used to specify required or optional items for
+    a <filename>Portfile</filename> or to override default options when
+    necessary. All the keywords are to be used within the global section of a
+    Portfile. The keywords listed below in category "global" specify
+    information for a port as a whole, whereas the keywords listed under a
+    port phase specify information to be used during execution of a port's
+    corresponding phase.</para>
+
+    <para>Remember that MacPorts port phases are often implicit, meaning that
+    Portfile phases need not be defined in a <filename>Portfile</filename>.
+    Nevertheless, keywords may be used to effect behavior of a port's
+    installation phases that are implicit, as well as explicitly defined (when
+    augmenting or overriding the default port phases).</para>
 
     <section>
       <title>Global</title>
@@ -1454,8 +1465,10 @@
   <section>
     <title>Tcl Primitives</title>
 
-    <para>A MacPorts <filename>Portfile</filename> is interpreted as Tcl code,
-    and it may contain the Tcl primitives listed below.</para>
+    <para>A MacPorts <filename>Portfile</filename> is a Tcl script, so it may
+    contain Tcl code anywhere within it, whether in the global section or a
+    phase. The Tcl primitives listed below are defined within the MacPorts
+    base code for use in Portfiles.</para>
 
     <variablelist>
       <varlistentry>
