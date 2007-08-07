@@ -12,7 +12,7 @@
     <title>Port Phases</title>
 
     <para>A MacPorts port has ten distinct phases. The MacPorts base is set to
-    performs default operations for applications that use the standard
+    perform default steps for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, but for applications that do not conform to this
     behavior, installation phases may be declared in a Portfile to override or
