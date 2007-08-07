@@ -4,19 +4,32 @@
 <chapter>
   <title>Portfile Development</title>
 
-  <para>This chapter covers a brief introduction to port phases, how to create
-  a local Portfile repository for development, and creating
-  <filename>Portfile</filename>s.</para>
+  <para>This chapter covers a brief introduction to Portfiles, how to create a
+  local <filename>Portfile</filename> repository for development, and creating
+  Portfiles.</para>
 
   <section>
     <title>Portfile Introduction</title>
 
-    <para>A MacPorts <filename>Portfile</filename> fully defines a given port;
-    it is also the only necessary component of a port, though ports may also
-    include patchfiles or other textfiles as desired by a port author.</para>
+    <para>Every MacPorts port has a corresponding
+    <filename>Portfile</filename>, but Portfiles do not completely define a
+    port's behavior because the MacPorts base code sets the default behavior
+    for a port's installation phases. <filename>Portfiles</filename> may
+    contain optional section(s) of installation phase declarations, but they
+    are only necessary if you want to augment or override the default port
+    phase behavior defined in the MacPorts base.</para>
 
-    <para>A MacPorts port has ten distinct phases, but the main ones you to be
-    aware of when making Portfiles are these:</para>
+    <para>If you use phase declaration(s) in a <filename>Portfile</filename>,
+    you should know how to identify what is called the "global" section of a
+    <filename>Portfile</filename>. Any statements not contained within a phase
+    declaration, no matter where they are located in a
+    <filename>Portfile</filename>, are said to be in the global section of the
+    <filename>Portfile</filename>, therefore the global section need not be
+    contiguous. Likewise, for any statements to be removed from the global
+    section they would have to be moved within a phase declaration.</para>
+
+    <para>The main phases you need to be aware of when making a
+    <filename>Portfile</filename> are these:</para>
 
     <itemizedlist>
       <listitem>
@@ -44,17 +57,18 @@
       </listitem>
     </itemizedlist>
 
-    <para>These phases automatically perform default operations for
-    applications that use the standard <command>configure</command>,
-    <command>make</command>, and <command>make install</command> steps, which
-    conform to phases configure, build, and destroot respectively. For
-    applications that do not conform to this behavior, any installation phase
-    may be augmented using pre- and/or post- phases or overridden entirely.
-    See the section "Example Portfiles" below.</para>
+    <para>The default installation phase behavior performed by the MacPorts
+    base code is set for applications that use the standard
+    <command>configure</command>, <command>make</command>, and <command>make
+    install</command> steps, which conform to phases configure, build, and
+    destroot respectively. For applications that do not conform to this
+    standard behavior, any installation phase may be augmented using pre-
+    and/or post- phases, or even overridden or eliminated. See the section
+    "Example Portfiles" below.</para>
 
     <note>
       <para>For a detailed description of all port phases, see the section
-      "Portfile Reference".</para>
+      "Portfile Reference" below.</para>
     </note>
   </section>
 
@@ -134,9 +148,9 @@ Ports failed:                   0</screen>
     <title>Creating a Portfile</title>
 
     <para>Here we list the individual <filename>Portfile</filename> components
-    for a port that conforms to the default <filename>Portfile</filename>
-    options. For non-default options, see the section Optional Portfile
-    Keywords.</para>
+    for an application that conforms to the the standard <command>
+    configure</command>, <command>make</command>, and <command>make
+    install</command> steps of most open source application installs.</para>
 
     <orderedlist>
       <listitem>
