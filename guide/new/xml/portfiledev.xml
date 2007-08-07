@@ -58,7 +58,7 @@
     </itemizedlist>
 
     <para>The default installation phase behavior performed by the MacPorts
-    base by works fine for applications that use the standard
+    base works fine for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
