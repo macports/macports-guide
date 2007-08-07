@@ -13,11 +13,11 @@
 
     <para>Every MacPorts port has a corresponding
     <filename>Portfile</filename>, but Portfiles do not completely define a
-    port's behavior because the MacPorts base code sets the default behavior
-    for a port's installation phases. <filename>Portfiles</filename> may
-    contain optional section(s) of installation phase declarations, but they
-    are only necessary if you want to augment or override the default port
-    phase behavior defined in the MacPorts base.</para>
+    port's installation behavior because the MacPorts base code performs
+    default installation phases for all ports. However,
+    <filename>Portfiles</filename> may contain optional installation phase
+    declaration(s) to augment or override the default port phase behavior
+    performed by the MacPorts base during port installation.</para>
 
     <para>If you use phase declaration(s) in a <filename>Portfile</filename>,
     you should know how to identify what is called the "global" section of a
@@ -58,7 +58,7 @@
     </itemizedlist>
 
     <para>The default installation phase behavior performed by the MacPorts
-    base code is set for applications that use the standard
+    base by works fine for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
