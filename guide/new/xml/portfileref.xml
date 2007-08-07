@@ -15,9 +15,9 @@
     performs default operations for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, but for applications that do not conform to this
-    behavior, installation phases may be explicitly declared in a Portfile to
-    override or eliminate the default behavior, or augment it using pre-
-    and/or post- phases as shown in the section "Portfile Development".</para>
+    behavior, installation phases may be declared in a Portfile to override or
+    eliminate the default behavior, or augment it using pre- and/or post-
+    phases as shown in the section "Portfile Development".</para>
 
     <section>
       <title>Fetch</title>
@@ -660,16 +660,17 @@
     <para>MacPorts keywords are used to specify required or optional items for
     a <filename>Portfile</filename> or to override default options when
     necessary. All the keywords are to be used within the global section of a
-    Portfile. The keywords listed below in category "global" specify
-    information for a port as a whole, whereas the keywords listed under a
-    port phase specify information to be used during execution of a port's
-    corresponding phase.</para>
+    <filename>Portfile</filename>. The keywords listed below in category
+    "global" specify information for a port as a whole, whereas the keywords
+    listed under a port phase specify information to be used during a
+    particular installation phase.</para>
 
-    <para>Remember that MacPorts port phases are often implicit, meaning that
-    Portfile phases need not be defined in a <filename>Portfile</filename>.
-    Nevertheless, keywords may be used to effect behavior of a port's
-    installation phases that are implicit, as well as explicitly defined (when
-    augmenting or overriding the default port phases).</para>
+    <para>Remember that default port installation phase behavior is performed
+    by the MacPorts base, so that <filename>Portfile</filename> phase
+    declarations need only be defined for non-default behavior. But keywords
+    for port phases affect installation phase behavior, whether it is
+    performed by the MacPorts base code or defined using
+    <filename>Portfile</filename> phase declarations.</para>
 
     <section>
       <title>Global</title>
