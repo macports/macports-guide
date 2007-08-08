@@ -131,12 +131,89 @@
   </section>
 
   <section>
+    <title>Port Dependencies</title>
+
+    <para>Free and open source software is highly modular, and MacPorts ports
+    often require modules not provided in a port's distribution to be
+    installed before a port may be installed, compiled, or run. These support
+    modules are generally other MacPorts ports, and the ports required to
+    satisfy prerequistes for a given port are called a port's
+    "dependencies".</para>
+
+    <para>There are three types of dependencies in MacPorts: library, build,
+    and run dependencies.</para>
+
+    <section>
+      <title>depends_lib</title>
+
+      <para>Library dependencies are needed both at build time (for headers
+      and libraries to link against) and at run time (to provide necessary
+      code).</para>
+
+      <programlisting>depends_lib         port:rrdtool</programlisting>
+    </section>
+
+    <section>
+      <title>depends_build</title>
+
+      <para>Build dependencies are only needed when software is compiled. They
+      are not needed at all once the software is compiled and
+      installed.</para>
+
+      <programlisting>depends_build       port:gcc42</programlisting>
+    </section>
+
+    <section>
+      <title>depends_run</title>
+
+      <para>Run dependencies are needed when the software is run, but not to
+      compile the software.</para>
+
+      <programlisting>depends_run         port:apache2</programlisting>
+
+      <note>
+        <para>The three dependency types become important for port upgrades
+        and uninstalls. For example, you may not uninstall a port that is a
+        library dependency for another port, though you may remove ports that
+        are build dependencies for other ports.</para>
+      </note>
+    </section>
+
+    <section>
+      <title>Non-Port Dependencies</title>
+
+      <para>Port dependencies should refer to other MacPort ports whenever
+      possible. However, if satisfying a dependency with a port is not
+      practical or desirable for a special reason, you may specify
+      dependencies in the Unix standard binary, library, or a specified
+      path.</para>
+
+      <para>In this lib style dependency, if the file
+      <filename>libX11.6.2.dylib</filename> is not found in the library path
+      the XFree86 port will be installed to satisfy it.</para>
+
+      <programlisting>depends_lib         lib:libX11.6:XFree86</programlisting>
+
+      <para>In this bin style dependency, if the <filename>rrdtool</filename>
+      binary is not found in the binary path the port rrdtool will be
+      installed.</para>
+
+      <programlisting>depends_lib         bin:python:python24</programlisting>
+
+      <para>In this path style dependency, if the <filename>nano</filename>
+      binary is not found in the path /usr/bin/nano the nano port will be
+      installed.</para>
+
+      <programlisting>depends_lib         path:/usr/bin/nano:nano</programlisting>
+    </section>
+  </section>
+
+  <section>
     <title>Variants</title>
 
     <para>Variants are a way for port authors to provide options that may be
-    invoked at install time. They are declared in a
-    <filename>Portfile</filename>'s global section using the "variant" keyword
-    and may provide a description.</para>
+    invoked at install time. They are declared in a Porfile's global section
+    using the "variant" keyword and may provide a description.</para>
 
     <section>
       <title>Append / Delete Keywords</title>
@@ -665,12 +742,13 @@
     listed under a port phase specify information to be used during a
     particular installation phase.</para>
 
-    <para>Remember that default port installation phase behavior is performed
-    by the MacPorts base, so that <filename>Portfile</filename> phase
-    declarations need only be defined for non-default behavior. But keywords
-    for port phases affect installation phase behavior, whether it is
-    performed by the MacPorts base code or defined using
-    <filename>Portfile</filename> phase declarations.</para>
+    <para>Remember that default port installation phase characteristics are
+    determined by the MacPorts base, so <filename>Portfile</filename> phase
+    declarations need only be defined for non-default characteristics. But
+    keywords that specify options for port phases take affect whether or not
+    phase characteristics are defined explicitly using
+    <filename>Portfile</filename> declarations or set by default by the
+    MacPorts base, or a combination.</para>
 
     <section>
       <title>Global</title>
