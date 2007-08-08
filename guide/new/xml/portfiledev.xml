@@ -11,22 +11,25 @@
   <section>
     <title>Portfile Introduction</title>
 
-    <para>Every MacPorts port has a corresponding
-    <filename>Portfile</filename>, but Portfiles do not completely define a
-    port's installation behavior because the MacPorts base code performs
-    default installation phases for all ports. However,
-    <filename>Portfiles</filename> may contain optional installation phase
-    declaration(s) to augment or override the default port phase behavior
-    performed by the MacPorts base during port installation.</para>
+    <para>A <filename>Portfile</filename> is a TCL script that often contains
+    only simple keyword/value combinations defined in MacPorts base, though it
+    may also contain arbitrary TCL code. Every MacPorts port has a
+    corresponding <filename>Portfile</filename>, but Portfiles do not
+    completely define a port's installation behavior since the MacPorts base
+    has default port installation characteristics coded within it that are
+    applied to all ports. Therefore Portfiles need only specify required
+    options and, when required, non-default characteristics for a port.</para>
 
-    <para>If you use phase declaration(s) in a <filename>Portfile</filename>,
-    you should know how to identify what is called the "global" section of a
-    <filename>Portfile</filename>. Any statements not contained within a phase
-    declaration, no matter where they are located in a
-    <filename>Portfile</filename>, are said to be in the global section of the
-    <filename>Portfile</filename>, therefore the global section need not be
-    contiguous. Likewise, for any statements to be removed from the global
-    section they would have to be moved within a phase declaration.</para>
+    <para>A common way for Portfiles to augment or override MacPorts base
+    default installation phase characteristics is by using
+    <filename>Portfile</filename> phase declaration(s). If you use
+    <filename>Portfile</filename> phase declaration(s), you should know how to
+    identify the "global" section of a <filename>Portfile</filename>. Any
+    statements not contained within a phase declaration, no matter where they
+    are located in a <filename>Portfile</filename>, are said to be in the
+    global section of the <filename>Portfile</filename>, therefore the global
+    section need not be contiguous. Likewise, to remove statements from the
+    global section they must be placed within a phase declaration.</para>
 
     <para>The main phases you need to be aware of when making a
     <filename>Portfile</filename> are these:</para>
@@ -270,7 +273,7 @@ Ports failed:                   0</screen>
 
     <para>In this section we take a look at a complete simple Portfile, and
     then pre- and post- phase definitions to augment and override the MacPorts
-    default phases respectively.</para>
+    default phases.</para>
 
     <section>
       <title>A Simple Portfile</title>
