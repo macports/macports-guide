@@ -182,7 +182,7 @@
     <section>
       <title>Non-Port Dependencies</title>
 
-      <para>Port dependencies should refer to other MacPort ports whenever
+      <para>Port dependencies should refer to other MacPorts ports whenever
       possible. However, if satisfying a dependency with a port is not
       practical or desirable for a special reason, you may specify
       dependencies in the Unix standard binary, library, or a specified
