@@ -131,7 +131,7 @@
   </section>
 
   <section>
-    <title>Port Dependencies</title>
+    <title>Dependencies</title>
 
     <para>Free and open source software is highly modular, and MacPorts ports
     often require modules not provided in a port's distribution to be
@@ -141,7 +141,11 @@
     "dependencies".</para>
 
     <para>There are three types of dependencies in MacPorts: library, build,
-    and run dependencies.</para>
+    and run dependencies. The dependency type is important for proper port
+    upgrade and uninstall behavior. For example, you may not uninstall a port
+    that is a library dependency for another port, though you may remove one
+    with a build dependency; likewise, upgrading a port will upgrade its
+    library and build dependencies also, but not its run dependencies.</para>
 
     <section>
       <title>depends_lib</title>
@@ -170,13 +174,6 @@
       compile the software.</para>
 
       <programlisting>depends_run         port:apache2</programlisting>
-
-      <note>
-        <para>The three dependency types become important for port upgrades
-        and uninstalls. For example, you may not uninstall a port that is a
-        library dependency for another port, though you may remove ports that
-        are build dependencies for other ports.</para>
-      </note>
     </section>
 
     <section>
@@ -185,26 +182,27 @@
       <para>Port dependencies should refer to other MacPorts ports whenever
       possible. However, if satisfying a dependency with a port is not
       practical or desirable for a special reason, you may specify
-      dependencies in the Unix standard binary, library, or a specified
-      path.</para>
+      dependencies by having MacPorts test for an individual file by replacing
+      <literal>port:</literal> with one of the options <literal>lib: bin: or
+      path:</literal>.</para>
 
       <para>In this lib style dependency, if the file
-      <filename>libX11.6.2.dylib</filename> is not found in the library path
+      <filename>libX11.6.x.dylib</filename> is not found in the library path
       the XFree86 port will be installed to satisfy it.</para>
 
       <programlisting>depends_lib         lib:libX11.6:XFree86</programlisting>
 
-      <para>In this bin style dependency, if the <filename>rrdtool</filename>
-      binary is not found in the binary path the port rrdtool will be
+      <para>In this bin style dependency, if the <filename>python</filename>
+      binary is not found in the shell's binary path the port python24 will be
       installed.</para>
 
-      <programlisting>depends_lib         bin:python:python24</programlisting>
+      <programlisting>depends_build       bin:python:python24</programlisting>
 
-      <para>In this path style dependency, if the <filename>nano</filename>
-      binary is not found in the path /usr/bin/nano the nano port will be
+      <para>In this path style dependency, if the file
+      <filename>/usr/bin/nano</filename> is not found the nano port will be
       installed.</para>
 
-      <programlisting>depends_lib         path:/usr/bin/nano:nano</programlisting>
+      <programlisting>depends_run         path:/usr/bin/nano:nano</programlisting>
     </section>
   </section>
 
