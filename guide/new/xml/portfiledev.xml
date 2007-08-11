@@ -277,7 +277,7 @@ Ports failed:                   0</screen>
     default phases.</para>
 
     <section>
-      <title>A Simple Portfile</title>
+      <title>A Basic Portfile</title>
 
       <para></para>
 
@@ -334,19 +334,6 @@ configure.args          --prefix=${prefix} \
     </section>
 
     <section>
-      <title>Portfile Using a Variant</title>
-
-      <para>Here is an example of a port providing four variants that add
-      additional configure arguments to a port. See "Variants" in the Portfile
-      Reference section for full information.</para>
-
-      <programlisting>variant pop     { configure.args-append --enable-pop }
-variant imap    { configure.args-append --enable-imap }
-variant ssl     { configure.args-append --with-ssl }
-variant debug   { configure.args-append --enable-debug }</programlisting>
-    </section>
-
-    <section>
       <title>Portfile Using a StartupItem</title>
 
       <para>Startupitems may be placed in the global section of a
@@ -364,6 +351,90 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     startupitem.start "${prefix}/share/${name}/vm-pop3d.init start"
     startupitem.stop "${prefix}/share/${name}/vm-pop3d.init stop"
 }</programlisting>
+    </section>
+  </section>
+
+  <section>
+    <title>Port Variants</title>
+
+    <para>Variants are a way for port authors to provide options that may be
+    invoked at install time. They are declared in the global section of a
+    <filename>Portfile</filename> using the "variant" keyword and may provide
+    a description.</para>
+
+    <section>
+      <title>Variants to Modify Options</title>
+
+      <para>The most common use for a variant is to add or remove
+      dependencies, configure arguments, and build arguments from the global
+      <filename>Portfile</filename> section. Here is an example of a port
+      providing four variants that add additional configure arguments to a
+      port. See "Variants" in the Portfile Reference section for full
+      information.</para>
+
+      <programlisting>variant pop     { configure.args-append --enable-pop }
+variant imap    { configure.args-append --enable-imap }
+variant ssl     { configure.args-append --with-ssl }
+variant debug   { configure.args-append --enable-debug }</programlisting>
+
+      <para>In the example variant declaration, the configure argument
+      <literal>--without-x</literal> is removed and a numner of others are
+      appended.</para>
+
+      <programlisting>variant x11 description {Builds port as an X11 program with Lucid widgets} {
+    configure.args-delete   --without-x
+    configure.args-append   --with-x-toolkit=lucid \
+                            --without-carbon \
+                            --with-xpm \
+                            --with-jpeg \
+                            --with-tiff \
+                            --with-gif \
+                            --with-png
+    depends_lib-append      lib:libX11:XFree86 \
+                            lib:libXpm:XFree86 \
+                            port:jpeg \
+                            port:tiff \
+                            port:libungif \
+                            port:libpng
+}</programlisting>
+    </section>
+
+    <section>
+      <title>Variant Actions in a Phase</title>
+
+      <para>If a variant requires options in addition to those provided by
+      keywords using -append and/or -delete, in other words, any actions that
+      would normally take place within a port installation phase, do not try
+      to do this within the variant declaration. Rather, modify the behavior
+      of any affected phases when the variant is invoked using the
+      variant_isset keyword.</para>
+
+      <programlisting>post-destroot {
+    xinstall -m 755 -d ${destroot}${prefix}/etc/
+    xinstall ${worksrcpath}/examples/foo.conf \
+        ${destroot}${prefix}/etc/
+
+    if {[variant_isset] carbon]} {
+        delete ${destroot}${prefix}/bin/emacs
+        delete ${destroot}${prefix}/bin/emacs-${version}
+    }
+}</programlisting>
+    </section>
+
+    <section>
+      <title>Default Variants</title>
+
+      <para>Variants are used to specify actions that lie outside the core
+      functions of an application or port, but there may be some cases where
+      you wish to specify these non-core functions by default. For this
+      purpose you may use the keyword default_variants.</para>
+
+      <programlisting>default_variants +foo +bar</programlisting>
+
+      <note>
+        <para>The default_variant keyword may only be used in the global
+        <filename>Portfile</filename> section.</para>
+      </note>
     </section>
   </section>
 
