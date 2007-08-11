@@ -207,79 +207,6 @@
   </section>
 
   <section>
-    <title>Variants</title>
-
-    <para>Variants are a way for port authors to provide options that may be
-    invoked at install time. They are declared in a Porfile's global section
-    using the "variant" keyword and may provide a description.</para>
-
-    <section>
-      <title>Append / Delete Keywords</title>
-
-      <para>The most common use for a variant is to add or remove
-      dependencies, configure arguments, and build arguments from the global
-      <filename>Portfile</filename> section. In the example below, the global
-      configure argument --without-x11 is removed and others are
-      appended.</para>
-
-      <programlisting>variant x11 description {Builds port as an X11 program with Lucid widgets} {
-    configure.args-delete   --without-x
-    configure.args-append   --with-x-toolkit=lucid \
-                            --without-carbon \
-                            --with-xpm \
-                            --with-jpeg \
-                            --with-tiff \
-                            --with-gif \
-                            --with-png
-    depends_lib-append      lib:libX11:XFree86 \
-                            lib:libXpm:XFree86 \
-                            port:jpeg \
-                            port:tiff \
-                            port:libungif \
-                            port:libpng
-}</programlisting>
-    </section>
-
-    <section>
-      <title>Variant Actions in Port Phases</title>
-
-      <para>If a variant requires options in addition to those provided by
-      keywords using -append and/or -delete, or actions that would normally
-      take place within a port installation phase or its pre- and post-
-      phases, do not try to do this within the variant declaration. Rather,
-      modify the behavior of any affected phases when the variant is invoked
-      using the variant_isset keyword.</para>
-
-      <programlisting>post-destroot {
-    xinstall -m 755 -d ${destroot}${prefix}/etc/
-    xinstall ${worksrcpath}/examples/foo.conf \
-        ${destroot}${prefix}/etc/
-
-    if {[variant_isset] carbon]} {
-        delete ${destroot}${prefix}/bin/emacs
-        delete ${destroot}${prefix}/bin/emacs-${version}
-    }
-}</programlisting>
-    </section>
-
-    <section>
-      <title>Default Variants</title>
-
-      <para>Variants are used to specify actions that lie outside the core
-      functions of an application or port, but there may be some cases where
-      you wish to specify these non-core functions by default. For this
-      purpose you may use the keyword default_variants.</para>
-
-      <programlisting>default_variants +foo +bar</programlisting>
-
-      <note>
-        <para>The default_variant keyword may only be used in the global
-        <filename>Portfile</filename> section.</para>
-      </note>
-    </section>
-  </section>
-
-  <section>
     <title>StartupItems</title>
 
     <para>StartupItems are keywords that create Mac OS X LaunchDaemon startup
@@ -730,26 +657,33 @@
   </section>
 
   <section>
-    <title>Keywords</title>
+    <title>Keyword Reference</title>
 
-    <para>MacPorts keywords are used to specify required or optional items for
-    a <filename>Portfile</filename> or to override default options when
-    necessary. All the keywords are to be used within the global section of a
-    <filename>Portfile</filename>. The keywords listed below in category
-    "global" specify information for a port as a whole, whereas the keywords
-    listed under a port phase specify information to be used during a
-    particular installation phase.</para>
+    <para>MacPorts keywords are used to specify required or optional items
+    within a <filename>Portfile</filename> to override default options for
+    ports when necessary. Keywords are to be used within the "global" and
+    "variant" sections of Portfiles, and not within optional port phase
+    declarations. In other words, port phase keywords are not located within
+    port phase declaration; they <emphasis>refer</emphasis> to port phases and
+    set options for those phases, and they take affect whether or not phase
+    declarations have been explicitly defined by a port author.</para>
 
-    <para>Remember that default port installation phase characteristics are
-    determined by the MacPorts base, so <filename>Portfile</filename> phase
-    declarations need only be defined for non-default characteristics. But
-    keywords that specify options for port phases take affect whether or not
-    phase characteristics are defined explicitly using
-    <filename>Portfile</filename> declarations or set by default by the
-    MacPorts base, or a combination.</para>
+    <para>The keywords listed below in category "global" specify information
+    for ports as a whole, whereas the keywords listed under a port phase
+    specify information to be used during a particular installation
+    phase.</para>
 
     <section>
-      <title>Global</title>
+      <title>Keywords using -append and -delete</title>
+
+      <para>These keywords are used to append or delete individual options
+      from a matching list of options without replacing it, whether the
+      options were defaults supplied by MacPorts base or options set with a
+      matching keyword set beforehand during execution of the Portfile.</para>
+    </section>
+
+    <section>
+      <title>Global Keywords</title>
 
       <para>Global keywords.</para>
 
@@ -859,6 +793,26 @@
 
           <listitem>
             <para></para>
+
+            <variablelist>
+              <varlistentry>
+                <term>depends_lib-append</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term>depends_lib-delete</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -869,6 +823,26 @@
 
           <listitem>
             <para></para>
+
+            <variablelist>
+              <varlistentry>
+                <term>depends_build-append</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term>depends_build-delete</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -879,295 +853,40 @@
 
           <listitem>
             <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
+            <variablelist>
+              <varlistentry>
+                <term>depends_run-append</term>
 
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
+            <variablelist>
+              <varlistentry>
+                <term>depends_run-delete</term>
 
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
           </listitem>
         </varlistentry>
       </variablelist>
     </section>
 
     <section>
-      <title>Fetch</title>
+      <title>Port Phase Keywords</title>
 
-      <para>Fetch phase keywords.</para>
+      <para>MacPorts has ten distinct port installation phases. As previosly
+      stated, port phase keywords are not located within port phase
+      declarations; they <emphasis>refer</emphasis> to port phases and set
+      options for them.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>fetch.keyword1</term>
-
-          <listitem>
-            <para>Description fetch keyword 1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Checksum</title>
-
-      <para>Checksum phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>checksum.keyword1</term>
-
-          <listitem>
-            <para>Description checksum keyword 1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Extract</title>
-
-      <para>Extract phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>extract.keyword1</term>
-
-          <listitem>
-            <para>Description extract keyword 1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Patch</title>
-
-      <para>Patch phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>patch.keyword1</term>
-
-          <listitem>
-            <para>Description patch keyword1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Configuration</title>
-
-      <para>Configuration phase keywords. Avoid using keywords with defaults
-      defined or you will overwrite the default variables.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>configure.env</term>
-
-          <listitem>
-            <para>Configure environment variables.</para>
-
-            <para>Defaults: CFLAGS=-I<filename>${prefix}/include</filename>
-            LDFLAGS=-L<filename>${prefix}/lib</filename></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term>configure.cflags-append</term>
-
-          <listitem>
-            <para>Set additional CFLAGS to be added to the variable
-            defaults.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term>configure.ldflags-append</term>
-
-          <listitem>
-            <para>Set additional LDFLAGS to be added to the variable
-            defaults.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <para>The fetch phase ...</para>
 
       <variablelist>
         <varlistentry>
@@ -1239,15 +958,7 @@
         </varlistentry>
       </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <para>The checksum phase ...</para>
 
       <variablelist>
         <varlistentry>
@@ -1299,117 +1010,7 @@
         </varlistentry>
       </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Build</title>
-
-      <para>Build phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>build.keyword1</term>
-
-          <listitem>
-            <para>Description build.keyword 1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Destroot</title>
-
-      <para>Destroot phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>destroot.keyword1</term>
-
-          <listitem>
-            <para>Description destroot keyword1.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <para>The extract phase ...</para>
 
       <variablelist>
         <varlistentry>
@@ -1471,15 +1072,7 @@
         </varlistentry>
       </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <para>The patch phase ...</para>
 
       <variablelist>
         <varlistentry>
@@ -1487,22 +1080,6 @@
 
           <listitem>
             <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Install</title>
-
-      <para>Install phase keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>install.keyword1</term>
-
-          <listitem>
-            <para>Description install.keyword 1.</para>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1536,6 +1113,258 @@
           </listitem>
         </varlistentry>
       </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>The configuration phase ...</para>
+
+      <para>MacPorts base sets some important default configure options, so
+      you must be careful not to overwrite them with your Portfile keywords;
+      for this reason you should use the -append version of configure
+      keywords. For example, MacPorts base sets default
+      <literal>configure.ldflags</literal> so you should always use
+      <literal>configure.cflags-append</literal> to set additional CFLAGS in
+      Portfiles.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.args</term>
+
+          <listitem>
+            <para></para>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.args-append</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.args-delete</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.cflags</term>
+
+          <listitem>
+            <para></para>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.cflags-append</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.cflags-delete</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.ldflags</term>
+
+          <listitem>
+            <para></para>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.ldflags-append</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+
+            <variablelist>
+              <varlistentry>
+                <term>configure.ldflags-delete</term>
+
+                <listitem>
+                  <para></para>
+                </listitem>
+              </varlistentry>
+            </variablelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>The build phase ...</para>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>The destroot phase ...</para>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <variablelist>
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+
+      <para>The install phase ...</para>
+
+      <para>The activate phase ...</para>
+
+      <para></para>
+
+      <para></para>
     </section>
   </section>
 
