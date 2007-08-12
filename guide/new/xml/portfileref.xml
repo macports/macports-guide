@@ -657,16 +657,17 @@
   </section>
 
   <section>
-    <title>Keyword Reference</title>
+    <title>Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
-    within a <filename>Portfile</filename> to override default options for
-    ports when necessary. Keywords are to be used within the "global" and
-    "variant" sections of Portfiles, and not within optional port phase
-    declarations. In other words, port phase keywords are not located within
-    port phase declaration; they <emphasis>refer</emphasis> to port phases and
-    set options for those phases, and they take affect whether or not phase
-    declarations have been explicitly defined by a port author.</para>
+    within a <filename>Portfile</filename>, or to override default options
+    used by MacPorts base for individual ports when necessary. Keywords are to
+    be used within the "global" and "variant" sections of Portfiles, and not
+    within optional port phase declarations. In other words, port phase
+    keywords are not located within port phase declaration; they
+    <emphasis>refer</emphasis> to port phases and set options for those
+    phases, and they take affect whether or not phase declarations have been
+    explicitly defined by a port author.</para>
 
     <para>The keywords listed below in category "global" specify information
     for ports as a whole, whereas the keywords listed under a port phase
@@ -676,10 +677,68 @@
     <section>
       <title>Keywords using -append and -delete</title>
 
-      <para>These keywords are used to append or delete individual options
-      from a matching list of options without replacing it, whether the
-      options were defaults supplied by MacPorts base or options set with a
-      matching keyword set beforehand during execution of the Portfile.</para>
+      <para>Frequently it is necessary to add to a list of keyword values
+      previously set by MacPorts base or set by a prior Portfile keyword. In
+      these cases we generally don't want to replace the current list, but
+      rather to add or delete values from the list. Keywords that use
+      "-append" or "-delete" append or delete individual options from a
+      matching list of options without overwriting the list. The three most
+      common practical uses for these keywords are:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>Configure arguments. MacPorts base sets the gcc complier flags
+          CFLAGS and LDFLAGS for all ports, therefore to keep from overwriting
+          the defaults use:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>configure.cflags-append</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>configure.ldflags-append</literal></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Ports belonging to a PortGroup. Ports in a PortGroup have
+          default dependencies set by the Portgroup. Therefore, never use
+          <literal>depends_lib</literal> or it will overwrite the default
+          library dependencies. Use instead:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>depends_lib-append</literal></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>Port variants. When adding or removing dependencies to a port
+          when a variant is specified, you want to add items to the list of
+          dependency keyword values that were set previously in the Portfile.
+          Use the appropriate keywords.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>depends_lib-append</literal> or
+              <literal>depends_lib-delete</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>depends_build-append</literal> or
+              <literal>depends_build-delete</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>depends_run-append</literal> or
+              <literal>depends_run-delete</literal></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </itemizedlist>
     </section>
 
     <section>
