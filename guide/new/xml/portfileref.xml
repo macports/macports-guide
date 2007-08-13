@@ -638,6 +638,15 @@
                   <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
                 </listitem>
               </varlistentry>
+
+              <varlistentry>
+                <term>ruby.arch</term>
+
+                <listitem>
+                  <para>The name for the Ruby architecture-dependent directory
+                  name (ie, <literal>i686-darwin8.10.1</literal>).</para>
+                </listitem>
+              </varlistentry>
             </variablelist>
 
             <variablelist>
