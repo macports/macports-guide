@@ -12,7 +12,7 @@ div.mediaobject {
         border: thin black inset;
 }
 
-.emphasis { font-weight: bold ; color: black; }
+.emphasis { font-weight: bold ; }
 
 a:link { color: #6298E5; text-decoration: none; }
 a:visited { color: #6298E5; text-decoration: none;}
