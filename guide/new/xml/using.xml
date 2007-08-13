@@ -252,19 +252,16 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     <section>
       <title>dependents</title>
 
-      <para>The <userinput>dependents</userinput> option shows you what ports
-      depend on a given port, if any.</para>
+      <para>The <option>dependents</option> option reports what ports depend
+      upon a given port, if any. MacPorts learns about dependents during port
+      installation, so uninstalled ports will always report that there are no
+      dependents.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port dependents openssl</userinput></programlisting>
 
       <screen>neon depends on openssl
 gnome-vfs depends on openssl
 libdap depends on openssl</screen>
-
-      <note>
-        <para>Only installed ports will list any dependents. This is because
-        MacPorts learns about dependents during port installation.</para>
-      </note>
     </section>
 
     <section>
