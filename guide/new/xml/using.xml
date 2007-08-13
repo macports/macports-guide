@@ -103,7 +103,13 @@ Maintainers: nomaintainer@macports.org</screen>
       are a way for port authors to provide options that may be invoked at
       install time.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port variants apache2</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
+
+      <screen>nmap has the variants:
+        universal
+        gtk2
+        no_ssl
+        no_pcre</screen>
     </section>
 
     <section>
@@ -266,6 +272,34 @@ libdap depends on openssl</screen>
 
     <section>
       <title>livecheck</title>
+
+      <para></para>
+    </section>
+  </section>
+
+  <section>
+    <title>Port Variants</title>
+
+    <para>Variants are a way for port authors to provide options for a port
+    that may be chosen during the port install. To display the available
+    variants, if any, use this command:</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
+
+    <screen>nmap has the variants:
+        universal
+        gtk2
+        no_ssl
+        no_pcre</screen>
+
+    <section>
+      <title>Invoking Variants</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Negating Default Variants</title>
 
       <para></para>
     </section>
