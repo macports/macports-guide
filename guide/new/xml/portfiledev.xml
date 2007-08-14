@@ -279,8 +279,6 @@ Ports failed:                   0</screen>
     <section>
       <title>A Basic Portfile</title>
 
-      <para></para>
-
       <programlisting># Id$
 PortSystem      1.0
 
