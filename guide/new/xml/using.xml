@@ -284,24 +284,57 @@ libdap depends on openssl</screen>
     that may be chosen during the port install. To display the available
     variants, if any, use this command:</para>
 
-    <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
+    <programlisting><prompt>%%</prompt> <userinput>port variants fetchmail</userinput></programlisting>
 
-    <screen>nmap has the variants:
+    <screen>fetchmail has the variants:
         universal
-        gtk2
-        no_ssl
-        no_pcre</screen>
+        ssl: Support secure connections using OpenSSL
+        fetchmailconf: Install a graphical configurator
+        ntlm: Enable NTLM authentication</screen>
+
+    <note>
+      <para>Variant descriptions are optional, so you may not see descriptions
+      for all variants.</para>
+    </note>
 
     <section>
       <title>Invoking Variants</title>
 
-      <para></para>
+      <para>A variant can only be invoked when a port is installed. After you
+      have determined what variants a given port has, if any, you may install
+      a port using the variant as shown.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port install fetchmail +ssl</userinput></programlisting>
+
+      <para>Port variant execution may be verified using the
+      <command>port</command> command with the verbose switch.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port -v install fetchmail +ssl</userinput></programlisting>
+
+      <para>When a port is installed using a valid variant and specified
+      correctly, the verbose output will contain:</para>
+
+      <screen>DEBUG: Executing variant ssl provides ssl</screen>
     </section>
 
     <section>
       <title>Negating Default Variants</title>
 
-      <para></para>
+      <para>For an explanation of default variants, see the "Port Development"
+      section. Default variants are optional, and not all ports using variants
+      have them. For ports with default variants, you may install a port
+      without them by negating default variants using "-" as shown.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port install fetchmail -ssl</userinput></programlisting>
+
+      <para>To verify that you have properly negated a default variant, you
+      may want to use verbose mode. But negated variants are simply not
+      reported in any way by the <command>port</command> command, as if they
+      did not exist. You will know you have successfully negated the default
+      variant in the example above if you do NOT see this line in the verbose
+      output.</para>
+
+      <screen>DEBUG: Executing variant ssl provides ssl</screen>
     </section>
   </section>
 
