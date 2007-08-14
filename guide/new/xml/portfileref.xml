@@ -673,7 +673,7 @@
     used by MacPorts base for individual ports when necessary. Keywords are to
     be used within the "global" and "variant" sections of Portfiles, and not
     within optional port phase declarations. In other words, port phase
-    keywords are not located within port phase declaration; they
+    keywords are not located within port phase declarations, but rather they
     <emphasis>refer</emphasis> to port phases and set options for those
     phases, and they take affect whether or not phase declarations have been
     explicitly defined by a port author.</para>
@@ -684,21 +684,24 @@
     phase.</para>
 
     <section>
-      <title>Keywords using -append and -delete</title>
+      <title>Using -append and -delete Keywords</title>
 
-      <para>Frequently it is necessary to add to a list of keyword values
+      <para>It is often necessary to add to a list of keyword values
       previously set by MacPorts base or set by a prior Portfile keyword. In
       these cases we generally don't want to replace the current list, but
-      rather to add or delete values from the list. Keywords that use
-      "-append" or "-delete" append or delete individual options from a
-      matching list of options without overwriting the list. The three most
-      common practical uses for these keywords are:</para>
+      rather to add or delete values from the list. For this purpose there are
+      "-append" and "-delete" keywords; they are listed below according to
+      keyword category. The three most common uses for these keywords are
+      given below.</para>
 
       <itemizedlist>
         <listitem>
-          <para>Configure arguments. MacPorts base sets the gcc complier flags
-          CFLAGS and LDFLAGS for all ports, therefore to keep from overwriting
-          the defaults use:</para>
+          <para>Preserve default configure arguments.</para>
+
+          <para>MacPorts base sets the gcc compiler flags CFLAGS and LDFLAGS
+          for all ports using <literal>configure.cflags</literal> and
+          <literal>configure.ldflags</literal>, therefore to keep from
+          overwriting the default compiler flags use:</para>
 
           <itemizedlist>
             <listitem>
@@ -712,10 +715,12 @@
         </listitem>
 
         <listitem>
-          <para>Ports belonging to a PortGroup. Ports in a PortGroup have
-          default dependencies set by the Portgroup. Therefore, never use
-          <literal>depends_lib</literal> or it will overwrite the default
-          library dependencies. Use instead:</para>
+          <para>Preserve default dependencies within a PortGroup.</para>
+
+          <para>Ports in a PortGroup have default library dependencies set by
+          MacPorts base. Therefore, never use <literal>depends_lib</literal>
+          in ports belonging to a PortGroup or it will overwrite the default
+          library dependencies. Instead, use:</para>
 
           <itemizedlist>
             <listitem>
@@ -725,10 +730,13 @@
         </listitem>
 
         <listitem>
-          <para>Port variants. When adding or removing dependencies to a port
-          when a variant is specified, you want to add items to the list of
-          dependency keyword values that were set previously in the Portfile.
-          Use the appropriate keywords.</para>
+          <para>Add or delete port dependencies, distfiles, patchfiles, etc.
+          for port variants.</para>
+
+          <para>When a variant requires more or fewer dependencies, distfiles,
+          or patchfiles, you want to add or remove items to the list of
+          dependency keyword values that were set in the global section of the
+          Portfile. Use the appropriate keywords, for example:</para>
 
           <itemizedlist>
             <listitem>
@@ -737,13 +745,13 @@
             </listitem>
 
             <listitem>
-              <para><literal>depends_build-append</literal> or
-              <literal>depends_build-delete</literal></para>
+              <para><literal>distfiles-append</literal> or
+              <literal>distfiles-delete</literal></para>
             </listitem>
 
             <listitem>
-              <para><literal>depends_run-append</literal> or
-              <literal>depends_run-delete</literal></para>
+              <para><literal>patchfiles-append</literal> or
+              <literal>patchfiles-delete</literal></para>
             </listitem>
           </itemizedlist>
         </listitem>
