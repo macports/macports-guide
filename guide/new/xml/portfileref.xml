@@ -1445,12 +1445,15 @@
   </section>
 
   <section>
-    <title>Tcl Primitives</title>
+    <title>Tcl Code and Primitives</title>
 
     <para>A MacPorts <filename>Portfile</filename> is a Tcl script, so it may
-    contain Tcl code anywhere within it, whether in the global section or a
-    phase. The Tcl primitives listed below are defined within the MacPorts
-    base code for use in Portfiles.</para>
+    contain any arbitrary Tcl code you may learn about in a <ulink
+    url="http://tmml.sourceforge.net/doc/tcl/">Tcl reference manual</ulink>.
+    However, few authors will use arbitrary Tcl code; the vast majority will
+    use Tcl primitives that were coded within MacPorts for performing the most
+    common tasks needed for Portfiles. The list below is an exhaustive list of
+    Tcl primitives provided by MacPorts base.</para>
 
     <variablelist>
       <varlistentry>
