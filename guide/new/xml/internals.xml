@@ -338,7 +338,7 @@
         </listitem>
 
         <listitem>
-          <para>Provides essential Portfile Tcl primitives (reinplace,
+          <para>Provides essential Portfile Tcl extensions (reinplace,
           xinstall, etc).</para>
         </listitem>
 
