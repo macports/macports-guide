@@ -13,7 +13,7 @@
 
     <para>A MacPorts <filename>Portfile</filename> is a TCL script that
     usually contains only the simple keyword/value combinations and Tcl
-    primitives as described in the Portfile Reference section below, though it
+    extensions as described in the Portfile Reference section below, though it
     may also contain arbitrary TCL code. Every port has a corresponding
     <filename>Portfile</filename>, but Portfiles do not completely define a
     port's installation behavior since the MacPorts base has default port
