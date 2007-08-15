@@ -437,7 +437,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
   </section>
 
   <section>
-    <title>Creating Patch Files</title>
+    <title>Patch Files</title>
 
     <para>Patch files are files created with the Unix command
     <command>diff</command> that are applied using the command
@@ -445,7 +445,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     functionality.</para>
 
     <section>
-      <title>Portfile Patches</title>
+      <title>Creating Portfile Patches</title>
 
       <para>If you wish to contribute modifications or fixes to a
       <filename>Portfile</filename>, you should do so in the form of a
@@ -507,7 +507,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     </section>
 
     <section>
-      <title>Source Code Patches</title>
+      <title>Creating Source Code Patches</title>
 
       <para>Necessary or useful patches to application source code should be
       sent to the application developer (not the port author) so the
@@ -570,6 +570,33 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           port using the patchfiles keyword.</para>
 
           <programlisting>patchfiles              patch-Makefile.in</programlisting>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section>
+      <title>Manually Applying Patches</title>
+
+      <para>Though MacPorts applies patch files automatically, you may want to
+      know how to apply patch files manually if you want to apply uncommitted
+      Portfile patches or other similar uses.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>Change to the directory containing the file to be patched. In
+          this example, we'll apply a <filename>Portfile</filename> patch to
+          the postfix port.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd /opt/local/var/macports/sources/rsync.macports.org/release/ports/mail/postfix</userinput></programlisting>
+        </listitem>
+
+        <listitem>
+          <para>Now apply the patch that is on the current user's desktop. The
+          patchfile knows the filename of the file to be patched.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>patch &lt; ~/Desktop/Portfile.diff</userinput></programlisting>
+
+          <screen>patching file Portfile</screen>
         </listitem>
       </orderedlist>
     </section>
