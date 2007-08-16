@@ -343,7 +343,7 @@
               <filename>/Applications/MacPorts</filename>.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>binpath</term>
 
@@ -352,7 +352,7 @@
               only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>libpath</term>
 
@@ -360,7 +360,7 @@
               <para>Path to the MacPorts TCL libraries. Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>portpath</term>
 
@@ -369,7 +369,7 @@
               <filename>Portfile</filename>s. Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>filesdir</term>
 
@@ -378,7 +378,7 @@
               <varname>${portpath}</varname>. Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>workpath</term>
 
@@ -386,7 +386,7 @@
               <para>Full path to work directory. Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>worksrcpath</term>
 
@@ -395,7 +395,7 @@
               <varname>${workpath}/${worksrcdir}</varname>.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>destroot</term>
 
@@ -405,7 +405,7 @@
               only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>distpath</term>
 
@@ -413,7 +413,7 @@
               <para>Location to store downloaded distfiles. Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>os.platform</term>
 
@@ -422,7 +422,7 @@
               Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>os.arch</term>
 
@@ -431,7 +431,7 @@
               only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>os.version</term>
 
@@ -440,13 +440,37 @@
               for Darwin 8.0). Read only.</para>
             </listitem>
           </varlistentry>
-        </variablelist><variablelist>
+
           <varlistentry>
             <term>os.major</term>
 
             <listitem>
               <para>The major version number of the host operating system (ie
               "8" for Darwin 8.0). Read only.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term></term>
+
+            <listitem>
+              <para></para>
             </listitem>
           </varlistentry>
         </variablelist></para>
@@ -765,105 +789,119 @@
 
       <variablelist>
         <varlistentry>
+          <term>PortSystem</term>
+
+          <listitem>
+            <para>The top line of every Portfile. The PortSystem line wraps
+            the loading of TCL libraries appropriate for a given version of
+            MacPorts.</para>
+
+            <para><userinput>PortSystem 1.0</userinput></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>name</term>
 
           <listitem>
-            <para>Port name.</para>
+            <para>The name of the Port; it should be lowercase.</para>
+
+            <para><userinput>name foo</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>version</term>
 
           <listitem>
-            <para>Port version.</para>
+            <para>The version of the ported software.</para>
+
+            <para><userinput>version 1.23.45</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
+        <varlistentry>
+          <term>revision</term>
+
+          <listitem>
+            <para>Optional keyword (default is 0) that is used to track port
+            revisions. It should not be incremented for port revisions unless
+            it would benefit users to upgrade an installed port, and cleared
+            when the port is updated to a newer version.</para>
+
+            <para><userinput>revision 1</userinput></para>
+          </listitem>
+        </varlistentry>
+
         <varlistentry>
           <term>categories</term>
 
           <listitem>
-            <para>Port category(s).</para>
+            <para>The category under which the ported software falls. The
+            first category should be the same as the directory within which
+            the Portfile is stored; secondary and tertiary categories may be
+            selected.</para>
+
+            <para><userinput>categories net security</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>maintainers</term>
 
           <listitem>
-            <para>Port maintainer(s).</para>
+            <para>The email address(es) of the Portfile maintainer(s).</para>
+
+            <para><userinput>maintainers openmaintainer@macports.org
+            jdoe@macports.org</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>description</term>
 
           <listitem>
-            <para>Short description.</para>
+            <para>A one-sentence description of the ported software.</para>
+
+            <para><userinput>description A classic shooter arcade
+            game.</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>long_description</term>
 
           <listitem>
-            <para>Long description.</para>
+            <para>A long description of the ported software. Break long lines
+            with escaped newlines.</para>
+
+            <programlisting>description     A classic shooter arcade game derived from \
+                the game alien-munchers.  Not suitable for \
+                children under two years old.      </programlisting>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>homepage</term>
 
           <listitem>
             <para>Port application's homepage.</para>
+
+            <para><userinput>homepage
+            http://www.somesite.org/apps</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>platforms</term>
 
           <listitem>
-            <para>Platform(s) supported.</para>
+            <para>The platforms on which the port has been tested.</para>
+
+            <para><userinput>platforms darwin freebsd</userinput></para>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
-        <varlistentry>
-          <term>master_sites</term>
-
-          <listitem>
-            <para>Download site(s) for the distribution files.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term>checksums</term>
-
-          <listitem>
-            <para>Checksum(s) of the distribution files.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
         <varlistentry>
           <term>depends_lib</term>
 
@@ -891,9 +929,7 @@
             </variablelist>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>depends_build</term>
 
@@ -921,9 +957,7 @@
             </variablelist>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>depends_run</term>
 
@@ -951,25 +985,199 @@
             </variablelist>
           </listitem>
         </varlistentry>
+
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
       </variablelist>
     </section>
 
     <section>
-      <title>Port Phase Keywords</title>
+      <title>Fetch</title>
 
-      <para>MacPorts has ten distinct port installation phases. As previosly
-      stated, port phase keywords are not located within port phase
-      declarations; they <emphasis>refer</emphasis> to port phases and set
-      options for them.</para>
-
-      <para>The fetch phase ...</para>
+      <para></para>
 
       <variablelist>
+        <varlistentry>
+          <term>master_sites</term>
+
+          <listitem>
+            <para>A list of urls from which a port's download file(s) may be
+            retrieved.</para>
+
+            <para>For ports that require only one download file, the list is
+            searched in order until a file matching
+            ${distname}${extract.suffix} is found.</para>
+
+            <programlisting><userinput>master_sites   http://www.somesite.org/files/ \
+               http://www.somemirror.org/somesite_org/files/</userinput></programlisting>
+
+            <para>You may also use mirror sites predefined by MacPorts. Here
+            the sourceforge and gnu mirrors are used.</para>
+
+            <programlisting><userinput>master_sites   sourceforge gnu</userinput></programlisting>
+
+            <para>When using mirror master_sites, the subdirectory ${name} is
+            checked on every mirror. If the mirror subdirectory does not match
+            ${name}, then you may specify it using after the mirror separated
+            by a colon. </para>
+
+            <programlisting><userinput>master_sites   sourceforge:widget \
+               gnu:widget</userinput></programlisting>
+
+            <para>For ports that must fetch multiple download files from
+            different locations, you may label the files with tags and match
+            the tags in a distfiles statement. The format is
+            <literal>mirror:subdirectory:tag</literal>.</para>
+
+            <para>In the example below, file_one.tar.gz is fetched from
+            sourceforge mirrors in subdirectory ${name}; file tagtwo.tar.gz is
+            fetched from the gnu mirrors in subdirectory sources.</para>
+
+            <programlisting><userinput>distfiles       file_one.tar.gz:tagone \
+                file_two.tar.gz:tagtwo \
+                file_three.tar.gz
+
+master_sites    sourceforge::tagone \
+                gnu:sources:tagtwo</userinput></programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>patch_sites</term>
+
+          <listitem>
+            <para>A list of sites from which a port's patchfiles may be
+            downloaded, where applicable.</para>
+
+            <programlisting><userinput>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</userinput></programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>distname</term>
+
+          <listitem>
+            <para>The default distname is ${name}-${version}. This keyword is
+            used to specify download files that do not meet this standard
+            (excluding the extract.suffix).</para>
+
+            <para><userinput>distname ${name}</userinput></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>distfiles</term>
+
+          <listitem>
+            <para>The default distfile name is ${distname}${extract.suffix}.
+            This keyword is used when a download file for a port is not
+            ${distname}.${extract.suffix} or to used to specify multiple
+            download files.</para>
+
+            <para><userinput>distfiles ${name}-dev_src.tgz</userinput></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.suffix</term>
+
+          <listitem>
+            <para>The default value is .tar.gz, so is normally used to specify
+            file suffixes other than .tar.gz.</para>
+
+            <para><userinput>extract.suffix .tar.gz</userinput></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_bzip2</term>
+
+          <listitem>
+            <para>This keyword is for downloads that are tarred and bzipped.
+            It automatically sets these variables:</para>
+
+            <simplelist>
+              <member>extract_suffix = .tar.bz2</member>
+
+              <member>extract.cmd = bzip</member>
+            </simplelist>
+
+            <para><userinput>use_bzip2 yes</userinput></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_zip</term>
+
+          <listitem>
+            <para>This keyword is for downloads are zipped. It automatically
+            sets these variables:</para>
+
+            <simplelist>
+              <member>extract.suffix = .zip</member>
+
+              <member>extract.cmd = unzip</member>
+
+              <member>extract.pre_args = -q</member>
+
+              <member>extract.post_args = "-d $portpath/$workdir"</member>
+            </simplelist>
+
+            <para><userinput>use_zip yes</userinput></para>
+          </listitem>
+        </varlistentry>
+
         <varlistentry>
           <term></term>
 
           <listitem>
             <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term></term>
+
+          <listitem>
+            <para></para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Checksum</title>
+
+      <para></para>
+
+      <variablelist>
+        <varlistentry>
+          <term>checksums</term>
+
+          <listitem>
+            <para>Checksum(s) of the distribution files.</para>
+
+            <para><userinput>checksums md5
+            65b89365a65dcad71d4402b48</userinput></para>
+
+            <para>To download multiple files for a port, you must associate
+            the files with their checksums by including the filename.</para>
+
+            <programlisting>checksums     ${distname}${extract.suffix} md5 65b89365a65dcad71d4402b44 \
+              hobbit.tar.gz md5 65b89365a65dcad71d4402b48</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -983,234 +1191,16 @@
           </listitem>
         </varlistentry>
       </variablelist>
+    </section>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
+    <section>
+      <title>Extract</title>
 
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
+      <para></para>
+    </section>
 
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The checksum phase ...</para>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The extract phase ...</para>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The patch phase ...</para>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The configuration phase ...</para>
+    <section>
+      <title>Configure</title>
 
       <para>MacPorts base sets some important default configure options, so
       you must be careful not to overwrite them with your Portfile keywords;
@@ -1248,9 +1238,7 @@
             </variablelist>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>configure.cflags</term>
 
@@ -1278,9 +1266,7 @@
             </variablelist>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term>configure.ldflags</term>
 
@@ -1308,9 +1294,7 @@
             </variablelist>
           </listitem>
         </varlistentry>
-      </variablelist>
 
-      <variablelist>
         <varlistentry>
           <term></term>
 
@@ -1319,250 +1303,504 @@
           </listitem>
         </varlistentry>
       </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The build phase ...</para>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The destroot phase ...</para>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <variablelist>
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <para>The install phase ...</para>
-
-      <para>The activate phase ...</para>
 
       <para></para>
+    </section>
+
+    <section>
+      <title>Build</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Destroot</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Install</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Activate</title>
 
       <para></para>
     </section>
   </section>
 
   <section>
-    <title>Tcl Code and Extensions</title>
+    <title>Tcl Extensions</title>
 
     <para>A MacPorts <filename>Portfile</filename> is a Tcl script, so it may
     contain any arbitrary Tcl code you may learn about in a <ulink
     url="http://tmml.sourceforge.net/doc/tcl/">Tcl reference manual</ulink>.
     However, few authors will use arbitrary Tcl code; the vast majority will
     use Tcl extensions that are coded within MacPorts for performing the most
-    common tasks needed for Portfiles. The list below is an exhaustive list of
-    Tcl extensions provided by MacPorts base.</para>
+    common tasks needed for Portfiles. The list below is a list of Tcl
+    extensions provided by MacPorts base.</para>
 
-    <variablelist>
-      <varlistentry>
-        <term>reinplace</term>
+    <section>
+      <title>file</title>
+
+      <para></para>
+
+      <para><variablelist>
+          <varlistentry>
+            <term>file</term>
+
+            <listitem>
+              <para>Description.</para>
+
+              <variablelist>
+                <varlistentry>
+                  <term>file copy</term>
+
+                  <listitem>
+                    <para></para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>file move</term>
+
+                  <listitem>
+                    <para></para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>file rename</term>
+
+                  <listitem>
+                    <para></para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>file delete [-force]</term>
+
+                  <listitem>
+                    <para></para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>file mkdir</term>
+
+                  <listitem>
+                    <para></para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>macros</term>
+
+            <listitem>
+              <para>Description.</para>
+
+              <variablelist>
+                <varlistentry>
+                  <term>copy</term>
+
+                  <listitem>
+                    <para>Shorthand alternative to "file copy".</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>move</term>
+
+                  <listitem>
+                    <para>Shorthand alternative to "file rename".</para>
+                  </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                  <term>delete file ...</term>
+
+                  <listitem>
+                    <para>Deletes each of the given files/directories. Behaves
+                    similarly to file delete -force except that file delete
+                    -force will fail to delete directories properly on 10.3
+                    systems.</para>
+                  </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                  <term>touch</term>
+
+                  <listitem>
+                    <para>Mimicks the BSD touch command.</para>
+                  </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                  <term>ln</term>
+
+                  <listitem>
+                    <para>Mimickes the BSD ln command.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>xinstall</term>
+
+            <listitem>
+              <para>xinstall copies files and creates directories; it is
+              intended to be compatible with install(1).</para>
+
+              <variablelist>
+                <varlistentry>
+                  <term>xinstall [-o owner] [-g group] [-m mode] [file1 file2
+                  ...] directory</term>
+
+                  <listitem>
+                    <para>Install the specified file(s) to a destination
+                    directory.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>xinstall [-o owner] [-g group] [-m mode] [-W dir]
+                  [file1 file2 ...] directory</term>
+
+                  <listitem>
+                    <para>Change to <option>dir</option> and install file(s)
+                    to a destination directory.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>eval xinstall [-o owner] [-g group] [-m mode] [glob
+                  regexp] directory</term>
+
+                  <listitem>
+                    <para>Install the file(s) matching the glob expression to
+                    a destination directory.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>xinstall -d [-o owner] [-g group] [-m mode]
+                  directory</term>
+
+                  <listitem>
+                    <para>Create a directory.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <para>Defaults:</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>owner -</para>
+                </listitem>
+
+                <listitem>
+                  <para>group -</para>
+                </listitem>
+
+                <listitem>
+                  <para>mode -</para>
+                </listitem>
+              </itemizedlist>
+
+              <para>Examples:</para>
+
+              <programlisting>xinstall -m 640 ${worksrcpath}/doc README \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+              <programlisting>xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+              <programlisting>eval xinstall -m 640 [glob ${worksrcpath}/doc/* \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+              <programlisting>xinstall -d ${destroot}${prefix}/share/doc/${name}</programlisting>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>reinplace</term>
+
+            <listitem>
+              <para>Description.</para>
+
+              <para>Examples:</para>
+
+              <programlisting></programlisting>
+
+              <programlisting></programlisting>
+
+              <programlisting></programlisting>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>user/group</term>
+
+            <listitem>
+              <para></para>
+
+              <variablelist>
+                <varlistentry>
+                  <term>adduser username [uid=uid] [gid=gid] [passwd=passwd]
+                  [realname=realname] [home=home] [shell=shell]</term>
+
+                  <listitem>
+                    <para>Add a new local user to the system with the
+                    specified uid, gid, password, real name, home directory
+                    and login shell.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>existsuser username</term>
+
+                  <listitem>
+                    <para>Check if a local user exists.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>nextuid</term>
+
+                  <listitem>
+                    <para>Returns the highest used uid plus one.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>addgroup group [gid=gid] [passwd=passwd]
+                  [realname=realname] [users=users]</term>
+
+                  <listitem>
+                    <para>Add a new local group to the system, with the
+                    specified gid, password, real name, and with a list users
+                    as members.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>existsgroup group</term>
+
+                  <listitem>
+                    <para>Check if a local group exists and return the
+                    corresponding gid. This can be used with adduser:</para>
+
+                    <programlisting>addgroup foo
+adduser foo gid=[existsgroup foo]</programlisting>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+
+              <variablelist>
+                <varlistentry>
+                  <term>nextgid</term>
+
+                  <listitem>
+                    <para>Returns the highest used gid plus one.</para>
+                  </listitem>
+                </varlistentry>
+              </variablelist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>External program execution</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para></para>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>xinstall</title>
+
+      <para>xinstall copies files and creates directories; it is intended to
+      be compatible with install(1).</para>
+
+      <para><variablelist>
+          <varlistentry>
+            <term>xinstall [-o owner] [-g group] [-m mode] [file1 file2 ...]
+            directory</term>
+
+            <listitem>
+              <para>Install the specified file(s) to a destination
+              directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>xinstall [-o owner] [-g group] [-m mode] [-W dir] [file1
+            file2 ...] directory</term>
+
+            <listitem>
+              <para>Change to <option>dir</option> and install file(s) to a
+              destination directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>eval xinstall [-o owner] [-g group] [-m mode] [glob regexp]
+            directory</term>
+
+            <listitem>
+              <para>Install the file(s) matching the glob expression to a
+              destination directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist><variablelist>
+          <varlistentry>
+            <term>xinstall -d [-o owner] [-g group] [-m mode] directory</term>
+
+            <listitem>
+              <para>Create a directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist></para>
+
+      <para>Defaults:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>owner -</para>
+        </listitem>
 
         <listitem>
-          <para>Description reinplace.</para>
+          <para>group -</para>
         </listitem>
-      </varlistentry>
-    </variablelist>
-
-    <variablelist>
-      <varlistentry>
-        <term>xinstall</term>
 
         <listitem>
-          <para>Description xinstall.</para>
+          <para>mode - 755</para>
         </listitem>
-      </varlistentry>
-    </variablelist>
+      </itemizedlist>
 
-    <variablelist>
-      <varlistentry>
-        <term>file copy</term>
+      <para>Examples:</para>
 
-        <listitem>
-          <para>Description file copy.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+      <programlisting>xinstall -m 640 ${worksrcpath}/doc README \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
 
-    <variablelist>
-      <varlistentry>
-        <term>file delete</term>
+      <programlisting>xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
 
-        <listitem>
-          <para>Description file delete.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+      <programlisting>eval xinstall -m 640 [glob ${worksrcpath}/doc/* \
+       ${destroot}${prefix}/share/doc/${name}</programlisting>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+      <programlisting>xinstall -d ${destroot}${prefix}/share/doc/${name}</programlisting>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+      <para></para>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+      <para></para>
+    </section>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+    <section>
+      <title>reinplace</title>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+      <para></para>
+    </section>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+    <section>
+      <title>user/group</title>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+      <para></para>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+      <variablelist>
+        <varlistentry>
+          <term>adduser username [uid=uid] [gid=gid] [passwd=passwd]
+          [realname=realname] [home=home] [shell=shell]</term>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+          <listitem>
+            <para>Add a new local user to the system with the specified uid,
+            gid, password, real name, home directory and login shell.</para>
+          </listitem>
+        </varlistentry>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+        <varlistentry>
+          <term>existsuser username</term>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+          <listitem>
+            <para>Check if a local user exists.</para>
+          </listitem>
+        </varlistentry>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+        <varlistentry>
+          <term>nextuid</term>
 
-    <variablelist>
-      <varlistentry>
-        <term></term>
+          <listitem>
+            <para>Returns the highest used uid plus one.</para>
+          </listitem>
+        </varlistentry>
 
-        <listitem>
-          <para></para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
+        <varlistentry>
+          <term>addgroup group [gid=gid] [passwd=passwd] [realname=realname]
+          [users=users]</term>
+
+          <listitem>
+            <para>Add a new local group to the system, with the specified gid,
+            password, real name, and with a list users as members.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>existsgroup group</term>
+
+          <listitem>
+            <para>Check if a local group exists and return the corresponding
+            gid. This can be used with adduser:</para>
+
+            <programlisting>addgroup foo
+adduser foo gid=[existsgroup foo]</programlisting>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Execute External Programs</title>
+
+      <para>Only use when ...</para>
+    </section>
   </section>
 </chapter>
