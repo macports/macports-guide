@@ -339,6 +339,13 @@ libdap depends on openssl</screen>
   </section>
 
   <section>
+    <title>Common Tasks</title>
+
+    <para>This section lists common operations you may want to perform when
+    managing a MacPorts installation.</para>
+  </section>
+
+  <section>
     <title>Port Binaries</title>
 
     <para>MacPorts can pre-compile ports into binaries so applications need
