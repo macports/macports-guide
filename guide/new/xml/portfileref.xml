@@ -103,6 +103,12 @@
         properly. Urge developers to fully support
         <varname>$(DESTDIR)</varname> in their Makefiles.</para>
       </note>
+
+      <para>At the beginning of the destroot phase, all the directories in the
+      file <filename>${prefix}/etc/macports/prefix.mtree</filename> are
+      created. Any directories still empty upon completion of the destroot
+      phase are removed unless a directory is listed using a destroot.keepdirs
+      keyword.</para>
     </section>
 
     <section>
@@ -1563,6 +1569,32 @@ master_sites    sourceforge::tagone \
               to set this variable, or even patch the application's
               Makefile.</para>
             </note>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.keepdirs</term>
+
+          <listitem>
+            <para>A list of directories that should not be removed if empty
+            upon destroot completion.</para>
+
+            <programlisting>destroot.keepdirs \
+                ${destroot}${prefix}/var/run \
+                ${destroot}${prefix}/var/log \
+                ${destroot}${prefix}/var/cache/mrtg</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.violate_mtree</term>
+
+          <listitem>
+            <para>MacPorts tests for compliance to the common directory
+            structure in ${prefix}; the default is "no". If a port is not
+            compliant with the standard, set it to "yes".</para>
+
+            <programlisting>destroot.violate_mtree    yes</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
