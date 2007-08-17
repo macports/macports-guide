@@ -151,8 +151,7 @@
       <title>depends_lib</title>
 
       <para>Library dependencies are needed both at build time (for headers
-      and libraries to link against) and at run time (to provide necessary
-      code).</para>
+      and libraries to link against) and at run time.</para>
 
       <programlisting>depends_lib         port:rrdtool</programlisting>
     </section>
@@ -160,9 +159,8 @@
     <section>
       <title>depends_build</title>
 
-      <para>Build dependencies are only needed when software is compiled. They
-      are not needed at all once the software is compiled and
-      installed.</para>
+      <para>Build dependencies are needed when software is compiled, but not
+      needed at all once the software is compiled and installed.</para>
 
       <programlisting>depends_build       port:gcc42</programlisting>
     </section>
@@ -171,7 +169,7 @@
       <title>depends_run</title>
 
       <para>Run dependencies are needed when the software is run, but not to
-      compile the software.</para>
+      compile it.</para>
 
       <programlisting>depends_run         port:apache2</programlisting>
     </section>
@@ -447,30 +445,6 @@
             <listitem>
               <para>The major version number of the host operating system (ie
               "8" for Darwin 8.0). Read only.</para>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term></term>
-
-            <listitem>
-              <para></para>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term></term>
-
-            <listitem>
-              <para></para>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term></term>
-
-            <listitem>
-              <para></para>
             </listitem>
           </varlistentry>
         </variablelist></para>
@@ -785,7 +759,7 @@
     <section>
       <title>Global Keywords</title>
 
-      <para>Global keywords.</para>
+      <para>The list of global keywords.</para>
 
       <variablelist>
         <varlistentry>
@@ -796,7 +770,7 @@
             the loading of TCL libraries appropriate for a given version of
             MacPorts.</para>
 
-            <para><userinput>PortSystem 1.0</userinput></para>
+            <programlisting>PortSystem   1.0</programlisting>
           </listitem>
         </varlistentry>
 
@@ -806,7 +780,7 @@
           <listitem>
             <para>The name of the Port; it should be lowercase.</para>
 
-            <para><userinput>name foo</userinput></para>
+            <programlisting>name         foo</programlisting>
           </listitem>
         </varlistentry>
 
@@ -816,7 +790,7 @@
           <listitem>
             <para>The version of the ported software.</para>
 
-            <para><userinput>version 1.23.45</userinput></para>
+            <programlisting>version      1.23.45</programlisting>
           </listitem>
         </varlistentry>
 
@@ -829,7 +803,7 @@
             it would benefit users to upgrade an installed port, and cleared
             when the port is updated to a newer version.</para>
 
-            <para><userinput>revision 1</userinput></para>
+            <programlisting>revision     1</programlisting>
           </listitem>
         </varlistentry>
 
@@ -842,7 +816,7 @@
             the Portfile is stored; secondary and tertiary categories may be
             selected.</para>
 
-            <para><userinput>categories net security</userinput></para>
+            <programlisting>categories     net security</programlisting>
           </listitem>
         </varlistentry>
 
@@ -852,8 +826,7 @@
           <listitem>
             <para>The email address(es) of the Portfile maintainer(s).</para>
 
-            <para><userinput>maintainers openmaintainer@macports.org
-            jdoe@macports.org</userinput></para>
+            <programlisting>maintainers    openmaintainer@macports.org jdoe@macports.org</programlisting>
           </listitem>
         </varlistentry>
 
@@ -863,8 +836,7 @@
           <listitem>
             <para>A one-sentence description of the ported software.</para>
 
-            <para><userinput>description A classic shooter arcade
-            game.</userinput></para>
+            <programlisting>description    A clasic shooter arcade game.</programlisting>
           </listitem>
         </varlistentry>
 
@@ -875,9 +847,9 @@
             <para>A long description of the ported software. Break long lines
             with escaped newlines.</para>
 
-            <programlisting>description     A classic shooter arcade game derived from \
-                the game alien-munchers.  Not suitable for \
-                children under two years old.      </programlisting>
+            <programlisting>description    A classic shooter arcade game derived from \
+               the game alien-munchers.  Not suitable for \
+               children under two years old.      </programlisting>
           </listitem>
         </varlistentry>
 
@@ -887,8 +859,7 @@
           <listitem>
             <para>Port application's homepage.</para>
 
-            <para><userinput>homepage
-            http://www.somesite.org/apps</userinput></para>
+            <programlisting>homepage       http://www.somesite.org/apps</programlisting>
           </listitem>
         </varlistentry>
 
@@ -898,7 +869,7 @@
           <listitem>
             <para>The platforms on which the port has been tested.</para>
 
-            <para><userinput>platforms darwin freebsd</userinput></para>
+            <programlisting>platforms      darwin freebsd</programlisting>
           </listitem>
         </varlistentry>
 
@@ -906,27 +877,16 @@
           <term>depends_lib</term>
 
           <listitem>
-            <para></para>
+            <para>Library dependencies are needed both at build time (for
+            headers and libraries to link against) and at run time.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_lib-append</term>
+            <programlisting>depends_lib     port:rrdtool</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>depends_lib-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_lib-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+              <member>depends_lib-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
 
@@ -934,27 +894,17 @@
           <term>depends_build</term>
 
           <listitem>
-            <para></para>
+            <para>Build dependencies are needed when software is compiled, but
+            not needed at all once the software is compiled and
+            installed.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_build-append</term>
+            <programlisting>depends_build    port:gcc42</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>depends_build-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_build-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+              <member>depends_build-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
 
@@ -962,35 +912,16 @@
           <term>depends_run</term>
 
           <listitem>
-            <para></para>
+            <para>Run dependencies are needed when the software is run, but
+            not to compile it.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_run-append</term>
+            <programlisting>depends_run      port:apache2</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>depends_run-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>depends_run-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
+              <member>depends_run-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -999,7 +930,7 @@
     <section>
       <title>Fetch</title>
 
-      <para></para>
+      <para>Thelist of keywords related to the fetch phase.</para>
 
       <variablelist>
         <varlistentry>
@@ -1013,21 +944,21 @@
             searched in order until a file matching
             ${distname}${extract.suffix} is found.</para>
 
-            <programlisting><userinput>master_sites   http://www.somesite.org/files/ \
-               http://www.somemirror.org/somesite_org/files/</userinput></programlisting>
+            <programlisting>master_sites   http://www.somesite.org/files/ \
+               http://www.somemirror.org/somesite_org/files/</programlisting>
 
             <para>You may also use mirror sites predefined by MacPorts. Here
             the sourceforge and gnu mirrors are used.</para>
 
-            <programlisting><userinput>master_sites   sourceforge gnu</userinput></programlisting>
+            <programlisting>master_sites   sourceforge gnu</programlisting>
 
-            <para>When using mirror master_sites, the subdirectory ${name} is
-            checked on every mirror. If the mirror subdirectory does not match
-            ${name}, then you may specify it using after the mirror separated
-            by a colon.</para>
+            <para>When using mirror master_sites, the subdirectory
+            <varname>${name}</varname> is checked on every mirror. If the
+            mirror subdirectory does not match ${name}, then you may specify
+            it using after the mirror separated by a colon.</para>
 
-            <programlisting><userinput>master_sites   sourceforge:widget \
-               gnu:widget</userinput></programlisting>
+            <programlisting>master_sites   sourceforge:widget \
+               gnu:widget</programlisting>
 
             <para>For ports that must fetch multiple download files from
             different locations, you may label the files with tags and match
@@ -1035,15 +966,16 @@
             <literal>mirror:subdirectory:tag</literal>.</para>
 
             <para>In the example below, file_one.tar.gz is fetched from
-            sourceforge mirrors in subdirectory ${name}; file tagtwo.tar.gz is
-            fetched from the gnu mirrors in subdirectory sources.</para>
+            sourceforge mirrors in subdirectory <varname>${name}</varname>;
+            file tagtwo.tar.gz is fetched from the gnu mirrors in subdirectory
+            sources.</para>
 
-            <programlisting><userinput>distfiles       file_one.tar.gz:tagone \
+            <programlisting>distfiles       file_one.tar.gz:tagone \
                 file_two.tar.gz:tagtwo \
                 file_three.tar.gz
 
 master_sites    sourceforge::tagone \
-                gnu:sources:tagtwo</userinput></programlisting>
+                gnu:sources:tagtwo</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1054,7 +986,7 @@ master_sites    sourceforge::tagone \
             <para>A list of sites from which a port's patchfiles may be
             downloaded, where applicable.</para>
 
-            <programlisting><userinput>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</userinput></programlisting>
+            <programlisting>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1062,11 +994,12 @@ master_sites    sourceforge::tagone \
           <term>distname</term>
 
           <listitem>
-            <para>The default distname is ${name}-${version}. This keyword is
-            used to specify download files that do not meet this standard
-            (excluding the extract.suffix).</para>
+            <para>The default distname is
+            <varname>${name}-${version}</varname>. This keyword is used to
+            specify download files that do not meet this standard (excluding
+            the extract.suffix).</para>
 
-            <para><userinput>distname ${name}</userinput></para>
+            <programlisting>distname     ${name}</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1074,12 +1007,13 @@ master_sites    sourceforge::tagone \
           <term>distfiles</term>
 
           <listitem>
-            <para>The default distfile name is ${distname}${extract.suffix}.
-            This keyword is used when a download file for a port is not
-            ${distname}.${extract.suffix} or to used to specify multiple
-            download files.</para>
+            <para>The default distfile name is
+            <varname>${distname}${extract.suffix}</varname>. This keyword is
+            used when a download file for a port is not
+            <varname>${distname}${extract.suffix}</varname> or to used to
+            specify multiple download files.</para>
 
-            <para><userinput>distfiles ${name}-dev_src.tgz</userinput></para>
+            <programlisting>distfiles    ${name}-dev_src.tgz</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1090,7 +1024,7 @@ master_sites    sourceforge::tagone \
             <para>The default value is .tar.gz, so is normally used to specify
             file suffixes other than .tar.gz.</para>
 
-            <para><userinput>extract.suffix .tar.gz</userinput></para>
+            <programlisting>extract.suffix   .tar.gz</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1107,7 +1041,7 @@ master_sites    sourceforge::tagone \
               <member>extract.cmd = bzip</member>
             </simplelist>
 
-            <para><userinput>use_bzip2 yes</userinput></para>
+            <programlisting>use_bzip2     yes</programlisting>
           </listitem>
         </varlistentry>
 
@@ -1128,31 +1062,7 @@ master_sites    sourceforge::tagone \
               <member>extract.post_args = "-d $portpath/$workdir"</member>
             </simplelist>
 
-            <para><userinput>use_zip yes</userinput></para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term></term>
-
-          <listitem>
-            <para></para>
+            <programlisting>use_zip       yes</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
@@ -1161,7 +1071,7 @@ master_sites    sourceforge::tagone \
     <section>
       <title>Checksum</title>
 
-      <para></para>
+      <para>The list of keywords related to the checksum phase.</para>
 
       <variablelist>
         <varlistentry>
@@ -1170,8 +1080,7 @@ master_sites    sourceforge::tagone \
           <listitem>
             <para>Checksum(s) of the distribution files.</para>
 
-            <para><userinput>checksums md5
-            65b89365a65dcad71d4402b48</userinput></para>
+            <programlisting>checksums     md5 65b89365a65dcad71d4402b48</programlisting>
 
             <para>To download multiple files for a port, you must associate
             the files with their checksums by including the filename.</para>
@@ -1181,61 +1090,180 @@ master_sites    sourceforge::tagone \
           </listitem>
         </varlistentry>
       </variablelist>
+    </section>
+
+    <section>
+      <title>Extract</title>
+
+      <para>The list of keywords related to the extract phase.</para>
 
       <variablelist>
         <varlistentry>
-          <term></term>
+          <term>extract.only</term>
 
           <listitem>
-            <para></para>
+            <para>List of files to extract into
+            <varname>${worksrcpath}</varname>; the default is
+            <varname>${distfiles}</varname>. Only use if default extract
+            behavior is not correct for your port.</para>
+
+            <programlisting>extract.only     foo.tar.gz bar.tar.gz</programlisting>
+
+            <simplelist>
+              <member>extract.only-append</member>
+
+              <member>extract.only-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.cmd</term>
+
+          <listitem>
+            <para>Command to perform extraction; the default is "gzip".</para>
+
+            <programlisting>extract.cmd     gunzip</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.pre_args</term>
+
+          <listitem>
+            <para>Arguments added to extract.cmd before a file name; the
+            default is "-dc".</para>
+
+            <programlisting>extract.pre_args    -cd</programlisting>
+
+            <simplelist>
+              <member>extract.pre_args-append</member>
+
+              <member>extract.pre_args-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.args</term>
+
+          <listitem>
+            <para>Arguments to extract.cmd; the default is
+            <varname>${distpath}/${distfile}</varname>.</para>
+
+            <programlisting>extract.args      </programlisting>
+
+            <simplelist>
+              <member>extract.args-append</member>
+
+              <member>extract.args-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>extract.post_args</term>
+
+          <listitem>
+            <para>Arguments added to extract.cmd after a file name; the
+            default is "| tar -xf".</para>
+
+            <programlisting>extract.post_args     "| tar -xf - --exclude 'CVS'"</programlisting>
+
+            <simplelist>
+              <member>extract.post_args-append</member>
+
+              <member>extract.post_args-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
       </variablelist>
     </section>
 
     <section>
-      <title>Extract</title>
+      <title>Patch</title>
 
-      <para></para>
+      <para>The list of keywords related to the patch phase.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>patchfiles</term>
+
+          <listitem>
+            <para>Specify patch files to be applied for a port.</para>
+
+            <programlisting>patchfiles     patch-Makefile.in patch-source.c</programlisting>
+
+            <simplelist>
+              <member>patchfiles-append</member>
+
+              <member>patchfiles-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
 
     <section>
       <title>Configure</title>
 
+      <para>The list of keywords related to the configure phase.</para>
+
       <para>MacPorts base sets some important default configure options, so
-      you must be careful not to overwrite them with your Portfile keywords;
-      for this reason you should use the -append version of configure
-      keywords. For example, MacPorts base sets default
+      should use the -append version of most configure keywords so you don't
+      overwrite them. For example, MacPorts base sets default
       <literal>configure.ldflags</literal> so you should always use
       <literal>configure.cflags-append</literal> to set additional CFLAGS in
       Portfiles.</para>
 
       <variablelist>
         <varlistentry>
+          <term>configure.env</term>
+
+          <listitem>
+            <para>Set environment variables for configure.</para>
+
+            <programlisting>configure.env     CFLAGS=-I${prefix}/include</programlisting>
+
+            <simplelist>
+              <member>configure.env-append</member>
+
+              <member>configure.env-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.pre_args</term>
+
+          <listitem>
+            <para>Arguments added to configure.cmd before
+            <varname>${configure.args}</varname>; the default is
+            --prefix=${prefix}.</para>
+
+            <programlisting>configure.pre_args     --prefix=${prefix}/apache2</programlisting>
+
+            <simplelist>
+              <member>configure.pre_args-append</member>
+
+              <member>configure.pre_args-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>configure.args</term>
 
           <listitem>
-            <para></para>
+            <para>Arguments to pass to configure.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.args-append</term>
+            <programlisting>configure.args         --etcdir=${prefix}/etc</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>configure.args-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.args-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+              <member>configure.args-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
 
@@ -1243,27 +1271,15 @@ master_sites    sourceforge::tagone \
           <term>configure.cflags</term>
 
           <listitem>
-            <para></para>
+            <para>Set CFLAGS compiler flags.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.cflags-append</term>
+            <programlisting>configure.cflags      -I/usr/X11R6/include</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>configure.cflags-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.cflags-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+              <member>configure.cflags-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
 
@@ -1271,64 +1287,285 @@ master_sites    sourceforge::tagone \
           <term>configure.ldflags</term>
 
           <listitem>
-            <para></para>
+            <para>Set LDFLAGS for the linker.</para>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.ldflags-append</term>
+            <programlisting>configure.ldflags     -L${prefix}/lib/db44</programlisting>
 
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+            <simplelist>
+              <member>configure.ldflags-append</member>
 
-            <variablelist>
-              <varlistentry>
-                <term>configure.ldflags-delete</term>
-
-                <listitem>
-                  <para></para>
-                </listitem>
-              </varlistentry>
-            </variablelist>
+              <member>configure.ldflags-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term></term>
+          <term>configure.cppflags</term>
 
           <listitem>
-            <para></para>
+            <para>Set CPPFLAGS for passing to the C processor.</para>
+
+            <programlisting>configure.cppflags    -I${prefix}/include/db4</programlisting>
+
+            <simplelist>
+              <member>configure.cppflags-append</member>
+
+              <member>configure.cppflags-delete</member>
+            </simplelist>
           </listitem>
         </varlistentry>
       </variablelist>
 
-      <para></para>
+      <section>
+        <title>Automake and Autoconf</title>
+
+        <para>The list of configure keywords available for ports that need
+        automake and/or autoconf.</para>
+
+        <para><variablelist>
+            <varlistentry>
+              <term>use_automake</term>
+
+              <listitem>
+                <para>Whether or not to use automake; the default is
+                "no".</para>
+
+                <programlisting>use_automake      yes</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>automake.env</term>
+
+              <listitem>
+                <para>Environment variables to pass to automake.</para>
+
+                <programlisting>automake.env      CFLAGS=-I${prefix}/include</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>automake.args</term>
+
+              <listitem>
+                <para>Arguments to pass to automake.</para>
+
+                <programlisting>automake.args     --foreign</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>automake.dir</term>
+
+              <listitem>
+                <para>Directory in which to run
+                <varname>${automake.cmd}</varname>; the default is
+                <varname>${worksrcpath}</varname>.</para>
+
+                <programlisting>automake.dir      ./src</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>use_autoconf</term>
+
+              <listitem>
+                <para>Whether or not to use autoconf; the default is
+                "no".</para>
+
+                <programlisting>use_autoconf      yes</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>autoconf.env</term>
+
+              <listitem>
+                <para>Environmental variables to pass to autoconf.</para>
+
+                <programlisting>autoconf.env      CFLAGS=-I${prefix}/include/gtk12</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>autoconf.args</term>
+
+              <listitem>
+                <para>Arguments to pass to autoconf.</para>
+
+                <programlisting>autoconf.args     -l src/aclocaldir</programlisting>
+              </listitem>
+            </varlistentry>
+
+            <varlistentry>
+              <term>autoconf.dir</term>
+
+              <listitem>
+                <para>Directory in which to run
+                <varname>${autoconf.cmd}</varname>; the default is
+                <varname>${worksrcpath}</varname>.</para>
+
+                <programlisting>autoconf.dir      src</programlisting>
+              </listitem>
+            </varlistentry>
+          </variablelist></para>
+      </section>
     </section>
 
     <section>
       <title>Build</title>
 
-      <para></para>
+      <para>The list of keywords related to the build phase.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>build.cmd</term>
+
+          <listitem>
+            <para>Make command to run in <varname>${worksrcdir}</varname>; the
+            default is "make".</para>
+
+            <programlisting>build.cmd      pbxbuild</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.type</term>
+
+          <listitem>
+            <para>Defines which "make" is required: "gnu" or "bsd". Sets
+            build.cmd to either "gnumake" or "bsdmake" accordingly.</para>
+
+            <programlisting>build.type     gnu</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.pre_args</term>
+
+          <listitem>
+            <para>Arguments to pass to <varname>${build.cmd}</varname> before
+            <varname>${build.args}</varname>; the default is
+            <varname>${build.target.current}</varname>.</para>
+
+            <programlisting>build.pre_args      -project AudioSlicer.xcode</programlisting>
+
+            <simplelist>
+              <member>build.pre_args-append</member>
+
+              <member>build.pre_args-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.args</term>
+
+          <listitem>
+            <para>Arguments to pass to <varname>${build.cmd}</varname>.</para>
+
+            <programlisting>build.args          -DNOWARN</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.target</term>
+
+          <listitem>
+            <para>Target to pass to make for building everything; default is
+            "all".</para>
+
+            <programlisting>build.target.all    all-src</programlisting>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
 
     <section>
       <title>Destroot</title>
 
-      <para></para>
-    </section>
+      <para>The list of keywords related to the destroot phase.</para>
 
-    <section>
-      <title>Install</title>
+      <variablelist>
+        <varlistentry>
+          <term>destroot.cmd</term>
 
-      <para></para>
-    </section>
+          <listitem>
+            <para>Install command to run relative to
+            <varname>${worksrcdir}</varname>; defaults is
+            <varname>${build.cmd}</varname>.</para>
 
-    <section>
-      <title>Activate</title>
+            <programlisting>destroot.cmd         pbxbuild</programlisting>
+          </listitem>
+        </varlistentry>
 
-      <para></para>
+        <varlistentry>
+          <term>destroot.type</term>
+
+          <listitem>
+            <para>Defines which "make" is required: either "gnu" or "bsd".
+            Sets install.cmd to either "gnumake" or "bsdmake"
+            accordingly.</para>
+
+            <programlisting>destroot.type        gnu</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.pre_args</term>
+
+          <listitem>
+            <para>Arguments to pass to <varname>${destroot.cmd}</varname>
+            before <varname>${destroot.args}</varname>; default is
+            ${destroot.target}.</para>
+
+            <programlisting>destroot.pre_args    -project AudioSlicer.xcode</programlisting>
+
+            <simplelist>
+              <member>destroot.pre_args-append</member>
+
+              <member>destroot.pre_args-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.target</term>
+
+          <listitem>
+            <para>Install target to pass to
+            <varname>${destroot.cmd}</varname>.</para>
+
+            <programlisting>destroot.target     install-src</programlisting>
+
+            <simplelist>
+              <member>destroot.target-append</member>
+
+              <member>destroot.target-delete</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.destdir</term>
+
+          <listitem>
+            <para>Arguments passed to ${destroot.cmd} to install correctly
+            into the destroot.</para>
+
+            <programlisting>destroot.destdir     prefix=${destroot}${prefix}</programlisting>
+
+            <note>
+              <para>If an application's Makefile properly supports the DESTDIR
+              variable, MacPorts will automatically destroot the port
+              properly. A port must destroot properly or the port will not
+              install correctly, upgrade, or uninstall. If not, you may need
+              to set this variable, or even patch the application's
+              Makefile.</para>
+            </note>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
   </section>
 
@@ -1348,7 +1585,7 @@ master_sites    sourceforge::tagone \
           <term>file</term>
 
           <listitem>
-            <para>Description. </para>
+            <para>Description.</para>
 
             <variablelist>
               <varlistentry>
