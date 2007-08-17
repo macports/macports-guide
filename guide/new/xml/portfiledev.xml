@@ -601,4 +601,11 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       </orderedlist>
     </section>
   </section>
+
+  <section>
+    <title>Portfile Best Practices</title>
+
+    <para>This section contains practical guidelines for creating Portfiles
+    that install smoothly and provide consistency between ports.</para>
+  </section>
 </chapter>
