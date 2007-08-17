@@ -47,7 +47,7 @@ selfupdate done!</screen>
       <para>The sync option performs a subset of selfupdate actions. It
       synchonizes the ports tree, as does <option>selfupdate</option>, but it
       does not check for upgrades to MacPorts base. Unless you have a special
-      reason not to, you should use <option>selfupdate</option>. </para>
+      reason not to, you should use <option>selfupdate</option>.</para>
     </section>
 
     <section>
@@ -111,7 +111,8 @@ Maintainers: nomaintainer@macports.org</screen>
       <para>The <option>variants</option> option allows you to check what
       variations of a port are available before you install it. Variants are a
       way for port authors to provide options that may be invoked at install
-      time. See the Variants" section below for install instructions.</para>
+      time. See the Variants" section below to see how to invoke
+      variants.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
 
