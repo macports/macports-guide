@@ -19,10 +19,11 @@
     <section>
       <title>selfupdate</title>
 
-      <para>The selfupdate option should be used regularly to download new
-      ports and updated versions of current ports. It also checks for later
-      revisions of the MacPorts infrastructure and updates it when
-      necessary.</para>
+      <para>The <option>selfupdate</option> option should be used regularly to
+      <option>sync</option> the local ports tree with the global MacPorts
+      ports repository to get the latest port updates. It also checks for new
+      revisions of the MacPorts infrastructure, called MacPorts base, and
+      upgrades it when necessary.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
@@ -41,10 +42,19 @@ selfupdate done!</screen>
     </section>
 
     <section>
+      <title>sync</title>
+
+      <para>The sync option performs a subset of selfupdate actions. It
+      synchonizes the ports tree, as does <option>selfupdate</option>, but it
+      does not check for upgrades to MacPorts base. Unless you have a special
+      reason not to, you should use <option>selfupdate</option>. </para>
+    </section>
+
+    <section>
       <title>list</title>
 
-      <para>The <userinput>list</userinput> option is used to get a list of
-      all available ports.</para>
+      <para>The <option>list</option> option is used to get a list of all
+      available ports.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
     </section>
@@ -52,8 +62,8 @@ selfupdate done!</screen>
     <section>
       <title>search</title>
 
-      <para>The <userinput>search</userinput> option is very useful to find
-      port names by partial matches.</para>
+      <para>The <option>search</option> option is very useful to find port
+      names by partial matches.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port search rrd</userinput></programlisting>
 
@@ -64,8 +74,8 @@ php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
     <section>
       <title>info</title>
 
-      <para>The <userinput>info</userinput> option is used to get information
-      about a port: description, maintainer, etc.</para>
+      <para>The <option>info</option> option is used to get information about
+      a port: description, maintainer, etc.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port info flowd</userinput></programlisting>
 
@@ -81,8 +91,8 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>deps</title>
 
-      <para>The <userinput>deps</userinput> option shows you the dependencies
-      of a port; dependencies are explicitly declared in
+      <para>The <option>deps</option> option shows you the dependencies of a
+      port; dependencies are explicitly declared in
       <filename>Portfile</filename>s.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port deps apache2</userinput></programlisting>
@@ -98,10 +108,10 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>variants</title>
 
-      <para>The <userinput>variants</userinput> option allows you to check
-      what variations of a port are available before you install it. Variants
-      are a way for port authors to provide options that may be invoked at
-      install time.</para>
+      <para>The <option>variants</option> option allows you to check what
+      variations of a port are available before you install it. Variants are a
+      way for port authors to provide options that may be invoked at install
+      time. See the Variants" section below for install instructions.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
 
@@ -115,7 +125,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>install</title>
 
-      <para>The option <userinput>install</userinput> is used to install a
+      <para>The option <option>install</option> is used to install a
       port.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap</userinput></programlisting>
@@ -123,14 +133,9 @@ Maintainers: nomaintainer@macports.org</screen>
       <note>
         <para>You may break up a port's installation into smaller steps for
         troubleshooting by passing <command>port</command> a prior
-        installation phase such as <userinput>fetch</userinput>,
-        <userinput>configure</userinput>, <userinput>build</userinput>, or
-        <userinput>destroot</userinput>.</para>
+        installation phase such as fetch, configure, build, or
+        destroot.</para>
       </note>
-
-      <para>Variants are a way for port authors to provide options for ports
-      that may be invoked at install time. Variants are invoked by appending
-      the name preceeded by a "+" after the install option.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap +no_ssl</userinput></programlisting>
     </section>
@@ -138,8 +143,8 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>clean</title>
 
-      <para>The option <userinput>clean</userinput> deletes all intermediate
-      files that MacPorts creates while building a port. A <userinput>port
+      <para>The option <option>clean</option> deletes all intermediate files
+      that MacPorts creates while building a port. A <userinput>port
       clean</userinput> is also often necessary to remove corrupted tarballs
       after a failed <userinput>fetch</userinput> phase.</para>
 
@@ -147,16 +152,16 @@ Maintainers: nomaintainer@macports.org</screen>
 
       <note>
         <para>You may also clean files selectively by using options
-        <userinput>--dist</userinput>, <userinput>--archive</userinput>, or
-        <userinput>--work</userinput>.</para>
+        <option>--dist</option>, <option>--archive</option>, or
+        <option>--work</option>.</para>
       </note>
     </section>
 
     <section>
       <title>uninstall</title>
 
-      <para>The <userinput>uninstall</userinput> option will uninstall an
-      installed port.</para>
+      <para>The <option>uninstall</option> option will uninstall an installed
+      port.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port uninstall vile</userinput></programlisting>
 
@@ -174,8 +179,8 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>contents</title>
 
-      <para>The <userinput>contents</userinput> option displays the files that
-      have been installed by a given port.</para>
+      <para>The <option>contents</option> option displays the files that have
+      been installed by a given port.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port contents render</userinput></programlisting>
 
@@ -190,7 +195,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>installed</title>
 
-      <para>The <userinput>installed</userinput> option displays all installed
+      <para>The <option>installed</option> option displays all installed
       ports.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port installed</userinput></programlisting>
@@ -212,10 +217,9 @@ Maintainers: nomaintainer@macports.org</screen>
     <section>
       <title>outdated</title>
 
-      <para>The <userinput>outdated</userinput> option checks your installed
-      ports against the MacPorts repository to see if updated
-      <filename>Portfile</filename>s have been released since your ports were
-      installed.</para>
+      <para>The <option>outdated</option> option checks your installed ports
+      against the MacPorts repository to see if updated Portfiles have been
+      released since your ports were installed.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
 
@@ -229,14 +233,14 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     <section>
       <title>upgrade</title>
 
-      <para>The <userinput>upgrade</userinput> option upgrades installed ports
-      and their dependencies when a <filename>Portfile</filename> in the
+      <para>The <option>upgrade</option> option upgrades installed ports and
+      their dependencies when a <filename>Portfile</filename> in the
       repository has been updated after a port was installed.</para>
 
-      <programlisting><userinput>%%</userinput> <userinput>port upgrade gnome</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>port upgrade gnome</userinput></programlisting>
 
       <para>If you wish not to upgrade a port's dependencies, use the -n
-      option.</para>
+      switch.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port -n upgrade gnome</userinput></programlisting>
 
@@ -246,7 +250,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       <programlisting><prompt>%%</prompt> <userinput>port upgrade outdated</userinput></programlisting>
 
       <note>
-        <para>The <userinput>upgrade</userinput> option by default does not
+        <para>The <option>upgrade</option> option by default does not
         uninstall an upgraded port —it deactivates it (see section Port
         Installation Phases below). If you wish to uninstall the old version
         use the -u option.</para>
