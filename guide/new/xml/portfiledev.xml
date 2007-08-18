@@ -201,11 +201,36 @@ Ports failed:                   0</screen>
       <listitem>
         <para>Port maintainers</para>
 
-        <para>A port's maintainer is who takes responsibility for the port;
-        ports that are not maintained and fair game to be modified by any
-        committer use <email>nomaintainer@macports.org</email>.</para>
+        <para>A port's maintainer is a person who takes responsibility for
+        keeping the port up-to-date. To avoid spam, email addresses are often
+        hidden. To hide email addresses from spambots, use these
+        conventions.</para>
 
-        <programlisting>maintainers       joebob@macports.org</programlisting>
+        <itemizedlist>
+          <listitem>
+            <para>For addresses in domain @macports.org, simply omit the
+            domain name.</para>
+          </listitem>
+
+          <listitem>
+            <para>For addresses in other domains, say
+            <email>samj@somedomain.org</email>, use the convention
+            somedomain.org:samj to specify the address.</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>In the example below, the email addresses
+        <email>joebob@macports.org</email> and
+        <email>julesverne@somedomain.org</email> are hidden using this
+        convention.</para>
+
+        <programlisting>maintainers       joebob \
+                  somedomain.org:julesverne</programlisting>
+
+        <note>
+          <para>The address <email>nomaintainer@macports.org</email>
+          designates a port that may be modified by any committer.</para>
+        </note>
       </listitem>
 
       <listitem>
@@ -285,7 +310,7 @@ PortSystem      1.0
 name                    rrdtool
 version                 1.2.23
 categories              net
-maintainers             joebob@macports.org
+maintainers             joebob
 description             Round Robin Database
 long_description        RRDtool is a system to store and display time-series data
 homepage                http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
@@ -607,5 +632,23 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
     <para>This section contains practical guidelines for creating Portfiles
     that install smoothly and provide consistency between ports.</para>
+
+    <section>
+      <title>Don't Overwrite Config Files</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Install Docs and Examples</title>
+
+      <para></para>
+    </section>
+
+    <section>
+      <title>Provide User Messages</title>
+
+      <para></para>
+    </section>
   </section>
 </chapter>
