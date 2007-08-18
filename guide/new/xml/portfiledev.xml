@@ -96,7 +96,7 @@
         <para>Insert a URL pointing to the local repository location before
         the rsync URL as shown.</para>
 
-        <programlisting>file:///Users/joebob/ports
+        <programlisting>file:///Users/julesverne/ports
 rsync://rsync.macports.org/release/ports
 </programlisting>
 
@@ -115,7 +115,7 @@ rsync://rsync.macports.org/release/ports
         inside a directory that reflect the port's primary category (the first
         category entry in the <filename>Portfile</filename>).</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>cd /Users/joebob</userinput>
+        <programlisting><prompt>%%</prompt> <userinput>cd /Users/julesverne</userinput>
 <prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
 <prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
 <prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
@@ -127,10 +127,10 @@ rsync://rsync.macports.org/release/ports
         repository's directory to install it into the
         <filename>Portindex</filename>.</para>
 
-        <programlisting>%% <userinput>cd /Users/joebob/ports</userinput>
+        <programlisting>%% <userinput>cd /Users/julesverne/ports</userinput>
 %% <userinput>portindex</userinput></programlisting>
 
-        <screen>Creating software index in /Users/joebob/ports
+        <screen>Creating software index in /Users/julesverne/ports
 Adding port games/bestevergame
 
 Total number of ports parsed:   1 
@@ -201,31 +201,13 @@ Ports failed:                   0</screen>
       <listitem>
         <para>Port maintainers</para>
 
-        <para>A port's maintainer is a person who takes responsibility for
-        keeping the port up-to-date. To avoid spam, email addresses are often
-        hidden. To hide email addresses from spambots, use these
-        conventions.</para>
+        <para>A port's maintainer is a person or persons who take
+        responsibility for keeping the port up-to-date, and the maintainer
+        keyword lists maintainer email addresses(s). To hide these addresses
+        from spambots, see the more full explanation of the maintainer keyword
+        in the Portfile Reference section.</para>
 
-        <itemizedlist>
-          <listitem>
-            <para>For addresses in domain @macports.org, simply omit the
-            domain name.</para>
-          </listitem>
-
-          <listitem>
-            <para>For addresses in other domains, say
-            <email>samj@somedomain.org</email>, use the convention
-            somedomain.org:samj to specify the address.</para>
-          </listitem>
-        </itemizedlist>
-
-        <para>In the example below, the email addresses
-        <email>joebob@macports.org</email> and
-        <email>julesverne@somedomain.org</email> are hidden using this
-        convention.</para>
-
-        <programlisting>maintainers       joebob \
-                  somedomain.org:julesverne</programlisting>
+        <programlisting>maintainers       julesverne@somedomain.org</programlisting>
 
         <note>
           <para>The address <email>nomaintainer@macports.org</email>
@@ -310,7 +292,7 @@ PortSystem      1.0
 name                    rrdtool
 version                 1.2.23
 categories              net
-maintainers             joebob
+maintainers             julesverne
 description             Round Robin Database
 long_description        RRDtool is a system to store and display time-series data
 homepage                http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
