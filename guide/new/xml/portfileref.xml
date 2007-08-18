@@ -830,9 +830,30 @@
           <term>maintainers</term>
 
           <listitem>
-            <para>The email address(es) of the Portfile maintainer(s).</para>
+            <para>The email address(es) of the Portfile maintainer(s). To
+            avoid spam, email addresses are often hidden. To hide email
+            addresses from spambots, use these conventions.</para>
 
-            <programlisting>maintainers    openmaintainer@macports.org jdoe@macports.org</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>For addresses in domain @macports.org, simply omit the
+                domain name.</para>
+              </listitem>
+
+              <listitem>
+                <para>For addresses in other domains, say
+                <email>samj@somedomain.org</email>, use the convention
+                somedomain.org:samj to specify the address.</para>
+              </listitem>
+            </itemizedlist>
+
+            <para>In the example below, the email addresses
+            <email>joebob@macports.org</email> and
+            <email>julesverne@somedomain.org</email> are hidden using this
+            convention.</para>
+
+            <programlisting>maintainers       joebob \
+                  somedomain.org:julesverne</programlisting>
           </listitem>
         </varlistentry>
 
