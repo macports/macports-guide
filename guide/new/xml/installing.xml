@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="installing-macports">
   <title>Installing MacPorts</title>
 
   <para>This chapter show you how to install MacPorts and its prerequistes
@@ -9,7 +9,7 @@
   to install MacPorts on FreeBSD, first make sure you have gcc and X11
   installed, and then begin with section 5.</para>
 
-  <section>
+  <section id="installing-macports.install.xcode.tools">
     <title>Install Xcode Tools</title>
 
     <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
@@ -43,7 +43,7 @@
     </note>
   </section>
 
-  <section>
+  <section id="installing-macports.install.x11">
     <title>Install X11</title>
 
     <para>On OS X 10.4, Apple's X Window System (X11) is an optional install
@@ -116,7 +116,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="installing-macports.install.macports.binary">
     <title>Install MacPorts - Binary</title>
 
     <para>If you wish to install MacPorts to a path other than
@@ -148,7 +148,7 @@
     </note>
   </section>
 
-  <section>
+  <section id="installing-macports.install.macports.source">
     <title>Install MacPorts - Source</title>
 
     <para>Installing from source on Mac OS X is only necessary If you wish to
@@ -180,7 +180,7 @@
     </note>
   </section>
 
-  <section>
+  <section id="installing-macports.set.bash.shell">
     <title>Set the Bash Shell</title>
 
     <para>The MacPorts binary installer places a <filename>.profile</filename>
@@ -241,24 +241,9 @@ _=/usr/bin/env</screen>
     <title>MacPorts Selfupdate</title>
 
     <para>You must always do a selfupdate after a new MacPorts install, and
-    you should also do it frequently thereafter. The command updates MacPorts
-    via rsync with the latest port sources, and, if necessary, updates the
-    MacPorts application (called MacPorts base) to the latest release.</para>
-
-    <orderedlist>
-      <listitem>
-        <para>Open a terminal window.</para>
-      </listitem>
-
-      <listitem>
-        <para>Execute the MacPorts selfupdate command.</para>
-
-        <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
-
-        <para>Use the debug flag for verbose output.</para>
-
-        <programlisting><prompt>%%</prompt> <userinput>sudo port -d selfupdate</userinput></programlisting>
-      </listitem>
-    </orderedlist>
+    you should also do it frequently thereafter. See <link
+    linkend="using-macports.port.command.selfupdate">selfupdate</link> —one of
+    several <link linkend="using-macports.port.command">port
+    commands</link>.</para>
   </section>
 </chapter>

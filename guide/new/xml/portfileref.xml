@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="portfile-reference">
   <title>Portfile Reference</title>
 
   <para>This chapter serves as a reference for the major elements of a
   <filename>Portfile</filename>: port phases, variants, StartupItems,
   variables, keywords, and Tcl extensions.</para>
 
-  <section>
+  <section id="portfile-reference.port.phases">
     <title>Port Phases</title>
 
     <para>A MacPorts port has ten distinct phases. The MacPorts base is set to
@@ -19,7 +19,7 @@
     eliminate the default behavior, or augment it using pre- and/or post-
     phases as shown in the section "Portfile Development".</para>
 
-    <section>
+    <section id="portfile-reference.port.phases.fetch">
       <title>Fetch</title>
 
       <para>Overview: Fetch the <varname>${distfiles}</varname> from
@@ -27,7 +27,7 @@
       <filename>${prefix}/var/macports/distfiles</filename>.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.checksum">
       <title>Checksum</title>
 
       <para>Overview: Compare <varname>${checksums}</varname> specified in a
@@ -35,14 +35,14 @@
       ${distfiles}.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.extract">
       <title>Extract</title>
 
       <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
       the path ${prefix}/var/macports/build/..../work</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.patch">
       <title>Patch</title>
 
       <para>Overview: Apply optional <ulink
@@ -57,21 +57,21 @@
       diffs</ulink>.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.configure">
       <title>Configure</title>
 
       <para>Overview: Execute the command "configure" in
       <varname>${workpath}</varname>.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.build">
       <title>Build</title>
 
       <para>Overview: Execute the command "make" in
       <varname>${workpath}</varname>.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.destroot">
       <title>Destroot</title>
 
       <para>Overview: Execute the command <command>make install
@@ -111,7 +111,7 @@
       keyword.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.archive">
       <title>Archive</title>
 
       <para>Overview: Use tar to create a tarball of a port's destrooted files
@@ -119,7 +119,7 @@
       <filename>${prefix}/var/macports/packages/</filename>.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.install">
       <title>Install</title>
 
       <para>Overview: Copy a port's destrooted files into
@@ -127,7 +127,7 @@
       in section "MacPorts Internals" for details.</para>
     </section>
 
-    <section>
+    <section id="portfile-reference.port.phases.activate">
       <title>Activate</title>
 
       <para>Overview: Set <ulink
@@ -136,7 +136,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="portfile-reference.dependencies">
     <title>Dependencies</title>
 
     <para>Free and open source software is highly modular, and MacPorts ports
@@ -153,7 +153,7 @@
     with a build dependency; likewise, upgrading a port will upgrade its
     library and build dependencies also, but not its run dependencies.</para>
 
-    <section>
+    <section id="portfile-reference.dependencies.dependslib">
       <title>depends_lib</title>
 
       <para>Library dependencies are needed both at build time (for headers
@@ -162,7 +162,7 @@
       <programlisting>depends_lib         port:rrdtool</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-reference.dependencies.dependsbuild">
       <title>depends_build</title>
 
       <para>Build dependencies are needed when software is compiled, but not
@@ -171,7 +171,7 @@
       <programlisting>depends_build       port:gcc42</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-reference.dependencies.dependsrun">
       <title>depends_run</title>
 
       <para>Run dependencies are needed when the software is run, but not to
@@ -180,7 +180,7 @@
       <programlisting>depends_run         port:apache2</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-reference.dependencies.nonport">
       <title>Non-Port Dependencies</title>
 
       <para>Port dependencies should refer to other MacPorts ports whenever
@@ -210,7 +210,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="portfile-reference.startupitems">
     <title>StartupItems</title>
 
     <para>StartupItems are keywords that create Mac OS X LaunchDaemon startup
@@ -323,13 +323,13 @@
       </variablelist></para>
   </section>
 
-  <section>
+  <section id="portfile-reference.variables">
     <title>Variables</title>
 
     <para>This section describes the MacPorts preset variables that may be
     used within Portfiles.</para>
 
-    <section>
+    <section id="portfile-reference.variables.general">
       <title>General</title>
 
       <para>These are the variables available to any
@@ -456,7 +456,7 @@
         </variablelist></para>
     </section>
 
-    <section>
+    <section id="portfile-reference.variables.portgroup">
       <title>PortGroup Variables</title>
 
       <para>In addition to the general <filename>Portfile</filename> type for
@@ -669,7 +669,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="portfile-reference.keywords">
     <title>Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -687,7 +687,7 @@
     specify information to be used during a particular installation
     phase.</para>
 
-    <section>
+    <section id="portfile-reference.keywords.append.delete">
       <title>Using -append and -delete Keywords</title>
 
       <para>It is often necessary to add to a list of keyword values
@@ -762,7 +762,7 @@
       </itemizedlist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.global">
       <title>Global Keywords</title>
 
       <para>The list of global keywords.</para>
@@ -956,7 +956,7 @@
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.fetch">
       <title>Fetch</title>
 
       <para>Thelist of keywords related to the fetch phase.</para>
@@ -1097,7 +1097,7 @@ master_sites    sourceforge::tagone \
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.checksum">
       <title>Checksum</title>
 
       <para>The list of keywords related to the checksum phase.</para>
@@ -1121,7 +1121,7 @@ master_sites    sourceforge::tagone \
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.extract">
       <title>Extract</title>
 
       <para>The list of keywords related to the extract phase.</para>
@@ -1209,7 +1209,7 @@ master_sites    sourceforge::tagone \
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.patch">
       <title>Patch</title>
 
       <para>The list of keywords related to the patch phase.</para>
@@ -1233,7 +1233,7 @@ master_sites    sourceforge::tagone \
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.configure">
       <title>Configure</title>
 
       <para>The list of keywords related to the configure phase.</para>
@@ -1441,7 +1441,7 @@ master_sites    sourceforge::tagone \
       </section>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.build">
       <title>Build</title>
 
       <para>The list of keywords related to the build phase.</para>
@@ -1510,7 +1510,7 @@ master_sites    sourceforge::tagone \
       </variablelist>
     </section>
 
-    <section>
+    <section id="portfile-reference.keywords.destroot">
       <title>Destroot</title>
 
       <para>The list of keywords related to the destroot phase.</para>
@@ -1624,7 +1624,7 @@ master_sites    sourceforge::tagone \
     </section>
   </section>
 
-  <section>
+  <section id="portfile-reference.tcl.extensions">
     <title>Tcl Extensions</title>
 
     <para>A MacPorts Portfile is a Tcl script, so it may contain any arbitrary

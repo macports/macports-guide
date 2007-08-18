@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="portfile-development">
   <title>Portfile Development</title>
 
   <para>This chapter covers a brief introduction to Portfiles, how to create a
   local <filename>Portfile</filename> repository for development, and creating
   Portfiles.</para>
 
-  <section>
+  <section id="portfile-development.portfile.introduction">
     <title>Portfile Introduction</title>
 
     <para>A MacPorts <filename>Portfile</filename> is a TCL script that
@@ -76,7 +76,7 @@
     </note>
   </section>
 
-  <section>
+  <section id="portfile-development.local.portfile.repositories">
     <title>Local Portfile Repositories</title>
 
     <para>To create and test <filename>Portfile</filename>s that are not yet
@@ -148,7 +148,7 @@ Ports failed:                   0</screen>
     <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
   </section>
 
-  <section>
+  <section id="portfile-development.creating.a.portfile">
     <title>Creating a Portfile</title>
 
     <para>Here we list the individual <filename>Portfile</filename> components
@@ -205,7 +205,8 @@ Ports failed:                   0</screen>
         responsibility for keeping the port up-to-date, and the maintainer
         keyword lists maintainer email addresses(s). To hide these addresses
         from spambots, see the more full explanation of the maintainer keyword
-        in the Portfile Reference section.</para>
+        in the <link linkend="portfile-reference.keywords.global">Global
+        Keywords</link> section of the Portfile Reference.</para>
 
         <programlisting>maintainers       julesverne@somedomain.org</programlisting>
 
@@ -276,14 +277,14 @@ Ports failed:                   0</screen>
     </orderedlist>
   </section>
 
-  <section>
+  <section id="portfile-development.example.portfiles">
     <title>Example Portfiles</title>
 
     <para>In this section we take a look at a complete simple Portfile, and
     then pre- and post- phase definitions to augment and override the MacPorts
     default phases.</para>
 
-    <section>
+    <section id="portfile-development.example.portfiles.basic.portfile">
       <title>A Basic Portfile</title>
 
       <programlisting># Id$
@@ -311,7 +312,7 @@ configure.args          --prefix=${prefix} \
                         --mandir=${prefix}/share/man</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-development.example.portfiles.pre.post">
       <title>Portfile Using Pre- / Post- Phases</title>
 
       <para>To augment a port's installation phase, and not override it, you
@@ -326,7 +327,7 @@ configure.args          --prefix=${prefix} \
 }</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-development.example.portfiles.override">
       <title>Portfile that Overrides Default Phases</title>
 
       <para>To override the automatic MacPorts installation phase processing,
@@ -338,7 +339,7 @@ configure.args          --prefix=${prefix} \
 }</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-development.example.portfiles.startupitem">
       <title>Portfile Using a StartupItem</title>
 
       <para>Startupitems may be placed in the global section of a
@@ -359,7 +360,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     </section>
   </section>
 
-  <section>
+  <section id="portfile-development.port.variants">
     <title>Port Variants</title>
 
     <para>Variants are a way for port authors to provide options that may be
@@ -367,7 +368,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     <filename>Portfile</filename> using the "variant" keyword and may provide
     a description.</para>
 
-    <section>
+    <section id="portfile-development.port.variants.modify.options">
       <title>Variants to Modify Options</title>
 
       <para>The most common use for a variant is to add or remove
@@ -404,7 +405,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 }</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-development.port.variants.actions.phase">
       <title>Variant Actions in a Phase</title>
 
       <para>If a variant requires options in addition to those provided by
@@ -426,7 +427,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 }</programlisting>
     </section>
 
-    <section>
+    <section id="portfile-development.port.variants.default.variants">
       <title>Default Variants</title>
 
       <para>Variants are used to specify actions that lie outside the core
@@ -443,7 +444,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     </section>
   </section>
 
-  <section>
+  <section id="portfile-development.patch.files">
     <title>Patch Files</title>
 
     <para>Patch files are files created with the Unix command
@@ -451,7 +452,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     <command>patch</command> to modify text files to fix bugs or extend
     functionality.</para>
 
-    <section>
+    <section id="portfile-development.patch.files.portfile.patches">
       <title>Creating Portfile Patches</title>
 
       <para>If you wish to contribute modifications or fixes to a
@@ -513,7 +514,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       MacPorts Trac ticket for the port author to evaluate.</para>
     </section>
 
-    <section>
+    <section id="portfile-development.patch.files.source.patches">
       <title>Creating Source Code Patches</title>
 
       <para>Necessary or useful patches to application source code should be
@@ -581,7 +582,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       </orderedlist>
     </section>
 
-    <section>
+    <section id="portfile-development.patch.files.manually.applying">
       <title>Manually Applying Patches</title>
 
       <para>Though MacPorts applies patch files automatically, you may want to
@@ -609,7 +610,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     </section>
   </section>
 
-  <section>
+  <section id="portfile-development.portfile.best.practices">
     <title>Portfile Best Practices</title>
 
     <para>This section contains practical guidelines for creating Portfiles

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter>
+<chapter id="using-macports">
   <title>Using MacPorts</title>
 
   <para>This chapter describes the MacPorts file hierarchy, using the
   <command>port</command> command, creating port binaries, and setting up an
   rsync replication server.</para>
 
-  <section>
+  <section id="using-macports.port.command">
     <title>The port Command</title>
 
     <para>The MacPorts <command>port</command> command is the main utility
@@ -16,7 +16,7 @@
     <filename>Portfile</filename>s and the MacPorts infrastructure, and
     install and manage ports.</para>
 
-    <section>
+    <section id="using-macports.port.command.selfupdate">
       <title>selfupdate</title>
 
       <para>The <option>selfupdate</option> option should be used regularly to
@@ -34,6 +34,10 @@
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
+      <para>Use the debug flag for verbose output.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>sudo port -d selfupdate</userinput></programlisting>
+
       <screen>DEBUG: Rebuilding the MacPorts base system if needed.
 DEBUG: Synchronizing ports tree(s)
 Synchronizing from rsync://rsync.macports.org/release/ports/
@@ -48,7 +52,7 @@ DEBUG: Setting ownership to root
 selfupdate done!</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.sync">
       <title>sync</title>
 
       <para>The sync option performs a subset of selfupdate actions. It
@@ -57,7 +61,7 @@ selfupdate done!</screen>
       reason not to, you should use <option>selfupdate</option>.</para>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.list">
       <title>list</title>
 
       <para>The <option>list</option> option is used to get a list of all
@@ -66,7 +70,7 @@ selfupdate done!</screen>
       <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.search">
       <title>search</title>
 
       <para>The <option>search</option> option is very useful to find port
@@ -78,7 +82,7 @@ selfupdate done!</screen>
 php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.info">
       <title>info</title>
 
       <para>The <option>info</option> option is used to get information about
@@ -95,7 +99,7 @@ Platforms: darwin
 Maintainers: nomaintainer@macports.org</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.deps">
       <title>deps</title>
 
       <para>The <option>deps</option> option shows you the dependencies of a
@@ -112,7 +116,7 @@ Maintainers: nomaintainer@macports.org</screen>
         pcre</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.variants">
       <title>variants</title>
 
       <para>The <option>variants</option> option allows you to check what
@@ -130,7 +134,7 @@ Maintainers: nomaintainer@macports.org</screen>
         no_pcre</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.install">
       <title>install</title>
 
       <para>The option <option>install</option> is used to install a
@@ -148,7 +152,7 @@ Maintainers: nomaintainer@macports.org</screen>
       <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap +no_ssl</userinput></programlisting>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.clean">
       <title>clean</title>
 
       <para>The option <option>clean</option> deletes all intermediate files
@@ -165,7 +169,7 @@ Maintainers: nomaintainer@macports.org</screen>
       </note>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.uninstall">
       <title>uninstall</title>
 
       <para>The <option>uninstall</option> option will uninstall an installed
@@ -184,7 +188,7 @@ Maintainers: nomaintainer@macports.org</screen>
       </note>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.contents">
       <title>contents</title>
 
       <para>The <option>contents</option> option displays the files that have
@@ -200,7 +204,7 @@ Maintainers: nomaintainer@macports.org</screen>
   /opt/local/share/doc/render/protocol</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.installed">
       <title>installed</title>
 
       <para>The <option>installed</option> option displays all installed
@@ -222,7 +226,7 @@ Maintainers: nomaintainer@macports.org</screen>
   zlib @1.2.3_1 (active)</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.outdated">
       <title>outdated</title>
 
       <para>The <option>outdated</option> option checks your installed ports
@@ -238,7 +242,7 @@ libtool                        1.5.22_0 &lt; 1.5.24_0
 pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.upgrade">
       <title>upgrade</title>
 
       <para>The <option>upgrade</option> option upgrades installed ports and
@@ -267,7 +271,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       </note>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.dependents">
       <title>dependents</title>
 
       <para>The <option>dependents</option> option reports what ports depend
@@ -282,14 +286,14 @@ gnome-vfs depends on openssl
 libdap depends on openssl</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.command.livecheck">
       <title>livecheck</title>
 
       <para></para>
     </section>
   </section>
 
-  <section>
+  <section id="using-macports.port.variants">
     <title>Port Variants</title>
 
     <para>Variants are a way for port authors to provide options for a port
@@ -309,7 +313,7 @@ libdap depends on openssl</screen>
       for all variants.</para>
     </note>
 
-    <section>
+    <section id="using-macports.port.variants.invoking.variants">
       <title>Invoking Variants</title>
 
       <para>A variant can only be invoked when a port is installed. After you
@@ -329,7 +333,7 @@ libdap depends on openssl</screen>
       <screen>DEBUG: Executing variant ssl provides ssl</screen>
     </section>
 
-    <section>
+    <section id="using-macports.port.variants.negating.default.variants">
       <title>Negating Default Variants</title>
 
       <para>For an explanation of default variants, see the "Port Development"
@@ -350,21 +354,21 @@ libdap depends on openssl</screen>
     </section>
   </section>
 
-  <section>
+  <section id="using-macports.common.tasks">
     <title>Common Tasks</title>
 
     <para>This section lists common operations you may want to perform when
     managing a MacPorts installation.</para>
   </section>
 
-  <section>
+  <section id="using-macports.port.binaries">
     <title>Port Binaries</title>
 
     <para>MacPorts can pre-compile ports into binaries so applications need
     not be compiled when intalling on a target system. MacPorts may create two
     types of binaries: archives and packages.</para>
 
-    <section>
+    <section id="using-macports.port.binaries.binary.archives">
       <title>Binary Archives</title>
 
       <para>Binary archives can only be used on a target system running
@@ -408,7 +412,7 @@ DEBUG: Executing archive_finish
       cpio.</para>
     </section>
 
-    <section>
+    <section id="using-macports.port.binaries.binary.packages">
       <title>Binary Packages</title>
 
       <para>Binary packages are standalone binary installers that are
@@ -434,7 +438,7 @@ DEBUG: Executing archive_finish
       <para>All packages are placed in a port's work directory.</para>
     </section>
 
-    <section>
+    <section id="using-macports.port.binaries.port.source.packages">
       <title>Port Source Packages</title>
 
       <para>Source packages are bundles consisting of a
@@ -446,7 +450,7 @@ DEBUG: Executing archive_finish
     </section>
   </section>
 
-  <section>
+  <section id="using-macports.rsync.replication.servers">
     <title>Rsync Replication Servers</title>
 
     <para>You may setup an rsync replication server on your local network to
@@ -456,7 +460,7 @@ DEBUG: Executing archive_finish
     and then serves as the rsync source when rsync replication clients on the
     local network perform selfupdates.</para>
 
-    <section>
+    <section id="using-macports.rsync.replication.servers.rsync.server.setup">
       <title>Rsync Server Setup</title>
 
       <para>To setup a host as an rsync replication server, follow these
@@ -509,7 +513,7 @@ DEBUG: Executing archive_finish
       </orderedlist>
     </section>
 
-    <section>
+    <section id="using-macports.rsync.replication.servers.rsync.client.setup">
       <title>Rsync Client Setup</title>
 
       <para>To setup a host as an rsync replication client, follow these
