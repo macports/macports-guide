@@ -844,8 +844,8 @@
 
               <listitem>
                 <para>For addresses in other domains, say
-                <email>samj@somedomain.org</email>, use the convention
-                somedomain.org:samj to specify the address.</para>
+                <email>account@somedomain.org</email>, use the convention
+                somedomain.org:account to specify the address.</para>
               </listitem>
             </itemizedlist>
 
