@@ -21,9 +21,16 @@
 
       <para>The <option>selfupdate</option> option should be used regularly to
       <option>sync</option> the local ports tree with the global MacPorts
-      ports repository to get the latest port updates. It also checks for new
-      revisions of the MacPorts infrastructure, called MacPorts base, and
-      upgrades it when necessary.</para>
+      ports repository so you will have the latest port versions. It also
+      checks for new revisions of the MacPorts infrastructure, called MacPorts
+      base, and upgrades it when necessary.</para>
+
+      <note>
+        <para>Selfupdate runs only on Mac OS X. If you are running MacPorts on
+        another platform, you must use <option>sync</option> (see below) to
+        update the ports tree, and you must update MacPorts base by manually
+        installing newer versions.</para>
+      </note>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
