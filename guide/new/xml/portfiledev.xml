@@ -205,7 +205,7 @@ Ports failed:                   0</screen>
         Keywords</link> section of the <link
         linkend="portfile-reference">Portfile Reference</link> chapter.</para>
 
-        <programlisting>maintainers       julesverne@somedomain.org</programlisting>
+        <programlisting>maintainers       julesverne@example.org</programlisting>
 
         <note>
           <para>The address <email>nomaintainer@macports.org</email>
