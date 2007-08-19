@@ -5,35 +5,33 @@
   <title>Portfile Development</title>
 
   <para>This chapter covers a brief introduction to Portfiles, how to create a
-  local <filename>Portfile</filename> repository for development, and creating
-  Portfiles.</para>
+  local Portfile repository for development, and creating Portfiles.</para>
 
   <section id="portfile-development.portfile.introduction">
     <title>Portfile Introduction</title>
 
-    <para>A MacPorts <filename>Portfile</filename> is a TCL script that
-    usually contains only the simple keyword/value combinations and Tcl
-    extensions as described in the Portfile Reference section below, though it
-    may also contain arbitrary TCL code. Every port has a corresponding
-    <filename>Portfile</filename>, but Portfiles do not completely define a
-    port's installation behavior since the MacPorts base has default port
+    <para>A MacPorts Portfile is a TCL script that usually contains only the
+    simple keyword/value combinations and Tcl extensions as described in the
+    <link linkend="portfile-reference">Portfile Reference</link> chapter,
+    though it may also contain arbitrary TCL code. Every port has a
+    corresponding Portfile, but Portfiles do not completely define a port's
+    installation behavior since the MacPorts base has default port
     installation characteristics coded within it. Therefore Portfiles need
     only specify required options and, when required, non-default
     characteristics for a port.</para>
 
     <para>A common way for Portfiles to augment or override MacPorts base
     default installation phase characteristics is by using
-    <filename>Portfile</filename> phase declaration(s). If you use
-    <filename>Portfile</filename> phase declaration(s), you should know how to
-    identify the "global" section of a <filename>Portfile</filename>. Any
-    statements not contained within a phase declaration, no matter where they
-    are located in a <filename>Portfile</filename>, are said to be in the
-    global section of the <filename>Portfile</filename>, therefore the global
-    section need not be contiguous. Likewise, to remove statements from the
-    global section they must be placed within a phase declaration.</para>
+    <filename>Portfile</filename> phase declaration(s). If you use Portfile
+    phase declaration(s), you should know how to identify the "global" section
+    of a Portfile. Any statements not contained within a phase declaration, no
+    matter where they are located in a Portfile are said to be in the global
+    section of the Portfile, therefore the global section need not be
+    contiguous. Likewise, to remove statements from the global section they
+    must be placed within a phase declaration.</para>
 
-    <para>The main phases you need to be aware of when making a
-    <filename>Portfile</filename> are these:</para>
+    <para>The main phases you need to be aware of when making a Portfile are
+    these:</para>
 
     <itemizedlist>
       <listitem>
@@ -67,21 +65,21 @@
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
     standard behavior, any installation phase may be augmented using pre-
-    and/or post- phases, or even overridden or eliminated. See the section
-    "Example Portfiles" below.</para>
+    and/or post- phases, or even overridden or eliminated. See <link
+    linkend="portfile-development.example.portfiles">Example Portfiles</link>
+    below.</para>
 
     <note>
-      <para>For a detailed description of all port phases, see the section
-      "Portfile Reference" below.</para>
+      <para>For a detailed description of all port phases, see the <link
+      linkend="portfile-reference">Portfile Reference</link> chapter.</para>
     </note>
   </section>
 
   <section id="portfile-development.local.portfile.repositories">
     <title>Local Portfile Repositories</title>
 
-    <para>To create and test <filename>Portfile</filename>s that are not yet
-    committed to subversion, you may create a local
-    <filename>Portfile</filename> repository as shown.</para>
+    <para>To create and test Portfiles that are not yet committed to
+    subversion, you may create a local Portfile repository as shown.</para>
 
     <orderedlist>
       <listitem>
@@ -102,18 +100,17 @@ rsync://rsync.macports.org/release/ports
 
         <note>
           <para>The file URL should always appear before the rsync URL so that
-          local <filename>Portfile</filename>s can be tested that are
-          duplicated in the MacPorts tree, because the <command>port</command>
-          command will always operate on the first
-          <filename>Portfile</filename> it encounters.</para>
+          local Portfiles can be tested that are duplicated in the MacPorts
+          tree, because the <command>port</command> command will always
+          operate on the first Portfile it encounters.</para>
         </note>
       </listitem>
 
       <listitem>
-        <para>Place the <filename>Portfile</filename>s you create inside a
-        directory whose name matches the port, which should in turn be placed
-        inside a directory that reflect the port's primary category (the first
-        category entry in the <filename>Portfile</filename>).</para>
+        <para>Place the Portfiles you create inside a directory whose name
+        matches the port, which should in turn be placed inside a directory
+        that reflect the port's primary category (the first category entry in
+        the Portfile).</para>
 
         <programlisting><prompt>%%</prompt> <userinput>cd /Users/julesverne</userinput>
 <prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
@@ -122,9 +119,9 @@ rsync://rsync.macports.org/release/ports
       </listitem>
 
       <listitem>
-        <para>After a <filename>Portfile</filename> is created (see below),
-        use the MacPorts <command>portindex</command> command in the local
-        repository's directory to install it into the
+        <para>After a Portfile is created (see below), use the MacPorts
+        <command>portindex</command> command in the local repository's
+        directory to install it into the
         <filename>Portindex</filename>.</para>
 
         <programlisting>%% <userinput>cd /Users/julesverne/ports</userinput>
@@ -141,7 +138,7 @@ Ports failed:                   0</screen>
 
     <para>Once the local port is added to the <filename>Portindex</filename>,
     it becomes available for searching or installation as with any other
-    <filename>Portfile</filename> in the MacPorts tree as shown.</para>
+    Portfile in the MacPorts tree as shown.</para>
 
     <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
 
@@ -151,19 +148,18 @@ Ports failed:                   0</screen>
   <section id="portfile-development.creating.a.portfile">
     <title>Creating a Portfile</title>
 
-    <para>Here we list the individual <filename>Portfile</filename> components
-    for an application that conforms to the the standard <command>
-    configure</command>, <command>make</command>, and <command>make
-    install</command> steps of most open source application installs.</para>
+    <para>Here we list the individual Portfile components for an application
+    that conforms to the the standard <command> configure</command>,
+    <command>make</command>, and <command>make install</command> steps of most
+    open source application installs.</para>
 
     <orderedlist>
       <listitem>
         <para>Subversion ID tag line</para>
 
-        <para>The first line of a new <filename>Portfile</filename> must be
-        set as shown. When a port is committed to subversion, ID tags are
-        expanded to include the last person to commit and the commit
-        time.</para>
+        <para>The first line of a new Portfile must be set as shown. When a
+        port is committed to subversion, ID tags are expanded to include the
+        last person to commit and the commit time.</para>
 
         <programlisting># $Id$</programlisting>
       </listitem>
@@ -193,7 +189,7 @@ Ports failed:                   0</screen>
 
         <para>A port may belong to more than one category, but the first
         (primary) category should match the directory name in the ports tree
-        where the <filename>Portfile</filename> is to reside.</para>
+        where the Portfile is to reside.</para>
 
         <programlisting>categories        net</programlisting>
       </listitem>
@@ -206,7 +202,8 @@ Ports failed:                   0</screen>
         keyword lists maintainer email addresses(s). To hide these addresses
         from spambots, see the more full explanation of the maintainer keyword
         in the <link linkend="portfile-reference.keywords.global">Global
-        Keywords</link> section of the Portfile Reference.</para>
+        Keywords</link> section of the <link
+        linkend="portfile-reference">Portfile Reference</link> chapter.</para>
 
         <programlisting>maintainers       julesverne@somedomain.org</programlisting>
 
@@ -250,8 +247,8 @@ Ports failed:                   0</screen>
       <listitem>
         <para>Port checksums</para>
 
-        <para>The checksums specified in a <filename>Portfile</filename> are
-        checked with the fetched tarball for security.</para>
+        <para>The checksums specified in a Portfile are checked with the
+        fetched tarball for security.</para>
 
         <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8</programlisting>
       </listitem>
@@ -365,18 +362,15 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
 
     <para>Variants are a way for port authors to provide options that may be
     invoked at install time. They are declared in the global section of a
-    <filename>Portfile</filename> using the "variant" keyword and may provide
-    a description.</para>
+    Portfile using the "variant" keyword and may provide a description.</para>
 
     <section id="portfile-development.port.variants.modify.options">
       <title>Variants to Modify Options</title>
 
       <para>The most common use for a variant is to add or remove
       dependencies, configure arguments, and build arguments from the global
-      <filename>Portfile</filename> section. Here is an example of a port
-      providing four variants that add additional configure arguments to a
-      port. See "Variants" in the Portfile Reference section for full
-      information.</para>
+      Portfile section. Here is an example of a port providing four variants
+      that add additional configure arguments to a port.</para>
 
       <programlisting>variant pop     { configure.args-append --enable-pop }
 variant imap    { configure.args-append --enable-imap }
@@ -439,7 +433,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
       <note>
         <para>The default_variant keyword may only be used in the global
-        <filename>Portfile</filename> section.</para>
+        Portfile section.</para>
       </note>
     </section>
   </section>
@@ -455,15 +449,14 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     <section id="portfile-development.patch.files.portfile.patches">
       <title>Creating Portfile Patches</title>
 
-      <para>If you wish to contribute modifications or fixes to a
-      <filename>Portfile</filename>, you should do so in the form of a
-      patch.</para>
+      <para>If you wish to contribute modifications or fixes to a Portfile,
+      you should do so in the form of a patch.</para>
 
       <orderedlist>
         <listitem>
-          <para>Make a copy of the <filename>Portfile</filename> you wish to
-          modify; both files must be in the same directory, though it may be
-          any directory.</para>
+          <para>Make a copy of the Portfile you wish to modify; both files
+          must be in the same directory, though it may be any
+          directory.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cp Portfile Portfile.org</userinput></programlisting>
         </listitem>
@@ -483,8 +476,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
         <listitem>
           <para>A patch file that is a "unified" diff file is the easiest to
           interpret by humans and this type should always be used for ports.
-          The <filename>Portfile</filename> patch below will change the
-          version and checksums when applied.</para>
+          The Portfile patch below will change the version and checksums when
+          applied.</para>
 
           <programlisting>--- Portfile.org        2007-07-25 18:52:12.000000000 -0700
 +++ Portfile    2007-07-25 18:53:35.000000000 -0700
@@ -592,8 +585,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       <orderedlist>
         <listitem>
           <para>Change to the directory containing the file to be patched. In
-          this example, we'll apply a <filename>Portfile</filename> patch to
-          the postfix port.</para>
+          this example, we'll apply a Portfile patch to the postfix
+          port.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd /opt/local/var/macports/sources/rsync.macports.org/release/ports/mail/postfix</userinput></programlisting>
         </listitem>

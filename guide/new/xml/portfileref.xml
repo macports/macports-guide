@@ -15,9 +15,12 @@
     perform default steps for applications that use the standard
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, but for applications that do not conform to this
-    behavior, installation phases may be declared in a Portfile to override or
-    eliminate the default behavior, or augment it using pre- and/or post-
-    phases as shown in the section "Portfile Development".</para>
+    behavior, installation phases may be declared in a Portfile to <link
+    linkend="portfile-development.example.portfiles.pre.post">augment</link>
+    or <link
+    linkend="portfile-development.example.portfiles.override">override</link>
+    the default behavior as described in the <link
+    linkend="portfile-development">Portfile Development</link> chapter.</para>
 
     <section id="portfile-reference.port.phases.fetch">
       <title>Fetch</title>
@@ -123,8 +126,10 @@
       <title>Install</title>
 
       <para>Overview: Copy a port's destrooted files into
-      <filename>${prefix}/var/macports/software</filename>. See "Port Images"
-      in section "MacPorts Internals" for details.</para>
+      <filename>${prefix}/var/macports/software</filename>. See <link
+      linkend="macports-internals.port.images">Port Images</link> in the <link
+      linkend="macports-internals">MacPorts Internals</link> chapter for
+      details.</para>
     </section>
 
     <section id="portfile-reference.port.phases.activate">
@@ -132,7 +137,8 @@
 
       <para>Overview: Set <ulink
       url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
-      to ${prefix}/var/macports/software to point to ${prefix}.</para>
+      to <filename>${prefix}/var/macports/software</filename> to point to
+      ${prefix}.</para>
     </section>
   </section>
 

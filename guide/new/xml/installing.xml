@@ -5,9 +5,11 @@
   <title>Installing MacPorts</title>
 
   <para>This chapter show you how to install MacPorts and its prerequistes
-  step-by-step. Note that sections 2 to 4 are Mac OS X specific. If you wish
-  to install MacPorts on FreeBSD, first make sure you have gcc and X11
-  installed, and then begin with section 5.</para>
+  step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
+  wish to install MacPorts on FreeBSD, first make sure you have gcc and X11
+  installed, and then begin with section <link
+  linkend="installing-macports.install.macports.source">Install MacPorts -
+  Source</link>.</para>
 
   <section id="installing-macports.install.xcode.tools">
     <title>Install Xcode Tools</title>
@@ -121,9 +123,10 @@
 
     <para>If you wish to install MacPorts to a path other than
     <filename>/opt/local</filename> do not install the MacPorts binary —skip
-    this section and proceed to the next to install MacPorts from the source
-    code. The MacPorts binary installer will only install to
-    <filename>/opt/local</filename>.</para>
+    this section and <link
+    linkend="installing-macports.install.macports.source">install MacPorts
+    from the source code</link>. The MacPorts binary installer will only
+    install to <filename>/opt/local</filename>.</para>
 
     <orderedlist>
       <listitem>
@@ -142,19 +145,22 @@
     </orderedlist>
 
     <note>
-      <para>A MacPorts selfupdate operation (see below) will automatically
-      update to the latest release if the binary .dmg image is behind the
-      latest released tarball.</para>
+      <para>A MacPorts <link
+      linkend="installing-macports.selfupdate">selfupdate</link> operation
+      will automatically update to the latest release if the binary .dmg image
+      is behind the latest released tarball.</para>
     </note>
   </section>
 
   <section id="installing-macports.install.macports.source">
     <title>Install MacPorts - Source</title>
 
-    <para>Installing from source on Mac OS X is only necessary If you wish to
-    install to a path other than <filename>/opt/local</filename>, so If you
-    installed MacPorts using the binary installer, skip this section. If you
-    wish to install MacPorts on FreeBSD you must install from source.</para>
+    <para>If you installed MacPorts using the binary installer, skip this
+    section. Installing from source on Mac OS X is only necessary if you wish
+    to install to a path other than <filename>/opt/local</filename>, or if you
+    wish to install a non-release version of MacPorts base. You must also
+    install MacPorts from source if you wish to install MacPorts on a platform
+    other than Mac OS X.</para>
 
     <orderedlist>
       <listitem>
@@ -174,9 +180,10 @@
     </orderedlist>
 
     <note>
-      <para>A MacPorts' selfupdate (see below) will automatically update to
-      the latest release if the binary .dmg image is behind the latest
-      released tarball.</para>
+      <para>A MacPorts <link
+      linkend="installing-macports.selfupdate">selfupdate</link> operation
+      will automatically update to the latest release if the binary .dmg image
+      is behind the latest released tarball.</para>
     </note>
   </section>
 
@@ -237,7 +244,7 @@ _=/usr/bin/env</screen>
     </note>
   </section>
 
-  <section>
+  <section id="installing-macports.selfupdate">
     <title>MacPorts Selfupdate</title>
 
     <para>You must always do a selfupdate after a new MacPorts install, and

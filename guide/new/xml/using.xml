@@ -4,9 +4,9 @@
 <chapter id="using-macports">
   <title>Using MacPorts</title>
 
-  <para>This chapter describes the MacPorts file hierarchy, using the
-  <command>port</command> command, creating port binaries, and setting up an
-  rsync replication server.</para>
+  <para>This chapter describes using the <command>port</command> command, port
+  variants, common tasks, port binaries, and setting up an rsync replication
+  server.</para>
 
   <section id="using-macports.port.command">
     <title>The port Command</title>
@@ -122,8 +122,9 @@ Maintainers: nomaintainer@macports.org</screen>
       <para>The <option>variants</option> option allows you to check what
       variations of a port are available before you install it. Variants are a
       way for port authors to provide options that may be invoked at install
-      time. See the Variants" section below to see how to invoke
-      variants.</para>
+      time. See <link
+      linkend="using-macports.port.variants.invoking.variants">Invoking Port
+      Variants</link> below to install ports that have variants.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
 
@@ -137,8 +138,9 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using-macports.port.command.install">
       <title>install</title>
 
-      <para>The option <option>install</option> is used to install a
-      port.</para>
+      <para>The option <option>install</option> is used to install a port. See
+      <link linkend="using-macports.port.variants.invoking.variants">Invoking
+      Port Variants</link> below to install ports that have variants.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap</userinput></programlisting>
 
@@ -148,8 +150,6 @@ Maintainers: nomaintainer@macports.org</screen>
         installation phase such as fetch, configure, build, or
         destroot.</para>
       </note>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap +no_ssl</userinput></programlisting>
     </section>
 
     <section id="using-macports.port.command.clean">
@@ -263,9 +263,15 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
 
       <note>
         <para>The <option>upgrade</option> option by default does not
-        uninstall an upgraded port —it deactivates it (see section Port
-        Installation Phases below). If you wish to uninstall the old version
-        use the -u option.</para>
+        uninstall an upgraded port —it deactivates it. See section <link
+        linkend="macports-internals.port.images">Port Images</link>, and also
+        <link
+        linkend="portfile-reference.port.phases.destroot">Destroot</link> and
+        <link
+        linkend="portfile-reference.port.phases.activate">Activate</link>
+        phases in <link linkend="portfile-reference.port.phases">Port
+        Phases</link>. If you wish to uninstall the old version use the -u
+        option.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
       </note>
@@ -336,10 +342,11 @@ libdap depends on openssl</screen>
     <section id="using-macports.port.variants.negating.default.variants">
       <title>Negating Default Variants</title>
 
-      <para>For an explanation of default variants, see the "Port Development"
-      section. Default variants are optional, and not all ports using variants
-      have them. For ports with default variants, you may install a port
-      without them by negating default variants using "-" as shown.</para>
+      <para>For an explanation of default variants see <link
+      linkend="portfile-development.port.variants">Port Variants</link>.
+      Default variants are optional, and not all ports using variants have
+      them. For ports with default variants, you may install a port without
+      them by negating default variants using "-" as shown.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port install fetchmail -ssl</userinput></programlisting>
 
