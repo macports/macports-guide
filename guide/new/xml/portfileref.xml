@@ -858,7 +858,7 @@
             <para>In the example below, the maintainer email addresses
             <email>jdoe@macports.org</email> and
             <email>julesverne@example.org</email> are hidden using these
-            convention.</para>
+            conventions.</para>
 
             <programlisting>maintainers       jdoe \
                   example.org:julesverne</programlisting>
