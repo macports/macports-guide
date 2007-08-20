@@ -5,21 +5,17 @@
   <title>Introduction</title>
 
   <para>MacPorts is a system for compiling, installing, and managing free and
-  open source software. MacPorts may be thought of as divided into two main
+  open source software. MacPorts may be conceptually divided into two main
   parts: the infrastructure, known as MacPorts base, and the set of available
-  ports. A MacPorts "port" is a set of specifications contained in a
+  ports. A MacPorts port is a set of specifications contained in a
   <filename>Portfile</filename> that defines an application, its
   characteristics, and any files or special instructions required to install
   it, so MacPorts may automatically fetch, patch, compile, and install ported
   software.</para>
 
-  <para>MacPorts may also be used to pre-compile ported software into binaries
-  that may be installed on remote computers. Binaries of ported software may
-  be installed very quickly since the steps required to install ports from
-  source code have all been performed in advance.</para>
-
-  <para>MacPorts provides several major advantages over installing free and
-  open source software manually.</para>
+  <para>But MacPorts provides several major advantages over installing free
+  and open source software manually, beyond merely automating software
+  installation.</para>
 
   <itemizedlist>
     <listitem>
@@ -30,15 +26,19 @@
     <listitem>
       <para>MacPorts confines ported software to a private "sandbox" that
       keeps it from intermingling with your operating system and its
-      vendor-supplied software and prevents them from becoming
-      corrupted.</para>
+      vendor-supplied software to prevent them from becoming corrupted.</para>
     </listitem>
 
     <listitem>
-      <para>MacPorts provides automatic uninstalls and upgrades of ported
-      software.</para>
+      <para>MacPorts provides automatic uninstalls and upgrades for installed
+      ports.</para>
     </listitem>
   </itemizedlist>
+
+  <para>MacPorts may also be used to pre-compile ported software into binaries
+  that may be installed on remote computers. Binaries of ported software may
+  be installed very quickly since the steps required to install ports from
+  source code have all been performed in advance.</para>
 
   <para>MacPorts is developed on Mac OS X, though it is designed to be
   portable so it can work on other Unix-like systems, especially those
