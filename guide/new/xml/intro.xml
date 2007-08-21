@@ -13,32 +13,34 @@
   it, so MacPorts may automatically fetch, patch, compile, and install ported
   software.</para>
 
-  <para>But MacPorts provides several major advantages over installing free
-  and open source software manually, beyond merely automating software
-  installation.</para>
+  <para>However, installing software using MacPorts instead of installing it
+  manually brings advantages apart from the convenience of automating the
+  software install process for individual applications. For example,
+  MacPorts:</para>
 
   <itemizedlist>
     <listitem>
-      <para>MacPorts automatically installs any required support software,
-      known as "dependencies", for a given port.</para>
+      <para>Installs automatically any required support software, known as
+      "dependencies", for a given port.</para>
     </listitem>
 
     <listitem>
-      <para>MacPorts confines ported software to a private "sandbox" that
-      keeps it from intermingling with your operating system and its
-      vendor-supplied software to prevent them from becoming corrupted.</para>
-    </listitem>
-
-    <listitem>
-      <para>MacPorts provides automatic uninstalls and upgrades for installed
+      <para>Provides automatic uninstalls and upgrades for installed
       ports.</para>
     </listitem>
-  </itemizedlist>
 
-  <para>MacPorts may also be used to pre-compile ported software into binaries
-  that may be installed on remote computers. Binaries of ported software may
-  be installed very quickly since the steps required to install ports from
-  source code have all been performed in advance.</para>
+    <listitem>
+      <para>Confines ported software to a private "sandbox" that keeps it from
+      intermingling with your operating system and its vendor-supplied
+      software to prevent them from becoming corrupted.</para>
+    </listitem>
+
+    <listitem>
+      <para>Allows you to create pre-compiled binary installers of ported
+      applications to quickly install software on computers without compiling
+      from source code.</para>
+    </listitem>
+  </itemizedlist>
 
   <para>MacPorts is developed on Mac OS X, though it is designed to be
   portable so it can work on other Unix-like systems, especially those
