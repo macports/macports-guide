@@ -13,10 +13,9 @@
   it, so MacPorts may automatically fetch, patch, compile, and install ported
   software.</para>
 
-  <para>However, installing software using MacPorts instead of installing it
-  manually brings advantages apart from the convenience of automating the
-  software install process for individual applications. For example,
-  MacPorts:</para>
+  <para>However, installing software using MacPorts instead of doing it
+  manually brings advantages apart from scripted installs for individual
+  applications. For example, MacPorts:</para>
 
   <itemizedlist>
     <listitem>
