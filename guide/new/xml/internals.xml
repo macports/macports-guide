@@ -521,7 +521,7 @@
       </listitem>
     </itemizedlist>
 
-    <section>
+    <section id="macports-internals.macports.registry.registry.files">
       <title>Registry Files</title>
 
       <para>The flat file registry (MacPorts default registry) files are
