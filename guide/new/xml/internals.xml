@@ -251,8 +251,9 @@
     <section id="macports-internals.configuration.files.sources.conf">
       <title>sources.conf</title>
 
-      <para><filename>sources.conf</filename> is where the location(s) to
-      retrieve the MacPorts <filename>Portfile</filename>s is set.</para>
+      <para><filename>sources.conf</filename> is where the location(s) are set
+      to scan for MacPorts Portfiles. This file is commonly modified to add a
+      local Portfile repository.</para>
     </section>
 
     <section id="macports-internals.configuration.files.macports.conf">
@@ -301,9 +302,8 @@
 
     <para>MacPorts contains two application programming interfaces (APIs),
     written in Tcl: The Ports API and the MacPorts (mport*) API. The former is
-    an internal API used for individual <filename>Portfile</filename>s. The
-    latter is a high-level API used by client applications such as the
-    MacPorts port utility.</para>
+    an internal API used for individual Portfiles. The latter is a high-level
+    API used by client applications such as the MacPorts port utility.</para>
 
     <section id="macports-internals.macports.apis.ports">
       <title>Ports API</title>
@@ -495,12 +495,12 @@
   <section id="macports-internals.macports.registry">
     <title>The MacPorts Registry</title>
 
-    <para>This chapter provides a detailed overview of the MacPorts registry
-    and its API. The registry is queried by MacPorts utilities for information
-    about installed ports related to dependencies, port images, and simple
-    user information about what is installed. It also provides abstraction
-    over a modular receipt storage layer, allowing for flat-file receipts, as
-    well as receipts stored in a SQLite database.</para>
+    <para>This chapter provides an overview of the MacPorts registry and its
+    API. The registry is queried by MacPorts utilities for information about
+    installed ports related to dependencies, port images, and simple user
+    information about what is installed. It provides abstraction over a
+    modular receipt storage layer; this allows for flat file receipts as well
+    as receipts stored in a SQLite database.</para>
 
     <para>The registry allows MacPorts utilities to:</para>
 
@@ -520,6 +520,23 @@
         <para>Maintain dependency trees of installed ports.</para>
       </listitem>
     </itemizedlist>
+
+    <section>
+      <title>Registry Files</title>
+
+      <para>The flat file registry (MacPorts default registry) files are
+      contained in <filename>${portdbpath}/receipts</filename>, which by
+      default is location
+      <filename>${prefix}/var/macports/receipts</filename>. File mappings and
+      dependency mappings are tracked in the flat file registry by these
+      files:</para>
+
+      <simplelist>
+        <member>file_map.db</member>
+
+        <member>dep_map.bz2</member>
+      </simplelist>
+    </section>
 
     <section id="macports-internals.macports.registry.registry.api">
       <title>The Registry API</title>
