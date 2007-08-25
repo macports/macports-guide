@@ -528,14 +528,18 @@
       contained in <filename>${portdbpath}/receipts</filename>, which by
       default is location
       <filename>${prefix}/var/macports/receipts</filename>. File mappings and
-      dependency mappings are tracked in the flat file registry by these
+      dependency mappings are tracked in the flat file registry by two
       files:</para>
 
-      <simplelist>
-        <member>file_map.db</member>
+      <itemizedlist>
+        <listitem>
+          <para>file_map.db</para>
+        </listitem>
 
-        <member>dep_map.bz2</member>
-      </simplelist>
+        <listitem>
+          <para>dep_map.bz2</para>
+        </listitem>
+      </itemizedlist>
     </section>
 
     <section id="macports-internals.macports.registry.registry.api">
