@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="macports-internals">
+<chapter id="internals">
   <title>MacPorts Internals</title>
 
   <para>This chapter contains information to help gain a better understanding
   of MacPorts or learn how to configure it for non-default operation.</para>
 
-  <section id="macports-internals.macports.file.hierarchy">
+  <section id="internals.hierarchy">
     <title>MacPorts File Hierarchy</title>
 
     <para>MacPorts port authors install files according to guidelines that
@@ -240,7 +240,7 @@
     </variablelist>
   </section>
 
-  <section id="macports-internals.configuration.files">
+  <section id="internals.configuration-files">
     <title>Configuration Files</title>
 
     <para>The MacPorts configuration files do not need to be modified for the
@@ -248,7 +248,7 @@
     users and port developers. All the MacPorts configuration files are
     located in <filename>/opt/local/etc/macports</filename>.</para>
 
-    <section id="macports-internals.configuration.files.sources.conf">
+    <section id="internals.configuration-files.sources-conf">
       <title>sources.conf</title>
 
       <para><filename>sources.conf</filename> is where the location(s) are set
@@ -256,14 +256,14 @@
       local Portfile repository.</para>
     </section>
 
-    <section id="macports-internals.configuration.files.macports.conf">
+    <section id="internals.configuration-files.macports-conf">
       <title>macports.conf</title>
 
       <para><filename>macports.conf</filename> contains advanced MacPorts
       configuration options. See the file comments for instructions.</para>
     </section>
 
-    <section id="macports-internals.configuration.files.variants.conf">
+    <section id="internals.configuration-files.variants-conf">
       <title>variants.conf</title>
 
       <para><filename>variants.conf</filename> is used to specify variants to
@@ -271,7 +271,7 @@
     </section>
   </section>
 
-  <section id="macports-internals.port.images">
+  <section id="internals.images">
     <title>Port Images</title>
 
     <para>MacPorts has a unique ability to allow for multiple versions,
@@ -297,7 +297,7 @@
     </note>
   </section>
 
-  <section id="macports-internals.macports.apis">
+  <section id="internals.apis">
     <title>MacPorts APIs</title>
 
     <para>MacPorts contains two application programming interfaces (APIs),
@@ -305,7 +305,7 @@
     an internal API used for individual Portfiles. The latter is a high-level
     API used by client applications such as the MacPorts port utility.</para>
 
-    <section id="macports-internals.macports.apis.ports">
+    <section id="internals.apis.ports">
       <title>Ports API</title>
 
       <para>The code for the Port API is located in
@@ -349,7 +349,7 @@
       </itemizedlist>
     </section>
 
-    <section id="macports-internals.macports.apis.macports">
+    <section id="internals.apis.macports">
       <title>MacPorts API</title>
 
       <para>The code for the MacPorts API is located in
@@ -492,7 +492,7 @@
     </section>
   </section>
 
-  <section id="macports-internals.macports.registry">
+  <section id="internals.registry">
     <title>The MacPorts Registry</title>
 
     <para>This chapter provides an overview of the MacPorts registry and its
@@ -521,7 +521,7 @@
       </listitem>
     </itemizedlist>
 
-    <section id="macports-internals.macports.registry.registry.files">
+    <section id="internals.registry.files">
       <title>Registry Files</title>
 
       <para>The flat file registry (MacPorts default registry) files are
@@ -542,7 +542,7 @@
       </itemizedlist>
     </section>
 
-    <section id="macports-internals.macports.registry.registry.api">
+    <section id="internals.registry.api">
       <title>The Registry API</title>
 
       <para>The MacPorts Registry provides a public API in the registry1.0 Tcl

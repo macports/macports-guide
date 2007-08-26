@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="using-macports">
+<chapter id="using">
   <title>Using MacPorts</title>
 
   <para>This chapter describes using the <command>port</command> command, port
   variants, common tasks, port binaries, and setting up an rsync replication
   server.</para>
 
-  <section id="using-macports.port.command">
+  <section id="using.port">
     <title>The port Command</title>
 
     <para>The MacPorts <command>port</command> command is the main utility
@@ -16,7 +16,7 @@
     <filename>Portfile</filename>s and the MacPorts infrastructure, and
     install and manage ports.</para>
 
-    <section id="using-macports.port.command.selfupdate">
+    <section id="using.port.selfupdate">
       <title>selfupdate</title>
 
       <para>The <option>selfupdate</option> option should be used regularly to
@@ -52,7 +52,7 @@ DEBUG: Setting ownership to root
 selfupdate done!</screen>
     </section>
 
-    <section id="using-macports.port.command.sync">
+    <section id="using.port.sync">
       <title>sync</title>
 
       <para>The sync option performs a subset of selfupdate actions. It
@@ -61,7 +61,7 @@ selfupdate done!</screen>
       reason not to, you should use <option>selfupdate</option>.</para>
     </section>
 
-    <section id="using-macports.port.command.list">
+    <section id="using.port.list">
       <title>list</title>
 
       <para>The <option>list</option> option is used to get a list of all
@@ -70,7 +70,7 @@ selfupdate done!</screen>
       <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
     </section>
 
-    <section id="using-macports.port.command.search">
+    <section id="using.port.search">
       <title>search</title>
 
       <para>The <option>search</option> option is very useful to find port
@@ -82,7 +82,7 @@ selfupdate done!</screen>
 php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
     </section>
 
-    <section id="using-macports.port.command.info">
+    <section id="using.port.info">
       <title>info</title>
 
       <para>The <option>info</option> option is used to get information about
@@ -99,7 +99,7 @@ Platforms: darwin
 Maintainers: nomaintainer@macports.org</screen>
     </section>
 
-    <section id="using-macports.port.command.deps">
+    <section id="using.port.deps">
       <title>deps</title>
 
       <para>The <option>deps</option> option shows you the dependencies of a
@@ -116,14 +116,13 @@ Maintainers: nomaintainer@macports.org</screen>
         pcre</screen>
     </section>
 
-    <section id="using-macports.port.command.variants">
+    <section id="using.port.variants">
       <title>variants</title>
 
       <para>The <option>variants</option> option allows you to check what
       variations of a port are available before you install it. Variants are a
       way for port authors to provide options that may be invoked at install
-      time. See <link
-      linkend="using-macports.port.variants.invoking.variants">Invoking Port
+      time. See <link linkend="using.variants.invoking">Invoking Port
       Variants</link> below to install ports that have variants.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
@@ -135,12 +134,12 @@ Maintainers: nomaintainer@macports.org</screen>
         no_pcre</screen>
     </section>
 
-    <section id="using-macports.port.command.install">
+    <section id="using.port.install">
       <title>install</title>
 
       <para>The option <option>install</option> is used to install a port. See
-      <link linkend="using-macports.port.variants.invoking.variants">Invoking
-      Port Variants</link> below to install ports that have variants.</para>
+      <link linkend="using.variants.invoking">Invoking Port Variants</link>
+      below to install ports that have variants.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap</userinput></programlisting>
 
@@ -152,7 +151,7 @@ Maintainers: nomaintainer@macports.org</screen>
       </note>
     </section>
 
-    <section id="using-macports.port.command.clean">
+    <section id="using.port.clean">
       <title>clean</title>
 
       <para>The option <option>clean</option> deletes all intermediate files
@@ -169,7 +168,7 @@ Maintainers: nomaintainer@macports.org</screen>
       </note>
     </section>
 
-    <section id="using-macports.port.command.uninstall">
+    <section id="using.port.uninstall">
       <title>uninstall</title>
 
       <para>The <option>uninstall</option> option will uninstall an installed
@@ -188,7 +187,7 @@ Maintainers: nomaintainer@macports.org</screen>
       </note>
     </section>
 
-    <section id="using-macports.port.command.contents">
+    <section id="using.port.contents">
       <title>contents</title>
 
       <para>The <option>contents</option> option displays the files that have
@@ -204,7 +203,7 @@ Maintainers: nomaintainer@macports.org</screen>
   /opt/local/share/doc/render/protocol</screen>
     </section>
 
-    <section id="using-macports.port.command.installed">
+    <section id="using.port.installed">
       <title>installed</title>
 
       <para>The <option>installed</option> option displays all installed
@@ -226,7 +225,7 @@ Maintainers: nomaintainer@macports.org</screen>
   zlib @1.2.3_1 (active)</screen>
     </section>
 
-    <section id="using-macports.port.command.outdated">
+    <section id="using.port.outdated">
       <title>outdated</title>
 
       <para>The <option>outdated</option> option checks your installed ports
@@ -242,7 +241,7 @@ libtool                        1.5.22_0 &lt; 1.5.24_0
 pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     </section>
 
-    <section id="using-macports.port.command.upgrade">
+    <section id="using.port.upgrade">
       <title>upgrade</title>
 
       <para>The <option>upgrade</option> option upgrades installed ports and
@@ -264,20 +263,17 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       <note>
         <para>The <option>upgrade</option> option by default does not
         uninstall an upgraded port —it deactivates it. See section <link
-        linkend="macports-internals.port.images">Port Images</link>, and also
-        <link
-        linkend="portfile-reference.port.phases.destroot">Destroot</link> and
-        <link
-        linkend="portfile-reference.port.phases.activate">Activate</link>
-        phases in <link linkend="portfile-reference.port.phases">Port
-        Phases</link>. If you wish to uninstall the old version use the -u
-        option.</para>
+        linkend="internals.images">Port Images</link>, and also <link
+        linkend="reference.phases.destroot">Destroot</link> and <link
+        linkend="reference.phases.activate">Activate</link> phases in <link
+        linkend="reference.phases">Port Phases</link>. If you wish to
+        uninstall the old version use the -u option.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
       </note>
     </section>
 
-    <section id="using-macports.port.command.dependents">
+    <section id="using.port.dependents">
       <title>dependents</title>
 
       <para>The <option>dependents</option> option reports what ports depend
@@ -292,14 +288,14 @@ gnome-vfs depends on openssl
 libdap depends on openssl</screen>
     </section>
 
-    <section id="using-macports.port.command.livecheck">
+    <section id="using.port.livecheck">
       <title>livecheck</title>
 
       <para></para>
     </section>
   </section>
 
-  <section id="using-macports.port.variants">
+  <section id="using.variants">
     <title>Port Variants</title>
 
     <para>Variants are a way for port authors to provide options for a port
@@ -319,7 +315,7 @@ libdap depends on openssl</screen>
       for all variants.</para>
     </note>
 
-    <section id="using-macports.port.variants.invoking.variants">
+    <section id="using.variants.invoking">
       <title>Invoking Variants</title>
 
       <para>A variant can only be invoked when a port is installed. After you
@@ -339,11 +335,11 @@ libdap depends on openssl</screen>
       <screen>DEBUG: Executing variant ssl provides ssl</screen>
     </section>
 
-    <section id="using-macports.port.variants.negating.default.variants">
+    <section id="using.variants.negating">
       <title>Negating Default Variants</title>
 
       <para>For an explanation of default variants see <link
-      linkend="portfile-development.port.variants">Port Variants</link>.
+      linkend="development.variants">Port Variants</link>.
       Default variants are optional, and not all ports using variants have
       them. For ports with default variants, you may install a port without
       them by negating default variants using "-" as shown.</para>
@@ -361,21 +357,21 @@ libdap depends on openssl</screen>
     </section>
   </section>
 
-  <section id="using-macports.common.tasks">
+  <section id="using.common-tasks">
     <title>Common Tasks</title>
 
     <para>This section lists common operations you may want to perform when
     managing a MacPorts installation.</para>
   </section>
 
-  <section id="using-macports.port.binaries">
+  <section id="using.binaries">
     <title>Port Binaries</title>
 
     <para>MacPorts can pre-compile ports into binaries so applications need
     not be compiled when intalling on a target system. MacPorts may create two
     types of binaries: archives and packages.</para>
 
-    <section id="using-macports.port.binaries.binary.archives">
+    <section id="using.binaries.archives">
       <title>Binary Archives</title>
 
       <para>Binary archives can only be used on a target system running
@@ -419,7 +415,7 @@ DEBUG: Executing archive_finish
       cpio.</para>
     </section>
 
-    <section id="using-macports.port.binaries.binary.packages">
+    <section id="using.binaries.binary-packages">
       <title>Binary Packages</title>
 
       <para>Binary packages are standalone binary installers that are
@@ -445,7 +441,7 @@ DEBUG: Executing archive_finish
       <para>All packages are placed in a port's work directory.</para>
     </section>
 
-    <section id="using-macports.port.binaries.port.source.packages">
+    <section id="using.binaries.source-packages">
       <title>Port Source Packages</title>
 
       <para>Source packages are bundles consisting of a
@@ -457,7 +453,7 @@ DEBUG: Executing archive_finish
     </section>
   </section>
 
-  <section id="using-macports.rsync.replication.servers">
+  <section id="using.rsync-replication">
     <title>Rsync Replication Servers</title>
 
     <para>You may setup an rsync replication server on your local network to
@@ -467,7 +463,7 @@ DEBUG: Executing archive_finish
     and then serves as the rsync source when rsync replication clients on the
     local network perform selfupdates.</para>
 
-    <section id="using-macports.rsync.replication.servers.rsync.server.setup">
+    <section id="using.rsync-replication.server-setup">
       <title>Rsync Server Setup</title>
 
       <para>To setup a host as an rsync replication server, follow these
@@ -520,7 +516,7 @@ DEBUG: Executing archive_finish
       </orderedlist>
     </section>
 
-    <section id="using-macports.rsync.replication.servers.rsync.client.setup">
+    <section id="using.rsync-replication.client-setup">
       <title>Rsync Client Setup</title>
 
       <para>To setup a host as an rsync replication client, follow these

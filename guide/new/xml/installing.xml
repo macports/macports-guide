@@ -1,17 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="installing-macports">
+<chapter id="installing">
   <title>Installing MacPorts</title>
 
   <para>This chapter show you how to install MacPorts and its prerequistes
   step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
   wish to install MacPorts on FreeBSD, first make sure you have gcc and X11
   installed, and then begin with section <link
-  linkend="installing-macports.install.macports.source">Install MacPorts -
-  Source</link>.</para>
+  linkend="installing.source">Install MacPorts - Source</link>.</para>
 
-  <section id="installing-macports.install.xcode.tools">
+  <section id="installing.xcode">
     <title>Install Xcode Tools</title>
 
     <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
@@ -45,7 +44,7 @@
     </note>
   </section>
 
-  <section id="installing-macports.install.x11">
+  <section id="installing.x11">
     <title>Install X11</title>
 
     <para>On OS X 10.4, Apple's X Window System (X11) is an optional install
@@ -82,7 +81,7 @@
       <filename>/Library/Receipts/</filename>.</para>
     </note>
 
-    <section>
+    <section id="installing.x11.settings">
       <title>Optional X11 Settings</title>
 
       <para>To launch X11 applications directly from an X11 window (instead of
@@ -118,15 +117,14 @@
     </section>
   </section>
 
-  <section id="installing-macports.install.macports.binary">
+  <section id="installing.binary">
     <title>Install MacPorts - Binary</title>
 
     <para>If you wish to install MacPorts to a path other than
     <filename>/opt/local</filename> do not install the MacPorts binary —skip
-    this section and <link
-    linkend="installing-macports.install.macports.source">install MacPorts
-    from the source code</link>. The MacPorts binary installer will only
-    install to <filename>/opt/local</filename>.</para>
+    this section and <link linkend="installing.source">install MacPorts from
+    the source code</link>. The MacPorts binary installer will only install to
+    <filename>/opt/local</filename>.</para>
 
     <orderedlist>
       <listitem>
@@ -145,14 +143,13 @@
     </orderedlist>
 
     <note>
-      <para>A MacPorts <link
-      linkend="installing-macports.selfupdate">selfupdate</link> operation
-      will automatically update to the latest release if the binary .dmg image
-      is behind the latest released tarball.</para>
+      <para>A MacPorts <link linkend="installing.selfupdate">selfupdate</link>
+      operation will automatically update to the latest release if the binary
+      .dmg image is behind the latest released tarball.</para>
     </note>
   </section>
 
-  <section id="installing-macports.install.macports.source">
+  <section id="installing.source">
     <title>Install MacPorts - Source</title>
 
     <para>If you installed MacPorts using the binary installer, skip this
@@ -180,14 +177,13 @@
     </orderedlist>
 
     <note>
-      <para>A MacPorts <link
-      linkend="installing-macports.selfupdate">selfupdate</link> operation
-      will automatically update to the latest release if the binary .dmg image
-      is behind the latest released tarball.</para>
+      <para>A MacPorts <link linkend="installing.selfupdate">selfupdate</link>
+      operation will automatically update to the latest release if the binary
+      .dmg image is behind the latest released tarball.</para>
     </note>
   </section>
 
-  <section id="installing-macports.set.bash.shell">
+  <section id="installing.shell">
     <title>Set the Bash Shell</title>
 
     <para>The MacPorts binary installer places a <filename>.profile</filename>
@@ -244,13 +240,12 @@ _=/usr/bin/env</screen>
     </note>
   </section>
 
-  <section id="installing-macports.selfupdate">
+  <section id="installing.selfupdate">
     <title>MacPorts Selfupdate</title>
 
     <para>You must always do a selfupdate after a new MacPorts install, and
     you should also do it frequently thereafter. See <link
-    linkend="using-macports.port.command.selfupdate">selfupdate</link> —one of
-    several <link linkend="using-macports.port.command">port
-    commands</link>.</para>
+    linkend="using.port.selfupdate">selfupdate</link> —one of several <link
+    linkend="using.port">port commands</link>.</para>
   </section>
 </chapter>

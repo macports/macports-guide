@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="macports-project">
+<chapter id="project">
   <title>MacPorts Project</title>
 
   <para>The MacPorts Project uses a system called <ulink
@@ -13,7 +13,7 @@
   url="http://www.macports.org/wp-register.php">register</ulink> for a Trac
   account to create tickets.</para>
 
-  <section id="macports-project.creating.trac.tickets">
+  <section id="project.tickets">
     <title>Creating Trac Tickets</title>
 
     <para>Once you are logged into Trac, you may click <emphasis>View Tickets
@@ -31,7 +31,7 @@
       </mediaobject>
     </screenshot>
 
-    <section id="macports-project.creating.trac.tickets.guidelines">
+    <section id="project.tickets.guidelines">
       <title>Trac Ticket Guidelines</title>
 
       <para>There are certain conventions used to ensure that Trac tickets
@@ -234,7 +234,7 @@
     </section>
   </section>
 
-  <section id="macports-project.contributing">
+  <section id="project.contributing">
     <title>Contributing to MacPorts</title>
 
     <para>You may contribute new ports and port updates to current ports using
@@ -243,7 +243,7 @@
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
 
-    <section>
+    <section id="project.contributing.new">
       <title>New Ports</title>
 
       <para>Ports are contributed by following these steps. See Ticket
@@ -270,7 +270,7 @@
       </orderedlist>
     </section>
 
-    <section>
+    <section id="project.contributing.updates">
       <title>Port Updates</title>
 
       <para>Portfile updates should always be contributed as
@@ -305,7 +305,7 @@
     </section>
   </section>
 
-  <section id="macports-project.port.update.policies">
+  <section id="project.update-policies">
     <title>Port Update Policies</title>
 
     <para>Port maintainers normally are given commit privileges to the
@@ -315,7 +315,7 @@
     port it is a good practice to inform a port's maintainer. See details
     below.</para>
 
-    <section id="macports-project.port.update.policies.nonmaintainer">
+    <section id="project.update-policies.nonmaintainer">
       <title>Non-Maintainer Port Updates</title>
 
       <para>If you have a port update or bugfix for a port you do not
@@ -374,7 +374,7 @@
       </itemizedlist>
     </section>
 
-    <section id="macports-project.port.update.policies.abandonment">
+    <section id="project.update-policies.abandonment">
       <title>Port Abandonment</title>
 
       <para>A port may be considered abandoned if a bug has not been
@@ -403,7 +403,7 @@
     </section>
   </section>
 
-  <section id="macports-project.macports.membership">
+  <section id="project.membership">
     <title>MacPorts Membership</title>
 
     <para>A requirement for a person to become a MacPorts committer is to

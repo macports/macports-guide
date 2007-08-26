@@ -45,7 +45,7 @@
   portable so it can work on other Unix-like systems, especially those
   descended from the Berkeley Software Distribution (BSD).</para>
 
-  <section>
+  <section id="introduction.conventions">
     <title>Document Conventions</title>
 
     <para>The MacPorts Guide uses some notational conventions to distinguish
