@@ -56,7 +56,7 @@ selfupdate done!</screen>
       <title>sync</title>
 
       <para>The sync option performs a subset of selfupdate actions. It
-      synchonizes the ports tree, as does <option>selfupdate</option>, but it
+      synchronizes the ports tree, as does <option>selfupdate</option>, but it
       does not check for upgrades to MacPorts base. Unless you have a special
       reason not to, you should use <option>selfupdate</option>.</para>
     </section>
@@ -177,11 +177,11 @@ Maintainers: nomaintainer@macports.org</screen>
       <programlisting><prompt>%%</prompt> <userinput>port uninstall vile</userinput></programlisting>
 
       <note>
-        <para>If a port as installed as a dependecy of another port, uninstall
-        will not remove it unless you remove the dependent ports first. To
-        override this behavior, use the -f (force) switch. But some ports need
-        to be rebuilt if dependencies change, so you should know what you are
-        doing if you force uninstall ports.</para>
+        <para>If a port as installed as a dependency of another port,
+        uninstall will not remove it unless you remove the dependent ports
+        first. To override this behavior, use the -f (force) switch. But some
+        ports need to be rebuilt if dependencies change, so you should know
+        what you are doing if you force uninstall ports.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -f uninstall vile</userinput></programlisting>
       </note>
@@ -339,10 +339,10 @@ libdap depends on openssl</screen>
       <title>Negating Default Variants</title>
 
       <para>For an explanation of default variants see <link
-      linkend="development.variants">Port Variants</link>.
-      Default variants are optional, and not all ports using variants have
-      them. For ports with default variants, you may install a port without
-      them by negating default variants using "-" as shown.</para>
+      linkend="development.variants">Port Variants</link>. Default variants
+      are optional, and not all ports using variants have them. For ports with
+      default variants, you may install a port without them by negating
+      default variants using "-" as shown.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port install fetchmail -ssl</userinput></programlisting>
 
@@ -368,8 +368,8 @@ libdap depends on openssl</screen>
     <title>Port Binaries</title>
 
     <para>MacPorts can pre-compile ports into binaries so applications need
-    not be compiled when intalling on a target system. MacPorts may create two
-    types of binaries: archives and packages.</para>
+    not be compiled when installing on a target system. MacPorts may create
+    two types of binaries: archives and packages.</para>
 
     <section id="using.binaries.archives">
       <title>Binary Archives</title>
