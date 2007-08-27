@@ -4,7 +4,7 @@
 <chapter id="installing">
   <title>Installing MacPorts</title>
 
-  <para>This chapter show you how to install MacPorts and its prerequistes
+  <para>This chapter show you how to install MacPorts and its prerequisites
   step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
   wish to install MacPorts on FreeBSD, first make sure you have gcc and X11
   installed, and then begin with section <link
@@ -167,20 +167,37 @@
       </listitem>
 
       <listitem>
-        <para>Perform these commands in a terminal window.</para>
+        <para>Perform these commands in a terminal window, substituting a real
+        path for NEW_PREFIX if you wish to use a path other than
+        <filename>/opt/local/</filename>.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.4.0/</userinput>
-<prompt>%%</prompt> <userinput>./configure</userinput>
+        <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
+<prompt>%%</prompt> <userinput>./configure</userinput> --prefix=NEW_PREFIX  (setting prefix is optional)
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
       </listitem>
     </orderedlist>
 
-    <note>
-      <para>A MacPorts <link linkend="installing.selfupdate">selfupdate</link>
-      operation will automatically update to the latest release if the binary
-      .dmg image is behind the latest released tarball.</para>
-    </note>
+    <section id="installing.source.multiple">
+      <title>Multiple MacPorts Installs</title>
+
+      <para>Occasionally a MacPorts developer may wish to install more than
+      one copy of MacPorts on the same host, possibly to test two different
+      versions of MacPorts. But only one copy of MacPorts may use the default
+      MacPorts Tcl library path <filename>/Library/Tcl</filename>, so for a
+      second installation use the <literal>--with-tclpackage</literal> switch
+      set to any newly created (empty) directory. Also, the standard MacPorts
+      binary path must not be present during the installation of the second
+      instance. To install a second instance of MacPorts, follow these
+      steps.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
+<prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
+<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tcl-package=/Library/Tcl/macports-new</userinput>
+<prompt>%%</prompt> <userinput>make</userinput>
+<prompt>%%</prompt> <userinput>sudo make install</userinput>
+</programlisting>
+    </section>
   </section>
 
   <section id="installing.shell">
