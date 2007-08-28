@@ -186,14 +186,14 @@
       versions of MacPorts. But only one copy of MacPorts may use the default
       MacPorts Tcl library path <filename>/Library/Tcl</filename>, so for a
       second installation use the <literal>--with-tclpackage</literal> switch
-      set to any newly created (empty) directory. Also, the standard MacPorts
-      binary path must not be present during the installation of the second
-      instance. To install a second instance of MacPorts, follow these
-      steps.</para>
+      set to any newly created (empty) directory, say
+      /Library/Tcl/macports-new. Also, the standard MacPorts binary path must
+      not be present during the installation of the second instance. To
+      install a second instance of MacPorts, follow these steps.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
-<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tcl-package=/Library/Tcl/macports-new</userinput>
+<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tcl-package=NEW_TCLPACKAGE</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
