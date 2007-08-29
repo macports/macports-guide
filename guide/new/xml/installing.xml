@@ -75,9 +75,9 @@
     </orderedlist>
 
     <note>
-      <para>To see if X11 and the X11SDK are installed, check for the presence
-      of files <filename>X11User.pkg</filename> and
-      <filename>X11SDK.pkg</filename> respectively in
+      <para>X11 and the X11SDK (from Xcode Tools) are both required for X11
+      apps. To verify the presence of both, check for files
+      <filename>X11User.pkg</filename> and <filename>X11SDK.pkg</filename> in
       <filename>/Library/Receipts/</filename>.</para>
     </note>
 
