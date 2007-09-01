@@ -24,8 +24,8 @@
     <filename>Portfile</filename> phase declaration(s). If you use Portfile
     phase declaration(s), you should know how to identify the "global" section
     of a Portfile. Any statements not contained within a phase declaration, no
-    matter where they are located in a Portfile are said to be in the global
-    section of the Portfile, therefore the global section need not be
+    matter where they are located in a Portfile, are said to be in the global
+    section of the Portfile; therefore the global section need not be
     contiguous. Likewise, to remove statements from the global section they
     must be placed within a phase declaration.</para>
 
