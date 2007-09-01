@@ -456,7 +456,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           must be in the same directory, though it may be any
           directory.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cp Portfile Portfile.org</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>cp Portfile Portfile.orig</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -468,7 +468,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <para>Now use the Unix command <command>diff -u </command>to create
           a "unified" diff patch file.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.org Portfile &gt; Portfile.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.orig Portfile &gt; Portfile.diff</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -477,7 +477,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           The Portfile patch below will change the version and checksums when
           applied.</para>
 
-          <programlisting>--- Portfile.org        2007-07-25 18:52:12.000000000 -0700
+          <programlisting>--- Portfile.orig        2007-07-25 18:52:12.000000000 -0700
 +++ Portfile    2007-07-25 18:53:35.000000000 -0700
 @@ -2,7 +2,7 @@
  PortSystem             1.0
@@ -520,7 +520,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           it.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34/src</userinput>
-<prompt>%%</prompt> <userinput>cp Makefile.in Makefile.in.org</userinput></programlisting>
+<prompt>%%</prompt> <userinput>cp Makefile.in Makefile.in.orig</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -533,7 +533,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           a "unified" diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34</userinput>
-<prompt>%%</prompt> <userinput>diff -u Makefile.in.org Makefile.in &gt; patch-Makefile.in</userinput></programlisting>
+<prompt>%%</prompt> <userinput>diff -u Makefile.in.orig Makefile.in &gt; patch-Makefile.in</userinput></programlisting>
 
           <note>
             <para>You must execute the <command>diff</command> command in the
@@ -549,7 +549,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           See the example below where a patch adds <varname>DESTDIR</varname>
           support to a <filename>Makefile.in</filename> file.</para>
 
-          <programlisting>--- Makefile.in.org   2007-06-01 16:30:47.000000000 -0700
+          <programlisting>--- Makefile.in.orig   2007-06-01 16:30:47.000000000 -0700
 +++ Makefile.in       2007-06-20 10:10:59.000000000 -0700
 @@ -131,23 +131,23 @@
         $(INSTALL_DATA)/gdata $(INSTALL_DATA)/perl
