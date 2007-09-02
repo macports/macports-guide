@@ -215,96 +215,64 @@
     </section>
   </section>
 
-  <section id="reference.startupitems">
+  <section>
     <title>StartupItems</title>
 
-    <para>StartupItems are keywords that create Mac OS X LaunchDaemon startup
-    scripts. To create these startup scripts for a port, choose from the
-    following keywords.</para>
+    <para>StartupItems are keywords that create Mac OS X startup scripts for
+    <ulink
+    url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>, the
+    facility intoduced by Apple beginning with OS X 10.4, that starts, stops,
+    and manages daemons, programs and scripts. Port authors use StartupItem
+    keywords within Portfiles to instruct MacPorts to generate and install
+    <command>launchd</command> scripts for ports when they are
+    installed.</para>
 
-    <para><variablelist>
+    <para>There are two types of StartupItems, executable and non-executable,
+    but first we'll list the StartupItem keywords common to both types.</para>
+
+    <section>
+      <title>StartupItem Common Keywords</title>
+
+      <para>The keywords in this section may be used with executable or
+      non-executable StartupItems.</para>
+
+      <variablelist>
         <varlistentry>
           <term>startupitem.create</term>
 
           <listitem>
-            <para>This triggers the creation of a StartupItem, defaults to
-            "no".</para>
+            <para>Trigger the creation of a StartupItem.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <option>yes no</option></member>
+            </simplelist>
+
+            <programlisting>startupitem.create  yes</programlisting>
           </listitem>
         </varlistentry>
-      </variablelist><variablelist>
+
         <varlistentry>
           <term>startupitem.name</term>
 
           <listitem>
-            <para>Sets the name for the StartupItem, defaults to
-            ${portname}.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.executable</term>
+            <para>Sets the name for the StartupItem.</para>
 
-          <listitem>
-            <para>The name of the daemon to be run in the background. This is
-            the preferred type of startup item and may not be used together
-            with any other startupitem. This option may contain multiple
-            arguments, but they must be appropriate for a call to exec; they
-            may not contain arbitrary shell code.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.init</term>
+            <simplelist>
+              <member>Type: required</member>
 
-          <listitem>
-            <para>Shell code that will be executed prior to any of the options
-            startupitem.start, startupitem.stop and startupitem.restart.
-            Typically a startup script is specified.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.start</term>
+              <member>Default: none</member>
 
-          <listitem>
-            <para>Shell code executed to start the daemon.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.stop</term>
+              <member>Values:</member>
+            </simplelist>
 
-          <listitem>
-            <para>Shell code executed to stop the daemon.</para>
+            <programlisting>startupitem.name  OpenSSH</programlisting>
           </listitem>
         </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.restart</term>
 
-          <listitem>
-            <para>Shell code executed to restart the daemon. In the absence of
-            this key, the daemon will be restarted by taking the stop action,
-            followed by taking the start action.</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
-        <varlistentry>
-          <term>startupitem.pidfile</term>
-
-          <listitem>
-            <para>Specification for pidfile handling. It is useful in
-            conjunction with the startupitem.executable key, because it is
-            important that the startupitem know how to track the executable.
-            This keyword specifies whether the daemon generates its own
-            pidfile (auto), whether it generates its own but forgets to delete
-            it, so that the startupitem should delete it (clean), or whether
-            it never generates one, in which case the startupitem should
-            manage the pidfile on its own (manual), or whether no pidfile
-            should be used at all (none).</para>
-          </listitem>
-        </varlistentry>
-      </variablelist><variablelist>
         <varlistentry>
           <term>startupitem.logfile</term>
 
@@ -313,9 +281,19 @@
             the startupitem. Depending on the type of startupitem, and the
             manner in which it is started, standard output from the daemon may
             also be directed to the logfile.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>/dev/null</option></member>
+
+              <member>Values: <replaceable>/file/path/</replaceable></member>
+            </simplelist>
+
+            <programlisting>startupitem.logfile  ${prefix}/var/log/mydaemon.log</programlisting>
           </listitem>
         </varlistentry>
-      </variablelist><variablelist>
+
         <varlistentry>
           <term>startupitem.logevents</term>
 
@@ -323,9 +301,169 @@
             <para>Control whether or not to log events to the log file. If
             logevents is set, events with timestamps are logged to the
             logfile.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <option>yes no</option></member>
+            </simplelist>
+
+            <programlisting>startupitem.logevents   yes</programlisting>
           </listitem>
         </varlistentry>
-      </variablelist></para>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Executable StartupItems</title>
+
+      <para>The executable StartupItem is the preferred type —it merely
+      specify the name of the daemon to be run in the background.
+      <command>launchd</command> monitors the daemon to make sure it stays
+      running. Executable StartupItems may not be used together with any of
+      the non-executable StartupItem keywords.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>startupitem.executable</term>
+
+          <listitem>
+            <para>Specifies the name of the daemon to be run in the
+            background. It may have multiple arguments, but they must be
+            appropriate for a call to exec; arbitrary shell code may not be
+            used.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <option>yes no</option></member>
+            </simplelist>
+
+            <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.pidfile</term>
+
+          <listitem>
+            <para>A specification for process id (PID) file handling that may
+            be used in conjunction with the startupitem.executable key to
+            inform the startupitem how to track the executable. This keyword
+            specifies whether the daemon is not to use a pidfile
+            (<option>none</option>), generates its own pidfile
+            (<option>auto</option>), never generates one (so the startupitem
+            should manage the pidfile on its own (<option>manual</option>), or
+            generates its own but will not delete it (so the startupitem
+            should delete it using <option>clean</option>).</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>none</option> |
+              <filename>${prefix}/var/run/${name}.pid</filename></member>
+
+              <member>Values: <option>none auto manual clean</option>
+              [<replaceable>/path/to/pidfile</replaceable>]</member>
+            </simplelist>
+
+            <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section>
+      <title>Non-Executable StartupItems</title>
+
+      <para>Non-executable StartupItems use <command>daemondo</command>, a
+      wrapper program provided by MacPorts base that runs daemons.
+      <command>daemondo</command> works as an adapter between OS X's launchd
+      and daemons that are normally started via traditional rc.d style
+      scripts.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>startupitem.init</term>
+
+          <listitem>
+            <para>Shell code that will be executed prior to any of the options
+            startupitem.start, startupitem.stop and
+            startupitem.restart.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <option>shell code</option></member>
+            </simplelist>
+
+            <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.start</term>
+
+          <listitem>
+            <para>Specify a shell script to start the daemon.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: none</member>
+
+              <member>Values: <literal>shell script</literal></member>
+            </simplelist>
+
+            <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server start</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.stop</term>
+
+          <listitem>
+            <para>Specify a shell script to stop the daemon.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: none</member>
+
+              <member>Values: <literal>shell script</literal></member>
+            </simplelist>
+
+            <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server stop</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.restart</term>
+
+          <listitem>
+            <para>Specify a shell script to restart the daemon. In the absence
+            of this key, the daemon will be restarted by taking the stop
+            action, followed by taking the start action.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: none</member>
+
+              <member>Values: <literal>shell script</literal></member>
+            </simplelist>
+
+            <programlisting>startupitem.start  ${prefix}/share/mysql/mysql.server restart</programlisting>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
   </section>
 
   <section id="reference.variables">
@@ -374,8 +512,8 @@
             <term>portpath</term>
 
             <listitem>
-              <para>Path to the directory containing the downloaded
-              <filename>Portfile</filename>s. Read only.</para>
+              <para>Path to the directory containing the downloaded Read
+              only.</para>
             </listitem>
           </varlistentry>
 
@@ -420,6 +558,22 @@
 
             <listitem>
               <para>Location to store downloaded distfiles. Read only.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>install.user</term>
+
+            <listitem>
+              <para>The Unix user at the time of port installation.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>install.group</term>
+
+            <listitem>
+              <para>The Unix group at the time of port installation.</para>
             </listitem>
           </varlistentry>
 
