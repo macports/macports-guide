@@ -298,19 +298,49 @@
   </section>
 
   <section id="internals.apis">
-    <title>MacPorts APIs</title>
+    <title>MacPorts APIs and Libraries</title>
 
-    <para>MacPorts contains two application programming interfaces (APIs),
-    written in Tcl: The Ports API and the MacPorts (mport*) API. The former is
-    an internal API used for individual Portfiles. The latter is a high-level
-    API used by client applications such as the MacPorts port utility.</para>
+    <para>The MacPorts system is composed of three Tcl libraries:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>MacPorts API - MacPorts public API for handling Portfiles,
+        dependencies, and registry</para>
+      </listitem>
+
+      <listitem>
+        <para>Ports API - API for Portfile parsing and execution</para>
+      </listitem>
+
+      <listitem>
+        <para>pextlib - C extensions to Tcl</para>
+      </listitem>
+    </itemizedlist>
 
     <section id="internals.apis.ports">
       <title>Ports API</title>
 
       <para>The code for the Port API is located in
-      <filename>base/src/port1.0</filename> and performs the following
-      functions:</para>
+      <filename>base/src/port1.0</filename>. The Port API provides all the
+      primitives required for a Portfile to be parsed, queried, and executed.
+      It also provides a single procedure call that the MacPorts API uses to
+      kick off execution: "eval_targets". The port Tcl library supplies these
+      procedures, all of which are generated at run-time using the
+      <code>options</code> procedure in portutil.tcl.</para>
+
+      <para>The macports Tcl library loads the Portfile into a
+      sub-interpreter, within which all port-specific code is run. This
+      process ensures that there will never be pollution of the Tcl space of
+      other ports, nor the MacPorts libraries, nor the calling
+      application.</para>
+
+      <note>
+        <para>Portfiles are executed in a Tcl interpreter as Tcl code (and not
+        truly parsed strictly speaking), so every Portfile option must be a
+        TCL procedure.</para>
+      </note>
+
+      <para>The Ports API performs the following functions:</para>
 
       <itemizedlist>
         <listitem>
@@ -320,10 +350,10 @@
         </listitem>
 
         <listitem>
-          <para>Option/Default handling. All <filename>Portfile</filename>
-          options (name, version, revision ...) are registered by targets. The
-          Port API creates procedures for these options, and sets up the
-          complex variable traces necessary to support option defaults.</para>
+          <para>Option/Default handling. All Portfile options (name, version,
+          revision ...) are registered by targets. The Port API creates
+          procedures for these options, and sets up the complex variable
+          traces necessary to support option defaults.</para>
         </listitem>
 
         <listitem>
@@ -353,8 +383,23 @@
       <title>MacPorts API</title>
 
       <para>The code for the MacPorts API is located in
-      <filename>base/src/macports1.0</filename>. The MacPorts API performs the
-      following functions:</para>
+      <filename>base/src/macports1.0</filename>. The MacPorts API provides a
+      public API into the MacPorts system by providing simple primitives for
+      handling Portfiles, dependencies, and registry operations, and exports
+      the MacPorts API for the <command>port</command> command line utility,
+      or any other. The API has very little information about the contents
+      Portfiles; instead, it relies entirely upon the <command>port</command>
+      Tcl library. By keeping the high level API simple and generic, revisions
+      to the underlying ports system will not necessarily require a revision
+      of the high level MacPorts API.</para>
+
+      <para>The MacPorts API is also responsible for loading user specified
+      options into a sub-interpreter to be evaluated by the ports API. In that
+      case it sets the variable name in the sub-interpreter and adds the
+      option to the sub-interpreter's global array user_options(). User
+      options are passed as part of the call to mportopen. </para>
+
+      <para>The MacPorts API performs the following functions:</para>
 
       <itemizedlist>
         <listitem>
@@ -490,6 +535,14 @@
         </listitem>
       </itemizedlist>
     </section>
+
+    <section>
+      <title>pextlib</title>
+
+      <para>The pextlib TCL library provides a variety of C extensions to add
+      capabilities to TCL procedures; for example, an interface to flock(2)
+      and mkstemp(3).</para>
+    </section>
   </section>
 
   <section id="internals.registry">
@@ -545,7 +598,7 @@
     <section id="internals.registry.api">
       <title>The Registry API</title>
 
-      <para>The MacPorts Registry provides a public API in the registry1.0 Tcl
+      <para>The MacPorts registry provides a public API in the registry1.0 Tcl
       package. Using this API listed below you can access the MacPorts
       Registry using the default receipt storage mechanism chosen in
       <filename>macports.conf</filename>.</para>
