@@ -161,8 +161,11 @@
     <section id="reference.dependencies.dependslib">
       <title>depends_lib</title>
 
-      <para>Library dependencies are needed both at build time (for headers
-      and libraries to link against) and at run time.</para>
+      <para>The list of dependencies to check before phases
+      <option>configure</option>, <option>build</option>,
+      <option>destroot</option>, <option>install</option>, and
+      <option>package</option>. Library dependencies are needed both at build
+      time (for headers and libraries to link against) and at run time.</para>
 
       <programlisting>depends_lib         port:rrdtool</programlisting>
     </section>
@@ -170,8 +173,11 @@
     <section id="reference.dependencies.dependsbuild">
       <title>depends_build</title>
 
-      <para>Build dependencies are needed when software is compiled, but not
-      needed at all once the software is compiled and installed.</para>
+      <para>The list of dependencies to check before phases
+      <option>build</option>, <option>destroot</option>,
+      <option>install</option>, and <option>package</option>. Build
+      dependencies are needed when software is compiled, but not needed at all
+      once the software is compiled and installed.</para>
 
       <programlisting>depends_build       port:gcc42</programlisting>
     </section>
@@ -179,8 +185,10 @@
     <section id="reference.dependencies.dependsrun">
       <title>depends_run</title>
 
-      <para>Run dependencies are needed when the software is run, but not to
-      compile it.</para>
+      <para>The list of dependencies to check before phases
+      <option>destroot</option>, <option>install</option>, and
+      <option>package</option>. Run dependencies are needed when the software
+      is run, but not to compile it.</para>
 
       <programlisting>depends_run         port:apache2</programlisting>
     </section>
@@ -227,14 +235,14 @@
     <command>launchd</command> scripts for ports when they are
     installed.</para>
 
-    <para>There are two types of StartupItems, executable and non-executable,
-    but first we'll list the StartupItem keywords common to both types.</para>
+    <para>There are two types of StartupItems, executable and wrapper, but
+    first we'll list the StartupItem keywords common to both types.</para>
 
     <section>
-      <title>StartupItem Common Keywords</title>
+      <title>Common StartupItem Keywords</title>
 
       <para>The keywords in this section may be used with executable or
-      non-executable StartupItems.</para>
+      wrapper StartupItems.</para>
 
       <variablelist>
         <varlistentry>
@@ -322,8 +330,8 @@
       <para>The executable StartupItem is the preferred type —it merely
       specify the name of the daemon to be run in the background.
       <command>launchd</command> monitors the daemon to make sure it stays
-      running. Executable StartupItems may not be used together with any of
-      the non-executable StartupItem keywords.</para>
+      running. Executable StartupItem keywords may not be used together with
+      any of the wrapper StartupItem keywords.</para>
 
       <variablelist>
         <varlistentry>
@@ -378,12 +386,12 @@
     </section>
 
     <section>
-      <title>Non-Executable StartupItems</title>
+      <title>Wrapper StartupItems</title>
 
-      <para>Non-executable StartupItems use <command>daemondo</command>, a
-      wrapper program provided by MacPorts base that runs daemons.
-      <command>daemondo</command> works as an adapter between OS X's launchd
-      and daemons that are normally started via traditional rc.d style
+      <para>Wrapper StartupItems use <command>daemondo</command>, a wrapper
+      program provided by MacPorts base made to execute startup scripts for
+      daemons. <command>daemondo</command> works as an adapter between OS X's
+      launchd and daemons that are normally started via traditional rc.d style
       scripts.</para>
 
       <variablelist>
@@ -400,7 +408,7 @@
 
               <member>Default: <option>no</option></member>
 
-              <member>Values: <option>shell code</option></member>
+              <member>Values: <literal>shell script</literal></member>
             </simplelist>
 
             <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
@@ -931,11 +939,13 @@
           <term>PortSystem</term>
 
           <listitem>
-            <para>The top line of every Portfile. The PortSystem line wraps
-            the loading of TCL libraries appropriate for a given version of
-            MacPorts.</para>
+            <para>The top line of every Portfile; it must be followed by a
+            blank line. It defines which version of the Portfile interpreter
+            will be used.</para>
 
-            <programlisting>PortSystem   1.0</programlisting>
+            <programlisting>PortSystem   1.0
+
+</programlisting>
           </listitem>
         </varlistentry>
 
@@ -944,6 +954,12 @@
 
           <listitem>
             <para>The name of the Port; it should be lowercase.</para>
+
+            <simplelist>
+              <member>Type: required</member>
+
+              <member>Default: none</member>
+            </simplelist>
 
             <programlisting>name         foo</programlisting>
           </listitem>
