@@ -397,95 +397,108 @@
       options into a sub-interpreter to be evaluated by the ports API. In that
       case it sets the variable name in the sub-interpreter and adds the
       option to the sub-interpreter's global array user_options(). User
-      options are passed as part of the call to mportopen. </para>
+      options are passed as part of the call to <code>mportopen</code>.</para>
 
       <para>The MacPorts API performs the following functions:</para>
 
       <itemizedlist>
         <listitem>
-          <para>Dependency implementation. This portion is implemented in a
-          highly generic fashion, and is used throughout the system. The
-          dependency functions are exported to the Port API, and the Port API
-          uses them to execute targets in the correct order.</para>
+          <para>Dependency support.</para>
+
+          <para>This is implemented in a highly generic fashion, and is used
+          throughout the system. The dependency functions are exported to the
+          Port API, and the Port API uses them to execute targets in the
+          correct order.</para>
         </listitem>
 
         <listitem>
-          <para>Software dependencies. Software dependencies are handled at
-          this layer using the dependency implementation.</para>
+          <para>Dependency processing.</para>
+
+          <para>Software dependencies are handled at this layer using the
+          dependency support layer.</para>
         </listitem>
 
         <listitem>
-          <para>UI abstractions. UI Abstractions are handled at this layer.
-          Each port action is provided a context, and a mechanism for posting
-          user interface events is exported to the Port API (ui_event).</para>
+          <para>UI abstractions.</para>
+
+          <para>UI Abstractions are handled at this layer. Each port action is
+          provided a context, and a mechanism for posting user interface
+          events is exported to the Port API (ui_event).</para>
         </listitem>
 
         <listitem>
-          <para>Registry management routines. Manages the rudimentary port
-          registry in
+          <para>Registry management routines.</para>
+
+          <para>Manages the rudimentary port registry in
           <filename>${prefix}/var/mports/receipts/</filename>.</para>
 
           <itemizedlist>
             <listitem>
-              <para>mportregistry::new: create a new port registry
+              <para><code>mportregistry::new:</code> create a new port
+              registry entry.</para>
+            </listitem>
+
+            <listitem>
+              <para><code>mportregistry::exists:</code> check if a port
+              registry entry exists (either versioned or not).</para>
+            </listitem>
+
+            <listitem>
+              <para><code>mportregistry::delete:</code> delete an existing
+              registry entry.</para>
+            </listitem>
+
+            <listitem>
+              <para><code>mportregistry::close:</code> closes a new registry
               entry.</para>
-            </listitem>
-
-            <listitem>
-              <para>mportregistry::exists: check if a port registry entry
-              exists (either versioned or not).</para>
-            </listitem>
-
-            <listitem>
-              <para>mportregistry::delete: delete an existing registry
-              entry.</para>
-            </listitem>
-
-            <listitem>
-              <para>mportregistry::close: closes a new registry entry.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
           <para>Exports the MacPorts API for use by client
-          applications:</para>
+          applications.</para>
+
+          <para>The following routines are defined.</para>
 
           <itemizedlist>
             <listitem>
-              <para>mportinit: Initializes the MacPorts system. Should be
-              called before trying to use any other procedure.</para>
+              <para><code>mportinit:</code> Initializes the MacPorts system.
+              Should be called before trying to use any other
+              procedure.</para>
             </listitem>
 
             <listitem>
-              <para>mportsearch: Given a regexp, searches the PortIndex for
-              ports with matching names.</para>
+              <para><code>mportsearch:</code> Given a regexp, searches the
+              <filename>PortIndex</filename> for ports with matching
+              names.</para>
             </listitem>
 
             <listitem>
-              <para>mportopen: Given a URI to a port, opens the port and
-              returns an opaque handle to it.</para>
+              <para><code>mportopen:</code> Given a URI to a port, opens a
+              Portfile and returns an opaque handle to it.</para>
             </listitem>
 
             <listitem>
-              <para>portclose: Given a port handle, closes the port.</para>
+              <para><code>portclose:</code> Given a port handle, closes a
+              Portfile.</para>
             </listitem>
 
             <listitem>
-              <para>mportexec: Given a port handle, executes a target (i.e.
-              install).</para>
+              <para><code>mportexec:</code> Given a port handle, executes a
+              target (i.e. install).</para>
             </listitem>
 
             <listitem>
-              <para>mportinfo: Given a port handle, this returns the PortInfo
-              array (as a flat list of array elements). This is a little
-              tricky and unstable and only used by the
+              <para><code>mportinfo:</code> Given a port handle, this returns
+              the PortInfo array (as a flat list of array elements). This is a
+              little tricky and unstable and only used by the
               <command>portindex</command> command.</para>
             </listitem>
 
             <listitem>
-              <para>mportdepends: Given a port handle, returns a list of ports
-              upon which the specified port depends.</para>
+              <para><code>mportdepends:</code> Given a port handle, returns a
+              list of ports upon which the specified port depends.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -496,8 +509,8 @@
 
       <itemizedlist>
         <listitem>
-          <para>Calls the mportsearch function to find all ports containing
-          "cm3".</para>
+          <para>Calls the <code>mportsearch</code> function to find all ports
+          containing "cm3".</para>
         </listitem>
 
         <listitem>
@@ -517,26 +530,28 @@
 
       <itemizedlist>
         <listitem>
-          <para>Calls the mportsearch function to find the first port that
-          matches the name "cm3".</para>
+          <para>Calls the <code>mportsearch</code> function to find the first
+          port that matches the name "cm3".</para>
         </listitem>
 
         <listitem>
-          <para>Calls the mportopen function to open the port.</para>
+          <para>Calls the <code>mportopen</code> function to open the
+          port.</para>
         </listitem>
 
         <listitem>
-          <para>Calls the mportexec function to execute the install target in
-          the port.</para>
+          <para>Calls the <code>mportexec</code> function to execute the
+          install target in the port.</para>
         </listitem>
 
         <listitem>
-          <para>Calls the mportclose function to close the port.</para>
+          <para>Calls the <code>mportclose</code> function to close the
+          port.</para>
         </listitem>
       </itemizedlist>
     </section>
 
-    <section>
+    <section id="internals.apis.pextlib">
       <title>pextlib</title>
 
       <para>The pextlib TCL library provides a variety of C extensions to add
