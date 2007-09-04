@@ -223,7 +223,7 @@
     </section>
   </section>
 
-  <section>
+  <section id="reference.startupitems">
     <title>StartupItems</title>
 
     <para>StartupItems are keywords that create Mac OS X startup scripts for
@@ -324,7 +324,7 @@
       </variablelist>
     </section>
 
-    <section>
+    <section id="reference.startupitems.executable">
       <title>Executable StartupItems</title>
 
       <para>The executable StartupItem is the preferred type —it merely
@@ -385,7 +385,7 @@
       </variablelist>
     </section>
 
-    <section>
+    <section id="reference.startupitems.wrapper">
       <title>Wrapper StartupItems</title>
 
       <para>Wrapper StartupItems use <command>daemondo</command>, a wrapper
