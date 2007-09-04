@@ -238,7 +238,7 @@
     <para>There are two types of StartupItems, executable and wrapper, but
     first we'll list the StartupItem keywords common to both types.</para>
 
-    <section>
+    <section id="reference.startupitems.common">
       <title>Common StartupItem Keywords</title>
 
       <para>The keywords in this section may be used with executable or
