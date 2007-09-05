@@ -5,8 +5,8 @@
   <title>Portfile Reference</title>
 
   <para>This chapter serves as a reference for the major elements of a
-  <filename>Portfile</filename>: port phases, variants, StartupItems,
-  variables, keywords, and Tcl extensions.</para>
+  Portfile: port phases, dependencies, StartupItems, variables, keywords, and
+  Tcl extensions.</para>
 
   <section id="reference.phases">
     <title>Port Phases</title>
@@ -232,17 +232,19 @@
     facility intoduced by Apple beginning with OS X 10.4, that starts, stops,
     and manages daemons, programs and scripts. Port authors use StartupItem
     keywords within Portfiles to instruct MacPorts to generate and install
-    <command>launchd</command> scripts for ports when they are
-    installed.</para>
+    <command>launchd</command> scripts for daemons during port
+    installation.</para>
 
-    <para>There are two types of StartupItems, executable and wrapper, but
-    first we'll list the StartupItem keywords common to both types.</para>
+    <para>There are three categories of StartupItem keywords. Those that
+    trigger StartupItem creation and logging, those that specify attributes of
+    <quote>executable</quote> StartupItems, and those that specify attributes
+    of <quote>wrapper</quote> StartupItems.</para>
 
-    <section id="reference.startupitems.common">
-      <title>Common StartupItem Keywords</title>
+    <section id="reference.startupitems.creation">
+      <title>StartupItem Creation &amp; Logging</title>
 
-      <para>The keywords in this section may be used with executable or
-      wrapper StartupItems.</para>
+      <para>The keywords in this section may be used with either
+      <quote>executable</quote> or <quote>wrapper</quote> StartupItems.</para>
 
       <variablelist>
         <varlistentry>
@@ -286,7 +288,7 @@
 
           <listitem>
             <para>Path to a logfile for logging events about the lifetime of
-            the startupitem. Depending on the type of startupitem, and the
+            the StartupItem. Depending on the type of StartupItem, and the
             manner in which it is started, standard output from the daemon may
             also be directed to the logfile.</para>
 
@@ -324,75 +326,23 @@
       </variablelist>
     </section>
 
-    <section id="reference.startupitems.executable">
-      <title>Executable StartupItems</title>
-
-      <para>The executable StartupItem is the preferred type —it merely
-      specify the name of the daemon to be run in the background.
-      <command>launchd</command> monitors the daemon to make sure it stays
-      running. Executable StartupItem keywords may not be used together with
-      any of the wrapper StartupItem keywords.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>startupitem.executable</term>
-
-          <listitem>
-            <para>Specifies the name of the daemon to be run in the
-            background. It may have multiple arguments, but they must be
-            appropriate for a call to exec; arbitrary shell code may not be
-            used.</para>
-
-            <simplelist>
-              <member>Type: optional</member>
-
-              <member>Default: <option>no</option></member>
-
-              <member>Values: <option>yes no</option></member>
-            </simplelist>
-
-            <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>startupitem.pidfile</term>
-
-          <listitem>
-            <para>A specification for process id (PID) file handling that may
-            be used in conjunction with the startupitem.executable key to
-            inform the startupitem how to track the executable. This keyword
-            specifies whether the daemon is not to use a pidfile
-            (<option>none</option>), generates its own pidfile
-            (<option>auto</option>), never generates one (so the startupitem
-            should manage the pidfile on its own (<option>manual</option>), or
-            generates its own but will not delete it (so the startupitem
-            should delete it using <option>clean</option>).</para>
-
-            <simplelist>
-              <member>Type: optional</member>
-
-              <member>Default: <option>none</option> |
-              <filename>${prefix}/var/run/${name}.pid</filename></member>
-
-              <member>Values: <option>none auto manual clean</option>
-              [<replaceable>/path/to/pidfile</replaceable>]</member>
-            </simplelist>
-
-            <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
     <section id="reference.startupitems.wrapper">
       <title>Wrapper StartupItems</title>
 
-      <para>Wrapper StartupItems use <command>daemondo</command>, a wrapper
-      program provided by MacPorts base made to execute startup scripts for
-      daemons. <command>daemondo</command> works as an adapter between OS X's
-      launchd and daemons that are normally started via traditional rc.d style
-      scripts.</para>
+      <para>StartupItems of type <quote>wrapper</quote> use
+      <command>daemondo</command>, a wrapper program provided by MacPorts base
+      made to execute startup scripts for daemons. <command>daemondo</command>
+      works as an adapter between OS X's <command>launchd</command> and
+      daemons that are normally started via traditional rc.d style scripts.
+      Therefore a port author may use these StartupItems when startup scripts
+      are provided in the source distribution of ported software, or when a
+      port author chooses to write his or her own.</para>
+
+      <note>
+        <para>For a given port, StartupItem keywords in category
+        <quote>wrapper</quote> may not be mixed with any keywords in the
+        <quote>executable</quote> StartupItem category.</para>
+      </note>
 
       <variablelist>
         <varlistentry>
@@ -400,8 +350,8 @@
 
           <listitem>
             <para>Shell code that will be executed prior to any of the options
-            startupitem.start, startupitem.stop and
-            startupitem.restart.</para>
+            <code>startupitem.start</code>, <code>startupitem.stop</code> and
+            <code>startupitem.restart</code>.</para>
 
             <simplelist>
               <member>Type: optional</member>
@@ -468,6 +418,74 @@
             </simplelist>
 
             <programlisting>startupitem.start  ${prefix}/share/mysql/mysql.server restart</programlisting>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section id="reference.startupitems.executable">
+      <title>Executable StartupItems</title>
+
+      <para>StartupItems of type <quote>executable</quote> specify the name of
+      the daemon to be run in the background, and optionally a pidfile to
+      track the process ID. Use this StartupItem type when you want
+      <command>launchd</command> to monitor a daemon to make sure it stays
+      running, and restart it if necessary.</para>
+
+      <note>
+        <para>For a given port, StartupItem keywords in category
+        <quote>executable</quote> may not be mixed with any keywords in the
+        <quote>wrapper</quote> StartupItem category.</para>
+      </note>
+
+      <variablelist>
+        <varlistentry>
+          <term>startupitem.executable</term>
+
+          <listitem>
+            <para>Specifies the name of the daemon to be run in the
+            background. It may have multiple arguments, but they must be
+            appropriate for a call to exec; arbitrary shell code may not be
+            used.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <option>yes no</option></member>
+            </simplelist>
+
+            <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.pidfile</term>
+
+          <listitem>
+            <para>A specification for process id (PID) file handling that may
+            be used in conjunction with the
+            <code>startupitem.executable</code> key to inform the startupitem
+            how to track the executable. This keyword specifies whether the
+            daemon is not to use a pidfile (<option>none</option>), generates
+            its own pidfile (<option>auto</option>), never generates one (so
+            the StartupItem should manage the pidfile on its own
+            (<option>manual</option>), or generates its own but will not
+            delete it (so the StartupItem should delete it using
+            <option>clean</option>).</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>none</option> |
+              <filename>${prefix}/var/run/${name}.pid</filename></member>
+
+              <member>Values: <option>none auto manual clean</option>
+              [<replaceable>/path/to/pidfile</replaceable>]</member>
+            </simplelist>
+
+            <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
