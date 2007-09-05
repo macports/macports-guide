@@ -259,6 +259,8 @@
               <member>Default: <option>no</option></member>
 
               <member>Values: <option>yes no</option></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.create  yes</programlisting>
@@ -276,7 +278,9 @@
 
               <member>Default: none</member>
 
-              <member>Values:</member>
+              <member>Values: <replaceable>any name</replaceable></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.name  OpenSSH</programlisting>
@@ -298,6 +302,8 @@
               <member>Default: <option>/dev/null</option></member>
 
               <member>Values: <replaceable>/file/path/</replaceable></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.logfile  ${prefix}/var/log/mydaemon.log</programlisting>
@@ -318,6 +324,8 @@
               <member>Default: <option>no</option></member>
 
               <member>Values: <option>yes no</option></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.logevents   yes</programlisting>
@@ -359,6 +367,8 @@
               <member>Default: <option>no</option></member>
 
               <member>Values: <literal>shell script</literal></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
@@ -377,6 +387,8 @@
               <member>Default: none</member>
 
               <member>Values: <literal>shell script</literal></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server start</programlisting>
@@ -395,6 +407,8 @@
               <member>Default: none</member>
 
               <member>Values: <literal>shell script</literal></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server stop</programlisting>
@@ -415,6 +429,8 @@
               <member>Default: none</member>
 
               <member>Values: <literal>shell script</literal></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.start  ${prefix}/share/mysql/mysql.server restart</programlisting>
@@ -454,6 +470,8 @@
               <member>Default: <option>no</option></member>
 
               <member>Values: <option>yes no</option></member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
@@ -464,28 +482,41 @@
           <term>startupitem.pidfile</term>
 
           <listitem>
-            <para>A specification for process id (PID) file handling that may
-            be used in conjunction with the
-            <code>startupitem.executable</code> key to inform the startupitem
-            how to track the executable. This keyword specifies whether the
-            daemon is not to use a pidfile (<option>none</option>), generates
-            its own pidfile (<option>auto</option>), never generates one (so
-            the StartupItem should manage the pidfile on its own
-            (<option>manual</option>), or generates its own but will not
-            delete it (so the StartupItem should delete it using
-            <option>clean</option>).</para>
+            <para>This keyword may be used in conjunction with the
+            <code>startupitem.executable</code> key to inform the StartupItem
+            how to track the executable. It specifies two things; a process id
+            (PID) file handling type, and a pidfile name and path.</para>
 
             <simplelist>
               <member>Type: optional</member>
 
-              <member>Default: <option>none</option> |
-              <filename>${prefix}/var/run/${name}.pid</filename></member>
+              <member>Default: <option>[none]</option> |
+              <filename>[${prefix}/var/run/${name}.pid]</filename></member>
 
-              <member>Values: <option>none auto manual clean</option>
+              <member>Values: <option>[none auto manual clean]</option>
               [<replaceable>/path/to/pidfile</replaceable>]</member>
+
+              <member>Example:</member>
             </simplelist>
 
             <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
+
+            <para>Pidfile handling options:</para>
+
+            <simplelist>
+              <member><option>none</option> - The daemon is not to use a
+              pidfile.</member>
+
+              <member><option>auto</option> - The daemon generates its own
+              pidfile.</member>
+
+              <member><option>manual</option> - The daemon never generates a
+              pidfile; the StartupItem must manage the pidfile on its
+              own.</member>
+
+              <member><option>clean</option> - The daemon generates its own
+              but will not delete it; the StartupItem must delete it.</member>
+            </simplelist>
           </listitem>
         </varlistentry>
       </variablelist>
