@@ -298,7 +298,7 @@
   </section>
 
   <section id="internals.apis">
-    <title>MacPorts APIs and Libraries</title>
+    <title>MacPorts APIs and Libs</title>
 
     <para>The MacPorts system is composed of three Tcl libraries:</para>
 
