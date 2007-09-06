@@ -239,12 +239,12 @@
     traditional rc.d style scripts.</para>
 
     <para>There are three categories of StartupItem keywords. Those that
-    trigger StartupItem creation and attributes, those that specify attributes
-    of <quote>executable</quote> StartupItems, and those that specify
-    attributes of <quote>script</quote> StartupItems.</para>
+    trigger StartupItem creation and setup logging, those that specify
+    attributes of <quote>executable</quote> StartupItems, and those that
+    specify attributes of <quote>script</quote> StartupItems.</para>
 
     <section id="reference.startupitems.creation">
-      <title>StartupItem Creation &amp; Attributes</title>
+      <title>StartupItem Creation &amp; Logging</title>
 
       <para>The keywords in this section may be used with either
       <quote>executable</quote> or <quote>script</quote> StartupItems (see
@@ -288,50 +288,6 @@
             </simplelist>
 
             <programlisting>startupitem.name  OpenSSH</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>startupitem.pidfile</term>
-
-          <listitem>
-            <para>This keyword must be defined properly for
-            <command>daemondo</command> to be able to monitor a daemon and
-            restart it if it dies. This is true for both <quote>script</quote>
-            and <quote>executable</quote> StartupItems. It specifies two
-            things; a process id (PID) file handling type, and a pidfile name
-            and path.</para>
-
-            <simplelist>
-              <member>Type: optional</member>
-
-              <member>Default: <option>[none]</option> |
-              <filename>[${prefix}/var/run/${name}.pid]</filename></member>
-
-              <member>Values: <option>[none auto manual clean]</option>
-              [<replaceable>/path/to/pidfile</replaceable>]</member>
-
-              <member>Example:</member>
-            </simplelist>
-
-            <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
-
-            <para>Pidfile handling options:</para>
-
-            <simplelist>
-              <member><option>none</option> - The daemon is not to use a
-              pidfile.</member>
-
-              <member><option>auto</option> - The daemon generates its own
-              pidfile.</member>
-
-              <member><option>manual</option> - The daemon never generates a
-              pidfile; the StartupItem must manage the pidfile on its
-              own.</member>
-
-              <member><option>clean</option> - The daemon generates its own
-              but will not delete it; the StartupItem must delete it.</member>
-            </simplelist>
           </listitem>
         </varlistentry>
 
@@ -387,11 +343,10 @@
 
       <para><quote>Executable</quote> StartupItems are slightly preferred over
       <quote>script</quote> StartupItems because <command>daemondo</command>
-      may be better able to detect when a daemon has died when it launches it
-      directly, rather than indirectly via a startup script, though for
-      daemondo to monitor either type, the <code>startupitem.pidfile</code>
-      keyword must be set (see above). The <quote>executable</quote>
-      StartupItem specifies the path and name of the daemon to be run in the
+      launches the daemon directly, rather than indirectly via a startup
+      script, and therefore it automatically knows how to monitor the daemon
+      to restart it if it dies. The <quote>executable</quote> StartupItem
+      specifies the path and name of the daemon to be run in the
       background.</para>
 
       <note>
@@ -430,11 +385,12 @@
     <section id="reference.startupitems.script">
       <title>Script StartupItems</title>
 
-      <para>StartupItems of type <quote>script</quote> let
-      <command>daemondo</command> launch daemons via startup scripts. When
-      using this type of StartupItem, the <code>startupitem.pidfile</code>
-      keyword should be used so <command>daemondo</command> can monitor the
-      daemon's PID and restart it if it dies.</para>
+      <para>StartupItems of type <quote>script</quote> use
+      <command>daemondo</command> to launch a daemon via a startup script
+      provided in port distributions containing daemons. When using this type
+      of StartupItem, the <code>startupitem.pidfile</code> keyword may be used
+      so <command>daemondo</command> can monitor the daemon's PID and restart
+      it if it dies.</para>
 
       <note>
         <para>For a given port, StartupItem keywords in category
@@ -443,28 +399,6 @@
       </note>
 
       <variablelist>
-        <varlistentry>
-          <term>startupitem.init</term>
-
-          <listitem>
-            <para>Shell code that will be executed prior to any of the options
-            <code>startupitem.start</code>, <code>startupitem.stop</code> and
-            <code>startupitem.restart</code>.</para>
-
-            <simplelist>
-              <member>Type: optional</member>
-
-              <member>Default: <option>no</option></member>
-
-              <member>Values: <literal>shell_script</literal></member>
-
-              <member>Example:</member>
-            </simplelist>
-
-            <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
-          </listitem>
-        </varlistentry>
-
         <varlistentry>
           <term>startupitem.start</term>
 
@@ -524,6 +458,71 @@
             </simplelist>
 
             <programlisting>startupitem.start  ${prefix}/share/mysql/mysql.server restart</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.pidfile</term>
+
+          <listitem>
+            <para>This keyword must be defined properly for
+            <command>daemondo</command> to be able to monitor daemons launched
+            via <quote>script</quote> StartupItems and restart them if they
+            die. It specifies two things: a process id (PID) file handling
+            method, and a pidfile name and path.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>[none]</option> |
+              <filename>[${prefix}/var/run/${name}.pid]</filename></member>
+
+              <member>Values: <option>[none auto manual clean]</option>
+              [<replaceable>/path/to/pidfile</replaceable>]</member>
+
+              <member>Example:</member>
+            </simplelist>
+
+            <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
+
+            <para>Pidfile handling options:</para>
+
+            <simplelist>
+              <member><option>none</option> - The daemon is not to use a
+              pidfile.</member>
+
+              <member><option>auto</option> - The daemon generates its own
+              pidfile.</member>
+
+              <member><option>manual</option> - The daemon never generates a
+              pidfile; the StartupItem must manage the pidfile on its
+              own.</member>
+
+              <member><option>clean</option> - The daemon generates its own
+              but will not delete it; the StartupItem must delete it.</member>
+            </simplelist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>startupitem.init</term>
+
+          <listitem>
+            <para>Shell code that will be executed prior to any of the options
+            <code>startupitem.start</code>, <code>startupitem.stop</code> and
+            <code>startupitem.restart</code>.</para>
+
+            <simplelist>
+              <member>Type: optional</member>
+
+              <member>Default: <option>no</option></member>
+
+              <member>Values: <literal>shell_script</literal></member>
+
+              <member>Example:</member>
+            </simplelist>
+
+            <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
