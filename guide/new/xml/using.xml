@@ -27,9 +27,10 @@
 
       <note>
         <para>Selfupdate runs only on Mac OS X. If you are running MacPorts on
-        another platform, you must use <option>sync</option> (see below) to
-        update the ports tree, and you must update MacPorts base by manually
-        installing newer versions.</para>
+        another platform, you must use option <link
+        linkend="using.port.sync">sync</link> to update the ports tree; to
+        update MacPorts base you must manually install a newer version from
+        source.</para>
       </note>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
@@ -55,17 +56,27 @@ selfupdate done!</screen>
     <section id="using.port.sync">
       <title>sync</title>
 
-      <para>The sync option performs a subset of selfupdate actions. It
-      synchronizes the ports tree, as does <option>selfupdate</option>, but it
-      does not check for upgrades to MacPorts base. Unless you have a special
-      reason not to, you should use <option>selfupdate</option>.</para>
+      <para>The <option>sync</option> option performs a subset of
+      <option>selfupdate</option> actions. It synchronizes the ports tree, as
+      does <option>selfupdate</option>, but it does not check for upgrades to
+      MacPorts base. On OS X, unless there is a special reason not to do so,
+      you should run <link
+      linkend="using.port.selfupdate">selfupdate</link>.</para>
+
+      <note>
+        <para>For platforms other than OS X, <option>sync</option> is the only
+        way to get port updates because <option>selfupdate</option> is
+        supported only on OS X.</para>
+      </note>
     </section>
 
     <section id="using.port.list">
       <title>list</title>
 
       <para>The <option>list</option> option is used to get a list of all
-      available ports.</para>
+      available ports. The list of available ports is very long, so use <link
+      linkend="using.port.search">search</link> if you know a port's name or
+      part of it.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
     </section>
@@ -146,8 +157,9 @@ Maintainers: nomaintainer@macports.org</screen>
       <note>
         <para>You may break up a port's installation into smaller steps for
         troubleshooting by passing <command>port</command> a prior
-        installation phase such as fetch, configure, build, or
-        destroot.</para>
+        installation phase such as fetch, configure, build, or destroot. See
+        section <link linkend="development.phases">Port Phases</link> for a
+        complete list of phases.</para>
       </note>
     </section>
 
@@ -179,9 +191,10 @@ Maintainers: nomaintainer@macports.org</screen>
       <note>
         <para>If a port as installed as a dependency of another port,
         uninstall will not remove it unless you remove the dependent ports
-        first. To override this behavior, use the -f (force) switch. But some
-        ports need to be rebuilt if dependencies change, so you should know
-        what you are doing if you force uninstall ports.</para>
+        first. To override this behavior, use the <option>-f</option> (force)
+        switch. But some ports need to be rebuilt if dependencies change, so
+        you should know what you are doing if you force uninstall
+        ports.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -f uninstall vile</userinput></programlisting>
       </note>
@@ -191,7 +204,8 @@ Maintainers: nomaintainer@macports.org</screen>
       <title>contents</title>
 
       <para>The <option>contents</option> option displays the files that have
-      been installed by a given port.</para>
+      been installed by a given port. Uninstalled ports will always show no
+      contents.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port contents render</userinput></programlisting>
 
@@ -250,8 +264,8 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
 
       <programlisting><prompt>%%</prompt> <userinput>port upgrade gnome</userinput></programlisting>
 
-      <para>If you wish not to upgrade a port's dependencies, use the -n
-      switch.</para>
+      <para>If you wish not to upgrade a port's dependencies, use the
+      <option>-n</option> switch.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port -n upgrade gnome</userinput></programlisting>
 
@@ -267,7 +281,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
         linkend="reference.phases.destroot">Destroot</link> and <link
         linkend="reference.phases.activate">Activate</link> phases in <link
         linkend="reference.phases">Port Phases</link>. If you wish to
-        uninstall the old version use the -u option.</para>
+        uninstall the old version, use the <option>-u</option> option.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
       </note>
@@ -290,6 +304,23 @@ libdap depends on openssl</screen>
 
     <section id="using.port.livecheck">
       <title>livecheck</title>
+
+      <para>The livecheck option checks to see if the application
+      corresponding to a given port has been updated at the developer's
+      download site. It's especially useful for port maintainers, but others
+      may also wish to see if a port has the latest available distribution
+      source. See section <link linkend="reference.livecheck">Livecheck</link>
+      for more information.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port livecheck rrdtool</userinput></programlisting>
+
+      <screen>rrdtool seems to have been updated (port version: 1.2.23, new version: 1.3beta1)</screen>
+
+      <note>
+        <para>If livecheck finds no higher version at the port's download
+        site, it prints nothing. The option <option>-d</option> (debug) may be
+        used for detailed livecheck processing information.</para>
+      </note>
 
       <para></para>
     </section>
@@ -350,8 +381,8 @@ libdap depends on openssl</screen>
       may want to use verbose mode. But negated variants are simply not
       reported in any way by the <command>port</command> command, as if they
       did not exist. You will know you have successfully negated the default
-      variant in the example above if you do NOT see this line in the verbose
-      output.</para>
+      variant in the example above if you do <emphasis>not</emphasis> see this
+      line in the verbose output.</para>
 
       <screen>DEBUG: Executing variant ssl provides ssl</screen>
     </section>
@@ -362,6 +393,8 @@ libdap depends on openssl</screen>
 
     <para>This section lists common operations you may want to perform when
     managing a MacPorts installation.</para>
+
+    <para>TODO: Add content here.</para>
   </section>
 
   <section id="using.binaries">
@@ -459,12 +492,23 @@ DEBUG: Executing archive_finish
     <para>You may setup an rsync replication server on your local network to
     minimize internet delay and bandwidth when performing MacPorts selfupdate
     operations. An rsync replication server pulls the latest MacPorts base,
-    development, and ports tree from the remote MacPorts subversion server,
+    development, and port sources from the remote MacPorts subversion server,
     and then serves as the rsync source when rsync replication clients on the
-    local network perform selfupdates.</para>
+    local network perform selfupdates. </para>
+
+    <note>
+      <para>Only advanced users should attempt to setup an rsync replication
+      server. Before doing so, please contact <email>portmgr @
+      macports.org</email>. If the scripts are run too often you may overload
+      the MacPorts rsync mirrors; it must not be run any more often than each
+      one-half hour and should be run at an offset to the clock half hour
+      periods.</para>
+    </note>
 
     <section id="using.rsync-replication.server-setup">
       <title>Rsync Server Setup</title>
+
+      <para>TODO: This section needs to be completed.</para>
 
       <para>To setup a host as an rsync replication server, follow these
       steps:</para>
@@ -501,11 +545,10 @@ DEBUG: Executing archive_finish
 
           <note>
             <para>If you wish to setup and rsync replication server, please
-            contact portmgr@macports.org. It is important not to run the
-            scripts too often or you may overload the MacPorts rsync mirrors.
-            It must not be run any more often than each one-half hour and also
-            should not be run at the half hour, but rather at an
-            offset.</para>
+            contact portmgr@macports.org. If the scripts are run too often you
+            may overload the MacPorts rsync mirrors; It must not be run any
+            more often than each one-half hour and should be run at an offset
+            to the clock half hour periods.</para>
           </note>
 
           <programlisting><prompt>%%</prompt> <userinput>sudo crontab -e</userinput></programlisting>
