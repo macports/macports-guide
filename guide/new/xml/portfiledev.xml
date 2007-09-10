@@ -10,14 +10,16 @@
   <section id="development.introduction">
     <title>Portfile Introduction</title>
 
-    <para>A MacPorts Portfile is a TCL script that usually contains only the
-    simple keyword/value combinations and Tcl extensions as described in the
-    <link linkend="reference">Portfile Reference</link> chapter, though it may
-    also contain arbitrary TCL code. Every port has a corresponding Portfile,
-    but Portfiles do not completely define a port's installation behavior
-    since the MacPorts base has default port installation characteristics
-    coded within it. Therefore Portfiles need only specify required options
-    and, when required, non-default characteristics for a port.</para>
+    <para>A MacPorts Portfile is a <ulink
+    url="http://en.wikipedia.org/wiki/Tcl">TCL</ulink> script that usually
+    contains only the simple keyword/value combinations and Tcl extensions as
+    described in the <link linkend="reference">Portfile Reference</link>
+    chapter, though it may also contain arbitrary TCL code. Every port has a
+    corresponding Portfile, but Portfiles do not completely define a port's
+    installation behavior since MacPorts base has default port installation
+    characteristics coded within it. Therefore Portfiles need only specify
+    required options, though some ports may require non-default
+    options.</para>
 
     <para>A common way for Portfiles to augment or override MacPorts base
     default installation phase characteristics is by using
@@ -63,8 +65,10 @@
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
-    standard behavior, any installation phase may be augmented using pre-
-    and/or post- phases, or even overridden or eliminated. See <link
+    standard behavior, any installation phase may be augmented using <ulink
+    url="development.examples.pre-post">pre- and/or post- phases</ulink>, or
+    even <ulink url="development.examples.override">overridden</ulink> or
+    <ulink url="development.examples.eliminate">eliminated</ulink>. See <link
     linkend="development.examples">Example Portfiles</link> below.</para>
 
     <note>
@@ -77,7 +81,9 @@
     <title>Local Portfile Repositories</title>
 
     <para>To create and test Portfiles that are not yet committed to
-    subversion, you may create a local Portfile repository as shown.</para>
+    subversion, you may create a local Portfile repository as shown. Replace
+    the hypothetical user <filename>julesverne</filename> with your username
+    in the example below.</para>
 
     <orderedlist>
       <listitem>
@@ -89,7 +95,7 @@
       </listitem>
 
       <listitem>
-        <para>Insert a URL pointing to the local repository location before
+        <para>Insert a URL pointing to your local repository location before
         the rsync URL as shown.</para>
 
         <programlisting>file:///Users/julesverne/ports
@@ -206,8 +212,9 @@ Ports failed:                   0</screen>
         <programlisting>maintainers       julesverne@example.org</programlisting>
 
         <note>
-          <para>The address <email>nomaintainer@macports.org</email>
-          designates a port that may be modified by any committer.</para>
+          <para>The address <email>nomaintainer@macports.org</email>, or in
+          hidden form <email>nomaintainer</email>, designates a port that may
+          be modified by any committer.</para>
         </note>
       </listitem>
 
@@ -246,9 +253,25 @@ Ports failed:                   0</screen>
         <para>Port checksums</para>
 
         <para>The checksums specified in a Portfile are checked with the
-        fetched tarball for security.</para>
+        fetched tarball for security. For the best security, use md5, sha1,
+        and rmd160 checksum types.</para>
 
-        <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8</programlisting>
+        <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                  sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                  rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+
+        <para>To find the correct checksums for a port's distribution file,
+        follow this example:</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>md5 rrdtool-1.2.23.tar.gz</userinput>
+<prompt>%%</prompt> <userinput>openssl sha1 rrdtool-1.2.23.tar.gz</userinput>
+<prompt>%%</prompt> <userinput>openssl rmd160 rrdtool-1.2.23.tar.gz</userinput></programlisting>
+
+        <screen>MD5 ( ... rrdtool-1.2.23.tar.gz) = dafa161bc9c61e57636a6085c87c1fe8
+
+SHA1( ... rrdtool-1.2.23.tar.gz)= 5da610e1c8bc01b80abc21ab9e98e004363b429c
+
+RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23</screen>
       </listitem>
 
       <listitem>
@@ -275,9 +298,14 @@ Ports failed:                   0</screen>
   <section id="development.examples">
     <title>Example Portfiles</title>
 
-    <para>In this section we take a look at a complete simple Portfile, and
-    then pre- and post- phase definitions to augment and override the MacPorts
-    default phases.</para>
+    <para>In this section we begin by taking a look at a complete simple
+    Portfile; then we see how to <link
+    linkend="development.examples.augment">augment default phases</link> by
+    defining pre- and post- phases, how to <link
+    linkend="development.examples.override">override default phases</link>,
+    and finally how to <link
+    linkend="development.examples.eliminate">eliminate port
+    phases</link>.</para>
 
     <section id="development.examples.basic">
       <title>A Basic Portfile</title>
@@ -296,7 +324,9 @@ platforms               darwin
 master_sites            http://oss.oetiker.ch/rrdtool/pub/ \
                         ftp://ftp.pucpr.br/rrdtool/
 
-checksums               md5 dafa161bc9c61e57636a6085c87c1fe8
+checksums               md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                        sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                        rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23
 
 depends_lib             port:perl5.8 \
                         port:tcl \
@@ -307,8 +337,8 @@ configure.args          --prefix=${prefix} \
                         --mandir=${prefix}/share/man</programlisting>
     </section>
 
-    <section id="development.examples.pre-post">
-      <title>Portfile Using Pre- / Post- Phases</title>
+    <section id="development.examples.augment">
+      <title>Augment Phases Using pre- / post-</title>
 
       <para>To augment a port's installation phase, and not override it, you
       may use pre- and post- installation phases as shown in this
@@ -323,7 +353,7 @@ configure.args          --prefix=${prefix} \
     </section>
 
     <section id="development.examples.override">
-      <title>Portfile that Overrides Default Phases</title>
+      <title>Overriding Phases</title>
 
       <para>To override the automatic MacPorts installation phase processing,
       define your own installation phases as shown in this example.</para>
@@ -334,8 +364,25 @@ configure.args          --prefix=${prefix} \
 }</programlisting>
     </section>
 
+    <section id="development.examples.eliminate">
+      <title>Eliminating Phases</title>
+
+      <para>To eliminate a default phase, simply define a phase with no
+      contents as shown.</para>
+
+      <programlisting>build {}</programlisting>
+
+      <note>
+        <para>Because many software packages do not use
+        <option>configure</option>, a keyword is provided to eliminate the
+        <option>configure</option> phase. See the chapter <link
+        linkend="reference">Portfile Reference</link> for full
+        information.</para>
+      </note>
+    </section>
+
     <section id="development.examples.startupitem">
-      <title>Portfile Using a StartupItem</title>
+      <title>Creating a StartupItem</title>
 
       <para>Startupitems may be placed in the global section of a
       Portfile.</para>
@@ -466,9 +513,10 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
         <listitem>
           <para>Now use the Unix command <command>diff -u </command>to create
-          a "unified" diff patch file.</para>
+          a "unified" diff patch file. Name the patchfile
+          appropriately.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.orig Portfile &gt; Portfile.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.orig Portfile &gt; Portfile-rrdtool.diff</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -493,16 +541,16 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
  homepage               http://rsug.itd.umich.edu/software/${name}
 
  master_sites           ${homepage}/files/
--checksums              md5 f0953b21cdb5eb327e40d4b215110b71 \
-+checksums              md5 01532e67a596bfff6a54aa36face26ae \
+-checksums              md5 f0953b21cdb5eb327e40d4b215110b71
++checksums              md5 01532e67a596bfff6a54aa36face26ae
  extract.suffix  .tgz
  platforms              darwin
 </programlisting>
         </listitem>
       </orderedlist>
 
-      <para>Now you may attach the <filename>Portfile.diff</filename> to a
-      MacPorts Trac ticket for the port author to evaluate.</para>
+      <para>Now you may attach the patch file to a MacPorts Trac ticket for
+      the port author to evaluate.</para>
     </section>
 
     <section id="development.patches.source">
@@ -586,7 +634,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           this example, we'll apply a Portfile patch to the postfix
           port.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd /opt/local/var/macports/sources/rsync.macports.org/release/ports/mail/postfix</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/var/macports/sources/rsync.macports.org/release/ports/mail/postfix</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -605,7 +653,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     <title>Portfile Best Practices</title>
 
     <para>This section contains practical guidelines for creating Portfiles
-    that install smoothly and provide consistency between ports.</para>
+    that install smoothly and provide consistency between ports. The following
+    sections are on the TODO list.</para>
 
     <section id="development.practices.dont-overwrite">
       <title>Don't Overwrite Config Files</title>
