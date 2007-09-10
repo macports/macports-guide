@@ -253,7 +253,9 @@ _=/usr/bin/env</screen>
     <note>
       <para>If you have either a <filename>.bash_login</filename> or a
       <filename>.bash_profile</filename> file in your home directory, they may
-      take precedence over <filename>.profile</filename>.</para>
+      take precedence over <filename>.profile</filename>. You may either
+      remove the previously used file, or add the contents of
+      <filename>.profile</filename> to it.</para>
     </note>
   </section>
 
