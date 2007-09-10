@@ -73,6 +73,8 @@
         <para>A file: <filename>/var/log/system.log</filename>.</para>
 
         <para>A command: <command>ifconfig</command>.</para>
+
+        <para>An option: port <option>install</option></para>
       </listitem>
     </itemizedlist>
   </section>
