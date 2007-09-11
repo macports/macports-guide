@@ -248,11 +248,11 @@ Maintainers: nomaintainer@macports.org</screen>
 
       <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
 
-      <screen>apr                            1.2.8_0 &lt; 1.2.9_0
-autoconf                       2.61_0 &lt; 2.61_1
-gimp                           2.2.14_0 &lt; 2.2.16_0
-libtool                        1.5.22_0 &lt; 1.5.24_0
-pkgconfig                      0.21_0 &lt; 0.22_0</screen>
+      <screen><![CDATA[apr                            1.2.8_0 < 1.2.9_0
+autoconf                       2.61_0 < 2.61_1
+gimp                           2.2.14_0 < 2.2.16_0
+libtool                        1.5.22_0 < 1.5.24_0
+pkgconfig                      0.21_0 < 0.22_0]]></screen>
     </section>
 
     <section id="using.port.upgrade">
@@ -417,7 +417,7 @@ libdap depends on openssl</screen>
 
       <para>Debug output is shown below.</para>
 
-      <screen>---&gt;  Creating logrotate-3.7_0.i386.tgz
+      <screen><![CDATA[--->  Creating logrotate-3.7_0.i386.tgz
 
 [ ... trimmed ... ]
 
@@ -437,9 +437,9 @@ DEBUG:
 ./opt/local/man/man8/logrotate.8
 ./opt/local/sbin/
 ./opt/local/sbin/logrotate
----&gt;  Archive logrotate-3.7_0.i386.tgz packaged
+--->  Archive logrotate-3.7_0.i386.tgz packaged
 DEBUG: Executing archive_finish
----&gt;  Archive for logrotate 3.7_0 packaged</screen>
+--->  Archive for logrotate 3.7_0 packaged]]></screen>
 
       <para>Binary archive files are placed in
       <filename>${prefix}/var/macports/packages/</filename>. The archive file
