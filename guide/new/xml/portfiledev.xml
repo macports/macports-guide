@@ -66,8 +66,8 @@
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
     standard behavior, any installation phase may be augmented using <link
-    linkend="development.examples.pre-post">pre- and/or post- phases</link>,
-    or even <link linkend="development.examples.override">overridden</link> or
+    linkend="development.examples.augment">pre- and/or post- phases</link>, or
+    even <link linkend="development.examples.override">overridden</link> or
     <link linkend="development.examples.eliminate">eliminated</link>. See
     <link linkend="development.examples">Example Portfiles</link>
     below.</para>
@@ -685,7 +685,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       <para>TODO:</para>
     </section>
 
-    <section>
+    <section id="development.practices.use-variables">
       <title>Use Variables</title>
 
       <para>TODO: Set variables so changing paths may be done in one place;
