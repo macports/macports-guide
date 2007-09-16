@@ -42,7 +42,7 @@
       <screen>DEBUG: Rebuilding the MacPorts base system if needed.
 DEBUG: Synchronizing ports tree(s)
 Synchronizing from rsync://rsync.macports.org/release/ports/
-DEBUG: /usr/bin/rsync -rtzv rsync://rsync.macports.org/release/ports/
+DEBUG: /usr/bin/rsync -rtzv --delete-after rsync://rsync.macports.org/release/ports/
 receiving file list ... done
 
 [ ... trimmed ... ]
