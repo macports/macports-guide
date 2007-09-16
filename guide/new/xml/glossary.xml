@@ -1,0 +1,479 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<chapter id="guide-terms">
+  <title>MacPorts Guide Terms</title>
+
+  <glossary id="glossary">
+    <glossdiv id="terms">
+      <title>MacPorts Guide Terms</title>
+
+      <glossentry>
+        <glossterm>activate phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>automake</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>autoconf</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>API</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>BSD Unix</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>CVS</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>destroot phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port binary</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>build</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>build phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>checksum</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>checksum phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>compile</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>configure</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>configure phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>dependency</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>destroot phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>diff</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>extract phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>fetch phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>free software</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>global keyword</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>gunzip</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>keyword</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>keyword argument modifier</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>keyword list modifier</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>library</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>MacPorts</glossterm>
+
+        <glossdef>
+          <para>A system for compiling, installing, and managing free and open
+          source software comprised of an infrastructure called MacPorts base
+          and a collection of ports. MacPorts current port collection defines
+          the software may be installed.</para>
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>open source software</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>patch phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>patch file</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>pextlib</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port command</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port image</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port maintainer</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port phase</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>port phase keyword</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>PortGroup</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Portfile</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>registry</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>rsync</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>selfupdate</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>shell</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>StartupItem</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>subversion</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>sync</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>tar</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Tcl</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Tcl extension</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Trac</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Unix</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>unzip</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>variant</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>Xcode Tools</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>X11</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+
+      <glossentry>
+        <glossterm>zip</glossterm>
+
+        <glossdef>
+          <para />
+        </glossdef>
+      </glossentry>
+    </glossdiv>
+  </glossary>
+</chapter>
