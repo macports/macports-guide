@@ -1,0 +1,54 @@
+<?xml version='1.0'?>
+<xsl:stylesheet  
+    xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
+
+<!-- load the man page xsl file so it can be modified: -->
+<!-- if your macports prefix differs you have to change this path -->
+<xsl:import href="/opt/local/share/xsl/docbook-xsl/manpages/docbook.xsl"/>
+
+<!-- modify the default term template so terms are bold: -->
+<!-- only text between MODIFIED START and STOP is modified -->
+<!-- everything else is just copied from the manpage xsl -->
+<xsl:template match="varlistentry|glossentry">
+  <xsl:text>&#x2302;PP&#10;</xsl:text> 
+  <xsl:for-each select="term|glossterm">
+    <xsl:variable name="content">
+      <!-- MODIFIED START -->
+      <!-- mark terms bold: -->
+      <xsl:apply-templates mode="bold" select="."/>
+      <!-- this is the default code here which was changed: -->
+      <!-- <xsl:apply-templates/> -->
+      <!-- MODIFIED STOP -->
+    </xsl:variable>
+    <xsl:value-of select="normalize-space($content)"/>
+    <xsl:choose>
+      <xsl:when test="position() = last()"/> <!-- do nothing -->
+      <xsl:otherwise>
+        <!-- * if we have multiple terms in the same varlistentry, generate -->
+        <!-- * a separator (", " by default) and/or an additional line -->
+        <!-- * break after each one except the last -->
+        <!-- * -->
+        <!-- * note that it is not valid to have multiple glossterms -->
+        <!-- * within a glossentry, so this logic never gets exercised -->
+        <!-- * for glossterms (every glossterm is always the last in -->
+        <!-- * its parent glossentry) -->
+        <xsl:value-of select="$variablelist.term.separator"/>
+        <xsl:if test="not($variablelist.term.break.after = '0')">
+          <xsl:text>&#10;</xsl:text>
+          <xsl:text>&#x2302;br&#10;</xsl:text>
+        </xsl:if>
+      </xsl:otherwise>
+    </xsl:choose>
+  </xsl:for-each>
+  <xsl:text>&#10;</xsl:text>
+  <xsl:text>&#x2302;RS</xsl:text> 
+  <xsl:if test="not($list-indent = '')">
+    <xsl:text> </xsl:text>
+    <xsl:value-of select="$list-indent"/>
+  </xsl:if>
+  <xsl:text>&#10;</xsl:text>
+  <xsl:apply-templates/>
+  <xsl:text>&#x2302;RE&#10;</xsl:text>
+</xsl:template>
+
+</xsl:stylesheet>
