@@ -16,7 +16,7 @@
     <command>configure</command>, <command>make</command>, and <command>make
     install</command> steps, but for applications that do not conform to this
     behavior, installation phases may be declared in a Portfile to <link
-    linkend="development.examples.augment">augment</link> or <link
+    linkend="development.examples.pre-post">augment</link> or <link
     linkend="development.examples.override">override</link> the default
     behavior as described in the <link linkend="development">Portfile
     Development</link> chapter.</para>
