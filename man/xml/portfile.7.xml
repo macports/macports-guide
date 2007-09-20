@@ -592,10 +592,14 @@ depends_build      bin:rrdtool</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>default_variants +ssl +tcpd</programlisting>
+                <programlisting>default_variants +ssl +tcpd
+
+</programlisting>
               </listitem>
             </itemizedlist>
+          </listitem>
 
+          <listitem>
             <para>Default variants may be suppressed by preceeding a variant
             name with a "-" as shown in this example.</para>
 
@@ -651,7 +655,7 @@ depends_build      bin:rrdtool</programlisting>
             latest file release from <option>sourceforge</option> or
             <option>googlecode</option>, or the project's
             <literal>date_updated</literal> XML tag for
-            <option>freshmeat</option>. </para>
+            <option>freshmeat</option>.</para>
 
             <para>Generic download site options are to specify a
             <option>moddate</option> (modification date) of a URL resource), a
@@ -1770,7 +1774,9 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>extract.only     foo.tar.gz</programlisting>
+                <programlisting>extract.only     foo.tar.gz
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1822,7 +1828,9 @@ extract.only-delete  foo.tar.gz</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>extract.args      ${distpath}/${distfile}</programlisting>
+                <programlisting>extract.args      ${distpath}/${distfile}
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1918,7 +1926,9 @@ extract.post_args    extract.post_args “| gnutar –x”</programlisting>
                 <para>Example:</para>
 
                 <programlisting>patchfiles     patch-Makefile.in \
-               patch-source.c</programlisting>
+               patch-source.c
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1951,7 +1961,9 @@ patchfiles-append   patch-src-Makefile.in
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>patch.args   ???</programlisting>
+                <programlisting>patch.args   ???
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2014,7 +2026,9 @@ patch.post_args    ???</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.args    --bindir=${prefix}/bin</programlisting>
+                <programlisting>configure.args    --bindir=${prefix}/bin
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2048,7 +2062,9 @@ configure.args-delete   --without-x11</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.cflags    CFLAGS=-I${worksrcpath}/include</programlisting>
+                <programlisting>configure.cflags    CFLAGS=-I${worksrcpath}/include
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2082,7 +2098,9 @@ configure.cflags-delete   -I${prefix}/include/db44</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.ldflags    CFLAGS=-I${worksrcpath}/include</programlisting>
+                <programlisting>configure.ldflags    CFLAGS=-I${worksrcpath}/include
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2116,7 +2134,9 @@ configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.cppflags    CPPFLAGS=-I${worksrcpath}/include</programlisting>
+                <programlisting>configure.cppflags    CPPFLAGS=-I${worksrcpath}/include
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2149,6 +2169,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
                 <para>Example:</para>
 
                 <programlisting>configure.args    --bindir=${prefix}/bin
+
 </programlisting>
               </listitem>
             </itemizedlist>
@@ -2493,7 +2514,9 @@ build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>build.target    all-src</programlisting>
+                <programlisting>build.target    all-src
+
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2558,7 +2581,8 @@ build.target-delete   compat</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>build.args    -DNOWARN
+                <programlisting>destroot.args    BINDIR=${prefix}/bin
+
 </programlisting>
               </listitem>
             </itemizedlist>
@@ -2609,6 +2633,7 @@ destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
                 <para>Example:</para>
 
                 <programlisting>destroot.target    install install-config install-commandmode
+
 </programlisting>
               </listitem>
             </itemizedlist>
