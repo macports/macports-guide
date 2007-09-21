@@ -66,8 +66,8 @@
     install</command> steps, which conform to phases configure, build, and
     destroot respectively. For applications that do not conform to this
     standard behavior, any installation phase may be augmented using <link
-    linkend="development.examples.pre-post">pre- and/or post- phases</link>,
-    or even <link linkend="development.examples.override">overridden</link> or
+    linkend="development.examples.augment">pre- and/or post- phases</link>, or
+    even <link linkend="development.examples.override">overridden</link> or
     <link linkend="development.examples.eliminate">eliminated</link>. See
     <link linkend="development.examples">Example Portfiles</link>
     below.</para>
@@ -514,8 +514,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
         <listitem>
           <para>Now use the Unix command <command>diff -u </command>to create
-          a "unified" diff patch file. Name the patchfile
-          appropriately.</para>
+          a "unified" diff patch file. Put the name of the port in the
+          patchfile, for example, Portfile-rrdtool.diff.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.orig Portfile &gt; Portfile-rrdtool.diff</userinput></programlisting>
         </listitem>
@@ -615,9 +615,18 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <para>Now you may place the patch
           <filename>patch-Makefile.in</filename> in the path ${portpath}/files
           of a local repository (or commit it to subversion) and use it in a
-          port using the patchfiles keyword.</para>
+          port using the <code>patchfiles</code> keyword.</para>
 
           <programlisting>patchfiles              patch-Makefile.in</programlisting>
+
+          <note>
+            <para>You should make a patch file for each file to be patched,
+            though if you obtain a patch from another source that patches
+            multiple files it is permissible to use it that way. Patch
+            filenames should generally be of the form
+            "patch-&lt;directory&gt;-&lt;filename&gt;", as shown in this
+            example: <filename>patch-src-Makefile.in</filename>.</para>
+          </note>
         </listitem>
       </orderedlist>
     </section>
@@ -626,8 +635,9 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       <title>Manually Applying Patches</title>
 
       <para>Though MacPorts applies patch files automatically, you may want to
-      know how to apply patch files manually if you want to apply uncommitted
-      Portfile patches or other similar uses.</para>
+      know how to apply patch files manually if you want to test patch files
+      you have created or you wish to apply uncommitted Portfile
+      patches.</para>
 
       <orderedlist>
         <listitem>
@@ -642,7 +652,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <para>Now apply the patch that is on the current user's desktop. The
           patchfile knows the filename of the file to be patched.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>patch &lt; ~/Desktop/Portfile.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>patch -p0 &lt; ~/Desktop/Portfile-postfix.diff</userinput></programlisting>
 
           <screen>patching file Portfile</screen>
         </listitem>
@@ -660,19 +670,27 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     <section id="development.practices.dont-overwrite">
       <title>Don't Overwrite Config Files</title>
 
-      <para></para>
+      <para>TODO:</para>
     </section>
 
     <section id="development.practices.install-docs">
       <title>Install Docs and Examples</title>
 
-      <para></para>
+      <para>TODO:</para>
     </section>
 
     <section id="development.practices.provide-messages">
       <title>Provide User Messages</title>
 
-      <para></para>
+      <para>TODO:</para>
+    </section>
+
+    <section id="development.practices.use-variables">
+      <title>Use Variables</title>
+
+      <para>TODO: Set variables so changing paths may be done in one place;
+      use them anytime it makes updates simpler: distname
+      ${name}-src-${version}</para>
     </section>
   </section>
 </chapter>
