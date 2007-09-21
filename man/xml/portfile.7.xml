@@ -401,11 +401,7 @@
           <listitem>
             <para>A one-sentence description of the ported software.</para>
 
-            <epigraph>
-              <para>ddd</para>
-            </epigraph>
-
-            <programlisting>description    A clasic shooter arcade game.</programlisting>
+            <programlisting>description    A classic shooter arcade game.</programlisting>
           </listitem>
         </varlistentry>
 
@@ -449,7 +445,7 @@
 
       <para>Free and open source software is highly modular, and MacPorts
       ports often require that other ports be installed beforehand; these
-      prerequistes for a given port are called a port's
+      prerequisites for a given port are called a port's
       <quote>dependencies</quote>.</para>
 
       <para>There are three types of MacPorts dependencies: library, build,
@@ -600,7 +596,7 @@ depends_build      bin:rrdtool</programlisting>
           </listitem>
 
           <listitem>
-            <para>Default variants may be suppressed by preceeding a variant
+            <para>Default variants may be suppressed by preceding a variant
             name with a "-" as shown in this example.</para>
 
             <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
@@ -1144,8 +1140,8 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
                   <para>Examples:</para>
 
                   <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server start
-startupitem.start ${prefix}/share/mysql/mysql.server stop
-startupitem.start ${prefix}/share/mysql/mysql.server restart</programlisting>
+startupitem.stop ${prefix}/share/mysql/mysql.server stop
+startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
                 </listitem>
               </itemizedlist>
             </listitem>
@@ -1198,7 +1194,7 @@ startupitem.start ${prefix}/share/mysql/mysql.server restart</programlisting>
                 </listitem>
 
                 <listitem>
-                  <para>Defualt: [none] |
+                  <para>Default: [none] |
                   [<filename>${prefix}/var/run/${name}.pid</filename>]</para>
                 </listitem>
 
@@ -1593,7 +1589,7 @@ distfiles       file_one.tar.gz:tagone \
             <term>cvs.tag</term>
 
             <listitem>
-              <para>Optional for for fetching with CVS, this specifies the
+              <para>Optional for fetching with CVS, this specifies the
               code revision to checkout.</para>
 
               <itemizedlist>
@@ -1667,7 +1663,7 @@ distfiles       file_one.tar.gz:tagone \
             <term>svn.url</term>
 
             <listitem>
-              <para>Optional for fetching with CVS, this specify the url from
+              <para>Optional for fetching with SVN, this specify the url from
               which to fetch files.</para>
 
               <itemizedlist>
@@ -1690,7 +1686,7 @@ svn.url svn://www.domain.com/svn-repo/mydirectory
             <term>svn.tag</term>
 
             <listitem>
-              <para>Optional for for fetching with Subversion, this specifies
+              <para>Optional tag for fetching with Subversion, this specifies
               the code revision to checkout; it corresponds to the -r option
               in the svn cli. You must use backslashes to escape characters
               that are meaningful to the Tcl interpreter, such as braces and
@@ -1844,14 +1840,14 @@ extract.only-delete  foo.tar.gz</programlisting>
               </listitem>
 
               <listitem>
-                <para>extract.post_args_default: " | tar -xf"</para>
+                <para>extract.post_args default: " | tar -xf"</para>
               </listitem>
 
               <listitem>
                 <para>Examples:</para>
 
                 <programlisting>extract.pre_args     xf
-extract.post_args    extract.post_args “| gnutar –x”</programlisting>
+extract.post_args    "| gnutar –x"</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1937,7 +1933,7 @@ extract.post_args    extract.post_args “| gnutar –x”</programlisting>
             <para>List modifier examples:</para>
 
             <programlisting>patchfiles-append   patch-configure
-patchfiles-append   patch-src-Makefile.in
+patchfiles-delete   patch-src-Makefile.in
 </programlisting>
           </listitem>
         </varlistentry>
@@ -1977,7 +1973,7 @@ patchfiles-append   patch-src-Makefile.in
               </listitem>
 
               <listitem>
-                <para>patch.post_args_default: none</para>
+                <para>patch.post_args default: none</para>
               </listitem>
 
               <listitem>
@@ -2026,9 +2022,7 @@ patch.post_args    ???</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.args    --bindir=${prefix}/bin
-
-</programlisting>
+                <programlisting>configure.env   CFLAGS=-I${prefix}/include/qt3</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2036,8 +2030,8 @@ patch.post_args    ???</programlisting>
           <listitem>
             <para>List modifier examples:</para>
 
-            <programlisting>configure.args-append   --with-mysql5
-configure.args-delete   --without-x11</programlisting>
+            <programlisting>configure.env-append   CFLAGS=-${prefix}/include/qt3
+configure.env-delete   LDFLAGS=-L${prefix}/lib</programlisting>
           </listitem>
         </varlistentry>
 
@@ -2184,14 +2178,14 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
               </listitem>
 
               <listitem>
-                <para>configure.post_args_default: none</para>
+                <para>configure.post_args default: none</para>
               </listitem>
 
               <listitem>
                 <para>Examples:</para>
 
-                <programlisting>configure.pre_args --prefix=${prefix}/share/bro
-configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
+                <programlisting>configure.pre_args   --prefix=${prefix}/share/bro
+configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2481,7 +2475,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
               </listitem>
 
               <listitem>
-                <para>build.post_args_default: none</para>
+                <para>build.post_args default: none</para>
               </listitem>
 
               <listitem>
@@ -2542,7 +2536,7 @@ build.target-delete   compat</programlisting>
 
           <listitem>
             <para>Install command to run relative to
-            <varname>${worksrcdir}</varname>; defaults is
+            <varname>${worksrcdir}</varname>; default is
             <varname>${build.cmd}</varname>.</para>
 
             <programlisting>destroot.cmd         pbxbuild</programlisting>
@@ -2598,7 +2592,7 @@ build.target-delete   compat</programlisting>
               </listitem>
 
               <listitem>
-                <para>destroot.post_args_default: none</para>
+                <para>destroot.post_args default: none</para>
               </listitem>
 
               <listitem>
@@ -2619,14 +2613,14 @@ destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
           <term>destroot.target-delete</term>
 
           <listitem>
-            <para>Install taget to pass to ${destroot.cmd}; list modifiers add
+            <para>Install target to pass to ${destroot.cmd}; list modifiers add
             or delete items from a previous Portfile destroot.target keyword
             or the default set by MacPorts base.</para>
 
             <itemizedlist>
               <listitem>
                 <para>Default:
-                <literal>CPPFLAGS=-I${prefix}/include</literal></para>
+                <literal>install</literal></para>
               </listitem>
 
               <listitem>
