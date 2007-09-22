@@ -1381,13 +1381,17 @@ startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
                 <para>Examples:</para>
 
                 <programlisting>master_sites   http://www.somesite.org/files/ \
-               http://www.somemirror.org/somesite_org/files/</programlisting>
+               http://www.somemirror.org/somesite_org/files/
+
+</programlisting>
 
                 <para>You may also use mirror site lists predefined by
                 MacPorts. Here the sourceforge and gnu mirrors are
                 used.</para>
 
-                <programlisting>master_sites   sourceforge gnu</programlisting>
+                <programlisting>master_sites   sourceforge gnu
+
+</programlisting>
 
                 <para>When using mirror master_sites, the subdirectory
                 <varname>${name}</varname> is checked on every mirror. If the
@@ -1395,7 +1399,9 @@ startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
                 specify it using after the mirror separated by a colon.</para>
 
                 <programlisting>master_sites   sourceforge:widget \
-               gnu:widget</programlisting>
+               gnu:widget
+
+</programlisting>
 
                 <para>For ports that must fetch multiple download files from
                 different locations, you must label the files with tags and
@@ -1513,9 +1519,12 @@ distfiles       file_one.tar.gz:tagone \
 
           <listitem>
             <para>This keyword is for downloads that are tarred and bzipped.
-            When invoked, it automatically sets: extract.suffix =
-            <filename>.tar.bz</filename> and extract.cmd =
-            <command>bzip</command>.</para>
+            When invoked, it automatically sets:</para>
+
+            <literallayout>extract.suffix = .tar.bz
+extract.cmd = bzip
+
+</literallayout>
 
             <itemizedlist>
               <listitem>
@@ -1536,10 +1545,14 @@ distfiles       file_one.tar.gz:tagone \
 
           <listitem>
             <para>This keyword is for downloads are zipped. When invoked, it
-            automatically sets: extract.suffix = .<filename>zip</filename>,
-            extract.cmd = <command>unzip</command>, extract.pre_args =
-            <option>-q</option>, extract.post_args = "<option>-d</option>
-            <varname>${portpath}/${workdir}</varname>"</para>
+            automatically sets:</para>
+
+            <literallayout>extract.suffix = .zip
+extract.cmd = unzip
+extract.pre_args = -q
+extract.post_args = "-d ${portpath}/${workdir}"
+
+</literallayout>
 
             <itemizedlist>
               <listitem>
@@ -1589,8 +1602,8 @@ distfiles       file_one.tar.gz:tagone \
             <term>cvs.tag</term>
 
             <listitem>
-              <para>Optional for fetching with CVS, this specifies the
-              code revision to checkout.</para>
+              <para>Optional for fetching with CVS, this specifies the code
+              revision to checkout.</para>
 
               <itemizedlist>
                 <listitem>
@@ -1650,7 +1663,7 @@ distfiles       file_one.tar.gz:tagone \
       </refsection>
 
       <refsection>
-        <title>Fetch from SVN</title>
+        <title>Fetch from Subversion</title>
 
         <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
         may be used as an alternative method of fetching distribution files
@@ -1663,8 +1676,7 @@ distfiles       file_one.tar.gz:tagone \
             <term>svn.url</term>
 
             <listitem>
-              <para>Optional for fetching with SVN, this specify the url from
-              which to fetch files.</para>
+              <para>This specifies the url from which to fetch files.</para>
 
               <itemizedlist>
                 <listitem>
@@ -2022,7 +2034,8 @@ patch.post_args    ???</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.env   CFLAGS=-I${prefix}/include/qt3</programlisting>
+                <programlisting>configure.env   CFLAGS=-I${prefix}/include/qt3
+</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -2613,14 +2626,13 @@ destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
           <term>destroot.target-delete</term>
 
           <listitem>
-            <para>Install target to pass to ${destroot.cmd}; list modifiers add
-            or delete items from a previous Portfile destroot.target keyword
-            or the default set by MacPorts base.</para>
+            <para>Install target to pass to ${destroot.cmd}; list modifiers
+            add or delete items from a previous Portfile destroot.target
+            keyword or the default set by MacPorts base.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>install</literal></para>
+                <para>Default: <literal>install</literal></para>
               </listitem>
 
               <listitem>
