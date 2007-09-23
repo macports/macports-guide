@@ -78,78 +78,6 @@
     </note>
   </section>
 
-  <section id="development.local-repositories">
-    <title>Local Portfile Repositories</title>
-
-    <para>To create and test Portfiles that are not yet committed to
-    subversion, you may create a local Portfile repository as shown. Replace
-    the hypothetical user <filename>julesverne</filename> with your username
-    in the example below.</para>
-
-    <orderedlist>
-      <listitem>
-        <para>Open the <filename>sources.conf</filename> file in a text
-        editor.</para>
-
-        <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
-<prompt>%%</prompt> <userinput>pico sources.conf</userinput></programlisting>
-      </listitem>
-
-      <listitem>
-        <para>Insert a URL pointing to your local repository location before
-        the rsync URL as shown.</para>
-
-        <programlisting>file:///Users/julesverne/ports
-rsync://rsync.macports.org/release/ports
-</programlisting>
-
-        <note>
-          <para>The file URL should always appear before the rsync URL so that
-          local Portfiles can be tested that are duplicated in the MacPorts
-          tree, because the <command>port</command> command will always
-          operate on the first Portfile it encounters.</para>
-        </note>
-      </listitem>
-
-      <listitem>
-        <para>Place the Portfiles you create inside a directory whose name
-        matches the port, which should in turn be placed inside a directory
-        that reflect the port's primary category (the first category entry in
-        the Portfile).</para>
-
-        <programlisting><prompt>%%</prompt> <userinput>cd /Users/julesverne</userinput>
-<prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
-<prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
-<prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
-      </listitem>
-
-      <listitem>
-        <para>After a Portfile is created (see below), use the MacPorts
-        <command>portindex</command> command in the local repository's
-        directory to install it into the
-        <filename>Portindex</filename>.</para>
-
-        <programlisting>%% <userinput>cd /Users/julesverne/ports</userinput>
-%% <userinput>portindex</userinput></programlisting>
-
-        <screen>Creating software index in /Users/julesverne/ports
-Adding port games/bestevergame
-
-Total number of ports parsed:   1 
-Ports successfully parsed:      1        
-Ports failed:                   0</screen>
-      </listitem>
-    </orderedlist>
-
-    <para>Once the local port is added to the <filename>Portindex</filename>,
-    it becomes available for searching or installation as with any other
-    Portfile in the MacPorts tree as shown.</para>
-
-    <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
-
-    <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
-  </section>
-
   <section id="development.creating-portfile">
     <title>Creating a Portfile</title>
 
@@ -658,6 +586,78 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
         </listitem>
       </orderedlist>
     </section>
+  </section>
+
+  <section id="development.local-repositories">
+    <title>Local Portfile Repositories</title>
+
+    <para>To create and test Portfiles that are not yet committed to
+    subversion, you may create a local Portfile repository as shown. Replace
+    the hypothetical user <filename>julesverne</filename> with your username
+    in the example below.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Open the <filename>sources.conf</filename> file in a text
+        editor.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
+<prompt>%%</prompt> <userinput>pico sources.conf</userinput></programlisting>
+      </listitem>
+
+      <listitem>
+        <para>Insert a URL pointing to your local repository location before
+        the rsync URL as shown.</para>
+
+        <programlisting>file:///Users/julesverne/ports
+rsync://rsync.macports.org/release/ports
+</programlisting>
+
+        <note>
+          <para>The file URL should always appear before the rsync URL so that
+          local Portfiles can be tested that are duplicated in the MacPorts
+          tree, because the <command>port</command> command will always
+          operate on the first Portfile it encounters.</para>
+        </note>
+      </listitem>
+
+      <listitem>
+        <para>Place the Portfiles you create inside a directory whose name
+        matches the port, which should in turn be placed inside a directory
+        that reflect the port's primary category (the first category entry in
+        the Portfile).</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>cd /Users/julesverne</userinput>
+<prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
+      </listitem>
+
+      <listitem>
+        <para>After a Portfile is created (see below), use the MacPorts
+        <command>portindex</command> command in the local repository's
+        directory to install it into the
+        <filename>Portindex</filename>.</para>
+
+        <programlisting>%% <userinput>cd /Users/julesverne/ports</userinput>
+%% <userinput>portindex</userinput></programlisting>
+
+        <screen>Creating software index in /Users/julesverne/ports
+Adding port games/bestevergame
+
+Total number of ports parsed:   1 
+Ports successfully parsed:      1        
+Ports failed:                   0</screen>
+      </listitem>
+    </orderedlist>
+
+    <para>Once the local port is added to the <filename>Portindex</filename>,
+    it becomes available for searching or installation as with any other
+    Portfile in the MacPorts tree as shown.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
+
+    <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
   </section>
 
   <section id="development.practices">
