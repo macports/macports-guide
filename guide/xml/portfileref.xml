@@ -8,6 +8,13 @@
   Portfile: port phases, dependencies, StartupItems, variables, keywords, and
   Tcl extensions.</para>
 
+  <section id="reference.portfile">
+    <title>Portfile</title>
+
+    <xi:include href="../../man/xml/portfile.7.xml"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </section>
+
   <section id="reference.phases">
     <title>Port Phases</title>
 
