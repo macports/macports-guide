@@ -27,32 +27,22 @@
 # set XML_DEBUG_CATALOG= to see catalog debugging info
 
 SOURCEDIR?=		xml
-NEWSOURCEDIR?=		new/xml
 DOCBOOK_XSL?=	        ${prefix}/share/xsl/docbook-xsl/
 HTMLDIR?=		html
-NEWHTMLDIR?=            new/html
 XHTMLDIR?=		xhtml
 STYLESHEET?=	        ${DOCBOOK_XSL}/html/chunk.xsl
 XSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/chunk.xsl
-NEWSTYLESHEET?=	        ${DOCBOOK_XSL}/xhtml/docbook.xsl
 XML_CATALOG_FILES?=    ${prefix}/etc/xml/catalog
 XML_DEBUG_CATALOG?=
 CSS_STYLESHEET?=	docbook.css
 RESOURCES?=		resources/
-NEWRESOURCES?=		new/resources/
 STRINGPARAMS?=		--stringparam html.stylesheet ${CSS_STYLESHEET} --stringparam chunk.section.depth 0
-NEWSTRINGPARAMS?=	--stringparam html.stylesheet ${CSS_STYLESHEET} \
-			--stringparam section.autolabel 1 \
-			--stringparam toc.section.depth 1 \
-			--stringparam generate.toc "book toc" \
-			--stringparam section.label.includes.component.label 1
 
 .PHONY : all
 .PHONY : clean
 #.PHONY : install
 .PHONY : html
 .PHONY : xhtml
-.PHONY : new
 .PHONY : check
 .PHONY : tidy
 
@@ -68,12 +58,6 @@ xhtml:
 	cp ${RESOURCES}${CSS_STYLESHEET} ${XHTMLDIR}
 	xsltproc --xinclude ${STRINGPARAMS} -o "${XHTMLDIR}/" "${XSTYLESHEET}" "${SOURCEDIR}/guide.xml"
 
-new:
-	mkdir -p ${NEWHTMLDIR}
-	cp ${NEWRESOURCES}${CSS_STYLESHEET} ${NEWHTMLDIR}
-	cp ${NEWRESOURCES}/images/* ${NEWHTMLDIR}
-	xsltproc --xinclude ${NEWSTRINGPARAMS} -o "${NEWHTMLDIR}/guide.html" "${NEWSTYLESHEET}" "${NEWSOURCEDIR}/guide.xml"
-
 all: html xhtml tidy
 
 tidy:
@@ -85,6 +69,6 @@ tidy:
 	-tidy -quiet -modify -indent -xml ${XHTMLDIR}/*
 
 clean:
-	rm -fr ${HTMLDIR} ${XHTMLDIR} ${NEWHTMLDIR}
+	rm -fr ${HTMLDIR} ${XHTMLDIR}
 
 include ../../base/Mk/macports.autoconf.mk
