@@ -350,6 +350,20 @@
         </varlistentry>
 
         <varlistentry>
+          <term>epoch</term>
+
+          <listitem>
+            <para>Optional keyword (default is 0) that is used if the new port
+            version looks older than the previous version (for example 1.10
+            -> 1.2). Often the epoch is formatted like a date, but it can
+            simple a number like 1.</para>
+
+            <programlisting>epoch        20070924</programlisting>
+            <programlisting>epoch        1</programlisting>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>categories</term>
 
           <listitem>
