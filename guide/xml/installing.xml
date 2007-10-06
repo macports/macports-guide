@@ -74,6 +74,11 @@
       </listitem>
     </orderedlist>
 
+    <para>If you're using OS X 10.3 then you can download the X11 installer
+    from the Apple <ulink
+    url="http://apple.com/support/downloads/x11formacosx.html">download
+    page</ulink>.</para>
+
     <note>
       <para>X11 and the X11SDK (from Xcode Tools) are both required for X11
       apps. To verify the presence of both, check for files
