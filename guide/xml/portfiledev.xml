@@ -239,7 +239,7 @@ RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23<
     <section id="development.examples.basic">
       <title>A Basic Portfile</title>
 
-      <programlisting># Id$
+      <programlisting># $Id$
 PortSystem      1.0
 
 name                    rrdtool
