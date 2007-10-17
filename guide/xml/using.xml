@@ -498,8 +498,8 @@ DEBUG: Executing archive_finish
 
     <note>
       <para>Only advanced users should attempt to setup an rsync replication
-      server. Before doing so, please contact <email>portmgr @
-      macports.org</email>. If the scripts are run too often you may overload
+      server. Before doing so, please contact <email>macports-mgr @
+      lists.macosforge.org</email>. If the scripts are run too often you may overload
       the MacPorts rsync mirrors; it must not be run any more often than each
       one-half hour and should be run at an offset to the clock half hour
       periods.</para>
