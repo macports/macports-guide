@@ -444,7 +444,7 @@ DEBUG: Executing archive_finish
       <para>Binary archive files are placed in
       <filename>${prefix}/var/macports/packages/</filename>. The archive file
       type is set in the <filename>macports.conf</filename> file. The default
-      format is .tgz; other options are: tar, tbz, tbz2, xar, zip, cpgz,
+      format is .tgz; other options are: tar, tbz, tbz2, tlz, xar, zip, cpgz,
       cpio.</para>
     </section>
 
