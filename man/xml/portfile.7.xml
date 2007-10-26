@@ -355,10 +355,11 @@
           <listitem>
             <para>Optional keyword (default is 0) that is used if the new port
             version looks older than the previous version (for example 1.10
-            -> 1.2). Often the epoch is formatted like a date, but it can
+            -&gt; 1.2). Often the epoch is formatted like a date, but it can
             simple a number like 1.</para>
 
             <programlisting>epoch        20070924</programlisting>
+
             <programlisting>epoch        1</programlisting>
           </listitem>
         </varlistentry>
@@ -911,22 +912,25 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
     <refsection>
       <title>StartupItems</title>
 
-      <para>StartupItems are keywords that create Mac OS X startup scripts for
-      <ulink
+      <para><quote>Daemons</quote> is a Unix term for programs that run
+      continuously in the background, rather than under the direct control of
+      a user; for example, mail servers, network listeners, etc. MacPorts
+      StartupItems are used for ported applications that use daemons; these
+      keywords create Mac OS X startup scripts for <ulink
       url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>,
       the facility introduced by Apple beginning with OS X 10.4, that starts,
-      stops, and manages daemons, programs and scripts. Port authors use
+      stops, and manages daemons, programs, and scripts. Port authors use
       StartupItem keywords within Portfiles to instruct MacPorts to generate
-      and install <command>launchd</command> scripts for daemons during port
-      installation. To support launchd, a wrapper program named
-      <command>daemondo</command> is provided by MacPorts base that serves as
-      an adapter between OS X's <command>launchd</command> and daemons that
-      are normally started via traditional rc.d style scripts.</para>
+      and install <command>launchd</command> scripts during port installation.
+      To support launchd, a wrapper program named <command>daemondo</command>
+      is provided by MacPorts base that serves as an adapter between OS X's
+      <command>launchd</command> and daemons started via traditional rc.d
+      style scripts.</para>
 
       <para>There are three categories of StartupItem keywords. Those that
-      trigger StartupItem creation and setup logging, those that specify
-      attributes of <quote>executable</quote> StartupItems, and those that
-      specify attributes of <quote>script</quote> StartupItems.</para>
+      trigger StartupItem creation and logging, those that specify attributes
+      of <quote>executable</quote> StartupItems, and those that specify
+      attributes of <quote>script</quote> StartupItems.</para>
 
       <refsection>
         <title>StartupIem Creation &amp; Logging</title>
@@ -1058,13 +1062,19 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
       <refsection>
         <title>Executable StartupItems</title>
 
-        <para><quote>Executable</quote> StartupItems are slightly preferred
-        over <quote>script</quote> StartupItems because
-        <command>daemondo</command> launches the daemon directly, rather than
-        indirectly via a startup script, and therefore it automatically knows
-        how to monitor the daemon to restart it if it dies. The
-        <quote>executable</quote> StartupItem specifies the path and name of
-        the daemon to be run in the background.</para>
+        <para>Daemons run continuously, so monitoring the health of daemon
+        processes and restarting them if they die is an important
+        StartupItems' feature. <quote>Executable</quote> StartupItems are
+        preferred over <quote>script</quote> StartupItems because
+        <command>daemondo</command> launches the daemon
+        <emphasis>directly</emphasis>, rather than
+        <emphasis>indirectly</emphasis> via a script, and therefore it
+        automatically knows how to monitor a daemon process and restart it if
+        it dies. Daemons used with <quote>executable</quote> StartupItems may
+        be programs or scripts (shell, perl, python, etc.), but when a script
+        the script <emphasis>itself</emphasis> must be the daemon, rather than
+        a script that launches a daemon. <quote>Script</quote> StartupItems
+        are to be used for the latter.</para>
 
         <note>
           <para>For a given port, the <quote>executable</quote> StartupItem
@@ -1111,11 +1121,29 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
         <title>Script StartupItems</title>
 
         <para>StartupItems of type <quote>script</quote> use
-        <command>daemondo</command> to launch a daemon via a startup script
-        provided in port distributions containing daemons. When using this
-        type of StartupItem, the <code>startupitem.pidfile</code> keyword may
-        be used so <command>daemondo</command> can monitor the daemon's PID
-        and restart it if it dies.</para>
+        <command>daemondo</command> to launch a daemon
+        <emphasis>indirectly</emphasis> via a startup script. A typical
+        snippet of a startup script that may be used with a
+        <quote>script</quote> StartupItem is shown below. Notice that the
+        script is not a daemon; rather the script indirectly launches the
+        vm-pop3d daemon.</para>
+
+        <programlisting>#!/bin/sh
+#
+case "$1" in
+  start)
+       echo -n "Starting vm-pop3d: "
+       /opt/local/sbin/vm-pop3d -d 10 -t 600
+
+
+[... trimmed ...]</programlisting>
+
+        <para>But if a script itself is a daemon, use the executable
+        StartupItem type since that way it will be launched directly and its
+        health tracked automatically. When using <quote>script</quote>
+        StartupItems, the <code>startupitem.pidfile</code> keyword must be
+        used if you want <command>daemondo</command> to monitor a daemon
+        process and restart it if it dies.</para>
 
         <note>
           <para>For a given port, StartupItem keywords in category
