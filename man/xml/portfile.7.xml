@@ -2280,6 +2280,95 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 
+<!-- fortran compiler options -->
+        <varlistentry>
+          <term>configure.fflags</term>
+
+          <term>configure.fflags-append</term>
+
+          <term>configure.fflags-delete</term>
+
+          <listitem>
+            <para>Set FFLAGS to be passed to the Fortran compiler; list modifiers
+            add or delete items from a previous Portfile configure.fflags
+            keyword or the default set by MacPorts base.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal>-O2</literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.fflags    -Os
+
+</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.fcflags</term>
+
+          <term>configure.fcflags-append</term>
+
+          <term>configure.fcflags-delete</term>
+
+          <listitem>
+            <para>Set FCFLAGS to be passed to the Fortran compiler; list modifiers
+            add or delete items from a previous Portfile configure.fcflags
+            keyword or the default set by MacPorts base.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal>-O2</literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.fcflags    -Os
+
+</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.f90flags</term>
+
+          <term>configure.f90flags-append</term>
+
+          <term>configure.f90flags-delete</term>
+
+          <listitem>
+            <para>Set F90FLAGS to be passed to the Fortran 90 compiler; list modifiers
+            add or delete items from a previous Portfile configure.f90flags
+            keyword or the default set by MacPorts base.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal>-O2</literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.f90flags    -Os
+
+</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+<!-- fortran compiler options end -->
+
 <!-- compiler selection arguments -->
         <varlistentry>
           <term>configure.cc</term>
@@ -2449,6 +2538,70 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 <!-- compiler selection arguments end -->
+<!-- interpreter selection arguments -->
+        <varlistentry>
+          <term>configure.perl</term>
+
+          <listitem>
+            <para>Set PERL flag for selecting a Perl interpreter;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.perl    ${prefix}/bin/perl5.8</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.python</term>
+
+          <listitem>
+            <para>Set PYTHON flag for selecting a Python interpreter;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.python    ${prefix}/bin/python3.0</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.ruby</term>
+
+          <listitem>
+            <para>Set RUBY flag for selecting a Ruby interpreter;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.ruby    ${prefix}/bin/ruby</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+<!-- interpreter selection arguments end -->
 
         <varlistentry>
           <term>configure.args</term>
