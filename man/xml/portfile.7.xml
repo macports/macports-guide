@@ -2280,6 +2280,176 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 
+<!-- compiler selection arguments -->
+        <varlistentry>
+          <term>configure.cc</term>
+
+          <listitem>
+            <para>Set CC compiler flags for selecting a C compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.cc    ${prefix}/bin/gcc-mp-4.2</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.cpp</term>
+
+          <listitem>
+            <para>Set CPP compiler flags for selecting a C preprocessor;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.cpp    /usr/bin/cpp-3.3</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.cxx</term>
+
+          <listitem>
+            <para>Set CXX compiler flags for selecting a C++ compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.cpp    /usr/bin/g++-4.0</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.objc</term>
+
+          <listitem>
+            <para>Set OBJC compiler flags for selecting an Objective-C compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.objc    /usr/bin/gcc-4.0</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.fc</term>
+
+          <listitem>
+            <para>Set FC compiler flags for selecting a Fortran compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.fc    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.f77</term>
+
+          <listitem>
+            <para>Set F77 compiler flags for selecting a Fortran 77 compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.f77    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.f90</term>
+
+          <listitem>
+            <para>Set F90 compiler flags for selecting a Fortran 90 compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.f90    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.javac</term>
+
+          <listitem>
+            <para>Set JAVAC compiler flags for selecting a Java compiler;</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default:
+                <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.javac    ${prefix}/bin/jikes</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+<!-- compiler selection arguments end -->
+
         <varlistentry>
           <term>configure.args</term>
 
