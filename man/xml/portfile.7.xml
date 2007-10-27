@@ -2145,7 +2145,9 @@ patch.post_args    ???</programlisting>
           <listitem>
             <para>Set environment variables for configure; list modifiers add
             and delete items from a previous Portfile configure.env keyword,
-            or a default set by MacPorts base.</para>
+            or a default set by MacPorts base. If available, it is encouraged to
+            use the predefined options (like configure.cflags) instead of
+            modifying configure.env directly</para>
 
             <itemizedlist>
               <listitem>
@@ -2156,7 +2158,7 @@ patch.post_args    ???</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.env   CFLAGS=-I${prefix}/include/qt3
+                <programlisting>configure.env   QTDIR=${prefix}/lib/qt3
 </programlisting>
               </listitem>
             </itemizedlist>
@@ -2165,8 +2167,8 @@ patch.post_args    ???</programlisting>
           <listitem>
             <para>List modifier examples:</para>
 
-            <programlisting>configure.env-append   CFLAGS=-${prefix}/include/qt3
-configure.env-delete   LDFLAGS=-L${prefix}/lib</programlisting>
+            <programlisting>configure.env-append   ABI=32
+configure.env-delete   TCLROOT=${prefix}</programlisting>
           </listitem>
         </varlistentry>
 
@@ -2185,13 +2187,13 @@ configure.env-delete   LDFLAGS=-L${prefix}/lib</programlisting>
             <itemizedlist>
               <listitem>
                 <para>Default:
-                <literal>CFLAGS=-I${prefix}/include</literal></para>
+                <literal>-O2</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.cflags    CFLAGS=-I${worksrcpath}/include
+                <programlisting>configure.cflags    -Os -flat_namespace
 
 </programlisting>
               </listitem>
@@ -2201,8 +2203,8 @@ configure.env-delete   LDFLAGS=-L${prefix}/lib</programlisting>
           <listitem>
             <para>List modifier examples:</para>
 
-            <programlisting>configure.cflags-append   "-I/usr/X11R6/include -I${worksrcpath}"
-configure.cflags-delete   -I${prefix}/include/db44</programlisting>
+            <programlisting>configure.cflags-append   "-undefined suppress"
+configure.cflags-delete   -O2</programlisting>
           </listitem>
         </varlistentry>
 
@@ -2221,13 +2223,13 @@ configure.cflags-delete   -I${prefix}/include/db44</programlisting>
             <itemizedlist>
               <listitem>
                 <para>Default:
-                <literal>LDFLAGS=-L${prefix}/lib</literal></para>
+                <literal>-L${prefix}/lib</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.ldflags    CFLAGS=-I${worksrcpath}/include
+                <programlisting>configure.ldflags    -L${worksrcpath}/zlib -lz
 
 </programlisting>
               </listitem>
@@ -2257,13 +2259,13 @@ configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
             <itemizedlist>
               <listitem>
                 <para>Default:
-                <literal>CPPFLAGS=-I${prefix}/include</literal></para>
+                <literal>-I${prefix}/include</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>configure.cppflags    CPPFLAGS=-I${worksrcpath}/include
+                <programlisting>configure.cppflags    -I${worksrcpath}/include
 
 </programlisting>
               </listitem>
@@ -2273,7 +2275,7 @@ configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
           <listitem>
             <para>List modifier examples:</para>
 
-            <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib"
+            <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
 configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
