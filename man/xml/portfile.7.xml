@@ -912,20 +912,19 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
     <refsection>
       <title>StartupItems</title>
 
-      <para><quote>Daemons</quote> is a Unix term for programs that run
-      continuously in the background, rather than under the direct control of
-      a user; for example, mail servers, network listeners, etc. MacPorts
-      StartupItems are used for ported applications that use daemons; these
-      keywords create Mac OS X startup scripts for <ulink
+      <para>A StartupItem is a MacPort facility to run "daemons," a Unix term
+      for programs that run continuously in the background, rather than under
+      the direct control of a user; for example, mail servers, network
+      listeners, etc. Ports that use StartupItem keywords create Mac OS X
+      scripts for <ulink
       url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>,
-      the facility introduced by Apple beginning with OS X 10.4, that starts,
-      stops, and manages daemons, programs, and scripts. Port authors use
-      StartupItem keywords within Portfiles to instruct MacPorts to generate
-      and install <command>launchd</command> scripts during port installation.
-      To support launchd, a wrapper program named <command>daemondo</command>
+      which is the Apple facility introduced with OS X 10.4 to replace xinetd
+      for starting and managing daemons. To support
+      <command>launchd</command>, a program named <command>daemondo</command>
       is provided by MacPorts base that serves as an adapter between OS X's
-      <command>launchd</command> and daemons started via traditional rc.d
-      style scripts.</para>
+      <command>launchd</command> and daemons (<quote>executable</quote>
+      StartupItems) or traditional Unix startup scripts that start daemons
+      (<quote>script</quote> StartupItems).</para>
 
       <para>There are three categories of StartupItem keywords. Those that
       trigger StartupItem creation and logging, those that specify attributes
@@ -1252,34 +1251,109 @@ startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
                 </listitem>
               </itemizedlist>
 
-              <para>Pidfile handling options:</para>
+              <para>PID file handling options:</para>
 
               <itemizedlist>
                 <listitem>
-                  <para><option>none</option> - The daemon is not to use a
-                  pidfile.</para>
+                  <para><option>none</option> - daemondo will not create or
+                  track a PID file, so it won't know when a daemon
+                  dies.</para>
                 </listitem>
 
                 <listitem>
-                  <para><option>auto</option> - The daemon generates its own
-                  pidfile.</para>
+                  <para><option>auto</option> - The started process is
+                  expected to create a PID file that contains the PID of the
+                  running daemon; daemondo then reads the PID from the file
+                  and tracks the process. The started process must delete the
+                  PID file if this is necessary.</para>
                 </listitem>
 
                 <listitem>
-                  <para><option>manual</option> - The daemon never generates a
-                  pidfile; the StartupItem must manage the pidfile on its
-                  own.</para>
+                  <para><option>clean</option> - The started process is
+                  expected to create a PID file that contains the PID of the
+                  running daemon; daemondo then reads the PID from the file
+                  and tracks the process, and deletes the PID file if it
+                  detects the daemon has died.</para>
                 </listitem>
 
                 <listitem>
-                  <para><option>clean</option> - The daemon generates its own
-                  but will not delete it; the StartupItem must delete
-                  it.</para>
+                  <para><option>manual</option> - This option should only be
+                  used if an <quote>executable</quote> StartupItem could be
+                  used (daemondo launches a daemon directly)
+                  <emphasis>and</emphasis> a port author wants a PID file
+                  written for some special use. A PID file is not needed to
+                  detect process death for daemons launched directly by
+                  daemondo. As with executale StartupItems, daemondo remembers
+                  the PID of the launched process and tracks it
+                  automatically.</para>
                 </listitem>
               </itemizedlist>
             </listitem>
           </varlistentry>
         </variablelist>
+      </refsection>
+
+      <refsection>
+        <title>Loading / Unloading StartupItems into launchd</title>
+
+        <para>A port with a StartupItem places a link to a .plist file for the
+        port's daemon within <filename>/Library/LaunchDaemons/</filename>. A
+        .plist file is an XML file; MacPorts installs .plist files tagged as
+        <quote>disabled</quote> for the sake of security. You may enable a
+        startup script (tag the.plist file as <quote>enabled</quote>) and load
+        it into <command>launchd</command> with a single command as
+        shown.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
+
+        <para>You may stop a running startup script, disable it (tag the.plist
+        file as <quote>disabled</quote>), and unload it from
+        <command>launchd</command> with a single command as shown.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
+      </refsection>
+
+      <refsection>
+        <title>StartupItem Internals</title>
+
+        <para>During port installation a MacPorts StartupItem creates a .plist
+        file in <filename>${prefix}/etc/LaunchDaemons/</filename>, and places
+        a symbolic link to the .plist file within
+        <filename>/Library/LaunchDaemons/</filename>.</para>
+
+        <para>For example, the StartupItem for the mysql5 port is
+        <filename>org.macports.mysql5.plist</filename>, and it is linked as
+        shown.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>ls -l /Library/LaunchDaemons</userinput></programlisting>
+
+        <screen>org.macports.mysql5.plist -&gt;
+     /opt/local/etc/LaunchDaemons/org.macports.mysql5/org.macports.mysql5.plist</screen>
+
+        <para>For <quote>script</quote> StartupItems, in addition to a .plist
+        file, a wrapper is also created.<programlisting><prompt>%%</prompt> <userinput>ls -l /opt/local/etc/LaunchDaemons/org.macports.mysql5/</userinput></programlisting><screen>-rwxr-xr-x   2 root  wheel  475 Aug  2 14:16 mysql5.wrapper
+-rw-r--r--   2 root  wheel  975 Aug  2 14:16 org.macports.mysql5.plist</screen>The
+        wrapper manipulates the script as specified in the startupitem.start
+        and startupitem.stop keywords. An example wrapper script snippet is
+        shown below.</para>
+
+        <programlisting>#!/bin/sh
+#
+# MacPorts generated daemondo support script
+
+# Start
+Start()
+{
+        /opt/local/share/mysql5/mysql/mysql.server start
+}
+
+# Stop
+Stop()
+{
+        /opt/local/share/mysql5/mysql/mysql.server stop
+}
+
+[... trimmed ...]</programlisting>
       </refsection>
     </refsection>
   </refsection>
