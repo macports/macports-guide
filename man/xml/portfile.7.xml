@@ -932,7 +932,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
       attributes of <quote>script</quote> StartupItems.</para>
 
       <refsection>
-        <title>StartupIem Creation &amp; Logging</title>
+        <title>StartupItem Attributes</title>
 
         <para>The keywords in this section may be used with either
         <quote>executable</quote> or <quote>script</quote> StartupItems (see
@@ -1055,6 +1055,35 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
               </itemizedlist>
             </listitem>
           </varlistentry>
+
+          <varlistentry>
+            <term>startupitem.netchange</term>
+
+            <listitem>
+              <para>Cause the daemon to be restarted when a change in network
+              state is detected.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Type: optional</para>
+                </listitem>
+
+                <listitem>
+                  <para>Default: no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Values: yes no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Example:</para>
+
+                  <programlisting>startupitem.netchange  yes</programlisting>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </varlistentry>
         </variablelist>
       </refsection>
 
@@ -1109,6 +1138,127 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
                   <para>Example:</para>
 
                   <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>startupitem.inetdcompat</term>
+
+            <listitem>
+              <para>This keyword can only be used with startupitem.executable
+              and sets inetdCompatibility option.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Type: optional</para>
+                </listitem>
+
+                <listitem>
+                  <para>Default: no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Values: yes no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Example:</para>
+
+                  <programlisting>startupitem.inetdcompat   yes</programlisting>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>startupitem.inetdsockname</term>
+
+            <listitem>
+              <para>Specify the xinetd socket servicename given in
+              <filename>/etc/services</filename>; this is mandatory when using
+              startupitem.inetdcompat, otherwise an invalid plist file
+              results.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Type: optional, but mandatory when using
+                  startupitem.inetdcompat.</para>
+                </listitem>
+
+                <listitem>
+                  <para>Default: no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Values: <replaceable>name</replaceable></para>
+                </listitem>
+
+                <listitem>
+                  <para>Example:</para>
+
+                  <programlisting>startupitem.inetdsockname   nmicmpd</programlisting>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>startupitem.inetdnowait</term>
+
+            <listitem>
+              <para>This keyword can only be used with
+              startupitem.inetdcompat, and corresponds to "wait" or "nowait"
+              option of xinetd services.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Type: optional</para>
+                </listitem>
+
+                <listitem>
+                  <para>Default: no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Values: yes no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Example:</para>
+
+                  <programlisting>startupitem.inetdnowait   yes</programlisting>
+                </listitem>
+              </itemizedlist>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>startupitem.logevents</term>
+
+            <listitem>
+              <para>Control whether or not to log events to the log file. If
+              logevents is set, events with timestamps are logged to the
+              logfile.</para>
+
+              <itemizedlist>
+                <listitem>
+                  <para>Type: optional</para>
+                </listitem>
+
+                <listitem>
+                  <para>Default: no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Values: yes no</para>
+                </listitem>
+
+                <listitem>
+                  <para>Example:</para>
+
+                  <programlisting>startupitem.logevents   yes</programlisting>
                 </listitem>
               </itemizedlist>
             </listitem>
@@ -2145,8 +2295,8 @@ patch.post_args    ???</programlisting>
           <listitem>
             <para>Set environment variables for configure; list modifiers add
             and delete items from a previous Portfile configure.env keyword,
-            or a default set by MacPorts base. If available, it is encouraged to
-            use the predefined options (like configure.cflags) instead of
+            or a default set by MacPorts base. If available, it is encouraged
+            to use the predefined options (like configure.cflags) instead of
             modifying configure.env directly</para>
 
             <itemizedlist>
@@ -2186,8 +2336,7 @@ configure.env-delete   TCLROOT=${prefix}</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-O2</literal></para>
+                <para>Default: <literal>-O2</literal></para>
               </listitem>
 
               <listitem>
@@ -2222,8 +2371,7 @@ configure.cflags-delete   -O2</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-L${prefix}/lib</literal></para>
+                <para>Default: <literal>-L${prefix}/lib</literal></para>
               </listitem>
 
               <listitem>
@@ -2258,8 +2406,7 @@ configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-I${prefix}/include</literal></para>
+                <para>Default: <literal>-I${prefix}/include</literal></para>
               </listitem>
 
               <listitem>
@@ -2280,7 +2427,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 
-<!-- fortran compiler options -->
+        <!-- fortran compiler options -->
+
         <varlistentry>
           <term>configure.fflags</term>
 
@@ -2289,14 +2437,14 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.fflags-delete</term>
 
           <listitem>
-            <para>Set FFLAGS to be passed to the Fortran compiler; list modifiers
-            add or delete items from a previous Portfile configure.fflags
-            keyword or the default set by MacPorts base.</para>
+            <para>Set FFLAGS to be passed to the Fortran compiler; list
+            modifiers add or delete items from a previous Portfile
+            configure.fflags keyword or the default set by MacPorts
+            base.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-O2</literal></para>
+                <para>Default: <literal>-O2</literal></para>
               </listitem>
 
               <listitem>
@@ -2318,14 +2466,14 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.fcflags-delete</term>
 
           <listitem>
-            <para>Set FCFLAGS to be passed to the Fortran compiler; list modifiers
-            add or delete items from a previous Portfile configure.fcflags
-            keyword or the default set by MacPorts base.</para>
+            <para>Set FCFLAGS to be passed to the Fortran compiler; list
+            modifiers add or delete items from a previous Portfile
+            configure.fcflags keyword or the default set by MacPorts
+            base.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-O2</literal></para>
+                <para>Default: <literal>-O2</literal></para>
               </listitem>
 
               <listitem>
@@ -2347,14 +2495,14 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.f90flags-delete</term>
 
           <listitem>
-            <para>Set F90FLAGS to be passed to the Fortran 90 compiler; list modifiers
-            add or delete items from a previous Portfile configure.f90flags
-            keyword or the default set by MacPorts base.</para>
+            <para>Set F90FLAGS to be passed to the Fortran 90 compiler; list
+            modifiers add or delete items from a previous Portfile
+            configure.f90flags keyword or the default set by MacPorts
+            base.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal>-O2</literal></para>
+                <para>Default: <literal>-O2</literal></para>
               </listitem>
 
               <listitem>
@@ -2367,9 +2515,11 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </itemizedlist>
           </listitem>
         </varlistentry>
-<!-- fortran compiler options end -->
 
-<!-- compiler selection arguments -->
+        <!-- fortran compiler options end -->
+
+        <!-- compiler selection arguments -->
+
         <varlistentry>
           <term>configure.cc</term>
 
@@ -2378,8 +2528,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2395,12 +2544,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.cpp</term>
 
           <listitem>
-            <para>Set CPP compiler flags for selecting a C preprocessor;</para>
+            <para>Set CPP compiler flags for selecting a C
+            preprocessor;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2420,8 +2569,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2437,12 +2585,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.objc</term>
 
           <listitem>
-            <para>Set OBJC compiler flags for selecting an Objective-C compiler;</para>
+            <para>Set OBJC compiler flags for selecting an Objective-C
+            compiler;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2458,12 +2606,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.fc</term>
 
           <listitem>
-            <para>Set FC compiler flags for selecting a Fortran compiler;</para>
+            <para>Set FC compiler flags for selecting a Fortran
+            compiler;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2479,12 +2627,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.f77</term>
 
           <listitem>
-            <para>Set F77 compiler flags for selecting a Fortran 77 compiler;</para>
+            <para>Set F77 compiler flags for selecting a Fortran 77
+            compiler;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2500,12 +2648,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.f90</term>
 
           <listitem>
-            <para>Set F90 compiler flags for selecting a Fortran 90 compiler;</para>
+            <para>Set F90 compiler flags for selecting a Fortran 90
+            compiler;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2521,12 +2669,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.javac</term>
 
           <listitem>
-            <para>Set JAVAC compiler flags for selecting a Java compiler;</para>
+            <para>Set JAVAC compiler flags for selecting a Java
+            compiler;</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2537,8 +2685,11 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </itemizedlist>
           </listitem>
         </varlistentry>
-<!-- compiler selection arguments end -->
-<!-- interpreter selection arguments -->
+
+        <!-- compiler selection arguments end -->
+
+        <!-- interpreter selection arguments -->
+
         <varlistentry>
           <term>configure.perl</term>
 
@@ -2547,8 +2698,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2568,8 +2718,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2589,8 +2738,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default:
-                <literal></literal></para>
+                <para>Default: <literal></literal></para>
               </listitem>
 
               <listitem>
@@ -2601,7 +2749,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </itemizedlist>
           </listitem>
         </varlistentry>
-<!-- interpreter selection arguments end -->
+
+        <!-- interpreter selection arguments end -->
 
         <varlistentry>
           <term>configure.args</term>
