@@ -1206,6 +1206,33 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 
+        <varlistentry>
+          <term>configure.compiler</term>
+
+          <listitem>
+            <para>Select a compiler suite to fill the compiler environment variables. All variables/tools a compiler suite can provide are set. Manually set variables are not overwritten. Dependencies are not added for you, as they may be just build- or also run-dependencies. Keep in mind that not all compiler suites might be available on your platform.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal>gcc-3.3</literal>Mac OS X 10.3</para>
+                <para>Default: <literal>gcc-4.0</literal>Mac OS X 10.4, 10.5</para>
+              </listitem>
+
+              <listitem>
+                <para>Options:</para>
+
+                <programlisting>gcc-3.3 gcc-4.0 apple-gcc-3.3 apple-gcc-4.0 macports-gcc-3.3 macports-gcc-3.4 macports-gcc-4.0 macports-gcc-4.1 macports-gcc-4.2 macports-gcc-4.3</programlisting>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.compiler    macports-gcc-4.2</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
         <!-- compiler selection arguments end -->
 
         <!-- interpreter selection arguments -->
@@ -1271,6 +1298,30 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         </varlistentry>
 
         <!-- interpreter selection arguments end -->
+
+        <!-- other tools selection arguments -->
+
+        <varlistentry>
+          <term>configure.install</term>
+
+          <listitem>
+            <para>Set INSTALL flag for selecting an install tool; used for copying files and creating directories</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal>/usr/bin/install</literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.install    ${prefix}/bin/ginstall</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <!-- other tools selection arguments end -->
 
         <varlistentry>
           <term>configure.args</term>
