@@ -257,7 +257,7 @@
                 <listitem>
                   <para>Example:</para>
 
-                  <programlisting>startupitem.executable  ${prefix}/sbin/vmpop3d -d 10 -t 600</programlisting>
+                  <programlisting>startupitem.executable  ${prefix}/sbin/vm-pop3d -d 10 -t 600</programlisting>
                 </listitem>
               </itemizedlist>
 
