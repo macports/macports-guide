@@ -250,16 +250,37 @@
                 </listitem>
 
                 <listitem>
-                  <para>Values:
-                  <replaceable>/path/to/executable</replaceable></para>
+                  <para>Values: <replaceable>/path/to/daemon</replaceable>
+                  [<replaceable>args</replaceable>]</para>
                 </listitem>
 
                 <listitem>
                   <para>Example:</para>
 
-                  <programlisting>startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
+                  <programlisting>startupitem.executable  ${prefix}/sbin/vmpop3d -d 10 -t 600</programlisting>
                 </listitem>
               </itemizedlist>
+
+              <note>
+                <para>Do not to wrap the value in quotes if passing arguments
+                to the daemon; unlike with<quote>script</quote> StartupItem
+                values, executable StartupItem value elements must be tagged
+                separately as shown in this example .plist file
+                snippet.</para>
+
+                <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
+        &lt;array&gt;
+                &lt;string&gt;/opt/local/bin/daemondo&lt;/string&gt;
+                &lt;string&gt;--label=vm-pop3d&lt;/string&gt;
+                &lt;string&gt;--start-cmd&lt;/string&gt;
+                &lt;string&gt;/opt/local/sbin/vm-pop3d&lt;/string&gt;
+                &lt;string&gt;-d&lt;/string&gt;
+                &lt;string&gt;10&lt;/string&gt;
+                &lt;string&gt;-t&lt;/string&gt;
+                &lt;string&gt;600&lt;/string&gt;
+                &lt;string&gt;;&lt;/string&gt;
+        &lt;/array&gt;</programlisting>
+              </note>
             </listitem>
           </varlistentry>
 
@@ -353,36 +374,6 @@
               </itemizedlist>
             </listitem>
           </varlistentry>
-
-          <varlistentry>
-            <term>startupitem.logevents</term>
-
-            <listitem>
-              <para>Control whether or not to log events to the log file. If
-              logevents is set, events with timestamps are logged to the
-              logfile.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: yes no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.logevents   yes</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
         </variablelist>
       </refsection>
 
@@ -407,12 +398,13 @@ case "$1" in
 
 [... trimmed ...]</programlisting>
 
-        <para>But if a script itself is a daemon, use the executable
-        StartupItem type since that way it will be launched directly and its
-        health tracked automatically. When using <quote>script</quote>
-        StartupItems, the <code>startupitem.pidfile</code> keyword must be
-        used if you want <command>daemondo</command> to monitor a daemon
-        process and restart it if it dies.</para>
+        <para>But if a script itself is a daemon, use the
+        <quote>executable</quote> StartupItem type since that way it will be
+        launched directly and its health tracked automatically. When using
+        <quote>script</quote> StartupItems, the
+        <code>startupitem.pidfile</code> keyword must be used if you want
+        <command>daemondo</command> to monitor a daemon process and restart it
+        if it dies.</para>
 
         <note>
           <para>For a given port, StartupItem keywords in category
@@ -450,11 +442,16 @@ case "$1" in
                 <listitem>
                   <para>Examples:</para>
 
-                  <programlisting>startupitem.start ${prefix}/share/mysql/mysql.server start
-startupitem.stop ${prefix}/share/mysql/mysql.server stop
-startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
+                  <programlisting>startupitem.start "${prefix}/share/mysql/mysql.server start"
+startupitem.stop "${prefix}/share/mysql/mysql.server stop"
+startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting>
                 </listitem>
               </itemizedlist>
+
+              <note>
+                <para>Wrap the stop, start, and restart values in quotes so
+                they will be placed in the wrapper as a single command.</para>
+              </note>
             </listitem>
           </varlistentry>
 
@@ -483,7 +480,7 @@ startupitem.restart ${prefix}/share/mysql/mysql.server restart</programlisting>
                 <listitem>
                   <para>Example:</para>
 
-                  <programlisting>startupitem.init  "PID=/var/run/dhcpd.pid"</programlisting>
+                  <programlisting>startupitem.init "BIN=${prefix}/sbin/bacula-fd"</programlisting>
                 </listitem>
               </itemizedlist>
             </listitem>
