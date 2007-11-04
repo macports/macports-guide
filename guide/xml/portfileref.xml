@@ -15,6 +15,35 @@
       xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 
+  <section id="reference.portfile.global">
+    <title>Portfile Global</title>
+
+    <xi:include href="../../man/xml/portfile-global.7.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </section>
+
+  <section id="reference.phase">
+    <title>Portfile Phase</title>
+
+    <xi:include href="../../man/xml/portfile-phase.7.xml"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </section>
+
+  <section id="reference.startupitem">
+    <title>Portfile Startupitem</title>
+    
+    <xi:include href="../../man/xml/portfile-startupitem.7.xml"
+      xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </section>
+
+  <section id="reference.tcl">
+    <title>Portfile Tcl</title>
+
+    <xi:include href="../../man/xml/portfile-tcl.7.xml"
+    xmlns:xi="http://www.w3.org/2001/XInclude" />
+  </section>
+
+
   <section id="reference.phases">
     <title>Port Phases</title>
 
