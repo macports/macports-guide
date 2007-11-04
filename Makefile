@@ -14,7 +14,7 @@ GUIDE ?= guide
 MAN   ?= man
 # result directories:
 GUIDE-RESULT ?= $(GUIDE)/html
-MAN-RESULT   ?= $(MAN)/man
+MAN-RESULT   ?= $(MAN)/man/
 
 # path to the docbook xsl files:
 DOCBOOK   ?= $(PREFIX)/share/xsl/docbook-xsl
@@ -45,8 +45,12 @@ guide:
 
 man:
 	mkdir -p $(MAN-RESULT)
-	xsltproc --output $(MAN-RESULT)/portfile.7 \
-	    $(MAN-XSL) $(MAN)/xml/portfile.7.xml
+	xsltproc --output $(MAN-RESULT) $(MAN-XSL) \
+	    $(MAN)/xml/portfile.7.xml \
+	    $(MAN)/xml/portfile-global.7.xml \
+	    $(MAN)/xml/portfile-phase.7.xml \
+	    $(MAN)/xml/portfile-startupitem.7.xml \
+	    $(MAN)/xml/portfile-tcl.7.xml
 
 clean:
 	rm -rf $(GUIDE-RESULT)

@@ -9,7 +9,7 @@
   </refmeta>
 
   <refnamediv>
-    <refname>portfile</refname>
+    <refname>portfile-tcl</refname>
 
     <refpurpose>MacPorts Portfile reference</refpurpose>
   </refnamediv>
