@@ -314,7 +314,7 @@ extract.cmd = bzip
 
             <itemizedlist>
               <listitem>
-                <para>Default: yes</para>
+                <para>Default: <option>no</option></para>
               </listitem>
 
               <listitem>
@@ -342,7 +342,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
 
             <itemizedlist>
               <listitem>
-                <para>Default: <option>yes</option></para>
+                <para>Default: <option>no</option></para>
               </listitem>
 
               <listitem>
@@ -1702,6 +1702,27 @@ build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
 build.target-delete   compat</programlisting>
           </listitem>
         </varlistentry>
+
+        <varlistentry>
+          <term>use_parallel_build</term>
+
+          <listitem>
+            <para>This keyword is for specifying if it is safe to build a port in parallel.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>use_parallel_build     yes</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
       </variablelist>
     </refsection>
 
