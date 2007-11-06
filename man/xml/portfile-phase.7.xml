@@ -1329,6 +1329,86 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           </listitem>
         </varlistentry>
 
+        <varlistentry>
+          <term>configure.awk</term>
+
+          <listitem>
+            <para>Set AWK flag for selecting an awk executable</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.awk    ${prefix}/bin/gawk</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.bison</term>
+
+          <listitem>
+            <para>Set BISON flag for selecting a bison executable, a parser generator</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.bison    /usr/bin/bison</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.pkg_config</term>
+
+          <listitem>
+            <para>Set PKG_CONFIG flag for helping find pkg_config, a tool for retrieving information about installed libraries.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.pkg_config    ${prefix}/bin/pkg-config</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.pkg_config_path</term>
+
+          <listitem>
+            <para>Set PKG_CONFIG_PATH flag for telling pkg_config where to search for information about installed libraries.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <literal></literal></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>configure.pkg_config_path    ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
         <!-- other tools selection arguments end -->
 
         <varlistentry>
