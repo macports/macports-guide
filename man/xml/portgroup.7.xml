@@ -1,0 +1,630 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<refentry>
+  <refmeta>
+    <refentrytitle>PORTGROUP</refentrytitle>
+
+    <manvolnum>7</manvolnum>
+  </refmeta>
+
+  <refnamediv>
+    <refname>portgroup</refname>
+
+    <refpurpose>MacPorts PortGroup reference</refpurpose>
+  </refnamediv>
+
+  <refsynopsisdiv>
+    <para>PortGroup gnustep 1.0</para>
+
+    <para>PortGroup perl5 1.0</para>
+
+    <para>PortGroup python 1.0</para>
+
+    <para>PortGroup python24 1.0</para>
+
+    <para>PortGroup python25 1.0</para>
+
+    <para>PortGroup ruby 1.0</para>
+
+    <para>PortGroup xcode 1.0</para>
+  </refsynopsisdiv>
+
+  <refsection>
+    <title>Description</title>
+
+    <para>MacPorts defines PortGroup classes so common default values and
+    installation behavior are provided for similar ports. PortGroups are
+    optional; they are declared within the global section of a Portfile. See
+    <citerefentry>
+        <refentrytitle>portfile-global</refentrytitle>
+
+        <manvolnum>7</manvolnum>
+      </citerefentry></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup gnustep</title>
+
+    <para>PortGroup gnustep allows for efficient porting of GNUstep-based
+    opensource software using the GNU objective-C runtime that defines options
+    for the configuration, build, and destroot phases, and also defines some
+    values for GNUstep-based software. A minimum Portfile using the gnustep
+    PortGroup class need only define the fetch and the checksum phases.</para>
+
+    <refsection>
+      <title>gnustep Filesystem Layout</title>
+
+      <para>PortGroup gnustep supports both the traditional gnustep file
+      layout and the new fhs file layout. However, a given ported application
+      does not necessarily support both. The Portfiles have access to many
+      procedures in dealing with these two layouts:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>set_gnustep_make</term>
+
+          <listitem>
+            <para>Sets GNUSTEP_MAKEFILES according to the
+            FilesystemLayout</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set_gnustep_env</term>
+
+          <listitem>
+            <para>Sets DYLD_LIBRARY_PATH and PATH for the gnustep
+            FilesystemLayout</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>gnustep_layout</term>
+
+          <listitem>
+            <para>Returns true (1) if current file layout is gnustep</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set_system_library</term>
+
+          <listitem>
+            <para>Sets GNUSTEP_SYSTEM_LIBRARY according to the
+            FilesystemLayout</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>set_local_library</term>
+
+          <listitem>
+            <para>Sets GNUSTEP_LOCAL_LIBRARY according to the
+            FilesystemLayout</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+
+    <refsection>
+      <title>gnustep PortGroup Sugar</title>
+
+      <para>Portfiles using PortGroup gnustep do not need to define the
+      following variables:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>categories</term>
+
+          <listitem>
+            <para>Default: gnustep</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>homepage</term>
+
+          <listitem>
+            <para>Default: http://www.gnustep.org/ </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>master_sites</term>
+
+          <listitem>
+            <para>Default: gnustep:core </para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>depends_lib</term>
+
+          <listitem>
+            <para>Default: gnustep-core</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_configure</term>
+
+          <listitem>
+            <para>Default: no</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.env</term>
+
+          <listitem>
+            <para>Default: DYLD_LIBRARY_PATH PATH</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.pre_args-append</term>
+
+          <listitem>
+            <para>Default: CC=gcc-mp-4.2 GNUSTEP_MAKEFILES</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.type</term>
+
+          <listitem>
+            <para>Default: gnu</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.env</term>
+
+          <listitem>
+            <para>Default: DYLD_LIBRARY_PATH PATH</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.pre_args-append</term>
+
+          <listitem>
+            <para>Default: messages=yes</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.env</term>
+
+          <listitem>
+            <para>Default: DYLD_LIBRARY_PATH PATH</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.pre_args-append</term>
+
+          <listitem>
+            <para>Default: messages=yes</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+
+    <refsection>
+      <title>gnustep PortGroup Specific Variables</title>
+
+      <para>When the gnustep PortGroup is declared within a Portfile, the
+      following variables are provided during port install.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>gnustep.post_flags</term>
+
+          <listitem>
+            <para>An associative array which specifies the sub-directories
+            relative to ${worksrcpath} and the SHARED_LD_POSTFLAGS variables
+            to be added to GNUmakefile.preamble in those sub-directories. This
+            helps making the patching process easier on Darwin.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>platform darwin {
+                    array set gnustep.post_flags {
+                         BundleSubDir "-lfoo -lbar"
+                    }
+               }</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>gnustep.cc</term>
+
+          <listitem>
+            <para>Define the gcc compiler to use when compiling a port.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Default: gcc-mp-4.2</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>gnustep.cc gcc-mp-4.3</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>variant with_docs</term>
+
+          <listitem>
+            <para>Many GNUstep packages include a Documentation sub-directory
+            that is not built by default. Enabling this variant builds and
+            installs the included documentation.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting><prompt>%%</prompt> <userinput>port install gnustep-gui +with_docs</userinput></programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup perl5</title>
+
+    <para></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup python</title>
+
+    <para></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup python24</title>
+
+    <para></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup python25</title>
+
+    <para></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup ruby</title>
+
+    <para></para>
+  </refsection>
+
+  <refsection>
+    <title>PortGroup xcode</title>
+
+    <para>PortGroup xcode allows for efficient porting of Xcode-based
+    opensource software. It handles configuration, build, and destroot phases.
+    It also defines some values for Xcode-based software. A minimum Portfile
+    using the xcode PortGroup class only defines the fetch and the checksum
+    phases.</para>
+
+    <para>Using PortGroup xcode is a way to make your port able to tolerate
+    Xcode version updates because the PortGroup is tested against all
+    supported Mac OS X and Xcode versions.</para>
+
+    <refsection>
+      <title>xcode PortGroup Sugar</title>
+
+      <para>Portfiles using xcode PortGroup do not need to define the
+      following variables:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>categories</term>
+
+          <listitem>
+            <para>Default: aqua</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>platforms</term>
+
+          <listitem>
+            <para>Default: macosx</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>use_configure</term>
+
+          <listitem>
+            <para>Default: no</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+
+    <refsection>
+      <title>xcode PortGroup Specific Variables</title>
+
+      <para>When the xcode PortGroup is declared within a Portfile, the
+      following variables are provided during port install:</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>xcode.project</term>
+
+          <listitem>
+            <para>The path relative to ${build.dir} and ${destroot.dir} of the
+            Xcode project. If unset, let xcode tool figure it out. It usually
+            succeeds if there is a single project in the directory.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.project ${name}.xcode</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.configuration</term>
+
+          <listitem>
+            <para>Project configuration/buildstyle to use.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Default: Deployment</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.configuration Main</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.target</term>
+
+          <listitem>
+            <para>If present, it overrides build.target and
+            destroot.target.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.target ${name}</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.build.settings</term>
+
+          <listitem>
+            <para>Additional settings passed to the xcode build tool during
+            the build phase. These settings should be in the X=Y form.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.build.settings FRAMEWORK_SEARCH_PATHS=${prefix}/Library/Frameworks</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.destroot.type</term>
+
+          <listitem>
+            <para>Type of project that will be installed. This tells the xcode
+            PortGroup how to destroot the project. Correct values are
+            application and framework.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Default: application</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.destroot.type framework</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.destroot.path</term>
+
+          <listitem>
+            <para>Where to install the build product.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Default: /Library/Frameworks or /Application/MacPort
+                depending on xcode.destroot.type.</para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>xcode.destroot.settings</term>
+
+          <listitem>
+            <para>Additional settings passed to the xcode build tool during
+            the destroot phase. These settings should be in the X=Y
+            form.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Type: optional</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>xcode.destroot.settings SKIP_INSTALL=NO</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+
+    <refsection>
+      <title>Portfile-Phase Variables Affecting the xcode PortGroup</title>
+
+      <para>The following Portfile phase variables affect the xcode PortGroup
+      in aunique way. In most cases, you will not need to set any of these
+      variables in the Portfile. See <citerefentry>
+          <refentrytitle>portfile-phase</refentrytitle>
+
+          <manvolnum>7</manvolnum>
+        </citerefentry></para>
+
+      <variablelist>
+        <varlistentry>
+          <term>build.cmd</term>
+
+          <listitem>
+            <para>Default: <varname>${xcodebuildcmd}</varname>.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.target</term>
+
+          <listitem>
+            <para>Default: ""</para>
+
+            <para>This variable will be ignored if xcode.target is set.</para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>build.args</term>
+
+          <listitem>
+            <para>Default: <code>build</code></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.cmd</term>
+
+          <listitem>
+            <para>Default: <varname>${xcodebuildcmd}</varname></para>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>destroot.target</term>
+
+          <listitem>
+            <para>Default: ""</para>
+
+            <para>This variable will be ignored if xcode.target is set.</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </refsection>
+  </refsection>
+
+  <refsection>
+    <title>SEE ALSO</title>
+
+    <para><citerefentry>
+        <refentrytitle>port</refentrytitle>
+
+        <manvolnum>1</manvolnum>
+      </citerefentry>,<citerefentry>
+        <refentrytitle>macports.conf</refentrytitle>
+
+        <manvolnum>5</manvolnum>
+      </citerefentry>,<citerefentry>
+        <refentrytitle>portfile</refentrytitle>
+
+        <manvolnum>7</manvolnum>
+      </citerefentry>,<citerefentry>
+        <refentrytitle>porthier</refentrytitle>
+
+        <manvolnum>7</manvolnum>
+      </citerefentry><citerefentry></citerefentry></para>
+  </refsection>
+
+  <refsection>
+    <title>AUTHORS</title>
+
+    <para>Paul Guyot <email>pguyot@kallisys.net</email></para>
+
+    <para>Yves de Champlain <email>yves@macports.org</email></para>
+  </refsection>
+</refentry>
