@@ -1353,7 +1353,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.bison</term>
 
           <listitem>
-            <para>Set BISON flag for selecting a bison executable, a parser generator</para>
+            <para>Set BISON flag for selecting a bison executable, a parser
+            generator</para>
 
             <itemizedlist>
               <listitem>
@@ -1373,7 +1374,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.pkg_config</term>
 
           <listitem>
-            <para>Set PKG_CONFIG flag for helping find pkg_config, a tool for retrieving information about installed libraries.</para>
+            <para>Set PKG_CONFIG flag for helping find pkg_config, a tool for
+            retrieving information about installed libraries.</para>
 
             <itemizedlist>
               <listitem>
@@ -1393,7 +1395,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           <term>configure.pkg_config_path</term>
 
           <listitem>
-            <para>Set PKG_CONFIG_PATH flag for telling pkg_config where to search for information about installed libraries.</para>
+            <para>Set PKG_CONFIG_PATH flag for telling pkg_config where to
+            search for information about installed libraries.</para>
 
             <itemizedlist>
               <listitem>
@@ -1795,10 +1798,15 @@ build.target-delete   compat</programlisting>
           <term>use_parallel_build</term>
 
           <listitem>
-            <para>This keyword is for specifying if it is safe for a port to
-            use multiple cpus or multiple cores in parallel during its build
-            phase. This keyword uses the gcc option <code>make
-            -j</code>.</para>
+            <para>This keyword is for specifying whether or not it is safe for
+            a port to use multiple cpus or multiple cores in parallel during
+            its build phase. This keyword passes the <option>-j</option>
+            <varname>[jobs]</varname> option to <command>make</command>, where
+            <varname>jobs</varname> is obtained from the variable
+            <varname>buildmakejobs</varname> in
+            <filename>macports.conf</filename>. This variable may also be set
+            to 0 so the number of jobs is set to the number of cores detected
+            during the build phase.</para>
 
             <itemizedlist>
               <listitem>
