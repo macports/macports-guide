@@ -1800,13 +1800,13 @@ build.target-delete   compat</programlisting>
           <listitem>
             <para>This keyword is for specifying whether or not it is safe for
             a port to use multiple cpus or multiple cores in parallel during
-            its build phase. This keyword passes the <option>-j</option>
-            <varname>[jobs]</varname> option to <command>make</command>, where
-            <varname>jobs</varname> is obtained from the variable
+            its build phase. If a port is declared to be builadble this way,
+            the option <option>-j N</option> may be passed to the
+            <command>make</command> command if parallel builds are enabled
+            system-wide.  This can be obtained by setting
             <varname>buildmakejobs</varname> in
-            <filename>macports.conf</filename>. This variable may also be set
-            to 0 so the number of jobs is set to the number of cores detected
-            during the build phase.</para>
+            <filename>macports.conf</filename>. The integer <option>N</option>
+            refers to the number of parallel build threads.
 
             <itemizedlist>
               <listitem>
