@@ -1806,7 +1806,7 @@ build.target-delete   compat</programlisting>
             system-wide.  This can be obtained by setting
             <varname>buildmakejobs</varname> in
             <filename>macports.conf</filename>. The integer <option>N</option>
-            refers to the number of parallel build threads.
+            refers to the number of parallel build threads.</para>
 
             <itemizedlist>
               <listitem>
