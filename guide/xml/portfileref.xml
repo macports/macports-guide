@@ -43,13 +43,12 @@
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 
-  section id="reference.portgroup">
+  <section id="reference.portgroup">
     <title>PortGroup</title>
 
     <xi:include href="../../man/xml/portgroup.7.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
-
-    </section>
+  </section>
 
   <section id="reference.phases">
     <title>Port Phases</title>
