@@ -223,10 +223,10 @@
     <filename>/opt/local/</filename>, perform these commands from a terminal
     window.</para>
 
-    <programlisting>%% <userinput>sudo rm -rf /opt/local/</userinput>
-%% <userinput>sudo rm -rf /Applications/MacPorts/</userinput>
-%% <userinput>sudo rm -rf /Library/Tcl/macports1.0/</userinput>
-%% <userinput>sudo rm -rf /Library/LaunchDaemons/org.macports.*</userinput></programlisting>
+    <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf /opt/local/</userinput>
+<prompt>%%</prompt> <userinput>sudo rm -rf /Applications/MacPorts/</userinput>
+<prompt>%%</prompt> <userinput>sudo rm -rf /Library/Tcl/macports1.0/</userinput>
+<prompt>%%</prompt> <userinput>sudo rm -rf /Library/LaunchDaemons/org.macports.*</userinput></programlisting>
   </section>
 
   <section id="installing.shell">
