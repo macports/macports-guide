@@ -122,87 +122,111 @@
     </section>
   </section>
 
-  <section id="installing.binary">
-    <title>Install MacPorts - Binary</title>
+  <section>
+    <title>Install MacPorts</title>
 
-    <para>If you wish to install MacPorts to a path other than
-    <filename>/opt/local</filename> do not install the MacPorts binary —skip
-    this section and <link linkend="installing.source">install MacPorts from
-    the source code</link>. The MacPorts binary installer will only install to
-    <filename>/opt/local</filename>.</para>
+    <para>If you are using OS X, you should install MacPorts using the OS X
+    package installer unless you do not wish to install it to
+    <filename>/opt/local/</filename>, the default MacPorts location, or if you
+    wish to install a pre-release version of MacPorts. However, if you wish to
+    install <ulink url="installing.source.multiple">multiple copies of
+    MacPorts</ulink> or install MacPorts on another OS platform, you must
+    <link linkend="installing.source">install MacPorts from the source
+    code</link>.</para>
 
-    <orderedlist>
-      <listitem>
-        <para>Download the latest MacPorts .dmg disk image from the <ulink
-        url="http://svn.macports.org/repository/macports/downloads/">MacPorts
-        download directory</ulink>.</para>
-      </listitem>
+    <section id="installing.binary">
+      <title>OS X Package Install</title>
 
-      <listitem>
-        <para>Run the binary installer.</para>
-      </listitem>
+      <para>To install MacPorts with the OS X package installer, follow these
+      steps.</para>
 
-      <listitem>
-        <para>Perform the default “easy” install.</para>
-      </listitem>
-    </orderedlist>
+      <orderedlist>
+        <listitem>
+          <para>Download the latest MacPorts .dmg disk image from the <ulink
+          url="http://svn.macports.org/repository/macports/downloads/">MacPorts
+          download directory</ulink>.</para>
+        </listitem>
 
-    <note>
-      <para>A MacPorts <link linkend="installing.selfupdate">selfupdate</link>
-      operation will automatically update to the latest release if the binary
-      .dmg image is behind the latest released tarball.</para>
-    </note>
-  </section>
+        <listitem>
+          <para>Double-click the .pkg package installer on the disk
+          image.</para>
+        </listitem>
 
-  <section id="installing.source">
-    <title>Install MacPorts - Source</title>
+        <listitem>
+          <para>Perform the default “easy” install.</para>
+        </listitem>
+      </orderedlist>
 
-    <para>If you installed MacPorts using the binary installer, skip this
-    section. Installing from source on Mac OS X is only necessary if you wish
-    to install to a path other than <filename>/opt/local</filename>, or if you
-    wish to install a non-release version of MacPorts base. You must also
-    install MacPorts from source if you wish to install MacPorts on a platform
-    other than Mac OS X.</para>
+      <note>
+        <para>Use the MacPorts <link
+        linkend="installing.selfupdate">selfupdate</link> operation
+        immediately after installing MacPorts. If a newer MacPorts base point
+        revision has been released before a new package installer has been
+        made, it is automatically upgraded.</para>
+      </note>
+    </section>
 
-    <orderedlist>
-      <listitem>
-        <para>Download and unzip the latest MacPorts tarball from the <ulink
-        url="http://svn.macports.org/repository/macports/downloads/">MacPorts
-        download directory</ulink>.</para>
-      </listitem>
+    <section id="installing.source">
+      <title>Source Install</title>
 
-      <listitem>
-        <para>Perform these commands in a terminal window, substituting a real
-        path for NEW_PREFIX if you wish to use a path other than
-        <filename>/opt/local/</filename>.</para>
+      <para>If you installed MacPorts using the package installer, skip this
+      section. To install MacPorts from the source code, follow these
+      steps.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
+      <orderedlist>
+        <listitem>
+          <para>Download and unzip the latest MacPorts tarball from the <ulink
+          url="http://svn.macports.org/repository/macports/downloads/">MacPorts
+          download directory</ulink>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Perform these commands in a terminal window, substituting a
+          real path for NEW_PREFIX if you wish to use a path other than
+          <filename>/opt/local/</filename>.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure</userinput> --prefix=NEW_PREFIX  (setting prefix is optional)
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
-      </listitem>
-    </orderedlist>
+        </listitem>
+      </orderedlist>
 
-    <section id="installing.source.multiple">
-      <title>Multiple MacPorts Installs</title>
+      <section id="installing.source.multiple">
+        <title>Install Multiple MacPorts Copies</title>
 
-      <para>Occasionally a MacPorts developer may wish to install more than
-      one copy of MacPorts on the same host, possibly to test two different
-      versions of MacPorts. But only one copy of MacPorts may use the default
-      MacPorts Tcl library path <filename>/Library/Tcl</filename>, so for a
-      second installation use the <literal>--with-tclpackage</literal> switch
-      set to any newly created (empty) directory, say
-      /Library/Tcl/macports-new. Also, the standard MacPorts binary path must
-      not be present during the installation of the second instance. To
-      install a second instance of MacPorts, follow these steps.</para>
+        <para>Occasionally a MacPorts developer may wish to install more than
+        one copy of MacPorts on the same host, possibly to test two different
+        versions of MacPorts. But only one copy of MacPorts may use the
+        default MacPorts Tcl library path <filename>/Library/Tcl/</filename>,
+        so for a second installation use the
+        <literal>--with-tclpackage</literal> switch set to any newly created
+        (empty) directory, say /Library/Tcl/macports-new. Also, the standard
+        MacPorts binary path must not be present during the installation of
+        the second instance. To install a second instance of MacPorts, follow
+        these steps.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
+        <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tcl-package=NEW_TCLPACKAGE</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
+      </section>
     </section>
+  </section>
+
+  <section>
+    <title>Uninstall MacPorts</title>
+
+    <para>To uninstall MacPorts from the default location
+    <filename>/opt/local/</filename>, perform these commands from a terminal
+    window.</para>
+
+    <programlisting>%% <userinput>sudo rm -rf /opt/local/</userinput>
+%% <userinput>sudo rm -rf /Applications/MacPorts/</userinput>
+%% <userinput>sudo rm -rf /Library/Tcl/macports1.0/</userinput>
+%% <userinput>sudo rm -rf /Library/LaunchDaemons/org.macports.*</userinput></programlisting>
   </section>
 
   <section id="installing.shell">
