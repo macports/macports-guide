@@ -45,37 +45,33 @@
   portable so it can work on other Unix-like systems, especially those
   descended from the Berkeley Software Distribution (BSD).</para>
 
-  <section id="introduction.conventions">
-    <title>Document Conventions</title>
+  <para>The following notational conventions are used in the MacPorts Guide to
+  distinguish between terminal input/output, file text, and other special text
+  types.</para>
 
-    <para>The MacPorts Guide uses some notational conventions to distinguish
-    between terminal input/output, file text, and other special text
-    types.</para>
+  <itemizedlist>
+    <listitem>
+      <para>Terminal I/O and file text.</para>
 
-    <itemizedlist>
-      <listitem>
-        <para>Terminal I/O and file text.</para>
+      <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
 
-        <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
+      <screen>Command output to a terminal window.</screen>
 
-        <screen>Command output to a terminal window.</screen>
+      <programlisting>File text.</programlisting>
+    </listitem>
 
-        <programlisting>File text.</programlisting>
-      </listitem>
+    <listitem>
+      <para>Other special text types.</para>
 
-      <listitem>
-        <para>Other special text types.</para>
+      <para>A hyperlink: <ulink
+      url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
+      combustion</ulink>.</para>
 
-        <para>A hyperlink: <ulink
-        url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
-        combustion</ulink>.</para>
+      <para>A file: <filename>/var/log/system.log</filename>.</para>
 
-        <para>A file: <filename>/var/log/system.log</filename>.</para>
+      <para>A command: <command>ifconfig</command>.</para>
 
-        <para>A command: <command>ifconfig</command>.</para>
-
-        <para>An option: port <option>install</option></para>
-      </listitem>
-    </itemizedlist>
-  </section>
+      <para>An option: port <option>install</option></para>
+    </listitem>
+  </itemizedlist>
 </chapter>
