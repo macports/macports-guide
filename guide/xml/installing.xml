@@ -131,11 +131,18 @@
     <para>If you are using OS X, you should install MacPorts using the OS X
     package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
-    wish to install a pre-release version of MacPorts. However, if you wish to
-    install <ulink url="installing.source.multiple">multiple copies of
+    wish to install a pre-release version of MacPorts base. However, if you
+    wish to install <ulink url="installing.source.multiple">multiple copies of
     MacPorts</ulink> or install MacPorts on another OS platform, you must
     <link linkend="installing.source">install MacPorts from the source
     code</link>.</para>
+
+    <note>
+      <para>Though a distinction is made between pre-release and release
+      versions of MacPorts base, the ports collection supports no versioning;
+      a <link linkend="installing.selfupdate">selfupdate</link> installs the
+      latest commits from subversion (at a slight delay).</para>
+    </note>
 
     <section id="installing.binary">
       <title>OS X Package Install</title>
@@ -165,7 +172,7 @@
         linkend="installing.selfupdate">selfupdate</link> operation
         immediately after installing MacPorts. If a newer MacPorts base point
         revision has been released before a new package installer has been
-        made, it is automatically upgraded.</para>
+        made, it is automatically updated.</para>
       </note>
     </section>
 
