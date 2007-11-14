@@ -18,23 +18,26 @@
     <orderedlist>
       <listitem>
         <para>Download and install the latest version of <ulink
-        url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink>—do
-        not install an older version from the OS X 10.4 install disk or some
-        ports may fail to install.</para>
+        url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
+        Apple's developer site—do not install it from an OS X install disk
+        unless you've already checked for a more recent version on Apple's
+        site; older versions of Xcode Tools often cause port install
+        failures.</para>
       </listitem>
 
       <listitem>
-        <para>Run the binary installer.</para>
+        <para>Run the Xcode Tools package installer.</para>
       </listitem>
 
       <listitem>
-        <para>Click the button Customize, expand the Applications category and
-        click the check box beside X11 SDK to add it to the default
-        items.</para>
+        <para>Click the button <guibutton>Customize</guibutton>, expand the
+        Applications category and click the check box beside <guibutton>X11
+        SDK</guibutton> to add it to the default items.</para>
       </listitem>
 
       <listitem>
-        <para>Click "Install" to install Xcode Tools and the X11 SDK.</para>
+        <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
+        the X11 SDK.</para>
       </listitem>
     </orderedlist>
 
@@ -47,14 +50,14 @@
   <section id="installing.x11">
     <title>Install X11</title>
 
-    <para>On OS X 10.4, Apple's X Window System (X11) is an optional install
-    (Apple's X11 is currently recommended over the MacPorts X11 port). It is
-    recommended that you install it even if you don't plan to run X11
-    applications immediately.</para>
+    <para>Apple's X Window System (X11) is an optional install (Apple's X11 is
+    recommended over the MacPorts X11 port). It is recommended that you
+    install X11 even if you don't plan to run X11 applications
+    immediately.</para>
 
     <orderedlist>
       <listitem>
-        <para>Insert the "Mac OS X Install Disk 1" and run the package named
+        <para>Insert the "Mac OS X Install Disk" and run the package named
         "Optional Installs".</para>
       </listitem>
 
@@ -214,19 +217,19 @@
 </programlisting>
       </section>
     </section>
-  </section>
 
-  <section>
-    <title>Uninstall MacPorts</title>
+    <section id="installing.uninstalling">
+      <title>Uninstall</title>
 
-    <para>To uninstall MacPorts from the default location
-    <filename>/opt/local/</filename>, perform these commands from a terminal
-    window.</para>
+      <para>To uninstall MacPorts from the default location
+      <filename>/opt/local/</filename>, perform these commands from a terminal
+      window.</para>
 
-    <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf /opt/local/</userinput>
+      <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf /opt/local/</userinput>
 <prompt>%%</prompt> <userinput>sudo rm -rf /Applications/MacPorts/</userinput>
 <prompt>%%</prompt> <userinput>sudo rm -rf /Library/Tcl/macports1.0/</userinput>
 <prompt>%%</prompt> <userinput>sudo rm -rf /Library/LaunchDaemons/org.macports.*</userinput></programlisting>
+    </section>
   </section>
 
   <section id="installing.shell">
@@ -289,11 +292,11 @@ _=/usr/bin/env</screen>
   </section>
 
   <section id="installing.selfupdate">
-    <title>MacPorts Selfupdate</title>
+    <title>Selfupdate MacPorts</title>
 
-    <para>You must always do a selfupdate after a new MacPorts install, and
-    you should also do it frequently thereafter. See <link
-    linkend="using.port.selfupdate">selfupdate</link> —one of several <link
-    linkend="using.port">port commands</link>.</para>
+    <para>You must always execute a <quote>selfupdate</quote> after a new
+    MacPorts install, and you should also do it frequently thereafter. See
+    <link linkend="using.port.selfupdate">selfupdate</link> —one of several
+    <link linkend="using.port">port commands</link>.</para>
   </section>
 </chapter>
