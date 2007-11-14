@@ -301,6 +301,31 @@ distfiles       file_one.tar.gz:tagone \
         </varlistentry>
 
         <varlistentry>
+          <term>extract.mkdir</term>
+
+          <listitem>
+            <para>This option is used to specify if the directory
+            <filename>worksrcdir</filename> is part of the distfile or if it
+            should be created automatically and the distfiles should be
+            extracted there instead. This is useful for distfiles with a flat
+            structure which would pollute the <filename>worksrcdir</filename>
+            with lots of files.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>extract.mkdir   yes</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>use_bzip2</term>
 
           <listitem>
