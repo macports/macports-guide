@@ -4,11 +4,11 @@
 <chapter id="introduction">
   <title>Introduction</title>
 
-  <para>MacPorts is a system for compiling, installing, and managing free and
-  open source software. MacPorts may be conceptually divided into two main
-  parts: the infrastructure, known as MacPorts base, and the set of available
-  ports. A MacPorts port is a set of specifications contained in a <link
-  linkend="development.introduction">Portfile</link> that defines an
+  <para>MacPorts is an easy to use system for compiling, installing, and
+  managing free and open source software. MacPorts may be conceptually divided
+  into two main parts: the infrastructure, known as MacPorts base, and the set
+  of available ports. A MacPorts port is a set of specifications contained in
+  a <link linkend="development.introduction">Portfile</link> that defines an
   application, its characteristics, and any files or special instructions
   required to install it, so MacPorts may automatically fetch, patch, compile,
   and install ported software.</para>
