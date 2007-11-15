@@ -50,10 +50,11 @@
   <section id="installing.x11">
     <title>Install X11</title>
 
-    <para>Apple's X Window System (X11) is an optional install (Apple's X11 is
-    recommended over the MacPorts X11 port). It is recommended that you
-    install X11 even if you don't plan to run X11 applications
-    immediately.</para>
+    <para>It is recommended that you install the X Window System (X11) even if
+    you don't plan to run X11 applications immediately. Apple's X11 is
+    preferred over the MacPorts X11 port, and ports with an X11 dependency
+    will be satisfied by Apple's X11. If Apple's X11 wasn't installed at the
+    same time the OS X was installed, follow these steps.</para>
 
     <orderedlist>
       <listitem>
@@ -67,7 +68,7 @@
       </listitem>
 
       <listitem>
-        <para>Click the Install button to install X11.</para>
+        <para>Click <guibutton>Install</guibutton> to install X11.</para>
       </listitem>
 
       <listitem>
@@ -85,7 +86,11 @@
     <note>
       <para>X11 and the X11SDK (from Xcode Tools) are both required for X11
       apps. To verify the presence of both, check for files
-      <filename>X11User.pkg</filename> and <filename>X11SDK.pkg</filename> in
+      <filename>com.apple.pkg.X11User.bom</filename> &amp;
+      <filename>com.apple.pkg.X11SDKLeo.bom</filename> in
+      <filename>/Library/Receipts/boms/</filename>. On OS X 10.4, look for
+      files <filename>X11User.pkg</filename> &amp;
+      <filename>X11SDK.pkg</filename> in
       <filename>/Library/Receipts/</filename>.</para>
     </note>
 
