@@ -242,12 +242,13 @@
   <section id="installing.shell">
     <title>Set the Bash Shell</title>
 
-    <para>The MacPorts binary installer places a <filename>.profile</filename>
-    file in your home directory (view files with a dot using <command>ls
-    -a</command>). The contents of the <filename>~/.profile</filename> adds
-    the MacPorts paths in front of the standard Unix paths for the default
-    Bash shell so that MacPorts libraries will take precedence over
-    vendor-supplied libraries if both are present.</para>
+    <para>The MacPorts installer (from OS X package or source) places a
+    <filename>.profile</filename> file in your home directory (view files with
+    a dot using <command>ls -a</command>). The contents of the
+    <filename>~/.profile</filename> adds the MacPorts paths in front of the
+    standard Unix paths for the default Bash shell so that MacPorts libraries
+    will take precedence over vendor-supplied libraries if both are
+    present.</para>
 
     <para>The path statement in the MacPorts-installed .profile is set as
     shown.</para>
