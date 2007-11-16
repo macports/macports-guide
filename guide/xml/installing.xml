@@ -6,46 +6,9 @@
 
   <para>This chapter show you how to install MacPorts and its prerequisites
   step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
-  wish to install MacPorts on FreeBSD, first make sure you have gcc and X11
-  installed, and then begin with section <link
-  linkend="installing.source">Install MacPorts - Source</link>.</para>
-
-  <section id="installing.xcode">
-    <title>Install Xcode Tools</title>
-
-    <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
-
-    <orderedlist>
-      <listitem>
-        <para>Download and install the latest version of <ulink
-        url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
-        Apple's developer site—do not install it from an OS X install disk
-        unless you've already checked for a more recent version on Apple's
-        site; older versions of Xcode Tools often cause port install
-        failures.</para>
-      </listitem>
-
-      <listitem>
-        <para>Run the Xcode Tools package installer.</para>
-      </listitem>
-
-      <listitem>
-        <para>Click the button <guibutton>Customize</guibutton>, expand the
-        Applications category and click the check box beside <guibutton>X11
-        SDK</guibutton> to add it to the default items.</para>
-      </listitem>
-
-      <listitem>
-        <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
-        the X11 SDK.</para>
-      </listitem>
-    </orderedlist>
-
-    <note>
-      <para>Xcode Tools are not updated via OS X's Software Update
-      utility.</para>
-    </note>
-  </section>
+  wish to install MacPorts on another platform, first make sure you have X11
+  and gcc installed, and then perform a <ulink
+  url="installing.source">MacPorts install from source code</ulink>.</para>
 
   <section id="installing.x11">
     <title>Install X11</title>
@@ -128,6 +91,43 @@
         </listitem>
       </orderedlist>
     </section>
+  </section>
+
+  <section id="installing.xcode">
+    <title>Install Xcode Tools</title>
+
+    <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
+
+    <orderedlist>
+      <listitem>
+        <para>Download and install the latest version of <ulink
+        url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
+        Apple's developer site—do not install it from an OS X install disk
+        unless you've already checked for a more recent version on Apple's
+        site; older versions of Xcode Tools often cause port install
+        failures.</para>
+      </listitem>
+
+      <listitem>
+        <para>Run the Xcode Tools package installer.</para>
+      </listitem>
+
+      <listitem>
+        <para>Click the button <guibutton>Customize</guibutton>, expand the
+        Applications category and click the check box beside <guibutton>X11
+        SDK</guibutton> to add it to the default items.</para>
+      </listitem>
+
+      <listitem>
+        <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
+        the X11 SDK.</para>
+      </listitem>
+    </orderedlist>
+
+    <note>
+      <para>Xcode Tools are not updated via OS X's Software Update
+      utility.</para>
+    </note>
   </section>
 
   <section>
