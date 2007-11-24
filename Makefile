@@ -30,11 +30,11 @@ MAN-XSL   ?= $(MAN)/resources/macports.xsl
 STYLESHEET ?= docbook.css
 # additional parameters for the guide:
 STRINGPARAMS ?= --stringparam html.stylesheet $(STYLESHEET) \
-						  	--stringparam section.autolabel 1 \
-							  --stringparam toc.section.depth 1 \
-							  --stringparam generate.toc "book toc" \
-							  --stringparam section.label.includes.component.label 1 \
-							  --stringparam profile.condition "noman"
+	              --stringparam section.autolabel 1 \
+	              --stringparam toc.section.depth 1 \
+	              --stringparam generate.toc "book toc" \
+	              --stringparam section.label.includes.component.label 1 \
+	              --stringparam profile.condition "noman"
 
 
 .PHONY: all guide man clean
