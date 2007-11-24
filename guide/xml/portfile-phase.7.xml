@@ -1,34 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<refentry>
-  <refmeta>
-    <refentrytitle>PORTFILE-PHASE</refentrytitle>
 
-    <manvolnum>7</manvolnum>
-  </refmeta>
+  <section>
+    <title>Port Phases</title>
 
-  <refnamediv>
-    <refname>portfile-phase</refname>
-
-    <refpurpose>MacPorts Portfile reference</refpurpose>
-  </refnamediv>
-
-  <refsection>
-    <title>Description</title>
-
-    <para>A reference of all available Portfile keywords that relate to port
-    phases. Portfiles consist of valid TCL and are encoded in UTF-8. They
-    usually contain only simple keyword/value combinations and Tcl extensions
-    as described below, though they may also contain arbitrary TCL code. Every
-    port has a corresponding Portfile, but Portfiles do not completely define
-    a port's installation behavior since the MacPorts base has default port
-    installation characteristics coded within it. Therefore Portfiles need
-    only specify required options and, if necessary, non-default
-    characteristics for a port.</para>
-  </refsection>
-
-  <refsection>
+  <section>
     <title>Installation Phase Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -42,7 +19,7 @@
     phases and set options for those phases, and they take affect whether or
     not phase declarations have been explicitly defined in a Portfile.</para>
 
-    <refsection>
+    <section>
       <title>A Word about Keyword List Modifiers (-append / -delete)</title>
 
       <para>It is often necessary to add to a list of keyword values
@@ -55,7 +32,7 @@
       preserve configure defaults, to preserve PortGroup dependencies, and to
       add or delete items for variants.</para>
 
-      <refsection>
+      <section>
         <title>Common Uses for Keyword List Modifiers</title>
 
         <para>The three most common uses for keyword list modifiers are to
@@ -127,10 +104,10 @@
             </listitem>
           </varlistentry>
         </variablelist>
-      </refsection>
-    </refsection>
+      </section>
+    </section>
 
-    <refsection>
+    <section>
       <title>A Word about Keyword Argument Modifiers (.pre_args /
       .post_args)</title>
 
@@ -141,9 +118,11 @@
       keyword <literal>configure.pre_args</literal> also supports
       <literal>configure.pre_args-append</literal> and
       <literal>configure.pre_args-delete</literal>.</para>
-    </refsection>
+    </section>
 
-    <refsection>
+  </section>
+
+    <section>
       <title>Fetch Phase Keywords</title>
 
       <para>The list of keywords related to the fetch phase.</para>
@@ -380,7 +359,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
         </varlistentry>
       </variablelist>
 
-      <refsection>
+      <section>
         <title>Fetch from CVS</title>
 
         <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used
@@ -471,9 +450,9 @@ extract.post_args = "-d ${portpath}/${workdir}"
             </listitem>
           </varlistentry>
         </variablelist>
-      </refsection>
+      </section>
 
-      <refsection>
+      <section>
         <title>Fetch from Subversion</title>
 
         <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
@@ -530,10 +509,10 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
             </listitem>
           </varlistentry>
         </variablelist>
-      </refsection>
-    </refsection>
+      </section>
+    </section>
 
-    <refsection>
+    <section>
       <title>Checksum Phase Keywords</title>
 
       <para>The list of keywords related to the checksum phase.</para>
@@ -570,9 +549,9 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Extract Phase Keywords</title>
 
       <para>The list of keywords related to the extract phase.</para>
@@ -682,9 +661,9 @@ extract.post_args    "| gnutar –x"</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Patch Phase Keywords</title>
 
       <para>The list of keywords related to the patch phase.</para>
@@ -815,9 +794,9 @@ patch.post_args    ???</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Configure Phase Keywords</title>
 
       <para>The list of keywords related to the configure phase.</para>
@@ -1488,7 +1467,7 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
         </varlistentry>
       </variablelist>
 
-      <refsection>
+      <section>
         <title>Configure Universal</title>
 
         <para>Universal keywords are used to make a port compile on the OS X
@@ -1609,9 +1588,9 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
             </listitem>
           </varlistentry>
         </variablelist>
-      </refsection>
+      </section>
 
-      <refsection>
+      <section>
         <title>Automake and Autoconf</title>
 
         <para>The list of configure keywords available for ports that need
@@ -1704,10 +1683,10 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
             </listitem>
           </varlistentry>
         </variablelist>
-      </refsection>
-    </refsection>
+      </section>
+    </section>
 
-    <refsection>
+    <section>
       <title>Build Phase Keywords</title>
 
       <para>The list of keywords related to the build phase.</para>
@@ -1847,9 +1826,9 @@ build.target-delete   compat</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Destroot Phase Keywords</title>
 
       <para>The list of keywords related to the destroot phase.</para>
@@ -2010,44 +1989,5 @@ destroot.target-delete   install-commandmode</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
-  </refsection>
-
-  <refsection>
-    <title>SEE ALSO</title>
-
-    <para><citerefentry>
-        <refentrytitle>portfile-global</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-startupitem</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-tcl</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry></para>
-  </refsection>
-
-  <refsection>
-    <title>AUTHORS</title>
-
-    <para>Landon Fuller <email>landonf@macports.org</email></para>
-
-    <para>Juan Manuel Palacios <email>jmpp@macports.org</email></para>
-
-    <para>Mark Duling <email>markd@macports.org</email></para>
-
-    <para>Kevin Van Vechten <email>kevin@opendarwin.org</email></para>
-
-    <para>Jordan K. Hubbard <email>jkh@macports.org</email></para>
-
-    <para>Chris Ridd <email>cjr@opendarwin.org</email></para>
-
-    <para>Kevin Ballard <email>eridius@macports.org</email></para>
-
-    <para>Markus W. Weissmann <email>mww@macports.org</email></para>
-  </refsection>
-</refentry>
+    </section>
+  </section>

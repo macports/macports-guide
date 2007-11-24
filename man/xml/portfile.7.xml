@@ -27,31 +27,20 @@
     characteristics for a port.</para>
   </refsection>
 
-  <refsection>
-    <title>Portfile man pages</title>
+  <xi:include href="../tmp/portfile-global-variables.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <para>The Portfile man pages serve as a reference for all available
-    Portfile keywords, variables, StartupItems, and Tcl extensions. This
-    content is contained in four Portfile man pages:</para>
+  <xi:include href="../tmp/portfile-global-keywords.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <para><citerefentry>
-        <refentrytitle>portfile-global</refentrytitle>
+  <xi:include href="../tmp/portfile-phase.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-phase</refentrytitle>
+  <xi:include href="../tmp/portfile-startupitem.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-startupitem</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-tcl</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry></para>
-  </refsection>
+  <xi:include href="../tmp/portfile-tcl.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <refsection>
     <title>SEE ALSO</title>

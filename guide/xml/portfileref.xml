@@ -8,40 +8,21 @@
   Portfile: port phases, dependencies, StartupItems, variables, keywords, and
   Tcl extensions.</para>
 
-  <section id="reference.portfile">
-    <title>Portfile</title>
+  <xi:include href="portfile-global-variables.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <xi:include href="../../man/xml/portfile.7.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-  </section>
+  <xi:include href="portfile-global-keywords.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <section id="reference.portfile.global">
-    <title>Portfile Global</title>
+  <xi:include href="portfile-phase.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <xi:include href="../../man/xml/portfile-global.7.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-  </section>
+  <xi:include href="portfile-startupitem.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <section id="reference.phase">
-    <title>Portfile Phase</title>
+  <xi:include href="portfile-tcl.7.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-    <xi:include href="../../man/xml/portfile-phase.7.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-  </section>
-
-  <section id="reference.startupitem">
-    <title>Portfile Startupitem</title>
-
-    <xi:include href="../../man/xml/portfile-startupitem.7.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-  </section>
-
-  <section id="reference.tcl">
-    <title>Portfile Tcl</title>
-
-    <xi:include href="../../man/xml/portfile-tcl.7.xml"
-                xmlns:xi="http://www.w3.org/2001/XInclude" />
-  </section>
 
   <section id="reference.portgroup">
     <title>PortGroup</title>

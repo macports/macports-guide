@@ -1,175 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<refentry>
-  <refmeta>
-    <refentrytitle>PORTFILE-GLOBAL</refentrytitle>
 
-    <manvolnum>7</manvolnum>
-  </refmeta>
-
-  <refnamediv>
-    <refname>portfile-global</refname>
-
-    <refpurpose>MacPorts Portfile reference</refpurpose>
-  </refnamediv>
-
-  <refsection>
-    <title>Description</title>
-
-    <para>A reference of all available Portfile global variables and keywords.
-    Portfiles consist of valid TCL and are encoded in UTF-8. They usually
-    contain only simple keyword/value combinations and Tcl extensions as
-    described below, though they may also contain arbitrary TCL code. Every
-    port has a corresponding Portfile, but Portfiles do not completely define
-    a port's installation behavior since the MacPorts base has default port
-    installation characteristics coded within it. Therefore Portfiles need
-    only specify required options and, if necessary, non-default
-    characteristics for a port.</para>
-  </refsection>
-
-  <refsection>
-    <title>Global Variables</title>
-
-    <para>Global variables are variables available to any Portfile. For a list
-    of additional variables available to ports that are assigned to a MacPorts
-    Portgroup, see portgroup(7).</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>prefix</term>
-
-        <listitem>
-          <para>Installation prefix, set in
-          <filename>${prefix}/etc/macports/macports.conf</filename> —may be
-          overridden on a per port basis. For example, aqua applications are
-          installed in <filename>/Applications/MacPorts</filename>.</para>
-
-          <para>Default: /opt/local</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>binpath</term>
-
-        <listitem>
-          <para>Default PATH to use in finding executables.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>libpath</term>
-
-        <listitem>
-          <para>Path to the MacPorts TCL libraries.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>portpath</term>
-
-        <listitem>
-          <para>Full path to the Portfile location.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>filesdir</term>
-
-        <listitem>
-          <para>Path to port files relative to
-          <varname>${portpath}</varname>.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>workpath</term>
-
-        <listitem>
-          <para>Full path to work directory.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>worksrcpath</term>
-
-        <listitem>
-          <para>Full path to extracted source code. Equivalent to
-          <varname>${workpath}/${worksrcdir}</varname>.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>destroot</term>
-
-        <listitem>
-          <para>Full path into which software will be destrooted. Equivalent
-          to <filename>${workpath}/destroot</filename>.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>distpath</term>
-
-        <listitem>
-          <para>Location to store downloaded distfiles.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>install.user</term>
-
-        <listitem>
-          <para>The Unix user at the time of port installation.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>install.group</term>
-
-        <listitem>
-          <para>The Unix group at the time of port installation.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>os.platform</term>
-
-        <listitem>
-          <para>Identifies platform type (ie, "darwin", "freebsd",
-          etc).</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>os.arch</term>
-
-        <listitem>
-          <para>Identifies hardware type (ie, "powerpc", "intel").</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>os.version</term>
-
-        <listitem>
-          <para>The version number of the host operating system (ie "8.0" for
-          Darwin 8.0).</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>os.major</term>
-
-        <listitem>
-          <para>The major version number of the host operating system (ie "8"
-          for Darwin 8.0).</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </refsection>
-
-  <refsection>
+  <section>
     <title>Global Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -182,7 +15,7 @@
     whole, whereas the keywords listed under a port phase specify information
     to be used during a particular installation phase.</para>
 
-    <refsection>
+    <section>
       <title>General</title>
 
       <para>The list of global keywords.</para>
@@ -339,9 +172,9 @@
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Dependencies</title>
 
       <para>Free and open source software is highly modular, and MacPorts
@@ -407,7 +240,7 @@
         </varlistentry>
       </variablelist>
 
-      <refsection>
+      <section>
         <title>Port and Non-Port Dependencies</title>
 
         <para>Port dependencies should be provided by MacPorts ports whenever
@@ -429,10 +262,10 @@ depends_build      port:apache2 port:php5</programlisting>
         <programlisting>depends_lib        lib:libX11.6:xorg
 
 depends_build      bin:rrdtool</programlisting>
-      </refsection>
-    </refsection>
+      </section>
+    </section>
 
-    <refsection>
+    <section>
       <title>Variants</title>
 
       <para>MacPorts variants are conditional modifications of port
@@ -529,9 +362,9 @@ depends_build      bin:rrdtool</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
+    </section>
 
-    <refsection>
+    <section>
       <title>Livecheck / Distcheck</title>
 
       <para>Options livecheck and distcheck are especially useful for port
@@ -793,44 +626,5 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
           </listitem>
         </varlistentry>
       </variablelist>
-    </refsection>
-  </refsection>
-
-  <refsection>
-    <title>SEE ALSO</title>
-
-    <para><citerefentry>
-        <refentrytitle>portfile-phase</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-startupitem</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>portfile-tcl</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry></para>
-  </refsection>
-
-  <refsection>
-    <title>AUTHORS</title>
-
-    <para>Landon Fuller <email>landonf@macports.org</email></para>
-
-    <para>Juan Manuel Palacios <email>jmpp@macports.org</email></para>
-
-    <para>Mark Duling <email>markd@macports.org</email></para>
-
-    <para>Kevin Van Vechten <email>kevin@opendarwin.org</email></para>
-
-    <para>Jordan K. Hubbard <email>jkh@macports.org</email></para>
-
-    <para>Chris Ridd <email>cjr@opendarwin.org</email></para>
-
-    <para>Kevin Ballard <email>eridius@macports.org</email></para>
-
-    <para>Markus W. Weissmann <email>mww@macports.org</email></para>
-  </refsection>
-</refentry>
+    </section>
+  </section>
