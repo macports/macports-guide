@@ -55,6 +55,7 @@ man:
 	sed -i "" 's|<section>|<refsection\>|g' $(MAN-TMP)/*
 	sed -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
 	xsltproc --xinclude --output $(MAN-RESULT) $(MAN-XSL) \
+	    $(MAN-SRC)/port.1.xml \
 	    $(MAN-SRC)/portfile.7.xml \
 	    $(MAN-SRC)/portgroup.7.xml \
 	    $(MAN-SRC)/porthier.7.xml
