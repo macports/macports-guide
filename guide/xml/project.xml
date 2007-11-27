@@ -111,11 +111,6 @@
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>ports</guimenu> - Tickets related to
-              ports.</para>
-            </listitem>
-
-            <listitem>
               <para><guimenu>base</guimenu> - Tickets related to MacPorts base
               code.</para>
             </listitem>
@@ -126,23 +121,34 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>www</guimenu> - MacPorts website enhancements and
-              error corrections.</para>
+              <para><guimenu>infrastructure</guimenu> - Reserved for MacPorts
+              Portmgr team members.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>infrastructure</guimenu> - Reserved for MacPorts
-              Portmgr team members.</para>
+              <para><guimenu>ports</guimenu> - Tickets related to
+              ports.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>www</guimenu> - MacPorts website enhancements and
+              error corrections.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><guilabel>Assign To:</guilabel> For tickets on ports, select
-          the port maintainer's email address (use <command>port info
-          &lt;portname&gt;</command>). If the maintainer's email address is
-          <email>nomaintainer@macports.org</email>, select
-          <email>macports-dev@lists.macosforge.org</email>.</para>
+          <para><guilabel>Keywords:</guilabel> Type any keywords that might
+          help when searching for tickets (portname, type of problem,
+          etc).</para>
+        </listitem>
+
+        <listitem>
+          <para><guilabel>Cc:</guilabel> The reporter should enter his or her
+          email address and the maintainer's email address to notify both
+          parties when updates to the ticket occur. This is important, because
+          Trac currently only sends emails to addresses on the Cc list, not to
+          the reporter or the assignee.</para>
         </listitem>
 
         <listitem>
@@ -151,9 +157,15 @@
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>Website & Documentation</guimenu> - for tickets relating to
-              the documentation for MacPorts, including the MacPorts guide,
-              wiki, man pages and the website.</para>
+              <para><guimenu>MacPorts x.y</guimenu> - indicates tickets
+              against the MacPorts base code that have been accepted and
+              scheduled for inclusion or fixing in the x.y MacPorts release
+              series.</para>
+
+              <note>
+                <para>This milestone may only be applied by MacPorts team
+                members.</para>
+              </note>
             </listitem>
 
             <listitem>
@@ -165,18 +177,6 @@
             <listitem>
               <para><guimenu>MacPorts base bugs</guimenu> - for tickets
               reporting or fixing bugs in the MacPorts system.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>MacPorts x.y</guimenu> - indicates tickets
-              against the MacPorts base code that have been accepted and
-              scheduled for inclusion or fixing in the x.y MacPorts release
-              series.</para>
-
-              <note>
-                <para>This milestone may only be applied by MacPorts team
-                members.</para>
-              </note>
             </listitem>
 
             <listitem>
@@ -203,6 +203,12 @@
               <para><guimenu>Port Updates</guimenu> - for submissions that
               update a port provided by MacPorts.</para>
             </listitem>
+
+	    <listitem>
+              <para><guimenu>Website & Documentation</guimenu> - for tickets relating to
+              the documentation for MacPorts, including the MacPorts guide,
+              wiki, man pages and the website.</para>
+            </listitem>
           </itemizedlist>
         </listitem>
 
@@ -212,17 +218,11 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Keywords:</guilabel> Type any keywords that might
-          help when searching for tickets (portname, type of problem,
-          etc).</para>
-        </listitem>
-
-        <listitem>
-          <para><guilabel>Cc:</guilabel> The reporter should enter his or her
-          email address and the maintainer's email address to notify both
-          parties when updates to the ticket occur. This is important, because
-          Trac currently only sends emails to addresses on the Cc list, not to
-          the reporter or the assignee.</para>
+          <para><guilabel>Assign To:</guilabel> For tickets on ports, select
+          the port maintainer's email address (use <command>port info
+          &lt;portname&gt;</command>). If the maintainer's email address is
+          <email>nomaintainer@macports.org</email>, select
+          <email>macports-dev@lists.macosforge.org</email>.</para>
         </listitem>
 
         <listitem>
