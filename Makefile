@@ -52,7 +52,7 @@ man:
 	mkdir -p $(MAN-RESULT)
 	mkdir -p $(MAN-TMP)
 	cp $(GUIDE-SRC)/portfile-*.xml $(MAN-TMP)
-	sed -i "" 's|<section>|<refsection\>|g' $(MAN-TMP)/*
+	sed -i "" 's|<section|<refsection|g' $(MAN-TMP)/*
 	sed -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
 	xsltproc --xinclude --output $(MAN-RESULT) $(MAN-XSL) \
 	    $(MAN-SRC)/port.1.xml \

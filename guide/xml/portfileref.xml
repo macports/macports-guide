@@ -31,7 +31,7 @@
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 
-  <section id="reference.phases">
+  <section id="reference.phases-old">
     <title>Port Phases</title>
 
     <para>A MacPorts port has ten distinct phases. The MacPorts base is set to
