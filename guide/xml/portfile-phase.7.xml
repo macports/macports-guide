@@ -2,8 +2,8 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 
-  <section>
-    <title>Port Phases</title>
+<section>
+  <title>Port Phases</title>
 
   <section>
     <title>Installation Phase Keywords</title>
@@ -122,409 +122,1414 @@
 
   </section>
 
-    <section>
-      <title>Fetch Phase Keywords</title>
+  <section>
+    <title>Fetch Phase Keywords</title>
 
-      <para>The list of keywords related to the fetch phase.</para>
+    <para>The list of keywords related to the fetch phase.</para>
 
-      <variablelist>
-        <varlistentry>
-          <term>master_sites</term>
+    <variablelist>
+      <varlistentry>
+        <term>master_sites</term>
 
-          <listitem>
-            <para>A list of URLs from which a port's download file(s) may be
-            retrieved. For multiple master_sites, they are searched in order
-            until a file matching <varname>${distfile}</varname> is
-            found.</para>
+        <listitem>
+          <para>A list of URLs from which a port's download file(s) may be
+          retrieved. For multiple master_sites, they are searched in order
+          until a file matching <varname>${distfile}</varname> is
+          found.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: ???</para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
 
-              <listitem>
-                <para>Examples:</para>
+            <listitem>
+              <para>Examples:</para>
 
-                <programlisting>master_sites   http://www.somesite.org/files/ \
+              <programlisting>master_sites   http://www.somesite.org/files/ \
                http://www.somemirror.org/somesite_org/files/
 
 </programlisting>
 
-                <para>You may also use mirror site lists predefined by
-                MacPorts. Here the sourceforge and gnu mirrors are
-                used.</para>
+              <para>You may also use mirror site lists predefined by
+              MacPorts. Here the sourceforge and gnu mirrors are
+              used.</para>
 
-                <programlisting>master_sites   sourceforge gnu
+              <programlisting>master_sites   sourceforge gnu
 
 </programlisting>
 
-                <para>When using mirror master_sites, the subdirectory
-                <varname>${name}</varname> is checked on every mirror. If the
-                mirror subdirectory does not match ${name}, then you may
-                specify it using after the mirror separated by a colon.</para>
+              <para>When using mirror master_sites, the subdirectory
+              <varname>${name}</varname> is checked on every mirror. If the
+              mirror subdirectory does not match ${name}, then you may
+              specify it using after the mirror separated by a colon.</para>
 
-                <programlisting>master_sites   sourceforge:widget \
+              <programlisting>master_sites   sourceforge:widget \
                gnu:widget
 
 </programlisting>
 
-                <para>For ports that must fetch multiple download files from
-                different locations, you must label the files with tags and
-                match the tags in a distfiles statement. The format is
-                <literal>mirror:subdirectory:tag</literal>.</para>
+              <para>For ports that must fetch multiple download files from
+              different locations, you must label the files with tags and
+              match the tags in a distfiles statement. The format is
+              <literal>mirror:subdirectory:tag</literal>.</para>
 
-                <para>In the example below, file_one.tar.gz is fetched from
-                sourceforge mirrors in subdirectory
-                <varname>${name}</varname>; file tagtwo.tar.gz is fetched from
-                the gnu mirrors in subdirectory sources.</para>
+              <para>In the example below, file_one.tar.gz is fetched from
+              sourceforge mirrors in subdirectory
+              <varname>${name}</varname>; file tagtwo.tar.gz is fetched from
+              the gnu mirrors in subdirectory sources.</para>
 
-                <programlisting>master_sites    sourceforge::tagone \
+              <programlisting>master_sites    sourceforge::tagone \
                 gnu:sources:tagtwo
 
 distfiles       file_one.tar.gz:tagone \
                 file_two.tar.gz:tagtwo</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>patch_sites</term>
+      <varlistentry>
+        <term>patch_sites</term>
 
-          <listitem>
-            <para>A list of sites from which a port's patchfiles may be
-            downloaded, where applicable.</para>
+        <listitem>
+          <para>A list of sites from which a port's patchfiles may be
+          downloaded, where applicable.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <varname>${master_sites}</varname></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${master_sites}</varname></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+              <programlisting>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>distname</term>
+      <varlistentry>
+        <term>distname</term>
 
-          <listitem>
-            <para>The name of the distribution filename, not including the
-            extract suffix.</para>
+        <listitem>
+          <para>The name of the distribution filename, not including the
+          extract suffix.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <varname>${name}-${version}</varname></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${name}-${version}</varname></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>distname     ${name}</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+              <programlisting>distname     ${name}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>distfiles</term>
+      <varlistentry>
+        <term>distfiles</term>
 
-          <listitem>
-            <para>The full distribution filename, including the extract
-            suffix. Used to specify non-default distribution filenames; this
-            keyword must be specified (and tags used) when a port has multiple
-            download files (see master_sites).</para>
+        <listitem>
+          <para>The full distribution filename, including the extract
+          suffix. Used to specify non-default distribution filenames; this
+          keyword must be specified (and tags used) when a port has multiple
+          download files (see master_sites).</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default:
-                <varname>${distname}${extract.suffix}</varname></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default:
+              <varname>${distname}${extract.suffix}</varname></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>distfiles    ${name}-dev_src.tgz
+              <programlisting>distfiles    ${name}-dev_src.tgz
 
 
 distfiles       file_one.tar.gz:tagone \
                 file_two.tar.gz:tagtwo</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>extract.suffix</term>
+      <varlistentry>
+        <term>extract.suffix</term>
 
-          <listitem>
-            <para>This keyword is used to specify the extract suffix
-            type.</para>
+        <listitem>
+          <para>This keyword is used to specify the extract suffix
+          type.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <filename>.tar.gz</filename></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <filename>.tar.gz</filename></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>extract.suffix   .tgz</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+              <programlisting>extract.suffix   .tgz</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>extract.mkdir</term>
+      <varlistentry>
+        <term>extract.mkdir</term>
 
-          <listitem>
-            <para>This option is used to specify if the directory
-            <filename>worksrcdir</filename> is part of the distfile or if it
-            should be created automatically and the distfiles should be
-            extracted there instead. This is useful for distfiles with a flat
-            structure which would pollute the <filename>worksrcdir</filename>
-            with lots of files.</para>
+        <listitem>
+          <para>This option is used to specify if the directory
+          <filename>worksrcdir</filename> is part of the distfile or if it
+          should be created automatically and the distfiles should be
+          extracted there instead. This is useful for distfiles with a flat
+          structure which would pollute the <filename>worksrcdir</filename>
+          with lots of files.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <option>no</option></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>extract.mkdir   yes</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+              <programlisting>extract.mkdir   yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>use_bzip2</term>
+      <varlistentry>
+        <term>use_bzip2</term>
 
-          <listitem>
-            <para>This keyword is for downloads that are tarred and bzipped.
-            When invoked, it automatically sets:</para>
+        <listitem>
+          <para>This keyword is for downloads that are tarred and bzipped.
+          When invoked, it automatically sets:</para>
 
-            <literallayout>extract.suffix = .tar.bz
+          <literallayout>extract.suffix = .tar.bz
 extract.cmd = bzip
 
 </literallayout>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <option>no</option></para>
-              </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
 
-              <listitem>
-                <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-                <programlisting>use_bzip2     yes</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
+              <programlisting>use_bzip2     yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <varlistentry>
-          <term>use_zip</term>
+      <varlistentry>
+        <term>use_zip</term>
 
-          <listitem>
-            <para>This keyword is for downloads are zipped. When invoked, it
-            automatically sets:</para>
+        <listitem>
+          <para>This keyword is for downloads are zipped. When invoked, it
+          automatically sets:</para>
 
-            <literallayout>extract.suffix = .zip
+          <literallayout>extract.suffix = .zip
 extract.cmd = unzip
 extract.pre_args = -q
 extract.post_args = "-d ${portpath}/${workdir}"
 
 </literallayout>
 
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_zip       yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <section>
+      <title>Fetch from CVS</title>
+
+      <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used
+      as an alternative method of fetching distribution files using the
+      keywords in this section. However, fetching via CVS may cause
+      non-reproducible builds, so it is strongly discouraged.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>cvs.root</term>
+
+          <listitem>
+            <para>Specify the url from which to fetch files.</para>
+
             <itemizedlist>
               <listitem>
-                <para>Default: <option>no</option></para>
+                <para>Default: none</para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>use_zip       yes</programlisting>
+                <programlisting>cvs.root :pserver:anonymous@cvs.sv.gnu.org:/sources/emacs</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>cvs.tag</term>
+
+          <listitem>
+            <para>Optional for fetching with CVS, this specifies the code
+            revision to checkout.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>cvs.tag  HEAD</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>cvs.date</term>
+
+          <listitem>
+            <para>A date that identifies the CVS code set to
+            checkout.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>cvs.date "12-April-2007"</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>cvs.module</term>
+
+          <listitem>
+            <para>A CVS module from which to check out the code.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>cvs.module  Sources</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
         </varlistentry>
       </variablelist>
-
-      <section>
-        <title>Fetch from CVS</title>
-
-        <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used
-        as an alternative method of fetching distribution files using the
-        keywords in this section. However, fetching via CVS may cause
-        non-reproducible builds, so it is strongly discouraged.</para>
-
-        <variablelist>
-          <varlistentry>
-            <term>cvs.root</term>
-
-            <listitem>
-              <para>Specify the url from which to fetch files.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>cvs.root :pserver:anonymous@cvs.sv.gnu.org:/sources/emacs</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>cvs.tag</term>
-
-            <listitem>
-              <para>Optional for fetching with CVS, this specifies the code
-              revision to checkout.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>cvs.tag  HEAD</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>cvs.date</term>
-
-            <listitem>
-              <para>A date that identifies the CVS code set to
-              checkout.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>cvs.date "12-April-2007"</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>cvs.module</term>
-
-            <listitem>
-              <para>A CVS module from which to check out the code.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>cvs.module  Sources</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-
-      <section>
-        <title>Fetch from Subversion</title>
-
-        <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
-        may be used as an alternative method of fetching distribution files
-        using the keywords in this section. However, fetching via Subversion
-        may cause non-reproducible builds, so it is strongly
-        discouraged.</para>
-
-        <variablelist>
-          <varlistentry>
-            <term>svn.url</term>
-
-            <listitem>
-              <para>This specifies the url from which to fetch files.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Examples:</para>
-
-                  <programlisting>svn.url http://www.domain.com/svn-repo/mydirectory
-svn.url svn://www.domain.com/svn-repo/mydirectory
-</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>svn.tag</term>
-
-            <listitem>
-              <para>Optional tag for fetching with Subversion, this specifies
-              the code revision to checkout; it corresponds to the -r option
-              in the svn cli. You must use backslashes to escape characters
-              that are meaningful to the Tcl interpreter, such as braces and
-              double quotes.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Examples:</para>
-
-                  <programlisting>svn.tag 37192
-svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
     </section>
 
     <section>
-      <title>Checksum Phase Keywords</title>
+      <title>Fetch from Subversion</title>
 
-      <para>The list of keywords related to the checksum phase.</para>
+      <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
+      may be used as an alternative method of fetching distribution files
+      using the keywords in this section. However, fetching via Subversion
+      may cause non-reproducible builds, so it is strongly
+      discouraged.</para>
 
       <variablelist>
         <varlistentry>
-          <term>checksums</term>
+          <term>svn.url</term>
 
           <listitem>
-            <para>Checksum(s) of the distribution files. For ports with
-            multiple distribution files, filenames must be included to
-            associate files with their checksums.</para>
+            <para>This specifies the url from which to fetch files.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Examples:</para>
+
+                <programlisting>svn.url http://www.domain.com/svn-repo/mydirectory
+svn.url svn://www.domain.com/svn-repo/mydirectory
+</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>svn.tag</term>
+
+          <listitem>
+            <para>Optional tag for fetching with Subversion, this specifies
+            the code revision to checkout; it corresponds to the -r option
+            in the svn cli. You must use backslashes to escape characters
+            that are meaningful to the Tcl interpreter, such as braces and
+            double quotes.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Examples:</para>
+
+                <programlisting>svn.tag 37192
+svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+
+  <section>
+    <title>Checksum Phase Keywords</title>
+
+    <para>The list of keywords related to the checksum phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>checksums</term>
+
+        <listitem>
+          <para>Checksum(s) of the distribution files. For ports with
+          multiple distribution files, filenames must be included to
+          associate files with their checksums.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>checksums     md5 dafa161bc9c61e57636a6085c87c1fe8 \
+              sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+              rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+
+              <programlisting>checksums     ${distname}${extract.suffix} md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                  sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                  rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23 \
+              hobbit.tar.gz md5 3b8d02c6cf6239b9bdadbc6543c5a683 \
+                  sha1 27874638b23e66d39ed94fe716ca25c967f6e993 \
+                  rmd160 82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Extract Phase Keywords</title>
+
+    <para>The list of keywords related to the extract phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>extract.only</term>
+
+        <term>extract.only-append</term>
+
+        <term>extract.only-delete</term>
+
+        <listitem>
+          <para>List of files to extract into
+          <varname>${worksrcpath}</varname>; the default is
+          <varname>${distfiles}</varname>. Only use if default extract
+          behavior is not correct for your port.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.only     foo.tar.gz
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>extract.only-append  bar.tar.gz
+extract.only-delete  foo.tar.gz</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>extract.cmd</term>
+
+        <listitem>
+          <para>Command to perform extraction.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: gzip</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.cmd     gunzip</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>extract.args</term>
+
+        <term>extract.pre_args</term>
+
+        <term>extract.post_args</term>
+
+        <listitem>
+          <para>Main arguments to extract.cmd; additional arguments passed
+          before and after the main arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: ${distpath}/${distfile}</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.args      ${distpath}/${distfile}
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>extract.pre_args default: "-dc"</para>
+            </listitem>
+
+            <listitem>
+              <para>extract.post_args default: " | tar -xf"</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>extract.pre_args     xf
+extract.post_args    "| gnutar –x"</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Patch Phase Keywords</title>
+
+    <para>The list of keywords related to the patch phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>patch.dir</term>
+
+        <listitem>
+          <para>Specify the base path for patch files.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${worksrcpath}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patch.dir      ${worksrcpath}/util</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>patch.cmd</term>
+
+        <listitem>
+          <para>Specify the command to be used for patching files.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <command>patch</command></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patch.cmd      cat</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>patchfiles</term>
+
+        <term>patchfiles-append</term>
+
+        <term>patchfiles-delete</term>
+
+        <listitem>
+          <para>Specify patch files to be applied for a port; list modifiers
+          specify patchfiles to be added or removed from a previous
+          patchfile declaration.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patchfiles     patch-Makefile.in \
+               patch-source.c
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>patchfiles-append   patch-configure
+patchfiles-delete   patch-src-Makefile.in
+</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>patch.args</term>
+
+        <term>patch.pre_args</term>
+
+        <term>patch.post_args</term>
+
+        <listitem>
+          <para>Main arguments to patch.cmd; optional argument modifiers
+          pass arguments before and after the main arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patch.args   ???
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>patch.pre_args default: -p0</para>
+            </listitem>
+
+            <listitem>
+              <para>patch.post_args default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>patch.pre_args     -p1
+patch.post_args    ???</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Configure Phase Keywords</title>
+
+    <para>The list of keywords related to the configure phase.</para>
+
+    <para>MacPorts base sets some important default configure options, so
+    should use the -append version of most configure keywords so you don't
+    overwrite them. For example, MacPorts base sets default
+    <literal>configure.cflags</literal> so you should always use
+    <literal>configure.cflags-append</literal> to set additional CFLAGS in
+    Portfiles.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>configure.env</term>
+
+        <term>configure.env-append</term>
+
+        <term>configure.env-delete</term>
+
+        <listitem>
+          <para>Set environment variables for configure; list modifiers add
+          and delete items from a previous Portfile configure.env keyword,
+          or a default set by MacPorts base. If available, it is encouraged
+          to use the predefined options (like configure.cflags) instead of
+          modifying configure.env directly</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>CFLAGS=-I${prefix}/include
+              LDFLAGS=-L${prefix}/lib</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.env   QTDIR=${prefix}/lib/qt3
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>configure.env-append   ABI=32
+configure.env-delete   TCLROOT=${prefix}</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.cflags</term>
+
+        <term>configure.cflags-append</term>
+
+        <term>configure.cflags-delete</term>
+
+        <listitem>
+          <para>Set CFLAGS compiler flags; list modifiers add or delete
+          items from a previous Portfile configure.cflags keyword or the
+          default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cflags    -Os -flat_namespace
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>configure.cflags-append   "-undefined suppress"
+configure.cflags-delete   -O2</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.ldflags</term>
+
+        <term>configure.ldflags-append</term>
+
+        <term>configure.ldflags-delete</term>
+
+        <listitem>
+          <para>Set LDFLAGS compiler flags; list modifiers add or delete
+          items from a previous Portfile configure.ldflags keyword or the
+          default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-L${prefix}/lib</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.ldflags    -L${worksrcpath}/zlib -lz
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>configure.ldflags-append   "-L/usr/X11R6/lib -L${worksrcpath}/lib"
+configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.cppflags</term>
+
+        <term>configure.cppflags-append</term>
+
+        <term>configure.cppflags-delete</term>
+
+        <listitem>
+          <para>Set CPPFLAGS to be passed to the C processor; list modifiers
+          add or delete items from a previous Portfile configure.cppflags
+          keyword or the default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-I${prefix}/include</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cppflags    -I${worksrcpath}/include
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
+configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <!-- fortran compiler options -->
+
+      <varlistentry>
+        <term>configure.fflags</term>
+
+        <term>configure.fflags-append</term>
+
+        <term>configure.fflags-delete</term>
+
+        <listitem>
+          <para>Set FFLAGS to be passed to the Fortran compiler; list
+          modifiers add or delete items from a previous Portfile
+          configure.fflags keyword or the default set by MacPorts
+          base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.fflags    -Os
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.fcflags</term>
+
+        <term>configure.fcflags-append</term>
+
+        <term>configure.fcflags-delete</term>
+
+        <listitem>
+          <para>Set FCFLAGS to be passed to the Fortran compiler; list
+          modifiers add or delete items from a previous Portfile
+          configure.fcflags keyword or the default set by MacPorts
+          base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.fcflags    -Os
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.f90flags</term>
+
+        <term>configure.f90flags-append</term>
+
+        <term>configure.f90flags-delete</term>
+
+        <listitem>
+          <para>Set F90FLAGS to be passed to the Fortran 90 compiler; list
+          modifiers add or delete items from a previous Portfile
+          configure.f90flags keyword or the default set by MacPorts
+          base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.f90flags    -Os
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <!-- fortran compiler options end -->
+
+      <!-- compiler selection arguments -->
+
+      <varlistentry>
+        <term>configure.cc</term>
+
+        <listitem>
+          <para>Set CC compiler flags for selecting a C compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cc    ${prefix}/bin/gcc-mp-4.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.cpp</term>
+
+        <listitem>
+          <para>Set CPP compiler flags for selecting a C
+          preprocessor;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cpp    /usr/bin/cpp-3.3</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.cxx</term>
+
+        <listitem>
+          <para>Set CXX compiler flags for selecting a C++ compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cpp    /usr/bin/g++-4.0</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.objc</term>
+
+        <listitem>
+          <para>Set OBJC compiler flags for selecting an Objective-C
+          compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.objc    /usr/bin/gcc-4.0</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.fc</term>
+
+        <listitem>
+          <para>Set FC compiler flags for selecting a Fortran
+          compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.fc    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.f77</term>
+
+        <listitem>
+          <para>Set F77 compiler flags for selecting a Fortran 77
+          compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.f77    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.f90</term>
+
+        <listitem>
+          <para>Set F90 compiler flags for selecting a Fortran 90
+          compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.f90    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.javac</term>
+
+        <listitem>
+          <para>Set JAVAC compiler flags for selecting a Java
+          compiler;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.javac    ${prefix}/bin/jikes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.compiler</term>
+
+        <listitem>
+          <para>Select a compiler suite to fill the compiler environment
+          variables. All variables/tools a compiler suite can provide are
+          set. Manually set variables are not overwritten. Dependencies are
+          not added for you, as they may be just build- or also
+          run-dependencies. Keep in mind that not all compiler suites might
+          be available on your platform.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>gcc-3.3</literal>Mac OS X 10.3</para>
+
+              <para>Default: <literal>gcc-4.0</literal>Mac OS X 10.4,
+              10.5</para>
+            </listitem>
+
+            <listitem>
+              <para>Options:</para>
+
+              <programlisting>gcc-3.3 gcc-4.0 apple-gcc-3.3 apple-gcc-4.0 macports-gcc-3.3 macports-gcc-3.4 macports-gcc-4.0 macports-gcc-4.1 macports-gcc-4.2 macports-gcc-4.3</programlisting>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.compiler    macports-gcc-4.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <!-- compiler selection arguments end -->
+
+      <!-- interpreter selection arguments -->
+
+      <varlistentry>
+        <term>configure.perl</term>
+
+        <listitem>
+          <para>Set PERL flag for selecting a Perl interpreter;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.perl    ${prefix}/bin/perl5.8</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.python</term>
+
+        <listitem>
+          <para>Set PYTHON flag for selecting a Python interpreter;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.python    ${prefix}/bin/python3.0</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.ruby</term>
+
+        <listitem>
+          <para>Set RUBY flag for selecting a Ruby interpreter;</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.ruby    ${prefix}/bin/ruby</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <!-- interpreter selection arguments end -->
+
+      <!-- other tools selection arguments -->
+
+      <varlistentry>
+        <term>configure.install</term>
+
+        <listitem>
+          <para>Set INSTALL flag for selecting an install tool; used for
+          copying files and creating directories</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>/usr/bin/install</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.install    ${prefix}/bin/ginstall</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.awk</term>
+
+        <listitem>
+          <para>Set AWK flag for selecting an awk executable</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.awk    ${prefix}/bin/gawk</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.bison</term>
+
+        <listitem>
+          <para>Set BISON flag for selecting a bison executable, a parser
+          generator</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.bison    /usr/bin/bison</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.pkg_config</term>
+
+        <listitem>
+          <para>Set PKG_CONFIG flag for helping find pkg_config, a tool for
+          retrieving information about installed libraries.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.pkg_config    ${prefix}/bin/pkg-config</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.pkg_config_path</term>
+
+        <listitem>
+          <para>Set PKG_CONFIG_PATH flag for telling pkg_config where to
+          search for information about installed libraries.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal></literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.pkg_config_path    ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <!-- other tools selection arguments end -->
+
+      <varlistentry>
+        <term>configure.args</term>
+
+        <term>configure.pre_args</term>
+
+        <term>configure.post_args</term>
+
+        <listitem>
+          <para>Main arguments to configure.cmd; optional argument modifiers
+          pass arguments before and after the main arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.args    --bindir=${prefix}/bin
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>configure.pre_args default: --prefix=${prefix}</para>
+            </listitem>
+
+            <listitem>
+              <para>configure.post_args default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>configure.pre_args   --prefix=${prefix}/share/bro
+configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <section>
+      <title>Configure Universal</title>
+
+      <para>Universal keywords are used to make a port compile on the OS X
+      platform to run on either PPC or Intel.</para>
+
+      <note>
+        <para>There is a default universal variant made available to all
+        ports by MacPorts base, so redefining universal keywords should only
+        be done to make a given port compile if the default options fail to
+        do so.</para>
+      </note>
+
+      <variablelist>
+        <varlistentry>
+          <term>configure.universal_args</term>
+
+          <listitem>
+            <para>Arguments used in the configure script to build the port
+            universal.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: --disable-dependency-tracking</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting></programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.universal_cflags</term>
+
+          <listitem>
+            <para>Arguments appended to the configure script to build the
+            port universal.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: -sysroot /Developer/SDKs/MacOSX10.4u.sdk
+                -arch i386 -arch ppc</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting></programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.universal_cppflags</term>
+
+          <listitem>
+            <para>Additional flags to put in the CPPFLAGS environment
+            variable when invoking the configure script.</para>
 
             <itemizedlist>
               <listitem>
@@ -532,18 +1537,52 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
               </listitem>
 
               <listitem>
-                <para>Examples:</para>
+                <para>Example:</para>
 
-                <programlisting>checksums     md5 dafa161bc9c61e57636a6085c87c1fe8 \
-              sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-              rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+                <programlisting></programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
 
-                <programlisting>checksums     ${distname}${extract.suffix} md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                  sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                  rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23 \
-              hobbit.tar.gz md5 3b8d02c6cf6239b9bdadbc6543c5a683 \
-                  sha1 27874638b23e66d39ed94fe716ca25c967f6e993 \
-                  rmd160 82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
+        <varlistentry>
+          <term>configure.universal_cxxflags</term>
+
+          <listitem>
+            <para>Additional flags to put in the CXXFLAGS environment
+            variable when invoking the configure script.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: -isysroot /Developer/SDKs/MacOSX10.4u.sdk
+                -arch i386 -arch ppc</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting></programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>configure.universal_ldflags</term>
+
+          <listitem>
+            <para>Additional flags to put in the LDFLAGS environment
+            variable when invoking the configure script.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: -arch i386 -arch ppc</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting></programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -552,1442 +1591,404 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
     </section>
 
     <section>
-      <title>Extract Phase Keywords</title>
+      <title>Automake and Autoconf</title>
 
-      <para>The list of keywords related to the extract phase.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>extract.only</term>
-
-          <term>extract.only-append</term>
-
-          <term>extract.only-delete</term>
-
-          <listitem>
-            <para>List of files to extract into
-            <varname>${worksrcpath}</varname>; the default is
-            <varname>${distfiles}</varname>. Only use if default extract
-            behavior is not correct for your port.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>extract.only     foo.tar.gz
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>extract.only-append  bar.tar.gz
-extract.only-delete  foo.tar.gz</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.cmd</term>
-
-          <listitem>
-            <para>Command to perform extraction.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: gzip</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>extract.cmd     gunzip</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>extract.args</term>
-
-          <term>extract.pre_args</term>
-
-          <term>extract.post_args</term>
-
-          <listitem>
-            <para>Main arguments to extract.cmd; additional arguments passed
-            before and after the main arguments.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: ${distpath}/${distfile}</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>extract.args      ${distpath}/${distfile}
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>The following argument modifiers are available:</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>extract.pre_args default: "-dc"</para>
-              </listitem>
-
-              <listitem>
-                <para>extract.post_args default: " | tar -xf"</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>extract.pre_args     xf
-extract.post_args    "| gnutar –x"</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Patch Phase Keywords</title>
-
-      <para>The list of keywords related to the patch phase.</para>
+      <para>The list of configure keywords available for ports that need
+      automake and/or autoconf.</para>
 
       <variablelist>
         <varlistentry>
-          <term>patch.dir</term>
+          <term>use_automake</term>
 
           <listitem>
-            <para>Specify the base path for patch files.</para>
+            <para>Whether or not to use automake; the default is
+            "no".</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <varname>${worksrcpath}</varname></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>patch.dir      ${worksrcpath}/util</programlisting>
-              </listitem>
-            </itemizedlist>
+            <programlisting>use_automake      yes</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>patch.cmd</term>
+          <term>automake.env</term>
 
           <listitem>
-            <para>Specify the command to be used for patching files.</para>
+            <para>Environment variables to pass to automake.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <command>patch</command></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>patch.cmd      cat</programlisting>
-              </listitem>
-            </itemizedlist>
+            <programlisting>automake.env      CFLAGS=-I${prefix}/include</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>patchfiles</term>
-
-          <term>patchfiles-append</term>
-
-          <term>patchfiles-delete</term>
+          <term>automake.args</term>
 
           <listitem>
-            <para>Specify patch files to be applied for a port; list modifiers
-            specify patchfiles to be added or removed from a previous
-            patchfile declaration.</para>
+            <para>Arguments to pass to automake.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>patchfiles     patch-Makefile.in \
-               patch-source.c
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>patchfiles-append   patch-configure
-patchfiles-delete   patch-src-Makefile.in
-</programlisting>
+            <programlisting>automake.args     --foreign</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>patch.args</term>
-
-          <term>patch.pre_args</term>
-
-          <term>patch.post_args</term>
+          <term>automake.dir</term>
 
           <listitem>
-            <para>Main arguments to patch.cmd; optional argument modifiers
-            pass arguments before and after the main arguments.</para>
+            <para>Directory in which to run
+            <varname>${automake.cmd}</varname>; the default is
+            <varname>${worksrcpath}</varname>.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>patch.args   ???
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>The following argument modifiers are available:</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>patch.pre_args default: -p0</para>
-              </listitem>
-
-              <listitem>
-                <para>patch.post_args default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>patch.pre_args     -p1
-patch.post_args    ???</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Configure Phase Keywords</title>
-
-      <para>The list of keywords related to the configure phase.</para>
-
-      <para>MacPorts base sets some important default configure options, so
-      should use the -append version of most configure keywords so you don't
-      overwrite them. For example, MacPorts base sets default
-      <literal>configure.cflags</literal> so you should always use
-      <literal>configure.cflags-append</literal> to set additional CFLAGS in
-      Portfiles.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>configure.env</term>
-
-          <term>configure.env-append</term>
-
-          <term>configure.env-delete</term>
-
-          <listitem>
-            <para>Set environment variables for configure; list modifiers add
-            and delete items from a previous Portfile configure.env keyword,
-            or a default set by MacPorts base. If available, it is encouraged
-            to use the predefined options (like configure.cflags) instead of
-            modifying configure.env directly</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>CFLAGS=-I${prefix}/include
-                LDFLAGS=-L${prefix}/lib</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.env   QTDIR=${prefix}/lib/qt3
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>configure.env-append   ABI=32
-configure.env-delete   TCLROOT=${prefix}</programlisting>
+            <programlisting>automake.dir      ./src</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>configure.cflags</term>
-
-          <term>configure.cflags-append</term>
-
-          <term>configure.cflags-delete</term>
+          <term>use_autoconf</term>
 
           <listitem>
-            <para>Set CFLAGS compiler flags; list modifiers add or delete
-            items from a previous Portfile configure.cflags keyword or the
-            default set by MacPorts base.</para>
+            <para>Whether or not to use autoconf; the default is
+            "no".</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-O2</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.cflags    -Os -flat_namespace
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>configure.cflags-append   "-undefined suppress"
-configure.cflags-delete   -O2</programlisting>
+            <programlisting>use_autoconf      yes</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>configure.ldflags</term>
-
-          <term>configure.ldflags-append</term>
-
-          <term>configure.ldflags-delete</term>
+          <term>autoconf.env</term>
 
           <listitem>
-            <para>Set LDFLAGS compiler flags; list modifiers add or delete
-            items from a previous Portfile configure.ldflags keyword or the
-            default set by MacPorts base.</para>
+            <para>Environmental variables to pass to autoconf.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-L${prefix}/lib</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.ldflags    -L${worksrcpath}/zlib -lz
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>configure.ldflags-append   "-L/usr/X11R6/lib -L${worksrcpath}/lib"
-configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
+            <programlisting>autoconf.env      CFLAGS=-I${prefix}/include/gtk12</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>configure.cppflags</term>
-
-          <term>configure.cppflags-append</term>
-
-          <term>configure.cppflags-delete</term>
+          <term>autoconf.args</term>
 
           <listitem>
-            <para>Set CPPFLAGS to be passed to the C processor; list modifiers
-            add or delete items from a previous Portfile configure.cppflags
-            keyword or the default set by MacPorts base.</para>
+            <para>Arguments to pass to autoconf.</para>
 
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-I${prefix}/include</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.cppflags    -I${worksrcpath}/include
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
-configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <!-- fortran compiler options -->
-
-        <varlistentry>
-          <term>configure.fflags</term>
-
-          <term>configure.fflags-append</term>
-
-          <term>configure.fflags-delete</term>
-
-          <listitem>
-            <para>Set FFLAGS to be passed to the Fortran compiler; list
-            modifiers add or delete items from a previous Portfile
-            configure.fflags keyword or the default set by MacPorts
-            base.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-O2</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.fflags    -Os
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
+            <programlisting>autoconf.args     -l src/aclocaldir</programlisting>
           </listitem>
         </varlistentry>
 
         <varlistentry>
-          <term>configure.fcflags</term>
-
-          <term>configure.fcflags-append</term>
-
-          <term>configure.fcflags-delete</term>
+          <term>autoconf.dir</term>
 
           <listitem>
-            <para>Set FCFLAGS to be passed to the Fortran compiler; list
-            modifiers add or delete items from a previous Portfile
-            configure.fcflags keyword or the default set by MacPorts
-            base.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-O2</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.fcflags    -Os
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.f90flags</term>
-
-          <term>configure.f90flags-append</term>
-
-          <term>configure.f90flags-delete</term>
-
-          <listitem>
-            <para>Set F90FLAGS to be passed to the Fortran 90 compiler; list
-            modifiers add or delete items from a previous Portfile
-            configure.f90flags keyword or the default set by MacPorts
-            base.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>-O2</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.f90flags    -Os
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <!-- fortran compiler options end -->
-
-        <!-- compiler selection arguments -->
-
-        <varlistentry>
-          <term>configure.cc</term>
-
-          <listitem>
-            <para>Set CC compiler flags for selecting a C compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.cc    ${prefix}/bin/gcc-mp-4.2</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.cpp</term>
-
-          <listitem>
-            <para>Set CPP compiler flags for selecting a C
-            preprocessor;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.cpp    /usr/bin/cpp-3.3</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.cxx</term>
-
-          <listitem>
-            <para>Set CXX compiler flags for selecting a C++ compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.cpp    /usr/bin/g++-4.0</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.objc</term>
-
-          <listitem>
-            <para>Set OBJC compiler flags for selecting an Objective-C
-            compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.objc    /usr/bin/gcc-4.0</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.fc</term>
-
-          <listitem>
-            <para>Set FC compiler flags for selecting a Fortran
-            compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.fc    ${prefix}/bin/gfortran-mp-4.2</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.f77</term>
-
-          <listitem>
-            <para>Set F77 compiler flags for selecting a Fortran 77
-            compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.f77    ${prefix}/bin/gfortran-mp-4.2</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.f90</term>
-
-          <listitem>
-            <para>Set F90 compiler flags for selecting a Fortran 90
-            compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.f90    ${prefix}/bin/gfortran-mp-4.2</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.javac</term>
-
-          <listitem>
-            <para>Set JAVAC compiler flags for selecting a Java
-            compiler;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.javac    ${prefix}/bin/jikes</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.compiler</term>
-
-          <listitem>
-            <para>Select a compiler suite to fill the compiler environment
-            variables. All variables/tools a compiler suite can provide are
-            set. Manually set variables are not overwritten. Dependencies are
-            not added for you, as they may be just build- or also
-            run-dependencies. Keep in mind that not all compiler suites might
-            be available on your platform.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>gcc-3.3</literal>Mac OS X 10.3</para>
-
-                <para>Default: <literal>gcc-4.0</literal>Mac OS X 10.4,
-                10.5</para>
-              </listitem>
-
-              <listitem>
-                <para>Options:</para>
-
-                <programlisting>gcc-3.3 gcc-4.0 apple-gcc-3.3 apple-gcc-4.0 macports-gcc-3.3 macports-gcc-3.4 macports-gcc-4.0 macports-gcc-4.1 macports-gcc-4.2 macports-gcc-4.3</programlisting>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.compiler    macports-gcc-4.2</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <!-- compiler selection arguments end -->
-
-        <!-- interpreter selection arguments -->
-
-        <varlistentry>
-          <term>configure.perl</term>
-
-          <listitem>
-            <para>Set PERL flag for selecting a Perl interpreter;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.perl    ${prefix}/bin/perl5.8</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.python</term>
-
-          <listitem>
-            <para>Set PYTHON flag for selecting a Python interpreter;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.python    ${prefix}/bin/python3.0</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.ruby</term>
-
-          <listitem>
-            <para>Set RUBY flag for selecting a Ruby interpreter;</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.ruby    ${prefix}/bin/ruby</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <!-- interpreter selection arguments end -->
-
-        <!-- other tools selection arguments -->
-
-        <varlistentry>
-          <term>configure.install</term>
-
-          <listitem>
-            <para>Set INSTALL flag for selecting an install tool; used for
-            copying files and creating directories</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>/usr/bin/install</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.install    ${prefix}/bin/ginstall</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.awk</term>
-
-          <listitem>
-            <para>Set AWK flag for selecting an awk executable</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.awk    ${prefix}/bin/gawk</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.bison</term>
-
-          <listitem>
-            <para>Set BISON flag for selecting a bison executable, a parser
-            generator</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.bison    /usr/bin/bison</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.pkg_config</term>
-
-          <listitem>
-            <para>Set PKG_CONFIG flag for helping find pkg_config, a tool for
-            retrieving information about installed libraries.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.pkg_config    ${prefix}/bin/pkg-config</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>configure.pkg_config_path</term>
-
-          <listitem>
-            <para>Set PKG_CONFIG_PATH flag for telling pkg_config where to
-            search for information about installed libraries.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal></literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.pkg_config_path    ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <!-- other tools selection arguments end -->
-
-        <varlistentry>
-          <term>configure.args</term>
-
-          <term>configure.pre_args</term>
-
-          <term>configure.post_args</term>
-
-          <listitem>
-            <para>Main arguments to configure.cmd; optional argument modifiers
-            pass arguments before and after the main arguments.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>configure.args    --bindir=${prefix}/bin
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>The following argument modifiers are available:</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>configure.pre_args default: --prefix=${prefix}</para>
-              </listitem>
-
-              <listitem>
-                <para>configure.post_args default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>configure.pre_args   --prefix=${prefix}/share/bro
-configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-
-      <section>
-        <title>Configure Universal</title>
-
-        <para>Universal keywords are used to make a port compile on the OS X
-        platform to run on either PPC or Intel.</para>
-
-        <note>
-          <para>There is a default universal variant made available to all
-          ports by MacPorts base, so redefining universal keywords should only
-          be done to make a given port compile if the default options fail to
-          do so.</para>
-        </note>
-
-        <variablelist>
-          <varlistentry>
-            <term>configure.universal_args</term>
-
-            <listitem>
-              <para>Arguments used in the configure script to build the port
-              universal.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: --disable-dependency-tracking</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting></programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>configure.universal_cflags</term>
-
-            <listitem>
-              <para>Arguments appended to the configure script to build the
-              port universal.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: -sysroot /Developer/SDKs/MacOSX10.4u.sdk
-                  -arch i386 -arch ppc</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting></programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>configure.universal_cppflags</term>
-
-            <listitem>
-              <para>Additional flags to put in the CPPFLAGS environment
-              variable when invoking the configure script.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: ???</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting></programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>configure.universal_cxxflags</term>
-
-            <listitem>
-              <para>Additional flags to put in the CXXFLAGS environment
-              variable when invoking the configure script.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: -isysroot /Developer/SDKs/MacOSX10.4u.sdk
-                  -arch i386 -arch ppc</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting></programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>configure.universal_ldflags</term>
-
-            <listitem>
-              <para>Additional flags to put in the LDFLAGS environment
-              variable when invoking the configure script.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Default: -arch i386 -arch ppc</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting></programlisting>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-
-      <section>
-        <title>Automake and Autoconf</title>
-
-        <para>The list of configure keywords available for ports that need
-        automake and/or autoconf.</para>
-
-        <variablelist>
-          <varlistentry>
-            <term>use_automake</term>
-
-            <listitem>
-              <para>Whether or not to use automake; the default is
-              "no".</para>
-
-              <programlisting>use_automake      yes</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>automake.env</term>
-
-            <listitem>
-              <para>Environment variables to pass to automake.</para>
-
-              <programlisting>automake.env      CFLAGS=-I${prefix}/include</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>automake.args</term>
-
-            <listitem>
-              <para>Arguments to pass to automake.</para>
-
-              <programlisting>automake.args     --foreign</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>automake.dir</term>
-
-            <listitem>
-              <para>Directory in which to run
-              <varname>${automake.cmd}</varname>; the default is
-              <varname>${worksrcpath}</varname>.</para>
-
-              <programlisting>automake.dir      ./src</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>use_autoconf</term>
-
-            <listitem>
-              <para>Whether or not to use autoconf; the default is
-              "no".</para>
-
-              <programlisting>use_autoconf      yes</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>autoconf.env</term>
-
-            <listitem>
-              <para>Environmental variables to pass to autoconf.</para>
-
-              <programlisting>autoconf.env      CFLAGS=-I${prefix}/include/gtk12</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>autoconf.args</term>
-
-            <listitem>
-              <para>Arguments to pass to autoconf.</para>
-
-              <programlisting>autoconf.args     -l src/aclocaldir</programlisting>
-            </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>autoconf.dir</term>
-
-            <listitem>
-              <para>Directory in which to run
-              <varname>${autoconf.cmd}</varname>; the default is
-              <varname>${worksrcpath}</varname>.</para>
-
-              <programlisting>autoconf.dir      src</programlisting>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-    </section>
-
-    <section>
-      <title>Build Phase Keywords</title>
-
-      <para>The list of keywords related to the build phase.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>build.cmd</term>
-
-          <listitem>
-            <para>Make command to run in <varname>${worksrcdir}</varname>; the
-            default is "make".</para>
-
-            <programlisting>build.cmd      pbxbuild</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>build.type</term>
-
-          <listitem>
-            <para>Defines which "make" is required: "gnu" or "bsd". Sets
-            build.cmd to either "gnumake" or "bsdmake" accordingly.</para>
-
-            <programlisting>build.type     gnu</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>build.args</term>
-
-          <term>build.pre_args</term>
-
-          <term>build.post_args</term>
-
-          <listitem>
-            <para>Main arguments to build.cmd; optional argument modifiers
-            pass arguments before and after the main arguments.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>build.args    -DNOWARN
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>The following argument modifiers are available:</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>build.pre_args default:
-                <varname>${build.target.current}</varname></para>
-              </listitem>
-
-              <listitem>
-                <para>build.post_args default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>build.pre_args  -project AudioSlicer.xcode
-build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>build.target</term>
-
-          <term>build.target-append</term>
-
-          <term>build.target-delete</term>
-
-          <listitem>
-            <para>Build target to pass to ${build.cmd}; list modifiers add or
-            delete items from a previous Portfile build.target keyword or the
-            default set by MacPorts base.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: all</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>build.target    all-src
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>build.target-append   doc extra
-build.target-delete   compat</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>use_parallel_build</term>
-
-          <listitem>
-            <para>This keyword is for specifying whether or not it is safe for
-            a port to use multiple cpus or multiple cores in parallel during
-            its build phase. If a port is declared to be builadble this way,
-            the option <option>-j N</option> may be passed to the
-            <command>make</command> command if parallel builds are enabled
-            system-wide.  This can be obtained by setting
-            <varname>buildmakejobs</varname> in
-            <filename>macports.conf</filename>. The integer <option>N</option>
-            refers to the number of parallel build threads.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <option>no</option></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>use_parallel_build     yes</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
-
-    <section>
-      <title>Destroot Phase Keywords</title>
-
-      <para>The list of keywords related to the destroot phase.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>destroot.cmd</term>
-
-          <listitem>
-            <para>Install command to run relative to
-            <varname>${worksrcdir}</varname>; default is
-            <varname>${build.cmd}</varname>.</para>
-
-            <programlisting>destroot.cmd         pbxbuild</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.type</term>
-
-          <listitem>
-            <para>Defines which "make" is required: either "gnu" or "bsd".
-            Sets install.cmd to either "gnumake" or "bsdmake"
-            accordingly.</para>
-
-            <programlisting>destroot.type        gnu</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.args</term>
-
-          <term>destroot.pre_args</term>
-
-          <term>destroot.post_args</term>
-
-          <listitem>
-            <para>Main arguments to ${destroot.cmd}; optional argument
-            modifiers pass arguments before and after the main
-            arguments.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>destroot.args    BINDIR=${prefix}/bin
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>The following argument modifiers are available:</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>destroot.pre_args default:
-                <varname>${destroot.target}</varname></para>
-              </listitem>
-
-              <listitem>
-                <para>destroot.post_args default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>destroot.pre_args  -project AudioSlicer.xcode
-destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.target</term>
-
-          <term>destroot.target-append</term>
-
-          <term>destroot.target-delete</term>
-
-          <listitem>
-            <para>Install target to pass to ${destroot.cmd}; list modifiers
-            add or delete items from a previous Portfile destroot.target
-            keyword or the default set by MacPorts base.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: <literal>install</literal></para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>destroot.target    install install-config install-commandmode
-
-</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-
-          <listitem>
-            <para>List modifier examples:</para>
-
-            <programlisting>destroot.target-append   install-plugins
-destroot.target-delete   install-commandmode</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.destdir</term>
-
-          <listitem>
-            <para>Arguments passed to ${destroot.cmd} to install correctly
-            into the destroot.</para>
-
-            <programlisting>destroot.destdir     prefix=${destroot}${prefix}</programlisting>
-
-            <note>
-              <para>If an application's Makefile properly supports the DESTDIR
-              variable, MacPorts will automatically destroot the port
-              properly. A port must destroot properly or the port will not
-              install correctly, upgrade, or uninstall. If not, you may need
-              to set this variable, or even patch the application's
-              Makefile.</para>
-            </note>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.keepdirs</term>
-
-          <listitem>
-            <para>A list of directories that should not be removed if empty
-            upon destroot completion.</para>
-
-            <programlisting>destroot.keepdirs \
-                ${destroot}${prefix}/var/run \
-                ${destroot}${prefix}/var/log \
-                ${destroot}${prefix}/var/cache/mrtg</programlisting>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>destroot.violate_mtree</term>
-
-          <listitem>
-            <para>MacPorts tests for compliance to the common directory
-            structure in ${prefix}; the default is "no". If a port is not
-            compliant with the standard, set it to "yes".</para>
-
-            <programlisting>destroot.violate_mtree    yes</programlisting>
+            <para>Directory in which to run
+            <varname>${autoconf.cmd}</varname>; the default is
+            <varname>${worksrcpath}</varname>.</para>
+
+            <programlisting>autoconf.dir      src</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
     </section>
   </section>
+
+  <section>
+    <title>Build Phase Keywords</title>
+
+    <para>The list of keywords related to the build phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>build.cmd</term>
+
+        <listitem>
+          <para>Make command to run in <varname>${worksrcdir}</varname>; the
+          default is "make".</para>
+
+          <programlisting>build.cmd      pbxbuild</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.type</term>
+
+        <listitem>
+          <para>Defines which "make" is required: "gnu" or "bsd". Sets
+          build.cmd to either "gnumake" or "bsdmake" accordingly.</para>
+
+          <programlisting>build.type     gnu</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.args</term>
+
+        <term>build.pre_args</term>
+
+        <term>build.post_args</term>
+
+        <listitem>
+          <para>Main arguments to build.cmd; optional argument modifiers
+          pass arguments before and after the main arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>build.args    -DNOWARN
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>build.pre_args default:
+              <varname>${build.target.current}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>build.post_args default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>build.pre_args  -project AudioSlicer.xcode
+build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.target</term>
+
+        <term>build.target-append</term>
+
+        <term>build.target-delete</term>
+
+        <listitem>
+          <para>Build target to pass to ${build.cmd}; list modifiers add or
+          delete items from a previous Portfile build.target keyword or the
+          default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: all</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>build.target    all-src
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>build.target-append   doc extra
+build.target-delete   compat</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_parallel_build</term>
+
+        <listitem>
+          <para>This keyword is for specifying whether or not it is safe for
+          a port to use multiple cpus or multiple cores in parallel during
+          its build phase. If a port is declared to be builadble this way,
+          the option <option>-j N</option> may be passed to the
+          <command>make</command> command if parallel builds are enabled
+          system-wide.  This can be obtained by setting
+          <varname>buildmakejobs</varname> in
+          <filename>macports.conf</filename>. The integer <option>N</option>
+          refers to the number of parallel build threads.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_parallel_build     yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Destroot Phase Keywords</title>
+
+    <para>The list of keywords related to the destroot phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>destroot.cmd</term>
+
+        <listitem>
+          <para>Install command to run relative to
+          <varname>${worksrcdir}</varname>; default is
+          <varname>${build.cmd}</varname>.</para>
+
+          <programlisting>destroot.cmd         pbxbuild</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.type</term>
+
+        <listitem>
+          <para>Defines which "make" is required: either "gnu" or "bsd".
+          Sets install.cmd to either "gnumake" or "bsdmake"
+          accordingly.</para>
+
+          <programlisting>destroot.type        gnu</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.args</term>
+
+        <term>destroot.pre_args</term>
+
+        <term>destroot.post_args</term>
+
+        <listitem>
+          <para>Main arguments to ${destroot.cmd}; optional argument
+          modifiers pass arguments before and after the main
+          arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.args    BINDIR=${prefix}/bin
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>destroot.pre_args default:
+              <varname>${destroot.target}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>destroot.post_args default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>destroot.pre_args  -project AudioSlicer.xcode
+destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.target</term>
+
+        <term>destroot.target-append</term>
+
+        <term>destroot.target-delete</term>
+
+        <listitem>
+          <para>Install target to pass to ${destroot.cmd}; list modifiers
+          add or delete items from a previous Portfile destroot.target
+          keyword or the default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>install</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.target    install install-config install-commandmode
+
+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para>List modifier examples:</para>
+
+          <programlisting>destroot.target-append   install-plugins
+destroot.target-delete   install-commandmode</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.destdir</term>
+
+        <listitem>
+          <para>Arguments passed to ${destroot.cmd} to install correctly
+          into the destroot.</para>
+
+          <programlisting>destroot.destdir     prefix=${destroot}${prefix}</programlisting>
+
+          <note>
+            <para>If an application's Makefile properly supports the DESTDIR
+            variable, MacPorts will automatically destroot the port
+            properly. A port must destroot properly or the port will not
+            install correctly, upgrade, or uninstall. If not, you may need
+            to set this variable, or even patch the application's
+            Makefile.</para>
+          </note>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.keepdirs</term>
+
+        <listitem>
+          <para>A list of directories that should not be removed if empty
+          upon destroot completion.</para>
+
+          <programlisting>destroot.keepdirs \
+              ${destroot}${prefix}/var/run \
+              ${destroot}${prefix}/var/log \
+              ${destroot}${prefix}/var/cache/mrtg</programlisting>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.violate_mtree</term>
+
+        <listitem>
+          <para>MacPorts tests for compliance to the common directory
+          structure in ${prefix}; the default is "no". If a port is not
+          compliant with the standard, set it to "yes".</para>
+
+          <programlisting>destroot.violate_mtree    yes</programlisting>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

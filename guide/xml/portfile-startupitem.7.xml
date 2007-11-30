@@ -2,283 +2,283 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 
-    <section>
-      <title>StartupItems</title>
+<section>
+  <title>StartupItems</title>
 
-      <para>A StartupItem is a MacPort facility to run "daemons," a Unix term
-      for programs that run continuously in the background, rather than under
-      the direct control of a user; for example, mail servers, network
-      listeners, etc. Ports that use StartupItem keywords create Mac OS X
-      scripts for <ulink
-      url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>,
-      which is the Apple facility introduced with OS X 10.4 to replace xinetd
-      for starting and managing daemons. To support
-      <command>launchd</command>, a program named <command>daemondo</command>
-      is provided by MacPorts base that serves as an adapter between OS X's
-      <command>launchd</command> and daemons (<quote>executable</quote>
-      StartupItems) or traditional Unix startup scripts that start daemons
-      (<quote>script</quote> StartupItems).</para>
+  <para>A StartupItem is a MacPort facility to run "daemons," a Unix term
+  for programs that run continuously in the background, rather than under
+  the direct control of a user; for example, mail servers, network
+  listeners, etc. Ports that use StartupItem keywords create Mac OS X
+  scripts for <ulink
+  url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>,
+  which is the Apple facility introduced with OS X 10.4 to replace xinetd
+  for starting and managing daemons. To support
+  <command>launchd</command>, a program named <command>daemondo</command>
+  is provided by MacPorts base that serves as an adapter between OS X's
+  <command>launchd</command> and daemons (<quote>executable</quote>
+  StartupItems) or traditional Unix startup scripts that start daemons
+  (<quote>script</quote> StartupItems).</para>
 
-      <para>There are three categories of StartupItem keywords. Those that
-      trigger StartupItem creation and logging, those that specify attributes
-      of <quote>executable</quote> StartupItems, and those that specify
-      attributes of <quote>script</quote> StartupItems.</para>
+  <para>There are three categories of StartupItem keywords. Those that
+  trigger StartupItem creation and logging, those that specify attributes
+  of <quote>executable</quote> StartupItems, and those that specify
+  attributes of <quote>script</quote> StartupItems.</para>
 
-      <note>
-        <para>The variable <varname>startupitem_type</varname> in
-        ${prefix}/etc/macports/macports.conf may be set to
-        <option>none</option> to globally override all StartupItem keywords
-        found in Portfiles; this prevents StartupItems from being
-        created.</para>
-      </note>
+  <note>
+    <para>The variable <varname>startupitem_type</varname> in
+    ${prefix}/etc/macports/macports.conf may be set to
+    <option>none</option> to globally override all StartupItem keywords
+    found in Portfiles; this prevents StartupItems from being
+    created.</para>
+  </note>
 
-      <section>
-        <title>StartupItem Attributes</title>
+  <section>
+    <title>StartupItem Attributes</title>
 
-        <para>The keywords in this section may be used with either
-        <quote>executable</quote> or <quote>script</quote> StartupItems (see
-        below).</para>
+    <para>The keywords in this section may be used with either
+    <quote>executable</quote> or <quote>script</quote> StartupItems (see
+    below).</para>
 
-        <variablelist>
-          <varlistentry>
-            <term>startupitem.create</term>
+    <variablelist>
+      <varlistentry>
+        <term>startupitem.create</term>
+
+        <listitem>
+          <para>Trigger the creation of a StartupItem.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
 
             <listitem>
-              <para>Trigger the creation of a StartupItem.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: yes no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.create  yes</programlisting>
-                </listitem>
-              </itemizedlist>
+              <para>Default: no</para>
             </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>startupitem.name</term>
 
             <listitem>
-              <para>Sets the name for the StartupItem.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: required</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: <replaceable>any_name</replaceable></para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.name  OpenSSH</programlisting>
-                </listitem>
-              </itemizedlist>
+              <para>Values: yes no</para>
             </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>startupitem.logfile</term>
 
             <listitem>
-              <para>Path to a logfile for logging events about the lifetime of
-              the StartupItem. Depending on the type of StartupItem, and the
-              manner in which it is started, standard output from the daemon
-              may also be directed to the logfile.</para>
+              <para>Example:</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: <filename>/dev/null</filename></para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: <replaceable>/file/path</replaceable></para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.logfile  ${prefix}/var/log/mydaemon.log</programlisting>
-                </listitem>
-              </itemizedlist>
+              <programlisting>startupitem.create  yes</programlisting>
             </listitem>
-          </varlistentry>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-          <varlistentry>
-            <term>startupitem.logevents</term>
+      <varlistentry>
+        <term>startupitem.name</term>
+
+        <listitem>
+          <para>Sets the name for the StartupItem.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: required</para>
+            </listitem>
 
             <listitem>
-              <para>Control whether or not to log events to the log file. If
-              logevents is set, events with timestamps are logged to the
-              logfile.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: yes no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.logevents   yes</programlisting>
-                </listitem>
-              </itemizedlist>
+              <para>Default: none</para>
             </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>startupitem.netchange</term>
 
             <listitem>
-              <para>Cause the daemon to be restarted when a change in network
-              state is detected.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: yes no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.netchange  yes</programlisting>
-                </listitem>
-              </itemizedlist>
+              <para>Values: <replaceable>any_name</replaceable></para>
             </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
-
-      <section>
-        <title>Executable StartupItems</title>
-
-        <para>Daemons run continuously, so monitoring the health of daemon
-        processes and restarting them if they die is an important
-        StartupItems' feature. <quote>Executable</quote> StartupItems are
-        preferred over <quote>script</quote> StartupItems because
-        <command>daemondo</command> launches the daemon
-        <emphasis>directly</emphasis>, rather than
-        <emphasis>indirectly</emphasis> via a script, and therefore it
-        automatically knows how to monitor a daemon process and restart it if
-        it dies. Daemons used with <quote>executable</quote> StartupItems may
-        be programs or scripts (shell, perl, python, etc.), but when a script
-        the script <emphasis>itself</emphasis> must be the daemon, rather than
-        a script that launches a daemon. <quote>Script</quote> StartupItems
-        are to be used for the latter.</para>
-
-        <note>
-          <para>For a given port, the <quote>executable</quote> StartupItem
-          keyword may not be used with any keywords in the
-          <quote>script</quote> StartupItem category.</para>
-        </note>
-
-        <variablelist>
-          <varlistentry>
-            <term>startupitem.executable</term>
 
             <listitem>
-              <para>Specifies the name of the daemon to be run in the
-              background. It may have multiple arguments, but they must be
-              appropriate for a call to exec; arbitrary shell code may not be
-              used.</para>
+              <para>Example:</para>
 
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: <replaceable>/path/to/daemon</replaceable>
-                  [<replaceable>args</replaceable>]</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.executable  ${prefix}/sbin/vm-pop3d -d 10 -t 600</programlisting>
-                </listitem>
-              </itemizedlist>
-
-              <note>
-                <para>Do not to wrap the value in quotes if passing arguments
-                to the daemon; unlike with<quote>script</quote> StartupItem
-                values, executable StartupItem value elements must be tagged
-                separately as shown in this example .plist file
-                snippet.</para>
-
-                <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
-        &lt;array&gt;
-                &lt;string&gt;/opt/local/bin/daemondo&lt;/string&gt;
-                &lt;string&gt;--label=vm-pop3d&lt;/string&gt;
-                &lt;string&gt;--start-cmd&lt;/string&gt;
-                &lt;string&gt;/opt/local/sbin/vm-pop3d&lt;/string&gt;
-                &lt;string&gt;-d&lt;/string&gt;
-                &lt;string&gt;10&lt;/string&gt;
-                &lt;string&gt;-t&lt;/string&gt;
-                &lt;string&gt;600&lt;/string&gt;
-                &lt;string&gt;;&lt;/string&gt;
-        &lt;/array&gt;</programlisting>
-              </note>
+              <programlisting>startupitem.name  OpenSSH</programlisting>
             </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-      <section>
-        <title>Script StartupItems</title>
+      <varlistentry>
+        <term>startupitem.logfile</term>
 
-        <para>StartupItems of type <quote>script</quote> use
-        <command>daemondo</command> to launch a daemon
-        <emphasis>indirectly</emphasis> via a startup script. A typical
-        snippet of a startup script that may be used with a
-        <quote>script</quote> StartupItem is shown below. Notice that the
-        script is not a daemon; rather the script indirectly launches the
-        vm-pop3d daemon.</para>
+        <listitem>
+          <para>Path to a logfile for logging events about the lifetime of
+          the StartupItem. Depending on the type of StartupItem, and the
+          manner in which it is started, standard output from the daemon
+          may also be directed to the logfile.</para>
 
-        <programlisting>#!/bin/sh
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: <filename>/dev/null</filename></para>
+            </listitem>
+
+            <listitem>
+              <para>Values: <replaceable>/file/path</replaceable></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.logfile  ${prefix}/var/log/mydaemon.log</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.logevents</term>
+
+        <listitem>
+          <para>Control whether or not to log events to the log file. If
+          logevents is set, events with timestamps are logged to the
+          logfile.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: no</para>
+            </listitem>
+
+            <listitem>
+              <para>Values: yes no</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.logevents   yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.netchange</term>
+
+        <listitem>
+          <para>Cause the daemon to be restarted when a change in network
+          state is detected.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: no</para>
+            </listitem>
+
+            <listitem>
+              <para>Values: yes no</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.netchange  yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Executable StartupItems</title>
+
+    <para>Daemons run continuously, so monitoring the health of daemon
+    processes and restarting them if they die is an important
+    StartupItems' feature. <quote>Executable</quote> StartupItems are
+    preferred over <quote>script</quote> StartupItems because
+    <command>daemondo</command> launches the daemon
+    <emphasis>directly</emphasis>, rather than
+    <emphasis>indirectly</emphasis> via a script, and therefore it
+    automatically knows how to monitor a daemon process and restart it if
+    it dies. Daemons used with <quote>executable</quote> StartupItems may
+    be programs or scripts (shell, perl, python, etc.), but when a script
+    the script <emphasis>itself</emphasis> must be the daemon, rather than
+    a script that launches a daemon. <quote>Script</quote> StartupItems
+    are to be used for the latter.</para>
+
+    <note>
+      <para>For a given port, the <quote>executable</quote> StartupItem
+      keyword may not be used with any keywords in the
+      <quote>script</quote> StartupItem category.</para>
+    </note>
+
+    <variablelist>
+      <varlistentry>
+        <term>startupitem.executable</term>
+
+        <listitem>
+          <para>Specifies the name of the daemon to be run in the
+          background. It may have multiple arguments, but they must be
+          appropriate for a call to exec; arbitrary shell code may not be
+          used.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: no</para>
+            </listitem>
+
+            <listitem>
+              <para>Values: <replaceable>/path/to/daemon</replaceable>
+              [<replaceable>args</replaceable>]</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.executable  ${prefix}/sbin/vm-pop3d -d 10 -t 600</programlisting>
+            </listitem>
+          </itemizedlist>
+
+          <note>
+            <para>Do not to wrap the value in quotes if passing arguments
+            to the daemon; unlike with<quote>script</quote> StartupItem
+            values, executable StartupItem value elements must be tagged
+            separately as shown in this example .plist file
+            snippet.</para>
+
+            <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
+&lt;array&gt;
+        &lt;string&gt;/opt/local/bin/daemondo&lt;/string&gt;
+        &lt;string&gt;--label=vm-pop3d&lt;/string&gt;
+        &lt;string&gt;--start-cmd&lt;/string&gt;
+        &lt;string&gt;/opt/local/sbin/vm-pop3d&lt;/string&gt;
+        &lt;string&gt;-d&lt;/string&gt;
+        &lt;string&gt;10&lt;/string&gt;
+        &lt;string&gt;-t&lt;/string&gt;
+        &lt;string&gt;600&lt;/string&gt;
+        &lt;string&gt;;&lt;/string&gt;
+&lt;/array&gt;</programlisting>
+          </note>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Script StartupItems</title>
+
+    <para>StartupItems of type <quote>script</quote> use
+    <command>daemondo</command> to launch a daemon
+    <emphasis>indirectly</emphasis> via a startup script. A typical
+    snippet of a startup script that may be used with a
+    <quote>script</quote> StartupItem is shown below. Notice that the
+    script is not a daemon; rather the script indirectly launches the
+    vm-pop3d daemon.</para>
+
+    <programlisting>#!/bin/sh
 #
 case "$1" in
   start)
@@ -288,213 +288,213 @@ case "$1" in
 
 [... trimmed ...]</programlisting>
 
-        <para>But if a script itself is a daemon, use the
-        <quote>executable</quote> StartupItem type since that way it will be
-        launched directly and its health tracked automatically. When using
-        <quote>script</quote> StartupItems, the
-        <code>startupitem.pidfile</code> keyword must be used if you want
-        <command>daemondo</command> to monitor a daemon process and restart it
-        if it dies.</para>
+    <para>But if a script itself is a daemon, use the
+    <quote>executable</quote> StartupItem type since that way it will be
+    launched directly and its health tracked automatically. When using
+    <quote>script</quote> StartupItems, the
+    <code>startupitem.pidfile</code> keyword must be used if you want
+    <command>daemondo</command> to monitor a daemon process and restart it
+    if it dies.</para>
 
-        <note>
-          <para>For a given port, StartupItem keywords in category
-          <quote>script</quote> may not be used with an
-          <quote>executable</quote> StartupItem keyword.</para>
-        </note>
+    <note>
+      <para>For a given port, StartupItem keywords in category
+      <quote>script</quote> may not be used with an
+      <quote>executable</quote> StartupItem keyword.</para>
+    </note>
 
-        <variablelist>
-          <varlistentry>
-            <term>startupitem.start</term>
+    <variablelist>
+      <varlistentry>
+        <term>startupitem.start</term>
 
-            <term>startupitem.stop</term>
+        <term>startupitem.stop</term>
 
-            <term>startupitem.restart</term>
+        <term>startupitem.restart</term>
+
+        <listitem>
+          <para>Specify a shell script to start, stop, and restart the
+          daemon. In the absence of a restart key, the daemon will be
+          restarted by taking the stop action, followed by the start
+          action.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
 
             <listitem>
-              <para>Specify a shell script to start, stop, and restart the
-              daemon. In the absence of a restart key, the daemon will be
-              restarted by taking the stop action, followed by the start
-              action.</para>
+              <para>Default: none</para>
+            </listitem>
 
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
+            <listitem>
+              <para>Values: <replaceable>shell_script</replaceable></para>
+            </listitem>
 
-                <listitem>
-                  <para>Default: none</para>
-                </listitem>
+            <listitem>
+              <para>Examples:</para>
 
-                <listitem>
-                  <para>Values: <replaceable>shell_script</replaceable></para>
-                </listitem>
-
-                <listitem>
-                  <para>Examples:</para>
-
-                  <programlisting>startupitem.start "${prefix}/share/mysql/mysql.server start"
+              <programlisting>startupitem.start "${prefix}/share/mysql/mysql.server start"
 startupitem.stop "${prefix}/share/mysql/mysql.server stop"
 startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting>
-                </listitem>
-              </itemizedlist>
-
-              <note>
-                <para>Wrap the stop, start, and restart values in quotes so
-                they will be placed in the wrapper as a single command.</para>
-              </note>
             </listitem>
-          </varlistentry>
+          </itemizedlist>
 
-          <varlistentry>
-            <term>startupitem.init</term>
+          <note>
+            <para>Wrap the stop, start, and restart values in quotes so
+            they will be placed in the wrapper as a single command.</para>
+          </note>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.init</term>
+
+        <listitem>
+          <para>Shell code that will be executed prior to any of the
+          options <code>startupitem.start</code>,
+          <code>startupitem.stop</code> and
+          <code>startupitem.restart</code>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
 
             <listitem>
-              <para>Shell code that will be executed prior to any of the
-              options <code>startupitem.start</code>,
-              <code>startupitem.stop</code> and
-              <code>startupitem.restart</code>.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: no</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values: <replaceable>shell_script</replaceable></para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.init "BIN=${prefix}/sbin/bacula-fd"</programlisting>
-                </listitem>
-              </itemizedlist>
+              <para>Default: no</para>
             </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>startupitem.pidfile</term>
 
             <listitem>
-              <para>This keyword must be defined properly for
-              <command>daemondo</command> to be able to monitor daemons
-              launched via <quote>script</quote> StartupItems and restart them
-              if they die. It specifies two things: a process id (PID) file
-              handling method, and a pidfile name and path.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para>Type: optional</para>
-                </listitem>
-
-                <listitem>
-                  <para>Default: [none] |
-                  [<filename>${prefix}/var/run/${name}.pid</filename>]</para>
-                </listitem>
-
-                <listitem>
-                  <para>Values [none auto manual clean]
-                  [<replaceable>/path/to/pidfile</replaceable>]</para>
-                </listitem>
-
-                <listitem>
-                  <para>Example:</para>
-
-                  <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
-                </listitem>
-              </itemizedlist>
-
-              <para>PID file handling options:</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para><option>none</option> - daemondo will not create or
-                  track a PID file, so it won't know when a daemon
-                  dies.</para>
-                </listitem>
-
-                <listitem>
-                  <para><option>auto</option> - The started process is
-                  expected to create a PID file that contains the PID of the
-                  running daemon; daemondo then reads the PID from the file
-                  and tracks the process. The started process must delete the
-                  PID file if this is necessary.</para>
-                </listitem>
-
-                <listitem>
-                  <para><option>clean</option> - The started process is
-                  expected to create a PID file that contains the PID of the
-                  running daemon; daemondo then reads the PID from the file
-                  and tracks the process, and deletes the PID file if it
-                  detects the daemon has died.</para>
-                </listitem>
-
-                <listitem>
-                  <para><option>manual</option> - This option should only be
-                  used if an <quote>executable</quote> StartupItem could be
-                  used (daemondo launches a daemon directly)
-                  <emphasis>and</emphasis> a port author wants a PID file
-                  written for some special use. A PID file is not needed to
-                  detect process death for daemons launched directly by
-                  daemondo. As with executale StartupItems, daemondo remembers
-                  the PID of the launched process and tracks it
-                  automatically.</para>
-                </listitem>
-              </itemizedlist>
+              <para>Values: <replaceable>shell_script</replaceable></para>
             </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
 
-      <section>
-        <title>Loading / Unloading StartupItems into launchd</title>
+            <listitem>
+              <para>Example:</para>
 
-        <para>A port with a StartupItem places a link to a .plist file for the
-        port's daemon within <filename>/Library/LaunchDaemons/</filename>. A
-        .plist file is an XML file; MacPorts installs .plist files tagged as
-        <quote>disabled</quote> for the sake of security. You may enable a
-        startup script (tag the.plist file as <quote>enabled</quote>) and load
-        it into <command>launchd</command> with a single command as
-        shown.</para>
+              <programlisting>startupitem.init "BIN=${prefix}/sbin/bacula-fd"</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-        <programlisting><prompt>%%</prompt> <userinput>sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
+      <varlistentry>
+        <term>startupitem.pidfile</term>
 
-        <para>You may stop a running startup script, disable it (tag the.plist
-        file as <quote>disabled</quote>), and unload it from
-        <command>launchd</command> with a single command as shown.</para>
+        <listitem>
+          <para>This keyword must be defined properly for
+          <command>daemondo</command> to be able to monitor daemons
+          launched via <quote>script</quote> StartupItems and restart them
+          if they die. It specifies two things: a process id (PID) file
+          handling method, and a pidfile name and path.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
-      </section>
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
 
-      <section>
-        <title>StartupItem Internals</title>
+            <listitem>
+              <para>Default: [none] |
+              [<filename>${prefix}/var/run/${name}.pid</filename>]</para>
+            </listitem>
 
-        <para>During port installation a MacPorts StartupItem creates a .plist
-        file in <filename>${prefix}/etc/LaunchDaemons/</filename>, and places
-        a symbolic link to the .plist file within
-        <filename>/Library/LaunchDaemons/</filename>.</para>
+            <listitem>
+              <para>Values [none auto manual clean]
+              [<replaceable>/path/to/pidfile</replaceable>]</para>
+            </listitem>
 
-        <para>For example, the StartupItem for the mysql5 port is
-        <filename>org.macports.mysql5.plist</filename>, and it is linked as
-        shown.</para>
+            <listitem>
+              <para>Example:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>ls -l /Library/LaunchDaemons</userinput></programlisting>
+              <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
+            </listitem>
+          </itemizedlist>
 
-        <screen>org.macports.mysql5.plist -&gt;
+          <para>PID file handling options:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><option>none</option> - daemondo will not create or
+              track a PID file, so it won't know when a daemon
+              dies.</para>
+            </listitem>
+
+            <listitem>
+              <para><option>auto</option> - The started process is
+              expected to create a PID file that contains the PID of the
+              running daemon; daemondo then reads the PID from the file
+              and tracks the process. The started process must delete the
+              PID file if this is necessary.</para>
+            </listitem>
+
+            <listitem>
+              <para><option>clean</option> - The started process is
+              expected to create a PID file that contains the PID of the
+              running daemon; daemondo then reads the PID from the file
+              and tracks the process, and deletes the PID file if it
+              detects the daemon has died.</para>
+            </listitem>
+
+            <listitem>
+              <para><option>manual</option> - This option should only be
+              used if an <quote>executable</quote> StartupItem could be
+              used (daemondo launches a daemon directly)
+              <emphasis>and</emphasis> a port author wants a PID file
+              written for some special use. A PID file is not needed to
+              detect process death for daemons launched directly by
+              daemondo. As with executale StartupItems, daemondo remembers
+              the PID of the launched process and tracks it
+              automatically.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Loading / Unloading StartupItems into launchd</title>
+
+    <para>A port with a StartupItem places a link to a .plist file for the
+    port's daemon within <filename>/Library/LaunchDaemons/</filename>. A
+    .plist file is an XML file; MacPorts installs .plist files tagged as
+    <quote>disabled</quote> for the sake of security. You may enable a
+    startup script (tag the.plist file as <quote>enabled</quote>) and load
+    it into <command>launchd</command> with a single command as
+    shown.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
+
+    <para>You may stop a running startup script, disable it (tag the.plist
+    file as <quote>disabled</quote>), and unload it from
+    <command>launchd</command> with a single command as shown.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
+  </section>
+
+  <section>
+    <title>StartupItem Internals</title>
+
+    <para>During port installation a MacPorts StartupItem creates a .plist
+    file in <filename>${prefix}/etc/LaunchDaemons/</filename>, and places
+    a symbolic link to the .plist file within
+    <filename>/Library/LaunchDaemons/</filename>.</para>
+
+    <para>For example, the StartupItem for the mysql5 port is
+    <filename>org.macports.mysql5.plist</filename>, and it is linked as
+    shown.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>ls -l /Library/LaunchDaemons</userinput></programlisting>
+
+    <screen>org.macports.mysql5.plist -&gt;
      /opt/local/etc/LaunchDaemons/org.macports.mysql5/org.macports.mysql5.plist</screen>
 
-        <para>For <quote>script</quote> StartupItems, in addition to a .plist
-        file, a wrapper is also created.<programlisting><prompt>%%</prompt> <userinput>ls -l /opt/local/etc/LaunchDaemons/org.macports.mysql5/</userinput></programlisting><screen>-rwxr-xr-x   2 root  wheel  475 Aug  2 14:16 mysql5.wrapper
+    <para>For <quote>script</quote> StartupItems, in addition to a .plist
+    file, a wrapper is also created.<programlisting><prompt>%%</prompt> <userinput>ls -l /opt/local/etc/LaunchDaemons/org.macports.mysql5/</userinput></programlisting><screen>-rwxr-xr-x   2 root  wheel  475 Aug  2 14:16 mysql5.wrapper
 -rw-r--r--   2 root  wheel  975 Aug  2 14:16 org.macports.mysql5.plist</screen>The
-        wrapper manipulates the script as specified in the startupitem.start
-        and startupitem.stop keywords. An example wrapper script snippet is
-        shown below.</para>
+    wrapper manipulates the script as specified in the startupitem.start
+    and startupitem.stop keywords. An example wrapper script snippet is
+    shown below.</para>
 
-        <programlisting>#!/bin/sh
+    <programlisting>#!/bin/sh
 #
 # MacPorts generated daemondo support script
 
@@ -511,5 +511,5 @@ Stop()
 }
 
 [... trimmed ...]</programlisting>
-      </section>
-    </section>
+  </section>
+</section>

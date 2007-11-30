@@ -2,143 +2,143 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 
-  <section>
-    <title>Global Variables</title>
+<section>
+  <title>Global Variables</title>
 
-    <para>Global variables are variables available to any Portfile. For a list
-    of additional variables available to ports that are assigned to a MacPorts
-    Portgroup, see portgroup(7).</para>
+  <para>Global variables are variables available to any Portfile. For a list
+  of additional variables available to ports that are assigned to a MacPorts
+  Portgroup, see portgroup(7).</para>
 
-    <variablelist>
-      <varlistentry>
-        <term>prefix</term>
+  <variablelist>
+    <varlistentry>
+      <term>prefix</term>
 
-        <listitem>
-          <para>Installation prefix, set in
-          <filename>${prefix}/etc/macports/macports.conf</filename> —may be
-          overridden on a per port basis. For example, aqua applications are
-          installed in <filename>/Applications/MacPorts</filename>.</para>
+      <listitem>
+        <para>Installation prefix, set in
+        <filename>${prefix}/etc/macports/macports.conf</filename> —may be
+        overridden on a per port basis. For example, aqua applications are
+        installed in <filename>/Applications/MacPorts</filename>.</para>
 
-          <para>Default: /opt/local</para>
-        </listitem>
-      </varlistentry>
+        <para>Default: /opt/local</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>binpath</term>
+    <varlistentry>
+      <term>binpath</term>
 
-        <listitem>
-          <para>Default PATH to use in finding executables.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Default PATH to use in finding executables.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>libpath</term>
+    <varlistentry>
+      <term>libpath</term>
 
-        <listitem>
-          <para>Path to the MacPorts TCL libraries.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Path to the MacPorts TCL libraries.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>portpath</term>
+    <varlistentry>
+      <term>portpath</term>
 
-        <listitem>
-          <para>Full path to the Portfile location.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Full path to the Portfile location.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>filesdir</term>
+    <varlistentry>
+      <term>filesdir</term>
 
-        <listitem>
-          <para>Path to port files relative to
-          <varname>${portpath}</varname>.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Path to port files relative to
+        <varname>${portpath}</varname>.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>workpath</term>
+    <varlistentry>
+      <term>workpath</term>
 
-        <listitem>
-          <para>Full path to work directory.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Full path to work directory.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>worksrcpath</term>
+    <varlistentry>
+      <term>worksrcpath</term>
 
-        <listitem>
-          <para>Full path to extracted source code. Equivalent to
-          <varname>${workpath}/${worksrcdir}</varname>.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Full path to extracted source code. Equivalent to
+        <varname>${workpath}/${worksrcdir}</varname>.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>destroot</term>
+    <varlistentry>
+      <term>destroot</term>
 
-        <listitem>
-          <para>Full path into which software will be destrooted. Equivalent
-          to <filename>${workpath}/destroot</filename>.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Full path into which software will be destrooted. Equivalent
+        to <filename>${workpath}/destroot</filename>.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>distpath</term>
+    <varlistentry>
+      <term>distpath</term>
 
-        <listitem>
-          <para>Location to store downloaded distfiles.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Location to store downloaded distfiles.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>install.user</term>
+    <varlistentry>
+      <term>install.user</term>
 
-        <listitem>
-          <para>The Unix user at the time of port installation.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>The Unix user at the time of port installation.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>install.group</term>
+    <varlistentry>
+      <term>install.group</term>
 
-        <listitem>
-          <para>The Unix group at the time of port installation.</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>The Unix group at the time of port installation.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>os.platform</term>
+    <varlistentry>
+      <term>os.platform</term>
 
-        <listitem>
-          <para>Identifies platform type (ie, "darwin", "freebsd",
-          etc).</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Identifies platform type (ie, "darwin", "freebsd",
+        etc).</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>os.arch</term>
+    <varlistentry>
+      <term>os.arch</term>
 
-        <listitem>
-          <para>Identifies hardware type (ie, "powerpc", "intel").</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>Identifies hardware type (ie, "powerpc", "intel").</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>os.version</term>
+    <varlistentry>
+      <term>os.version</term>
 
-        <listitem>
-          <para>The version number of the host operating system (ie "8.0" for
-          Darwin 8.0).</para>
-        </listitem>
-      </varlistentry>
+      <listitem>
+        <para>The version number of the host operating system (ie "8.0" for
+        Darwin 8.0).</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>os.major</term>
+    <varlistentry>
+      <term>os.major</term>
 
-        <listitem>
-          <para>The major version number of the host operating system (ie "8"
-          for Darwin 8.0).</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </section>
+      <listitem>
+        <para>The major version number of the host operating system (ie "8"
+        for Darwin 8.0).</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>

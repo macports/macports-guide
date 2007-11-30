@@ -44,11 +44,14 @@
     </legalnotice>
   </bookinfo>
 
-  <xi:include href="intro.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="intro.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="installing.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="installing.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="using.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="using.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="portfiledev.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
@@ -56,9 +59,13 @@
   <xi:include href="portfileref.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="internals.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="internals.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="project.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="project.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="glossary.xml" xmlns:xi="http://www.w3.org/2001/XInclude" />
+  <xi:include href="glossary.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
 </book>
