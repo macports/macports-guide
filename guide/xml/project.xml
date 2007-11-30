@@ -107,7 +107,7 @@
 
         <listitem>
           <para><guilabel>Component:</guilabel> Set what part of the MacPorts
-          project the ticket is to be filed against.</para>
+          Project the ticket is to be filed against.</para>
 
           <itemizedlist>
             <listitem>
@@ -122,7 +122,7 @@
 
             <listitem>
               <para><guimenu>infrastructure</guimenu> - Reserved for MacPorts
-              Portmgr team members.</para>
+              PortMgr team members.</para>
             </listitem>
 
             <listitem>
@@ -310,7 +310,7 @@
 
     <para>Port maintainers normally are given commit privileges to the
     Subversion repository so they can make updates to their own ports.
-    However, the MacPorts project does not restrict commit privileges for
+    However, The MacPorts Project does not restrict commit privileges for
     maintainers, so before a person other than a port's maintainer updates a
     port it is a good practice to inform a port's maintainer. See details
     below.</para>
@@ -436,11 +436,11 @@
     of contributions to MacPorts as described above).</para>
   </section>
 
-  <section id="portmgr">
+  <section id="project.portmgr">
     <title>The MacPorts PortMgr Team</title>
-    <para>The MacPorts PortMgr team is the steering group for the MacPorts
-    project.  Its membership is determined by public elections by committers to
-    the MacPorts project, and is responsible for matters such as:
+    <para>The MacPorts PortMgr team is the steering group for The MacPorts
+    Project.  Its membership is determined by public elections by committers to
+    The MacPorts Project, and is responsible for matters such as:
       <itemizedlist>
         <listitem>
           <para>
