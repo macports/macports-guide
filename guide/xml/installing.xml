@@ -130,7 +130,7 @@
     </note>
   </section>
 
-  <section>
+  <section id="installing.macports">
     <title>Install MacPorts</title>
 
     <para>If you are using OS X, you should install MacPorts using the OS X
