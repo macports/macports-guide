@@ -29,7 +29,7 @@
           blank line. It defines which version of the Portfile interpreter
           will be used.</para>
 
-          <programlisting>PortSystem   1.0
+          <programlisting>PortSystem          1.0
 
 </programlisting>
         </listitem>
@@ -41,7 +41,7 @@
         <listitem>
           <para>The name of the Port; it should be lowercase.</para>
 
-          <programlisting>name         foo</programlisting>
+          <programlisting>name                foo</programlisting>
         </listitem>
       </varlistentry>
 
@@ -51,7 +51,7 @@
         <listitem>
           <para>The version of the ported software.</para>
 
-          <programlisting>version      1.23.45</programlisting>
+          <programlisting>version             1.23.45</programlisting>
         </listitem>
       </varlistentry>
 
@@ -64,7 +64,7 @@
           it would benefit users to upgrade an installed port, and cleared
           when the port is updated to a newer version.</para>
 
-          <programlisting>revision     1</programlisting>
+          <programlisting>revision            1</programlisting>
         </listitem>
       </varlistentry>
 
@@ -77,9 +77,9 @@
           -&gt; 1.2). Often the epoch is formatted like a date, but it can
           simple a number like 1.</para>
 
-          <programlisting>epoch        20070924</programlisting>
+          <programlisting>epoch               20070924</programlisting>
 
-          <programlisting>epoch        1</programlisting>
+          <programlisting>epoch               1</programlisting>
         </listitem>
       </varlistentry>
 
@@ -92,7 +92,7 @@
           the Portfile is stored; secondary and tertiary categories may be
           selected.</para>
 
-          <programlisting>categories     net security</programlisting>
+          <programlisting>categories          net security</programlisting>
         </listitem>
       </varlistentry>
 
@@ -124,8 +124,8 @@
           <email>julesverne@example.org</email> are hidden using these
           conventions.</para>
 
-          <programlisting>maintainers       jdoe \
-                  example.org:julesverne</programlisting>
+          <programlisting>maintainers         jdoe \
+                    example.org:julesverne</programlisting>
         </listitem>
       </varlistentry>
 
@@ -135,7 +135,7 @@
         <listitem>
           <para>A one-sentence description of the ported software.</para>
 
-          <programlisting>description    A classic shooter arcade game.</programlisting>
+          <programlisting>description         A classic shooter arcade game.</programlisting>
         </listitem>
       </varlistentry>
 
@@ -146,9 +146,9 @@
           <para>A long description of the ported software. Break long lines
           with escaped newlines.</para>
 
-          <programlisting>description    A classic shooter arcade game derived from \
-               the game alien-munchers.  Not suitable for \
-               children under two years old.      </programlisting>
+          <programlisting>long_description    A classic shooter arcade game derived from \
+                    the game alien-munchers.  Not suitable for \
+                    children under two years old.</programlisting>
         </listitem>
       </varlistentry>
 
@@ -158,7 +158,7 @@
         <listitem>
           <para>Port application's homepage.</para>
 
-          <programlisting>homepage       http://www.somesite.org/apps</programlisting>
+          <programlisting>homepage            http://www.somesite.org/apps</programlisting>
         </listitem>
       </varlistentry>
 
@@ -168,7 +168,7 @@
         <listitem>
           <para>The platforms on which the port has been tested.</para>
 
-          <programlisting>platforms      darwin freebsd</programlisting>
+          <programlisting>platforms           darwin freebsd</programlisting>
         </listitem>
       </varlistentry>
     </variablelist>
