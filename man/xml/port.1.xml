@@ -40,7 +40,9 @@
       <arg>-D <replaceable>portdir</replaceable></arg>
       <arg>-F <replaceable>cmdfile</replaceable></arg>
 			-->
-			<arg><replaceable>options</replaceable></arg>
+      <group>
+        <synopfragmentref linkend="options">options</synopfragmentref>
+      </group>
 			<group>
 				<arg choice="plain"><replaceable>action</replaceable></arg>
 				<group>
@@ -54,7 +56,8 @@
           <arg choice="plain"><replaceable>port-url</replaceable></arg>
       </group>
 			-->
-			<arg rep="repeat"><replaceable>target</replaceable>&nbsp;</arg>
+			<group rep="repeat"><synopfragmentref linkend="target">
+					target</synopfragmentref>&nbsp;</group>
 			<!--
 			<group rep="repeat">
 				<arg>
@@ -70,6 +73,35 @@
 			<arg rep="repeat">
 				<replaceable>setting</replaceable>=<replaceable>value</replaceable>&nbsp;
 			</arg>
+      <synopfragment id="options">
+        <arg>-vdqfonRusbckixpt</arg>
+        <arg>-D <replaceable>portdir</replaceable></arg>
+        <arg>-F <replaceable>cmdfile</replaceable></arg>
+      </synopfragment>
+
+      <synopfragment id="target">
+        <group>
+          <arg choice="plain"><replaceable>portname</replaceable></arg>
+          <arg choice="plain"><replaceable>pseudo-portname</replaceable></arg>
+          <arg choice="plain"><replaceable>port-url</replaceable></arg>
+        </group>
+				<sbr />
+				<group rep="repeat">
+					<arg>
+						<replaceable>@version</replaceable>
+					</arg>
+					<group rep="repeat">
+						<arg choice="plain">
+							+<replaceable>variant</replaceable>
+						</arg>
+						<arg choice="plain">
+							-<replaceable>variant</replaceable>
+						</arg>
+					</group>
+					&#xA0;
+				</group>
+      </synopfragment>
+
     </cmdsynopsis>
   </refsynopsisdiv>
 
@@ -110,6 +142,179 @@
 			<option>@version_revision+variants</option> format.
 		</para>
 		-->
+  </refsection>
+
+  <refsection>
+    <title>GLOBAL OPTIONS</title>
+
+    <variablelist>
+      <varlistentry>
+        <term><option>-q</option></term>
+
+        <listitem>
+          <para>quiet mode (suppress messages)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-v</option></term>
+
+        <listitem>
+          <para>verbose mode (generate verbose messages)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-n</option></term>
+
+        <listitem>
+          <para>debug mode (generate debugging messages, implies
+          <option>-v</option>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-n</option></term>
+
+        <listitem>
+          <para>don&rsquo;t follow dependencies in upgrade (only for
+          upgrading)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-R</option></term>
+
+        <listitem>
+          <para>also upgrade dependents (only for upgrading)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-u</option></term>
+
+        <listitem>
+          <para>uninstall non-active ports when upgrading and
+          uninstalling</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-f</option></term>
+
+        <listitem>
+          <para>force mode (ignore state file)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-o</option></term>
+
+        <listitem>
+          <para>honor state files older than Portfile</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-s</option></term>
+
+        <listitem>
+          <para>source-only mode (build and install from source, ignore all
+          binary archives, do not create/recreate binary archives) (only
+          applies when archive mode is enabled)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-b</option></term>
+
+        <listitem>
+          <para>binary-only mode (build and install from binary archives,
+          ignore source, abort if no archive present; do not create/recreate
+          binary archives from source) (only applies when archive mode is
+          enabled)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-c</option></term>
+
+        <listitem>
+          <para>autoclean mode (execute clean after install)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-k</option></term>
+
+        <listitem>
+          <para>keep mode (don't autoclean after install)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-D</option></term>
+
+        <listitem>
+          <para>specify <replaceable>portdir</replaceable>, the home directory
+          for a port (see ... below)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-F</option></term>
+
+        <listitem>
+          <para>Read and process the <replaceable>file</replaceable> of
+          commands specified by the argument. If the argument is '-', then
+          read commands from stdin. If the option is given multiple times,
+          then multiple files will be read.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-i</option></term>
+
+        <listitem>
+          <para>Read commands from stdin. Short for <option>-F</option>
+          -</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-x</option></term>
+
+        <listitem>
+          <para>In batch and interactive mode, exit on the first error
+          encountered. Otherwise, errors during batch execution are simply
+          reported.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-p</option></term>
+
+        <listitem>
+          <para>Despite any errors encountered, proceed to process multiple
+          ports and commands.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><option>-t</option></term>
+
+        <listitem>
+          <para>enable trace mode debug facilities on platforms that support
+          it (Mac OS X). This feature is two-folded. It consists in
+          automatically detecting and reporting undeclared dependencies based
+          on what files the port reads or what programs the port executes. In
+          verbose mode, it will also report unused dependencies for each stage
+          of the port installation. It also consists in forbidding and
+          reporting file creation and file writes outside allowed directories
+          (temporary directories and <varname>${workpath}</varname>).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </refsection>
 
   <refsection>
