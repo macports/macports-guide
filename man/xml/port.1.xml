@@ -19,27 +19,6 @@
   <refsynopsisdiv>
     <cmdsynopsis>
       <command>port</command>
-      <!-- Detailed option description omitted in favour of general one
-      <group>
-        <arg choice="plain">-v</arg>
-        <arg choice="plain">-d</arg>
-        <arg choice="plain">-q</arg>
-      </group>
-      <group>
-        <arg choice="plain">-n</arg>
-        <arg choice="plain">-R</arg>
-      </group>
-      <group>
-        <arg choice="plain">-s</arg>
-        <arg choice="plain">-b</arg>
-      </group>
-      <group>
-        <arg choice="plain">-c</arg>
-        <arg choice="plain">-k</arg>
-      </group>
-      <arg>-D <replaceable>portdir</replaceable></arg>
-      <arg>-F <replaceable>cmdfile</replaceable></arg>
-      -->
       <group>
         <synopfragmentref linkend="options">options</synopfragmentref>
       </group>
@@ -49,27 +28,8 @@
           <arg choice="plain"><replaceable>actionoptions</replaceable></arg>
         </group>
       </group>
-      <!--
-      <group>
-          <arg choice="plain"><replaceable>portname</replaceable></arg>
-          <arg choice="plain"><replaceable>pseudo-portname</replaceable></arg>
-          <arg choice="plain"><replaceable>port-url</replaceable></arg>
-      </group>
-      -->
       <group rep="repeat"><synopfragmentref linkend="target">
           target</synopfragmentref>&nbsp;</group>
-      <!--
-      <group rep="repeat">
-        <arg>
-          <replaceable>@version</replaceable>
-        </arg>
-        <group rep="repeat">
-          <arg choice="plain">
-            +/-<replaceable>variant</replaceable>
-          </arg>
-        </group>
-      </group>
-      -->
       <arg rep="repeat">
         <replaceable>setting</replaceable>=<replaceable>value</replaceable>&nbsp;
       </arg>
@@ -109,19 +69,6 @@
     <title>Description</title>
 
     <para>
-      <!--
-      <command>port</command> is designed to operate on individual or
-      multiple Mac <option>ports</option>, optionally within a single call,
-      based on the requested <option>action</option>.  If no
-      <option>portdir</option> or <option>portname</option> is specified, the
-      current working directory is assumed; if no <option>action</option> is
-      specified the port command enters interactive mode, in which commands are
-      read via stdin. Batch commands may be passed via a
-      <option>cmdfile</option>.  Port <option>options</option> are passed as
-      key=value pairs and take precedence over individual
-      <option>portname</option> options as specified in its Portfile and
-      system-wide settings.
-      -->
       <command>port</command> is the command-line interface to the MacPorts
       ports system.  It provides access to information about available ports and
       allows the management of their installation, upgrading and removal.
@@ -133,15 +80,6 @@
       multiple actions can be entered in succession.  Otherwise,
       <command>port</command> acts like an ordinary command-line program.
     </para>
-    <!--
-    <para>
-      Port <option>variants</option> can specified as
-      <option>+name</option>, which indicates the variant is desired, or
-      <option>-name</option>, indicating the contrary. In case of ambiguities, a
-      port can be fully specified with the
-      <option>@version_revision+variants</option> format.
-    </para>
-    -->
   </refsection>
 
   <refsection>
