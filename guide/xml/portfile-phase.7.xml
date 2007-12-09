@@ -5,7 +5,7 @@
 <section id="reference.phases">
   <title>Port Phases</title>
 
-  <section>
+  <section id="reference.phases.installation">
     <title>Installation Phase Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -122,7 +122,7 @@
 
   </section>
 
-  <section>
+  <section id="reference.phases.fetch">
     <title>Fetch Phase Keywords</title>
 
     <para>The list of keywords related to the fetch phase.</para>
@@ -145,8 +145,8 @@
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>master_sites   http://www.somesite.org/files/ \
-               http://www.somemirror.org/somesite_org/files/
+              <programlisting>master_sites        http://www.somesite.org/files/ \
+                    http://www.somemirror.org/somesite_org/files/
 
 </programlisting>
 
@@ -154,7 +154,7 @@
               MacPorts. Here the sourceforge and gnu mirrors are
               used.</para>
 
-              <programlisting>master_sites   sourceforge gnu
+              <programlisting>master_sites        sourceforge gnu
 
 </programlisting>
 
@@ -163,8 +163,8 @@
               mirror subdirectory does not match ${name}, then you may
               specify it using after the mirror separated by a colon.</para>
 
-              <programlisting>master_sites   sourceforge:widget \
-               gnu:widget
+              <programlisting>master_sites        sourceforge:widget \
+                    gnu:widget
 
 </programlisting>
 
@@ -178,11 +178,34 @@
               <varname>${name}</varname>; file tagtwo.tar.gz is fetched from
               the gnu mirrors in subdirectory sources.</para>
 
-              <programlisting>master_sites    sourceforge::tagone \
-                gnu:sources:tagtwo
+              <programlisting>master_sites        sourceforge::tagone \
+                    gnu:sources:tagtwo
 
-distfiles       file_one.tar.gz:tagone \
-                file_two.tar.gz:tagtwo</programlisting>
+distfiles           file_one.tar.gz:tagone \
+                    file_two.tar.gz:tagtwo</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>master_sites.mirror_subdir</term>
+
+        <listitem>
+          <para>Subdirectory to append to all mirror sites for any list
+          specified in <varname>${master_sites}</varname>.</para>
+
+          <!-- TODO: add a better explanation -->
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${name}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>master_sites.mirror_subdir  magic</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -203,7 +226,30 @@ distfiles       file_one.tar.gz:tagone \
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patch_sites    ftp://ftp.patchcityrepo.com/pub/magic/patches</programlisting>
+              <programlisting>patch_sites         ftp://ftp.patchcityrepo.com/pub/magic/patches</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>patch_sites.mirror_subdir</term>
+
+        <listitem>
+          <para>Subdirectory to append to all mirror sites for any list
+          specified in <varname>${patch_sites}</varname>.</para>
+
+          <!-- TODO: add a better explanation -->
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${name}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patch_sites.mirror_subdir   magic</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -214,7 +260,7 @@ distfiles       file_one.tar.gz:tagone \
 
         <listitem>
           <para>The name of the distribution filename, not including the
-          extract suffix.</para>
+          extract suffix (see below).</para>
 
           <itemizedlist>
             <listitem>
@@ -224,7 +270,7 @@ distfiles       file_one.tar.gz:tagone \
             <listitem>
               <para>Example:</para>
 
-              <programlisting>distname     ${name}</programlisting>
+              <programlisting>distname            ${name}</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -246,13 +292,33 @@ distfiles       file_one.tar.gz:tagone \
             </listitem>
 
             <listitem>
+              <para>Examples:</para>
+
+              <programlisting>distfiles           ${name}-dev_src.tgz</programlisting>
+
+              <programlisting>distfiles           file_one.tar.gz:tagone \
+                    file_two.tar.gz:tagtwo</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>dist_subdir</term>
+
+        <listitem>
+          <para>Create a sub-directory in distpath to store all fetched
+          files.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${name}</varname></para>
+            </listitem>
+
+            <listitem>
               <para>Example:</para>
 
-              <programlisting>distfiles    ${name}-dev_src.tgz
-
-
-distfiles       file_one.tar.gz:tagone \
-                file_two.tar.gz:tagtwo</programlisting>
+              <programlisting>dist_subdir         vim${version}</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -273,7 +339,7 @@ distfiles       file_one.tar.gz:tagone \
             <listitem>
               <para>Example:</para>
 
-              <programlisting>extract.suffix   .tgz</programlisting>
+              <programlisting>extract.suffix      .tgz</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -283,7 +349,7 @@ distfiles       file_one.tar.gz:tagone \
         <term>extract.mkdir</term>
 
         <listitem>
-          <para>This option is used to specify if the directory
+          <para>This keyword is used to specify if the directory
           <filename>worksrcdir</filename> is part of the distfile or if it
           should be created automatically and the distfiles should be
           extracted there instead. This is useful for distfiles with a flat
@@ -298,7 +364,7 @@ distfiles       file_one.tar.gz:tagone \
             <listitem>
               <para>Example:</para>
 
-              <programlisting>extract.mkdir   yes</programlisting>
+              <programlisting>extract.mkdir       yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -312,7 +378,7 @@ distfiles       file_one.tar.gz:tagone \
           When invoked, it automatically sets:</para>
 
           <literallayout>extract.suffix = .tar.bz
-extract.cmd = bzip
+extract.cmd    = bzip
 
 </literallayout>
 
@@ -324,7 +390,7 @@ extract.cmd = bzip
             <listitem>
               <para>Example:</para>
 
-              <programlisting>use_bzip2     yes</programlisting>
+              <programlisting>use_bzip2           yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -334,12 +400,12 @@ extract.cmd = bzip
         <term>use_zip</term>
 
         <listitem>
-          <para>This keyword is for downloads are zipped. When invoked, it
-          automatically sets:</para>
+          <para>This keyword is for downloads which are zipped. When invoked,
+          it automatically sets:</para>
 
-          <literallayout>extract.suffix = .zip
-extract.cmd = unzip
-extract.pre_args = -q
+          <literallayout>extract.suffix    = .zip
+extract.cmd       = unzip
+extract.pre_args  = -q
 extract.post_args = "-d ${portpath}/${workdir}"
 
 </literallayout>
@@ -352,14 +418,126 @@ extract.post_args = "-d ${portpath}/${workdir}"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>use_zip       yes</programlisting>
+              <programlisting>use_zip             yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>worksrcdir</term>
+
+        <listitem>
+          <para>Sets the path to source directory relative to workpath. It can
+          be used if the extracted source directory has a different name then
+          the distfile.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${distname}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>worksrcdir          ${name}-src-${version}</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section id="reference.phases.fetch.advanced">
+      <title>Advanced Fetch Options</title>
+
+      <para>Some mirrors require special options for a resource to be properly
+      fetched.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>fetch.user</term>
+
+          <listitem>
+            <para>HTTP or FTP user to fetch the resource.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>TODO: add example</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>fetch.password</term>
+
+          <listitem>
+            <para>HTTP or FTP password to fetch the resource.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>TODO: add example</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>fetch.use_epsv</term>
+
+          <listitem>
+            <para>Whether to use EPSV command for FTP transfers.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>yes</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>fetch.use_epsv      no</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>fetch.ignore_sslcert</term>
+
+          <listitem>
+            <para>Whether to ignore the host SSL certificate (for
+            HTTPS).</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>fetch.ignore_sslcert    yes</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section id="reference.phases.fetch.cvs">
       <title>Fetch from CVS</title>
 
       <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used
@@ -382,7 +560,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>cvs.root :pserver:anonymous@cvs.sv.gnu.org:/sources/emacs</programlisting>
+                <programlisting>cvs.root            :pserver:anonymous@cvs.sv.gnu.org:/sources/emacs</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -403,7 +581,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>cvs.tag  HEAD</programlisting>
+                <programlisting>cvs.tag             HEAD</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -424,7 +602,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>cvs.date "12-April-2007"</programlisting>
+                <programlisting>cvs.date            "12-April-2007"</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -444,7 +622,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>cvs.module  Sources</programlisting>
+                <programlisting>cvs.module          Sources</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -452,7 +630,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
       </variablelist>
     </section>
 
-    <section>
+    <section id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
       <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
@@ -476,9 +654,9 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <listitem>
                 <para>Examples:</para>
 
-                <programlisting>svn.url http://www.domain.com/svn-repo/mydirectory
-svn.url svn://www.domain.com/svn-repo/mydirectory
-</programlisting>
+                <programlisting>svn.url             http://www.domain.com/svn-repo/mydirectory</programlisting>
+
+                <programlisting>svn.url             svn://www.domain.com/svn-repo/mydirectory</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -490,9 +668,7 @@ svn.url svn://www.domain.com/svn-repo/mydirectory
           <listitem>
             <para>Optional tag for fetching with Subversion, this specifies
             the code revision to checkout; it corresponds to the -r option
-            in the svn cli. You must use backslashes to escape characters
-            that are meaningful to the Tcl interpreter, such as braces and
-            double quotes.</para>
+            in the svn cli.</para>
 
             <itemizedlist>
               <listitem>
@@ -500,10 +676,9 @@ svn.url svn://www.domain.com/svn-repo/mydirectory
               </listitem>
 
               <listitem>
-                <para>Examples:</para>
+                <para>Example:</para>
 
-                <programlisting>svn.tag 37192
-svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
+                <programlisting>svn.tag             37192</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -512,7 +687,7 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
     </section>
   </section>
 
-  <section>
+  <section id="reference.phases.checksum">
     <title>Checksum Phase Keywords</title>
 
     <para>The list of keywords related to the checksum phase.</para>
@@ -525,6 +700,8 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
           <para>Checksum(s) of the distribution files. For ports with
           multiple distribution files, filenames must be included to
           associate files with their checksums.</para>
+          <para>All checksum types (md5, sha1 and rdm160) should be used to
+          ensure the integrity of the distfiles.</para>
 
           <itemizedlist>
             <listitem>
@@ -534,16 +711,18 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>checksums     md5 dafa161bc9c61e57636a6085c87c1fe8 \
-              sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-              rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+              <programlisting>checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
 
-              <programlisting>checksums     ${distname}${extract.suffix} md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                  sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                  rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23 \
-              hobbit.tar.gz md5 3b8d02c6cf6239b9bdadbc6543c5a683 \
-                  sha1 27874638b23e66d39ed94fe716ca25c967f6e993 \
-                  rmd160 82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
+              <programlisting>checksums           ${distname}${extract.suffix} \
+                        md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                        sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                        rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23 \
+                    hobbit.tar.gz \
+                        md5 3b8d02c6cf6239b9bdadbc6543c5a683 \
+                        sha1 27874638b23e66d39ed94fe716ca25c967f6e993 \
+                        rmd160 82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -551,7 +730,7 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.phases.extract">
     <title>Extract Phase Keywords</title>
 
     <para>The list of keywords related to the extract phase.</para>
@@ -566,30 +745,22 @@ svn.tag \{\"2006-02-17 15:30 +0230\"\}</programlisting>
 
         <listitem>
           <para>List of files to extract into
-          <varname>${worksrcpath}</varname>; the default is
-          <varname>${distfiles}</varname>. Only use if default extract
+          <varname>${worksrcpath}</varname>. Only use if default extract
           behavior is not correct for your port.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: none</para>
+              <para>Default: <varname>${distfiles}</varname></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>extract.only     foo.tar.gz
-
-</programlisting>
+              <programlisting>extract.only        foo.tar.gz</programlisting>
+              <programlisting>extract.only-append     bar.tar.gz
+extract.only-delete     foo.tar.gz</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>extract.only-append  bar.tar.gz
-extract.only-delete  foo.tar.gz</programlisting>
         </listitem>
       </varlistentry>
 
@@ -601,13 +772,13 @@ extract.only-delete  foo.tar.gz</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: gzip</para>
+              <para>Default: <command>gzip</command></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>extract.cmd     gunzip</programlisting>
+              <programlisting>extract.cmd         gunzip</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -626,13 +797,13 @@ extract.only-delete  foo.tar.gz</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: ${distpath}/${distfile}</para>
+              <para>Default: <varname>${distpath}/${distfile}</varname></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>extract.args      ${distpath}/${distfile}
+              <programlisting>extract.args        ${distpath}/${distfile}
 
 </programlisting>
             </listitem>
@@ -644,18 +815,20 @@ extract.only-delete  foo.tar.gz</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>extract.pre_args default: "-dc"</para>
+              <para><literal>extract.pre_args</literal>, defaults to:
+              <literal>-dc</literal></para>
             </listitem>
 
             <listitem>
-              <para>extract.post_args default: " | tar -xf"</para>
+              <para><literal>extract.post_args</literal>, defaults to:
+              <literal>"| tar -xf"</literal></para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>extract.pre_args     xf
-extract.post_args    "| gnutar –x"</programlisting>
+              <programlisting>extract.pre_args    xf
+extract.post_args   "| gnutar –x"</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -663,7 +836,7 @@ extract.post_args    "| gnutar –x"</programlisting>
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.phases.patch">
     <title>Patch Phase Keywords</title>
 
     <para>The list of keywords related to the patch phase.</para>
@@ -683,7 +856,7 @@ extract.post_args    "| gnutar –x"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patch.dir      ${worksrcpath}/util</programlisting>
+              <programlisting>patch.dir           ${worksrcpath}/util</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -703,7 +876,7 @@ extract.post_args    "| gnutar –x"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patch.cmd      cat</programlisting>
+              <programlisting>patch.cmd           cat</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -729,20 +902,12 @@ extract.post_args    "| gnutar –x"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patchfiles     patch-Makefile.in \
-               patch-source.c
-
-</programlisting>
+              <programlisting>patchfiles          patch-Makefile.in \
+                    patch-source.c</programlisting>
+              <programlisting>patchfiles-append   patch-configure
+patchfiles-delete   patch-src-Makefile.in</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>patchfiles-append   patch-configure
-patchfiles-delete   patch-src-Makefile.in
-</programlisting>
         </listitem>
       </varlistentry>
 
@@ -765,7 +930,7 @@ patchfiles-delete   patch-src-Makefile.in
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patch.args   ???
+              <programlisting>patch.args          ???
 
 </programlisting>
             </listitem>
@@ -777,18 +942,20 @@ patchfiles-delete   patch-src-Makefile.in
 
           <itemizedlist>
             <listitem>
-              <para>patch.pre_args default: -p0</para>
+              <para><literal>patch.pre_args</literal>, defaults to:
+              <literal>-p0</literal></para>
             </listitem>
 
             <listitem>
-              <para>patch.post_args default: none</para>
+              <para><literal>patch.post_args</literal>, defaults to:
+              none</para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>patch.pre_args     -p1
-patch.post_args    ???</programlisting>
+              <programlisting>patch.pre_args      -p1
+patch.post_args     ???</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -796,7 +963,7 @@ patch.post_args    ???</programlisting>
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.phases.configure">
     <title>Configure Phase Keywords</title>
 
     <para>The list of keywords related to the configure phase.</para>
@@ -810,6 +977,26 @@ patch.post_args    ???</programlisting>
 
     <variablelist>
       <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Sets if the configure phase should be run.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>yes</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_configure    no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>configure.env</term>
 
         <term>configure.env-append</term>
@@ -821,7 +1008,7 @@ patch.post_args    ???</programlisting>
           and delete items from a previous Portfile configure.env keyword,
           or a default set by MacPorts base. If available, it is encouraged
           to use the predefined options (like configure.cflags) instead of
-          modifying configure.env directly</para>
+          modifying configure.env directly.</para>
 
           <itemizedlist>
             <listitem>
@@ -832,17 +1019,11 @@ patch.post_args    ???</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.env   QTDIR=${prefix}/lib/qt3
-</programlisting>
+              <programlisting>configure.env       QTDIR=${prefix}/lib/qt3</programlisting>
+              <programlisting>configure.env-append    ABI=32
+configure.env-delete    TCLROOT=${prefix}</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>configure.env-append   ABI=32
-configure.env-delete   TCLROOT=${prefix}</programlisting>
         </listitem>
       </varlistentry>
 
@@ -866,18 +1047,11 @@ configure.env-delete   TCLROOT=${prefix}</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.cflags    -Os -flat_namespace
-
-</programlisting>
+              <programlisting>configure.cflags    -Os -flat_namespace</programlisting>
+              <programlisting>configure.cflags-append     "-undefined suppress"
+configure.cflags-delete     -O2</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>configure.cflags-append   "-undefined suppress"
-configure.cflags-delete   -O2</programlisting>
         </listitem>
       </varlistentry>
 
@@ -901,18 +1075,11 @@ configure.cflags-delete   -O2</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.ldflags    -L${worksrcpath}/zlib -lz
-
-</programlisting>
+              <programlisting>configure.ldflags   "-L${worksrcpath}/zlib -lz"</programlisting>
+              <programlisting>configure.ldflags-append    "-L/usr/X11R6/lib -L${worksrcpath}/lib"
+configure.ldflags-delete    -L${prefix}/lib/db44</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>configure.ldflags-append   "-L/usr/X11R6/lib -L${worksrcpath}/lib"
-configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
         </listitem>
       </varlistentry>
 
@@ -936,18 +1103,109 @@ configure.ldflags-delete   -L${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.cppflags    -I${worksrcpath}/include
-
-</programlisting>
+              <programlisting>configure.cppflags  -I${worksrcpath}/include</programlisting>
+              <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
+configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.cxxflags</term>
+
+        <term>configure.cxxflags-append</term>
+
+        <term>configure.cxxflags-delete</term>
 
         <listitem>
-          <para>List modifier examples:</para>
+          <para>Set CXXFLAGS to be passed to the C++ processor; list modifiers
+          add or delete items from a previous Portfile configure.cxxflags
+          keyword or the default set by MacPorts base.</para>
 
-          <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
-configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>TODO: add example</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.objcflags</term>
+
+        <term>configure.objcflags-append</term>
+
+        <term>configure.objcflags-delete</term>
+
+        <listitem>
+          <para>TODO: add description</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>TODO: add example</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.classpath</term>
+
+        <term>configure.classpath-append</term>
+
+        <term>configure.classpath-delete</term>
+
+        <listitem>
+          <para>TODO: add description</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>TODO: add example</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.macosx_deployment_target</term>
+
+        <term>configure.macosx_deployment_target-append</term>
+
+        <term>configure.macosx_deployment_target-delete</term>
+
+        <listitem>
+          <para>TODO: add description</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>TODO: add example</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -974,9 +1232,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.fflags    -Os
-
-</programlisting>
+              <programlisting>configure.fflags    -Os</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1003,9 +1259,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.fcflags    -Os
-
-</programlisting>
+              <programlisting>configure.fcflags   -Os</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1032,9 +1286,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.f90flags    -Os
-
-</programlisting>
+              <programlisting>configure.f90flags  -Os</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1048,17 +1300,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cc</term>
 
         <listitem>
-          <para>Set CC compiler flags for selecting a C compiler;</para>
+          <para>Set CC compiler flags for selecting a C compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.cc    ${prefix}/bin/gcc-mp-4.2</programlisting>
+              <programlisting>configure.cc        ${prefix}/bin/gcc-mp-4.2</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1069,17 +1321,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set CPP compiler flags for selecting a C
-          preprocessor;</para>
+          preprocessor.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.cpp    /usr/bin/cpp-3.3</programlisting>
+              <programlisting>configure.cpp       /usr/bin/cpp-3.3</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1089,17 +1341,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cxx</term>
 
         <listitem>
-          <para>Set CXX compiler flags for selecting a C++ compiler;</para>
+          <para>Set CXX compiler flags for selecting a C++ compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.cpp    /usr/bin/g++-4.0</programlisting>
+              <programlisting>configure.cxx       /usr/bin/g++-4.0</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1110,17 +1362,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set OBJC compiler flags for selecting an Objective-C
-          compiler;</para>
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.objc    /usr/bin/gcc-4.0</programlisting>
+              <programlisting>configure.objc      /usr/bin/gcc-4.0</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1131,17 +1383,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set FC compiler flags for selecting a Fortran
-          compiler;</para>
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.fc    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              <programlisting>configure.fc        ${prefix}/bin/gfortran-mp-4.2</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1152,17 +1404,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set F77 compiler flags for selecting a Fortran 77
-          compiler;</para>
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.f77    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              <programlisting>configure.f77       ${prefix}/bin/gfortran-mp-4.2</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1173,17 +1425,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set F90 compiler flags for selecting a Fortran 90
-          compiler;</para>
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.f90    ${prefix}/bin/gfortran-mp-4.2</programlisting>
+              <programlisting>configure.f90       ${prefix}/bin/gfortran-mp-4.2</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1194,17 +1446,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set JAVAC compiler flags for selecting a Java
-          compiler;</para>
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.javac    ${prefix}/bin/jikes</programlisting>
+              <programlisting>configure.javac     ${prefix}/bin/jikes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1223,13 +1475,16 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>gcc-3.3</literal>Mac OS X 10.3</para>
-
-              <para>Default: <literal>gcc-4.0</literal>Mac OS X 10.4,
+              <para>Default: <literal>gcc-3.3</literal> on Mac OS X
+              10.3</para>
+            </listitem>
+            <listitem>
+              <para>Default: <literal>gcc-4.0</literal> on Mac OS X 10.4 and
               10.5</para>
             </listitem>
 
             <listitem>
+              <!-- TODO: should this be Options or renamed? -->
               <para>Options:</para>
 
               <programlisting>gcc-3.3 gcc-4.0 apple-gcc-3.3 apple-gcc-4.0 macports-gcc-3.3 macports-gcc-3.4 macports-gcc-4.0 macports-gcc-4.1 macports-gcc-4.2 macports-gcc-4.3</programlisting>
@@ -1238,7 +1493,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.compiler    macports-gcc-4.2</programlisting>
+              <programlisting>configure.compiler  macports-gcc-4.2</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1252,17 +1507,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.perl</term>
 
         <listitem>
-          <para>Set PERL flag for selecting a Perl interpreter;</para>
+          <para>Set PERL flag for selecting a Perl interpreter.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.perl    ${prefix}/bin/perl5.8</programlisting>
+              <programlisting>configure.perl      ${prefix}/bin/perl5.8</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1272,11 +1527,11 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.python</term>
 
         <listitem>
-          <para>Set PYTHON flag for selecting a Python interpreter;</para>
+          <para>Set PYTHON flag for selecting a Python interpreter.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
@@ -1292,17 +1547,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.ruby</term>
 
         <listitem>
-          <para>Set RUBY flag for selecting a Ruby interpreter;</para>
+          <para>Set RUBY flag for selecting a Ruby interpreter.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.ruby    ${prefix}/bin/ruby</programlisting>
+              <programlisting>configure.ruby      ${prefix}/bin/ruby</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1317,7 +1572,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set INSTALL flag for selecting an install tool; used for
-          copying files and creating directories</para>
+          copying files and creating directories.</para>
 
           <itemizedlist>
             <listitem>
@@ -1327,7 +1582,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.install    ${prefix}/bin/ginstall</programlisting>
+              <programlisting>configure.install   ${prefix}/bin/ginstall</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1337,17 +1592,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.awk</term>
 
         <listitem>
-          <para>Set AWK flag for selecting an awk executable</para>
+          <para>Set AWK flag for selecting an awk executable.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.awk    ${prefix}/bin/gawk</programlisting>
+              <programlisting>configure.awk       ${prefix}/bin/gawk</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1358,17 +1613,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Set BISON flag for selecting a bison executable, a parser
-          generator</para>
+          generator.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.bison    /usr/bin/bison</programlisting>
+              <programlisting>configure.bison     /usr/bin/bison</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1383,7 +1638,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
@@ -1404,13 +1659,13 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal></literal></para>
+              <para>Default: <literal>???</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.pkg_config_path    ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
+              <programlisting>configure.pkg_config_path   ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1437,7 +1692,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.args    --bindir=${prefix}/bin
+              <programlisting>configure.args      --bindir=${prefix}/bin
 
 </programlisting>
             </listitem>
@@ -1449,25 +1704,27 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>configure.pre_args default: --prefix=${prefix}</para>
+              <para><literal>configure.pre_args</literal>, defaults to:
+              <literal>--prefix=${prefix}</literal></para>
             </listitem>
 
             <listitem>
-              <para>configure.post_args default: none</para>
+              <para><literal>configure.post_args</literal>, defaults to:
+              none</para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>configure.pre_args   --prefix=${prefix}/share/bro
-configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
+              <programlisting>configure.pre_args  --prefix=${prefix}/share/bro
+configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section id="reference.phases.configure.universal">
       <title>Configure Universal</title>
 
       <para>Universal keywords are used to make a port compile on the OS X
@@ -1490,13 +1747,14 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: --disable-dependency-tracking</para>
+                <para>Default:
+                <literal>--disable-dependency-tracking</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting></programlisting>
+                <programlisting>TODO: add example</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1511,14 +1769,15 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: -sysroot /Developer/SDKs/MacOSX10.4u.sdk
-                -arch i386 -arch ppc</para>
+                <para>Default: <literal>-sysroot
+                /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch
+                ppc</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting></programlisting>
+                <programlisting>TODO: add example</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1533,13 +1792,13 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: ???</para>
+                <para>Default: <literal>???</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting></programlisting>
+                <programlisting>TODO: add example</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1554,14 +1813,15 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: -isysroot /Developer/SDKs/MacOSX10.4u.sdk
-                -arch i386 -arch ppc</para>
+                <para>Default: <literal>-isysroot
+                /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch
+                ppc</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting></programlisting>
+                <programlisting>TODO: add example</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1576,13 +1836,13 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: -arch i386 -arch ppc</para>
+                <para>Default: <literal>-arch i386 -arch ppc</literal></para>
               </listitem>
 
               <listitem>
                 <para>Example:</para>
 
-                <programlisting></programlisting>
+                <programlisting>TODO: add example</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -1590,7 +1850,7 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
       </variablelist>
     </section>
 
-    <section>
+    <section id="reference.phases.configure.automake-autoconf">
       <title>Automake and Autoconf</title>
 
       <para>The list of configure keywords available for ports that need
@@ -1601,10 +1861,19 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>use_automake</term>
 
           <listitem>
-            <para>Whether or not to use automake; the default is
-            "no".</para>
+            <para>Whether or not to use automake.</para>
 
-            <programlisting>use_automake      yes</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>use_automake        yes</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1614,7 +1883,17 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <listitem>
             <para>Environment variables to pass to automake.</para>
 
-            <programlisting>automake.env      CFLAGS=-I${prefix}/include</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>automake.env        CFLAGS=-I${prefix}/include</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1624,7 +1903,17 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <listitem>
             <para>Arguments to pass to automake.</para>
 
-            <programlisting>automake.args     --foreign</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>automake.args       --foreign</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1633,10 +1922,19 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
           <listitem>
             <para>Directory in which to run
-            <varname>${automake.cmd}</varname>; the default is
-            <varname>${worksrcpath}</varname>.</para>
+            <varname>${automake.cmd}</varname>.</para>
 
-            <programlisting>automake.dir      ./src</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: <varname>${worksrcpath}</varname></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>automake.dir        ./src</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1644,10 +1942,19 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>use_autoconf</term>
 
           <listitem>
-            <para>Whether or not to use autoconf; the default is
-            "no".</para>
+            <para>Whether or not to use autoconf.</para>
 
-            <programlisting>use_autoconf      yes</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>use_autoconf        yes</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1657,7 +1964,17 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <listitem>
             <para>Environmental variables to pass to autoconf.</para>
 
-            <programlisting>autoconf.env      CFLAGS=-I${prefix}/include/gtk12</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>autoconf.env        CFLAGS=-I${prefix}/include/gtk12</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1667,7 +1984,17 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <listitem>
             <para>Arguments to pass to autoconf.</para>
 
-            <programlisting>autoconf.args     -l src/aclocaldir</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: ???</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>autoconf.args       "-l src/aclocaldir"</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
@@ -1676,17 +2003,26 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
           <listitem>
             <para>Directory in which to run
-            <varname>${autoconf.cmd}</varname>; the default is
-            <varname>${worksrcpath}</varname>.</para>
+            <varname>${autoconf.cmd}</varname>.</para>
 
-            <programlisting>autoconf.dir      src</programlisting>
+            <itemizedlist>
+              <listitem>
+                <para>Default: <varname>${worksrcpath}</varname></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>autoconf.dir        src</programlisting>
+              </listitem>
+            </itemizedlist>
           </listitem>
         </varlistentry>
       </variablelist>
     </section>
   </section>
 
-  <section>
+  <section id="reference.phases.build">
     <title>Build Phase Keywords</title>
 
     <para>The list of keywords related to the build phase.</para>
@@ -1699,7 +2035,17 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <para>Make command to run in <varname>${worksrcdir}</varname>; the
           default is "make".</para>
 
-          <programlisting>build.cmd      pbxbuild</programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <command>make</command></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>build.cmd           pbxbuild</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -1710,7 +2056,19 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
           <para>Defines which "make" is required: "gnu" or "bsd". Sets
           build.cmd to either "gnumake" or "bsdmake" accordingly.</para>
 
-          <programlisting>build.type     gnu</programlisting>
+          <!-- TODO: how to display "gnu" or "bsd". -->
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>gnu</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>build.type          bsd</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -1722,8 +2080,9 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
         <term>build.post_args</term>
 
         <listitem>
-          <para>Main arguments to build.cmd; optional argument modifiers
-          pass arguments before and after the main arguments.</para>
+          <para>Main arguments to <varname>${build.cmd}</varname>; optional
+          argument modifiers pass arguments before and after the main
+          arguments.</para>
 
           <itemizedlist>
             <listitem>
@@ -1733,7 +2092,7 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>build.args    -DNOWARN
+              <programlisting>build.args          -DNOWARN
 
 </programlisting>
             </listitem>
@@ -1745,19 +2104,20 @@ configure.post_args  OPT="-D__DARWIN_UNIX03"</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>build.pre_args default:
+              <para><literal>build.pre_args</literal>, defaults to:
               <varname>${build.target.current}</varname></para>
             </listitem>
 
             <listitem>
-              <para>build.post_args default: none</para>
+              <para><literal>build.post_args</literal>, defaults to:
+              none</para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>build.pre_args  -project AudioSlicer.xcode
-build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
+              <programlisting>build.pre_args      -project AudioSlicer.xcode
+build.post_args     CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1771,30 +2131,23 @@ build.post_args CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlisting>
         <term>build.target-delete</term>
 
         <listitem>
-          <para>Build target to pass to ${build.cmd}; list modifiers add or
-          delete items from a previous Portfile build.target keyword or the
-          default set by MacPorts base.</para>
+          <para>Build target to pass to <varname>${build.cmd}</varname>; list
+          modifiers add or delete items from a previous Portfile build.target
+          keyword or the default set by MacPorts base.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: all</para>
+              <para>Default: <literal>all</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>build.target    all-src
-
-</programlisting>
+              <programlisting>build.target        all-src</programlisting>
+              <programlisting>build.target-append     doc extra
+build.target-delete     compat</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>build.target-append   doc extra
-build.target-delete   compat</programlisting>
         </listitem>
       </varlistentry>
 
@@ -1820,7 +2173,7 @@ build.target-delete   compat</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>use_parallel_build     yes</programlisting>
+              <programlisting>use_parallel_build  yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1828,7 +2181,7 @@ build.target-delete   compat</programlisting>
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.phases.destroot">
     <title>Destroot Phase Keywords</title>
 
     <para>The list of keywords related to the destroot phase.</para>
@@ -1839,10 +2192,19 @@ build.target-delete   compat</programlisting>
 
         <listitem>
           <para>Install command to run relative to
-          <varname>${worksrcdir}</varname>; default is
-          <varname>${build.cmd}</varname>.</para>
+          <varname>${worksrcdir}</varname>.</para>
 
-          <programlisting>destroot.cmd         pbxbuild</programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${build.cmd}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.cmd        pbxbuild</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -1850,11 +2212,23 @@ build.target-delete   compat</programlisting>
         <term>destroot.type</term>
 
         <listitem>
-          <para>Defines which "make" is required: either "gnu" or "bsd".
-          Sets install.cmd to either "gnumake" or "bsdmake"
+          <para>Defines which "make" is required: either "gnu" or "bsd". Sets
+          <varname>${destroot.cmd}</varname> to either "gnumake" or "bsdmake"
           accordingly.</para>
 
-          <programlisting>destroot.type        gnu</programlisting>
+          <!-- TODO: Options? -->
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${build.type}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.type       bsd</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -1866,8 +2240,8 @@ build.target-delete   compat</programlisting>
         <term>destroot.post_args</term>
 
         <listitem>
-          <para>Main arguments to ${destroot.cmd}; optional argument
-          modifiers pass arguments before and after the main
+          <para>Main arguments to <varname>${destroot.cmd}</varname>; optional
+          argument modifiers pass arguments before and after the main
           arguments.</para>
 
           <itemizedlist>
@@ -1878,7 +2252,7 @@ build.target-delete   compat</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>destroot.args    BINDIR=${prefix}/bin
+              <programlisting>destroot.args       BINDIR=${prefix}/bin
 
 </programlisting>
             </listitem>
@@ -1890,19 +2264,20 @@ build.target-delete   compat</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>destroot.pre_args default:
+              <para><literal>destroot.pre_args</literal>, defaults to:
               <varname>${destroot.target}</varname></para>
             </listitem>
 
             <listitem>
-              <para>destroot.post_args default: none</para>
+              <para><literal>destroot.post_args</literal>, defaults to:
+              none</para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>destroot.pre_args  -project AudioSlicer.xcode
-destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
+              <programlisting>destroot.pre_args   -project AudioSlicer.xcode
+destroot.post_args  INSTDIR=${destroot}${prefix}</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1916,9 +2291,9 @@ destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
         <term>destroot.target-delete</term>
 
         <listitem>
-          <para>Install target to pass to ${destroot.cmd}; list modifiers
-          add or delete items from a previous Portfile destroot.target
-          keyword or the default set by MacPorts base.</para>
+          <para>Install target to pass to <varname>${destroot.cmd}</varname>;
+          list modifiers add or delete items from a previous Portfile
+          destroot.target keyword or the default set by MacPorts base.</para>
 
           <itemizedlist>
             <listitem>
@@ -1928,18 +2303,11 @@ destroot.post_args INSTDIR=${destroot}${prefix}</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>destroot.target    install install-config install-commandmode
-
-</programlisting>
+              <programlisting>destroot.target     install install-config install-commandmode</programlisting>
+              <programlisting>destroot.target-append  install-plugins
+destroot.target-delete  install-commandmode</programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>List modifier examples:</para>
-
-          <programlisting>destroot.target-append   install-plugins
-destroot.target-delete   install-commandmode</programlisting>
         </listitem>
       </varlistentry>
 
@@ -1947,10 +2315,20 @@ destroot.target-delete   install-commandmode</programlisting>
         <term>destroot.destdir</term>
 
         <listitem>
-          <para>Arguments passed to ${destroot.cmd} to install correctly
-          into the destroot.</para>
+          <para>Arguments passed to <varname>${destroot.cmd}</varname> to
+          install correctly into the destroot.</para>
 
-          <programlisting>destroot.destdir     prefix=${destroot}${prefix}</programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>DESTDIR=${destroot}</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.destdir    prefix=${destroot}${prefix}</programlisting>
+            </listitem>
+          </itemizedlist>
 
           <note>
             <para>If an application's Makefile properly supports the DESTDIR
@@ -1964,16 +2342,45 @@ destroot.target-delete   install-commandmode</programlisting>
       </varlistentry>
 
       <varlistentry>
+        <term>destroot.umask</term>
+
+        <listitem>
+          <para>Umask to use during destroot.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>022</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.umask      002</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>destroot.keepdirs</term>
 
         <listitem>
           <para>A list of directories that should not be removed if empty
           upon destroot completion.</para>
 
-          <programlisting>destroot.keepdirs \
-              ${destroot}${prefix}/var/run \
-              ${destroot}${prefix}/var/log \
-              ${destroot}${prefix}/var/cache/mrtg</programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.keepdirs   ${destroot}${prefix}/var/run \
+                    ${destroot}${prefix}/var/log \
+                    ${destroot}${prefix}/var/cache/mrtg</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
 
@@ -1982,10 +2389,22 @@ destroot.target-delete   install-commandmode</programlisting>
 
         <listitem>
           <para>MacPorts tests for compliance to the common directory
-          structure in ${prefix}; the default is "no". If a port is not
+          structure in <varname>${prefix}</varname>. If a port is not
           compliant with the standard, set it to "yes".</para>
 
-          <programlisting>destroot.violate_mtree    yes</programlisting>
+          <!-- TODO: add a link to the standard -->
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.violate_mtree      yes</programlisting>
+            </listitem>
+          </itemizedlist>
         </listitem>
       </varlistentry>
     </variablelist>

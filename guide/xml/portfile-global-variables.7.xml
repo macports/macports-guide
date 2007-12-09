@@ -8,6 +8,8 @@
   <para>Global variables are variables available to any Portfile. For a list
   of additional variables available to ports that are assigned to a MacPorts
   Portgroup, see portgroup(7).</para>
+  <para>All of these variables except <varname>prefix</varname> are
+  read-only!</para>
 
   <variablelist>
     <varlistentry>
@@ -19,7 +21,7 @@
         overridden on a per port basis. For example, aqua applications are
         installed in <filename>/Applications/MacPorts</filename>.</para>
 
-        <para>Default: /opt/local</para>
+        <para>Default: <filename>/opt/local</filename></para>
       </listitem>
     </varlistentry>
 
@@ -44,6 +46,8 @@
 
       <listitem>
         <para>Full path to the Portfile location.</para>
+
+        <para>Value: <literal>work</literal></para>
       </listitem>
     </varlistentry>
 
@@ -53,6 +57,19 @@
       <listitem>
         <para>Path to port files relative to
         <varname>${portpath}</varname>.</para>
+
+        <para>Value: <literal>files</literal></para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>filespath</term>
+
+      <listitem>
+        <para>Path to port files relative to
+        <varname>${portpath}</varname>.</para>
+
+        <para>Value: <varname>${portpath}/${filesdir}</varname></para>
       </listitem>
     </varlistentry>
 
@@ -61,6 +78,10 @@
 
       <listitem>
         <para>Full path to work directory.</para>
+
+        <!-- TODO: what is ${portbuildpath}? -->
+
+        <para>Value: <varname>${portbuildpath}/work</varname></para>
       </listitem>
     </varlistentry>
 
@@ -68,8 +89,9 @@
       <term>worksrcpath</term>
 
       <listitem>
-        <para>Full path to extracted source code. Equivalent to
-        <varname>${workpath}/${worksrcdir}</varname>.</para>
+        <para>Full path to extracted source code.</para>
+
+        <para>Value: <varname>${workpath}/${worksrcdir}</varname></para>
       </listitem>
     </varlistentry>
 
@@ -77,8 +99,9 @@
       <term>destroot</term>
 
       <listitem>
-        <para>Full path into which software will be destrooted. Equivalent
-        to <filename>${workpath}/destroot</filename>.</para>
+        <para>Full path into which software will be destrooted.</para>
+
+        <para>Value: <varname>${workpath}/destroot</varname></para>
       </listitem>
     </varlistentry>
 
@@ -87,6 +110,10 @@
 
       <listitem>
         <para>Location to store downloaded distfiles.</para>
+
+        <!-- TODO: which value have the variables? -->
+
+        <para>Value: <varname>${sysportpath}/distfiles/${dist_subdir}/</varname></para>
       </listitem>
     </varlistentry>
 
@@ -110,7 +137,7 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>Identifies platform type (ie, "darwin", "freebsd",
+        <para>Identifies platform type (ie "darwin", "freebsd",
         etc).</para>
       </listitem>
     </varlistentry>
@@ -119,7 +146,7 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>Identifies hardware type (ie, "powerpc", "intel").</para>
+        <para>Identifies hardware type (ie "powerpc", "intel").</para>
       </listitem>
     </varlistentry>
 
@@ -133,6 +160,14 @@
     </varlistentry>
 
     <varlistentry>
+      <term>os.endian</term>
+
+      <listitem>
+        <para>Endianness of the processor (ie "bigEndian").</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>os.major</term>
 
       <listitem>
@@ -140,5 +175,14 @@
         for Darwin 8.0).</para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>x11prefix</term>
+
+      <listitem>
+        <para>Absolute path to X11.</para>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>

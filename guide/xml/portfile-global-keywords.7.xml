@@ -39,7 +39,8 @@
         <term>name</term>
 
         <listitem>
-          <para>The name of the Port; it should be lowercase.</para>
+          <para>The name of the Port; it should be lowercase to prevent
+          uninstallation problems due to a macports base bug.</para>
 
           <programlisting>name                foo</programlisting>
         </listitem>
@@ -63,6 +64,9 @@
           revisions. It should not be incremented for port revisions unless
           it would benefit users to upgrade an installed port, and cleared
           when the port is updated to a newer version.</para>
+          <para>It should be used if a bug in the Portfile was found and all
+          installations of this port have to be updated. If the change only
+          affects new installations, there is no need to increase it.</para>
 
           <programlisting>revision            1</programlisting>
         </listitem>
@@ -248,20 +252,27 @@
       software when satisfying a dependency by a port is not practical or
       desirable for a special reason. Dependencies of this type are called
       non-port dependencies.</para>
+      <para>Non-port dependencies should only be used if the application or
+      library can be installed by multiple ports (for example stable and
+      -devel version) or if it can't be installed with Macports.</para>
 
       <para>Port dependencies, the preferred type, are specified as shown in
       these examples:</para>
 
-      <programlisting>depends_lib        port:rrdtool port:apache2
+      <programlisting>depends_lib         port:rrdtool port:apache2
 
-depends_build      port:apache2 port:php5</programlisting>
+depends_build       port:libtool
+
+depends_run         port:apache2 port:php5</programlisting>
 
       <para>Non-port dependencies are specified as shown in these
       examples:</para>
 
-      <programlisting>depends_lib        lib:libX11.6:xorg
+      <programlisting>depends_lib         lib:libX11.6:xorg
 
-depends_build      bin:rrdtool</programlisting>
+depends_build       bin:glibtool:libtool
+
+depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
     </section>
   </section>
 
@@ -297,8 +308,8 @@ depends_build      bin:rrdtool</programlisting>
               <para>Example:</para>
 
               <programlisting>variant gnome requires glib {
-    configure.args-append --with-gnome
-    depends_lib-append port:gnome-session
+    configure.args-append   --with-gnome
+    depends_lib-append      port:gnome-session
 }</programlisting>
             </listitem>
           </itemizedlist>
@@ -313,6 +324,9 @@ depends_build      bin:rrdtool</programlisting>
           lists which variants are enabled by default. This allows for
           Portfile modularity and also allows users to suppress default
           variants if they wish.</para>
+          <para>Due to a bug in the current Macports base default_variants
+          shouldn't be used at the moment as they cause problems while
+          upgrading ports.</para>
 
           <itemizedlist>
             <listitem>
@@ -322,7 +336,7 @@ depends_build      bin:rrdtool</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>default_variants +ssl +tcpd
+              <programlisting>default_variants    +ssl +tcpd
 
 </programlisting>
             </listitem>
@@ -356,7 +370,7 @@ depends_build      bin:rrdtool</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>universal_variant  no</programlisting>
+              <programlisting>universal_variant   no</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -410,9 +424,8 @@ depends_build      bin:rrdtool</programlisting>
               <para>Examples:</para>
 
               <programlisting>livecheck.check     regex
-livecheck.url       http://dev.mysql.com/
-livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
-</programlisting>
+livecheck.url       ${homepage}
+livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -440,7 +453,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>livecheck.name   hibernate</programlisting>
+              <programlisting>livecheck.name      hibernate</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -536,7 +549,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>livecheck.url  http://ftp.gnu.org/gnu/bison/</programlisting>
+              <programlisting>livecheck.url       http://ftp.gnu.org/gnu/bison/</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -562,7 +575,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>livecheck.regex  4th-([a-z0-9.]+)-unix.tar.gz</programlisting>
+              <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix.tar.gz</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -587,7 +600,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>livecheck  md5 37e6a5b6516a680c7178b72021d3b706</programlisting>
+              <programlisting>livecheck.md5       37e6a5b6516a680c7178b72021d3b706</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -620,7 +633,7 @@ livecheck.regex     "Generally Available (${major_version}\\.\[0-9.\]+)"
             <listitem>
               <para>Example:</para>
 
-              <programlisting>distcheck.check  none</programlisting>
+              <programlisting>distcheck.check     none</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>

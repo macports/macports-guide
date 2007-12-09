@@ -26,7 +26,7 @@
 
   <note>
     <para>The variable <varname>startupitem_type</varname> in
-    ${prefix}/etc/macports/macports.conf may be set to
+    <filename>${prefix}/etc/macports/macports.conf</filename> may be set to
     <option>none</option> to globally override all StartupItem keywords
     found in Portfiles; this prevents StartupItems from being
     created.</para>

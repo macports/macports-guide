@@ -23,7 +23,7 @@
   <xi:include href="portfile-tcl.7.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-
+<!--
   <section id="reference.portgroup">
     <title>PortGroup</title>
 
@@ -479,4 +479,5 @@ adduser foo gid=[existsgroup foo]</programlisting>
 
     <para></para>
   </section>
+-->
 </chapter>
