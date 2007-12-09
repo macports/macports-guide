@@ -45,7 +45,7 @@ guide:
 	mkdir -p $(GUIDE-RESULT)
 	cp $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
 	cp $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
-	xsltproc --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/guide.html \
+	xsltproc --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/index.html \
 	    $(GUIDE-XSL) $(GUIDE-SRC)/guide.xml
 
 man:
