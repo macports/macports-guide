@@ -162,7 +162,7 @@
         <listitem>
           <para>Port application's homepage.</para>
 
-          <programlisting>homepage            http://www.somesite.org/apps</programlisting>
+          <programlisting>homepage            http://www.example.org/apps</programlisting>
         </listitem>
       </varlistentry>
 

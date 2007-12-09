@@ -145,8 +145,8 @@
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>master_sites        http://www.somesite.org/files/ \
-                    http://www.somemirror.org/somesite_org/files/
+              <programlisting>master_sites        http://www.example.org/files/ \
+                    http://www.examplemirror.org/example_org/files/
 
 </programlisting>
 
