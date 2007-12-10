@@ -5,8 +5,8 @@
   <title>Using MacPorts</title>
 
   <para>This chapter describes using the <command>port</command> command, port
-  variants, common tasks, port binaries, and setting up an rsync replication
-  server.</para>
+  variants, common tasks and port binaries<!--, and setting up an rsync
+  replication server-->.</para>
 
   <section id="using.port">
     <title>The port Command</title>
