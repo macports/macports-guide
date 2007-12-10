@@ -158,7 +158,7 @@ Maintainers: nomaintainer@macports.org</screen>
         <para>You may break up a port's installation into smaller steps for
         troubleshooting by passing <command>port</command> a prior
         installation phase such as fetch, configure, build, or destroot. See
-        section <link linkend="development.phases">Port Phases</link> for a
+        section <link linkend="reference.phases">Port Phases</link> for a
         complete list of phases.</para>
       </note>
     </section>
@@ -278,10 +278,11 @@ pkgconfig                      0.21_0 < 0.22_0]]></screen>
         <para>The <option>upgrade</option> option by default does not
         uninstall an upgraded port —it deactivates it. See section <link
         linkend="internals.images">Port Images</link>, and also <link
-        linkend="reference.phases.destroot">Destroot</link> and <link
-        linkend="reference.phases.activate">Activate</link> phases in <link
-        linkend="reference.phases">Port Phases</link>. If you wish to
-        uninstall the old version, use the <option>-u</option> option.</para>
+        linkend="reference.phases.introduction.destroot">Destroot</link> and
+        <link linkend="reference.phases.introduction.activate">Activate</link>
+        phases in <link linkend="reference.phases">Port Phases</link>. If you
+        wish to uninstall the old version, use the <option>-u</option>
+        option.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
       </note>

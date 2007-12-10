@@ -5,6 +5,139 @@
 <section id="reference.phases">
   <title>Port Phases</title>
 
+  <section id="reference.phases.introduction">
+    <title>Introduction</title>
+
+    <para>A MacPorts port has ten distinct phases. The MacPorts base is set to
+    perform default steps for applications that use the standard
+    <command>configure</command>, <command>make</command>, and <command>make
+    install</command> steps, but for applications that do not conform to this
+    behavior, installation phases may be declared in a Portfile to <link
+    linkend="development.examples.augment">augment</link> or <link
+    linkend="development.examples.override">override</link> the default
+    behavior as described in the <link linkend="development">Portfile
+    Development</link> chapter.</para>
+
+    <section id="reference.phases.introduction.fetch">
+      <title>Fetch</title>
+
+      <para>Overview: Fetch the <varname>${distfiles}</varname> from
+      <varname>${master_sites}</varname> and place it in
+      <filename>${prefix}/var/macports/distfiles</filename>.</para>
+    </section>
+
+    <section id="reference.phases.introduction.checksum">
+      <title>Checksum</title>
+
+      <para>Overview: Compare <varname>${checksums}</varname> specified in a
+      <filename>Portfile</filename> to the checksums of the fetched
+      ${distfiles}.</para>
+    </section>
+
+    <section id="reference.phases.introduction.extract">
+      <title>Extract</title>
+
+      <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
+      the path ${prefix}/var/macports/build/..../work</para>
+    </section>
+
+    <section id="reference.phases.introduction.patch">
+      <title>Patch</title>
+
+      <para>Overview: Apply optional <ulink
+      url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
+      specified in <varname>${patchfiles}</varname> to modify a port's source
+      code file(s).</para>
+
+      <para>Details: Patch files are made using the <ulink
+      url="http://en.wikipedia.org/wiki/Diff">diff</ulink> command, and
+      MacPorts patches should be created as <ulink
+      url="http://en.wikipedia.org/wiki/Diff#Unified_format">unified
+      diffs</ulink>.</para>
+    </section>
+
+    <section id="reference.phases.introduction.configure">
+      <title>Configure</title>
+
+      <para>Overview: Execute the command "configure" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section id="reference.phases.introduction.build">
+      <title>Build</title>
+
+      <para>Overview: Execute the command "make" in
+      <varname>${workpath}</varname>.</para>
+    </section>
+
+    <section id="reference.phases.introduction.destroot">
+      <title>Destroot</title>
+
+      <para>Overview: Execute the command <command>make install
+      DESTDIR=${destroot}</command> in <varname>${workpath}</varname>.</para>
+
+      <para>Details: Understanding the destroot phase is critical to
+      understanding MacPorts, because, unlike some port systems, MacPorts
+      "stages" an installation into an intermediate location —not the final
+      file destination. There are two main advantages to this method.</para>
+
+      <orderedlist>
+        <listitem>
+          <para>A port's files may be cleanly uninstalled because all files
+          and locations are tracked.</para>
+        </listitem>
+
+        <listitem>
+          <para>Since a port's files are not installed into MacPorts directory
+          structure until an activation phase, a port may be deactivated
+          through MacPorts to allow activation of a different version of the
+          same port, thus allowing two versions of a port to be present,
+          though not both active, on a given host.</para>
+        </listitem>
+      </orderedlist>
+
+      <note>
+        <para>The <varname>$(DESTDIR)</varname> variable must be supported in
+        an application's Makefile for the MacPorts destroot phase to work
+        properly. Urge developers to fully support
+        <varname>$(DESTDIR)</varname> in their Makefiles.</para>
+      </note>
+
+      <para>At the beginning of the destroot phase, all the directories in the
+      file <filename>${prefix}/etc/macports/prefix.mtree</filename> are
+      created. Any directories still empty upon completion of the destroot
+      phase are removed unless a directory is listed using a destroot.keepdirs
+      keyword.</para>
+    </section>
+
+    <section id="reference.phases.introduction.archive">
+      <title>Archive</title>
+
+      <para>Overview: Use tar to create a tarball of a port's destrooted files
+      and copy it to
+      <filename>${prefix}/var/macports/packages/</filename>.</para>
+    </section>
+
+    <section id="reference.phases.introduction.install">
+      <title>Install</title>
+
+      <para>Overview: Copy a port's destrooted files into
+      <filename>${prefix}/var/macports/software</filename>. See <link
+      linkend="internals.images">Port Images</link> in the <link
+      linkend="internals">MacPorts Internals</link> chapter for
+      details.</para>
+    </section>
+
+    <section id="reference.phases.introduction.activate">
+      <title>Activate</title>
+
+      <para>Overview: Set <ulink
+      url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
+      to <filename>${prefix}/var/macports/software</filename> to point to
+      ${prefix}.</para>
+    </section>
+  </section>
+
   <section id="reference.phases.installation">
     <title>Installation Phase Keywords</title>
 

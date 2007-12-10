@@ -74,7 +74,7 @@
 
     <note>
       <para>For a detailed description of all port phases, see the <link
-      linkend="reference">Portfile Reference</link> chapter.</para>
+      linkend="reference.phases">Portfile Reference</link> chapter.</para>
     </note>
   </section>
 
