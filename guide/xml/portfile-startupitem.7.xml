@@ -32,7 +32,7 @@
     created.</para>
   </note>
 
-  <section>
+  <section id="reference.startupitems.attributes">
     <title>StartupItem Attributes</title>
 
     <para>The keywords in this section may be used with either
@@ -188,7 +188,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.startupitems.executable">
     <title>Executable StartupItems</title>
 
     <para>Daemons run continuously, so monitoring the health of daemon
@@ -267,7 +267,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.startupitems.script">
     <title>Script StartupItems</title>
 
     <para>StartupItems of type <quote>script</quote> use
@@ -450,7 +450,7 @@ startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.startupitems.launchd">
     <title>Loading / Unloading StartupItems into launchd</title>
 
     <para>A port with a StartupItem places a link to a .plist file for the
@@ -470,7 +470,7 @@ startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting
     <programlisting><prompt>%%</prompt> <userinput>sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
   </section>
 
-  <section>
+  <section id="reference.startupitems.internals">
     <title>StartupItem Internals</title>
 
     <para>During port installation a MacPorts StartupItem creates a .plist

@@ -15,7 +15,7 @@
   whole, whereas the keywords listed under a port phase specify information
   to be used during a particular installation phase.</para>
 
-  <section>
+  <section id="reference.keywords.general">
     <title>General</title>
 
     <para>The list of global keywords.</para>
@@ -178,7 +178,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.keywords.dependencies">
     <title>Dependencies</title>
 
     <para>Free and open source software is highly modular, and MacPorts
@@ -276,7 +276,7 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
     </section>
   </section>
 
-  <section>
+  <section id="reference.keywords.variants">
     <title>Variants</title>
 
     <para>MacPorts variants are conditional modifications of port
@@ -378,7 +378,7 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.keywords.livecheck">
     <title>Livecheck / Distcheck</title>
 
     <para>Options livecheck and distcheck are especially useful for port

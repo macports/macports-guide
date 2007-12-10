@@ -310,8 +310,9 @@ libdap depends on openssl</screen>
       corresponding to a given port has been updated at the developer's
       download site. It's especially useful for port maintainers, but others
       may also wish to see if a port has the latest available distribution
-      source. See section <link linkend="reference.livecheck">Livecheck</link>
-      for more information.</para>
+      source. See section <link
+      linkend="reference.keywords.livecheck">Livecheck</link> for more
+      information.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port livecheck rrdtool</userinput></programlisting>
 
