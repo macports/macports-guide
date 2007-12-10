@@ -64,3 +64,4 @@ man:
 clean:
 	rm -rf $(GUIDE-RESULT)
 	rm -rf $(MAN-RESULT)
+	rm -rf $(MAN-TMP)
