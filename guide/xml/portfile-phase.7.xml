@@ -1484,10 +1484,15 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </listitem>
 
             <listitem>
-              <!-- TODO: should this be Options or renamed? -->
-              <para>Options:</para>
-
-              <programlisting>gcc-3.3 gcc-4.0 apple-gcc-3.3 apple-gcc-4.0 macports-gcc-3.3 macports-gcc-3.4 macports-gcc-4.0 macports-gcc-4.1 macports-gcc-4.2 macports-gcc-4.3</programlisting>
+              <para>Values: <literal>gcc-3.3</literal>
+              <literal>gcc-4.0</literal> <literal>apple-gcc-3.3</literal>
+              <literal>apple-gcc-4.0</literal>
+              <literal>macports-gcc-3.3</literal>
+              <literal>macports-gcc-3.4</literal>
+              <literal>macports-gcc-4.0</literal>
+              <literal>macports-gcc-4.1</literal>
+              <literal>macports-gcc-4.2</literal>
+              <literal>macports-gcc-4.3</literal></para>
             </listitem>
 
             <listitem>
@@ -2032,8 +2037,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
         <term>build.cmd</term>
 
         <listitem>
-          <para>Make command to run in <varname>${worksrcdir}</varname>; the
-          default is "make".</para>
+          <para>Make command to run in <varname>${worksrcdir}</varname>. Only
+          use it if you can't use <literal>build.type</literal>.</para>
 
           <itemizedlist>
             <listitem>
@@ -2053,14 +2058,18 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
         <term>build.type</term>
 
         <listitem>
-          <para>Defines which "make" is required: "gnu" or "bsd". Sets
-          build.cmd to either "gnumake" or "bsdmake" accordingly.</para>
-
-          <!-- TODO: how to display "gnu" or "bsd". -->
+          <para>Defines which "make" is required. Sets
+          <varname>${build.cmd}</varname> to either "gnumake" or "bsdmake"
+          accordingly.</para>
 
           <itemizedlist>
             <listitem>
               <para>Default: <literal>gnu</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Values: <literal>gnu</literal>
+              <literal>bsd</literal></para>
             </listitem>
 
             <listitem>
@@ -2192,7 +2201,8 @@ build.target-delete     compat</programlisting>
 
         <listitem>
           <para>Install command to run relative to
-          <varname>${worksrcdir}</varname>.</para>
+          <varname>${worksrcdir}</varname>. Only use it if you can't use
+          <literal>destroot.type</literal>.</para>
 
           <itemizedlist>
             <listitem>
@@ -2212,15 +2222,18 @@ build.target-delete     compat</programlisting>
         <term>destroot.type</term>
 
         <listitem>
-          <para>Defines which "make" is required: either "gnu" or "bsd". Sets
+          <para>Defines which "make" is required. Sets
           <varname>${destroot.cmd}</varname> to either "gnumake" or "bsdmake"
           accordingly.</para>
-
-          <!-- TODO: Options? -->
 
           <itemizedlist>
             <listitem>
               <para>Default: <varname>${build.type}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Values: <literal>gnu</literal>
+              <literal>bsd</literal></para>
             </listitem>
 
             <listitem>
