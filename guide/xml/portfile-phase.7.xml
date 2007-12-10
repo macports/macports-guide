@@ -2538,7 +2538,9 @@ destroot.target-delete  install-commandmode</programlisting>
           structure in <varname>${prefix}</varname>. If a port is not
           compliant with the standard, set it to "yes".</para>
 
-          <!-- TODO: add a link to the standard -->
+          <para>You can find the macports standard in <link
+          linkend="internals.hierarchy">MacPorts File Hierarchy</link> or in
+          the porthier(7) man page.</para>
 
           <itemizedlist>
             <listitem>
