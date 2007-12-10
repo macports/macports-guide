@@ -5,5 +5,330 @@
 <section id="reference.tcl-extensions">
   <title>Tcl Extensions</title>
 
-  <para>TODO: Describe Tcl Extensions here ..</para>
+  <para>A MacPorts Portfile is a Tcl script, so it may contain any arbitrary
+  Tcl code you may learn about in a <ulink
+  url="http://tmml.sourceforge.net/doc/tcl/">Tcl reference manual</ulink>.
+  However, few authors will use arbitrary Tcl code; the vast majority will use
+  Tcl extensions that are coded within MacPorts for performing the most common
+  tasks needed for Portfiles. The list below is a list of Tcl extensions
+  provided by MacPorts base.</para>
+
+  <variablelist>
+    <varlistentry>
+      <term>file</term>
+
+      <listitem>
+        <para>Description.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>file copy</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>file move</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>file rename</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>file delete [-force]</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>file mkdir</term>
+
+            <listitem>
+              <para></para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>macros</term>
+
+      <listitem>
+        <para>Description.</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>copy</term>
+
+            <listitem>
+              <para>Shorthand alternative to "file copy".</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>move</term>
+
+            <listitem>
+              <para>Shorthand alternative to "file rename".</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>delete file ...</term>
+
+            <listitem>
+              <para>Deletes each of the given files/directories. Behaves
+              similarly to file delete -force except that file delete
+              -force will fail to delete directories properly on 10.3
+              systems.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>touch</term>
+
+            <listitem>
+              <para>Mimicks the BSD touch command.</para>
+            </listitem>
+          </varlistentry>
+
+          <varlistentry>
+            <term>ln</term>
+
+            <listitem>
+              <para>Mimickes the BSD ln command.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>xinstall</term>
+
+      <listitem>
+        <para>xinstall copies files and creates directories; it is
+        intended to be compatible with install(1).</para>
+
+        <variablelist>
+          <varlistentry>
+            <term>xinstall [-o <replaceable>owner</replaceable>] [-g
+            <replaceable>group</replaceable>] [-m
+            <replaceable>mode</replaceable>] [<replaceable>file1 file2
+            ...</replaceable>] <replaceable>directory</replaceable></term>
+
+            <listitem>
+              <para>Install the specified file(s) to a destination
+              directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>xinstall [-o <replaceable>owner</replaceable>] [-g
+            <replaceable>group</replaceable>] [-m
+            <replaceable>mode</replaceable>] [-W
+            <replaceable>dir</replaceable>] [<replaceable>file1 file2
+            ...</replaceable>] <replaceable>directory</replaceable></term>
+
+            <listitem>
+              <para>Change to <option>dir</option> and install file(s) to
+              a destination directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>eval xinstall [-o <replaceable>owner</replaceable>] [-g
+            <replaceable>group</replaceable>] [-m
+            <replaceable>mode</replaceable>] [glob
+            <replaceable>pattern</replaceable>]
+            <replaceable>directory</replaceable></term>
+
+            <listitem>
+              <para>Install the file(s) matching the glob pattern to a
+              destination directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>xinstall -d [-o <replaceable>owner</replaceable>] [-g
+            <replaceable>group</replaceable>] [-m
+            <replaceable>mode</replaceable>]
+            <replaceable>directory</replaceable></term>
+
+            <listitem>
+              <para>Create a directory.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <para>Defaults:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>owner -</para>
+          </listitem>
+
+          <listitem>
+            <para>group -</para>
+          </listitem>
+
+          <listitem>
+            <para>mode -</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Examples:</para>
+
+        <programlisting>xinstall -m 640 ${worksrcpath}/doc README \
+   ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+        <programlisting>xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
+   ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+        <programlisting>eval xinstall -m 640 [glob ${worksrcpath}/doc/*] \
+   ${destroot}${prefix}/share/doc/${name}</programlisting>
+
+        <programlisting>xinstall -d ${destroot}${prefix}/share/doc/${name}</programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>reinplace</term>
+
+      <listitem>
+        <para>Description.</para>
+
+        <para>Examples:</para>
+
+        <programlisting>example 1</programlisting>
+
+        <programlisting>example 2</programlisting>
+
+        <programlisting>example 3</programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>user/group</term>
+
+      <listitem>
+        <para></para>
+
+        <variablelist>
+          <varlistentry>
+            <term>adduser username [uid=<replaceable>uid</replaceable>]
+            [gid=<replaceable>gid</replaceable>]
+            [passwd=<replaceable>passwd</replaceable>]
+            [realname=<replaceable>realname</replaceable>]
+            [home=<replaceable>home</replaceable>]
+            [shell=<replaceable>shell</replaceable>]</term>
+
+            <listitem>
+              <para>Add a new local user to the system with the specified
+              uid, gid, password, real name, home directory and login
+              shell.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>existsuser <replaceable>username</replaceable></term>
+
+            <listitem>
+              <para>Check if a local user exists.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>nextuid</term>
+
+            <listitem>
+              <para>Returns the highest used uid plus one.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>addgroup <replaceable>group</replaceable>
+            [gid=<replaceable>gid</replaceable>]
+            [passwd=<replaceable>passwd</replaceable>]
+            [realname=<replaceable>realname</replaceable>]
+            [users=<replaceable>users</replaceable>]</term>
+
+            <listitem>
+              <para>Add a new local group to the system, with the
+              specified gid, password, real name, and with a list users as
+              members.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>existsgroup <replaceable>group</replaceable></term>
+
+            <listitem>
+              <para>Check if a local group exists and return the
+              corresponding gid. This can be used with adduser:</para>
+
+              <programlisting>addgroup foo
+adduser foo gid=[existsgroup foo]</programlisting>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+
+        <variablelist>
+          <varlistentry>
+            <term>nextgid</term>
+
+            <listitem>
+              <para>Returns the highest used gid plus one.</para>
+            </listitem>
+          </varlistentry>
+        </variablelist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>External program execution</term>
+
+      <listitem>
+        <para>Use only when ....</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </section>
