@@ -322,10 +322,10 @@
             <variablelist>
               <varlistentry>
                 <term>eval xinstall [-o owner] [-g group] [-m mode] [glob
-                regexp] directory</term>
+                pattern] directory</term>
 
                 <listitem>
-                  <para>Install the file(s) matching the glob expression to a
+                  <para>Install the file(s) matching the glob pattern to a
                   destination directory.</para>
                 </listitem>
               </varlistentry>
