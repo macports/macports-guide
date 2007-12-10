@@ -352,7 +352,7 @@ variant ssl     { configure.args-append --with-ssl }
 variant debug   { configure.args-append --enable-debug }</programlisting>
 
       <para>In the example variant declaration, the configure argument
-      <literal>--without-x</literal> is removed and a numner of others are
+      <literal>--without-x</literal> is removed and a number of others are
       appended.</para>
 
       <programlisting>variant x11 description {Builds port as an X11 program with Lucid widgets} {
