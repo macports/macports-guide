@@ -487,6 +487,7 @@ DEBUG: Executing archive_finish
     </section>
   </section>
 
+<!--
   <section id="using.rsync-replication">
     <title>Rsync Replication Servers</title>
 
@@ -596,4 +597,5 @@ rsync_dir               release/base/</programlisting>
       </orderedlist>
     </section>
   </section>
+-->
 </chapter>
