@@ -163,7 +163,7 @@
     </section>
   </section>
 
-  <section id="reference.tcl-extensions">
+  <section id="reference.tcl-extensions-old">
     <title>Tcl Extensions</title>
 
     <para>A MacPorts Portfile is a Tcl script, so it may contain any arbitrary
@@ -297,8 +297,10 @@
 
             <variablelist>
               <varlistentry>
-                <term>xinstall [-o owner] [-g group] [-m mode] [file1 file2
-                ...] directory</term>
+                <term>xinstall [-o <replaceable>owner</replaceable>] [-g
+                <replaceable>group</replaceable>] [-m
+                <replaceable>mode</replaceable>] [<replaceable>file1 file2
+                ...</replaceable>] <replaceable>directory</replaceable></term>
 
                 <listitem>
                   <para>Install the specified file(s) to a destination
@@ -309,8 +311,11 @@
 
             <variablelist>
               <varlistentry>
-                <term>xinstall [-o owner] [-g group] [-m mode] [-W dir] [file1
-                file2 ...] directory</term>
+                <term>xinstall [-o <replaceable>owner</replaceable>] [-g
+                <replaceable>group</replaceable>] [-m
+                <replaceable>mode</replaceable>] [-W
+                <replaceable>dir</replaceable>] [<replaceable>file1 file2
+                ...</replaceable>] <replaceable>directory</replaceable></term>
 
                 <listitem>
                   <para>Change to <option>dir</option> and install file(s) to
@@ -321,8 +326,11 @@
 
             <variablelist>
               <varlistentry>
-                <term>eval xinstall [-o owner] [-g group] [-m mode] [glob
-                pattern] directory</term>
+                <term>eval xinstall [-o <replaceable>owner</replaceable>] [-g
+                <replaceable>group</replaceable>] [-m
+                <replaceable>mode</replaceable>] [glob
+                <replaceable>pattern</replaceable>]
+                <replaceable>directory</replaceable></term>
 
                 <listitem>
                   <para>Install the file(s) matching the glob pattern to a
@@ -333,8 +341,10 @@
 
             <variablelist>
               <varlistentry>
-                <term>xinstall -d [-o owner] [-g group] [-m mode]
-                directory</term>
+                <term>xinstall -d [-o <replaceable>owner</replaceable>] [-g
+                <replaceable>group</replaceable>] [-m
+                <replaceable>mode</replaceable>]
+                <replaceable>directory</replaceable></term>
 
                 <listitem>
                   <para>Create a directory.</para>
@@ -397,8 +407,12 @@
 
             <variablelist>
               <varlistentry>
-                <term>adduser username [uid=uid] [gid=gid] [passwd=passwd]
-                [realname=realname] [home=home] [shell=shell]</term>
+                <term>adduser username [uid=<replaceable>uid</replaceable>]
+                [gid=<replaceable>gid</replaceable>]
+                [passwd=<replaceable>passwd</replaceable>]
+                [realname=<replaceable>realname</replaceable>]
+                [home=<replaceable>home</replaceable>]
+                [shell=<replaceable>shell</replaceable>]</term>
 
                 <listitem>
                   <para>Add a new local user to the system with the specified
@@ -410,7 +424,7 @@
 
             <variablelist>
               <varlistentry>
-                <term>existsuser username</term>
+                <term>existsuser <replaceable>username</replaceable></term>
 
                 <listitem>
                   <para>Check if a local user exists.</para>
@@ -430,8 +444,11 @@
 
             <variablelist>
               <varlistentry>
-                <term>addgroup group [gid=gid] [passwd=passwd]
-                [realname=realname] [users=users]</term>
+                <term>addgroup <replaceable>group</replaceable>
+                [gid=<replaceable>gid</replaceable>]
+                [passwd=<replaceable>passwd</replaceable>]
+                [realname=<replaceable>realname</replaceable>]
+                [users=<replaceable>users</replaceable>]</term>
 
                 <listitem>
                   <para>Add a new local group to the system, with the
@@ -443,7 +460,7 @@
 
             <variablelist>
               <varlistentry>
-                <term>existsgroup group</term>
+                <term>existsgroup <replaceable>group</replaceable></term>
 
                 <listitem>
                   <para>Check if a local group exists and return the
