@@ -1604,7 +1604,11 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           set. Manually set variables are not overwritten. Dependencies are
           not added for you, as they may be just build- or also
           run-dependencies. Keep in mind that not all compiler suites might
-          be available on your platform.</para>
+          be available on your platform: <literal>gcc-3.3</literal> is
+          available on Mac OS X 10.3 and 10.4 powerpc,
+          <literal>gcc-4.0</literal> is available on 10.4 and 10.5,
+          <literal>gcc-4.2</literal> is available as preview for 10.5.
+          </para>
 
           <itemizedlist>
             <listitem>
@@ -1618,7 +1622,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <listitem>
               <para>Values: <literal>gcc-3.3</literal>
-              <literal>gcc-4.0</literal> <literal>apple-gcc-3.3</literal>
+              <literal>gcc-4.0</literal> <literal>gcc-4.2</literal>
+              <literal>apple-gcc-3.3</literal>
               <literal>apple-gcc-4.0</literal>
               <literal>macports-gcc-3.3</literal>
               <literal>macports-gcc-3.4</literal>
