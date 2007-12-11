@@ -1605,7 +1605,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           not added for you, as they may be just build- or also
           run-dependencies. Keep in mind that not all compiler suites might
           be available on your platform: <literal>gcc-3.3</literal> is
-          available on Mac OS X 10.3 and 10.4 powerpc,
+          available on Mac OS X 10.3 and 10.4 PowerPC,
           <literal>gcc-4.0</literal> is available on 10.4 and 10.5,
           <literal>gcc-4.2</literal> is available as preview for 10.5.
           </para>
