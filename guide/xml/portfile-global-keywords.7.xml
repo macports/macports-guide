@@ -1,19 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.keywords">
   <title>Global Keywords</title>
 
   <para>MacPorts keywords are used to specify required or optional items
-  within a Portfile, or to override default options used by MacPorts base
-  for individual ports. Keywords are to be used within the "global" and
-  "variant" sections of Portfiles, and not within optional port phase
+  within a Portfile, or to override default options used by MacPorts base for
+  individual ports. Keywords are to be used within the "global" and "variant"
+  sections of Portfiles, and not within optional port phase
   declarations.</para>
 
   <para>The global keywords listed below specify information for ports as a
-  whole, whereas the keywords listed under a port phase specify information
-  to be used during a particular installation phase.</para>
+  whole, whereas the keywords listed under a port phase specify information to
+  be used during a particular installation phase.</para>
 
   <section id="reference.keywords.general">
     <title>General</title>
@@ -25,9 +24,9 @@
         <term>PortSystem</term>
 
         <listitem>
-          <para>The top line of every Portfile; it must be followed by a
-          blank line. It defines which version of the Portfile interpreter
-          will be used.</para>
+          <para>The top line of every Portfile; it must be followed by a blank
+          line. It defines which version of the Portfile interpreter will be
+          used.</para>
 
           <programlisting>PortSystem          1.0
 
@@ -61,9 +60,10 @@
 
         <listitem>
           <para>Optional keyword (default is 0) that is used to track port
-          revisions. It should not be incremented for port revisions unless
-          it would benefit users to upgrade an installed port, and cleared
-          when the port is updated to a newer version.</para>
+          revisions. It should not be incremented for port revisions unless it
+          would benefit users to upgrade an installed port, and cleared when
+          the port is updated to a newer version.</para>
+
           <para>It should be used if a bug in the Portfile was found and all
           installations of this port have to be updated. If the change only
           affects new installations, there is no need to increase it.</para>
@@ -76,14 +76,32 @@
         <term>epoch</term>
 
         <listitem>
-          <para>Optional keyword (default is 0) that is used if the new port
-          version looks older than the previous version (for example 1.10
-          -&gt; 1.2). Often the epoch is formatted like a date, but it can
-          simple a number like 1.</para>
+          <para>An optional keyword (default value is 0) that may be used when
+          a software developer updates an application to a version that is
+          numerically less than the previous version. For example 1.10 -&gt;
+          1.2 or 20070928 -&gt; 1.0. In these cases, an epoch may be used to
+          ensure that port version comparisons are done properly. Often the
+          epoch is formatted like a date, but it can simply be a number such
+          as 1.</para>
 
-          <programlisting>epoch               20070924</programlisting>
+          <programlisting>epoch               20080924</programlisting>
 
           <programlisting>epoch               1</programlisting>
+
+          <note>
+            <para>If an epoch is used it must be incremented for each
+            subsequent port update; it must never be decreased or reset to
+            zero, because this would cause port version comparisons to fail to
+            see when ports are out of date.</para>
+          </note>
+
+          <para>An epoch will not be needed for most ports, and good use of a
+          port's version can even make using an epoch unneccesary even for
+          application distributions without official version numbers. For
+          example, if a application version 1.5 is superceded by a snapshot
+          release 20081022, the new release could be given version number
+          1.5.20081022, rather than 20081022, so the newer release will have a
+          numericaly greater value. </para>
         </listitem>
       </varlistentry>
 
@@ -91,9 +109,9 @@
         <term>categories</term>
 
         <listitem>
-          <para>The category under which the ported software falls. The
-          first category should be the same as the directory within which
-          the Portfile is stored; secondary and tertiary categories may be
+          <para>The category under which the ported software falls. The first
+          category should be the same as the directory within which the
+          Portfile is stored; secondary and tertiary categories may be
           selected.</para>
 
           <programlisting>categories          net security</programlisting>
@@ -181,18 +199,17 @@
   <section id="reference.keywords.dependencies">
     <title>Dependencies</title>
 
-    <para>Free and open source software is highly modular, and MacPorts
-    ports often require that other ports be installed beforehand; these
+    <para>Free and open source software is highly modular, and MacPorts ports
+    often require that other ports be installed beforehand; these
     prerequisites for a given port are called a port's
     <quote>dependencies</quote>.</para>
 
-    <para>There are three types of MacPorts dependencies: library, build,
-    and run dependencies. Dependency types are important for proper port
-    upgrade and uninstall behavior. For example, you may not uninstall a
-    port that is a library dependency for another port, though you may
-    remove one with a build dependency; likewise, upgrading a port will
-    upgrade its library and build dependencies also, but not its run
-    dependencies.</para>
+    <para>There are three types of MacPorts dependencies: library, build, and
+    run dependencies. Dependency types are important for proper port upgrade
+    and uninstall behavior. For example, you may not uninstall a port that is
+    a library dependency for another port, though you may remove one with a
+    build dependency; likewise, upgrading a port will upgrade its library and
+    build dependencies also, but not its run dependencies.</para>
 
     <variablelist>
       <varlistentry>
@@ -223,8 +240,8 @@
           <para>The list of dependencies to check before phases
           <option>build</option>, <option>destroot</option>,
           <option>install</option>, and <option>package</option>. Build
-          dependencies are needed when software is compiled, but not needed
-          at all once the software is compiled and installed.</para>
+          dependencies are needed when software is compiled, but not needed at
+          all once the software is compiled and installed.</para>
         </listitem>
       </varlistentry>
 
@@ -252,6 +269,7 @@
       software when satisfying a dependency by a port is not practical or
       desirable for a special reason. Dependencies of this type are called
       non-port dependencies.</para>
+
       <para>Non-port dependencies should only be used if the application or
       library can be installed by multiple ports (for example stable and
       -devel version) or if it can't be installed with Macports.</para>
@@ -279,9 +297,8 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
   <section id="reference.keywords.variants">
     <title>Variants</title>
 
-    <para>MacPorts variants are conditional modifications of port
-    installation behavior that may be invoked by a user at the time of port
-    install.</para>
+    <para>MacPorts variants are conditional modifications of port installation
+    behavior that may be invoked by a user at the time of port install.</para>
 
     <variablelist>
       <varlistentry>
@@ -290,13 +307,13 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
 
         <listitem>
           <para>The variant declaration may contain any keywords that can be
-          placed in a Portfile's global section. If you wish to execute
-          system (shell) calls or Tcl extensions during the execution of a
-          port phase, you should place those statements within a
+          placed in a Portfile's global section. If you wish to execute system
+          (shell) calls or Tcl extensions during the execution of a port
+          phase, you should place those statements within a
           <literal>variant_isset</literal> conditional within a phase
           declaration and not within the variant declaration itself.
-          Dependencies and conflicts with other variants in the same port
-          can be expressed with requires and conflicts. See the isset Tcl
+          Dependencies and conflicts with other variants in the same port can
+          be expressed with requires and conflicts. See the isset Tcl
           extension.</para>
 
           <itemizedlist>
@@ -320,10 +337,11 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
         <term>default_variants</term>
 
         <listitem>
-          <para>If variants are defined, then the default_variants value
-          lists which variants are enabled by default. This allows for
-          Portfile modularity and also allows users to suppress default
-          variants if they wish.</para>
+          <para>If variants are defined, then the default_variants value lists
+          which variants are enabled by default. This allows for Portfile
+          modularity and also allows users to suppress default variants if
+          they wish.</para>
+
           <para>Due to a bug in the current Macports base default_variants
           shouldn't be used at the moment as they cause problems while
           upgrading ports.</para>
@@ -344,8 +362,8 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
         </listitem>
 
         <listitem>
-          <para>Default variants may be suppressed by preceding a variant
-          name with a "-" as shown in this example.</para>
+          <para>Default variants may be suppressed by preceding a variant name
+          with a "-" as shown in this example.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
         </listitem>
@@ -357,10 +375,9 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
         <listitem>
           <para>When using MacPorts on Mac OS X, a universal variant is
           defined by default to configure ports with universal flags. The
-          variant can be overridden if the default code does not work (see
-          the Configure Universal section below), or suppressed if a
-          universal variant is not possible for the port with this
-          keyword.</para>
+          variant can be overridden if the default code does not work (see the
+          Configure Universal section below), or suppressed if a universal
+          variant is not possible for the port with this keyword.</para>
 
           <itemizedlist>
             <listitem>
@@ -403,16 +420,16 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
 
           <para>Generic download site options are to specify a
           <option>moddate</option> (modification date) of a URL resource), a
-          <option>regex</option> (retrieve the version by applying a regex
-          to a URL resource), <option>regexm</option> (retrieve the version
-          by applying a multi-line regex to a URL resource),
-          <option>md5</option> (compares the md5 sum of a URL resource) or
-          <option>none</option> (no check).</para>
+          <option>regex</option> (retrieve the version by applying a regex to
+          a URL resource), <option>regexm</option> (retrieve the version by
+          applying a multi-line regex to a URL resource), <option>md5</option>
+          (compares the md5 sum of a URL resource) or <option>none</option>
+          (no check).</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: sourceforge or googlecode if the master_sites
-              is one of these, else freshmeat.</para>
+              <para>Default: sourceforge or googlecode if the master_sites is
+              one of these, else freshmeat.</para>
             </listitem>
 
             <listitem>
@@ -435,8 +452,8 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
         <term>livecheck.name</term>
 
         <listitem>
-          <para>Name of the project for live checks; only used with
-          freshmeat, sourceforge, and googlecode livechecks.</para>
+          <para>Name of the project for live checks; only used with freshmeat,
+          sourceforge, and googlecode livechecks.</para>
 
           <itemizedlist>
             <listitem>
@@ -446,8 +463,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values:
-              <replaceable>any_project_name</replaceable></para>
+              <para>Values: <replaceable>any_project_name</replaceable></para>
             </listitem>
 
             <listitem>
@@ -469,9 +485,8 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: SourceForge:
-              <varname>${livecheck.name}</varname> ; GoogleCode: first
-              ${distfiles} item</para>
+              <para>Default: SourceForge: <varname>${livecheck.name}</varname>
+              ; GoogleCode: first ${distfiles} item</para>
             </listitem>
 
             <listitem>
@@ -559,8 +574,8 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
         <term>livecheck.regex</term>
 
         <listitem>
-          <para>Regular expression to parse the resource for regex checks.
-          Be sure to use a regular expression grouping around the version
+          <para>Regular expression to parse the resource for regex checks. Be
+          sure to use a regular expression grouping around the version
           component.</para>
 
           <itemizedlist>
@@ -593,8 +608,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values:
-              <replaceable>any_md5_checksum</replaceable></para>
+              <para>Values: <replaceable>any_md5_checksum</replaceable></para>
             </listitem>
 
             <listitem>
@@ -617,8 +631,8 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
         <listitem>
           <para>This option can be used to disable distcheck. It specifies
-          what kind of check should be performed on distfiles: moddate
-          (check if the Portfile is older than the distfile) or none (no
+          what kind of check should be performed on distfiles: moddate (check
+          if the Portfile is older than the distfile) or none (no
           check).</para>
 
           <itemizedlist>
