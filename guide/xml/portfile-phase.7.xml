@@ -152,7 +152,7 @@
     phases and set options for those phases, and they take affect whether or
     not phase declarations have been explicitly defined in a Portfile.</para>
 
-    <section>
+    <section id="reference.phases.installation.list-modifiers">
       <title>A Word about Keyword List Modifiers (-append / -delete)</title>
 
       <para>It is often necessary to add to a list of keyword values
@@ -165,7 +165,7 @@
       preserve configure defaults, to preserve PortGroup dependencies, and to
       add or delete items for variants.</para>
 
-      <section>
+      <section id="reference.phases.installation.list-modifiers.uses">
         <title>Common Uses for Keyword List Modifiers</title>
 
         <para>The three most common uses for keyword list modifiers are to
@@ -240,7 +240,7 @@
       </section>
     </section>
 
-    <section>
+    <section id="reference.phases.installation.argument-modifiers">
       <title>A Word about Keyword Argument Modifiers (.pre_args /
       .post_args)</title>
 

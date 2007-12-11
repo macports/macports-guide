@@ -261,7 +261,7 @@
       </varlistentry>
     </variablelist>
 
-    <section>
+    <section id="reference.keywords.dependencies.types">
       <title>Port and Non-Port Dependencies</title>
 
       <para>Port dependencies should be provided by MacPorts ports whenever
