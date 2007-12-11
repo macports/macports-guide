@@ -274,10 +274,10 @@ configure.args          --prefix=${prefix} \
       example.</para>
 
       <programlisting>post-destroot {
-# Install example files not installed by the Makefile
-        file mkdir ${destroot}${prefix}/share/doc/${name}/examples
-        file copy ${worksrcpath}/examples/ \
-             ${destroot}${prefix}/share/doc/${name}/examples
+    # Install example files not installed by the Makefile
+    file mkdir ${destroot}${prefix}/share/doc/${name}/examples
+    file copy ${worksrcpath}/examples/ \
+        ${destroot}${prefix}/share/doc/${name}/examples
 }</programlisting>
     </section>
 
@@ -288,8 +288,8 @@ configure.args          --prefix=${prefix} \
       define your own installation phases as shown in this example.</para>
 
       <programlisting>destroot {
-        xinstall -m 755 -d ${destroot}${prefix}/bin
-        xinstall -m 755 ${worksrcpath}/cdpr ${destroot}${prefix}/bin
+    xinstall -m 755 -d ${destroot}${prefix}/bin
+    xinstall -m 755 ${worksrcpath}/cdpr ${destroot}${prefix}/bin
 }</programlisting>
     </section>
 
@@ -324,9 +324,9 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
       to make their installation conditional.</para>
 
       <programlisting>variant server {
-    startupitem.create    yes
-    startupitem.start "${prefix}/share/${name}/vm-pop3d.init start"
-    startupitem.stop "${prefix}/share/${name}/vm-pop3d.init stop"
+    startupitem.create  yes
+    startupitem.start   "${prefix}/share/${name}/vm-pop3d.init start"
+    startupitem.stop    "${prefix}/share/${name}/vm-pop3d.init stop"
 }</programlisting>
     </section>
   </section>
@@ -388,7 +388,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
     xinstall ${worksrcpath}/examples/foo.conf \
         ${destroot}${prefix}/etc/
 
-    if {[variant_isset] carbon]} {
+    if {[variant_isset carbon]} {
         delete ${destroot}${prefix}/bin/emacs
         delete ${destroot}${prefix}/bin/emacs-${version}
     }
@@ -403,7 +403,9 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       you wish to specify these non-core functions by default. For this
       purpose you may use the keyword default_variants.</para>
 
-      <programlisting>default_variants +foo +bar</programlisting>
+      <programlisting>default_variants    +foo +bar</programlisting>
+
+      <!-- TODO: add warning not to use default_variant at the moment -->
 
       <note>
         <para>The default_variant keyword may only be used in the global
