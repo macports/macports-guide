@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.phases">
   <title>Port Phases</title>
 
@@ -18,124 +17,140 @@
     behavior as described in the <link linkend="development">Portfile
     Development</link> chapter.</para>
 
-    <section id="reference.phases.introduction.fetch">
-      <title>Fetch</title>
-
-      <para>Overview: Fetch the <varname>${distfiles}</varname> from
-      <varname>${master_sites}</varname> and place it in
-      <filename>${prefix}/var/macports/distfiles</filename>.</para>
-    </section>
-
-    <section id="reference.phases.introduction.checksum">
-      <title>Checksum</title>
-
-      <para>Overview: Compare <varname>${checksums}</varname> specified in a
-      <filename>Portfile</filename> to the checksums of the fetched
-      ${distfiles}.</para>
-    </section>
-
-    <section id="reference.phases.introduction.extract">
-      <title>Extract</title>
-
-      <para>Overview: Unzip and untar the <varname>${distfiles}</varname> into
-      the path ${prefix}/var/macports/build/..../work</para>
-    </section>
-
-    <section id="reference.phases.introduction.patch">
-      <title>Patch</title>
-
-      <para>Overview: Apply optional <ulink
-      url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
-      specified in <varname>${patchfiles}</varname> to modify a port's source
-      code file(s).</para>
-
-      <para>Details: Patch files are made using the <ulink
-      url="http://en.wikipedia.org/wiki/Diff">diff</ulink> command, and
-      MacPorts patches should be created as <ulink
-      url="http://en.wikipedia.org/wiki/Diff#Unified_format">unified
-      diffs</ulink>.</para>
-    </section>
-
-    <section id="reference.phases.introduction.configure">
-      <title>Configure</title>
-
-      <para>Overview: Execute the command "configure" in
-      <varname>${workpath}</varname>.</para>
-    </section>
-
-    <section id="reference.phases.introduction.build">
-      <title>Build</title>
-
-      <para>Overview: Execute the command "make" in
-      <varname>${workpath}</varname>.</para>
-    </section>
-
-    <section id="reference.phases.introduction.destroot">
-      <title>Destroot</title>
-
-      <para>Overview: Execute the command <command>make install
-      DESTDIR=${destroot}</command> in <varname>${workpath}</varname>.</para>
-
-      <para>Details: Understanding the destroot phase is critical to
-      understanding MacPorts, because, unlike some port systems, MacPorts
-      "stages" an installation into an intermediate location —not the final
-      file destination. There are two main advantages to this method.</para>
-
-      <orderedlist>
-        <listitem>
-          <para>A port's files may be cleanly uninstalled because all files
-          and locations are tracked.</para>
-        </listitem>
+    <variablelist>
+      <varlistentry>
+        <term>fetch</term>
 
         <listitem>
-          <para>Since a port's files are not installed into MacPorts directory
-          structure until an activation phase, a port may be deactivated
-          through MacPorts to allow activation of a different version of the
-          same port, thus allowing two versions of a port to be present,
-          though not both active, on a given host.</para>
+          <para>Fetch the <varname>${distfiles}</varname> from
+          <varname>${master_sites}</varname> and place it in
+          <filename>${prefix}/var/macports/distfiles/${name}</filename>.</para>
         </listitem>
-      </orderedlist>
+      </varlistentry>
 
-      <note>
-        <para>The <varname>$(DESTDIR)</varname> variable must be supported in
-        an application's Makefile for the MacPorts destroot phase to work
-        properly. Urge developers to fully support
-        <varname>$(DESTDIR)</varname> in their Makefiles.</para>
-      </note>
+      <varlistentry>
+        <term>checksum</term>
 
-      <para>At the beginning of the destroot phase, all the directories in the
-      file <filename>${prefix}/etc/macports/prefix.mtree</filename> are
-      created. Any directories still empty upon completion of the destroot
-      phase are removed unless a directory is listed using a destroot.keepdirs
-      keyword.</para>
-    </section>
+        <listitem>
+          <para>Compare <varname>${checksums}</varname> specified in a
+          <filename>Portfile</filename> to the checksums of the fetched
+          ${distfiles}.</para>
+        </listitem>
+      </varlistentry>
 
-    <section id="reference.phases.introduction.archive">
-      <title>Archive</title>
+      <varlistentry>
+        <term>extract</term>
 
-      <para>Overview: Use tar to create a tarball of a port's destrooted files
-      and copy it to
-      <filename>${prefix}/var/macports/packages/</filename>.</para>
-    </section>
+        <listitem>
+          <para>Unzip and untar the <varname>${distfiles}</varname> into the
+          path ${prefix}/var/macports/build/..../work</para>
+        </listitem>
+      </varlistentry>
 
-    <section id="reference.phases.introduction.install">
-      <title>Install</title>
+      <varlistentry>
+        <term>patch</term>
 
-      <para>Overview: Copy a port's destrooted files into
-      <filename>${prefix}/var/macports/software</filename>. See <link
-      linkend="internals.images">Port Images</link> in the <link
-      linkend="internals">MacPorts Internals</link> chapter for
-      details.</para>
-    </section>
+        <listitem>
+          <para>Apply optional <ulink
+          url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
+          specified in <varname>${patchfiles}</varname> to modify a port's
+          source code file(s).</para>
+        </listitem>
+      </varlistentry>
 
-    <section id="reference.phases.introduction.activate">
-      <title>Activate</title>
+      <varlistentry>
+        <term>configure</term>
 
-      <para>Overview: Set <ulink
-      url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink> pointing
-      to <filename>${prefix}/var/macports/software</filename> to point to
-      ${prefix}.</para>
-    </section>
+        <listitem>
+          <para>Execute the command <command>configure</command> in
+          <varname>${workpath}</varname>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build</term>
+
+        <listitem>
+          <para>Execute the command <command>make</command> in
+          <varname>${workpath}</varname>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot</term>
+
+        <listitem>
+          <para>Execute the command <command>make install</command>
+          <varname>DESTDIR=${destroot}</varname>in
+          <varname>${workpath}</varname>.</para>
+
+          <para>Understanding the destroot phase is critical to understanding
+          MacPorts, because, unlike some port systems, MacPorts "stages" an
+          installation into an intermediate location —not the final file
+          destination. MacPorts uses the destroot phase to provide:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Port uninstalls - a port's files may be cleanly
+              uninstalled because all files and directories are recorded
+              during install.</para>
+            </listitem>
+
+            <listitem>
+              <para>Multiple port versions may be installed on the same host,
+              since a port's files are not directly inserted into
+              <varname>${prefix}</varname> but rather hard-linked into
+              <varname>${prefix}</varname> from an intermediate location
+              during a later activation phase.</para>
+            </listitem>
+          </itemizedlist>
+
+          <note>
+            <para>The <varname>DESTDIR</varname> variable must be supported in
+            an application's Makefile for the MacPorts destroot phase to work
+            properly. Urge developers to fully support
+            <varname>DESTDIR</varname> in their Makefiles.</para>
+          </note>
+
+          <para>Any empty directories in ${destroot} upon completion of the
+          destroot phase are removed unless a directory name is placed in the
+          value field of the optional destroot.keepdirs keyword.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>archive</term>
+
+        <listitem>
+          <para>Use tar to create a tarball of a port's destrooted files and
+          copy it to
+          <filename>${prefix}/var/macports/packages/</filename>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>install</term>
+
+        <listitem>
+          <para>Copy a port's destrooted files into
+          <filename>${prefix}/var/macports/software</filename>. See <link
+          linkend="internals.images">Port Images</link> in the <link
+          linkend="internals">MacPorts Internals</link> chapter for
+          details.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>activate</term>
+
+        <listitem>
+          <para>Set <ulink
+          url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink>
+          pointing to <filename>${prefix}/var/macports/software</filename> to
+          point to <varname>${prefix}</varname>.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </section>
 
   <section id="reference.phases.installation">
@@ -153,96 +168,77 @@
     not phase declarations have been explicitly defined in a Portfile.</para>
 
     <section id="reference.phases.installation.list-modifiers">
-      <title>A Word about Keyword List Modifiers (-append / -delete)</title>
+      <title>Keyword List Modifiers (-append / -delete)</title>
 
-      <para>It is often necessary to add to a list of keyword values
-      previously set by a previously executed Portfile keyword or by MacPorts
-      base. To keep from overwriting a previous keyword list, use a keyword
-      list modifier. Keywords that support list modifiers are identified under
-      appropriate reference sections below.</para>
+      <para>Keyword list modifiers are keywords that end in -append or
+      -delete. Keywords that support list modifiers are identified under
+      appropriate reference sections below. Keyword list modifiers are most
+      frequently used for these three purposes:</para>
 
-      <para>The three most common uses for keyword list modifiers are to
-      preserve configure defaults, to preserve PortGroup dependencies, and to
-      add or delete items for variants.</para>
+      <orderedlist>
+        <listitem>
+          <para>Preserve configure Defaults set by a previously executed
+          Portfile keyword or by MacPorts base</para>
 
-      <section id="reference.phases.installation.list-modifiers.uses">
-        <title>Common Uses for Keyword List Modifiers</title>
+          <para>MacPorts base sets the gcc compiler flags CFLAGS and LDFLAGS
+          for all ports using <literal>configure.cflags</literal> and
+          <literal>configure.ldflags</literal>, therefore to keep from
+          overwriting the default compiler flags use
+          <literal>configure.cflags-append</literal> and
+          <literal>configure.ldflags-append</literal>.</para>
 
-        <para>The three most common uses for keyword list modifiers are to
-        preserve configure defaults, to preserve PortGroup dependencies, and
-        to add or delete items for variants.</para>
-
-        <variablelist>
-          <varlistentry>
-            <term>Preserve configure Defaults</term>
+          <itemizedlist>
+            <listitem>
+              <para><code>configure.cflags-append</code></para>
+            </listitem>
 
             <listitem>
-              <para>MacPorts base sets the gcc compiler flags CFLAGS and
-              LDFLAGS for all ports using <literal>configure.cflags</literal>
-              and <literal>configure.ldflags</literal>, therefore to keep from
-              overwriting the default compiler flags use
-              <literal>configure.cflags-append</literal> and
-              <literal>configure.ldflags-append</literal>.</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para><code>configure.cflags-append</code></para>
-                </listitem>
-
-                <listitem>
-                  <para><code>configure.ldflags-append</code></para>
-                </listitem>
-              </itemizedlist>
+              <para><code>configure.ldflags-append</code></para>
             </listitem>
-          </varlistentry>
+          </itemizedlist>
+        </listitem>
 
-          <varlistentry>
-            <term>Preserve PortGroup Dependencies</term>
+        <listitem>
+          <para>Preserve PortGroup Dependencies</para>
+
+          <para>Ports in a PortGroup have default library dependencies set by
+          MacPorts base. Therefore, never use <literal>depends_lib</literal>
+          in ports belonging to a PortGroup or it will overwrite the default
+          library dependencies. Instead, use
+          <literal>depends_lib-append</literal>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Add or Delete Items for Variants</para>
+
+          <para>When a variant requires more or fewer dependencies, distfiles,
+          or patchfiles, when the variant is invoked you want to add or remove
+          items to the appropriate keyword values list set in the global
+          section of the Portfile. Use the appropriate keywords, for
+          example:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><code>depends_lib-append</code> or
+              <code>depends_lib-delete</code></para>
+            </listitem>
 
             <listitem>
-              <para>Ports in a PortGroup have default library dependencies set
-              by MacPorts base. Therefore, never use
-              <literal>depends_lib</literal> in ports belonging to a PortGroup
-              or it will overwrite the default library dependencies. Instead,
-              use <literal>depends_lib-append</literal>.</para>
+              <para><code>distfiles-append</code> or
+              <code>distfile-delete</code></para>
             </listitem>
-          </varlistentry>
-
-          <varlistentry>
-            <term>Add or Delete Items for Variants</term>
 
             <listitem>
-              <para>When a variant requires more or fewer dependencies,
-              distfiles, or patchfiles, when the variant is invoked you want
-              to add or remove items to the appropriate keyword values list
-              set in the global section of the Portfile. Use the appropriate
-              keywords, for example:</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para><code>depends_lib-append</code> or
-                  <code>depends_lib-delete</code></para>
-                </listitem>
-
-                <listitem>
-                  <para><code>distfiles-append</code> or
-                  <code>distfile-delete</code></para>
-                </listitem>
-
-                <listitem>
-                  <para><code>patchfiles-append</code> or
-                  <code>patchfiles-delete</code></para>
-                </listitem>
-              </itemizedlist>
+              <para><code>patchfiles-append</code> or
+              <code>patchfiles-delete</code></para>
             </listitem>
-          </varlistentry>
-        </variablelist>
-      </section>
+          </itemizedlist>
+        </listitem>
+      </orderedlist>
     </section>
 
     <section id="reference.phases.installation.argument-modifiers">
-      <title>A Word about Keyword Argument Modifiers (.pre_args /
-      .post_args)</title>
+      <title>Keyword Argument Modifiers (.pre_args / .post_args)</title>
 
       <para>Keywords that support pre_args and post_args are used to assemble
       command strings together in a row, as described in the reference
@@ -252,7 +248,6 @@
       <literal>configure.pre_args-append</literal> and
       <literal>configure.pre_args-delete</literal>.</para>
     </section>
-
   </section>
 
   <section id="reference.phases.fetch">
@@ -283,9 +278,8 @@
 
 </programlisting>
 
-              <para>You may also use mirror site lists predefined by
-              MacPorts. Here the sourceforge and gnu mirrors are
-              used.</para>
+              <para>You may also use mirror site lists predefined by MacPorts.
+              Here the sourceforge and gnu mirrors are used.</para>
 
               <programlisting>master_sites        sourceforge gnu
 
@@ -293,8 +287,8 @@
 
               <para>When using mirror master_sites, the subdirectory
               <varname>${name}</varname> is checked on every mirror. If the
-              mirror subdirectory does not match ${name}, then you may
-              specify it using after the mirror separated by a colon.</para>
+              mirror subdirectory does not match ${name}, then you may specify
+              it using after the mirror separated by a colon.</para>
 
               <programlisting>master_sites        sourceforge:widget \
                     gnu:widget
@@ -307,9 +301,9 @@
               <literal>mirror:subdirectory:tag</literal>.</para>
 
               <para>In the example below, file_one.tar.gz is fetched from
-              sourceforge mirrors in subdirectory
-              <varname>${name}</varname>; file tagtwo.tar.gz is fetched from
-              the gnu mirrors in subdirectory sources.</para>
+              sourceforge mirrors in subdirectory <varname>${name}</varname>;
+              file tagtwo.tar.gz is fetched from the gnu mirrors in
+              subdirectory sources.</para>
 
               <programlisting>master_sites        sourceforge::tagone \
                     gnu:sources:tagtwo
@@ -413,10 +407,10 @@ distfiles           file_one.tar.gz:tagone \
         <term>distfiles</term>
 
         <listitem>
-          <para>The full distribution filename, including the extract
-          suffix. Used to specify non-default distribution filenames; this
-          keyword must be specified (and tags used) when a port has multiple
-          download files (see master_sites).</para>
+          <para>The full distribution filename, including the extract suffix.
+          Used to specify non-default distribution filenames; this keyword
+          must be specified (and tags used) when a port has multiple download
+          files (see master_sites).</para>
 
           <itemizedlist>
             <listitem>
@@ -673,10 +667,10 @@ extract.post_args = "-d ${portpath}/${workdir}"
     <section id="reference.phases.fetch.cvs">
       <title>Fetch from CVS</title>
 
-      <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used
-      as an alternative method of fetching distribution files using the
-      keywords in this section. However, fetching via CVS may cause
-      non-reproducible builds, so it is strongly discouraged.</para>
+      <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used as
+      an alternative method of fetching distribution files using the keywords
+      in this section. However, fetching via CVS may cause non-reproducible
+      builds, so it is strongly discouraged.</para>
 
       <variablelist>
         <varlistentry>
@@ -724,8 +718,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
           <term>cvs.date</term>
 
           <listitem>
-            <para>A date that identifies the CVS code set to
-            checkout.</para>
+            <para>A date that identifies the CVS code set to checkout.</para>
 
             <itemizedlist>
               <listitem>
@@ -766,11 +759,10 @@ extract.post_args = "-d ${portpath}/${workdir}"
     <section id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
-      <para><ulink url="http://subversion.tigris.org/">Subversion</ulink>
-      may be used as an alternative method of fetching distribution files
-      using the keywords in this section. However, fetching via Subversion
-      may cause non-reproducible builds, so it is strongly
-      discouraged.</para>
+      <para><ulink url="http://subversion.tigris.org/">Subversion</ulink> may
+      be used as an alternative method of fetching distribution files using
+      the keywords in this section. However, fetching via Subversion may cause
+      non-reproducible builds, so it is strongly discouraged.</para>
 
       <variablelist>
         <varlistentry>
@@ -800,8 +792,8 @@ extract.post_args = "-d ${portpath}/${workdir}"
 
           <listitem>
             <para>Optional tag for fetching with Subversion, this specifies
-            the code revision to checkout; it corresponds to the -r option
-            in the svn cli.</para>
+            the code revision to checkout; it corresponds to the -r option in
+            the svn cli.</para>
 
             <itemizedlist>
               <listitem>
@@ -830,9 +822,10 @@ extract.post_args = "-d ${portpath}/${workdir}"
         <term>checksums</term>
 
         <listitem>
-          <para>Checksum(s) of the distribution files. For ports with
-          multiple distribution files, filenames must be included to
-          associate files with their checksums.</para>
+          <para>Checksum(s) of the distribution files. For ports with multiple
+          distribution files, filenames must be included to associate files
+          with their checksums.</para>
+
           <para>All checksum types (md5, sha1 and rdm160) should be used to
           ensure the integrity of the distfiles.</para>
 
@@ -890,6 +883,7 @@ extract.post_args = "-d ${portpath}/${workdir}"
               <para>Example:</para>
 
               <programlisting>extract.only        foo.tar.gz</programlisting>
+
               <programlisting>extract.only-append     bar.tar.gz
 extract.only-delete     foo.tar.gz</programlisting>
             </listitem>
@@ -1024,8 +1018,8 @@ extract.post_args   "| gnutar –x"</programlisting>
 
         <listitem>
           <para>Specify patch files to be applied for a port; list modifiers
-          specify patchfiles to be added or removed from a previous
-          patchfile declaration.</para>
+          specify patchfiles to be added or removed from a previous patchfile
+          declaration.</para>
 
           <itemizedlist>
             <listitem>
@@ -1037,6 +1031,7 @@ extract.post_args   "| gnutar –x"</programlisting>
 
               <programlisting>patchfiles          patch-Makefile.in \
                     patch-source.c</programlisting>
+
               <programlisting>patchfiles-append   patch-configure
 patchfiles-delete   patch-src-Makefile.in</programlisting>
             </listitem>
@@ -1052,8 +1047,8 @@ patchfiles-delete   patch-src-Makefile.in</programlisting>
         <term>patch.post_args</term>
 
         <listitem>
-          <para>Main arguments to patch.cmd; optional argument modifiers
-          pass arguments before and after the main arguments.</para>
+          <para>Main arguments to patch.cmd; optional argument modifiers pass
+          arguments before and after the main arguments.</para>
 
           <itemizedlist>
             <listitem>
@@ -1138,9 +1133,9 @@ patch.post_args     ???</programlisting>
 
         <listitem>
           <para>Set environment variables for configure; list modifiers add
-          and delete items from a previous Portfile configure.env keyword,
-          or a default set by MacPorts base. If available, it is encouraged
-          to use the predefined options (like configure.cflags) instead of
+          and delete items from a previous Portfile configure.env keyword, or
+          a default set by MacPorts base. If available, it is encouraged to
+          use the predefined options (like configure.cflags) instead of
           modifying configure.env directly.</para>
 
           <itemizedlist>
@@ -1153,6 +1148,7 @@ patch.post_args     ???</programlisting>
               <para>Example:</para>
 
               <programlisting>configure.env       QTDIR=${prefix}/lib/qt3</programlisting>
+
               <programlisting>configure.env-append    ABI=32
 configure.env-delete    TCLROOT=${prefix}</programlisting>
             </listitem>
@@ -1168,9 +1164,9 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
         <term>configure.cflags-delete</term>
 
         <listitem>
-          <para>Set CFLAGS compiler flags; list modifiers add or delete
-          items from a previous Portfile configure.cflags keyword or the
-          default set by MacPorts base.</para>
+          <para>Set CFLAGS compiler flags; list modifiers add or delete items
+          from a previous Portfile configure.cflags keyword or the default set
+          by MacPorts base.</para>
 
           <itemizedlist>
             <listitem>
@@ -1181,6 +1177,7 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
               <para>Example:</para>
 
               <programlisting>configure.cflags    -Os -flat_namespace</programlisting>
+
               <programlisting>configure.cflags-append     "-undefined suppress"
 configure.cflags-delete     -O2</programlisting>
             </listitem>
@@ -1196,9 +1193,9 @@ configure.cflags-delete     -O2</programlisting>
         <term>configure.ldflags-delete</term>
 
         <listitem>
-          <para>Set LDFLAGS compiler flags; list modifiers add or delete
-          items from a previous Portfile configure.ldflags keyword or the
-          default set by MacPorts base.</para>
+          <para>Set LDFLAGS compiler flags; list modifiers add or delete items
+          from a previous Portfile configure.ldflags keyword or the default
+          set by MacPorts base.</para>
 
           <itemizedlist>
             <listitem>
@@ -1209,6 +1206,7 @@ configure.cflags-delete     -O2</programlisting>
               <para>Example:</para>
 
               <programlisting>configure.ldflags   "-L${worksrcpath}/zlib -lz"</programlisting>
+
               <programlisting>configure.ldflags-append    "-L/usr/X11R6/lib -L${worksrcpath}/lib"
 configure.ldflags-delete    -L${prefix}/lib/db44</programlisting>
             </listitem>
@@ -1237,6 +1235,7 @@ configure.ldflags-delete    -L${prefix}/lib/db44</programlisting>
               <para>Example:</para>
 
               <programlisting>configure.cppflags  -I${worksrcpath}/include</programlisting>
+
               <programlisting>configure.cppflags-append   "-I/usr/X11R6/lib -I${worksrcpath}/lib -DHAVE_RRD_12X"
 configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </listitem>
@@ -1354,8 +1353,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <listitem>
           <para>Set FFLAGS to be passed to the Fortran compiler; list
           modifiers add or delete items from a previous Portfile
-          configure.fflags keyword or the default set by MacPorts
-          base.</para>
+          configure.fflags keyword or the default set by MacPorts base.</para>
 
           <itemizedlist>
             <listitem>
@@ -1453,8 +1451,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cpp</term>
 
         <listitem>
-          <para>Set CPP compiler flags for selecting a C
-          preprocessor.</para>
+          <para>Set CPP compiler flags for selecting a C preprocessor.</para>
 
           <itemizedlist>
             <listitem>
@@ -1515,8 +1512,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.fc</term>
 
         <listitem>
-          <para>Set FC compiler flags for selecting a Fortran
-          compiler.</para>
+          <para>Set FC compiler flags for selecting a Fortran compiler.</para>
 
           <itemizedlist>
             <listitem>
@@ -1578,8 +1574,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.javac</term>
 
         <listitem>
-          <para>Set JAVAC compiler flags for selecting a Java
-          compiler.</para>
+          <para>Set JAVAC compiler flags for selecting a Java compiler.</para>
 
           <itemizedlist>
             <listitem>
@@ -1600,21 +1595,21 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
         <listitem>
           <para>Select a compiler suite to fill the compiler environment
-          variables. All variables/tools a compiler suite can provide are
-          set. Manually set variables are not overwritten. Dependencies are
-          not added for you, as they may be just build- or also
-          run-dependencies. Keep in mind that not all compiler suites might
-          be available on your platform: <literal>gcc-3.3</literal> is
-          available on Mac OS X 10.3 and 10.4 PowerPC,
-          <literal>gcc-4.0</literal> is available on 10.4 and 10.5,
-          <literal>gcc-4.2</literal> is available as preview for 10.5.
-          </para>
+          variables. All variables/tools a compiler suite can provide are set.
+          Manually set variables are not overwritten. Dependencies are not
+          added for you, as they may be just build- or also run-dependencies.
+          Keep in mind that not all compiler suites might be available on your
+          platform: <literal>gcc-3.3</literal> is available on Mac OS X 10.3
+          and 10.4 PowerPC, <literal>gcc-4.0</literal> is available on 10.4
+          and 10.5, <literal>gcc-4.2</literal> is available as preview for
+          10.5.</para>
 
           <itemizedlist>
             <listitem>
               <para>Default: <literal>gcc-3.3</literal> on Mac OS X
               10.3</para>
             </listitem>
+
             <listitem>
               <para>Default: <literal>gcc-4.0</literal> on Mac OS X 10.4 and
               10.5</para>
@@ -1874,10 +1869,10 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       platform to run on either PPC or Intel.</para>
 
       <note>
-        <para>There is a default universal variant made available to all
-        ports by MacPorts base, so redefining universal keywords should only
-        be done to make a given port compile if the default options fail to
-        do so.</para>
+        <para>There is a default universal variant made available to all ports
+        by MacPorts base, so redefining universal keywords should only be done
+        to make a given port compile if the default options fail to do
+        so.</para>
       </note>
 
       <variablelist>
@@ -1907,8 +1902,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>configure.universal_cflags</term>
 
           <listitem>
-            <para>Arguments appended to the configure script to build the
-            port universal.</para>
+            <para>Arguments appended to the configure script to build the port
+            universal.</para>
 
             <itemizedlist>
               <listitem>
@@ -1930,8 +1925,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>configure.universal_cppflags</term>
 
           <listitem>
-            <para>Additional flags to put in the CPPFLAGS environment
-            variable when invoking the configure script.</para>
+            <para>Additional flags to put in the CPPFLAGS environment variable
+            when invoking the configure script.</para>
 
             <itemizedlist>
               <listitem>
@@ -1951,8 +1946,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>configure.universal_cxxflags</term>
 
           <listitem>
-            <para>Additional flags to put in the CXXFLAGS environment
-            variable when invoking the configure script.</para>
+            <para>Additional flags to put in the CXXFLAGS environment variable
+            when invoking the configure script.</para>
 
             <itemizedlist>
               <listitem>
@@ -1974,8 +1969,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>configure.universal_ldflags</term>
 
           <listitem>
-            <para>Additional flags to put in the LDFLAGS environment
-            variable when invoking the configure script.</para>
+            <para>Additional flags to put in the LDFLAGS environment variable
+            when invoking the configure script.</para>
 
             <itemizedlist>
               <listitem>
@@ -2291,6 +2286,7 @@ build.post_args     CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"</programlistin
               <para>Example:</para>
 
               <programlisting>build.target        all-src</programlisting>
+
               <programlisting>build.target-append     doc extra
 build.target-delete     compat</programlisting>
             </listitem>
@@ -2302,12 +2298,12 @@ build.target-delete     compat</programlisting>
         <term>use_parallel_build</term>
 
         <listitem>
-          <para>This keyword is for specifying whether or not it is safe for
-          a port to use multiple cpus or multiple cores in parallel during
-          its build phase. If a port is declared to be builadble this way,
-          the option <option>-j N</option> may be passed to the
+          <para>This keyword is for specifying whether or not it is safe for a
+          port to use multiple cpus or multiple cores in parallel during its
+          build phase. If a port is declared to be builadble this way, the
+          option <option>-j N</option> may be passed to the
           <command>make</command> command if parallel builds are enabled
-          system-wide.  This can be obtained by setting
+          system-wide. This can be obtained by setting
           <varname>buildmakejobs</varname> in
           <filename>macports.conf</filename>. The integer <option>N</option>
           refers to the number of parallel build threads.</para>
@@ -2455,6 +2451,7 @@ destroot.post_args  INSTDIR=${destroot}${prefix}</programlisting>
               <para>Example:</para>
 
               <programlisting>destroot.target     install install-config install-commandmode</programlisting>
+
               <programlisting>destroot.target-append  install-plugins
 destroot.target-delete  install-commandmode</programlisting>
             </listitem>
@@ -2483,11 +2480,10 @@ destroot.target-delete  install-commandmode</programlisting>
 
           <note>
             <para>If an application's Makefile properly supports the DESTDIR
-            variable, MacPorts will automatically destroot the port
-            properly. A port must destroot properly or the port will not
-            install correctly, upgrade, or uninstall. If not, you may need
-            to set this variable, or even patch the application's
-            Makefile.</para>
+            variable, MacPorts will automatically destroot the port properly.
+            A port must destroot properly or the port will not install
+            correctly, upgrade, or uninstall. If not, you may need to set this
+            variable, or even patch the application's Makefile.</para>
           </note>
         </listitem>
       </varlistentry>
@@ -2516,8 +2512,8 @@ destroot.target-delete  install-commandmode</programlisting>
         <term>destroot.keepdirs</term>
 
         <listitem>
-          <para>A list of directories that should not be removed if empty
-          upon destroot completion.</para>
+          <para>A list of directories that should not be removed if empty upon
+          destroot completion.</para>
 
           <itemizedlist>
             <listitem>
@@ -2562,5 +2558,4 @@ destroot.target-delete  install-commandmode</programlisting>
       </varlistentry>
     </variablelist>
   </section>
-
 </section>
