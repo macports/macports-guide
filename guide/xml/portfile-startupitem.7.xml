@@ -5,7 +5,7 @@
 <section id="reference.startupitems">
   <title>StartupItems</title>
 
-  <para>A StartupItem is a MacPort facility to run "daemons," a Unix term
+  <para>A StartupItem is a MacPorts facility to run "daemons," a Unix term
   for programs that run continuously in the background, rather than under
   the direct control of a user; for example, mail servers, network
   listeners, etc. Ports that use StartupItem keywords create Mac OS X
