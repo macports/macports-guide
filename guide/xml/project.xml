@@ -204,10 +204,10 @@
               update a port provided by MacPorts.</para>
             </listitem>
 
-	    <listitem>
-              <para><guimenu>Website &amp; Documentation</guimenu> - for tickets relating to
-              the documentation for MacPorts, including the MacPorts guide,
-              wiki, man pages and the website.</para>
+            <listitem>
+              <para><guimenu>Website &amp; Documentation</guimenu> - for
+              tickets relating to the documentation for MacPorts, including
+              the MacPorts guide, wiki, man pages and the website.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -429,53 +429,60 @@
       </listitem>
     </itemizedlist>
 
-    <para>To apply for MacPorts commit rights, send a brief email to the PortMgr
-    team at <email>macports-mgr@lists.macosforge.org</email> entitled
-    “Request for commit rights” detailing the reasons for your
-    application and why you think you deserve commit rights (including evidence
-    of contributions to MacPorts as described above).</para>
+    <para>To apply for MacPorts commit rights, send a brief email to the
+    PortMgr team at <email>macports-mgr@lists.macosforge.org</email> entitled
+    “Request for commit rights” detailing the reasons for your application and
+    why you think you deserve commit rights (including evidence of
+    contributions to MacPorts as described above).</para>
   </section>
 
   <section id="project.portmgr">
-    <title>The MacPorts PortMgr Team</title>
+    <title>The PortMgr Team</title>
+
     <para>The MacPorts PortMgr team is the steering group for The MacPorts
-    Project.  Its membership is determined by public elections by committers to
+    Project. Its membership is determined by public elections by committers to
     The MacPorts Project, and is responsible for matters such as:
-      <itemizedlist>
+    <itemizedlist>
         <listitem>
-          <para>
-            approving new project members (i.e. granting commit rights);
-          </para>
+          <para>approving new project members (i.e. granting commit
+          rights);</para>
         </listitem>
+
         <listitem>
-          <para>
-            setting general guidelines for the project;
-          </para>
+          <para>setting general guidelines for the project;</para>
         </listitem>
+
         <listitem>
-          <para>
-            dispute resolution;
-          </para>
+          <para>dispute resolution;</para>
         </listitem>
+
         <listitem>
-          <para>
-            managing the projects infrastructure; and
-          </para>
-          </listitem>
-          <listitem>
-            <para>
-              engineering releases.
-            </para>
-          </listitem>
-      </itemizedlist>
-    </para>
-    <para>As of the time of writing, PortMgr&rsquo;s members are
-      <personname><firstname>James</firstname> <othername
-          role="initial">D.</othername> <surname>Berry</surname></personname>,
-      <personname><firstname>Markus</firstname>
+          <para>managing the projects infrastructure; and</para>
+        </listitem>
+
+        <listitem>
+          <para>engineering releases.</para>
+        </listitem>
+      </itemizedlist></para>
+
+    <para>As of the time of writing, PortMgr’s members are <personname>
+        <firstname>James</firstname>
+
+        <othername role="initial">D.</othername>
+
+        <surname>Berry</surname>
+      </personname>, <personname>
+        <firstname>Markus</firstname>
+
         <othername role="initial">W.</othername>
-        <surname>Weissman</surname></personname> and <personname><firstname>Juan
-        </firstname> <othername role="middlename">Manuel</othername>
-        <surname>Palacios</surname></personname>.</para>
+
+        <surname>Weissman</surname>
+      </personname> and <personname>
+        <firstname>Juan</firstname>
+
+        <othername role="middlename">Manuel</othername>
+
+        <surname>Palacios</surname>
+      </personname>.</para>
   </section>
 </chapter>
