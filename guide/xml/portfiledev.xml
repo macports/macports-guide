@@ -82,7 +82,7 @@
     <title>Creating a Portfile</title>
 
     <para>Here we list the individual Portfile components for an application
-    that conforms to the the standard <command> configure</command>,
+    that conforms to the the standard<command> configure</command>,
     <command>make</command>, and <command>make install</command> steps of most
     open source application installs.</para>
 
@@ -426,7 +426,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
       <title>Creating Portfile Patches</title>
 
       <para>If you wish to contribute modifications or fixes to a Portfile,
-      you should do so in the form of a patch.</para>
+      you should do so in the form of a patch. Follow the steps below to
+      create Portfile patch files</para>
 
       <orderedlist>
         <listitem>
@@ -489,8 +490,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
       <para>Necessary or useful patches to application source code should be
       sent to the application developer (not the port author) so the
-      modifications may be included in the next version, and the port patch
-      eventually removed.</para>
+      modifications may be included in the next version; then the port patch
+      may be removed after an updated tarball is released.</para>
 
       <orderedlist>
         <listitem>
@@ -543,19 +544,21 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
         <listitem>
           <para>Now you may place the patch
-          <filename>patch-Makefile.in</filename> in the path ${portpath}/files
-          of a local repository (or commit it to subversion) and use it in a
-          port using the <code>patchfiles</code> keyword.</para>
+          <filename>patch-Makefile.in</filename> in location
+          <varname>${portpath}</varname>/files (either a local repository or
+          after committing to the MacPorts subversion port repository) and use
+          it in a port using the <code>patchfiles</code> keyword.</para>
 
           <programlisting>patchfiles              patch-Makefile.in</programlisting>
 
           <note>
-            <para>You should make a patch file for each file to be patched,
-            though if you obtain a patch from another source that patches
-            multiple files it is permissible to use it that way. Patch
-            filenames should generally be of the form
-            "patch-&lt;directory&gt;-&lt;filename&gt;", as shown in this
-            example: <filename>patch-src-Makefile.in</filename>.</para>
+            <para>You should create one patch file for each file to be
+            patched, though it is permissible to use existing patches you find
+            that patch multiple files. Patchfiles filenames should generally
+            be of the form
+            <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;</replaceable>,
+            as shown in this example:
+            <filename>patch-src-Makefile.in</filename>.</para>
           </note>
         </listitem>
       </orderedlist>
@@ -668,6 +671,37 @@ Ports failed:                   0</screen>
     <para>This section contains practical guidelines for creating Portfiles
     that install smoothly and provide consistency between ports. The following
     sections are on the TODO list.</para>
+
+    <section id="development.practices.portstyle">
+      <title>Port Style</title>
+
+      <para>Portfiles may be thought of as a table of keys and values in two
+      columns separated by whitespace (not tabs), so you should set your
+      editor to use soft tabs, which are tabs emulated by spaces. By default,
+      the top line of all Portfiles should use a modeline that defines soft
+      tabs for the vim and emacs editors as shown.</para>
+
+      <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; \
+c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4</programlisting>
+
+      <para>The left column should consist of single words, and will be
+      separated from the more complex right side by spaces in multiples of
+      four. Variable assignments ("set libver") and variant declarations
+      ("variant mysql5") are exceptions, and may be considered a single word
+      on the left side, with a single space between words.</para>
+
+      <para>Frequently multiple items are necessary in the second column. For
+      example, to set multiple source download locations, multiple
+      "master_sites" must be defined. Unless the second column items are few
+      and short you should use multiple lines, separate lines with a
+      backslash, and (to emphasize the unity of the block) indent the first
+      line at a deeper level than the following lines as shown in this
+      example.</para>
+
+      <programlisting>destroot.keepdirs     ${destroot}${prefix}/var/run \
+                        ${destroot}${prefix}/var/log \
+                        ${destroot}${prefix}/var/cache/mrtg</programlisting>
+    </section>
 
     <section id="development.practices.dont-overwrite">
       <title>Don't Overwrite Config Files</title>
