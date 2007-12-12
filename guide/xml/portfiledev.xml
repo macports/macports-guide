@@ -82,7 +82,7 @@
     <title>Creating a Portfile</title>
 
     <para>Here we list the individual Portfile components for an application
-    that conforms to the the standard <command>configure</command>,
+    that conforms to the standard <command>configure</command>,
     <command>make</command>, and <command>make install</command> steps of most
     open source application installs.</para>
 
