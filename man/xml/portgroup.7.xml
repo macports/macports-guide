@@ -677,7 +677,7 @@
               </listitem>
 
               <listitem>
-                <para>Default: /Library/Frameworks or /Application/MacPort
+                <para>Default: /Library/Frameworks or /Applications/MacPorts
                 depending on xcode.destroot.type.</para>
               </listitem>
             </itemizedlist>
