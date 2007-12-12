@@ -17,7 +17,7 @@
     you don't plan to run X11 applications immediately. Apple's X11 is
     preferred over the MacPorts X11 port, and ports with an X11 dependency
     will be satisfied by Apple's X11. If Apple's X11 wasn't installed at the
-    same time the OS X was installed, follow these steps.</para>
+    same time Mac OS X was installed, follow these steps.</para>
 
     <orderedlist>
       <listitem>
@@ -41,7 +41,7 @@
       </listitem>
     </orderedlist>
 
-    <para>If you're using OS X 10.3 then you can download the X11 installer
+    <para>If you're using Mac OS X 10.3 then you can download the X11 installer
     from the Apple <ulink
     url="http://apple.com/support/downloads/x11formacosx.html">download
     page</ulink>.</para>
@@ -51,7 +51,7 @@
       apps. To verify the presence of both, check for files
       <filename>com.apple.pkg.X11User.bom</filename> &amp;
       <filename>com.apple.pkg.X11SDKLeo.bom</filename> in
-      <filename>/Library/Receipts/boms/</filename>. On OS X 10.4, look for
+      <filename>/Library/Receipts/boms/</filename>. On Mac OS X 10.4, look for
       files <filename>X11User.pkg</filename> &amp;
       <filename>X11SDK.pkg</filename> in
       <filename>/Library/Receipts/</filename>.</para>
@@ -102,7 +102,7 @@
       <listitem>
         <para>Download and install the latest version of <ulink
         url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
-        Apple's developer site—do not install it from an OS X install disk
+        Apple's developer site—do not install it from a Mac OS X install disk
         unless you've already checked for a more recent version on Apple's
         site; older versions of Xcode Tools often cause port install
         failures.</para>
@@ -125,7 +125,7 @@
     </orderedlist>
 
     <note>
-      <para>Xcode Tools are not updated via OS X's Software Update
+      <para>Xcode Tools are not updated via Mac OS X's Software Update
       utility.</para>
     </note>
   </section>
@@ -133,8 +133,8 @@
   <section id="installing.macports">
     <title>Install MacPorts</title>
 
-    <para>If you are using OS X, you should install MacPorts using the OS X
-    package installer unless you do not wish to install it to
+    <para>If you are using Mac OS X, you should install MacPorts using the
+    Mac OS X package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
     wish to install a pre-release version of MacPorts base. However, if you
     wish to install <ulink url="installing.source.multiple">multiple copies of
@@ -150,10 +150,10 @@
     </note>
 
     <section id="installing.binary">
-      <title>OS X Package Install</title>
+      <title>Mac OS X Package Install</title>
 
-      <para>To install MacPorts with the OS X package installer, follow these
-      steps.</para>
+      <para>To install MacPorts with the Mac OS X package installer, follow
+      these steps.</para>
 
       <orderedlist>
         <listitem>
@@ -247,7 +247,7 @@
   <section id="installing.shell">
     <title>Set the Bash Shell</title>
 
-    <para>The MacPorts installer (from OS X package or source) places a
+    <para>The MacPorts installer (from Mac OS X package or source) places a
     <filename>.profile</filename> file in your home directory (view files with
     a dot using <command>ls -a</command>). The contents of the
     <filename>~/.profile</filename> adds the MacPorts paths in front of the

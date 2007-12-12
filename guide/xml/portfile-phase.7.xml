@@ -1865,7 +1865,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
     <section id="reference.phases.configure.universal">
       <title>Configure Universal</title>
 
-      <para>Universal keywords are used to make a port compile on the OS X
+      <para>Universal keywords are used to make a port compile on the Mac OS X
       platform to run on either PPC or Intel.</para>
 
       <note>
