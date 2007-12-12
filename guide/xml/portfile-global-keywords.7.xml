@@ -95,10 +95,10 @@
             be incorrect after a port upgrade.</para>
           </note>
 
-          <para>An epoch is not be needed for most ports, and good use of a
-          port's version can make using an epoch unneccesary even for
+          <para>An epoch is not needed for most ports, and good use of a
+          port's version can make using an epoch unnecessary even for
           application distributions without official version numbers. For
-          example, if an application version 1.5 is superceded by a snapshot
+          example, if an application version 1.5 is superseded by a snapshot
           release 20081022, the new release could be given version number
           1.5.20081022, rather than 20081022, so the newer release will have a
           numericaly greater value.</para>
