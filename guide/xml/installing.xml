@@ -177,12 +177,12 @@
             <para>
               The "postflight" script bundled with our "pkg" installer is
               run by Apple's Installer.app after MacPorts is installed, in order
-              to setup a MacPorts compatible shell environment:
+              to setup a MacPorts-compatible shell environment:
               <orderedlist>
                 <listitem>
                   <para>The "/opt/local/bin" &amp; "/opt/local/sbin" paths are
                     added to the PATH variable if not already there, in order to
-                    find MacPorts installed programs.</para>
+                    find MacPorts-installed programs.</para>
                 </listitem>
 
                 <listitem>
