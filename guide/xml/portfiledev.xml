@@ -102,19 +102,19 @@
 
         <para>This statement is required for all ports.</para>
 
-        <programlisting>PortSystem        1.0</programlisting>
+        <programlisting>PortSystem          1.0</programlisting>
       </listitem>
 
       <listitem>
         <para>Port name</para>
 
-        <programlisting>name              rrdtool</programlisting>
+        <programlisting>name                rrdtool</programlisting>
       </listitem>
 
       <listitem>
         <para>Port version</para>
 
-        <programlisting>version           1.2.23</programlisting>
+        <programlisting>version             1.2.23</programlisting>
       </listitem>
 
       <listitem>
@@ -124,7 +124,7 @@
         (primary) category should match the directory name in the ports tree
         where the Portfile is to reside.</para>
 
-        <programlisting>categories        net</programlisting>
+        <programlisting>categories          net</programlisting>
       </listitem>
 
       <listitem>
@@ -138,7 +138,7 @@
         Keywords</link> section of the <link linkend="reference">Portfile
         Reference</link> chapter.</para>
 
-        <programlisting>maintainers       julesverne@example.org</programlisting>
+        <programlisting>maintainers         julesverne@example.org</programlisting>
 
         <note>
           <para>The address <email>nomaintainer@macports.org</email>, or in
@@ -150,32 +150,33 @@
       <listitem>
         <para>Port description</para>
 
-        <programlisting>description       Round Robin Database</programlisting>
+        <programlisting>description         Round Robin Database</programlisting>
       </listitem>
 
       <listitem>
         <para>Port long_description</para>
 
-        <programlisting>long_description  RRDtool is a system to store and display time-series data</programlisting>
+        <programlisting>long_description    RRDtool is a system to store and display time-series \
+                    data</programlisting>
       </listitem>
 
       <listitem>
         <para>A port's application homepage</para>
 
-        <programlisting>homepage          http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
+        <programlisting>homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
       </listitem>
 
       <listitem>
         <para>Platform statement</para>
 
-        <programlisting>platforms         darwin</programlisting>
+        <programlisting>platforms           darwin</programlisting>
       </listitem>
 
       <listitem>
         <para>A port's download URLs</para>
 
-        <programlisting>master_sites      http://oss.oetiker.ch/rrdtool/pub/ \
-                  ftp://ftp.pucpr.br/rrdtool/</programlisting>
+        <programlisting>master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
+                    ftp://ftp.pucpr.br/rrdtool/</programlisting>
       </listitem>
 
       <listitem>
@@ -185,9 +186,9 @@
         fetched tarball for security. For the best security, use md5, sha1,
         and rmd160 checksum types.</para>
 
-        <programlisting>checksums         md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                  sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                  rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+        <programlisting>checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
 
         <para>To find the correct checksums for a port's distribution file,
         follow this example:</para>
@@ -209,17 +210,17 @@ RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23<
         <para>A port's dependencies are ports that must be installed before
         another port is installed.</para>
 
-        <programlisting>depends_lib       port:perl5.8 \
-                  port:tcl \
-                  port:zlib</programlisting>
+        <programlisting>depends_lib         port:perl5.8 \
+                    port:tcl \
+                    port:zlib</programlisting>
       </listitem>
 
       <listitem>
         <para>Port configure arguments (optional)</para>
 
-        <programlisting>configure.args    --prefix=${prefix} \
-                  --enable-perl-site-install \
-                  --mandir=${prefix}/share/man</programlisting>
+        <programlisting>configure.args      --prefix=${prefix} \
+                    --enable-perl-site-install \
+                    --mandir=${prefix}/share/man</programlisting>
       </listitem>
     </orderedlist>
   </section>
@@ -240,30 +241,30 @@ RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23<
       <title>A Basic Portfile</title>
 
       <programlisting># $Id$
-PortSystem      1.0
+PortSystem          1.0
 
-name                    rrdtool
-version                 1.2.23
-categories              net
-maintainers             julesverne
-description             Round Robin Database
-long_description        RRDtool is a system to store and display time-series data
-homepage                http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
-platforms               darwin
-master_sites            http://oss.oetiker.ch/rrdtool/pub/ \
-                        ftp://ftp.pucpr.br/rrdtool/
+name                rrdtool
+version             1.2.23
+categories          net
+maintainers         julesverne
+description         Round Robin Database
+long_description    RRDtool is a system to store and display time-series data
+homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+platforms           darwin
+master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
+                    ftp://ftp.pucpr.br/rrdtool/
 
-checksums               md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                        sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                        rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23
+checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23
 
-depends_lib             port:perl5.8 \
-                        port:tcl \
-                        port:zlib
+depends_lib         port:perl5.8 \
+                    port:tcl \
+                    port:zlib
 
-configure.args          --prefix=${prefix} \
-                        --enable-perl-site-install \
-                        --mandir=${prefix}/share/man</programlisting>
+configure.args      --prefix=${prefix} \
+                    --enable-perl-site-install \
+                    --mandir=${prefix}/share/man</programlisting>
     </section>
 
     <section id="development.examples.augment">
@@ -460,23 +461,23 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <programlisting>--- Portfile.orig        2007-07-25 18:52:12.000000000 -0700
 +++ Portfile    2007-07-25 18:53:35.000000000 -0700
 @@ -2,7 +2,7 @@
- PortSystem             1.0
+ PortSystem          1.0
+ name                foo
  
- name                   nefu
--version                        1.4.0
-+version                        1.3.0
- categories             net
- maintainers            nomaintainer@macports.org
- description            A network monitoring daemon.
+-version             1.4.0
++version             1.3.0
+ categories          net
+ maintainers         nomaintainer@macports.org
+ description         A network monitoring daemon.
 @@ -13,9 +13,9 @@
-
- homepage               http://rsug.itd.umich.edu/software/${name}
-
- master_sites           ${homepage}/files/
--checksums              md5 f0953b21cdb5eb327e40d4b215110b71
-+checksums              md5 01532e67a596bfff6a54aa36face26ae
- extract.suffix  .tgz
- platforms              darwin
+ 
+ homepage            http://rsug.itd.umich.edu/software/${name}
+ 
+ master_sites        ${homepage}/files/
+-checksums           md5 f0953b21cdb5eb327e40d4b215110b71
++checksums           md5 01532e67a596bfff6a54aa36face26ae
+ extract.suffix      .tgz
+ platforms           darwin
 </programlisting>
         </listitem>
       </orderedlist>
@@ -549,7 +550,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           after committing to the MacPorts subversion port repository) and use
           it in a port using the <code>patchfiles</code> keyword.</para>
 
-          <programlisting>patchfiles              patch-Makefile.in</programlisting>
+          <programlisting>patchfiles          patch-Makefile.in</programlisting>
 
           <note>
             <para>You should create one patch file for each file to be
@@ -650,8 +651,8 @@ rsync://rsync.macports.org/release/ports
         <screen>Creating software index in /Users/julesverne/ports
 Adding port games/bestevergame
 
-Total number of ports parsed:   1 
-Ports successfully parsed:      1        
+Total number of ports parsed:   1
+Ports successfully parsed:      1
 Ports failed:                   0</screen>
       </listitem>
     </orderedlist>
@@ -698,9 +699,9 @@ c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4</programlis
       line at a deeper level than the following lines as shown in this
       example.</para>
 
-      <programlisting>destroot.keepdirs     ${destroot}${prefix}/var/run \
-                        ${destroot}${prefix}/var/log \
-                        ${destroot}${prefix}/var/cache/mrtg</programlisting>
+      <programlisting>destroot.keepdirs   ${destroot}${prefix}/var/run \
+                    ${destroot}${prefix}/var/log \
+                    ${destroot}${prefix}/var/cache/mrtg</programlisting>
     </section>
 
     <section id="development.practices.dont-overwrite">
