@@ -168,7 +168,78 @@
         </listitem>
 
         <listitem>
-          <para>Perform the default “easy” install.</para>
+          <para>Perform the default “easy” install.  As of MacPorts 1.6,
+            this will install MacPorts, set up a MacPorts-compatible shell
+            environment and, if you have a network connection, update the
+            MacPorts core and ports tree.</para>
+          <note id="installing.binary.postflight.details">
+            <title>For advanced users: details of the postflight script</title>
+            <para>
+              The "postflight" script bundled with our "pkg" installer is
+              run by Apple's Installer.app after MacPorts is installed, in order
+              to setup a MacPorts compatible shell environment:
+              <orderedlist>
+                <listitem>
+                  <para>The "/opt/local/bin" &amp; "/opt/local/sbin" paths are
+                    added to the PATH variable if not already there, in order to
+                    find MacPorts installed programs.</para>
+                </listitem>
+
+                <listitem>
+                  <para>The "/opt/local/share/man" path is added to the MANPATH
+                    variable if and only if:
+                    <itemizedlist>
+                      <listitem>
+                        <para>if already exists;</para>
+                      </listitem>
+                      <listitem>
+                        <para>its content is not empty;</para>
+                      </listitem>
+                      <listitem>
+                        <para>the MacPorts path is not already there;</para>
+                      </listitem>
+                      <listitem>
+                        <para>its content does not contain empty components, such
+                          as "/usr/share/man:", ":/usr/share/man" or
+                          "/usr/share/man::/usr/X11R6/man".</para>
+                      </listitem>
+                    </itemizedlist>
+                    In all of these cases, helper tools such as 'manpath(1)' or
+                    'path_helper(8)' (Leopard only) setup the MANPATH directly in
+                    coordination with the 'man(1)' command, so we avoid
+                    interfering with that.
+                  </para>
+                </listitem>
+
+                <listitem>
+                  <para>The <envar>DISPLAY</envar> environment variable is set
+                    to ":0" if and only if:
+                    <itemizedlist>
+                      <listitem>
+                        <para>
+                          It's a Tiger or earlier platform, since on Leopard
+                          connections to the X11 server are handled in a much
+                          cleaner fashion by the 'launchd(8)' daemon directly;
+                        </para>
+                      </listitem>
+                      <listitem>
+                        <para>
+                          a <envar>DISPLAY</envar> environment variable doesn't
+                          already exist.
+                        </para>
+                      </listitem>
+                    </itemizedlist>
+                  </para>
+                </listitem>
+              </orderedlist>
+            </para>
+
+            <para>Once all that is done, the script runs the 'selfupdate'
+              action of the 'port(1)' command to synchronize the MacPorts
+              installation with the project's rsync server, updating the
+              ports tree to its latest revision and MacPorts itself to the
+              latest point release if available.</para>
+           </note>
         </listitem>
       </orderedlist>
 
