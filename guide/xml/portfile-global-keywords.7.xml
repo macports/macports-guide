@@ -77,22 +77,20 @@
 
         <listitem>
           <para>An optional keyword (default value is 0) that may be used when
-          a software developer updates an application to a version that is
-          numerically less than the previous version. For example 1.10 -&gt;
-          1.2 or 20070928 -&gt; 1.0. In these cases, an epoch may be used to
-          ensure that port version comparisons are done properly. Often the
-          epoch is formatted like a date, but it can simply be a number such
-          as 1.</para>
+          ports are updated to a version that is numerically less than the
+          previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
+          An epoch ensures that port version comparisons work correctly in
+          these cases. Often the epoch is formatted like a date, but it can
+          simply be a number such as 1.</para>
 
           <programlisting>epoch               20080924</programlisting>
 
           <programlisting>epoch               1</programlisting>
 
           <note>
-            <para>If an epoch is used it must be incremented for each
-            subsequent port update; it must never be decreased or reset to
-            zero, because this would always cause a port version comparison to
-            be incorrect after a port upgrade.</para>
+            <para>If an epoch is used it must must never be decreased or reset
+            to zero, because this would always cause a port version comparison
+            to be incorrect after a port upgrade.</para>
           </note>
 
           <para>An epoch is not needed for most ports, and good use of a
