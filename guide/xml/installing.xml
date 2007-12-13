@@ -4,7 +4,7 @@
 <chapter id="installing">
   <title>Installing MacPorts</title>
 
-  <para>This chapter show you how to install MacPorts and its prerequisites
+  <para>This chapter shows you how to install MacPorts and its prerequisites
   step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
   wish to install MacPorts on another platform, first make sure you have X11
   and gcc installed, and then perform a <ulink
