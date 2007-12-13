@@ -277,12 +277,10 @@ pkgconfig                      0.21_0 < 0.22_0]]></screen>
       <note>
         <para>The <option>upgrade</option> option by default does not
         uninstall an upgraded port —it deactivates it. See section <link
-        linkend="internals.images">Port Images</link>, and also <link
-        linkend="reference.phases.introduction.destroot">Destroot</link> and
-        <link linkend="reference.phases.introduction.activate">Activate</link>
-        phases in <link linkend="reference.phases">Port Phases</link>. If you
-        wish to uninstall the old version, use the <option>-u</option>
-        option.</para>
+        linkend="internals.images">Port Images</link>, and also Destroot and
+        Activate phases in <link linkend="reference.phases">Port
+        Phases</link>. If you wish to uninstall the old version, use the
+        <option>-u</option> option.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
       </note>
