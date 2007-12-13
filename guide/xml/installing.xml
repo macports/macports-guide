@@ -177,7 +177,9 @@
             <para>
               The "postflight" script bundled with our "pkg" installer is
               run by Apple's Installer.app after MacPorts is installed, in order
-              to setup a MacPorts-compatible shell environment:
+              to setup a MacPorts-compatible shell environment by editing the appropriate
+              shell configuration file (which is properly backed up if necessary
+              with an "mpsaved_$timestamp" suffix before proceeding):
               <orderedlist>
                 <listitem>
                   <para>The "/opt/local/bin" &amp; "/opt/local/sbin" paths are
