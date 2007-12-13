@@ -246,9 +246,8 @@
       <note>
         <para>Use the MacPorts <link
         linkend="installing.selfupdate">selfupdate</link> operation
-        immediately after installing MacPorts. If a newer MacPorts base point
-        revision has been released before a new package installer has been
-        made, it is automatically updated.</para>
+        on a regular basis after installing MacPorts, in order to keep your
+        installation always up to date.</para>
       </note>
     </section>
 
