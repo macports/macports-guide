@@ -190,16 +190,16 @@
                     variable if and only if:
                     <itemizedlist>
                       <listitem>
-                        <para>if already exists;</para>
+                        <para>it already exists;</para>
                       </listitem>
                       <listitem>
-                        <para>its content is not empty;</para>
+                        <para>its value is not empty;</para>
                       </listitem>
                       <listitem>
-                        <para>the MacPorts path is not already there;</para>
+                        <para>the MacPorts path is not already in it;</para>
                       </listitem>
                       <listitem>
-                        <para>its content does not contain empty components, such
+                        <para>its value does not contain empty components, such
                           as "/usr/share/man:", ":/usr/share/man" or
                           "/usr/share/man::/usr/X11R6/man".</para>
                       </listitem>
