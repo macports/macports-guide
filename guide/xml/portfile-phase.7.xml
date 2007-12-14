@@ -77,6 +77,15 @@
       </varlistentry>
 
       <varlistentry>
+        <term>test</term>
+
+        <listitem>
+          <para>Execute commands to run test suites bundled with a
+          port.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>destroot</term>
 
         <listitem>
@@ -2320,6 +2329,76 @@ build.target-delete     compat</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section id="reference.phases.test">
+    <title>Test Phase Keywords</title>
+
+    <para>The list of keywords related to the test phase.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>test.run</term>
+
+        <listitem>
+          <para>Enable running test suites bundled with a port.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.run            yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>test.cmd</term>
+
+        <listitem>
+          <para>Test command to run relative to
+          <varname>${worksrcdir}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${build.cmd}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.cmd            checks.sh</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>test.target</term>
+
+        <listitem>
+          <para>Test target to pass to <varname>${test.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>test</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.target         checks</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
       </varlistentry>
     </variablelist>
   </section>
