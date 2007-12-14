@@ -249,18 +249,18 @@
             separately as shown in this example .plist file
             snippet.</para>
 
-            <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
-&lt;array&gt;
-        &lt;string&gt;/opt/local/bin/daemondo&lt;/string&gt;
-        &lt;string&gt;--label=vm-pop3d&lt;/string&gt;
-        &lt;string&gt;--start-cmd&lt;/string&gt;
-        &lt;string&gt;/opt/local/sbin/vm-pop3d&lt;/string&gt;
-        &lt;string&gt;-d&lt;/string&gt;
-        &lt;string&gt;10&lt;/string&gt;
-        &lt;string&gt;-t&lt;/string&gt;
-        &lt;string&gt;600&lt;/string&gt;
-        &lt;string&gt;;&lt;/string&gt;
-&lt;/array&gt;</programlisting>
+            <programlisting><![CDATA[<key>ProgramArguments</key>
+<array>
+        <string>/opt/local/bin/daemondo</string>
+        <string>--label=vm-pop3d</string>
+        <string>--start-cmd</string>
+        <string>/opt/local/sbin/vm-pop3d</string>
+        <string>-d</string>
+        <string>10</string>
+        <string>-t</string>
+        <string>600</string>
+        <string>;</string>
+</array>]]></programlisting>
           </note>
         </listitem>
       </varlistentry>
