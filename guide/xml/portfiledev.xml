@@ -134,9 +134,9 @@
         responsibility for keeping the port up-to-date, and the maintainer
         keyword lists maintainer email addresses(s). To hide these addresses
         from spambots, see the more full explanation of the maintainer keyword
-        in the <link linkend="reference.keywords.general">Global
-        Keywords</link> section of the <link linkend="reference">Portfile
-        Reference</link> chapter.</para>
+        in the <link linkend="reference.keywords">Global Keywords</link>
+        section of the <link linkend="reference">Portfile Reference</link>
+        chapter.</para>
 
         <programlisting>maintainers         julesverne@example.org</programlisting>
 

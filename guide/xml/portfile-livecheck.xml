@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+
+<section id="reference.livecheck">
+  <title>Livecheck / Distcheck</title>
+
+  <para>Options livecheck and distcheck are especially useful for port
+  maintainers, but others may also find this information valuable.</para>
+
+  <para>Livecheck checks to see if MacPorts can query the developer's
+  download site to determine if a newer version of the software has become
+  available since the port was installed.</para>
+
+  <variablelist>
+    <varlistentry>
+      <term>livecheck.check</term>
+
+      <listitem>
+        <para>Specify what kind of update check to perform.</para>
+
+        <para>Open source mirror site options are to use the project's
+        latest file release from <option>sourceforge</option> or
+        <option>googlecode</option>, or the project's
+        <literal>date_updated</literal> XML tag for
+        <option>freshmeat</option>. These options are automatically used if
+        a matching <varname>${master_sites}</varname> URL is used.</para>
+
+        <para>Generic download site options are to specify a
+        <option>moddate</option> (modification date of a URL resource), a
+        <option>regex</option> (retrieve the version by applying a regex to
+        a URL resource), <option>regexm</option> (retrieve the version by
+        applying a multi-line regex to a URL resource), <option>md5</option>
+        (compares the md5 sum of a URL resource) or <option>none</option>
+        (no check).</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <option>sourceforge</option> or
+            <option>googlecode</option> if the
+            <varname>${master_sites}</varname> is one of these, else
+            <option>freshmeat</option>.</para>
+          </listitem>
+
+          <listitem>
+            <para>Values: <option>freshmeat</option>
+            <option>sourceforge</option> <option>googlecode</option>
+            <option>moddate</option> <option>regex</option>
+            <option>regexm</option> <option>md5</option>
+            <option>none</option></para>
+          </listitem>
+
+          <listitem>
+            <para>Examples:</para>
+
+            <programlisting>livecheck.check     regex
+livecheck.url       ${homepage}
+livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.name</term>
+
+      <listitem>
+        <para>Name of the project for live checks. Is only used with
+        freshmeat, sourceforge, and googlecode livechecks.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <varname>${name}</varname> or the sourceforge,
+            freshmeat or googlecode project name if it can be guessed from
+            <varname>${master_sites}</varname>.</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.name      hibernate</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.distname</term>
+
+      <listitem>
+        <para>Name of the file release for sourceforge and googlecode
+        checks. For sourceforge releases use the name of the package
+        release. For googlecode releases use the name of the file download,
+        including extension. You may use this keyword without
+        <code>livecheck.version</code> if you replace the version part of
+        the name with "<literal>(.*)</literal>".</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: sourceforge:
+            <varname>${livecheck.name}</varname>, googlecode: first
+            <varname>${distfiles}</varname> item</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.distname  faad2.src</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.version</term>
+
+      <listitem>
+        <para>Version of the project for a check; used for regex-based
+        checks.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <varname>${version}</varname></para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.version   ${name}-${version}</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.url</term>
+
+      <listitem>
+        <para>URL to query for a check.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default:</para>
+
+            <itemizedlist>
+              <listitem>
+                <para><varname>${homepage}</varname> or the first hit among
+                the following sites:</para>
+              </listitem>
+
+              <listitem>
+                <para><literal>http://freshmeat.net/projects-xml/${livecheck.name}/${livecheck.name}.xml</literal></para>
+              </listitem>
+
+              <listitem>
+                <para><literal>http://sourceforge.net/export/rss2_projfiles.php?project=${livecheck.name}</literal></para>
+              </listitem>
+
+              <listitem>
+                <para><literal>http://code.google.com/p/${livecheck.name}/downloads/list</literal></para>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.url       http://ftp.gnu.org/gnu/bison/</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.regex</term>
+
+      <listitem>
+        <para>Regular expression to parse the resource for regex checks. Be
+        sure to use a regular expression grouping around the version
+        component.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: none</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix${extract.suffix}</programlisting>
+
+            <!-- TODO: add more examples -->
+
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.md5</term>
+
+      <listitem>
+        <para>md5 checksum to use for an md5 comparison.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: none</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.md5       37e6a5b6516a680c7178b72021d3b706</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <para>Distcheck reports whether or not the distfile(s) specified in a
+  Portfile are still available on the developer's download site. Examples
+  are given below.</para>
+
+  <variablelist>
+    <varlistentry>
+      <term>distcheck.check</term>
+
+      <listitem>
+        <para>This option can be used to disable distcheck. It specifies
+        what kind of check should be performed on distfiles:
+        <option>moddate</option> (check if the Portfile is older than the
+        distfile) or <option>none</option> (no check).</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <option>moddate</option></para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>distcheck.check     none</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>

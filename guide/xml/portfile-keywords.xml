@@ -14,627 +14,177 @@
   whole, whereas the keywords listed under a port phase specify information to
   be used during a particular installation phase.</para>
 
-  <section id="reference.keywords.general">
-    <title>General</title>
+  <variablelist>
+    <varlistentry>
+      <term>PortSystem</term>
 
-    <para>The list of global keywords.</para>
+      <listitem>
+        <para>The top line of every Portfile; it must be followed by a blank
+        line. It defines which version of the Portfile interpreter will be
+        used.</para>
 
-    <variablelist>
-      <varlistentry>
-        <term>PortSystem</term>
-
-        <listitem>
-          <para>The top line of every Portfile; it must be followed by a blank
-          line. It defines which version of the Portfile interpreter will be
-          used.</para>
-
-          <programlisting>PortSystem          1.0
+        <programlisting>PortSystem          1.0
 
 </programlisting>
-        </listitem>
-      </varlistentry>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>name</term>
+    <varlistentry>
+      <term>name</term>
 
-        <listitem>
-          <para>The name of the Port; it should be lowercase to prevent
-          uninstallation problems due to a macports base bug.</para>
+      <listitem>
+        <para>The name of the Port; it should be lowercase to prevent
+        uninstallation problems due to a macports base bug.</para>
 
-          <programlisting>name                foo</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>name                foo</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>version</term>
+    <varlistentry>
+      <term>version</term>
 
-        <listitem>
-          <para>The version of the ported software.</para>
+      <listitem>
+        <para>The version of the ported software.</para>
 
-          <programlisting>version             1.23.45</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>version             1.23.45</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>revision</term>
+    <varlistentry>
+      <term>revision</term>
 
-        <listitem>
-          <para>Optional keyword (default is 0) that is used to track port
-          revisions. It should not be incremented for port revisions unless it
-          would benefit users to upgrade an installed port, and cleared when
-          the port is updated to a newer version.</para>
+      <listitem>
+        <para>Optional keyword (default is 0) that is used to track port
+        revisions. It should not be incremented for port revisions unless it
+        would benefit users to upgrade an installed port, and cleared when
+        the port is updated to a newer version.</para>
 
-          <para>It should be used if a bug in the Portfile was found and all
-          installations of this port have to be updated. If the change only
-          affects new installations, there is no need to increase it.</para>
+        <para>It should be used if a bug in the Portfile was found and all
+        installations of this port have to be updated. If the change only
+        affects new installations, there is no need to increase it.</para>
 
-          <programlisting>revision            1</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>revision            1</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>epoch</term>
+    <varlistentry>
+      <term>epoch</term>
 
-        <listitem>
-          <para>An optional keyword (default value is 0) that may be used when
-          ports are updated to a version that is numerically less than the
-          previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
-          An epoch ensures that port version comparisons work correctly in
-          these cases. Often the epoch is formatted like a date, but it can
-          simply be a number such as 1.</para>
+      <listitem>
+        <para>An optional keyword (default value is 0) that may be used when
+        ports are updated to a version that is numerically less than the
+        previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
+        An epoch ensures that port version comparisons work correctly in
+        these cases. Often the epoch is formatted like a date, but it can
+        simply be a number such as 1.</para>
 
-          <programlisting>epoch               20080924</programlisting>
+        <programlisting>epoch               20080924</programlisting>
 
-          <programlisting>epoch               1</programlisting>
+        <programlisting>epoch               1</programlisting>
 
-          <note>
-            <para>If an epoch is used it must must never be decreased or reset
-            to zero, because this would always cause a port version comparison
-            to be incorrect after a port upgrade.</para>
-          </note>
+        <note>
+          <para>If an epoch is used it must must never be decreased or reset
+          to zero, because this would always cause a port version comparison
+          to be incorrect after a port upgrade.</para>
+        </note>
 
-          <para>An epoch is not needed for most ports, and good use of a
-          port's version can make using an epoch unnecessary even for
-          application distributions without official version numbers. For
-          example, if an application version 1.5 is superseded by a snapshot
-          release 20081022, the new release could be given version number
-          1.5.20081022, rather than 20081022, so the newer release will have a
-          numericaly greater value.</para>
-        </listitem>
-      </varlistentry>
+        <para>An epoch is not needed for most ports, and good use of a
+        port's version can make using an epoch unnecessary even for
+        application distributions without official version numbers. For
+        example, if an application version 1.5 is superseded by a snapshot
+        release 20081022, the new release could be given version number
+        1.5.20081022, rather than 20081022, so the newer release will have a
+        numericaly greater value.</para>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>categories</term>
+    <varlistentry>
+      <term>categories</term>
 
-        <listitem>
-          <para>The category under which the ported software falls. The first
-          category should be the same as the directory within which the
-          Portfile is stored; secondary and tertiary categories may be
-          selected.</para>
+      <listitem>
+        <para>The category under which the ported software falls. The first
+        category should be the same as the directory within which the
+        Portfile is stored; secondary and tertiary categories may be
+        selected.</para>
 
-          <programlisting>categories          net security</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>categories          net security</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>maintainers</term>
+    <varlistentry>
+      <term>maintainers</term>
 
-        <listitem>
-          <para>A port's maintainer is a person or persons who take
-          responsibility for keeping the port up-to-date, and the maintainer
-          keyword lists maintainer email addresses(s). However, many
-          maintainers wish to hide these addresses from spambots; to do so
-          follow these conventions:</para>
+      <listitem>
+        <para>A port's maintainer is a person or persons who take
+        responsibility for keeping the port up-to-date, and the maintainer
+        keyword lists maintainer email addresses(s). However, many
+        maintainers wish to hide these addresses from spambots; to do so
+        follow these conventions:</para>
 
-          <itemizedlist>
-            <listitem>
-              <para>For addresses in domain @macports.org, simply omit the
-              domain name.</para>
-            </listitem>
+        <itemizedlist>
+          <listitem>
+            <para>For addresses in domain @macports.org, simply omit the
+            domain name.</para>
+          </listitem>
 
-            <listitem>
-              <para>For addresses in other domains, say
-              <email>account@example.org</email>, use the convention
-              example.org:account to specify the address.</para>
-            </listitem>
-          </itemizedlist>
+          <listitem>
+            <para>For addresses in other domains, say
+            <email>account@example.org</email>, use the convention
+            example.org:account to specify the address.</para>
+          </listitem>
+        </itemizedlist>
 
-          <para>In the example below, the maintainer email addresses
-          <email>jdoe@macports.org</email> and
-          <email>julesverne@example.org</email> are hidden using these
-          conventions.</para>
+        <para>In the example below, the maintainer email addresses
+        <email>jdoe@macports.org</email> and
+        <email>julesverne@example.org</email> are hidden using these
+        conventions.</para>
 
-          <programlisting>maintainers         jdoe \
+        <programlisting>maintainers         jdoe \
                     example.org:julesverne</programlisting>
-        </listitem>
-      </varlistentry>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>description</term>
+    <varlistentry>
+      <term>description</term>
 
-        <listitem>
-          <para>A one-sentence description of the ported software.</para>
+      <listitem>
+        <para>A one-sentence description of the ported software.</para>
 
-          <programlisting>description         A classic shooter arcade game.</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>description         A classic shooter arcade game.</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>long_description</term>
+    <varlistentry>
+      <term>long_description</term>
 
-        <listitem>
-          <para>A long description of the ported software. Break long lines
-          with escaped newlines.</para>
+      <listitem>
+        <para>A long description of the ported software. Break long lines
+        with escaped newlines.</para>
 
-          <programlisting>long_description    A classic shooter arcade game derived from \
+        <programlisting>long_description    A classic shooter arcade game derived from \
                     the game alien-munchers.  Not suitable for \
                     children under two years old.</programlisting>
-        </listitem>
-      </varlistentry>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>homepage</term>
+    <varlistentry>
+      <term>homepage</term>
 
-        <listitem>
-          <para>Port application's homepage.</para>
+      <listitem>
+        <para>Port application's homepage.</para>
 
-          <programlisting>homepage            http://www.example.org/apps</programlisting>
-        </listitem>
-      </varlistentry>
+        <programlisting>homepage            http://www.example.org/apps</programlisting>
+      </listitem>
+    </varlistentry>
 
-      <varlistentry>
-        <term>platforms</term>
+    <varlistentry>
+      <term>platforms</term>
 
-        <listitem>
-          <para>The platforms on which the port has been tested.</para>
+      <listitem>
+        <para>The platforms on which the port has been tested.</para>
 
-          <programlisting>platforms           darwin freebsd</programlisting>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </section>
-
-  <section id="reference.keywords.dependencies">
-    <title>Dependencies</title>
-
-    <para>Free and open source software is highly modular, and MacPorts ports
-    often require that other ports be installed beforehand; these
-    prerequisites for a given port are called a port's
-    <quote>dependencies</quote>.</para>
-
-    <para>There are three types of MacPorts dependencies: library, build, and
-    run dependencies. Dependency types are important for proper port upgrade
-    and uninstall behavior. For example, you may not uninstall a port that is
-    a library dependency for another port, though you may remove one with a
-    build dependency; likewise, upgrading a port will upgrade its library and
-    build dependencies also, but not its run dependencies.</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>depends_lib</term>
-
-        <term>depends_lib-append</term>
-
-        <term>depends_lib-delete</term>
-
-        <listitem>
-          <para>The list of dependencies to check before phases
-          <option>configure</option>, <option>build</option>,
-          <option>destroot</option>, <option>install</option>, and
-          <option>package</option>. Library dependencies are needed both at
-          build time (for headers and libraries to link against) and at run
-          time.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>depends_build</term>
-
-        <term>depends_build-append</term>
-
-        <term>depends_build-delete</term>
-
-        <listitem>
-          <para>The list of dependencies to check before phases
-          <option>build</option>, <option>destroot</option>,
-          <option>install</option>, and <option>package</option>. Build
-          dependencies are needed when software is compiled, but not needed at
-          all once the software is compiled and installed.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>depends_run</term>
-
-        <term>depends_run-append</term>
-
-        <term>depends_run-delete</term>
-
-        <listitem>
-          <para>The list of dependencies to check before phases
-          <option>destroot</option>, <option>install</option>, and
-          <option>package</option>. Run dependencies are needed when the
-          software is run, but not to compile it.</para>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
-    <section id="reference.keywords.dependencies.types">
-      <title>Port and Non-Port Dependencies</title>
-
-      <para>Port dependencies should be provided by MacPorts ports whenever
-      possible, however dependencies may be provided by vendor-supplied
-      software when satisfying a dependency by a port is not practical or
-      desirable for a special reason. Dependencies of this type are called
-      non-port dependencies.</para>
-
-      <para>Non-port dependencies should only be used if the application or
-      library can be installed by multiple ports (for example stable and
-      -devel version) or if it can't be installed with Macports.</para>
-
-      <para>Port dependencies, the preferred type, are specified as shown in
-      these examples:</para>
-
-      <programlisting>depends_lib         port:rrdtool port:apache2
-
-depends_build       port:libtool
-
-depends_run         port:apache2 port:php5</programlisting>
-
-      <para>Non-port dependencies are specified as shown in these
-      examples:</para>
-
-      <programlisting>depends_lib         lib:libX11.6:xorg
-
-depends_build       bin:glibtool:libtool
-
-depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
-    </section>
-  </section>
-
-  <section id="reference.keywords.variants">
-    <title>Variants</title>
-
-    <para>MacPorts variants are conditional modifications of port installation
-    behavior that may be invoked by a user at the time of port install.</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>variant [requires variant] [conflicts variant] [description
-        description]</term>
-
-        <listitem>
-          <para>The variant declaration may contain any keywords that can be
-          placed in a Portfile's global section. If you wish to execute system
-          (shell) calls or Tcl extensions during the execution of a port
-          phase, you should place those statements within a
-          <literal>variant_isset</literal> conditional within a phase
-          declaration and not within the variant declaration itself.
-          Dependencies and conflicts with other variants in the same port can
-          be expressed with requires and conflicts. See the isset Tcl
-          extension.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>variant gnome requires glib {
-    configure.args-append   --with-gnome
-    depends_lib-append      port:gnome-session
-}</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>default_variants</term>
-
-        <listitem>
-          <para>If variants are defined, then the default_variants value lists
-          which variants are enabled by default. This allows for Portfile
-          modularity and also allows users to suppress default variants if
-          they wish.</para>
-
-          <para>Due to a bug in the current Macports base default_variants
-          shouldn't be used at the moment as they cause problems while
-          upgrading ports.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>default_variants    +ssl +tcpd
-
-</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para>Default variants may be suppressed by preceding a variant name
-          with a "-" as shown in this example.</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>universal_variant</term>
-
-        <listitem>
-          <para>When using MacPorts on Mac OS X, a universal variant is
-          defined by default to configure ports with universal flags. The
-          variant can be overridden if the default code does not work (see the
-          Configure Universal section below), or suppressed if a universal
-          variant is not possible for the port with this keyword.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: yes</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>universal_variant   no</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </section>
-
-  <section id="reference.keywords.livecheck">
-    <title>Livecheck / Distcheck</title>
-
-    <para>Options livecheck and distcheck are especially useful for port
-    maintainers, but others may also find this information valuable.</para>
-
-    <para>Livecheck checks to see if MacPorts can query the developer's
-    download site to determine if a newer version of the software has become
-    available since the port was installed.</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>livecheck.check</term>
-
-        <listitem>
-          <para>Specify what kind of update check to perform.</para>
-
-          <para>Open source mirror site options are to use the project's
-          latest file release from <option>sourceforge</option> or
-          <option>googlecode</option>, or the project's
-          <literal>date_updated</literal> XML tag for
-          <option>freshmeat</option>. These options are automatically used if
-          a matching <varname>${master_sites}</varname> URL is used.</para>
-
-          <para>Generic download site options are to specify a
-          <option>moddate</option> (modification date of a URL resource), a
-          <option>regex</option> (retrieve the version by applying a regex to
-          a URL resource), <option>regexm</option> (retrieve the version by
-          applying a multi-line regex to a URL resource), <option>md5</option>
-          (compares the md5 sum of a URL resource) or <option>none</option>
-          (no check).</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <option>sourceforge</option> or
-              <option>googlecode</option> if the
-              <varname>${master_sites}</varname> is one of these, else
-              <option>freshmeat</option>.</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <option>freshmeat</option>
-              <option>sourceforge</option> <option>googlecode</option>
-              <option>moddate</option> <option>regex</option>
-              <option>regexm</option> <option>md5</option>
-              <option>none</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Examples:</para>
-
-              <programlisting>livecheck.check     regex
-livecheck.url       ${homepage}
-livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.name</term>
-
-        <listitem>
-          <para>Name of the project for live checks. Is only used with
-          freshmeat, sourceforge, and googlecode livechecks.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <varname>${name}</varname> or the sourceforge,
-              freshmeat or googlecode project name if it can be guessed from
-              <varname>${master_sites}</varname>.</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.name      hibernate</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.distname</term>
-
-        <listitem>
-          <para>Name of the file release for sourceforge and googlecode
-          checks. For sourceforge releases use the name of the package
-          release. For googlecode releases use the name of the file download,
-          including extension. You may use this keyword without
-          <code>livecheck.version</code> if you replace the version part of
-          the name with "<literal>(.*)</literal>".</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: sourceforge:
-              <varname>${livecheck.name}</varname>, googlecode: first
-              <varname>${distfiles}</varname> item</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.distname  faad2.src</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.version</term>
-
-        <listitem>
-          <para>Version of the project for a check; used for regex-based
-          checks.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <varname>${version}</varname></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.version   ${name}-${version}</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.url</term>
-
-        <listitem>
-          <para>URL to query for a check.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default:</para>
-
-              <itemizedlist>
-                <listitem>
-                  <para><varname>${homepage}</varname> or the first hit among
-                  the following sites:</para>
-                </listitem>
-
-                <listitem>
-                  <para><literal>http://freshmeat.net/projects-xml/${livecheck.name}/${livecheck.name}.xml</literal></para>
-                </listitem>
-
-                <listitem>
-                  <para><literal>http://sourceforge.net/export/rss2_projfiles.php?project=${livecheck.name}</literal></para>
-                </listitem>
-
-                <listitem>
-                  <para><literal>http://code.google.com/p/${livecheck.name}/downloads/list</literal></para>
-                </listitem>
-              </itemizedlist>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.url       http://ftp.gnu.org/gnu/bison/</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.regex</term>
-
-        <listitem>
-          <para>Regular expression to parse the resource for regex checks. Be
-          sure to use a regular expression grouping around the version
-          component.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix${extract.suffix}</programlisting>
-
-              <!-- TODO: add more examples -->
-
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>livecheck.md5</term>
-
-        <listitem>
-          <para>md5 checksum to use for an md5 comparison.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>livecheck.md5       37e6a5b6516a680c7178b72021d3b706</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-
-    <para>Distcheck reports whether or not the distfile(s) specified in a
-    Portfile are still available on the developer's download site. Examples
-    are given below.</para>
-
-    <variablelist>
-      <varlistentry>
-        <term>distcheck.check</term>
-
-        <listitem>
-          <para>This option can be used to disable distcheck. It specifies
-          what kind of check should be performed on distfiles:
-          <option>moddate</option> (check if the Portfile is older than the
-          distfile) or <option>none</option> (no check).</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <option>moddate</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>distcheck.check     none</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-    </variablelist>
-  </section>
+        <programlisting>platforms           darwin freebsd</programlisting>
+      </listitem>
+    </varlistentry>
+  </variablelist>
 </section>

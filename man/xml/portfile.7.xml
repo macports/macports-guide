@@ -27,19 +27,28 @@
     characteristics for a port.</para>
   </refsection>
 
-  <xi:include href="../tmp/portfile-variables.xml"
+  <xi:include href="../tmp/portfile-keywords.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="../tmp/portfile-keywords.xml"
+  <xi:include href="../tmp/portfile-variables.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="../tmp/portfile-phase.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="../tmp/portfile-startupitem.xml"
+  <xi:include href="../tmp/portfile-dependencies.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="../tmp/portfile-variants.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="../tmp/portfile-tcl.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="../tmp/portfile-startupitem.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+  <xi:include href="../tmp/portfile-livecheck.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <refsection>

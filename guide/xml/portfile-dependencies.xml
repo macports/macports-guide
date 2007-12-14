@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+
+<section id="reference.dependencies">
+  <title>Dependencies</title>
+
+  <para>Free and open source software is highly modular, and MacPorts ports
+  often require that other ports be installed beforehand; these
+  prerequisites for a given port are called a port's
+  <quote>dependencies</quote>.</para>
+
+  <para>There are three types of MacPorts dependencies: library, build, and
+  run dependencies. Dependency types are important for proper port upgrade
+  and uninstall behavior. For example, you may not uninstall a port that is
+  a library dependency for another port, though you may remove one with a
+  build dependency; likewise, upgrading a port will upgrade its library and
+  build dependencies also, but not its run dependencies.</para>
+
+  <variablelist>
+    <varlistentry>
+      <term>depends_lib</term>
+
+      <term>depends_lib-append</term>
+
+      <term>depends_lib-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phases
+        <option>configure</option>, <option>build</option>,
+        <option>destroot</option>, <option>install</option>, and
+        <option>package</option>. Library dependencies are needed both at
+        build time (for headers and libraries to link against) and at run
+        time.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>depends_build</term>
+
+      <term>depends_build-append</term>
+
+      <term>depends_build-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phases
+        <option>build</option>, <option>destroot</option>,
+        <option>install</option>, and <option>package</option>. Build
+        dependencies are needed when software is compiled, but not needed at
+        all once the software is compiled and installed.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>depends_run</term>
+
+      <term>depends_run-append</term>
+
+      <term>depends_run-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phases
+        <option>destroot</option>, <option>install</option>, and
+        <option>package</option>. Run dependencies are needed when the
+        software is run, but not to compile it.</para>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+
+  <section id="reference.dependencies.types">
+    <title>Port and Non-Port Dependencies</title>
+
+    <para>Port dependencies should be provided by MacPorts ports whenever
+    possible, however dependencies may be provided by vendor-supplied
+    software when satisfying a dependency by a port is not practical or
+    desirable for a special reason. Dependencies of this type are called
+    non-port dependencies.</para>
+
+    <para>Non-port dependencies should only be used if the application or
+    library can be installed by multiple ports (for example stable and
+    -devel version) or if it can't be installed with Macports.</para>
+
+    <para>Port dependencies, the preferred type, are specified as shown in
+    these examples:</para>
+
+    <programlisting>depends_lib         port:rrdtool port:apache2
+
+depends_build       port:libtool
+
+depends_run         port:apache2 port:php5</programlisting>
+
+    <para>Non-port dependencies are specified as shown in these
+    examples:</para>
+
+    <programlisting>depends_lib         lib:libX11.6:xorg
+
+depends_build       bin:glibtool:libtool
+
+depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
+  </section>
+</section>

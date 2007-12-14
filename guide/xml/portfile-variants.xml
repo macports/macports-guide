@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+
+<section id="reference.variants">
+  <title>Variants</title>
+
+  <para>MacPorts variants are conditional modifications of port installation
+  behavior that may be invoked by a user at the time of port install.</para>
+
+  <variablelist>
+    <varlistentry>
+      <term>variant [requires variant] [conflicts variant] [description
+      description]</term>
+
+      <listitem>
+        <para>The variant declaration may contain any keywords that can be
+        placed in a Portfile's global section. If you wish to execute system
+        (shell) calls or Tcl extensions during the execution of a port
+        phase, you should place those statements within a
+        <literal>variant_isset</literal> conditional within a phase
+        declaration and not within the variant declaration itself.
+        Dependencies and conflicts with other variants in the same port can
+        be expressed with requires and conflicts. See the isset Tcl
+        extension.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: no</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>variant gnome requires glib {
+    configure.args-append   --with-gnome
+    depends_lib-append      port:gnome-session
+}</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>default_variants</term>
+
+      <listitem>
+        <para>If variants are defined, then the default_variants value lists
+        which variants are enabled by default. This allows for Portfile
+        modularity and also allows users to suppress default variants if
+        they wish.</para>
+
+        <para>Due to a bug in the current Macports base default_variants
+        shouldn't be used at the moment as they cause problems while
+        upgrading ports.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: none</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>default_variants    +ssl +tcpd
+
+</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+
+      <listitem>
+        <para>Default variants may be suppressed by preceding a variant name
+        with a "-" as shown in this example.</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>universal_variant</term>
+
+      <listitem>
+        <para>When using MacPorts on Mac OS X, a universal variant is
+        defined by default to configure ports with universal flags. The
+        variant can be overridden if the default code does not work (see the
+        Configure Universal section below), or suppressed if a universal
+        variant is not possible for the port with this keyword.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: yes</para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>universal_variant   no</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+  </variablelist>
+</section>
