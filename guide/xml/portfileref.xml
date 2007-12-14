@@ -8,19 +8,19 @@
   Portfile: port phases, dependencies, StartupItems, variables, keywords, and
   Tcl extensions.</para>
 
-  <xi:include href="portfile-variables.7.xml"
+  <xi:include href="portfile-variables.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="portfile-keywords.7.xml"
+  <xi:include href="portfile-keywords.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="portfile-phase.7.xml"
+  <xi:include href="portfile-phase.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="portfile-startupitem.7.xml"
+  <xi:include href="portfile-startupitem.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="portfile-tcl.7.xml"
+  <xi:include href="portfile-tcl.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <section id="reference.portgroup">
