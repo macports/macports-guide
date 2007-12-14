@@ -90,7 +90,8 @@
           startupitem will be generated that is of the appropriate type for
           the OS. For instance, launchd is used on system 10.4, while
           SystemStarter is used on prior Mac OS X systems. A global default
-          may be specified with the startupitem_type preference in ports.conf.
+          may be specified with the startupitem_type preference in
+          <filename>ports.conf</filename>.
           </para>
 
           <itemizedlist>
@@ -99,9 +100,9 @@
             </listitem>
 
             <listitem>
-              <para>Values: <literal>SystemStarter</literal>
-              <literal>launchd</literal> <literal>default</literal>
-              <literal>rcNG</literal></para>
+              <para>Values: <option>SystemStarter</option>
+              <option>launchd</option> <option>default</option>
+              <option>rcNG</option></para>
             </listitem>
 
             <listitem>

@@ -123,8 +123,8 @@
 
           <para>Any empty directories in <varname>${destroot}</varname> upon
           completion of the destroot phase are removed unless a directory name
-          is placed in the value field of the optional destroot.keepdirs
-          keyword.</para>
+          is placed in the value field of the optional
+          <code>destroot.keepdirs</code> keyword.</para>
         </listitem>
       </varlistentry>
 
@@ -1719,12 +1719,12 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.install</term>
 
         <listitem>
-          <para>Set INSTALL flag for selecting an install tool; used for
-          copying files and creating directories.</para>
+          <para>Set <literal>INSTALL</literal> flag for selecting an install
+          tool; used for copying files and creating directories.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>/usr/bin/install</literal></para>
+              <para>Default: <filename>/usr/bin/install</filename></para>
             </listitem>
 
             <listitem>
@@ -2207,12 +2207,11 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>gnu</literal></para>
+              <para>Default: <option>gnu</option></para>
             </listitem>
 
             <listitem>
-              <para>Values: <literal>gnu</literal>
-              <literal>bsd</literal></para>
+              <para>Values: <option>gnu</option> <option>bsd</option></para>
             </listitem>
 
             <listitem>
@@ -2446,8 +2445,7 @@ build.target-delete     compat</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values: <literal>gnu</literal>
-              <literal>bsd</literal></para>
+              <para>Values: <option>gnu</option> <option>bsd</option></para>
             </listitem>
 
             <listitem>
@@ -2617,7 +2615,7 @@ destroot.target-delete  install-commandmode</programlisting>
         <listitem>
           <para>MacPorts tests for compliance to the common directory
           structure in <varname>${prefix}</varname>. If a port is not
-          compliant with the standard, set it to "yes".</para>
+          compliant with the standard, set it to <option>yes</option>.</para>
 
           <para>You can find the macports standard in <link
           linkend="internals.hierarchy">MacPorts File Hierarchy</link> or in
