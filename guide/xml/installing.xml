@@ -245,12 +245,6 @@
         </listitem>
       </orderedlist>
 
-      <note>
-        <para>Use the MacPorts <link
-        linkend="installing.selfupdate">selfupdate</link> operation
-        on a regular basis after installing MacPorts, in order to keep your
-        installation always up to date.</para>
-      </note>
     </section>
 
     <section id="installing.source">
