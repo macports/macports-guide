@@ -414,10 +414,11 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
           latest file release from <option>sourceforge</option> or
           <option>googlecode</option>, or the project's
           <literal>date_updated</literal> XML tag for
-          <option>freshmeat</option>.</para>
+          <option>freshmeat</option>. These options are automatically used if
+          a matching <varname>${master_sites}</varname> URL is used.</para>
 
           <para>Generic download site options are to specify a
-          <option>moddate</option> (modification date) of a URL resource), a
+          <option>moddate</option> (modification date of a URL resource), a
           <option>regex</option> (retrieve the version by applying a regex to
           a URL resource), <option>regexm</option> (retrieve the version by
           applying a multi-line regex to a URL resource), <option>md5</option>
@@ -426,13 +427,18 @@ depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: sourceforge or googlecode if the master_sites is
-              one of these, else freshmeat.</para>
+              <para>Default: <option>sourceforge</option> or
+              <option>googlecode</option> if the
+              <varname>${master_sites}</varname> is one of these, else
+              <option>freshmeat</option>.</para>
             </listitem>
 
             <listitem>
-              <para>Values: freshmeat sourceforge googlecode moddate regex
-              regexm md5 none</para>
+              <para>Values: <option>freshmeat</option>
+              <option>sourceforge</option> <option>googlecode</option>
+              <option>moddate</option> <option>regex</option>
+              <option>regexm</option> <option>md5</option>
+              <option>none</option></para>
             </listitem>
 
             <listitem>
@@ -450,18 +456,14 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
         <term>livecheck.name</term>
 
         <listitem>
-          <para>Name of the project for live checks; only used with freshmeat,
-          sourceforge, and googlecode livechecks.</para>
+          <para>Name of the project for live checks. Is only used with
+          freshmeat, sourceforge, and googlecode livechecks.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <varname>${name}</varname> or the
-              sourceforge/freshmeat/googlecode project name if it can be
-              guessed from <literal>master_sites</literal>.</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>any_project_name</replaceable></para>
+              <para>Default: <varname>${name}</varname> or the sourceforge,
+              freshmeat or googlecode project name if it can be guessed from
+              <varname>${master_sites}</varname>.</para>
             </listitem>
 
             <listitem>
@@ -478,17 +480,17 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
         <listitem>
           <para>Name of the file release for sourceforge and googlecode
-          checks. You may use this keyword without livecheck.version if you
-          replace the version part of the name with "(.*)".</para>
+          checks. For sourceforge releases use the name of the package
+          release. For googlecode releases use the name of the file download,
+          including extension. You may use this keyword without
+          <code>livecheck.version</code> if you replace the version part of
+          the name with "<literal>(.*)</literal>".</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: SourceForge: <varname>${livecheck.name}</varname>
-              ; GoogleCode: first ${distfiles} item</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>filename</replaceable></para>
+              <para>Default: sourceforge:
+              <varname>${livecheck.name}</varname>, googlecode: first
+              <varname>${distfiles}</varname> item</para>
             </listitem>
 
             <listitem>
@@ -513,10 +515,6 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values: <replaceable>any_version</replaceable></para>
-            </listitem>
-
-            <listitem>
               <para>Example:</para>
 
               <programlisting>livecheck.version   ${name}-${version}</programlisting>
@@ -537,26 +535,22 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
               <itemizedlist>
                 <listitem>
-                  <para>homepage or the first hit among the following
-                  sites</para>
+                  <para><varname>${homepage}</varname> or the first hit among
+                  the following sites:</para>
                 </listitem>
 
                 <listitem>
-                  <para>http://freshmeat.net/projects-xml/${livecheck.name}/${livecheck.name}.xml</para>
+                  <para><literal>http://freshmeat.net/projects-xml/${livecheck.name}/${livecheck.name}.xml</literal></para>
                 </listitem>
 
                 <listitem>
-                  <para>http://sourceforge.net/export/rss2_projfiles.php?project=${livecheck.name}</para>
+                  <para><literal>http://sourceforge.net/export/rss2_projfiles.php?project=${livecheck.name}</literal></para>
                 </listitem>
 
                 <listitem>
-                  <para>http://code.google.com/p/${livecheck.name}/downloads/list</para>
+                  <para><literal>http://code.google.com/p/${livecheck.name}/downloads/list</literal></para>
                 </listitem>
               </itemizedlist>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>any_url</replaceable></para>
             </listitem>
 
             <listitem>
@@ -582,13 +576,12 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values: <replaceable>any_regex</replaceable></para>
-            </listitem>
-
-            <listitem>
               <para>Example:</para>
 
-              <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix.tar.gz</programlisting>
+              <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix${extract.suffix}</programlisting>
+
+              <!-- TODO: add more examples -->
+
             </listitem>
           </itemizedlist>
         </listitem>
@@ -603,10 +596,6 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
           <itemizedlist>
             <listitem>
               <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>any_md5_checksum</replaceable></para>
             </listitem>
 
             <listitem>
@@ -629,17 +618,13 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
         <listitem>
           <para>This option can be used to disable distcheck. It specifies
-          what kind of check should be performed on distfiles: moddate (check
-          if the Portfile is older than the distfile) or none (no
-          check).</para>
+          what kind of check should be performed on distfiles:
+          <option>moddate</option> (check if the Portfile is older than the
+          distfile) or <option>none</option> (no check).</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: moddate</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: moddate none</para>
+              <para>Default: <option>moddate</option></para>
             </listitem>
 
             <listitem>
