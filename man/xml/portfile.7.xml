@@ -27,10 +27,10 @@
     characteristics for a port.</para>
   </refsection>
 
-  <xi:include href="../tmp/portfile-global-variables.7.xml"
+  <xi:include href="../tmp/portfile-variables.7.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <xi:include href="../tmp/portfile-global-keywords.7.xml"
+  <xi:include href="../tmp/portfile-keywords.7.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <xi:include href="../tmp/portfile-phase.7.xml"
