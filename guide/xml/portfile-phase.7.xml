@@ -121,9 +121,10 @@
             <varname>DESTDIR</varname> in their Makefiles.</para>
           </note>
 
-          <para>Any empty directories in ${destroot} upon completion of the
-          destroot phase are removed unless a directory name is placed in the
-          value field of the optional destroot.keepdirs keyword.</para>
+          <para>Any empty directories in <varname>${destroot}</varname> upon
+          completion of the destroot phase are removed unless a directory name
+          is placed in the value field of the optional destroot.keepdirs
+          keyword.</para>
         </listitem>
       </varlistentry>
 
