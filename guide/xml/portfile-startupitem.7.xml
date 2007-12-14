@@ -48,15 +48,7 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: yes no</para>
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
@@ -76,21 +68,46 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: required</para>
-            </listitem>
-
-            <listitem>
               <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>any_name</replaceable></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
               <programlisting>startupitem.name        OpenSSH</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.type</term>
+
+        <!-- TODO: check if this is still up to date -->
+
+        <listitem>
+          <para>Select the type of startupitem to generate. By default, a
+          startupitem will be generated that is of the appropriate type for
+          the OS. For instance, launchd is used on system 10.4, while
+          SystemStarter is used on prior Mac OS X systems. A global default
+          may be specified with the startupitem_type preference in ports.conf.
+          </para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Values: <literal>SystemStarter</literal>
+              <literal>launchd</literal> <literal>default</literal>
+              <literal>rcNG</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.type        launchd</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -107,15 +124,7 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
               <para>Default: <filename>/dev/null</filename></para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>/file/path</replaceable></para>
             </listitem>
 
             <listitem>
@@ -137,15 +146,7 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: yes no</para>
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
@@ -166,15 +167,7 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: yes no</para>
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
@@ -200,9 +193,9 @@
     <emphasis>indirectly</emphasis> via a script, and therefore it
     automatically knows how to monitor a daemon process and restart it if
     it dies. Daemons used with <quote>executable</quote> StartupItems may
-    be programs or scripts (shell, perl, python, etc.), but when a script
-    the script <emphasis>itself</emphasis> must be the daemon, rather than
-    a script that launches a daemon. <quote>Script</quote> StartupItems
+    be programs or scripts (shell, perl, python, etc.), but when a script is
+    used the script <emphasis>itself</emphasis> must be the daemon, rather
+    than a script that launches a daemon. <quote>Script</quote> StartupItems
     are to be used for the latter.</para>
 
     <note>
@@ -223,16 +216,8 @@
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>/path/to/daemon</replaceable>
-              [<replaceable>args</replaceable>]</para>
+              <!-- TODO: is the default really no, not none? -->
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
@@ -261,6 +246,7 @@
         <string>600</string>
         <string>;</string>
 </array>]]></programlisting>
+            <!-- TODO: what is the meaning of this snippet here? -->
           </note>
         </listitem>
       </varlistentry>
@@ -279,12 +265,11 @@
     vm-pop3d daemon.</para>
 
     <programlisting>#!/bin/sh
-#
-case "$1" in
-  start)
-       echo -n "Starting vm-pop3d: "
-       /opt/local/sbin/vm-pop3d -d 10 -t 600
 
+case "$1" in
+    start)
+        echo -n "Starting vm-pop3d: "
+        /opt/local/sbin/vm-pop3d -d 10 -t 600
 
 [... trimmed ...]</programlisting>
 
@@ -311,22 +296,14 @@ case "$1" in
         <term>startupitem.restart</term>
 
         <listitem>
-          <para>Specify a shell script to start, stop, and restart the
-          daemon. In the absence of a restart key, the daemon will be
-          restarted by taking the stop action, followed by the start
+          <para>Specify a shell script to start, stop, and restart the daemon.
+          In the absence of <code>startupitem.restart</code>, the daemon will
+          be restarted by taking the stop action, followed by the start
           action.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
               <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>shell_script</replaceable></para>
             </listitem>
 
             <listitem>
@@ -355,16 +332,10 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
           <code>startupitem.restart</code>.</para>
 
           <itemizedlist>
-            <listitem>
-              <para>Type: optional</para>
-            </listitem>
 
             <listitem>
-              <para>Default: no</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <replaceable>shell_script</replaceable></para>
+              <!-- TODO: is the default really no, not none? -->
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
@@ -388,15 +359,17 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
 
           <itemizedlist>
             <listitem>
-              <para>Type: optional</para>
-            </listitem>
-
-            <listitem>
+              <!-- TODO: this is the default value described in the old
+              portfile.7 man page -->
+              <para>Default: <literal>none
+              ${prefix}/var/run/${name}.pid</literal></para>
+              <!-- TODO: clarify the default value -->
               <para>Default: [none] |
               [<filename>${prefix}/var/run/${name}.pid</filename>]</para>
             </listitem>
 
             <listitem>
+              <!-- TODO: clarify this -->
               <para>Values [none auto manual clean]
               [<replaceable>/path/to/pidfile</replaceable>]</para>
             </listitem>
@@ -443,7 +416,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
               <emphasis>and</emphasis> a port author wants a PID file
               written for some special use. A PID file is not needed to
               detect process death for daemons launched directly by
-              daemondo. As with executale StartupItems, daemondo remembers
+              daemondo. As with executable StartupItems, daemondo remembers
               the PID of the launched process and tracks it
               automatically.</para>
             </listitem>
@@ -498,19 +471,19 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
     shown below.</para>
 
     <programlisting>#!/bin/sh
-#
+
 # MacPorts generated daemondo support script
 
 # Start
 Start()
 {
-        /opt/local/share/mysql5/mysql/mysql.server start
+    /opt/local/share/mysql5/mysql/mysql.server start
 }
 
 # Stop
 Stop()
 {
-        /opt/local/share/mysql5/mysql/mysql.server stop
+    /opt/local/share/mysql5/mysql/mysql.server stop
 }
 
 [... trimmed ...]</programlisting>
