@@ -133,9 +133,10 @@
         <para>A port's maintainer is a person or persons who take
         responsibility for keeping the port up-to-date, and the maintainer
         keyword lists maintainer email addresses(s). To hide these addresses
-        from spambots, see the more full explanation of the maintainer keyword
-        in the <link linkend="reference.keywords">Global Keywords</link>
-        section of the <link linkend="reference">Portfile Reference</link>
+        from spambots, see the more full explanation of the <link
+        linkend="reference.keywords.maintainers">maintainer keyword</link> in
+        the <link linkend="reference.keywords">Global Keywords</link> section
+        of the <link linkend="reference">Portfile Reference</link>
         chapter.</para>
 
         <programlisting>maintainers         julesverne@example.org</programlisting>

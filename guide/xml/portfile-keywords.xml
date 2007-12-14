@@ -94,7 +94,7 @@
         example, if an application version 1.5 is superseded by a snapshot
         release 20081022, the new release could be given version number
         1.5.20081022, rather than 20081022, so the newer release will have a
-        numericaly greater value.</para>
+        numerically greater value.</para>
       </listitem>
     </varlistentry>
 
@@ -111,7 +111,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry>
+    <varlistentry id="reference.keywords.maintainers">
       <term>maintainers</term>
 
       <listitem>
@@ -182,6 +182,8 @@
 
       <listitem>
         <para>The platforms on which the port has been tested.</para>
+
+        <!-- TODO: add possible values -->
 
         <programlisting>platforms           darwin freebsd</programlisting>
       </listitem>

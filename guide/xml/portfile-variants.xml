@@ -10,8 +10,9 @@
 
   <variablelist>
     <varlistentry>
-      <term>variant [requires variant] [conflicts variant] [description
-      description]</term>
+      <term>variant [requires <replaceable>variant</replaceable>] [conflicts
+      <replaceable>variant</replaceable>] [description
+      <replaceable>description</replaceable>]</term>
 
       <listitem>
         <para>The variant declaration may contain any keywords that can be
@@ -26,6 +27,7 @@
 
         <itemizedlist>
           <listitem>
+            <!-- TODO: should this really be no, not none? -->
             <para>Default: no</para>
           </listitem>
 
@@ -50,9 +52,11 @@
         modularity and also allows users to suppress default variants if
         they wish.</para>
 
-        <para>Due to a bug in the current Macports base default_variants
-        shouldn't be used at the moment as they cause problems while
-        upgrading ports.</para>
+        <note>
+          <para>Due to a bug in the current Macports base default_variants
+          shouldn't be used at the moment as they cause problems while
+          upgrading ports.</para>
+        </note>
 
         <itemizedlist>
           <listitem>
@@ -81,15 +85,16 @@
       <term>universal_variant</term>
 
       <listitem>
-        <para>When using MacPorts on Mac OS X, a universal variant is
-        defined by default to configure ports with universal flags. The
-        variant can be overridden if the default code does not work (see the
-        Configure Universal section below), or suppressed if a universal
-        variant is not possible for the port with this keyword.</para>
+        <para>When using MacPorts on Mac OS X, a universal variant is defined
+        by default to configure ports with universal flags. The variant can be
+        overridden if the default code does not work (see the <link
+        linkend="reference.phases.configure.universal">Configure
+        Universal</link> section above), or suppressed if a universal variant
+        is not possible for the port with this keyword.</para>
 
         <itemizedlist>
           <listitem>
-            <para>Default: yes</para>
+            <para>Default: <option>yes</option></para>
           </listitem>
 
           <listitem>
