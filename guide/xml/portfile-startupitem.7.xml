@@ -62,7 +62,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.create  yes</programlisting>
+              <programlisting>startupitem.create      yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -90,7 +90,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.name  OpenSSH</programlisting>
+              <programlisting>startupitem.name        OpenSSH</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -121,7 +121,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.logfile  ${prefix}/var/log/mydaemon.log</programlisting>
+              <programlisting>startupitem.logfile     ${prefix}/var/log/mydaemon.log</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -180,7 +180,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.netchange  yes</programlisting>
+              <programlisting>startupitem.netchange   yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -332,9 +332,9 @@ case "$1" in
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>startupitem.start "${prefix}/share/mysql/mysql.server start"
-startupitem.stop "${prefix}/share/mysql/mysql.server stop"
-startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting>
+              <programlisting>startupitem.start       "${prefix}/share/mysql/mysql.server start"
+startupitem.stop        "${prefix}/share/mysql/mysql.server stop"
+startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlisting>
             </listitem>
           </itemizedlist>
 
@@ -370,7 +370,7 @@ startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.init "BIN=${prefix}/sbin/bacula-fd"</programlisting>
+              <programlisting>startupitem.init        BIN=${prefix}/sbin/bacula-fd</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -404,7 +404,10 @@ startupitem.restart "${prefix}/share/mysql/mysql.server restart"</programlisting
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.pidfile auto ${prefix}/var/run/${name}.pidfile</programlisting>
+              <programlisting>startupitem.pidfile     auto ${prefix}/var/run/${name}.pidfile</programlisting>
+
+              <!-- TODO: add more examples here -->
+
             </listitem>
           </itemizedlist>
 
