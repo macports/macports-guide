@@ -78,7 +78,7 @@
 
     <para>Non-port dependencies should only be used if the application or
     library can be installed by multiple ports (for example stable and
-    -devel version) or if it can't be installed with Macports.</para>
+    -devel version) or if it can't be installed with MacPorts.</para>
 
     <para>Port dependencies, the preferred type, are specified as shown in
     these examples:</para>

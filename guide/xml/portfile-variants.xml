@@ -53,7 +53,7 @@
         they wish.</para>
 
         <note>
-          <para>Due to a bug in the current Macports base default_variants
+          <para>Due to a bug in the current MacPorts base default_variants
           shouldn't be used at the moment as they cause problems while
           upgrading ports.</para>
         </note>
