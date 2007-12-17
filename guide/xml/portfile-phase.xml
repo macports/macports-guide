@@ -2621,13 +2621,17 @@ destroot.target-delete  install-commandmode</programlisting>
           linkend="internals.hierarchy">MacPorts File Hierarchy</link> or in
           the porthier(7) man page.</para>
 
-          <para>If <code>destroot.violate_mtree</code> is set set to
+          <para>If <code>destroot.violate_mtree</code> is set to
           <option>yes</option>, the following warning is issued during the
-          installation. This is not really a warning and indicates only that
-          files where installed outside of
-          <varname>${prefix}</varname>.</para>
+          installation.</para>
 
           <screen>Warning: <replaceable>portname</replaceable> requests to install files outside the common directory structure!</screen>
+
+          <para>This means that the port installed files outside of
+          <varname>${prefix}</varname> which could cause problems on your
+          computer. Use <literal>port contents
+          <replaceable>portname</replaceable></literal> to see which files
+          were installed and decide if it's okay for you.</para>
 
           <itemizedlist>
             <listitem>
