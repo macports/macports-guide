@@ -1,6 +1,7 @@
 # $Id$
 # Makefile to generate the macports html guide and the man pages.
-# The ports 'docbook-xsl' and 'docbook-xml' have to be installed.
+# The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be
+# installed.
 
 # If your macports isn't installed in /opt/local you have to change PREFIX
 # here and update man/resources/macports.xsl to use your port installation!
@@ -8,6 +9,13 @@
 
 # prefix of the macports installation:
 PREFIX ?= /opt/local
+
+# command abstraction variables:
+MKDIR = /bin/mkdir
+CP = /bin/cp
+RM = /bin/rm
+SED = /usr/bin/sed
+XSLTPROC = $(PREFIX)/bin/xsltproc
 
 # data directories:
 GUIDE ?= guide
@@ -42,26 +50,26 @@ STRINGPARAMS ?= --stringparam html.stylesheet $(STYLESHEET) \
 all: guide man
 
 guide:
-	mkdir -p $(GUIDE-RESULT)
-	cp $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
-	cp $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
-	xsltproc --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/index.html \
+	$(MKDIR) -p $(GUIDE-RESULT)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
+	$(XSLTPROC) --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/index.html \
 	    $(GUIDE-XSL) $(GUIDE-SRC)/guide.xml
 
 man:
-	mkdir -p $(MAN-RESULT)
-	mkdir -p $(MAN-TMP)
-	cp $(GUIDE-SRC)/portfile-*.xml $(MAN-TMP)
-	sed -i "" 's|<section|<refsection|g' $(MAN-TMP)/*
-	sed -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
-	xsltproc --xinclude --output $(MAN-RESULT) $(MAN-XSL) \
+	$(MKDIR) -p $(MAN-RESULT)
+	$(MKDIR) -p $(MAN-TMP)
+	$(CP) $(GUIDE-SRC)/portfile-*.xml $(MAN-TMP)
+	$(SED) -i "" 's|<section|<refsection|g' $(MAN-TMP)/*
+	$(SED) -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
+	$(XSLTPROC) --xinclude --output $(MAN-RESULT) $(MAN-XSL) \
 	    $(MAN-SRC)/port.1.xml \
 	    $(MAN-SRC)/portfile.7.xml \
 	    $(MAN-SRC)/portgroup.7.xml \
 	    $(MAN-SRC)/porthier.7.xml
-	rm -r $(MAN-TMP)
+	$(RM) -r $(MAN-TMP)
 
 clean:
-	rm -rf $(GUIDE-RESULT)
-	rm -rf $(MAN-RESULT)
-	rm -rf $(MAN-TMP)
+	$(RM) -rf $(GUIDE-RESULT)
+	$(RM) -rf $(MAN-RESULT)
+	$(RM) -rf $(MAN-TMP)

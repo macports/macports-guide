@@ -1,8 +1,9 @@
-This is the macports documentation directory.
+This is the MacPorts documentation directory.
 
 To generate it you have to checkout the whole "trunk/doc-new" directory and
-you need the "docbook-xsl" and "docbook-xml" ports. If your port installation
-isn't in /opt/local look at "Makefile" how you have to change this setup.
+you need the "docbook-xsl", "docbook-xml" and "libxslt" ports. If your port
+installation isn't in /opt/local look at "Makefile" how you have to change
+this setup.
 
 To generate the guide and the man pages just use "make" in this directory.
 Then they are generated in guide/html and man/man.
