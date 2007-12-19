@@ -332,35 +332,32 @@
   <refsection>
     <title>SEE ALSO</title>
 
-    <para><citerefentry>
+    <para>
+      <citerefentry>
         <refentrytitle>port</refentrytitle>
-
         <manvolnum>1</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>macports.conf</refentrytitle>
-
         <manvolnum>5</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>portfile</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>portgroup</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>portstyle</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
-        <refentrytitle>porthier</refentrytitle>
-
-        <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>hier</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry></para>
+      </citerefentry>
+    </para>
   </refsection>
 
   <refsection>

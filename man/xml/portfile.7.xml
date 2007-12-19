@@ -54,31 +54,32 @@
   <refsection>
     <title>SEE ALSO</title>
 
-    <para><citerefentry>
+    <para>
+      <citerefentry>
         <refentrytitle>port</refentrytitle>
-
         <manvolnum>1</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>macports.conf</refentrytitle>
-
         <manvolnum>5</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>portgroup</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>portstyle</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>porthier</refentrytitle>
-
         <manvolnum>7</manvolnum>
-      </citerefentry>, <citerefentry>
+      </citerefentry>,
+      <citerefentry>
         <refentrytitle>file</refentrytitle>
-
         <manvolnum>n</manvolnum>
-      </citerefentry></para>
+      </citerefentry>
+    </para>
   </refsection>
 
   <refsection>
