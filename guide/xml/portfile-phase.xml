@@ -2627,11 +2627,14 @@ destroot.target-delete  install-commandmode</programlisting>
 
           <screen>Warning: <replaceable>portname</replaceable> requests to install files outside the common directory structure!</screen>
 
-          <para>This means that the port installed files outside of
-          <varname>${prefix}</varname> which could cause problems on your
-          computer. Use <literal>port contents
+          <para>This means that the port installed files outside of their
+          normal locations in <varname>${prefix}</varname>. These could be
+          files totally outside of <varname>${prefix}</varname>, which could
+          cause problems on your computer, or files inside of
+          <varname>${prefix}</varname> that are not in a standard location.
+          Use <literal>port contents
           <replaceable>portname</replaceable></literal> to see which files
-          were installed and decide if it's okay for you.</para>
+          were installed.</para>
 
           <itemizedlist>
             <listitem>
