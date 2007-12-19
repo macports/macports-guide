@@ -1,4 +1,5 @@
 # $Id$
+
 # Makefile to generate the macports html guide and the man pages.
 # The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be
 # installed.
@@ -8,41 +9,41 @@
 
 
 # prefix of the macports installation:
-PREFIX ?= /opt/local
+PREFIX = /opt/local
 
 # command abstraction variables:
-MKDIR = /bin/mkdir
-CP = /bin/cp
-RM = /bin/rm
-SED = /usr/bin/sed
+MKDIR    = /bin/mkdir
+CP       = /bin/cp
+RM       = /bin/rm
+SED      = /usr/bin/sed
 XSLTPROC = $(PREFIX)/bin/xsltproc
 
 # data directories:
-GUIDE ?= guide
-MAN   ?= man
+GUIDE = guide
+MAN   = man
 # source directories:
-GUIDE-SRC ?= $(GUIDE)/xml
-MAN-SRC   ?= $(MAN)/xml
+GUIDE-SRC = $(GUIDE)/xml
+MAN-SRC   = $(MAN)/xml
 # result directories:
-GUIDE-RESULT ?= $(GUIDE)/html
-MAN-RESULT   ?= $(MAN)/man/
+GUIDE-RESULT = $(GUIDE)/html
+MAN-RESULT   = $(MAN)/man/
 # man temporary directory:
-MAN-TMP ?= $(MAN)/tmp
+MAN-TMP = $(MAN)/tmp
 
 # path to the docbook xsl files:
-DOCBOOK   ?= $(PREFIX)/share/xsl/docbook-xsl
-GUIDE-XSL ?= $(DOCBOOK)/xhtml/profile-docbook.xsl
-MAN-XSL   ?= $(MAN)/resources/macports.xsl
+DOCBOOK   = $(PREFIX)/share/xsl/docbook-xsl
+GUIDE-XSL = $(DOCBOOK)/xhtml/profile-docbook.xsl
+MAN-XSL   = $(MAN)/resources/macports.xsl
 
 # docbook html stylesheet for the guide:
-STYLESHEET ?= docbook.css
+STYLESHEET = docbook.css
 # additional parameters for the guide:
-STRINGPARAMS ?= --stringparam html.stylesheet $(STYLESHEET) \
-	              --stringparam section.autolabel 1 \
-	              --stringparam toc.section.depth 1 \
-	              --stringparam generate.toc "book toc" \
-	              --stringparam section.label.includes.component.label 1 \
-	              --stringparam profile.condition "noman"
+STRINGPARAMS = --stringparam html.stylesheet $(STYLESHEET) \
+	             --stringparam section.autolabel 1 \
+	             --stringparam toc.section.depth 1 \
+	             --stringparam generate.toc "book toc" \
+	             --stringparam section.label.includes.component.label 1 \
+	             --stringparam profile.condition "noman"
 
 
 .PHONY: all guide man clean
