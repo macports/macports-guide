@@ -105,5 +105,55 @@
         </itemizedlist>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>platform <replaceable>platform</replaceable>
+      [<replaceable>version</replaceable>]
+      [<replaceable>arch</replaceable>]</term>
+
+      <listitem>
+        <para>MacPorts allows for platform-specific conditional modification
+        to be specified in a Portfile, much like variants, for handling
+        differences between platforms and versions of the same
+        platform.</para>
+
+        <para><literal>platform darwin
+        <replaceable>version</replaceable></literal> can be used to handle
+        different tasks depending on the version of Mac OS X.
+        <replaceable>version</replaceable> can be <literal>6</literal> for
+        10.2 Jaguar, <literal>7</literal> for 10.3 Panther,
+        <literal>8</literal> for 10.4 Tiger or <literal>9</literal> for 10.5
+        Leopard.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: ???</para>
+          </listitem>
+
+          <listitem>
+            <para>Examples:</para>
+
+            <programlisting>
+platform darwin 7 {
+    # Only used on Mac OS X 10.3.
+    configure.args-append \
+        --enable-tcl \
+        --with-tcl=/System/Library/Tcl/8.3
+}</programlisting>
+            <programlisting>
+platform darwin powerpc {
+    # Only used if Mac OS X is running on a PowerPC processor.
+    configure.args-append \
+        --host=${os.arch}-apple-rhapsody${os.version}
+}
+platform darwin i386 {
+    # Only used if Mac OS X is running on an Intel processor.
+    configure.args-append \
+        --host=i386-gnu-rhapsody${os.version}
+}</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
   </variablelist>
 </section>
