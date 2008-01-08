@@ -157,18 +157,6 @@
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>MacPorts x.y</guimenu> - indicates tickets
-              against the MacPorts base code that have been accepted and
-              scheduled for inclusion or fixing in the x.y MacPorts release
-              series.</para>
-
-              <note>
-                <para>This milestone may only be applied by MacPorts team
-                members.</para>
-              </note>
-            </listitem>
-
-            <listitem>
               <para><guimenu>MacPorts base enhancements</guimenu> - for
               tickets requesting or providing improvements to the
               functionality of the MacPorts system.</para>
