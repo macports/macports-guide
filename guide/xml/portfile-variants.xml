@@ -1,146 +1,169 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.variants">
   <title>Variants</title>
 
   <para>MacPorts variants are conditional modifications of port installation
-  behavior that may be invoked by a user at the time of port install.</para>
+  behavior during port installation. There are two types of variants:
+  user-selected variants and platform variants. User-selected variants are
+  options selected by a user when a port is installed; platform variants are
+  selected automatically by MacPorts base according to the OS or hardware
+  platform (darwin, freebsd, linux, i386, ppc, etc.)</para>
 
-  <variablelist>
-    <varlistentry>
-      <term>variant [requires <replaceable>variant</replaceable>] [conflicts
-      <replaceable>variant</replaceable>] [description
-      <replaceable>description</replaceable>]</term>
+  <section>
+    <title>User-Selected Variants</title>
 
-      <listitem>
-        <para>The variant declaration may contain any keywords that can be
-        placed in a Portfile's global section. If you wish to execute system
-        (shell) calls or Tcl extensions during the execution of a port
-        phase, you should place those statements within a
-        <literal>variant_isset</literal> conditional within a phase
-        declaration and not within the variant declaration itself.
-        Dependencies and conflicts with other variants in the same port can
-        be expressed with requires and conflicts. See the isset Tcl
-        extension.</para>
+    <para>User-selected variants are those that are defined so that a user or
+    port author can use them at their discretion.</para>
 
-        <itemizedlist>
-          <listitem>
-            <!-- TODO: should this really be no, not none? -->
-            <para>Default: no</para>
-          </listitem>
+    <variablelist>
+      <varlistentry>
+        <term>variant [requires <replaceable>variant</replaceable>] [conflicts
+        <replaceable>variant</replaceable>] [description
+        <replaceable>description</replaceable>]</term>
 
-          <listitem>
-            <para>Example:</para>
+        <listitem>
+          <para>The variant declaration may contain any keywords that can be
+          placed in a Portfile's global section. If you wish to execute system
+          (shell) calls or Tcl extensions during the execution of a port
+          phase, you should place those statements within a
+          <literal>variant_isset</literal> conditional within a phase
+          declaration and not within the variant declaration itself.
+          Dependencies and conflicts with other variants in the same port can
+          be expressed with <quote>requires</quote> and
+          <quote>conflicts</quote> options as shown below.</para>
 
-            <programlisting>variant gnome requires glib {
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>variant gnome requires glib {
     configure.args-append   --with-gnome
     depends_lib-append      port:gnome-session
 }</programlisting>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
 
-    <varlistentry>
-      <term>default_variants</term>
+              <programlisting>variant apache2 conflicts apache {
+        configure.args-append \
+                --with-apxs2=${prefix}/apache2/bin/apxs
+}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-      <listitem>
-        <para>If variants are defined, then the default_variants value lists
-        which variants are enabled by default. This allows for Portfile
-        modularity and also allows users to suppress default variants if
-        they wish.</para>
+      <varlistentry>
+        <term>default_variants</term>
 
-        <note>
-          <para>Due to a bug in the current MacPorts base default_variants
-          shouldn't be used at the moment as they cause problems while
-          upgrading ports.</para>
-        </note>
+        <listitem>
+          <para>The optional default_variants keyword is used to specify
+          variants that a port author wishes to have enabled by default. This
+          allows for Portfile modularity and also allows users to suppress
+          default variants if they wish.</para>
 
-        <itemizedlist>
-          <listitem>
-            <para>Default: none</para>
-          </listitem>
+          <note>
+            <para>Due to a bug in the current MacPorts base default_variants
+            shouldn't be used at the moment as they cause problems while
+            upgrading ports.</para>
+          </note>
 
-          <listitem>
-            <para>Example:</para>
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
 
-            <programlisting>default_variants    +ssl +tcpd
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>default_variants    +ssl +tcpd
 
 </programlisting>
-          </listitem>
-        </itemizedlist>
-      </listitem>
+            </listitem>
+          </itemizedlist>
+        </listitem>
 
-      <listitem>
-        <para>Default variants may be suppressed by preceding a variant name
-        with a "-" as shown in this example.</para>
+        <listitem>
+          <para>Default variants may be suppressed by preceding a variant name
+          with a "-" as shown in this example.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
-      </listitem>
-    </varlistentry>
+          <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
+        </listitem>
+      </varlistentry>
 
-    <varlistentry>
-      <term>universal_variant</term>
+      <varlistentry>
+        <term>universal_variant</term>
 
-      <listitem>
-        <para>When using MacPorts on Mac OS X, a universal variant is defined
-        by default to configure ports with universal flags. The variant can be
-        overridden if the default code does not work (see the <link
-        linkend="reference.phases.configure.universal">Configure
-        Universal</link> section above), or suppressed if a universal variant
-        is not possible for the port with this keyword.</para>
+        <listitem>
+          <para>When using MacPorts on Mac OS X, a universal variant is
+          defined by default to configure ports with universal flags. The
+          variant can be overridden if the default code does not work (see the
+          <link linkend="reference.phases.configure.universal">Configure
+          Universal</link> section above), or suppressed if a universal
+          variant does not function properly for a given port.</para>
 
-        <itemizedlist>
-          <listitem>
-            <para>Default: <option>yes</option></para>
-          </listitem>
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>yes</option></para>
+            </listitem>
 
-          <listitem>
-            <para>Example:</para>
+            <listitem>
+              <para>Example:</para>
 
-            <programlisting>universal_variant   no</programlisting>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
+              <programlisting>universal_variant   no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
 
-    <varlistentry>
-      <term>platform <replaceable>platform</replaceable>
-      [<replaceable>version</replaceable>]
-      [<replaceable>arch</replaceable>]</term>
+  <section>
+    <title>Platform Variants</title>
 
-      <listitem>
-        <para>MacPorts allows for platform-specific conditional modification
-        to be specified in a Portfile, much like variants, for handling
-        differences between platforms and versions of the same
-        platform.</para>
+    <para>Platform variants are either defined by default in MacPorts base, or
+    defined by a port author port installation customization by OS or hardware
+    platform.</para>
 
-        <para><literal>platform darwin
-        <replaceable>version</replaceable></literal> can be used to handle
-        different tasks depending on the version of Mac OS X.
-        <replaceable>version</replaceable> can be <literal>6</literal> for
-        10.2 Jaguar, <literal>7</literal> for 10.3 Panther,
-        <literal>8</literal> for 10.4 Tiger or <literal>9</literal> for 10.5
-        Leopard.</para>
+    <variablelist>
+      <varlistentry>
+        <term>platform <replaceable>platform</replaceable>
+        [<replaceable>version</replaceable>]
+        [<replaceable>arch</replaceable>]</term>
 
-        <itemizedlist>
-          <listitem>
-            <para>Default: ???</para>
-          </listitem>
+        <listitem>
+          <para>MacPorts allows platform-specific port options to be specified
+          in a Portfile for handling differences between platforms and
+          versions of the same platform.</para>
 
-          <listitem>
-            <para>Examples:</para>
+          <para><literal>platform darwin
+          <replaceable>version</replaceable></literal> can be used to handle
+          different tasks depending on the version of Mac OS X.
+          <replaceable>version</replaceable> can be <literal>6</literal> for
+          10.2 Jaguar, <literal>7</literal> for 10.3 Panther,
+          <literal>8</literal> for 10.4 Tiger or <literal>9</literal> for 10.5
+          Leopard.</para>
 
-            <programlisting>
+          <itemizedlist>
+            <listitem>
+              <para>Default: ???</para>
+            </listitem>
+
+            <listitem>
+              <para>Examples:</para>
+
+              <programlisting>
 platform darwin 7 {
     # Only used on Mac OS X 10.3.
     configure.args-append \
         --enable-tcl \
         --with-tcl=/System/Library/Tcl/8.3
 }</programlisting>
-            <programlisting>
+
+              <programlisting>
 platform darwin powerpc {
     # Only used if Mac OS X is running on a PowerPC processor.
     configure.args-append \
@@ -151,9 +174,10 @@ platform darwin i386 {
     configure.args-append \
         --host=i386-gnu-rhapsody${os.version}
 }</programlisting>
-          </listitem>
-        </itemizedlist>
-      </listitem>
-    </varlistentry>
-  </variablelist>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
 </section>
