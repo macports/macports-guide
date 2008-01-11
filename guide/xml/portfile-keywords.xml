@@ -56,8 +56,8 @@
       <listitem>
         <para>Optional keyword (default is 0) that is used to track port
         revisions. It should not be incremented for port revisions unless it
-        would benefit users to upgrade an installed port, and cleared when
-        the port is updated to a newer version.</para>
+        would benefit users to upgrade an installed port, and cleared when the
+        port is updated to a newer version.</para>
 
         <para>It should be used if a bug in the Portfile was found and all
         installations of this port have to be updated. If the change only
@@ -73,28 +73,20 @@
       <listitem>
         <para>An optional keyword (default value is 0) that may be used when
         ports are updated to a version that is numerically less than the
-        previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
-        An epoch ensures that port version comparisons work correctly in
-        these cases. Often the epoch is formatted like a date, but it can
-        simply be a number such as 1.</para>
+        previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0. An
+        epoch ensures that port version comparisons work correctly in these
+        cases. Often the epoch is formatted like a date, but it can simply be
+        a number such as 1.</para>
 
         <programlisting>epoch               20080924</programlisting>
 
         <programlisting>epoch               1</programlisting>
 
         <note>
-          <para>If an epoch is used it must must never be decreased or reset
-          to zero, because this would always cause a port version comparison
-          to be incorrect after a port upgrade.</para>
+          <para>An epoch is not needed for most ports. If an epoch is used it
+          must never be decreased without updating the port's version number;
+          this will cause port version comparisons to be incorrect.</para>
         </note>
-
-        <para>An epoch is not needed for most ports, and good use of a
-        port's version can make using an epoch unnecessary even for
-        application distributions without official version numbers. For
-        example, if an application version 1.5 is superseded by a snapshot
-        release 20081022, the new release could be given version number
-        1.5.20081022, rather than 20081022, so the newer release will have a
-        numerically greater value.</para>
       </listitem>
     </varlistentry>
 
@@ -103,9 +95,8 @@
 
       <listitem>
         <para>The category under which the ported software falls. The first
-        category should be the same as the directory within which the
-        Portfile is stored; secondary and tertiary categories may be
-        selected.</para>
+        category should be the same as the directory within which the Portfile
+        is stored; secondary and tertiary categories may be selected.</para>
 
         <programlisting>categories          net security</programlisting>
       </listitem>
@@ -117,9 +108,9 @@
       <listitem>
         <para>A port's maintainer is a person or persons who take
         responsibility for keeping the port up-to-date, and the maintainer
-        keyword lists maintainer email addresses(s). However, many
-        maintainers wish to hide these addresses from spambots; to do so
-        follow these conventions:</para>
+        keyword lists maintainer email addresses(s). However, many maintainers
+        wish to hide these addresses from spambots; to do so follow these
+        conventions:</para>
 
         <itemizedlist>
           <listitem>
@@ -158,8 +149,8 @@
       <term>long_description</term>
 
       <listitem>
-        <para>A long description of the ported software. Break long lines
-        with escaped newlines.</para>
+        <para>A long description of the ported software. Break long lines with
+        escaped newlines.</para>
 
         <programlisting>long_description    A classic shooter arcade game derived from \
                     the game alien-munchers.  Not suitable for \
