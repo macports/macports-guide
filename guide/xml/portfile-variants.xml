@@ -179,5 +179,14 @@ platform darwin i386 {
         </listitem>
       </varlistentry>
     </variablelist>
+
+    <note>
+      <para>Though a combination of OS and hardware platform may be specified
+      in a single platform statement (i. e. darwin i386), it is not possible
+      to select a range of platforms with a single statement. For example, to
+      select darwin versions 7 and 8 while excluding all others, you would
+      need two statements: <code>platform darwin 7</code> and <code>platform
+      darwin 8</code>.</para>
+    </note>
   </section>
 </section>
