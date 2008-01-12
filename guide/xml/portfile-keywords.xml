@@ -84,8 +84,10 @@
 
         <note>
           <para>An epoch is not needed for most ports. If an epoch is used it
-          must never be decreased without updating the port's version number;
-          this will cause port version comparisons to be incorrect.</para>
+          must never be decreased or removed even when a port's version is
+          updated; this would cause port version comparisons to be incorrect
+          since epochs take precedence over versions once epochs have been
+          used.</para>
         </note>
       </listitem>
     </varlistentry>
