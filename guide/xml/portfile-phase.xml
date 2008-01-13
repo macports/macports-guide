@@ -462,106 +462,6 @@ distfiles           file_one.tar.gz:tagone \
       </varlistentry>
 
       <varlistentry>
-        <term>extract.suffix</term>
-
-        <listitem>
-          <para>This keyword is used to specify the extract suffix
-          type.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <filename>.tar.gz</filename></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>extract.suffix      .tgz</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>extract.mkdir</term>
-
-        <listitem>
-          <para>This keyword is used to specify if the directory
-          <filename>worksrcdir</filename> is part of the distfile or if it
-          should be created automatically and the distfiles should be
-          extracted there instead. This is useful for distfiles with a flat
-          structure which would pollute the <filename>worksrcdir</filename>
-          with lots of files.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <option>no</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>extract.mkdir       yes</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>use_bzip2</term>
-
-        <listitem>
-          <para>This keyword is for downloads that are tarred and bzipped.
-          When invoked, it automatically sets:</para>
-
-          <literallayout>extract.suffix = .tar.bz
-extract.cmd    = bzip
-
-</literallayout>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <option>no</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>use_bzip2           yes</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>use_zip</term>
-
-        <listitem>
-          <para>This keyword is for downloads which are zipped. When invoked,
-          it automatically sets:</para>
-
-          <literallayout>extract.suffix    = .zip
-extract.cmd       = unzip
-extract.pre_args  = -q
-extract.post_args = "-d ${portpath}/${workdir}"
-
-</literallayout>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <option>no</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>use_zip             yes</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term>worksrcdir</term>
 
         <listitem>
@@ -872,6 +772,106 @@ extract.post_args = "-d ${portpath}/${workdir}"
     <para>The list of keywords related to the extract phase.</para>
 
     <variablelist>
+      <varlistentry>
+        <term>extract.suffix</term>
+
+        <listitem>
+          <para>This keyword is used to specify the extract suffix
+          type.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <filename>.tar.gz</filename></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.suffix      .tgz</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_bzip2</term>
+
+        <listitem>
+          <para>This keyword is for downloads that are tarred and bzipped.
+          When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix = .tar.bz
+extract.cmd    = bzip
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_bzip2           yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_zip</term>
+
+        <listitem>
+          <para>This keyword is for downloads which are zipped. When invoked,
+          it automatically sets:</para>
+
+          <literallayout>extract.suffix    = .zip
+extract.cmd       = unzip
+extract.pre_args  = -q
+extract.post_args = "-d ${portpath}/${workdir}"
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_zip             yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>extract.mkdir</term>
+
+        <listitem>
+          <para>This keyword is used to specify if the directory
+          <filename>worksrcdir</filename> is part of the distfile or if it
+          should be created automatically and the distfiles should be
+          extracted there instead. This is useful for distfiles with a flat
+          structure which would pollute the <filename>worksrcdir</filename>
+          with lots of files.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.mkdir       yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
       <varlistentry>
         <term>extract.only</term>
 
