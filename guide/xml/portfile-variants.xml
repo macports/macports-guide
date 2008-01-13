@@ -9,9 +9,9 @@
   user-selected variants and platform variants. User-selected variants are
   options selected by a user when a port is installed; platform variants are
   selected automatically by MacPorts base according to the OS or hardware
-  platform (darwin, freebsd, linux, i386, ppc, etc.)</para>
+  platform (darwin, freebsd, linux, i386, ppc, etc.).</para>
 
-  <section>
+  <section id="reference.variants.user-selected">
     <title>User-Selected Variants</title>
 
     <para>User-selected variants are those that are defined so that a user or
@@ -48,8 +48,8 @@
 }</programlisting>
 
               <programlisting>variant apache2 conflicts apache {
-        configure.args-append \
-                --with-apxs2=${prefix}/apache2/bin/apxs
+    configure.args-append \
+        --with-apxs2=${prefix}/apache2/bin/apxs
 }</programlisting>
             </listitem>
           </itemizedlist>
@@ -121,7 +121,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.variants.platform">
     <title>Platform Variants</title>
 
     <para>Platform variants are either defined by default in MacPorts base, or
