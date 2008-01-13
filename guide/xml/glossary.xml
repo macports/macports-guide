@@ -4,6 +4,8 @@
 <chapter id="guide-terms">
   <title>MacPorts Guide Terms</title>
 
+  <para><!-- TODO: add a description here --></para>
+
   <glossary id="glossary">
     <glossdiv id="terms">
       <title>MacPorts Guide Terms</title>
