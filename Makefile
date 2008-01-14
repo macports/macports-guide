@@ -17,6 +17,7 @@ CP       = /bin/cp
 RM       = /bin/rm
 SED      = /usr/bin/sed
 XSLTPROC = $(PREFIX)/bin/xsltproc
+XMLLINT  = $(PREFIX)/bin/xmllint
 
 # data directories:
 GUIDE = guide
@@ -80,3 +81,11 @@ clean:
 	$(RM) -rf $(GUIDE-RESULT)
 	$(RM) -rf $(MAN-RESULT)
 	$(RM) -rf $(MAN-TMP)
+	$(RM) -f  guide.tmp.xml
+
+# Validate the xml files for the guide.
+# These two steps are necessary as otherwise xmllint complains about missing
+# ids.
+validate:
+	$(XMLLINT) --xinclude $(GUIDE-SRC)/guide.xml > guide.tmp.xml
+	$(XMLLINT) --loaddtd --valid --noout guide.tmp.xml
