@@ -84,9 +84,7 @@
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>Default variants may be suppressed by preceding a variant name
           with a "-" as shown in this example.</para>
 

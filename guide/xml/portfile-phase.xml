@@ -945,9 +945,7 @@ extract.only-delete     foo.tar.gz</programlisting>
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>The following argument modifiers are available:</para>
 
           <itemizedlist>
@@ -1073,9 +1071,7 @@ patchfiles-delete   patch-src-Makefile.in</programlisting>
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>The following argument modifiers are available:</para>
 
           <itemizedlist>
@@ -1843,9 +1839,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>The following argument modifiers are available:</para>
 
           <itemizedlist>
@@ -2246,9 +2240,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>The following argument modifiers are available:</para>
 
           <itemizedlist>
@@ -2480,9 +2472,7 @@ build.target-delete     compat</programlisting>
 </programlisting>
             </listitem>
           </itemizedlist>
-        </listitem>
 
-        <listitem>
           <para>The following argument modifiers are available:</para>
 
           <itemizedlist>
