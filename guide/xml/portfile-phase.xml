@@ -1114,7 +1114,8 @@ patch.post_args     ???</programlisting>
         <term>use_configure</term>
 
         <listitem>
-          <para>Sets if the configure phase should be run.</para>
+          <para>Sets if the configure phase should be run. Can be used if the
+          port has no <filename>./configure</filename> script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1141,8 +1142,9 @@ patch.post_args     ???</programlisting>
           <para>Set environment variables for configure; list modifiers add
           and delete items from a previous Portfile configure.env keyword, or
           a default set by MacPorts base. If available, it is encouraged to
-          use the predefined options (like configure.cflags) instead of
-          modifying configure.env directly.</para>
+          use the predefined options (like <link
+          linkend="reference.phases.configure.cflags">configure.cflags</link>)
+          instead of modifying configure.env directly.</para>
 
           <itemizedlist>
             <listitem>
@@ -1162,7 +1164,7 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
         </listitem>
       </varlistentry>
 
-      <varlistentry>
+      <varlistentry id="reference.phases.configure.cflags">
         <term>configure.cflags</term>
 
         <term>configure.cflags-append</term>
@@ -1609,6 +1611,8 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           and 10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4
           and 10.5, <option>gcc-4.2</option> is available as preview for
           10.5.</para>
+          <para>Only use it if a port really needs a different
+          compiler.</para>
 
           <itemizedlist>
             <listitem>
@@ -1823,8 +1827,9 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.post_args</term>
 
         <listitem>
-          <para>Main arguments to configure.cmd; optional argument modifiers
-          pass arguments before and after the main arguments.</para>
+          <para>Main arguments to <literal>configure.cmd</literal>; optional
+          argument modifiers pass arguments before and after the main
+          arguments.</para>
 
           <itemizedlist>
             <listitem>
@@ -1868,7 +1873,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       <title>Configure Universal</title>
 
       <para>Universal keywords are used to make a port compile on the Mac OS X
-      platform to run on either PPC or Intel.</para>
+      platform to run on both PPC and Intel processors.</para>
 
       <note>
         <para>There is a default universal variant made available to all ports

@@ -40,8 +40,10 @@
 
       <itemizedlist>
         <listitem>
-          <para><guilabel>Short Summary:</guilabel> [port] [version] [concise
-          description]</para>
+          <para><guilabel>Short Summary:</guilabel>
+          <replaceable>[port]</replaceable>
+          <replaceable>[version]</replaceable> <replaceable>[concise
+          description]</replaceable></para>
 
           <itemizedlist>
             <listitem>
@@ -74,7 +76,11 @@
           be relevant to someone reading the ticket. <ulink
           url="http://trac.macports.org/projects/macports/wiki/WikiFormatting">Wiki
           formatting</ulink> or attached log files should be used for large
-          text blocks.</para>
+          text blocks. If you want to post a build log make sure you use
+          <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
+          log or it could break the page layout (i.e.
+          <literal>{{{<replaceable>your build log
+          here</replaceable>}}}</literal>).</para>
         </listitem>
 
         <listitem>
@@ -148,7 +154,11 @@
           email address and the maintainer's email address to notify both
           parties when updates to the ticket occur. This is important, because
           Trac currently only sends emails to addresses on the Cc list, not to
-          the reporter or the assignee.</para>
+          the reporter or the assignee. Multiple emails should be separated
+          with a comma (i.e. <literal>you@example.org,
+          maintainer@macports.org</literal>). To get the maintainer email
+          address use <code>port info
+          <replaceable>portname</replaceable></code>.</para>
         </listitem>
 
         <listitem>

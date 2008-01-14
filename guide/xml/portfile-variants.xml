@@ -60,10 +60,10 @@
         <term>default_variants</term>
 
         <listitem>
-          <para>The optional default_variants keyword is used to specify
-          variants that a port author wishes to have enabled by default. This
-          allows for Portfile modularity and also allows users to suppress
-          default variants if they wish.</para>
+          <para>The optional <literal>default_variants</literal> keyword is
+          used to specify variants that a port author wishes to have enabled
+          by default. This allows for Portfile modularity and also allows
+          users to suppress default variants if they wish.</para>
 
           <note>
             <para>Due to a bug in the current MacPorts base default_variants

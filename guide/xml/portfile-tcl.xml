@@ -186,7 +186,8 @@
             <replaceable>directory</replaceable></term>
 
             <listitem>
-              <para>Create a directory.</para>
+              <para>Create a directory including parent directories if
+              necessary.</para>
             </listitem>
           </varlistentry>
         </variablelist>
