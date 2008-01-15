@@ -89,8 +89,9 @@
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>High</guimenu> - For MacPorts base build/runtime
-              failures and critical enhancement requests.</para>
+	      <para><guimenu>High</guimenu> - Reserved for the use of MacPorts
+              team members, as they are the best fit to determine which reports
+              warrant a higher priority over others.</para>
             </listitem>
 
             <listitem>
