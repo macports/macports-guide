@@ -219,7 +219,7 @@
           the port maintainer's email address (use <command>port info
           &lt;portname&gt;</command>). If the maintainer's email address is
           <email>nomaintainer@macports.org</email>, select
-          <email>macports-dev@lists.macosforge.org</email>.</para>
+          <email>macports-tickets@lists.macosforge.org</email>.</para>
         </listitem>
 
         <listitem>
