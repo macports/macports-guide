@@ -153,10 +153,11 @@
         <listitem>
           <para><guilabel>Cc:</guilabel> Anyone else besides the ticket reporter
           and assignee who would like to be kept involved in the development
-          of the ticket. Multiple emails should be separated with a comma
-	  (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
-	  To get the maintainer email address use <code>port info
-          <replaceable>portname</replaceable></code>.</para>
+          of the ticket, and/or the port maintainer in case his/her address does
+	  not appear in the <guimenu>Assign To</guimenu> drop down menu. Multiple
+	  emails should be separated with a comma (i.e. <literal>you@example.org,
+	  maintainer@macports.org</literal>). To get the maintainer email address
+	  use <code>port info<replaceable>portname</replaceable></code>.</para>
         </listitem>
 
         <listitem>
