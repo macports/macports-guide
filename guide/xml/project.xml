@@ -151,14 +151,11 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Cc:</guilabel> The reporter should enter his or her
-          email address and the maintainer's email address to notify both
-          parties when updates to the ticket occur. This is important, because
-          Trac currently only sends emails to addresses on the Cc list, not to
-          the reporter or the assignee. Multiple emails should be separated
-          with a comma (i.e. <literal>you@example.org,
-          maintainer@macports.org</literal>). To get the maintainer email
-          address use <code>port info
+          <para><guilabel>Cc:</guilabel> Anyone else besides the ticket reporter
+          and assignee who would like to be kept involved in the development
+          of the ticket. Multiple emails should be separated with a comma
+	  (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
+	  To get the maintainer email address use <code>port info
           <replaceable>portname</replaceable></code>.</para>
         </listitem>
 
