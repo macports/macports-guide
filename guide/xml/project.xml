@@ -157,7 +157,7 @@
 	  not appear in the <guimenu>Assign To</guimenu> drop down menu. Multiple
 	  emails should be separated with a comma (i.e. <literal>you@example.org,
 	  maintainer@macports.org</literal>). To get the maintainer email address
-	  use <code>port info<replaceable>portname</replaceable></code>.</para>
+	  use <command>port info &lt;portname&gt;</command>.</para>
         </listitem>
 
         <listitem>
