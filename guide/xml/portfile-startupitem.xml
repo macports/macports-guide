@@ -204,18 +204,19 @@
         <term>startupitem.executable</term>
 
         <listitem>
-          <para>Specifies the name of the daemon to be run in the background.
-          It may have multiple arguments, but they must be appropriate for a
-          call to exec; arbitrary shell code may not be used. </para>
+          <para>Specifies the name of the daemon to be run. It may have
+          multiple arguments, but they must be appropriate for a call to exec;
+          arbitrary shell code may not be used.</para>
 
           <note>
-            <para>Some daemons "daemonize" themselves by sending themselves to
-            the background and detaching it from the controlling tty, thus
+            <para>Some daemons "daemonize" by detaching themselves from the
+            controlling tty before sending themselves to the background, thus
             making themselves a child of the original process. A daemon to be
             started with <code>startupitem.executable</code> must not be
-            alowed to do this (daemondo will think the process died died and
+            allowed to do this (daemondo will think the process has died and
             start another instance); this can usually be turned off with a
-            switch so the daemon runs as a foreground process.</para>
+            switch so the daemon does not detach itself (runs as a foreground
+            process).</para>
           </note>
 
           <itemizedlist>
