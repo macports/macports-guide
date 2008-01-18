@@ -60,50 +60,18 @@
         <term>startupitem.name</term>
 
         <listitem>
-          <para>Sets the name for the StartupItem.</para>
+          <para>Sets the name for the StartupItem. Defaults to the name of the
+          port, so this keyword is usually unnecessary.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: none</para>
+              <para>Default: <varname>${name}</varname></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.name        OpenSSH</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>startupitem.type</term>
-
-        <!-- TODO: check if this is still up to date -->
-
-        <listitem>
-          <para>Select the type of startupitem to generate. By default, a
-          startupitem will be generated that is of the appropriate type for
-          the OS. For instance, launchd is used on system 10.4, while
-          SystemStarter is used on prior Mac OS X systems. A global default
-          may be specified with the startupitem_type preference in
-          <filename>ports.conf</filename>.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: none</para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <option>SystemStarter</option>
-              <option>launchd</option> <option>default</option>
-              <option>rcNG</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>startupitem.type        launchd</programlisting>
+              <programlisting>startupitem.name        dhcpd</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -233,23 +201,27 @@
 
           <note>
             <para>Do not wrap values in quotes if passing arguments to the
-            daemon. <quote>Executable</quote> StartupItem values must be
-            tagged as individual strings and the spaces between arguments
-            serve as delimiters for each string, as shown in example .plist
-            snippet below.</para>
+            daemon; <quote>executable</quote> StartupItem elements must be
+            tagged individually so the spaces between arguments serve as
+            delimiters for <quote>string</quote> tags. For example, this
+            startupitem key/value pair:</para>
 
-            <programlisting><![CDATA[<key>ProgramArguments</key>
-<array>
-    <string>/opt/local/bin/daemondo</string>
-    <string>--label=vm-pop3d</string>
-    <string>--start-cmd</string>
-    <string>/opt/local/sbin/vm-pop3d</string>
-    <string>-d</string>
-    <string>10</string>
-    <string>-t</string>
-    <string>600</string>
-    <string>;</string>
-</array>]]></programlisting>
+            <programlisting>startupitem.executable    ${prefix}/sbin/vm-pop3d -d 10 -t 600</programlisting>
+
+            <para> generates a .plist file with these tags:</para>
+
+            <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
+&lt;array&gt;
+    &lt;string&gt;/opt/local/bin/daemondo&lt;/string&gt;
+    &lt;string&gt;--label=vm-pop3d&lt;/string&gt;
+    &lt;string&gt;--start-cmd&lt;/string&gt;
+    &lt;string&gt;/opt/local/sbin/vm-pop3d&lt;/string&gt;
+    &lt;string&gt;-d&lt;/string&gt;
+    &lt;string&gt;10&lt;/string&gt;
+    &lt;string&gt;-t&lt;/string&gt;
+    &lt;string&gt;600&lt;/string&gt;
+    &lt;string&gt;;&lt;/string&gt;
+&lt;/array&gt;</programlisting>
           </note>
         </listitem>
       </varlistentry>
@@ -318,7 +290,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
 
           <note>
             <para>Wrap the stop, start, and restart values in quotes so they
-            will be placed in the wrapper as a single command.</para>
+            will be placed in the wrapper tagged as a single element.</para>
           </note>
         </listitem>
       </varlistentry>
