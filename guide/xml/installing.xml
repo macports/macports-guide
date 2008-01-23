@@ -41,8 +41,8 @@
       </listitem>
     </orderedlist>
 
-    <para>If you're using Mac OS X 10.3 then you can download the X11 installer
-    from the Apple <ulink
+    <para>If you're using Mac OS X 10.3 then you can download the X11
+    installer from the Apple <ulink
     url="http://apple.com/support/downloads/x11formacosx.html">download
     page</ulink>.</para>
 
@@ -133,8 +133,8 @@
   <section id="installing.macports">
     <title>Install MacPorts</title>
 
-    <para>If you are using Mac OS X, you should install MacPorts using the
-    Mac OS X package installer unless you do not wish to install it to
+    <para>If you are using Mac OS X, you should install MacPorts using the Mac
+    OS X package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
     wish to install a pre-release version of MacPorts base. However, if you
     wish to install <ulink url="installing.source.multiple">multiple copies of
@@ -152,99 +152,29 @@
     <section id="installing.binary">
       <title>Mac OS X Package Install</title>
 
-      <para>To install MacPorts with the Mac OS X package installer, follow
-      these steps.</para>
+      <para>The Mac OS X package installer automatically installs MacPorts,
+      <ulink url="installing.shell">sets the shell environment</ulink>, and
+      runs a <link linkend="using.port.selfupdate">selfupdate</link> operation
+      to download the ports tree with the latest versions and upgrade MacPorts
+      base to the latest point release.</para>
 
       <orderedlist>
         <listitem>
-          <para>Download the latest MacPorts .dmg disk image from the <ulink
+          <para>Download the latest <filename>MacPorts-1.x.x.dmg</filename>
+          disk image from the <ulink
           url="http://svn.macports.org/repository/macports/downloads/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
         <listitem>
-          <para>Double-click the .pkg package installer on the disk
-          image.</para>
+          <para>Double-click the <filename>MacPorts-1.x.x.pkg</filename>
+          package installer on the disk image.</para>
         </listitem>
 
         <listitem>
-          <para>Perform the default “easy” install.  As of MacPorts 1.6,
-            this will install MacPorts, set up a MacPorts-compatible shell
-            environment and, if you have a network connection, update the
-            MacPorts core and ports tree.</para>
-          <note id="installing.binary.postflight.details">
-            <title>For advanced users: details of the postflight script</title>
-            <para>
-              The "postflight" script bundled with our "pkg" installer is
-              run by Apple's Installer.app after MacPorts is installed, in order
-              to setup a MacPorts-compatible shell environment by editing the appropriate
-              shell configuration file (which is properly backed up if necessary
-              with an "mpsaved_$timestamp" suffix before proceeding):
-              <orderedlist>
-                <listitem>
-                  <para>The "/opt/local/bin" &amp; "/opt/local/sbin" paths are
-                    added to the PATH variable if not already there, in order to
-                    find MacPorts-installed programs.</para>
-                </listitem>
-
-                <listitem>
-                  <para>The "/opt/local/share/man" path is added to the MANPATH
-                    variable if and only if:
-                    <itemizedlist>
-                      <listitem>
-                        <para>it already exists;</para>
-                      </listitem>
-                      <listitem>
-                        <para>its value is not empty;</para>
-                      </listitem>
-                      <listitem>
-                        <para>the MacPorts path is not already in it;</para>
-                      </listitem>
-                      <listitem>
-                        <para>its value does not contain empty components, such
-                          as "/usr/share/man:", ":/usr/share/man" or
-                          "/usr/share/man::/usr/X11R6/man".</para>
-                      </listitem>
-                    </itemizedlist>
-                    In all of these cases, helper tools such as 'manpath(1)' or
-                    'path_helper(8)' (Leopard only) setup the MANPATH directly in
-                    coordination with the 'man(1)' command, so we avoid
-                    interfering with that.
-                  </para>
-                </listitem>
-
-                <listitem>
-                  <para>The <envar>DISPLAY</envar> environment variable is set
-                    to ":0" if and only if:
-                    <itemizedlist>
-                      <listitem>
-                        <para>
-                          It's a Tiger or earlier platform, since on Leopard
-                          connections to the X11 server are handled in a much
-                          cleaner fashion by the 'launchd(8)' daemon directly;
-                        </para>
-                      </listitem>
-                      <listitem>
-                        <para>
-                          a <envar>DISPLAY</envar> environment variable doesn't
-                          already exist.
-                        </para>
-                      </listitem>
-                    </itemizedlist>
-                  </para>
-                </listitem>
-              </orderedlist>
-            </para>
-
-            <para>Once all that is done, the script runs the 'selfupdate'
-              action of the 'port(1)' command to synchronize the MacPorts
-              installation with the project's rsync server, updating the
-              ports tree to its latest revision and MacPorts itself to the
-              latest point release if available.</para>
-           </note>
+          <para>Perform the default “easy” install.</para>
         </listitem>
       </orderedlist>
-
     </section>
 
     <section id="installing.source">
@@ -311,44 +241,78 @@
   </section>
 
   <section id="installing.shell">
-    <title>Set the Bash Shell</title>
+    <title>MacPorts and the Shell</title>
 
-    <para>The MacPorts installer (from Mac OS X package or source) places a
-    <filename>.profile</filename> file in your home directory (view files with
-    a dot using <command>ls -a</command>). The contents of the
-    <filename>~/.profile</filename> adds the MacPorts paths in front of the
-    standard Unix paths for the default Bash shell so that MacPorts libraries
-    will take precedence over vendor-supplied libraries if both are
-    present.</para>
+    <para>MacPorts requires changes to the shell environment. If MacPorts was
+    installed using the Mac OS X package installer, a
+    <quote>postflight</quote> script is run after the install that places a
+    <filename>.profile</filename> file in your home directory populated with
+    environmental variables set according to the detected Mac OS X version and
+    environment.</para>
 
-    <para>The path statement in the MacPorts-installed .profile is set as
-    shown.</para>
+    <para>The <quote>postflight</quote> script sets environmental variables in
+    the <filename>.profile</filename> file as shown.</para>
 
-    <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+    <itemizedlist>
+      <listitem>
+        <para>A PATH variable is set to append the MacPorts file paths in
+        front of the default file paths so MacPorts libraries will take
+        precedence over vendor-supplied libraries.</para>
 
-    <para>You must add this <varname>DISPLAY</varname> variable for
-    X11.</para>
+        <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+      </listitem>
 
-    <programlisting>export DISPLAY=:0.0</programlisting>
+      <listitem>
+        <para>No MANPATH variable is set by <quote>postflight</quote> unless a
+        MANPATH variable is already set in the current
+        <filename>.profile</filename> file that does not include the value
+        <filename>${prefix}/share/man,</filename> nor any empty values. In
+        those cases, a MANPATH variable is added to
+        <filename>.profile</filename> as shown.</para>
 
-    <para>Add the <varname>EDITOR</varname> variable to use your favorite text
-    editor. A complete <filename>~/.profile</filename> file with the added
-    variables is shown below.</para>
+        <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
-    <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH
-export DISPLAY=:0.0
-export EDITOR=/usr/bin/pico
-</programlisting>
+        <note>
+          <para>Here are examples of paths that contain empty values:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>/usr/share/man:</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>:/usr/share/man</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>/usr/share/man::/usr/X11R6/man</literal></para>
+            </listitem>
+          </itemizedlist>
+        </note>
+      </listitem>
+
+      <listitem>
+        <para>No DISPLAY variable is set by <quote>postflight</quote> for Mac
+        OS X 10.5 (Leopard) since it is not required to run X11 applications.
+        However, for Mac OS X versions 10.4 and earlier the DISPLAY variable
+        is required, so unless an existing DISPLAY variable was already set in
+        a current <filename>.profile</filename>, the <quote>postflight</quote>
+        script sets it as shown.</para>
+
+        <programlisting>export DISPLAY=:0.0</programlisting>
+      </listitem>
+    </itemizedlist>
 
     <para>Changes to <filename>~/.profile</filename> do not take effect until
     a new terminal session is opened. Type <command>env</command> in the
-    terminal to verify the current environment settings. Example output of
-    <command>env</command> is below.</para>
+    terminal to verify the current environment settings. Example output for
+    the <command>env</command> command is shown below.</para>
 
-    <screen>TERM_PROGRAM=Apple_Terminal
+    <screen>MANPATH=
+TERM_PROGRAM=Apple_Terminal
 TERM=xterm-color
 SHELL=/bin/bash
-TERM_PROGRAM_VERSION=133
+TERM_PROGRAM_VERSION=237
 USER=joebob
 __CF_USER_TEXT_ENCODING=0x1FC:0:0
 PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
@@ -368,14 +332,5 @@ _=/usr/bin/env</screen>
       remove the previously used file, or add the contents of
       <filename>.profile</filename> to it.</para>
     </note>
-  </section>
-
-  <section id="installing.selfupdate">
-    <title>Selfupdate MacPorts</title>
-
-    <para>You must always execute a <quote>selfupdate</quote> after a new
-    MacPorts install, and you should also do it frequently thereafter. See
-    <link linkend="using.port.selfupdate">selfupdate</link> —one of several
-    <link linkend="using.port">port commands</link>.</para>
   </section>
 </chapter>
