@@ -153,7 +153,7 @@
       <title>Mac OS X Package Install</title>
 
       <para>The Mac OS X package installer automatically installs MacPorts,
-      <ulink linkend="installing.shell">sets the shell environment</ulink>, and
+      <link linkend="installing.shell">sets the shell environment</link>, and
       runs a <link linkend="using.port.selfupdate">selfupdate</link> operation
       to download the ports tree with the latest versions and upgrade MacPorts
       base to the latest point release.</para>
