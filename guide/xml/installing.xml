@@ -137,8 +137,8 @@
     OS X package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
     wish to install a pre-release version of MacPorts base. However, if you
-    wish to install <ulink url="installing.source.multiple">multiple copies of
-    MacPorts</ulink> or install MacPorts on another OS platform, you must
+    wish to <link linkend="installing.source.multiple">install multiple copies
+    of MacPorts</link> or install MacPorts on another OS platform, you must
     <link linkend="installing.source">install MacPorts from the source
     code</link>.</para>
 
@@ -250,71 +250,77 @@
     <para>MacPorts requires changes to the shell environment. If MacPorts was
     installed using the Mac OS X package installer, a
     <quote>postflight</quote> script was run after installation that places a
-    <filename>.profile</filename> file in your home directory and populates it
-    with environmental variables according to the detected Mac OS X version
-    and environment. See details below.</para>
+    <filename>.profile</filename> file in the home directory, which
+    automatically contains the environmental variables required for MacPorts.
+    If a current <filename>.profile</filename> file exists at installation
+    time it is renamed to "mpsaved_$timestamp".</para>
 
     <note>
-      <para>If a previous <filename>.profile</filename> is present it is
-      renamed to "mpsaved_$timestamp" before the new .profile</para>
+      <para>If you have either a <filename>.bash_login</filename> or a
+      <filename>.bash_profile</filename> file in your home directory, they may
+      take precedence over <filename>.profile</filename>. You may either
+      remove the previously used file, or add the contents of
+      <filename>.profile</filename> to it.</para>
     </note>
 
-    <para>The <quote>postflight</quote> script sets environmental variables in
-    the <filename>.profile</filename> file as shown.</para>
+    <para>The postflight script automatically copies a
+    <filename>.profile</filename> containing variables according to the rules
+    described below. Those <link linkend="installing.source">installing
+    MacPorts from source code</link> must modify their environment manually
+    using the rules below as a guide. </para>
+
+    <note>
+      <para>Be sure to notice in the rules below that the variables MANPATH
+      and DISPLAY are only set under certain conditions.</para>
+    </note>
 
     <itemizedlist>
       <listitem>
-        <para>A PATH variable is set to append the MacPorts file paths in
-        front of the default file paths so MacPorts libraries will take
-        precedence over vendor-supplied libraries.</para>
+        <para>A PATH variable is set as shown regardless of platform or
+        environment that appends the MacPorts file paths in front of the
+        default file paths so MacPorts libraries will take precedence over
+        vendor-supplied libraries.</para>
 
         <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
       </listitem>
 
       <listitem>
-        <para>A MANPATH variable is set in <filename>.profile</filename> by
-        the <quote>postflight</quote> script as shown only if a MANPATH
-        variable was already set in a previous <filename>.profile</filename>
-        that does not include the value
-        <filename>${prefix}/share/man,</filename> nor any empty values.
-        Otherwise it is omitted.</para>
+        <para>A MANPATH variable is set as shown only if a MANPATH variable
+        was already set in a previous <filename>.profile</filename> that does
+        not include the value <filename>${prefix}/share/man,</filename> nor
+        any empty values. Otherwise it is omitted.</para>
 
         <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
-        <note>
-          <para>Here are examples of paths that contain empty values:</para>
+        <para>Here are some examples of paths that contain empty
+        values:</para>
 
-          <itemizedlist>
-            <listitem>
-              <para><literal>/usr/share/man:</literal></para>
-            </listitem>
+        <simplelist>
+          <member>/usr/share/man:</member>
 
-            <listitem>
-              <para><literal>:/usr/share/man</literal></para>
-            </listitem>
+          <member>:/usr/share/man</member>
 
-            <listitem>
-              <para><literal>/usr/share/man::/usr/X11R6/man</literal></para>
-            </listitem>
-          </itemizedlist>
-        </note>
+          <member>/usr/share/man::/usr/X11R6/man</member>
+        </simplelist>
       </listitem>
 
       <listitem>
-        <para>A DISPLAY variable is set in <filename>.profile</filename> by
-        the <quote>postflight</quote> script as shown only for X11 application
-        support in Mac OS X versions 10.4 (Tiger) and earlier (unless DISPLAY
-        is already set in a <filename>.profile</filename>). A DISPLAY variable
-        is not set for Mac OS X 10.5 (Leopard) or higher.</para>
+        <para>A DISPLAY variable for X11 application support is set as shown
+        only for Mac OS X versions 10.4 (Tiger) and earlier if a DISPLAY
+        variable is not already set in a <filename>.profile</filename> active
+        at installation time. A DISPLAY variable is never set for Mac OS X
+        10.5 (Leopard) or higher.</para>
 
         <programlisting>export DISPLAY=:0.0</programlisting>
       </listitem>
     </itemizedlist>
 
-    <para>Changes to <filename>~/.profile</filename> do not take effect until
-    a new terminal session is opened. Type <command>env</command> in the
-    terminal to verify the current environment settings. Example output for
-    the <command>env</command> command is shown below.</para>
+    <note>
+      <para>Changes to <filename>~/.profile</filename> do not take effect
+      until a new terminal session is opened. Type <command>env</command> in
+      the terminal to verify the current environment settings. Example output
+      for the <command>env</command> command is shown below.</para>
+    </note>
 
     <screen>MANPATH=
 TERM_PROGRAM=Apple_Terminal
@@ -332,13 +338,5 @@ LOGNAME=joebob
 DISPLAY=:0.0
 SECURITYSESSIONID=b0cea0
 _=/usr/bin/env</screen>
-
-    <note>
-      <para>If you have either a <filename>.bash_login</filename> or a
-      <filename>.bash_profile</filename> file in your home directory, they may
-      take precedence over <filename>.profile</filename>. You may either
-      remove the previously used file, or add the contents of
-      <filename>.profile</filename> to it.</para>
-    </note>
   </section>
 </chapter>
