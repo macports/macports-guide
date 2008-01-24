@@ -181,8 +181,8 @@
       <title>Source Install</title>
 
       <para>If you installed MacPorts using the package installer, skip this
-      section. To install MacPorts from the source code, follow these
-      steps.</para>
+      section. To install MacPorts from the source code, follow the steps
+      below.</para>
 
       <orderedlist>
         <listitem>
@@ -192,9 +192,10 @@
         </listitem>
 
         <listitem>
-          <para>Perform these commands in a terminal window, substituting a
-          real path for NEW_PREFIX if you wish to use a path other than
-          <filename>/opt/local/</filename>.</para>
+          <para>Perform the commands shown in a terminal window. If you wish
+          to use a path other than <filename>/opt/local</filename>, use the
+          option <option>--prefix</option> and substitute a path for
+          NEW_PREFIX.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure</userinput> --prefix=NEW_PREFIX  (setting prefix is optional)
@@ -207,15 +208,18 @@
         <title>Install Multiple MacPorts Copies</title>
 
         <para>Occasionally a MacPorts developer may wish to install more than
-        one copy of MacPorts on the same host, possibly to test two different
-        versions of MacPorts. But only one copy of MacPorts may use the
-        default MacPorts Tcl library path <filename>/Library/Tcl/</filename>,
-        so for a second installation use the
-        <literal>--with-tclpackage</literal> switch set to any newly created
-        (empty) directory, say /Library/Tcl/macports-new. Also, the standard
-        MacPorts binary path must not be present during the installation of
-        the second instance. To install a second instance of MacPorts, follow
-        these steps.</para>
+        one MacPorts instance on the same host. Only one copy of MacPorts may
+        use the default Tcl library path <filename>/Library/Tcl/</filename>,
+        so for additional installations use the option
+        <option>--with-tclpackage</option> as shown below and substitute
+        NEW_TCL_PACKAGE with any empty directory, for example
+        <filename>/Library/Tcl/macports-new/</filename>.</para>
+
+        <note>
+          <para>The first command temporarily removes the standard MacPorts
+          binary paths because they must not be present while installing a
+          second instance.</para>
+        </note>
 
         <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
@@ -245,10 +249,15 @@
 
     <para>MacPorts requires changes to the shell environment. If MacPorts was
     installed using the Mac OS X package installer, a
-    <quote>postflight</quote> script is run after the install that places a
-    <filename>.profile</filename> file in your home directory populated with
-    environmental variables set according to the detected Mac OS X version and
-    environment.</para>
+    <quote>postflight</quote> script was run after installation that places a
+    <filename>.profile</filename> file in your home directory and populates it
+    with environmental variables according to the detected Mac OS X version
+    and environment. See details below.</para>
+
+    <note>
+      <para>If a previous <filename>.profile</filename> is present it is
+      renamed to "mpsaved_$timestamp" before the new .profile</para>
+    </note>
 
     <para>The <quote>postflight</quote> script sets environmental variables in
     the <filename>.profile</filename> file as shown.</para>
@@ -263,12 +272,12 @@
       </listitem>
 
       <listitem>
-        <para>No MANPATH variable is set by <quote>postflight</quote> unless a
-        MANPATH variable is already set in the current
-        <filename>.profile</filename> file that does not include the value
-        <filename>${prefix}/share/man,</filename> nor any empty values. In
-        those cases, a MANPATH variable is added to
-        <filename>.profile</filename> as shown.</para>
+        <para>A MANPATH variable is set in <filename>.profile</filename> by
+        the <quote>postflight</quote> script as shown only if a MANPATH
+        variable was already set in a previous <filename>.profile</filename>
+        that does not include the value
+        <filename>${prefix}/share/man,</filename> nor any empty values.
+        Otherwise it is omitted.</para>
 
         <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
@@ -292,12 +301,11 @@
       </listitem>
 
       <listitem>
-        <para>No DISPLAY variable is set by <quote>postflight</quote> for Mac
-        OS X 10.5 (Leopard) since it is not required to run X11 applications.
-        However, for Mac OS X versions 10.4 and earlier the DISPLAY variable
-        is required, so unless an existing DISPLAY variable was already set in
-        a current <filename>.profile</filename>, the <quote>postflight</quote>
-        script sets it as shown.</para>
+        <para>A DISPLAY variable is set in <filename>.profile</filename> by
+        the <quote>postflight</quote> script as shown only for X11 application
+        support in Mac OS X versions 10.4 (Tiger) and earlier (unless DISPLAY
+        is already set in a <filename>.profile</filename>). A DISPLAY variable
+        is not set for Mac OS X 10.5 (Leopard) or higher.</para>
 
         <programlisting>export DISPLAY=:0.0</programlisting>
       </listitem>
