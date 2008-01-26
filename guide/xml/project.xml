@@ -106,7 +106,7 @@
             </listitem>
 
             <listitem>
-              <para>Blank - Anything that doesn't fit the categories high,
+              <para><guimenu>Not set</guimenu> - Anything that doesn't fit the categories high,
               normal, or low.</para>
             </listitem>
           </itemizedlist>
@@ -128,19 +128,24 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>server/hosting</guimenu> - For MacPorts hosting &amp;
-              server-side issues, reserved for MacPorts PortMgr team members.</para>
-            </listitem>
-
-            <listitem>
               <para><guimenu>ports</guimenu> - Tickets related to
               ports.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>www</guimenu> - MacPorts website enhancements and
+              <para><guimenu>server/hosting</guimenu> - For MacPorts hosting &amp;
+              server-side issues, reserved for MacPorts PortMgr team members.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>website</guimenu> - MacPorts website enhancements and
               error corrections.</para>
             </listitem>
+
+	    <listitem>
+	      <para><guimenu>wiki</guimenu> - MacPorts Wiki enhancements and error
+	      corrections.</para>
+	    </listitem>
           </itemizedlist>
         </listitem>
 
@@ -204,8 +209,13 @@
             <listitem>
               <para><guimenu>Website &amp; Documentation</guimenu> - for
               tickets relating to the documentation for MacPorts, including
-              the MacPorts guide, wiki, man pages and the website.</para>
+              the MacPorts guide, Wiki, man pages and the website.</para>
             </listitem>
+
+	    <listitem>
+	      <para>Blank - For unclassified tickets that don't fit into any
+	      of the provided milestones.</para>
+	    </listitem>
           </itemizedlist>
         </listitem>
 
@@ -223,9 +233,10 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Attachments:</guilabel> Files may be attached only
-          after a ticket has been submitted. Once the ticket has been created
-          you will see the file attachment button.</para>
+	  <para><guilabel>Attachments:</guilabel> Files may be attached to a
+	  ticket when it is being created if the checkbox that reads
+	  &ldquo;I have files to attach to this ticket&rdquo; is selected,
+	  or after it has been submitted by using the file attachment button.</para>
         </listitem>
       </itemizedlist>
     </section>
