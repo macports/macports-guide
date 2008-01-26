@@ -248,8 +248,8 @@
   <section id="project.contributing">
     <title>Contributing to MacPorts</title>
 
-    <para>You may contribute new ports and port updates to current ports using
-    Trac tickets.</para>
+    <para>You may contribute new ports and enhancements of any kind to already
+    existing ports using Trac tickets.</para>
 
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
@@ -282,12 +282,12 @@
     </section>
 
     <section id="project.contributing.updates">
-      <title>Port Updates</title>
+      <title>Port Enhancements</title>
 
-      <para>Portfile updates should always be contributed as
-      <filename>Portfile</filename> patches. Ports are contributed by
-      following these steps. See Ticket Submission Guidelines above for a
-      description of all fields.</para>
+      <para>Enhancements to existing ports may comprise new functionality for
+      a given port, bug fixes or even simple version updates. They should always
+      be contributed as <filename>Portfile</filename> patches. See Ticket Submission
+      Guidelines above for a description of all fields.</para>
 
       <orderedlist>
         <listitem>
@@ -300,12 +300,14 @@
         </listitem>
 
         <listitem>
-          <para>Set the type to <guilabel>enhancement</guilabel>.</para>
+          <para>Set the type to <guilabel>enhancement</guilabel> for miscellaneous
+	  enhancements or to <guilabel>defect</guilabel> for bug fixes.</para>
         </listitem>
 
         <listitem>
           <para>Set the milestone to <guilabel>Port
-          Enhancements</guilabel>.</para>
+          Enhancements</guilabel>, <guilabel>Port Updates</guilabel> or <guilabel>Port
+	  Bugs</guilabel> depending on the case.</para>
         </listitem>
 
         <listitem>
