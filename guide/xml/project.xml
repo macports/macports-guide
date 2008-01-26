@@ -78,9 +78,12 @@
           formatting</ulink> or attached log files should be used for large
           text blocks. If you want to post a build log make sure you use
           <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
-          log or it could break the page layout (i.e.
-          <literal>{{{<replaceable>your build log
-          here</replaceable>}}}</literal>).</para>
+          log or it could break the page layout. Example:</para>
+
+	  <programlisting>{{{
+<replaceable>your build log here</replaceable>
+}}}</programlisting>
+
         </listitem>
 
         <listitem>
