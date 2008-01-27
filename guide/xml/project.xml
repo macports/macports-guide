@@ -80,7 +80,7 @@
           <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
           log or it could break the page layout. Example:</para>
 
-	  <literallayout>{{{
+          <literallayout>{{{
 <replaceable>your build log here</replaceable>
 }}}</literallayout>
 
@@ -92,9 +92,9 @@
 
           <itemizedlist>
             <listitem>
-	      <para><guimenu>High</guimenu> - Reserved for the use of MacPorts
-              team members, as they are the best fit to determine which reports
-              warrant a higher priority over others.</para>
+              <para><guimenu>High</guimenu> - Reserved for the use of MacPorts
+              team members, as they are the best fit to determine which
+              reports warrant a higher priority over others.</para>
             </listitem>
 
             <listitem>
@@ -109,8 +109,8 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>Not set</guimenu> - Anything that doesn't fit the categories high,
-              normal, or low.</para>
+              <para><guimenu>Not set</guimenu> - Anything that doesn't fit the
+              categories high, normal, or low.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -136,19 +136,20 @@
             </listitem>
 
             <listitem>
-              <para><guimenu>server/hosting</guimenu> - For MacPorts hosting &amp;
-              server-side issues, reserved for MacPorts PortMgr team members.</para>
+              <para><guimenu>server/hosting</guimenu> - For MacPorts hosting
+              &amp; server-side issues, reserved for MacPorts PortMgr team
+              members.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>website</guimenu> - MacPorts website enhancements and
-              error corrections.</para>
+              <para><guimenu>website</guimenu> - MacPorts website enhancements
+              and error corrections.</para>
             </listitem>
 
-	    <listitem>
-	      <para><guimenu>wiki</guimenu> - MacPorts Wiki enhancements and error
-	      corrections.</para>
-	    </listitem>
+            <listitem>
+              <para><guimenu>wiki</guimenu> - MacPorts Wiki enhancements and
+              error corrections.</para>
+            </listitem>
           </itemizedlist>
         </listitem>
 
@@ -159,13 +160,14 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Cc:</guilabel> Anyone else besides the ticket reporter
-          and assignee who would like to be kept involved in the development
-          of the ticket, and/or the port maintainer in case his/her address does
-	  not appear in the <guimenu>Assign To</guimenu> drop down menu. Multiple
-	  emails should be separated with a comma (i.e. <literal>you@example.org,
-	  maintainer@macports.org</literal>). To get the maintainer email address
-	  use <command>port info &lt;portname&gt;</command>.</para>
+          <para><guilabel>Cc:</guilabel> Anyone else besides the ticket
+          reporter and assignee who would like to be kept involved in the
+          development of the ticket, and/or the port maintainer in case
+          his/her address does not appear in the <guimenu>Assign To</guimenu>
+          drop down menu. Multiple emails should be separated with a comma
+          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
+          To get the maintainer email address use <command>port info
+          &lt;portname&gt;</command>.</para>
         </listitem>
 
         <listitem>
@@ -215,10 +217,10 @@
               the MacPorts guide, Wiki, man pages and the website.</para>
             </listitem>
 
-	    <listitem>
-	      <para>Blank - For unclassified tickets that don't fit into any
-	      of the provided milestones.</para>
-	    </listitem>
+            <listitem>
+              <para>Blank - For unclassified tickets that don't fit into any
+              of the provided milestones.</para>
+            </listitem>
           </itemizedlist>
         </listitem>
 
@@ -236,10 +238,10 @@
         </listitem>
 
         <listitem>
-	  <para><guilabel>Attachments:</guilabel> Files may be attached to a
-	  ticket when it is being created if the checkbox that reads
-	  &ldquo;I have files to attach to this ticket&rdquo; is selected,
-	  or after it has been submitted by using the file attachment button.</para>
+          <para><guilabel>Attachments:</guilabel> Files may be attached to a
+          ticket when it is being created if the checkbox that reads &ldquo;I
+          have files to attach to this ticket&rdquo; is selected, or after it
+          has been submitted by using the file attachment button.</para>
         </listitem>
       </itemizedlist>
     </section>
@@ -285,9 +287,10 @@
       <title>Port Enhancements</title>
 
       <para>Enhancements to existing ports may comprise new functionality for
-      a given port, bug fixes or even simple version updates. They should always
-      be contributed as <filename>Portfile</filename> patches. See Ticket Submission
-      Guidelines above for a description of all fields.</para>
+      a given port, bug fixes or even simple version updates. They should
+      always be contributed as <filename>Portfile</filename> patches. See
+      Ticket Submission Guidelines above for a description of all
+      fields.</para>
 
       <orderedlist>
         <listitem>
@@ -300,14 +303,15 @@
         </listitem>
 
         <listitem>
-          <para>Set the type to <guilabel>enhancement</guilabel> for miscellaneous
-	  enhancements or to <guilabel>defect</guilabel> for bug fixes.</para>
+          <para>Set the type to <guilabel>enhancement</guilabel> for
+          miscellaneous enhancements or to <guilabel>defect</guilabel> for bug
+          fixes.</para>
         </listitem>
 
         <listitem>
-          <para>Set the milestone to <guilabel>Port
-          Enhancements</guilabel>, <guilabel>Port Updates</guilabel> or <guilabel>Port
-	  Bugs</guilabel> depending on the case.</para>
+          <para>Set the milestone to <guilabel>Port Enhancements</guilabel>,
+          <guilabel>Port Updates</guilabel> or <guilabel>Port Bugs</guilabel>
+          depending on the case.</para>
         </listitem>
 
         <listitem>
