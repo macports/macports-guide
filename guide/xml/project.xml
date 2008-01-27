@@ -80,9 +80,9 @@
           <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
           log or it could break the page layout. Example:</para>
 
-	  <programlisting>{{{
+	  <literallayout>{{{
 <replaceable>your build log here</replaceable>
-}}}</programlisting>
+}}}</literallayout>
 
         </listitem>
 
