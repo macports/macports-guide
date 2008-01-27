@@ -145,7 +145,7 @@
     <note>
       <para>Though a distinction is made between pre-release and release
       versions of MacPorts base, the ports collection supports no versioning;
-      a <link linkend="installing.selfupdate">selfupdate</link> installs the
+      a <link linkend="using.port.selfupdate">selfupdate</link> installs the
       latest commits from subversion (at a slight delay).</para>
     </note>
 
