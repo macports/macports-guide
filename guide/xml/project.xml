@@ -80,9 +80,11 @@
           <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
           log or it could break the page layout. Example:</para>
 
-          <literallayout>{{{
+          <literallayout>
+{{{
 <replaceable>your build log here</replaceable>
-}}}</literallayout>
+}}}
+          </literallayout>
 
         </listitem>
 
@@ -444,13 +446,37 @@
       <listitem>
         <para>Involvement on MacPorts support lists.</para>
       </listitem>
+
+      <listitem>
+        <para>Contributing with documentation</para>
+      </listitem>
     </itemizedlist>
 
     <para>To apply for MacPorts commit rights, send a brief email to the
     PortMgr team at <email>macports-mgr@lists.macosforge.org</email> entitled
-    “Request for commit rights” detailing the reasons for your application and
-    why you think you deserve commit rights (including evidence of
-    contributions to MacPorts as described above).</para>
+    &ldquo;Request for commit rights&rdquo; with the following contents:</para>
+
+    <itemizedlist>
+      <listitem>
+        <para>a description of your application and why you think you deserve
+        commit rights (including evidence of contributions to MacPorts as described
+        above).</para>
+      </listitem>
+
+      <listitem>
+        <para>the identity you'd like to use as a member of the project, A.K.A. the
+        &ldquo;handle&rdquo;, as part of your <literal><replaceable>handle</replaceable>@macports.org</literal>
+        alias.</para>
+      </listitem>
+
+      <listitem>
+        <para>a real e-mail address to which you'd like your MacPorts alias to forward.</para>
+      </listitem>
+    </itemizedlist>
+
+    <para>The PortMgr team will consider all applications and provide an appropriate
+    response in a timely manner.</para>
+
   </section>
 
   <section id="project.portmgr">
@@ -505,6 +531,5 @@
         </listitem>
       </itemizedlist></para>
 
-    
   </section>
 </chapter>
