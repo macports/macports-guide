@@ -144,9 +144,11 @@
 
     <note>
       <para>Though a distinction is made between pre-release and release
-      versions of MacPorts base, the ports collection supports no versioning;
-      a <link linkend="using.port.selfupdate">selfupdate</link> installs the
-      latest commits from subversion (at a slight delay).</para>
+      versions of MacPorts base, the ports collection supports no such
+      distinction or versioning. The <link
+      linkend="using.port.selfupdate">selfupdate</link> command installs the
+      latest port revisions from subversion (at a slight delay), and updates
+      MacPorts base to the latest released version.</para>
     </note>
 
     <section id="installing.binary">
@@ -155,8 +157,8 @@
       <para>The Mac OS X package installer automatically installs MacPorts,
       <link linkend="installing.shell">sets the shell environment</link>, and
       runs a <link linkend="using.port.selfupdate">selfupdate</link> operation
-      to download the ports tree with the latest versions and upgrade MacPorts
-      base to the latest point release.</para>
+      to update the ports tree and MacPorts base with the latest
+      release.</para>
 
       <orderedlist>
         <listitem>
@@ -230,6 +232,18 @@
       </section>
     </section>
 
+    <section id="installing.upgrade">
+      <title>MacPorts Upgrade</title>
+
+      <para>MacPorts base upgrades are performed automatically (when a newer
+      release is available) during a <link
+      linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade
+      a copy of MacPorts that was installed from source to the newer release
+      of the source code, simply repeat the <link
+      linkend="installing.source">source install</link> with the newer version
+      of the MacPorts source code.</para>
+    </section>
+
     <section id="installing.uninstalling">
       <title>Uninstall</title>
 
@@ -267,7 +281,7 @@
     <filename>.profile</filename> containing variables according to the rules
     described below. Those <link linkend="installing.source">installing
     MacPorts from source code</link> must modify their environment manually
-    using the rules below as a guide. </para>
+    using the rules below as a guide.</para>
 
     <note>
       <para>Be sure to notice in the rules below that the variables MANPATH
