@@ -47,10 +47,20 @@ receiving file list ... done
 
 [ ... trimmed ... ]
 
-Downloaded MacPorts base version 1.5
+
 The MacPorts installation is not outdated and so was not updated
 DEBUG: Setting ownership to root
 selfupdate done!</screen>
+
+      <para>If selfupdate detects that a newer version of MacPorts base is
+      available, it automatically updates the installed copy of MacPorts base
+      to the latest released version. In that case, you will see the upgrade
+      Makefile execute, and when it finishes you will see this message:</para>
+
+      <screen>DEBUG: Updating using rsync
+receiving file list ... done
+
+Congratulations, you have successfully installed the MacPorts system.</screen>
     </section>
 
     <section id="using.port.sync">
@@ -59,8 +69,8 @@ selfupdate done!</screen>
       <para>The <option>sync</option> option performs a subset of
       <option>selfupdate</option> actions. It synchronizes the ports tree, as
       does <option>selfupdate</option>, but it does not check for upgrades to
-      MacPorts base. On Mac OS X, unless there is a special reason not to do so,
-      you should run <link
+      MacPorts base. On Mac OS X, unless there is a special reason not to do
+      so, you should run <link
       linkend="using.port.selfupdate">selfupdate</link>.</para>
 
       <note>
@@ -248,11 +258,11 @@ Maintainers: nomaintainer@macports.org</screen>
 
       <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
 
-      <screen><![CDATA[apr                            1.2.8_0 < 1.2.9_0
-autoconf                       2.61_0 < 2.61_1
-gimp                           2.2.14_0 < 2.2.16_0
-libtool                        1.5.22_0 < 1.5.24_0
-pkgconfig                      0.21_0 < 0.22_0]]></screen>
+      <screen>apr                            1.2.8_0 &lt; 1.2.9_0
+autoconf                       2.61_0 &lt; 2.61_1
+gimp                           2.2.14_0 &lt; 2.2.16_0
+libtool                        1.5.22_0 &lt; 1.5.24_0
+pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     </section>
 
     <section id="using.port.upgrade">
@@ -416,7 +426,7 @@ libdap depends on openssl</screen>
 
       <para>Debug output is shown below.</para>
 
-      <screen><![CDATA[--->  Creating logrotate-3.7_0.i386.tgz
+      <screen>---&gt;  Creating logrotate-3.7_0.i386.tgz
 
 [ ... trimmed ... ]
 
@@ -436,9 +446,9 @@ DEBUG:
 ./opt/local/man/man8/logrotate.8
 ./opt/local/sbin/
 ./opt/local/sbin/logrotate
---->  Archive logrotate-3.7_0.i386.tgz packaged
+---&gt;  Archive logrotate-3.7_0.i386.tgz packaged
 DEBUG: Executing archive_finish
---->  Archive for logrotate 3.7_0 packaged]]></screen>
+---&gt;  Archive for logrotate 3.7_0 packaged</screen>
 
       <para>Binary archive files are placed in
       <filename>${prefix}/var/macports/packages/</filename>. The archive file
@@ -485,7 +495,7 @@ DEBUG: Executing archive_finish
     </section>
   </section>
 
-<!--
+  <!--
   <section id="using.rsync-replication">
     <title>Rsync Replication Servers</title>
 
