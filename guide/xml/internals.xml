@@ -20,7 +20,7 @@
     <para>The MacPorts configuration files do not need to be modified for the
     general end user. They contain options that may be of use to advanced
     users and port developers. All the MacPorts configuration files are
-    located in <filename>/opt/local/etc/macports</filename>.</para>
+    located in <filename>${prefix}/etc/macports</filename>.</para>
 
     <section id="internals.configuration-files.sources-conf">
       <title>sources.conf</title>
