@@ -20,9 +20,9 @@
     <code>default_variants</code> (see below).</para>
 
     <note>
-      <para>Variant names must not contain hyphens; use underscores instead.
-      For example, use <code>no_x11</code> rather than
-      <code>no-x11</code>.</para>
+      <para>Variant names may contain only the characters A-Z, a-z, and the
+      underscore character <quote>_</quote>. Therefore, take care to never use
+      hyphens in variant names.</para>
     </note>
 
     <variablelist>
