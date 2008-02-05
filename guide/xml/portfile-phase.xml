@@ -1667,17 +1667,17 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           Manually set variables are not overwritten. Dependencies are not
           added for you, as they may be just build- or also run-dependencies.
           Keep in mind that not all compiler suites might be available on your
-          platform: <option>gcc-3.3</option> is available on Mac OS X 10.3
-          and 10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4
-          and 10.5, <option>gcc-4.2</option> is available as preview for
+          platform: <option>gcc-3.3</option> is available on Mac OS X 10.3 and
+          10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4 and
+          10.5, <option>gcc-4.2</option> is available as preview for
           10.5.</para>
+
           <para>Only use it if a port really needs a different
           compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>gcc-3.3</option> on Mac OS X
-              10.3</para>
+              <para>Default: <option>gcc-3.3</option> on Mac OS X 10.3</para>
             </listitem>
 
             <listitem>
@@ -2363,14 +2363,16 @@ build.target-delete     compat</programlisting>
 
         <listitem>
           <para>This keyword is for specifying whether or not it is safe for a
-          port to use multiple cpus or multiple cores in parallel during its
-          build phase. If a port is declared to be builadble this way, the
-          option <option>-j N</option> may be passed to the
-          <command>make</command> command if parallel builds are enabled
-          system-wide. This can be obtained by setting
-          <varname>buildmakejobs</varname> in
-          <filename>macports.conf</filename>. The integer <option>N</option>
-          refers to the number of parallel build threads.</para>
+          port to use multiple CPUs or multiple cores in parallel during its
+          build phase. If <code>use_parallel_build</code> is set to
+          <quote>yes</quote> in a given port, the option <option>-j N</option>
+          is passed to the <command>make</command> command where
+          <option>N</option> represents the number of parallel build threads
+          defined by the variable <varname>buildmakejobs</varname> in
+          <filename>macports.conf</filename>. The default value of
+          <varname>buildmakejobs</varname> is set to 1, therefore unless this
+          variable is increased for a given MacPorts installation, parallel
+          builds will not occur in any case.</para>
 
           <itemizedlist>
             <listitem>
@@ -2453,7 +2455,6 @@ build.target-delete     compat</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
-
       </varlistentry>
     </variablelist>
   </section>
