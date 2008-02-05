@@ -74,12 +74,6 @@
           by default. This allows for Portfile modularity and also allows
           users to suppress default variants if they wish.</para>
 
-          <note>
-            <para>Due to a bug in the current MacPorts base default_variants
-            shouldn't be used at the moment as they cause problems while
-            upgrading ports.</para>
-          </note>
-
           <itemizedlist>
             <listitem>
               <para>Default: none</para>
