@@ -684,7 +684,7 @@ Ports failed:                   0</screen>
       <title>Port Style</title>
 
       <para>Portfiles may be thought of as a table of keys and values in two
-      columns separated by whitespace (not tabs), so you should set your
+      columns separated by spaces (not tabs), so you should set your
       editor to use soft tabs, which are tabs emulated by spaces. By default,
       the top line of all Portfiles should use a modeline that defines soft
       tabs for the vim and emacs editors as shown.</para>
