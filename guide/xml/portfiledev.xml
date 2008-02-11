@@ -552,9 +552,9 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
 
         <listitem>
           <para>Now you may place the patch
-          <filename>patch-Makefile.in</filename> in location
+          <filename>patch-Makefile.in</filename> in the directory
           <varname>${portpath}</varname>/files (either a local repository or
-          after committing to the MacPorts subversion port repository) and use
+          after committing to the MacPorts Subversion port repository) and use
           it in a port using the <code>patchfiles</code> keyword.</para>
 
           <programlisting>patchfiles          patch-Makefile.in</programlisting>
@@ -562,7 +562,7 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <note>
             <para>You should create one patch file for each file to be
             patched, though it is permissible to use existing patches you find
-            that patch multiple files. Patchfiles filenames should generally
+            that patch multiple files. Patchfile filenames should generally
             be of the form
             <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;</replaceable>,
             as shown in this example:
