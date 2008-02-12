@@ -5,39 +5,36 @@
   <title>Introduction</title>
 
   <para>MacPorts is an easy to use system for compiling, installing, and
-  managing free and open source software. MacPorts may be conceptually divided
-  into two main parts: the infrastructure, known as MacPorts base, and the set
-  of available ports. A MacPorts port is a set of specifications contained in
-  a <link linkend="development.introduction">Portfile</link> that defines an
+  managing open source software. MacPorts may be conceptually divided into two
+  main parts: the infrastructure, known as MacPorts base, and the set of
+  available ports. A MacPorts port is a set of specifications contained in a
+  <link linkend="development.introduction">Portfile</link> that defines an
   application, its characteristics, and any files or special instructions
-  required to install it, so MacPorts may automatically fetch, patch, compile,
-  and install ported software.</para>
-
-  <para>However, installing software using MacPorts instead of doing it
-  manually brings advantages apart from scripted installs for individual
-  applications. For example, MacPorts:</para>
+  required to install it. This allows you to use a single command to tell
+  MacPorts to automatically download, compile, and install applications and
+  libraries. But using MacPorts to manage your open source software provides
+  several other significant advantages. For example, MacPorts:</para>
 
   <itemizedlist>
     <listitem>
       <para>Installs automatically any required support software, known as
-      "dependencies", for a given port.</para>
+      <quote>dependencies</quote>, for a given port.</para>
     </listitem>
 
     <listitem>
-      <para>Provides automatic uninstalls and upgrades for installed
-      ports.</para>
+      <para>Provides for uninstalls and upgrades for installed ports.</para>
     </listitem>
 
     <listitem>
-      <para>Confines ported software to a private "sandbox" that keeps it from
-      intermingling with your operating system and its vendor-supplied
-      software to prevent them from becoming corrupted.</para>
+      <para>Confines ported software to a private <quote>sandbox</quote> that
+      keeps it from intermingling with your operating system and its
+      vendor-supplied software to prevent them from becoming corrupted.</para>
     </listitem>
 
     <listitem>
       <para>Allows you to create pre-compiled binary installers of ported
-      applications to quickly install software on computers without compiling
-      from source code.</para>
+      applications to quickly install software on remote computers without
+      compiling from source code.</para>
     </listitem>
   </itemizedlist>
 
