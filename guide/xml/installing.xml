@@ -5,10 +5,11 @@
   <title>Installing MacPorts</title>
 
   <para>This chapter shows you how to install MacPorts and its prerequisites
-  step-by-step. Note that sections 1 through 3 are Mac OS X specific. If you
-  wish to install MacPorts on another platform, first make sure you have X11
-  and gcc installed, and then perform a <ulink
-  url="installing.source">MacPorts install from source code</ulink>.</para>
+  step-by-step. Note that section 1 and section 2 (installing X11 and Xcode
+  Tools) are Mac OS X specific. If you wish to install MacPorts on another
+  platform, first make sure you have X11 and gcc installed, and then begin at
+  section 3.2 by performing a <ulink url="installing.source">MacPorts install
+  from source code</ulink> and proceed to the end of the chapter.</para>
 
   <section id="installing.x11">
     <title>Install X11</title>
@@ -16,18 +17,19 @@
     <para>It is recommended that you install the X Window System (X11) even if
     you don't plan to run X11 applications immediately. Apple's X11 is
     preferred over the MacPorts X11 port, and ports with an X11 dependency
-    will be satisfied by Apple's X11. If Apple's X11 wasn't installed at the
-    same time Mac OS X was installed, follow these steps.</para>
+    will be satisfied by Apple's X11 just as with the X11 port. If Apple's X11
+    wasn't installed when Mac OS X was installed, follow these steps.</para>
 
     <orderedlist>
       <listitem>
-        <para>Insert the "Mac OS X Install Disk" and run the package named
-        "Optional Installs".</para>
+        <para>Insert the <quote>Mac OS X Install Disk</quote> and run the
+        package named <quote>Optional Installs</quote>.</para>
       </listitem>
 
       <listitem>
-        <para>At the software selection window expand the Applications
-        category and click the check box beside X11 (and nothing else).</para>
+        <para>At the software selection window expand the
+        <guilabel>Applications</guilabel> category and click the check box
+        beside <guilabel>X11</guilabel> (and nothing else).</para>
       </listitem>
 
       <listitem>
@@ -77,17 +79,18 @@
 
       <orderedlist>
         <listitem>
-          <para>Open X11 and select "Customize Menu ..." from the Applications
+          <para>Open X11 and select <guimenuitem>Customize Menu
+          ...</guimenuitem> from the <guimenu>Applications</guimenu>
           menu.</para>
         </listitem>
 
         <listitem>
-          <para>Double-click the menu item "Terminal" and change: "xterm" to
-          "xterm -ls"</para>
+          <para>Double-click the menu item <guimenuitem>Terminal</guimenuitem>
+          and change: <quote>xterm</quote> to <quote>xterm -ls</quote></para>
         </listitem>
 
         <listitem>
-          <para>Click "Done" to save the change.</para>
+          <para>Click <guibutton>Done</guibutton> to save the change.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -103,9 +106,8 @@
         <para>Download and install the latest version of <ulink
         url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
         Apple's developer site—do not install it from a Mac OS X install disk
-        unless you've already checked for a more recent version on Apple's
-        site; older versions of Xcode Tools often cause port install
-        failures.</para>
+        unless you've checked for the latest version on Apple's site; older
+        versions of Xcode Tools often cause port install failures.</para>
       </listitem>
 
       <listitem>
@@ -174,7 +176,7 @@
         </listitem>
 
         <listitem>
-          <para>Perform the default “easy” install.</para>
+          <para>Perform the default <quote>easy</quote> install.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -264,10 +266,10 @@
     <para>MacPorts requires changes to the shell environment. If MacPorts was
     installed using the Mac OS X package installer, a
     <quote>postflight</quote> script was run after installation that places a
-    <filename>.profile</filename> file in the home directory, which
-    automatically contains the environmental variables required for MacPorts.
-    If a current <filename>.profile</filename> file exists at installation
-    time it is renamed to "mpsaved_$timestamp".</para>
+    <filename>.profile</filename> file in the home directory, which contains
+    the environmental variables required for MacPorts. If a current
+    <filename>.profile</filename> file exists at installation time it is
+    renamed to <quote>mpsaved_$timestamp</quote>.</para>
 
     <note>
       <para>If you have either a <filename>.bash_login</filename> or a
@@ -285,24 +287,25 @@
 
     <note>
       <para>Be sure to notice in the rules below that the variables MANPATH
-      and DISPLAY are only set under certain conditions.</para>
+      and DISPLAY are only needed under certain conditions.</para>
     </note>
 
     <itemizedlist>
       <listitem>
-        <para>A PATH variable is set as shown regardless of platform or
-        environment that appends the MacPorts file paths in front of the
-        default file paths so MacPorts libraries will take precedence over
-        vendor-supplied libraries.</para>
+        <para>A <varname>PATH</varname> variable is set as shown regardless of
+        platform or environment that appends the MacPorts file paths in front
+        of the default file paths so MacPorts libraries will take precedence
+        over vendor-supplied libraries.</para>
 
         <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
       </listitem>
 
       <listitem>
-        <para>A MANPATH variable is set as shown only if a MANPATH variable
-        was already set in a previous <filename>.profile</filename> that does
-        not include the value <filename>${prefix}/share/man,</filename> nor
-        any empty values. Otherwise it is omitted.</para>
+        <para>A <varname>MANPATH</varname> variable is set as shown only if a
+        <varname>MANPATH</varname> variable was already set in a previous
+        <filename>.profile</filename> that does not include the value
+        <filename>${prefix}/share/man,</filename> nor any empty values.
+        Otherwise, it is omitted.</para>
 
         <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
@@ -319,11 +322,12 @@
       </listitem>
 
       <listitem>
-        <para>A DISPLAY variable for X11 application support is set as shown
-        only for Mac OS X versions 10.4 (Tiger) and earlier if a DISPLAY
-        variable is not already set in a <filename>.profile</filename> active
-        at installation time. A DISPLAY variable is never set for Mac OS X
-        10.5 (Leopard) or higher.</para>
+        <para>A <varname>DISPLAY</varname> variable for X11 application
+        support is set as shown only for Mac OS X versions 10.4 (Tiger) and
+        earlier if a <varname>DISPLAY</varname> variable is not already set in
+        a <filename>.profile</filename> active at installation time. A
+        <varname>DISPLAY</varname> variable is never set for Mac OS X 10.5
+        (Leopard) or higher.</para>
 
         <programlisting>export DISPLAY=:0.0</programlisting>
       </listitem>
