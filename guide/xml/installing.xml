@@ -229,7 +229,7 @@
 
         <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
-<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tcl-package=NEW_TCLPACKAGE</userinput>
+<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tclpackage=NEW_TCLPACKAGE</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
