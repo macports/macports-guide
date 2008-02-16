@@ -18,7 +18,8 @@
   <itemizedlist>
     <listitem>
       <para>Installs automatically any required support software, known as
-      <quote>dependencies</quote>, for a given port.</para>
+      <link linkend="reference.dependencies">dependencies</link>, for a given
+      port.</para>
     </listitem>
 
     <listitem>
