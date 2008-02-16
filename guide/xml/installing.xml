@@ -16,9 +16,11 @@
 
     <para>It is recommended that you install the X Window System (X11) even if
     you don't plan to run X11 applications immediately. Apple's X11 is
-    preferred over the MacPorts X11 port, and ports with an X11 dependency
-    will be satisfied by Apple's X11 just as with the X11 port. If Apple's X11
-    wasn't installed when Mac OS X was installed, follow these steps.</para>
+    preferred over either of the X11 ports, XFree86 and Xorg, therefore
+    Apple's X11 is normally used to satisfy ports that depend upon X11 (see
+    <link linkend="reference.dependencies.types">non-port
+    dependencies</link>). If Apple's X11 wasn't installed when Mac OS X was
+    installed, follow these steps.</para>
 
     <orderedlist>
       <listitem>
