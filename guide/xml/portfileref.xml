@@ -33,9 +33,21 @@
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <section id="reference.portgroup">
-    <title>PortGroup</title>
+    <title>PortGroups</title>
 
-    <xi:include href="../../man/xml/portgroup.7.xml"
+    <xi:include href="portgroup-gnustep.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    <xi:include href="portgroup-perl.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    <xi:include href="portgroup-python.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    <xi:include href="portgroup-ruby.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    <xi:include href="portgroup-xcode.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 </chapter>
