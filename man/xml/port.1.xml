@@ -103,7 +103,7 @@
       </varlistentry>
 
       <varlistentry>
-        <term><option>-n</option></term>
+        <term><option>-d</option></term>
 
         <listitem>
           <para>debug mode (generate debugging messages, implies
