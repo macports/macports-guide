@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.perl">
+
+  <title>PortGroup perl5</title>
+
+  <para>PortGroup perl5 allows for efficient porting of perl modules and
+  other perl open source software.</para>
+
+  <section>
+    <title>perl5 PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the perl5 PortGroup allow for port authors to set
+    the following keywords in addition to the general Portfile
+    keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>perl5.setup</term>
+
+        <listitem>
+          <para>This keyword sets the ${distfile} and ${version}.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: required</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>perl5.setup          Net-Telnet 3.03</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>perl5 PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup perl5 do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>categories</term>
+
+        <listitem>
+          <para>Default: perl</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>master_sites</term>
+
+        <listitem>
+          <para>Default: http://search.cpan.org/dist/${distname}</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>depends_lib</term>
+
+        <listitem>
+          <para>Default: perl5.8</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Default: no</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>perl5 PortGroup Specific Variables</title>
+
+    <para>When the perl5 PortGroup is declared within a Portfile, the
+    following variables are provided during port install.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>perl5.version</term>
+
+        <listitem>
+          <para>The MacPorts Perl version.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>perl5.bin</term>
+
+        <listitem>
+          <para>The Perl binary path (ie,
+          <filename>${prefix}/bin/perl</filename>).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>perl5.lib</term>
+
+        <listitem>
+          <para>Path to the Perl vendor directory.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>perl5.archlib</term>
+
+        <listitem>
+          <para>Path to the Perl architecture-dependent modules
+          directory.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

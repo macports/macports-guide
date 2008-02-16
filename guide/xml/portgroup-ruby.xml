@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.ruby">
+
+  <title>PortGroup ruby</title>
+
+  <para>PortGroup ruby allows for efficient porting of ruby-based open
+  source software.</para>
+
+  <section>
+    <title>ruby PortGroup Specific Variables</title>
+
+    <para>When the ruby PortGroup is declared within a Portfile, the
+    following variables are provided during port install.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>ruby.version</term>
+
+        <listitem>
+          <para>The MacPorts Ruby version.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>ruby.bin</term>
+
+        <listitem>
+          <para>The Ruby binary location.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>ruby.lib</term>
+
+        <listitem>
+          <para>Path to the Ruby vendorlibdir directory (ie,
+          <filename>${prefix}/lib/ruby/vendor_ruby/${ruby.version}</filename>)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>ruby.arch</term>
+
+        <listitem>
+          <para>The name for the Ruby architecture-dependent directory name
+          (ie, <literal>i686-darwin8.10.1</literal>).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>ruby.archlib</term>
+
+        <listitem>
+          <para>Path to the Ruby vendor archdir (ie,
+          <filename>${ruby.lib}/${ruby.arch}</filename>).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

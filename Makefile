@@ -67,6 +67,7 @@ man:
 	$(MKDIR) -p $(MAN-RESULT)
 	$(MKDIR) -p $(MAN-TMP)
 	$(CP) $(GUIDE-SRC)/portfile-*.xml $(MAN-TMP)
+	$(CP) $(GUIDE-SRC)/portgroup-*.xml $(MAN-TMP)
 	$(SED) -i "" 's|<section|<refsection|g' $(MAN-TMP)/*
 	$(SED) -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
 	$(XSLTPROC) --xinclude --output $(MAN-RESULT) $(MAN-XSL) \

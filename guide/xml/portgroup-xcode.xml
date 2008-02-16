@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.xcode">
+
+  <title>PortGroup xcode</title>
+
+  <para>PortGroup xcode allows for efficient porting of Xcode-based
+  opensource software. It handles configuration, build, and destroot phases.
+  It also defines some values for Xcode-based software. A minimum Portfile
+  using the xcode PortGroup class only defines the fetch and the checksum
+  phases.</para>
+
+  <para>Using PortGroup xcode is a way to make your port able to tolerate
+  Xcode version updates because the PortGroup is tested against all
+  supported Mac OS X and Xcode versions.</para>
+
+  <section>
+    <title>xcode PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the xcode PortGroup allow for port authors to set
+    the following keywords in addition to the general Portfile
+    keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>xcode.project</term>
+
+        <listitem>
+          <para>The path relative to ${build.dir} and ${destroot.dir} of the
+          Xcode project. If unset, let xcode tool figure it out. It usually
+          succeeds if there is a single project in the directory.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.project ${name}.xcode</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.configuration</term>
+
+        <listitem>
+          <para>Project configuration/buildstyle to use.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: Deployment</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.configuration Main</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.target</term>
+
+        <listitem>
+          <para>If present, it overrides build.target and
+          destroot.target.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.target ${name}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.build.settings</term>
+
+        <listitem>
+          <para>Additional settings passed to the xcode build tool during
+          the build phase. These settings should be in the X=Y form.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.build.settings FRAMEWORK_SEARCH_PATHS=${prefix}/Library/Frameworks</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.destroot.type</term>
+
+        <listitem>
+          <para>Type of project that will be installed. This tells the xcode
+          PortGroup how to destroot the project. Correct values are
+          application and framework.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: application</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.destroot.type framework</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.destroot.path</term>
+
+        <listitem>
+          <para>Where to install the build product.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: <filename>/Library/Frameworks</filename> or
+              <filename>/Applications/MacPorts</filename> depending on
+              xcode.destroot.type.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.destroot.settings</term>
+
+        <listitem>
+          <para>Additional settings passed to the xcode build tool during
+          the destroot phase. These settings should be in the X=Y
+          form.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.destroot.settings SKIP_INSTALL=NO</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>xcode PortGroup Sugar</title>
+
+    <para>Portfiles using the xcode PortGroup do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>categories</term>
+
+        <listitem>
+          <para>Default: aqua</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>platforms</term>
+
+        <listitem>
+          <para>Default: macosx</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Default: no</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>Portfile-Phase Keywords Affecting the xcode PortGroup</title>
+
+    <para>The following Portfile phase keywords affect the xcode PortGroup
+    in a unique way. In most cases, you will not need to set any of these
+    keywords in the Portfile. See <citerefentry>
+        <refentrytitle>portfile-phase</refentrytitle>
+
+        <manvolnum>7</manvolnum>
+      </citerefentry></para>
+
+    <variablelist>
+      <varlistentry>
+        <term>build.cmd</term>
+
+        <listitem>
+          <para>Default: <varname>${xcodebuildcmd}</varname>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.target</term>
+
+        <listitem>
+          <para>Default: ""</para>
+
+          <para>This variable will be ignored if xcode.target is set.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.args</term>
+
+        <listitem>
+          <para>Default: <code>build</code></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.cmd</term>
+
+        <listitem>
+          <para>Default: <varname>${xcodebuildcmd}</varname></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.target</term>
+
+        <listitem>
+          <para>Default: ""</para>
+
+          <para>This variable will be ignored if xcode.target is set.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

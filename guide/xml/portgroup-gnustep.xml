@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.gnustep">
+
+  <title>PortGroup gnustep</title>
+
+  <para>PortGroup gnustep allows for efficient porting of GNUstep-based open
+  source software using the GNU objective-C runtime that defines options for
+  the configuration, build, and destroot phases, and also defines some
+  values for GNUstep-based software. A minimum Portfile using the gnustep
+  PortGroup class need only define the fetch and the checksum phases.</para>
+
+  <section>
+    <title>gnustep PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the gnustep PortGroup allow for port authors to
+    set the following keywords in addition to the general Portfile
+    keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>gnustep.post_flags</term>
+
+        <listitem>
+          <para>An associative array which specifies the sub-directories
+          relative to ${worksrcpath} and the SHARED_LD_POSTFLAGS variables
+          to be added to GNUmakefile.preamble in those sub-directories. This
+          helps making the patching process easier on Darwin.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>platform darwin {
+    array set gnustep.post_flags {
+        BundleSubDir "-lfoo -lbar"
+    }
+}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>gnustep.cc</term>
+
+        <listitem>
+          <para>Define the gcc compiler to use when compiling a port.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: gcc-mp-4.2</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>gnustep.cc gcc-mp-4.3</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>variant with_docs</term>
+
+        <listitem>
+          <para>Many GNUstep packages include a Documentation sub-directory
+          that is not built by default. Enabling this variant builds and
+          installs the included documentation.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting><prompt>%%</prompt> <userinput>port install gnustep-gui +with_docs</userinput></programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>gnustep FilesystemLayout Keywords</title>
+
+    <para>PortGroup gnustep supports both the traditional gnustep file
+    layout and the new fhs file layout. However, a given ported application
+    does not necessarily support both. The Portfiles have access to many
+    procedures to handle these two layouts:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>set_gnustep_make</term>
+
+        <listitem>
+          <para>Sets GNUSTEP_MAKEFILES according to the
+          FilesystemLayout</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>set_gnustep_env</term>
+
+        <listitem>
+          <para>Sets DYLD_LIBRARY_PATH and PATH for the gnustep
+          FilesystemLayout</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>gnustep_layout</term>
+
+        <listitem>
+          <para>Returns true (1) if current file layout is gnustep</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>set_system_library</term>
+
+        <listitem>
+          <para>Sets GNUSTEP_SYSTEM_LIBRARY according to the
+          FilesystemLayout</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>set_local_library</term>
+
+        <listitem>
+          <para>Sets GNUSTEP_LOCAL_LIBRARY according to the
+          FilesystemLayout</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>gnustep PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup gnustep do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>categories</term>
+
+        <listitem>
+          <para>Default: gnustep</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>homepage</term>
+
+        <listitem>
+          <para>Default: http://www.gnustep.org/</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>master_sites</term>
+
+        <listitem>
+          <para>Default: gnustep:core</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>depends_lib</term>
+
+        <listitem>
+          <para>Default: gnustep-core</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Default: no</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.env</term>
+
+        <listitem>
+          <para>Default: DYLD_LIBRARY_PATH PATH</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.pre_args-append</term>
+
+        <listitem>
+          <para>Default: CC=gcc-mp-4.2 GNUSTEP_MAKEFILES</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.type</term>
+
+        <listitem>
+          <para>Default: gnu</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.env</term>
+
+        <listitem>
+          <para>Default: DYLD_LIBRARY_PATH PATH</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.pre_args-append</term>
+
+        <listitem>
+          <para>Default: messages=yes</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.env</term>
+
+        <listitem>
+          <para>Default: DYLD_LIBRARY_PATH PATH</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.pre_args-append</term>
+
+        <listitem>
+          <para>Default: messages=yes</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>

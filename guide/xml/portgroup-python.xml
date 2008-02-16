@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.python">
+
+  <title>PortGroup python &amp; python2x</title>
+
+  <para>PortGroup python allows for efficient porting of python-based open
+  source software.</para>
+
+  <section>
+    <title>python PortGroup Specific Variables</title>
+
+    <para>When the python PortGroup is declared within a Portfile, the
+    following variables are provided during port install.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>python.bin</term>
+
+        <listitem>
+          <para>The MacPorts Python binary location.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.lib</term>
+
+        <listitem>
+          <para>The Python dynamic library and path (ie,
+          <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.include</term>
+
+        <listitem>
+          <para>Path to the Python include directory.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.pkgd</term>
+
+        <listitem>
+          <para>Path to the Python site-packages directory. (ie,
+          <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>
