@@ -689,8 +689,7 @@ Ports failed:                   0</screen>
       the top line of all Portfiles should use a modeline that defines soft
       tabs for the vim and emacs editors as shown.</para>
 
-      <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; \
-c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4</programlisting>
+      <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4</programlisting>
 
       <para>The left column should consist of single words, and will be
       separated from the more complex right side by spaces in multiples of
