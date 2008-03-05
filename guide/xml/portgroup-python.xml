@@ -8,7 +8,7 @@
   <para>PortGroup python allows for efficient porting of python-based open
   source software.</para>
 
-  <section>
+  <section id="reference.portgroup.python.variables">
     <title>python PortGroup Specific Variables</title>
 
     <para>When the python PortGroup is declared within a Portfile, the

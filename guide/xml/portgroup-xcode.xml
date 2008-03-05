@@ -15,7 +15,7 @@
   Xcode version updates because the PortGroup is tested against all
   supported Mac OS X and Xcode versions.</para>
 
-  <section>
+  <section id="reference.portgroup.xcode.keywords">
     <title>xcode PortGroup Specific Keywords</title>
 
     <para>Portfiles using the xcode PortGroup allow for port authors to set
@@ -181,7 +181,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.xcode.sugar">
     <title>xcode PortGroup Sugar</title>
 
     <para>Portfiles using the xcode PortGroup do not need to define the
@@ -214,7 +214,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.xcode.phase-keywords">
     <title>Portfile-Phase Keywords Affecting the xcode PortGroup</title>
 
     <para>The following Portfile phase keywords affect the xcode PortGroup

@@ -8,7 +8,7 @@
   <para>PortGroup ruby allows for efficient porting of ruby-based open
   source software.</para>
 
-  <section>
+  <section id="reference.portgroup.ruby.variables">
     <title>ruby PortGroup Specific Variables</title>
 
     <para>When the ruby PortGroup is declared within a Portfile, the

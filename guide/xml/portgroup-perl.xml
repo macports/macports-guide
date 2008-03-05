@@ -8,7 +8,7 @@
   <para>PortGroup perl5 allows for efficient porting of perl modules and
   other perl open source software.</para>
 
-  <section>
+  <section id="reference.portgroup.perl.keywords">
     <title>perl5 PortGroup Specific Keywords</title>
 
     <para>Portfiles using the perl5 PortGroup allow for port authors to set
@@ -38,7 +38,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.perl.sugar">
     <title>perl5 PortGroup Sugar</title>
 
     <para>Portfiles using PortGroup perl5 do not need to define the
@@ -79,7 +79,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.perl.variables">
     <title>perl5 PortGroup Specific Variables</title>
 
     <para>When the perl5 PortGroup is declared within a Portfile, the

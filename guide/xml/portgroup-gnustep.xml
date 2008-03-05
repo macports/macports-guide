@@ -11,7 +11,7 @@
   values for GNUstep-based software. A minimum Portfile using the gnustep
   PortGroup class need only define the fetch and the checksum phases.</para>
 
-  <section>
+  <section id="reference.portgroup.gnustep.portgroup-keywords">
     <title>gnustep PortGroup Specific Keywords</title>
 
     <para>Portfiles using the gnustep PortGroup allow for port authors to
@@ -98,7 +98,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.gnustep.filesystem-keywords">
     <title>gnustep FilesystemLayout Keywords</title>
 
     <para>PortGroup gnustep supports both the traditional gnustep file
@@ -153,7 +153,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="reference.portgroup.gnustep.sugar">
     <title>gnustep PortGroup Sugar</title>
 
     <para>Portfiles using PortGroup gnustep do not need to define the
