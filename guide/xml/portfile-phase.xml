@@ -496,8 +496,9 @@ distfiles           file_one.tar.gz:tagone \
 
           <listitem>
             <para>Change the fetch type. This is only necessary if a <link
-            linkend="reference.phases.fetch.cvs">CVS</link> or <link
-            linkend="reference.phases.fetch.svn">SVN</link> checkout is be
+            linkend="reference.phases.fetch.cvs">CVS</link>, <link
+            linkend="reference.phases.fetch.svn">svn</link>, or
+            <link linkend="reference.phases.fetch.git">git</link> checkout is be
             used. <option>standard</option> is used for a normal http or ftp
             fetch using <varname>${distfiles}</varname> and is used as
             default.</para>
@@ -509,7 +510,7 @@ distfiles           file_one.tar.gz:tagone \
 
               <listitem>
                 <para>Values: <option>standard</option> <option>cvs</option>
-                <option>svn</option></para>
+                <option>svn</option> <option>git</option></para>
               </listitem>
 
               <listitem>
@@ -732,7 +733,7 @@ svn.tag             2100</programlisting>
 
       <para>You have to set <link
       linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
-      to <option>svn</option> to fetch from SVN.</para>
+      to <option>svn</option> to fetch from svn.</para>
 
       <variablelist>
         <varlistentry>
@@ -774,6 +775,66 @@ svn.tag             2100</programlisting>
                 <para>Example:</para>
 
                 <programlisting>svn.tag             37192</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+    
+    <section id="reference.phases.fetch.git">
+      <title>Fetch from Git</title>
+
+      <para><ulink url="http://git.or.cz/">Git</ulink> may
+      be used as an alternative method of fetching distribution files using
+      the keywords in this section. However, fetching via Git may cause
+      non-reproducible builds, so it is strongly discouraged.</para>
+
+      <para>You have to set <link
+      linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
+      to <option>git</option> to fetch from git.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>git.url</term>
+
+          <listitem>
+            <para>This specifies the url from which to fetch files.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Examples:</para>
+
+                <programlisting>git.url             git://git.kernel.org/pub/scm/git/git.git</programlisting>
+
+                <programlisting>git.url             http://www.kernel.org/pub/scm/git/git.git</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>git.branch</term>
+
+          <listitem>
+            <para>Optional tag for fetching with git, this specifies a branch
+              (or other commit-ish) that git should checkout.
+              Note that any branch besides HEAD should be prefixed by origin/.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>git.branch             72bf1c8</programlisting>
+                <programlisting>git.branch             origin/next</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
