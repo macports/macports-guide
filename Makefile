@@ -58,6 +58,11 @@ guide:
 	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
 	$(XSLTPROC) --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/index.html \
 	    $(GUIDE-XSL) $(GUIDE-SRC)/guide.xml
+	# Convert all sections (h1-h9) to a link so it's easy to link to them.
+	# If someone knows a better way to do this please change it.
+	$(SED) -i "" -E \
+	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
+	    $(GUIDE-RESULT)/index.html
 
 # Generate the man pages using DocBook from the xml source in $(MAN-SRC).
 # The portfile-*.xml files in $(GUIDE-SRC) are copied to $(MAN-TMP) and
