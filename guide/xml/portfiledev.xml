@@ -562,8 +562,8 @@ variant debug   { configure.args-append --enable-debug }</programlisting>
           <note>
             <para>You should create one patch file for each file to be
             patched, though it is permissible to use existing patches you find
-            that patch multiple files. Patchfile filenames should generally
-            be of the form
+            that patch multiple files. Patchfile filenames should generally be
+            of the form
             <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;</replaceable>,
             as shown in this example:
             <filename>patch-src-Makefile.in</filename>.</para>
@@ -684,12 +684,12 @@ Ports failed:                   0</screen>
       <title>Port Style</title>
 
       <para>Portfiles may be thought of as a table of keys and values in two
-      columns separated by spaces (not tabs), so you should set your
-      editor to use soft tabs, which are tabs emulated by spaces. By default,
-      the top line of all Portfiles should use a modeline that defines soft
-      tabs for the vim and emacs editors as shown.</para>
+      columns separated by spaces (not tabs), so you should set your editor to
+      use soft tabs, which are tabs emulated by spaces. By default, the top
+      line of all Portfiles should use a modeline that defines soft tabs for
+      the vim and emacs editors as shown.</para>
 
-      <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:filetype=tcl:et:sw=4:ts=4:sts=4</programlisting>
+      <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4</programlisting>
 
       <para>The left column should consist of single words, and will be
       separated from the more complex right side by spaces in multiples of
