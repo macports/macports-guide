@@ -338,20 +338,43 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
 
     <para>Variants are a way for port authors to provide options that may be
     invoked at install time. They are declared in the global section of a
-    Portfile using the "variant" keyword and may provide a description.</para>
+    Portfile using the "variant" keyword, and should include <link
+    linkend="reference.variants.descriptions">carefully chosen variant
+    descriptions</link>.</para>
 
     <section id="development.variants.options">
-      <title>Variants to Modify Options</title>
+      <title>Example Variants</title>
 
-      <para>The most common use for a variant is to add or remove
-      dependencies, configure arguments, and build arguments from the global
-      Portfile section. Here is an example of a port providing four variants
-      that add additional configure arguments to a port.</para>
+      <para>The most common actions for user-selected variants is to add or
+      remove dependencies, configure arguments, and build arguments according
+      to various options a port author wishes to provide. Here is an example
+      of several variants that modify depends_lib and configure arguments for
+      a port.</para>
 
-      <programlisting>variant pop     { configure.args-append --enable-pop }
-variant imap    { configure.args-append --enable-imap }
-variant ssl     { configure.args-append --with-ssl }
-variant debug   { configure.args-append --enable-debug }</programlisting>
+      <programlisting>variant fastcgi description {Add fastcgi binary} {
+    configure.args-append \
+            --enable-fastcgi \
+            --enable-force-cgi-redirect \
+            --enable-memory-limit
+}
+
+variant gmp description {Add GNU MP functions} {
+    depends_lib-append port:gmp
+    configure.args-append --with-gmp=${prefix}
+
+}
+
+variant sqlite description {Build sqlite support} {
+    depends_lib-append \
+        port:sqlite3
+    configure.args-delete \
+        --without-sqlite \
+        --without-pdo-sqlite
+    configure.args-append \
+        --with-sqlite \
+        --with-pdo-sqlite=${prefix} \
+        --enable-sqlite-utf8
+}</programlisting>
 
       <note>
         <para>Variant names may contain only the characters A-Z, a-z, and the

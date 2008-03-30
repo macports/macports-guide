@@ -122,6 +122,30 @@
     </variablelist>
   </section>
 
+  <section id="reference.variants.descriptions">
+    <title>User-Selected Variant Descriptions</title>
+
+    <para>User-selected variants ought to provide a description, which will be
+    displayed when using command <quote>port variants foo</quote>. The syntax
+    used for the description keyword is shown below.</para>
+
+    <programlisting>variant bar description {Add IMAP support} {}</programlisting>
+
+    <para>Descriptions should be short but clear, and not merely repeat the
+    name of the variant. To allow for compatibility for possible MacPorts GUI
+    support, a good rule of thumb is to use sentence fragments for brevity,
+    with a capitalized first letter and no trailing punctuation. Think of them
+    as short labels such as ones you'd find next to a GUI checkbox or radio
+    button. Thus, it would be better to write "Build with support for foo"
+    instead of "Builds with support for foo"; "Add support for foo" would be
+    better than "Adds support for foo". </para>
+
+    <para>Variant descriptions are strings, so one should take care not to put
+    whitespace between the brackets and the beginning and end of the variant
+    description, and also not to use unnceccessary whitespace, unlike with
+    port descriptions and long_descriptions.</para>
+  </section>
+
   <section id="reference.variants.platform">
     <title>Platform Variants</title>
 
