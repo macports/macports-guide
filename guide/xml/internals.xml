@@ -4,8 +4,9 @@
 <chapter id="internals">
   <title>MacPorts Internals</title>
 
-  <para>This chapter contains information to help gain a better understanding
-  of MacPorts or learn how to configure it for non-default operation.</para>
+  <para>This chapter contains information about the MacPorts file layout,
+  configuration files, a few fundamental port installation concepts, and the
+  MacPorts APIs.</para>
 
   <section id="internals.hierarchy">
     <title>MacPorts File Hierarchy</title>
