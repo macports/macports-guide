@@ -242,6 +242,7 @@ RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23<
       <title>A Basic Portfile</title>
 
       <programlisting># $Id$
+
 PortSystem          1.0
 
 name                rrdtool
@@ -263,8 +264,7 @@ depends_lib         port:perl5.8 \
                     port:tcl \
                     port:zlib
 
-configure.args      --prefix=${prefix} \
-                    --enable-perl-site-install \
+configure.args      --enable-perl-site-install \
                     --mandir=${prefix}/share/man</programlisting>
     </section>
 
