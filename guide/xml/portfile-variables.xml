@@ -55,7 +55,7 @@
       <term>filesdir</term>
 
       <listitem>
-        <para>Path to port files relative to
+        <para>Path to files directory relative to
         <varname>${portpath}</varname>.</para>
 
         <para>Value: <literal>files</literal></para>
@@ -66,8 +66,7 @@
       <term>filespath</term>
 
       <listitem>
-        <para>Path to port files relative to
-        <varname>${portpath}</varname>.</para>
+        <para>Full path to files directory.</para>
 
         <para>Value: <varname>${portpath}/${filesdir}</varname></para>
       </listitem>
