@@ -1,0 +1,395 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.variables">
+  <title>MacPorts configuration files</title>
+
+  <para>There are three MacPorts configuration files that define important
+  variables used by the MacPorts system: macports.conf, sources.conf, and
+  variants.conf. All MacPorts configurations files are located in
+  ${prefix}/etc/macports.</para>
+
+  <para>MacPorts configuration file format is a simple key/value pair
+  separated by either a space or a tab. Lines beginning with '#' are comments,
+  empty lines are ignored.</para>
+
+  <section>
+    <title>macports.conf</title>
+
+    <para>macports.conf is the configuration file used to bootstrap the
+    MacPorts system. This file is read by the port command and determines how
+    it behaves.</para>
+
+    <para>Options locating other .conf files.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>sources_conf</term>
+
+        <listitem>
+          <para>Where to find the sources list.</para>
+
+          <para>Default:
+          <filename>${prefix}/etc/macports/sources.conf</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>variants_conf</term>
+
+        <listitem>
+          <para>Where to find global variants definition file
+          (optional).</para>
+
+          <para>Default:
+          <filename>${prefix}/etc/macports/variants.conf</filename></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Options for MacPorts general operating characteristics.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>prefix</term>
+
+        <listitem>
+          <para>Sets the directory where ports are installed. Any path may be
+          used but those with spaces and/or non ascii characters should be
+          avoided because it can break some ports. This key is often referred
+          to as '${prefix}'.</para>
+
+          <para>Default: <filename>/opt/local</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>x11prefix</term>
+
+        <listitem>
+          <para>Path containing an X11 installation on your system.</para>
+
+          <para>Default: <filename>/usr/X11R6</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portdbpath</term>
+
+        <listitem>
+          <para>Directory where MacPorts keeps working data as downloaded
+          sources, installed port receipts, and the main registry. Same path
+          restrictions apply as for '${prefix}'.</para>
+
+          <para>Default: ${prefix}/var/macports</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portdbformat</term>
+
+        <listitem>
+          <para>Storage type to use for the MacPorts registry: flat or sqlite.
+          sqlite is not yet supported.</para>
+
+          <para>Default: <option>flat</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portinstalltype</term>
+
+        <listitem>
+          <para>Sets the mode in which ports are installed by MacPorts.
+          Supported values are "direct" or "image". In "direct" mode ports are
+          installed directly into "${prefix}" and only one version of a port
+          can be installed at any given time. In "image" mode multiple
+          versions (and any possible combination of its variants) can be
+          installed concurrently into "${portdbpath}/software/${portname}" and
+          only one can be "activated" (hardlinked) into "${prefix}".</para>
+
+          <para>Default: <option>image</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>applications_dir</term>
+
+        <listitem>
+          <para>Directory to install MacPorts that install Mac OS X .app
+          bundles.</para>
+
+          <para>Default: <filename>/Applications/MacPorts</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>frameworks_dir</term>
+
+        <listitem>
+          <para>Directory to install frameworks installed by ports.</para>
+
+          <para>Default: <filename>/Library/Frameworks</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portarchivemode</term>
+
+        <listitem>
+          <para>Create and use binary archive packages for
+          installation/reinstallation ease.</para>
+
+          <para>Default: <option>no</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portarchivepath</term>
+
+        <listitem>
+          <para>Where to store/retrieve port binary archive files.</para>
+
+          <para>Default:
+          <filename>${prefix}/var/macports/packages</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portarchivetype</term>
+
+        <listitem>
+          <para>Type of binary archive packages to create when using archive
+          mode. Available types are: tgz, tar, tbz, tbz2, tlz, xar, zip, cpgz,
+          cpio.</para>
+
+          <para>Multiple types are supported to build multiple file types in
+          one step. Unarchive uses multiple types as a search list to locate
+          an archive, and the first to match a specified type is used.
+          Multiple types must be separated by a colon or comma (NO
+          spaces).</para>
+
+          <para>Default: <filename>.tgz</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configureccache</term>
+
+        <listitem>
+          <para>Use ccache (C/C++ compiler cache) - see
+          http://ccache.samba.org/</para>
+
+          <para>Default: <option>no</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configuredistcc</term>
+
+        <listitem>
+          <para>Use distcc (distributed compiler) - see
+          http://distcc.samba.org/</para>
+
+          <para>Default: <option>no</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configurepipe</term>
+
+        <listitem>
+          <para>Use pipes rather than intermediate files when compiling
+          C/C++/etc</para>
+
+          <para>Default: <option>no</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>buildnicevalue</term>
+
+        <listitem>
+          <para>Lowered scheduling priority (0-20) to use for make when
+          building ports.</para>
+
+          <para>Default: 0</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>buildmakejobs</term>
+
+        <listitem>
+          <para>Number of simultaneous make jobs (commands) to use when
+          building ports. Using "0" will cause a runtime autodetection to use
+          all available processer cores.</para>
+
+          <para>Default: 1</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>portautoclean</term>
+
+        <listitem>
+          <para>Set whether to automatically execute "clean" after "install"
+          of ports.</para>
+
+          <para>Default: <option>yes</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>rsync_server</term>
+
+        <listitem>
+          <para>Rsync server from which to fetch MacPorts sources.</para>
+
+          <para>Default: rsync.macports.org</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>rsync_dir</term>
+
+        <listitem>
+          <para>Rsync directory from which to pull the base/ component
+          (infrastructure) of MacPorts.</para>
+
+          <para>Default: <filename>release/base/</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>rsync_options</term>
+
+        <listitem>
+          <para>Rsync options</para>
+
+          <para>Default: -rtzv --delete-after</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot_umask</term>
+
+        <listitem>
+          <para>Umask value to use during the destrooting or a port.</para>
+
+          <para>Default: 022</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>binpath</term>
+
+        <listitem>
+          <para>Sets the directory search path for locating system executables
+          used by MacPorts. This variable should contain the paths for
+          locating utilities such as rsync, tar, cvs and others.</para>
+
+          <para>Default:
+          ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Options for MacPorts Universal Binaries (+universal variant)</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>universal_target</term>
+
+        <listitem>
+          <para>Sets MACOSX_DEPLOYMENT_TARGET</para>
+
+          <para>Example: 10.5</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>universal_sysroot</term>
+
+        <listitem>
+          <para>The SDK "sysroot" full path to use for +universal
+          variant.</para>
+
+          <para>Example:
+          <filename>/Developer/SDKs/MacOSX10.5.sdk</filename></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>universal_archs</term>
+
+        <listitem>
+          <para>The machine architectures to use for +universal variant
+          (multiple entries must be space delimited). Options include: ppc,
+          i386, ppc64, x86_64</para>
+
+          <para>Default: <option>ppc</option> <option>i386</option></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Options for StartupItems</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>startupitem_type</term>
+
+        <listitem>
+          <para>Options for generated startup items, though this may be
+          overridden by the "startupitem.type" Portfile key. Options are
+          "default" option, "SystemStarter", "launchd", or "none". For an
+          empty or "default" option, a startupitem type appropriate to the
+          platform is used; if "none", no port startupitems are
+          installed.</para>
+
+          <para>Default: <option>default</option></para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+
+    <para>Other options</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>extra_env</term>
+
+        <listitem>
+          <para>Extra environment variables to keep. Any variables listed here
+          are added to the list of variables that are not removed from the
+          environment used while processing ports.</para>
+
+          <para>Default: none</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section>
+    <title>sources.conf</title>
+
+    <para>This file enables rsync synchronization of the default ports tree
+    with the MacPorts rsync server when either of the commands "port
+    selfupdate" or "port sync" are run.</para>
+
+    <para>Default:
+    <filename>rsync://rsync.macports.org/release/ports/</filename></para>
+
+    <para>Optional local repositories are enabled using a file url:
+    <replaceable>file:///path/to/localportsrepository</replaceable></para>
+  </section>
+
+  <section>
+    <title>variants.conf</title>
+
+    <para>This optional file specifies any variants you'd like to be invoked
+    globally. If a variant specified ib this file is not supported by a given
+    Portfile, the variant is simply ignored.</para>
+
+    <para>Default: none</para>
+  </section>
+</section>
