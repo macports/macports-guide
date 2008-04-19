@@ -286,8 +286,11 @@
 
         <listitem>
           <para>Sets the directory search path for locating system executables
-          used by MacPorts. This variable should contain the paths for
-          locating utilities such as rsync, tar, cvs and others.</para>
+          (rsync, tar, etc.) during port installation. Only applications in
+          these directories are available while ports are being installed even
+          if other paths or are specified by $PATH in a user's environment.
+          Setting the binpath variable should only be performed by advanced
+          users.</para>
 
           <para>Default:
           ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
