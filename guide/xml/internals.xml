@@ -9,7 +9,7 @@
   MacPorts APIs.</para>
 
   <section id="internals.hierarchy">
-    <title>MacPorts File Hierarchy</title>
+    <title>File Hierarchy</title>
 
     <xi:include href="../../man/xml/porthier.7.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
@@ -45,7 +45,7 @@
   </section>
 
   <section id="internals.apis">
-    <title>MacPorts APIs and Libs</title>
+    <title>APIs and Libs</title>
 
     <para>The MacPorts system is composed of three Tcl libraries:</para>
 
