@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.variables">
-  <title>MacPorts configuration files</title>
+<section id="internals.configuration-files">
+  <title>Configuration Files</title>
+
+  <para>The MacPorts configuration files do not need to be modified for the
+  general end user. They contain options that may be of use to advanced
+  users and port developers.</para>
 
   <para>There are three MacPorts configuration files that define important
   variables used by the MacPorts system: macports.conf, sources.conf, and
@@ -13,7 +17,7 @@
   separated by either a space or a tab. Lines beginning with '#' are comments,
   empty lines are ignored.</para>
 
-  <section>
+  <section id="internals.configuration-files.macports-conf">
     <title>macports.conf</title>
 
     <para>macports.conf is the configuration file used to bootstrap the
@@ -372,7 +376,7 @@
     </variablelist>
   </section>
 
-  <section>
+  <section id="internals.configuration-files.sources-conf">
     <title>sources.conf</title>
 
     <para>This file enables rsync synchronization of the default ports tree
@@ -386,7 +390,7 @@
     <replaceable>file:///path/to/localportsrepository</replaceable></para>
   </section>
 
-  <section>
+  <section id="internals.configuration-files.variants-conf">
     <title>variants.conf</title>
 
     <para>This optional file specifies any variants you'd like to be invoked

@@ -15,36 +15,8 @@
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 
-  <section id="internals.configuration-files">
-    <title>Configuration Files</title>
-
-    <para>The MacPorts configuration files do not need to be modified for the
-    general end user. They contain options that may be of use to advanced
-    users and port developers. All the MacPorts configuration files are
-    located in <filename>${prefix}/etc/macports</filename>.</para>
-
-    <section id="internals.configuration-files.sources-conf">
-      <title>sources.conf</title>
-
-      <para><filename>sources.conf</filename> is where the location(s) are set
-      to scan for MacPorts Portfiles. This file is commonly modified to add a
-      local Portfile repository.</para>
-    </section>
-
-    <section id="internals.configuration-files.macports-conf">
-      <title>macports.conf</title>
-
-      <para><filename>macports.conf</filename> contains advanced MacPorts
-      configuration options. See the file comments for instructions.</para>
-    </section>
-
-    <section id="internals.configuration-files.variants-conf">
-      <title>variants.conf</title>
-
-      <para><filename>variants.conf</filename> is used to specify variants to
-      be used for all ports where they exist.</para>
-    </section>
-  </section>
+  <xi:include href="macports.conf.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
 
   <section id="internals.images">
     <title>Port Images</title>
