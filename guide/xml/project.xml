@@ -7,10 +7,10 @@
   <para>The MacPorts Project uses a system called <ulink
   url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
   and enhancement requests. Trac also provides an interface to browse the
-  <ulink url="http://trac.macports.org/projects/macports/browser/">MacPorts
+  <ulink url="http://trac.macports.org/browser/">MacPorts
   Subversion repository</ulink>. Though anyone may search Trac for tickets,
   you must <ulink
-  url="http://www.macosforge.org/wp-register.php">register</ulink> for a Trac
+  url="https://trac.macports.org/auth/register/">register</ulink> for a Trac
   account to create tickets.</para>
 
   <section id="project.tickets">
@@ -74,7 +74,7 @@
         <listitem>
           <para><guilabel>Full Description:</guilabel> All details that might
           be relevant to someone reading the ticket. <ulink
-          url="http://trac.macports.org/projects/macports/wiki/WikiFormatting">Wiki
+          url="http://trac.macports.org/wiki/WikiFormatting">Wiki
           formatting</ulink> or attached log files should be used for large
           text blocks. If you want to post a build log make sure you use
           <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
