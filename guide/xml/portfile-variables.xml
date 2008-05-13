@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.variables">
   <title>Global Variables</title>
 
   <para>Global variables are variables available to any Portfile. For a list
   of additional variables available to ports that are assigned to a MacPorts
   Portgroup, see portgroup(7).</para>
+
   <para>All of these variables except <varname>prefix</varname> are
   read-only!</para>
 
@@ -26,10 +26,10 @@
     </varlistentry>
 
     <varlistentry>
-      <term>binpath</term>
+      <term>x11prefix</term>
 
       <listitem>
-        <para>Default PATH to use in finding executables.</para>
+        <para>Absolute path to X11.</para>
       </listitem>
     </varlistentry>
 
@@ -112,7 +112,8 @@
 
         <!-- TODO: which value have the variables? -->
 
-        <para>Value: <varname>${sysportpath}/distfiles/${dist_subdir}/</varname></para>
+        <para>Value:
+        <varname>${sysportpath}/distfiles/${dist_subdir}/</varname></para>
       </listitem>
     </varlistentry>
 
@@ -136,8 +137,7 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>Identifies platform type (ie "darwin", "freebsd",
-        etc).</para>
+        <para>Identifies platform type (ie "darwin", "freebsd", etc).</para>
       </listitem>
     </varlistentry>
 
@@ -176,12 +176,24 @@
     </varlistentry>
 
     <varlistentry>
-      <term>x11prefix</term>
+      <term>binpath</term>
 
       <listitem>
-        <para>Absolute path to X11.</para>
+        <para>Sets the directory search path for locating system executables
+        (rsync, tar, etc.) during port installation. Only applications in
+        these directories are available while ports are being installed even
+        if other paths are specified by $PATH in a user's environment. </para>
+
+        <para>Default:
+        ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
+
+        <note>
+          <para>The binpath is implicitly defined, but it may be overwritten
+          by defining the variable in macports.conf. However, using a
+          non-default binpath is discouraged and should only be performed by
+          advanced users.</para>
+        </note>
       </listitem>
     </varlistentry>
-
   </variablelist>
 </section>
