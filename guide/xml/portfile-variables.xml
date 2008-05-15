@@ -71,7 +71,7 @@
         linkend="internals.configuration-files.sources-conf">sources.conf</link>.</para>
 
         <para>Default:
-        <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/</filename></para>
+        <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/<replaceable>&lt;category&gt;</replaceable>/<replaceable>&lt;portname&gt;/</replaceable></filename></para>
       </listitem>
     </varlistentry>
 
