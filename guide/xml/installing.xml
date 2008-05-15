@@ -297,9 +297,21 @@
         <para>A <varname>PATH</varname> variable is set as shown regardless of
         platform or environment that appends the MacPorts file paths in front
         of the default file paths so MacPorts libraries will take precedence
-        over vendor-supplied libraries.</para>
+        over vendor-supplied libraries for ported software at runtime.</para>
 
         <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+
+        <note>
+          <para>The user environment's $PATH affects ported software at
+          runtime, i. e. after port installation, because the $PATH is
+          scrubbed before a port is installed. To change the search path for
+          locating system executables (rsync, tar, etc.) during port
+          installation, see the <link
+          linkend="internals.configuration-files.macports-conf">macports.conf</link>
+          file variable <varname>binpath</varname>, though changing this
+          variable is not generally needed or recomended, and for advanced
+          users only.</para>
+        </note>
       </listitem>
 
       <listitem>
