@@ -42,6 +42,27 @@
     </varlistentry>
 
     <varlistentry>
+      <term>binpath</term>
+
+      <listitem>
+        <para>The directory search path for locating system executables
+        (rsync, tar, etc.) during port installation. Only applications in
+        these directories are available while ports are being installed even
+        if other paths are specified by $PATH in a user's environment.</para>
+
+        <para>Default:
+        ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
+
+        <note>
+          <para>The binpath is implicitly defined, but it may be overwritten
+          by defining the variable in macports.conf. However, using a
+          non-default binpath is discouraged and should only be performed by
+          advanced users.</para>
+        </note>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>portpath</term>
 
       <listitem>
@@ -172,27 +193,6 @@
       <listitem>
         <para>The major version number of the host operating system (ie "8"
         for Darwin 8.0).</para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
-      <term>binpath</term>
-
-      <listitem>
-        <para>Sets the directory search path for locating system executables
-        (rsync, tar, etc.) during port installation. Only applications in
-        these directories are available while ports are being installed even
-        if other paths are specified by $PATH in a user's environment. </para>
-
-        <para>Default:
-        ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
-
-        <note>
-          <para>The binpath is implicitly defined, but it may be overwritten
-          by defining the variable in macports.conf. However, using a
-          non-default binpath is discouraged and should only be performed by
-          advanced users.</para>
-        </note>
       </listitem>
     </varlistentry>
   </variablelist>
