@@ -66,9 +66,12 @@
       <term>portpath</term>
 
       <listitem>
-        <para>Full path to the Portfile location.</para>
+        <para>Full path to the Portfile of the port being executed. Portfile
+        repositories are defined in the file <link
+        linkend="internals.configuration-files.sources-conf">sources.conf</link>.</para>
 
-        <para>Value: <literal>work</literal></para>
+        <para>Default:
+        <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/</filename></para>
       </listitem>
     </varlistentry>
 
