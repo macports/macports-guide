@@ -271,14 +271,31 @@
         <term>master_sites</term>
 
         <listitem>
-          <para>A list of URLs from which a port's download file(s) may be
-          retrieved. For multiple master_sites, they are searched in order
-          until a file matching <varname>${distfile}</varname> is
-          found.</para>
+          <para>A list of URLs from which a port's
+          <varname>${distfiles}</varname> may be retrieved.</para>
+
+          <para>Possible <code>master_sites</code> keyword values include
+          predefined site lists known as <quote>mirrors</quote>, such as
+          sourceforge, gnu, etc. If the <varname>${distfiles}</varname> are
+          not successfully fetched after trying the explictly defined
+          <code>master_sites</code>, the MacPorts project mirror is always
+          tried before giving up. For a complete list of mirrors, see the file
+          <filename>mirror_sites.tcl</filename> located in
+          <filename>${prefix}/share/macports/resources/port1.0/fetch/</filename>.</para>
+
+          <note>
+            <para>When a <code>master_sites</code> keyword has multiple
+            values, the ping response times are probed for each site during
+            the fetch phase and they are sorted by response times. The sites
+            are then tried in sorted order until a file matching
+            <varname>${distfiles}</varname> is found.</para>
+          </note>
 
           <itemizedlist>
             <listitem>
-              <para>Default: ???</para>
+              <para>Default: <code>macports</code> (the MacPorts Project
+              mirror - implicit final value of
+              <code>master_sites</code>)</para>
             </listitem>
 
             <listitem>
