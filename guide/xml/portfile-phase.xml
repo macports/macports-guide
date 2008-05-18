@@ -274,21 +274,22 @@
           <para>A list of URLs from which a port's
           <varname>${distfiles}</varname> may be retrieved.</para>
 
-          <para>Possible <code>master_sites</code> keyword values include
+          <para>Keyword values for <code>master_sites</code> may include
           predefined site lists known as <quote>mirrors</quote>, such as
-          sourceforge, gnu, etc. If the <varname>${distfiles}</varname> are
-          not successfully fetched after trying the explictly defined
-          <code>master_sites</code>, the MacPorts project mirror is always
-          tried before giving up. For a complete list of mirrors, see the file
-          <filename>mirror_sites.tcl</filename> located in
+          sourceforge, gnu, etc. If the file(s) declared in
+          <varname>${distfiles}</varname> are not successfully fetched after
+          trying the <code>master_sites</code> values, the MacPorts Project
+          mirror is always tried last before giving up.</para>
+
+          <para>For a complete list of mirrors and their list of sites, see
+          the file <filename>mirror_sites.tcl</filename> located in
           <filename>${prefix}/share/macports/resources/port1.0/fetch/</filename>.</para>
 
           <note>
-            <para>When a <code>master_sites</code> keyword has multiple
-            values, the ping response times are probed for each site during
-            the fetch phase and they are sorted by response times. The sites
-            are then tried in sorted order until a file matching
-            <varname>${distfiles}</varname> is found.</para>
+            <para>If a <code>master_sites</code> keyword has multiple values,
+            after any mirrors are expanded the list of sites is sorted by ping
+            response times. The sites are then tried in sorted order until
+            matching <varname>${distfiles}</varname> are found.</para>
           </note>
 
           <itemizedlist>
@@ -307,11 +308,20 @@
 </programlisting>
 
               <para>You may also use mirror site lists predefined by MacPorts.
-              Here the sourceforge and gnu mirrors are used.</para>
+              Here the sourceforge, gnu, and MacPorts Project mirrors are
+              used.</para>
 
-              <programlisting>master_sites        sourceforge gnu
+              <programlisting>master_sites        sourceforge gnu macports
 
 </programlisting>
+
+              <note>
+                <para>Though the MacPorts Project mirror
+                (<code>macports</code>) is always tried last if no
+                <varname>${distfiles}</varname> match is found, if the mirror
+                <code>macports</code> is explicitly declared it is tried in
+                the normal sort order.</para>
+              </note>
 
               <para>When using mirror master_sites, the subdirectory
               <varname>${name}</varname> is checked on every mirror. If the
