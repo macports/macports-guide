@@ -724,9 +724,8 @@ Ports failed:                   0</screen>
       example, to set multiple source download locations, multiple
       "master_sites" must be defined. Unless the second column items are few
       and short you should use multiple lines, separate lines with a
-      backslash, and (to emphasize the unity of the block) indent the first
-      line at a deeper level than the following lines as shown in this
-      example.</para>
+      backslash, and (to emphasize the unity of the block) indent the lines
+      after the first at a deeper level as shown in this example.</para>
 
       <programlisting>destroot.keepdirs   ${destroot}${prefix}/var/run \
                     ${destroot}${prefix}/var/log \
