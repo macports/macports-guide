@@ -717,20 +717,26 @@ Ports failed:                   0</screen>
 
       <para>The left column should consist of single words, and will be
       separated from the more complex right side by spaces in multiples of
-      four. Variable assignments ("set libver") and variant declarations
-      ("variant mysql5") are exceptions, and may be considered a single word
-      on the left side, with a single space between words.</para>
+      four. Variable assignments and variant declarations are exceptions, and
+      may be considered a single word on the left side, with a single space
+      between words.</para>
+
+      <programlisting>set libver "8.5"
+
+
+variant mysql5 { ... }</programlisting>
 
       <para>Frequently multiple items are necessary in the second column. For
       example, to set multiple source download locations, multiple
       "master_sites" must be defined. Unless the second column items are few
-      and short you should use multiple lines, separate lines with a
-      backslash, and (to emphasize the unity of the block) indent the lines
-      after the first at a deeper level as shown in this example.</para>
+      and short you should place each additional item on a new line and
+      separate lines with a backslash. Indent the lines after the first line
+      to make it clear the items are second column values and also to
+      emphasize the unity of the block.</para>
 
-      <programlisting>destroot.keepdirs   ${destroot}${prefix}/var/run \
-                    ${destroot}${prefix}/var/log \
-                    ${destroot}${prefix}/var/cache/mrtg</programlisting>
+      <programlisting>destroot.keepdirs    ${destroot}${prefix}/var/run \
+                     ${destroot}${prefix}/var/log \
+                     ${destroot}${prefix}/var/cache/mrtg</programlisting>
     </section>
 
     <section id="development.practices.dont-overwrite">
