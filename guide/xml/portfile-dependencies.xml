@@ -44,6 +44,7 @@
 
       <listitem>
         <para>The list of dependencies to check before phases
+        <option>configure</option>,
         <option>build</option>, <option>destroot</option>,
         <option>install</option>, and <option>package</option>. Build
         dependencies are needed when software is compiled, but not needed at
