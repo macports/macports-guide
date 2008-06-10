@@ -8,12 +8,14 @@
   often require that other ports be installed beforehand; these prerequisites
   for a given port are called a port's <quote>dependencies</quote>.</para>
 
-  <para>There are three ways to specify dependencies in a Portfile: library,
-  build, and run dependencies. Specifying dependencies correctly is important
-  for proper port upgrade and uninstall behavior. For example, you may not
-  uninstall a port that is a library dependency for another port, though you
-  may remove one with a build dependency; likewise, upgrading a port will
-  upgrade its library and build dependencies also, but not its run
+  <para>The three keywords used when specifying dependencies in a Portfile are
+  related to port install phases, and they refer to what are called library,
+  build, and run dependencies. Though all of them install dependencies before
+  a given port is installed, specifying dependencies with the correct keyword
+  is important for proper port upgrade and uninstall behavior. For example,
+  you may not uninstall a port that is a library dependency for another port,
+  though you may remove one with a build dependency; likewise, upgrading a
+  port will upgrade its library and build dependencies also, but not its run
   dependencies.</para>
 
   <variablelist>
@@ -43,11 +45,11 @@
 
       <listitem>
         <para>The list of dependencies to check before phases
-        <option>configure</option>,
-        <option>build</option>, <option>destroot</option>,
-        <option>install</option>, and <option>package</option>. Build
-        dependencies are needed when software is compiled, but not needed at
-        all once the software is compiled and installed.</para>
+        <option>configure</option>, <option>build</option>,
+        <option>destroot</option>, <option>install</option>, and
+        <option>package</option>. Build dependencies are needed when software
+        is compiled, but not needed at all once the software is compiled and
+        installed.</para>
       </listitem>
     </varlistentry>
 
@@ -70,19 +72,20 @@
   <section id="reference.dependencies.types">
     <title>Port and File Dependencies</title>
 
-    <para>Port dependencies can be satisfied by reference to a port (in this
-    case the MacPorts' registry is queried), or by reference to a file
-    (whether provided by a port or not). The most commonly-used type of
-    dependencies in Portfiles are port dependencies, because dependencies
-    should be provided by MacPorts ported software whenever possible, and
-    usually only one port can provide the needed libraries and files.</para>
+    <para>There are two types of dependencies: port dependencies and file
+    dependencies. Port dependencies can be satisfied by reference to a port
+    (the MacPorts' registry is queried), or by reference to a file (whether
+    provided by a port or not). The most commonly-used type of dependencies in
+    Portfiles are port dependencies, because dependencies should be provided
+    by MacPorts ported software whenever possible, and usually only one port
+    can provide the needed libraries and files.</para>
 
     <para>But when satisfying a dependency with vendor-supplied software is
-    preferred for justifiable reasons, or when it is possible for more than
-    one port to satisfy a dependency, then file dependencies may be used. An
+    preferred for special reasons, or when it is possible for more than one
+    port to satisfy a dependency, then file dependencies may be used. An
     example of the former is with X11 —Apple's is widely preferred; an example
     of the latter is with "-devel" named ports —these ports provide identical
-    files (only one can be activated at a time).</para>
+    files (though only one can be activated at a time).</para>
 
     <para>Port dependencies, the preferred type, are specified as shown in
     these examples:</para>
@@ -108,8 +111,8 @@ depends_build       bin:glibtool:libtool
 depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
 
     <note>
-      <para> When using lib dependencies, only the library name is specified
-      —not its extension (e.g. ".dylib" ".so", etc.).</para>
+      <para>When using lib dependencies, only the library name is specified
+      —not its extension. (e.g. ".dylib" ".so", etc.)</para>
     </note>
   </section>
 </section>
