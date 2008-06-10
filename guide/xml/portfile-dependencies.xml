@@ -1,21 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.dependencies">
   <title>Dependencies</title>
 
   <para>Free and open source software is highly modular, and MacPorts ports
-  often require that other ports be installed beforehand; these
-  prerequisites for a given port are called a port's
-  <quote>dependencies</quote>.</para>
+  often require that other ports be installed beforehand; these prerequisites
+  for a given port are called a port's <quote>dependencies</quote>.</para>
 
-  <para>There are three types of MacPorts dependencies: library, build, and
-  run dependencies. Dependency types are important for proper port upgrade
-  and uninstall behavior. For example, you may not uninstall a port that is
-  a library dependency for another port, though you may remove one with a
-  build dependency; likewise, upgrading a port will upgrade its library and
-  build dependencies also, but not its run dependencies.</para>
+  <para>There are three ways to specify dependencies in a Portfile: library,
+  build, and run dependencies. Specifying dependencies correctly is important
+  for proper port upgrade and uninstall behavior. For example, you may not
+  uninstall a port that is a library dependency for another port, though you
+  may remove one with a build dependency; likewise, upgrading a port will
+  upgrade its library and build dependencies also, but not its run
+  dependencies.</para>
 
   <variablelist>
     <varlistentry>
@@ -69,17 +68,21 @@
   </variablelist>
 
   <section id="reference.dependencies.types">
-    <title>Port and Non-Port Dependencies</title>
+    <title>Port and File Dependencies</title>
 
-    <para>Port dependencies should be provided by MacPorts ports whenever
-    possible, however dependencies may be provided by vendor-supplied
-    software when satisfying a dependency by a port is not practical or
-    desirable for a special reason. Dependencies of this type are called
-    non-port dependencies.</para>
+    <para>Port dependencies can be satisfied by reference to a port (in this
+    case the MacPorts' registry is queried), or by reference to a file
+    (whether provided by a port or not). The most commonly-used type of
+    dependencies in Portfiles are port dependencies, because dependencies
+    should be provided by MacPorts ported software whenever possible, and
+    usually only one port can provide the needed libraries and files.</para>
 
-    <para>Non-port dependencies should only be used if the application or
-    library can be installed by multiple ports (for example stable and
-    -devel version) or if it can't be installed with MacPorts.</para>
+    <para>But when satisfying a dependency with vendor-supplied software is
+    preferred for justifiable reasons, or when it is possible for more than
+    one port to satisfy a dependency, then file dependencies may be used. An
+    example of the former is with X11 —Apple's is widely preferred; an example
+    of the latter is with "-devel" named ports —these ports provide identical
+    files (only one can be activated at a time).</para>
 
     <para>Port dependencies, the preferred type, are specified as shown in
     these examples:</para>
@@ -90,13 +93,23 @@ depends_build       port:libtool
 
 depends_run         port:apache2 port:php5</programlisting>
 
-    <para>Non-port dependencies are specified as shown in these
-    examples:</para>
+    <para>File dependencies may be of three types: <option>bin</option> for
+    programs, <option>lib</option> for libraries, and <option>path</option>
+    for any file. File dependencies are specifed in the form:
+    <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filename&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
+    Note that the <replaceable>&lt;port&gt;</replaceable> specified is only
+    installed if the file the specified library, binary, or file is not found.
+    See the examples below:</para>
 
     <programlisting>depends_lib         lib:libX11.6:xorg
 
 depends_build       bin:glibtool:libtool
 
 depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
+
+    <note>
+      <para> When using lib dependencies, only the library name is specified
+      —not its extension (e.g. ".dylib" ".so", etc.).</para>
+    </note>
   </section>
 </section>
