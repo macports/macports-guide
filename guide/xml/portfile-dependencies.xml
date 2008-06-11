@@ -14,7 +14,7 @@
   a given port is installed, specifying dependencies with the correct keyword
   is important for proper port upgrade and uninstall behavior. For example,
   you may not uninstall a port that is a library dependency for another port,
-  though you may remove one with a build dependency; likewise, upgrading a
+  though you may remove one that is a build dependency; likewise, upgrading a
   port will upgrade its library and build dependencies also, but not its run
   dependencies.</para>
 
@@ -98,11 +98,11 @@ depends_run         port:apache2 port:php5</programlisting>
 
     <para>File dependencies may be of three types: <option>bin</option> for
     programs, <option>lib</option> for libraries, and <option>path</option>
-    for any file. File dependencies are specifed in the form:
+    for any installed file. File dependencies are specifed in the form:
     <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filename&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
     Note that the <replaceable>&lt;port&gt;</replaceable> specified is only
-    installed if the file the specified library, binary, or file is not found.
-    See the examples below:</para>
+    installed if the specified library, binary, or file is not found. See the
+    examples below:</para>
 
     <programlisting>depends_lib         lib:libX11.6:xorg
 
