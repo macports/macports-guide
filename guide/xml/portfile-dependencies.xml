@@ -74,7 +74,7 @@
 
     <para>There are two types of dependencies: port dependencies and file
     dependencies. Port dependencies can be satisfied by reference to a port
-    (the MacPorts' registry is queried), or by reference to a file (whether
+    (the MacPorts registry is queried), or by reference to a file (whether
     provided by a port or not). The most commonly-used type of dependencies in
     Portfiles are port dependencies, because dependencies should be provided
     by MacPorts ported software whenever possible, and usually only one port
