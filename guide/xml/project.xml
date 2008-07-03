@@ -16,10 +16,10 @@
   <section id="project.tickets">
     <title>Creating Trac Tickets</title>
 
-    <para>Once you are logged into Trac, you may click <emphasis>View Tickets
-    -&gt; New Ticket</emphasis> and you will be presented with a new ticket
-    window shown in the graphic below. Follow the Trac ticket guidelines below
-    to fill out the form.</para>
+    <para>Once you are logged into Trac, you may click <ulink
+    url="http://trac.macports.org/newticket">New Ticket</ulink> and you
+    will be presented with a new ticket window shown in the graphic below.
+    Follow the Trac ticket guidelines below to fill out the form.</para>
 
     <screenshot>
       <screeninfo>A new Trac ticket</screeninfo>
