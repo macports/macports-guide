@@ -3,8 +3,8 @@
     xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0">
 
 <!-- load the man page xsl file so it can be modified: -->
-<!-- if your macports prefix differs you have to change this path -->
-<xsl:import href="/opt/local/share/xsl/docbook-xsl/manpages/docbook.xsl"/>
+<!-- @PREFIX@ is replaced by the prefix of your MacPorts installation -->
+<xsl:import href="@PREFIX@/share/xsl/docbook-xsl/manpages/docbook.xsl"/>
 
 <!-- modify the default term template so terms are bold: -->
 <!-- only text between MODIFIED START and STOP is modified -->
