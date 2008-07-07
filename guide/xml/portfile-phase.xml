@@ -64,7 +64,7 @@
 
         <listitem>
           <para>Execute the command <command>configure</command> in
-          <varname>${workpath}</varname>.</para>
+          <varname>${worksrcpath}</varname>.</para>
         </listitem>
       </varlistentry>
 
@@ -73,7 +73,7 @@
 
         <listitem>
           <para>Execute the command <command>make</command> in
-          <varname>${workpath}</varname>.</para>
+          <varname>${worksrcpath}</varname>.</para>
         </listitem>
       </varlistentry>
 
@@ -92,7 +92,7 @@
         <listitem>
           <para>Execute the command <command>make install</command>
           <varname>DESTDIR=${destroot}</varname>in
-          <varname>${workpath}</varname>.</para>
+          <varname>${worksrcpath}</varname>.</para>
 
           <para>Understanding the destroot phase is critical to understanding
           MacPorts, because, unlike some port systems, MacPorts "stages" an
