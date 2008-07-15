@@ -252,13 +252,21 @@
       <title>Uninstall</title>
 
       <para>To uninstall MacPorts from the default location
-      <filename>/opt/local/</filename>, perform these commands from a terminal
+      <filename>/opt/local/</filename>, perform this command from a terminal
       window.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf /opt/local/</userinput>
-<prompt>%%</prompt> <userinput>sudo rm -rf /Applications/MacPorts/</userinput>
-<prompt>%%</prompt> <userinput>sudo rm -rf /Library/Tcl/macports1.0/</userinput>
-<prompt>%%</prompt> <userinput>sudo rm -rf /Library/LaunchDaemons/org.macports.*</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
+    /opt/local \
+    /etc/manpaths.d/macports \
+    /etc/paths.d/macports \
+    /Applications/DarwinPorts \
+    /Applications/MacPorts \
+    /Library/LaunchDaemons/org.macports.* \
+    /Library/Receipts/DarwinPorts*.pkg \
+    /Library/Receipts/MacPorts*.pkg \
+    /Library/StartupItems/DarwinPortsStartup \
+    /Library/Tcl/darwinports1.0 \
+    /Library/Tcl/macports1.0</userinput></programlisting>
     </section>
   </section>
 
