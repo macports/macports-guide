@@ -1777,13 +1777,15 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
             <listitem>
               <para>Values: <option>gcc-3.3</option> <option>gcc-4.0</option>
-              <option>gcc-4.2</option> <option>apple-gcc-3.3</option>
-              <option>apple-gcc-4.0</option> <option>macports-gcc-3.3</option>
+              <option>gcc-4.2</option> <option>llvm-gcc-4.2</option>
+              <option>apple-gcc-3.3</option> <option>apple-gcc-4.0</option>
+              <option>macports-gcc-3.3</option>
               <option>macports-gcc-3.4</option>
               <option>macports-gcc-4.0</option>
               <option>macports-gcc-4.1</option>
               <option>macports-gcc-4.2</option>
-              <option>macports-gcc-4.3</option></para>
+              <option>macports-gcc-4.3</option>
+              <option>macports-gcc-4.4</option></para>
             </listitem>
 
             <listitem>
