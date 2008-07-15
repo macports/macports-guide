@@ -88,11 +88,23 @@
 
     <orderedlist>
       <listitem>
+        <para>Modeline</para>
+
+        <para>This should be the first line of a Portfile. It sets the correct
+        editing options for vim and emacs. See <link
+        linkend="development.practices.portstyle">Port Style</link> for more
+        information. Its use is optional and up to the port maintainer.</para>
+
+        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4</programlisting>
+      </listitem>
+
+      <listitem>
         <para>Subversion ID tag line</para>
 
-        <para>The first line of a new Portfile must be set as shown. When a
-        port is committed to subversion, ID tags are expanded to include the
-        last person to commit and the commit time.</para>
+        <para>This must be the second line (or if the modeline is not used the
+        first) in a Portfile. When a port is committed to subversion, ID tags
+        are expanded to include the last person to commit and the commit
+        time.</para>
 
         <programlisting># $Id$</programlisting>
       </listitem>
