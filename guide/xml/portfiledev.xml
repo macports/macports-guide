@@ -101,10 +101,10 @@
       <listitem>
         <para>Subversion ID tag line</para>
 
-        <para>This must be the second line (or if the modeline is not used the
-        first) in a Portfile. When a port is committed to subversion, ID tags
-        are expanded to include the last person to commit and the commit
-        time.</para>
+        <para>This must be a Portfile's second line (or the first, if a
+        modeline is not used). When a port is committed to the repository, ID
+        tags are expanded to include the filename and the revision number,
+        date and time, and author of the last commit.</para>
 
         <programlisting># $Id$</programlisting>
       </listitem>
