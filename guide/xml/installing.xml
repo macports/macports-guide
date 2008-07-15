@@ -8,7 +8,7 @@
   step-by-step. Note that section 1 and section 2 (installing X11 and Xcode
   Tools) are Mac OS X specific. If you wish to install MacPorts on another
   platform, first make sure you have X11 and gcc installed, and then begin at
-  section 3.2 by performing a <ulink url="installing.source">MacPorts install
+  section 3.2 by performing a <ulink url="installing.macports.source">MacPorts install
   from source code</ulink> and proceed to the end of the chapter.</para>
 
   <section id="installing.x11">
@@ -141,9 +141,9 @@
     OS X package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
     wish to install a pre-release version of MacPorts base. However, if you
-    wish to <link linkend="installing.source.multiple">install multiple copies
+    wish to <link linkend="installing.macports.source.multiple">install multiple copies
     of MacPorts</link> or install MacPorts on another OS platform, you must
-    <link linkend="installing.source">install MacPorts from the source
+    <link linkend="installing.macports.source">install MacPorts from the source
     code</link>.</para>
 
     <note>
@@ -155,7 +155,7 @@
       MacPorts base to the latest released version.</para>
     </note>
 
-    <section id="installing.binary">
+    <section id="installing.macports.binary">
       <title>Mac OS X Package Install</title>
 
       <para>The Mac OS X package installer automatically installs MacPorts,
@@ -183,7 +183,7 @@
       </orderedlist>
     </section>
 
-    <section id="installing.source">
+    <section id="installing.macports.source">
       <title>Source Install</title>
 
       <para>If you installed MacPorts using the package installer, skip this
@@ -210,7 +210,7 @@
         </listitem>
       </orderedlist>
 
-      <section id="installing.source.multiple">
+      <section id="installing.macports.source.multiple">
         <title>Install Multiple MacPorts Copies</title>
 
         <para>Occasionally a MacPorts developer may wish to install more than
@@ -236,7 +236,7 @@
       </section>
     </section>
 
-    <section id="installing.upgrade">
+    <section id="installing.macports.upgrade">
       <title>MacPorts Upgrade</title>
 
       <para>MacPorts base upgrades are performed automatically (when a newer
@@ -244,11 +244,11 @@
       linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade
       a copy of MacPorts that was installed from source to the newer release
       of the source code, simply repeat the <link
-      linkend="installing.source">source install</link> with the newer version
+      linkend="installing.macports.source">source install</link> with the newer version
       of the MacPorts source code.</para>
     </section>
 
-    <section id="installing.uninstalling">
+    <section id="installing.macports.uninstalling">
       <title>Uninstall</title>
 
       <para>To uninstall MacPorts from the default location
@@ -283,7 +283,7 @@
 
     <para>The postflight script automatically copies a
     <filename>.profile</filename> containing variables according to the rules
-    described below. Those <link linkend="installing.source">installing
+    described below. Those <link linkend="installing.macports.source">installing
     MacPorts from source code</link> must modify their environment manually
     using the rules below as a guide.</para>
 
