@@ -1113,7 +1113,7 @@ extract.only-delete     foo.tar.gz</programlisting>
               <para>Examples:</para>
 
               <programlisting>extract.pre_args    xf
-extract.post_args   "| gnutar –x"</programlisting>
+extract.post_args   "| gnutar -x"</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
