@@ -1,15 +1,16 @@
 # $Id$
 
 # Makefile to generate the macports html guide and the man pages.
-# The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be
-# installed.
+# The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be installed.
 
-# If your macports isn't installed in /opt/local you have to change PREFIX here
+# If your macports isn't installed in /opt/local you have to change PREFIX
+# here.
 
-# prefix of the macports installation:
+
+# Prefix of the macports installation.
 PREFIX = /opt/local
 
-# command abstraction variables:
+# Command abstraction variables.
 MKDIR    = /bin/mkdir
 CP       = /bin/cp
 RM       = /bin/rm
@@ -17,26 +18,26 @@ SED      = /usr/bin/sed
 XSLTPROC = $(PREFIX)/bin/xsltproc
 XMLLINT  = $(PREFIX)/bin/xmllint
 
-# data directories:
+# Data directories.
 GUIDE = guide
 MAN   = man
-# source directories:
+# Source directories.
 GUIDE-SRC = $(GUIDE)/xml
 MAN-SRC   = $(MAN)/xml
-# result directories:
+# Result directories.
 GUIDE-RESULT = $(GUIDE)/html
 MAN-RESULT   = $(MAN)/man/
-# man temporary directory:
+# Man temporary directory.
 MAN-TMP = $(MAN)/tmp
 
-# path to the docbook xsl files:
+# Path to the docbook xsl files.
 DOCBOOK   = $(PREFIX)/share/xsl/docbook-xsl
 GUIDE-XSL = $(DOCBOOK)/xhtml/profile-docbook.xsl
 MAN-XSL   = $(MAN)/resources/macports.xsl
 
-# docbook html stylesheet for the guide:
+# Docbook html stylesheet for the guide.
 STYLESHEET = docbook.css
-# additional parameters for the guide:
+# Additional parameters for the guide.
 STRINGPARAMS = --stringparam html.stylesheet $(STYLESHEET) \
 	             --stringparam section.autolabel 1 \
 	             --stringparam toc.section.depth 1 \
@@ -80,7 +81,7 @@ man: $(MAN-XSL)
 	    $(MAN-SRC)/porthier.7.xml
 	$(RM) -r $(MAN-TMP)
 
-# create XSL from template for man pages
+# Create XSL from template for man pages.
 $(MAN-XSL):
 	$(SED) 's:@PREFIX@:$(PREFIX):' $@.in > $@
 
