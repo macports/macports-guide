@@ -15,6 +15,7 @@ MKDIR    = /bin/mkdir
 CP       = /bin/cp
 RM       = /bin/rm
 SED      = /usr/bin/sed
+TCLSH    = /usr/bin/tclsh
 XSLTPROC = $(PREFIX)/bin/xsltproc
 XMLLINT  = $(PREFIX)/bin/xmllint
 
@@ -25,15 +26,17 @@ MAN   = man
 GUIDE-SRC = $(GUIDE)/xml
 MAN-SRC   = $(MAN)/xml
 # Result directories.
-GUIDE-RESULT = $(GUIDE)/html
-MAN-RESULT   = $(MAN)/man/
+GUIDE-RESULT       = $(GUIDE)/html
+GUIDE-RESULT-CHUNK = $(GUIDE-RESULT)/chunked
+MAN-RESULT         = $(MAN)/man/
 # Man temporary directory.
 MAN-TMP = $(MAN)/tmp
 
 # Path to the docbook xsl files.
-DOCBOOK   = $(PREFIX)/share/xsl/docbook-xsl
-GUIDE-XSL = $(DOCBOOK)/xhtml/profile-docbook.xsl
-MAN-XSL   = $(MAN)/resources/macports.xsl
+DOCBOOK         = $(PREFIX)/share/xsl/docbook-xsl
+GUIDE-XSL       = $(DOCBOOK)/xhtml/profile-docbook.xsl
+GUIDE-XSL-CHUNK = $(DOCBOOK)/xhtml/chunk.xsl
+MAN-XSL         = $(MAN)/resources/macports.xsl
 
 # Docbook html stylesheet for the guide.
 STYLESHEET = docbook.css
@@ -44,6 +47,8 @@ STRINGPARAMS = --stringparam html.stylesheet $(STYLESHEET) \
 	             --stringparam generate.toc "book toc" \
 	             --stringparam section.label.includes.component.label 1 \
 	             --stringparam profile.condition "noman"
+# Additional parameters for the chunked guide.
+STRINGPARAMS-CHUNK = --stringparam chunk.section.depth 0
 
 
 .PHONY: all guide man clean validate
@@ -55,13 +60,32 @@ guide:
 	$(MKDIR) -p $(GUIDE-RESULT)
 	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
 	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
-	$(XSLTPROC) --xinclude $(STRINGPARAMS) --output $(GUIDE-RESULT)/index.html \
+	$(XSLTPROC) --xinclude $(STRINGPARAMS) \
+	    --output $(GUIDE-RESULT)/index.html \
 	    $(GUIDE-XSL) $(GUIDE-SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(SED) -i "" -E \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE-RESULT)/index.html
+
+# Generate the chunked html guide with one section per file.
+guide-chunked:
+	$(MKDIR) -p $(GUIDE-RESULT-CHUNK)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT-CHUNK)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT-CHUNK)/
+	$(XSLTPROC) --xinclude $(STRINGPARAMS) $(STRINGPARAMS-CHUNK) \
+	    --output $(GUIDE-RESULT-CHUNK)/index.html \
+	    $(GUIDE-XSL-CHUNK) $(GUIDE-SRC)/guide.xml
+	# Convert all sections (h1-h9) to a link so it's easy to link to them.
+	# If someone knows a better way to do this please change it.
+	$(SED) -i "" -E \
+	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
+	    $(GUIDE-RESULT-CHUNK)/*.html
+	# Add the table of contents to every junked html file.
+	# If someone knows a better way to do this please change it.
+	$(TCLSH) toc-for-chunked.tcl $(GUIDE-RESULT-CHUNK)
+
 
 # Generate the man pages using DocBook from the xml source in $(MAN-SRC).
 # The portfile-*.xml files in $(GUIDE-SRC) are copied to $(MAN-TMP) and
