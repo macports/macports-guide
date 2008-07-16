@@ -333,6 +333,33 @@ libdap depends on openssl</screen>
 
       <para></para>
     </section>
+
+    <section id="using.port.lint">
+      <title>lint</title>
+
+      <para>The lint option checks if the Portfile conforms to the MacPorts
+      standards specified in <link linkend="development">Portfile
+      Development</link>.</para>
+
+      <para>If a Portfile validates fine the following message is
+      shown.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port lint chemtool</userinput></programlisting>
+
+      <screen>--->  Verifying Portfile for chemtool
+--->  0 errors and 0 warnings found.</screen>
+
+      <para>Otherwise the warnings and errors are listed.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port lint KeyArcher</userinput></programlisting>
+
+      <screen>--->  Verifying Portfile for KeyArcher
+Warning: Line 2 should be a newline (after RCS tag)
+Warning: Line 5 has trailing whitespace before newline
+Error: Missing required variable: platforms
+--->  1 errors and 2 warnings found.
+</screen>
+    </section>
   </section>
 
   <section id="using.variants">
