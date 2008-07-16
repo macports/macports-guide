@@ -46,7 +46,7 @@ STRINGPARAMS = --stringparam html.stylesheet $(STYLESHEET) \
 	             --stringparam profile.condition "noman"
 
 
-.PHONY: all guide man clean
+.PHONY: all guide man clean validate
 
 all: guide man
 
