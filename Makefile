@@ -88,9 +88,9 @@ guide-chunked:
 
 
 # Generate the man pages using DocBook from the xml source in $(MAN-SRC).
-# The portfile-*.xml files in $(GUIDE-SRC) are copied to $(MAN-TMP) and
-# modified (section -> refsection) so they can be used as man xml source files
-# and then xincluded in the real man xml files in $(MAN-SRC).
+# The portfile-*.xml and portgroup-*.xml files in $(GUIDE-SRC) are copied to
+# $(MAN-TMP) and modified (section -> refsection) so they can be used as man
+# xml source files and then xincluded in the real man xml files in $(MAN-SRC).
 man: $(MAN-XSL)
 	$(MKDIR) -p $(MAN-RESULT)
 	$(MKDIR) -p $(MAN-TMP)
