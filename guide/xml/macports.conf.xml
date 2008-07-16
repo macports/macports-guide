@@ -9,9 +9,10 @@
   and port developers.</para>
 
   <para>There are three MacPorts configuration files that define important
-  variables used by the MacPorts system: macports.conf, sources.conf, and
-  variants.conf. All MacPorts configurations files are located in
-  ${prefix}/etc/macports.</para>
+  variables used by the MacPorts system: <filename>macports.conf</filename>,
+  <filename>sources.conf</filename>, and <filename>variants.conf</filename>.
+  All MacPorts configurations files are located in
+  <filename>${prefix}/etc/macports</filename>.</para>
 
   <para>MacPorts configuration file format is a simple key/value pair
   separated by either a space or a tab. Lines beginning with '#' are comments,
