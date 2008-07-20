@@ -9,7 +9,11 @@ close $file
 set replacement "<body>$replacement<div class=\"book\">"
 
 # Add the table of contents to all other html files.
-foreach path [glob -directory [lindex $argv 0] {*[0-9][0-9].html}] {
+foreach path [glob -directory [lindex $argv 0] {*.html}] {
+    if {$path == "index.html"} {
+        continue
+    }
+
     set file [open $path r+]
     set data [read $file]
     regsub {<body>} $data $replacement data
