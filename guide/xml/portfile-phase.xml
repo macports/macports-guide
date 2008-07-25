@@ -2457,7 +2457,7 @@ build.target-delete     compat</programlisting>
           <para>This keyword is for specifying whether or not it is safe for a
           port to use multiple CPUs or multiple cores in parallel during its
           build phase. If <code>use_parallel_build</code> is set to
-          <quote>yes</quote> in a given port, the option <option>-j N</option>
+          <quote>yes</quote> in a given port, the option <option>-jN</option>
           is passed to <varname>${build.cmd}</varname> (if
           <varname>${build.cmd}</varname> is <command>make</command> or
           <command>scons</command>) where
