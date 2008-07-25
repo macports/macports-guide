@@ -2458,7 +2458,9 @@ build.target-delete     compat</programlisting>
           port to use multiple CPUs or multiple cores in parallel during its
           build phase. If <code>use_parallel_build</code> is set to
           <quote>yes</quote> in a given port, the option <option>-j N</option>
-          is passed to the <command>make</command> command where
+          is passed to <varname>${build.cmd}</varname> (if
+          <varname>${build.cmd}</varname> is <command>make</command> or
+          <command>scons</command>) where
           <option>N</option> represents the number of parallel build threads
           defined by the variable <varname>buildmakejobs</varname> in
           <filename>macports.conf</filename>. The default value of
