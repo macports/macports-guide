@@ -8,8 +8,9 @@
   step-by-step. Note that section 1 and section 2 (installing X11 and Xcode
   Tools) are Mac OS X specific. If you wish to install MacPorts on another
   platform, first make sure you have X11 and gcc installed, and then begin at
-  section 3.2 by performing a <ulink url="installing.macports.source">MacPorts install
-  from source code</ulink> and proceed to the end of the chapter.</para>
+  section 3.2 by performing a <ulink url="installing.macports.source">MacPorts
+  install from source code</ulink> and proceed to the end of the
+  chapter.</para>
 
   <section id="installing.x11">
     <title>Install X11</title>
@@ -141,10 +142,10 @@
     OS X package installer unless you do not wish to install it to
     <filename>/opt/local/</filename>, the default MacPorts location, or if you
     wish to install a pre-release version of MacPorts base. However, if you
-    wish to <link linkend="installing.macports.source.multiple">install multiple copies
-    of MacPorts</link> or install MacPorts on another OS platform, you must
-    <link linkend="installing.macports.source">install MacPorts from the source
-    code</link>.</para>
+    wish to <link linkend="installing.macports.source.multiple">install
+    multiple copies of MacPorts</link> or install MacPorts on another OS
+    platform, you must <link linkend="installing.macports.source">install
+    MacPorts from the source code</link>.</para>
 
     <note>
       <para>Though a distinction is made between pre-release and release
@@ -244,8 +245,8 @@
       linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade
       a copy of MacPorts that was installed from source to the newer release
       of the source code, simply repeat the <link
-      linkend="installing.macports.source">source install</link> with the newer version
-      of the MacPorts source code.</para>
+      linkend="installing.macports.source">source install</link> with the
+      newer version of the MacPorts source code.</para>
     </section>
 
     <section id="installing.macports.uninstalling">
@@ -273,13 +274,13 @@
   <section id="installing.shell">
     <title>MacPorts and the Shell</title>
 
-    <para>MacPorts requires changes to the shell environment. If MacPorts was
-    installed using the Mac OS X package installer, a
-    <quote>postflight</quote> script was run after installation that places a
-    <filename>.profile</filename> file in the home directory, which contains
-    the environmental variables required for MacPorts. If a current
-    <filename>.profile</filename> file exists at installation time it is
-    renamed to <quote>mpsaved_$timestamp</quote>.</para>
+    <para>MacPorts requires that some environmental variables be set in the
+    shell. When MacPorts is installed using the Mac OS X package installer, a
+    <quote>postflight</quote> script is run after installation that places a
+    <filename>.profile</filename> file in the home directory containing the
+    required variables. If a current <filename>.profile</filename> file exists
+    at installation time it is renamed to
+    <quote>mpsaved_$timestamp</quote>.</para>
 
     <note>
       <para>If you have either a <filename>.bash_login</filename> or a
@@ -291,9 +292,10 @@
 
     <para>The postflight script automatically copies a
     <filename>.profile</filename> containing variables according to the rules
-    described below. Those <link linkend="installing.macports.source">installing
-    MacPorts from source code</link> must modify their environment manually
-    using the rules below as a guide.</para>
+    described below. Those <link
+    linkend="installing.macports.source">installing MacPorts from source
+    code</link> must modify their environment manually using the rules below
+    as a guide.</para>
 
     <note>
       <para>Be sure to notice in the rules below that the variables MANPATH
@@ -302,9 +304,9 @@
 
     <itemizedlist>
       <listitem>
-        <para>A <varname>PATH</varname> variable is set as shown regardless of
-        platform or environment that appends the MacPorts file paths in front
-        of the default file paths so MacPorts libraries will take precedence
+        <para>A <varname>PATH</varname> variable is set by the postflight
+        script that appends the MacPorts executable paths to the front of the
+        default path as shown below so MacPorts libraries will take precedence
         over vendor-supplied libraries for ported software at runtime.</para>
 
         <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
@@ -323,11 +325,12 @@
       </listitem>
 
       <listitem>
-        <para>A <varname>MANPATH</varname> variable is set as shown only if a
-        <varname>MANPATH</varname> variable was already set in a previous
-        <filename>.profile</filename> that does not include the value
-        <filename>${prefix}/share/man,</filename> nor any empty values.
-        Otherwise, it is omitted.</para>
+        <para>Optional: If prior to MacPorts installation, a
+        <varname>MANPATH</varname> variable exists in a current
+        <filename>.profile</filename> file that does not include the value
+        <filename>${prefix}/share/man,</filename> nor any empty values, the
+        postflight script sets a <varname>MANPATH</varname> variable as shown
+        below. Otherwise, the manpath variable is omitted.</para>
 
         <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
@@ -344,12 +347,13 @@
       </listitem>
 
       <listitem>
-        <para>A <varname>DISPLAY</varname> variable for X11 application
-        support is set as shown only for Mac OS X versions 10.4 (Tiger) and
-        earlier if a <varname>DISPLAY</varname> variable is not already set in
-        a <filename>.profile</filename> active at installation time. A
-        <varname>DISPLAY</varname> variable is never set for Mac OS X 10.5
-        (Leopard) or higher.</para>
+        <para>Optional: To support X11 applications for Mac OS X versions
+        earlier than 10.5 (Leopard), if a<filename> .profile</filename> file
+        exists at time of MacPorts installation without a
+        <varname>DISPLAY</varname> variable, the postflight script sets a
+        <varname>DISPLAY</varname> variable as shown below. The
+        <varname>DISPLAY</varname> variable is not needed for Mac OS X 10.5 or
+        higher.</para>
 
         <programlisting>export DISPLAY=:0.0</programlisting>
       </listitem>
