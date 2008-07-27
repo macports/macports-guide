@@ -8,9 +8,9 @@
   step-by-step. Note that section 1 and section 2 (installing X11 and Xcode
   Tools) are Mac OS X specific. If you wish to install MacPorts on another
   platform, first make sure you have X11 and gcc installed, and then begin at
-  section 3.2 by performing a <ulink url="installing.macports.source">MacPorts
-  install from source code</ulink> and proceed to the end of the
-  chapter.</para>
+  section 3.2 by performing <link
+  linkend="installing.macports.source">MacPorts install from source</link> and
+  proceed to the end of the chapter.</para>
 
   <section id="installing.x11">
     <title>Install X11</title>
@@ -276,11 +276,12 @@
 
     <para>MacPorts requires that some environmental variables be set in the
     shell. When MacPorts is installed using the Mac OS X package installer, a
-    <quote>postflight</quote> script is run after installation that places a
-    <filename>.profile</filename> file in the home directory containing the
-    required variables. If a current <filename>.profile</filename> file exists
-    at installation time it is renamed to
-    <quote>mpsaved_$timestamp</quote>.</para>
+    <quote>postflight</quote> script is run after installation that
+    automatically copies a <filename>.profile</filename> containing variables
+    according to the rules described in the following section. Those <link
+    linkend="installing.macports.source">installing MacPorts from source
+    code</link> must modify their environment manually using the rules as a
+    guide.</para>
 
     <note>
       <para>If you have either a <filename>.bash_login</filename> or a
@@ -290,83 +291,100 @@
       <filename>.profile</filename> to it.</para>
     </note>
 
-    <para>The postflight script automatically copies a
-    <filename>.profile</filename> containing variables according to the rules
-    described below. Those <link
-    linkend="installing.macports.source">installing MacPorts from source
-    code</link> must modify their environment manually using the rules below
-    as a guide.</para>
+    <section id="installing.shell.postflight">
+      <title>The Postflight Script</title>
 
-    <note>
-      <para>Be sure to notice in the rules below that the variables MANPATH
-      and DISPLAY are only needed under certain conditions.</para>
-    </note>
+      <para>The postflight script automatically copies a
+      <filename>.profile</filename> containing the <varname>PATH</varname>
+      variable, and optionally the <varname>MANPATH</varname> and
+      <varname>DISPLAY</varname> variables according to the rules described
+      below. If a current <filename>.profile</filename> file exists at
+      installation time it is renamed to <quote>mpsaved_$timestamp</quote>.
+      Those <link linkend="installing.macports.source">installing MacPorts
+      from source code</link> must modify their environment manually using the
+      rules as a guide.</para>
 
-    <itemizedlist>
-      <listitem>
-        <para>A <varname>PATH</varname> variable is set by the postflight
-        script that appends the MacPorts executable paths to the front of the
-        default path as shown below so MacPorts libraries will take precedence
-        over vendor-supplied libraries for ported software at runtime.</para>
+      <itemizedlist>
+        <listitem>
+          <para>Required: <varname>PATH</varname> variable</para>
 
-        <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+          <para>This variable is set by the postflight script to append the
+          MacPorts executable paths to the default path as shown. The MacPorts
+          paths are appended at the front of <varname>PATH</varname> so the
+          MacPorts libraries will take precedence over vendor-supplied
+          libraries for ported software at runtime.</para>
 
-        <note>
-          <para>The user environment's $PATH affects ported software at
-          runtime, i. e. after port installation, because the $PATH is
-          scrubbed before a port is installed. To change the search path for
-          locating system executables (rsync, tar, etc.) during port
-          installation, see the <link
-          linkend="internals.configuration-files.macports-conf">macports.conf</link>
-          file variable <varname>binpath</varname>, though changing this
-          variable is not generally needed or recomended, and for advanced
-          users only.</para>
-        </note>
-      </listitem>
+          <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
 
-      <listitem>
-        <para>Optional: If prior to MacPorts installation, a
-        <varname>MANPATH</varname> variable exists in a current
-        <filename>.profile</filename> file that does not include the value
-        <filename>${prefix}/share/man,</filename> nor any empty values, the
-        postflight script sets a <varname>MANPATH</varname> variable as shown
-        below. Otherwise, the manpath variable is omitted.</para>
+          <note>
+            <para>The user environment's $PATH is not in effect while ports
+            are being installed, because the $PATH is scrubbed before ports
+            are installed, and restored afterwards. To change the search path
+            for locating system executables (rsync, tar, etc.) during port
+            installation, see the <link
+            linkend="internals.configuration-files.macports-conf">macports.conf</link>
+            file variable <varname>binpath</varname>. But changing this
+            variable is for advanced users only, and is not generally needed
+            or recomended.</para>
+          </note>
+        </listitem>
 
-        <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
+        <listitem>
+          <para>Optional: <varname>MANPATH</varname> variable</para>
 
-        <para>Here are some examples of paths that contain empty
-        values:</para>
+          <para>Condition: If prior to MacPorts installation a
+          <varname>MANPATH</varname> variable exists in a current
+          <filename>.profile</filename> that contains neither the value
+          <filename>${prefix}/share/man,</filename> nor any empty values, the
+          postflight script sets the <varname>MANPATH</varname> variable as
+          shown below. Otherwise, the <varname>MANPATH</varname> variable is
+          omitted.</para>
 
-        <simplelist>
-          <member>/usr/share/man:</member>
+          <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
 
-          <member>:/usr/share/man</member>
+          <para>Here are some examples of paths that contain empty
+          values:</para>
 
-          <member>/usr/share/man::/usr/X11R6/man</member>
-        </simplelist>
-      </listitem>
+          <simplelist>
+            <member>/usr/share/man:</member>
 
-      <listitem>
-        <para>Optional: To support X11 applications for Mac OS X versions
-        earlier than 10.5 (Leopard), if a<filename> .profile</filename> file
-        exists at time of MacPorts installation without a
-        <varname>DISPLAY</varname> variable, the postflight script sets a
-        <varname>DISPLAY</varname> variable as shown below. The
-        <varname>DISPLAY</varname> variable is not needed for Mac OS X 10.5 or
-        higher.</para>
+            <member>:/usr/share/man</member>
 
-        <programlisting>export DISPLAY=:0.0</programlisting>
-      </listitem>
-    </itemizedlist>
+            <member>/usr/share/man::/usr/X11R6/man</member>
+          </simplelist>
+        </listitem>
 
-    <note>
-      <para>Changes to <filename>~/.profile</filename> do not take effect
-      until a new terminal session is opened. Type <command>env</command> in
-      the terminal to verify the current environment settings. Example output
-      for the <command>env</command> command is shown below.</para>
-    </note>
+        <listitem>
+          <para>Optional: <varname>DISPLAY</varname> variable</para>
 
-    <screen>MANPATH=
+          <para>Condition: If installing on a Mac OS X version earlier than
+          10.5 (Leopard), and if a<filename> .profile</filename> file exists
+          at time of MacPorts installation without a
+          <varname>DISPLAY</varname> variable, the postflight script sets a
+          <varname>DISPLAY</varname> variable as shown below. The
+          <varname>DISPLAY</varname> variable is always omitted on Mac OS X
+          10.5 or higher.</para>
+
+          <programlisting>export DISPLAY=:0.0</programlisting>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="installing.shell.verifyprofile">
+      <title>Verify the .profile</title>
+
+      <para>To verify that the <filename>.profile</filename> containing the
+      MacPorts variables is in effect, type <command>env</command> in the
+      terminal to verify the current environment settings after the
+      <filename>.profile</filename> has been created. Example output for the
+      <command>env</command> command is shown below.</para>
+
+      <note>
+        <para>Changes to <filename>~/.profile</filename> do not take effect
+        until a new terminal session is opened.</para>
+      </note>
+
+      <screen>MANPATH=
 TERM_PROGRAM=Apple_Terminal
 TERM=xterm-color
 SHELL=/bin/bash
@@ -382,5 +400,29 @@ LOGNAME=joebob
 DISPLAY=:0.0
 SECURITYSESSIONID=b0cea0
 _=/usr/bin/env</screen>
+    </section>
+
+    <section id="installing.shell.editorvar">
+      <title>Optional EDITOR Variable</title>
+
+      <para>A useful environment variable to set in
+      <filename>.profile</filename> is the <varname>EDITOR</varname> variable.
+      Setting this variable allows you to use the edit option to the port
+      command to edit Portfiles quickly and easily. Set the
+      <varname>EDITOR</varname> variable to point to your favorite text
+      editor.</para>
+
+      <para>For example, to use the nano editor, add this line to your
+      <filename>~/.profile</filename>:</para>
+
+      <programlisting>export EDITOR=/usr/bin/nano</programlisting>
+
+      <para>To use the user-friendly GUI editor <ulink
+      url="http://www.barebones.com/products/textwrangler/">TextWrangler</ulink>
+      (installation required), add this line to your
+      <filename>~/.profile</filename>:</para>
+
+      <programlisting>export EDITOR=/usr/bin/edit</programlisting>
+    </section>
   </section>
 </chapter>
