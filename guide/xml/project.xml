@@ -169,12 +169,9 @@
         <listitem>
           <para><guilabel>Cc:</guilabel> Anyone else besides the ticket
           reporter and assignee who would like to be kept involved in the
-          development of the ticket, and/or the port maintainer in case
-          his/her address does not appear in the <guimenu>Assign To</guimenu>
-          drop down menu. Multiple emails should be separated with a comma
+          development of the ticket. Multiple email addresses should be
+          separated with a comma and a space
           (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
-          To get the maintainer email address use <command>port info
-          &lt;portname&gt;</command>.</para>
         </listitem>
 
         <listitem>
@@ -237,18 +234,23 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Assign To:</guilabel> For tickets on ports, select
-          the port maintainer's email address (use <command>port info
-          &lt;portname&gt;</command>). If the maintainer's email address is
-          <email>nomaintainer@macports.org</email>, select
-          <email>macports-tickets@lists.macosforge.org</email>.</para>
+          <para><guilabel>Assign To:</guilabel> For tickets on ports, enter
+          the email address of the port's maintainer (use <command>port info
+          &lt;portname&gt;</command> to find this). If multiple maintainers
+          are listed, enter the first maintainer's email address here and
+          enter the remainining maintainers' email addresses in the
+          <guimenu>Cc</guimenu> field. Exclude the email address
+          <email>openmaintainer@macports.org</email> if it appears.
+          If the maintainer's email address is
+          <email>nomaintainer@macports.org</email>, leave the field
+          blank.</para>
         </listitem>
 
         <listitem>
-          <para><guilabel>Attachments:</guilabel> Files may be attached to a
-          ticket when it is being created if the checkbox that reads &ldquo;I
-          have files to attach to this ticket&rdquo; is selected, or after it
-          has been submitted by using the file attachment button.</para>
+          <para><guilabel>I have files to attach to this ticket:</guilabel>
+          Use this checkbox to attach files to the ticket immediately after
+          you create it. Or you can attach files later using the
+          <guilabel>Attach File</guilabel> button.</para>
         </listitem>
       </itemizedlist>
     </section>
