@@ -155,8 +155,7 @@
 
     <variablelist>
       <varlistentry>
-        <term>platform [<replaceable>os_platform</replaceable>]
-        [<replaceable>hw_platform</replaceable>]
+        <term>platform <replaceable>os</replaceable>
         [<replaceable>version</replaceable>]
         [<replaceable>arch</replaceable>]</term>
 
