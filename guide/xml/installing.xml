@@ -38,18 +38,17 @@
       <listitem>
         <para>Click <guibutton>Install</guibutton> to install X11.</para>
       </listitem>
-
-      <listitem>
-        <para>Drag the <filename>/Applications/Utilities/X11</filename> icon
-        to your dock —you must open X11 before launching an X11
-        application.</para>
-      </listitem>
     </orderedlist>
 
-    <para>If you're using Mac OS X 10.3 then you can download the X11
-    installer from the Apple <ulink
-    url="http://apple.com/support/downloads/x11formacosx.html">download
-    page</ulink>.</para>
+    <para>Before launching an X11 application, you must open a terminal window
+    and start an xterm session.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>xterm</userinput></programlisting>
+
+    <para>After the X11 session window opens, you may launch X11 apps from
+    another terminal window. See <link
+    linkend="installing.x11.settings">Optional X11 Settings</link> if you wish
+    to launch X11 applications from an X11 session window.</para>
 
     <note>
       <para>X11 and the X11SDK (from Xcode Tools) are both required for X11
@@ -66,18 +65,8 @@
       <title>Optional X11 Settings</title>
 
       <para>To launch X11 applications directly from an X11 window (instead of
-      a terminal window), you need to have the MacPorts paths imported into
-      X11 sessions when they are opened. This is a two step process.</para>
-
-      <para>First, tell X11 about the <filename>~/.profile</filename> file
-      that will be created after you install MacPorts. Do this by editing the
-      file <filename>/etc/X11/xinit/xinitrc</filename> and adding this line
-      near the top.</para>
-
-      <programlisting>source ~/.profile</programlisting>
-
-      <para>Now finish the process by making subsequent X11 sessions opened
-      using the menu bar respect your <filename>.profile</filename>
+      a regular terminal window), you need to make it so X11 sessions opened
+      using the menu bar respect your <filename>.~profile</filename>
       file.</para>
 
       <orderedlist>
