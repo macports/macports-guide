@@ -622,7 +622,7 @@ variant sqlite description {Build sqlite support} {
           this example, we'll apply a Portfile patch to the postfix
           port.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/var/macports/sources/rsync.macports.org/release/ports/mail/postfix</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>cd $(port dir postfix)</userinput></programlisting>
         </listitem>
 
         <listitem>
