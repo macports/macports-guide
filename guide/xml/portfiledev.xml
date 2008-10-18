@@ -546,6 +546,11 @@ variant sqlite description {Build sqlite support} {
       apply with "patch -p0'' from the working source directory of the
       port.</para>
 
+      <para>If fixing an issues needs changes in multiple files all changes
+      should be stored in one patch file. The patch should then be named after
+      the issue which is fixed,
+      <filename>patch-</filename><replaceable>&lt;issue&gt;.diff</replaceable>.</para>
+
       <orderedlist>
         <listitem>
           <para>Locate the file you wish to patch in its original location
