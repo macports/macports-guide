@@ -24,20 +24,20 @@ XMLLINT  = $(PREFIX)/bin/xmllint
 GUIDE = guide
 MAN   = man
 # Source directories.
-GUIDE-SRC = $(GUIDE)/xml
-MAN-SRC   = $(MAN)/xml
+GUIDE_SRC = $(GUIDE)/xml
+MAN_SRC   = $(MAN)/xml
 # Result directories.
-GUIDE-RESULT       = $(GUIDE)/html
-GUIDE-RESULT-CHUNK = $(GUIDE-RESULT)/chunked
-MAN-RESULT         = $(MAN)/man/
+GUIDE_RESULT       = $(GUIDE)/html
+GUIDE_RESULT_CHUNK = $(GUIDE_RESULT)/chunked
+MAN_RESULT         = $(MAN)/man/
 # Man temporary directory.
-MAN-TMP = $(MAN)/tmp
+MAN_TMP = $(MAN)/tmp
 
 # Path to the DocBook XSL files.
 DOCBOOK         = $(PREFIX)/share/xsl/docbook-xsl
-GUIDE-XSL       = $(GUIDE)/resources/single-page.xsl
-GUIDE-XSL-CHUNK = $(GUIDE)/resources/chunk.xsl
-MAN-XSL         = $(MAN)/resources/macports.xsl
+GUIDE_XSL       = $(GUIDE)/resources/single-page.xsl
+GUIDE_XSL_CHUNK = $(GUIDE)/resources/chunk.xsl
+MAN_XSL         = $(MAN)/resources/macports.xsl
 
 # DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
@@ -46,74 +46,74 @@ STYLESHEET = docbook.css
 
 all: guide man
 
-# Generate the HTML guide using DocBook from the XML sources in $(GUIDE-SRC).
+# Generate the HTML guide using DocBook from the XML sources in $(GUIDE_SRC).
 guide:
-	$(MKDIR) -p $(GUIDE-RESULT)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT)/
+	$(MKDIR) -p $(GUIDE_RESULT)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_RESULT)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE_RESULT)/
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 	$(XSLTPROC) --xinclude \
-	    --output $(GUIDE-RESULT)/index.html \
-	    $(GUIDE-XSL) $(GUIDE-SRC)/guide.xml
+	    --output $(GUIDE_RESULT)/index.html \
+	    $(GUIDE_XSL) $(GUIDE_SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(SED) -i "" -E \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE-RESULT)/index.html
+	    $(GUIDE_RESULT)/index.html
 
 # Generate the chunked HTML guide with one section per file.
 guide-chunked:
-	$(MKDIR) -p $(GUIDE-RESULT-CHUNK)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT-CHUNK)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE-RESULT-CHUNK)/
+	$(MKDIR) -p $(GUIDE_RESULT_CHUNK)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_RESULT_CHUNK)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE_RESULT_CHUNK)/
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 	$(XSLTPROC) --xinclude \
-	    --output $(GUIDE-RESULT-CHUNK)/index.html \
-	    $(GUIDE-XSL-CHUNK) $(GUIDE-SRC)/guide.xml
+	    --output $(GUIDE_RESULT_CHUNK)/index.html \
+	    $(GUIDE_XSL_CHUNK) $(GUIDE_SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(SED) -i "" -E \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE-RESULT-CHUNK)/*.html
+	    $(GUIDE_RESULT_CHUNK)/*.html
 	# Add the table of contents to every junked HTML file.
 	# If someone knows a better way to do this please change it.
-	$(TCLSH) toc-for-chunked.tcl $(GUIDE-RESULT-CHUNK)
+	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT_CHUNK)
 
 
-# Generate the man pages using DocBook from the XML source in $(MAN-SRC).
-# The portfile-*.xml and portgroup-*.xml files in $(GUIDE-SRC) are copied to
-# $(MAN-TMP) and modified (section -> refsection) so they can be used as man
-# XML source files and then xincluded in the real man XML files in $(MAN-SRC).
-man: $(MAN-XSL)
-	$(MKDIR) -p $(MAN-RESULT)
-	$(MKDIR) -p $(MAN-TMP)
-	$(CP) $(GUIDE-SRC)/portfile-*.xml $(MAN-TMP)
-	$(CP) $(GUIDE-SRC)/portgroup-*.xml $(MAN-TMP)
-	$(SED) -i "" 's|<section|<refsection|g' $(MAN-TMP)/*
-	$(SED) -i "" 's|</section>|</refsection>|g' $(MAN-TMP)/*
-	$(XSLTPROC) --xinclude --output $(MAN-RESULT) $(MAN-XSL) \
-	    $(MAN-SRC)/port.1.xml \
-	    $(MAN-SRC)/portfile.7.xml \
-	    $(MAN-SRC)/portgroup.7.xml \
-	    $(MAN-SRC)/porthier.7.xml
-	$(RM) -r $(MAN-TMP)
+# Generate the man pages using DocBook from the XML source in $(MAN_SRC).
+# The portfile-*.xml and portgroup-*.xml files in $(GUIDE_SRC) are copied to
+# $(MAN_TMP) and modified (section -> refsection) so they can be used as man
+# XML source files and then xincluded in the real man XML files in $(MAN_SRC).
+man: $(MAN_XSL)
+	$(MKDIR) -p $(MAN_RESULT)
+	$(MKDIR) -p $(MAN_TMP)
+	$(CP) $(GUIDE_SRC)/portfile-*.xml $(MAN_TMP)
+	$(CP) $(GUIDE_SRC)/portgroup-*.xml $(MAN_TMP)
+	$(SED) -i "" 's|<section|<refsection|g' $(MAN_TMP)/*
+	$(SED) -i "" 's|</section>|</refsection>|g' $(MAN_TMP)/*
+	$(XSLTPROC) --xinclude --output $(MAN_RESULT) $(MAN_XSL) \
+	    $(MAN_SRC)/port.1.xml \
+	    $(MAN_SRC)/portfile.7.xml \
+	    $(MAN_SRC)/portgroup.7.xml \
+	    $(MAN_SRC)/porthier.7.xml
+	$(RM) -r $(MAN_TMP)
 
 # Create XSL from template for man pages.
-$(MAN-XSL):
+$(MAN_XSL):
 	$(SED) 's:@PREFIX@:$(PREFIX):' $@.in > $@
 
 # Remove all temporary files generated by guide: and man:.
 clean:
 	$(RM) -rf $(GUIDE)/resources/xsl
-	$(RM) -rf $(GUIDE-RESULT)
-	$(RM) -rf $(MAN-RESULT)
-	$(RM) -rf $(MAN-TMP)
-	$(RM) -rf $(MAN-XSL)
+	$(RM) -rf $(GUIDE_RESULT)
+	$(RM) -rf $(MAN_RESULT)
+	$(RM) -rf $(MAN_TMP)
+	$(RM) -rf $(MAN_XSL)
 	$(RM) -f  guide.tmp.xml
 
 # Validate the XML files for the guide.
 # These two steps are necessary as otherwise xmllint complains about missing
 # ids.
 validate:
-	$(XMLLINT) --xinclude $(GUIDE-SRC)/guide.xml > guide.tmp.xml
+	$(XMLLINT) --xinclude $(GUIDE_SRC)/guide.xml > guide.tmp.xml
 	$(XMLLINT) --loaddtd --valid --noout guide.tmp.xml
