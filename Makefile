@@ -1,20 +1,20 @@
 # $Id$
 
-# Makefile to generate the macports html guide and the man pages.
+# Makefile to generate the MacPorts HTML guide and the man pages.
 # The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be installed.
 
-# If your macports isn't installed in /opt/local you have to change PREFIX
+# If your MacPorts isn't installed in /opt/local you have to change PREFIX
 # here.
 
 
-# Prefix of the macports installation.
+# Prefix of the MacPorts installation.
 PREFIX = /opt/local
 
 # Command abstraction variables.
 MKDIR    = /bin/mkdir
 CP       = /bin/cp
 RM       = /bin/rm
-LN	 = /bin/ln
+LN       = /bin/ln
 SED      = /usr/bin/sed
 TCLSH    = /usr/bin/tclsh
 XSLTPROC = $(PREFIX)/bin/xsltproc
@@ -33,20 +33,20 @@ MAN-RESULT         = $(MAN)/man/
 # Man temporary directory.
 MAN-TMP = $(MAN)/tmp
 
-# Path to the docbook xsl files.
+# Path to the DocBook XSL files.
 DOCBOOK         = $(PREFIX)/share/xsl/docbook-xsl
 GUIDE-XSL       = $(GUIDE)/resources/single-page.xsl
 GUIDE-XSL-CHUNK = $(GUIDE)/resources/chunk.xsl
 MAN-XSL         = $(MAN)/resources/macports.xsl
 
-# Docbook html stylesheet for the guide.
+# DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
 
 .PHONY: all guide man clean validate
 
 all: guide man
 
-# Generate the html guide using DocBook from the xml sources in $(GUIDE-SRC).
+# Generate the HTML guide using DocBook from the XML sources in $(GUIDE-SRC).
 guide:
 	$(MKDIR) -p $(GUIDE-RESULT)
 	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT)/$(STYLESHEET)
@@ -61,7 +61,7 @@ guide:
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE-RESULT)/index.html
 
-# Generate the chunked html guide with one section per file.
+# Generate the chunked HTML guide with one section per file.
 guide-chunked:
 	$(MKDIR) -p $(GUIDE-RESULT-CHUNK)
 	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE-RESULT-CHUNK)/$(STYLESHEET)
@@ -75,15 +75,15 @@ guide-chunked:
 	$(SED) -i "" -E \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE-RESULT-CHUNK)/*.html
-	# Add the table of contents to every junked html file.
+	# Add the table of contents to every junked HTML file.
 	# If someone knows a better way to do this please change it.
 	$(TCLSH) toc-for-chunked.tcl $(GUIDE-RESULT-CHUNK)
 
 
-# Generate the man pages using DocBook from the xml source in $(MAN-SRC).
+# Generate the man pages using DocBook from the XML source in $(MAN-SRC).
 # The portfile-*.xml and portgroup-*.xml files in $(GUIDE-SRC) are copied to
 # $(MAN-TMP) and modified (section -> refsection) so they can be used as man
-# xml source files and then xincluded in the real man xml files in $(MAN-SRC).
+# XML source files and then xincluded in the real man XML files in $(MAN-SRC).
 man: $(MAN-XSL)
 	$(MKDIR) -p $(MAN-RESULT)
 	$(MKDIR) -p $(MAN-TMP)
@@ -111,7 +111,7 @@ clean:
 	$(RM) -rf $(MAN-XSL)
 	$(RM) -f  guide.tmp.xml
 
-# Validate the xml files for the guide.
+# Validate the XML files for the guide.
 # These two steps are necessary as otherwise xmllint complains about missing
 # ids.
 validate:
