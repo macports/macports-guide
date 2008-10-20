@@ -536,9 +536,8 @@ variant sqlite description {Build sqlite support} {
       author so the modifications may be included in the next version of the
       application.</para>
 
-      <para>You should create one patch file for each file to be patched,
-      though it is permissible to use existing patches you find that patch
-      multiple files. Patchfile filenames should uniquely distinguish the file
+      <para>Generally speaking, you should create one patch file for each file
+      to be patched. Patchfile filenames should uniquely distinguish the file
       and generally be of the form
       <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;.diff</replaceable>,
       as shown in this example:
@@ -546,10 +545,24 @@ variant sqlite description {Build sqlite support} {
       apply with "patch -p0'' from the working source directory of the
       port.</para>
 
-      <para>If fixing an issues needs changes in multiple files all changes
-      should be stored in one patch file. The patch should then be named after
-      the issue which is fixed,
-      <filename>patch-</filename><replaceable>&lt;issue&gt;.diff</replaceable>.</para>
+      <para>You may use patch files that patch multiple files under these
+      conditions:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>You find existing patch files that do so</para>
+        </listitem>
+
+        <listitem>
+          <para>If fixing a particular problem or bug requires changes in
+          multiple files -in those cases the patch filename should reference
+          the problem or bug, for example:
+          <filename>patch-</filename><replaceable>&lt;destroot_variable_fix&gt;.diff</replaceable></para>
+        </listitem>
+      </itemizedlist>
+
+      <para>To create a patch to modify a single file, follow the steps
+      below.</para>
 
       <orderedlist>
         <listitem>
