@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-
 <section id="reference.tcl-extensions">
   <title>Tcl Extensions</title>
 
@@ -102,9 +101,8 @@
 
             <listitem>
               <para>Deletes each of the given files/directories. Behaves
-              similarly to file delete -force except that file delete
-              -force will fail to delete directories properly on 10.3
-              systems.</para>
+              similarly to file delete -force except that file delete -force
+              will fail to delete directories properly on 10.3 systems.</para>
             </listitem>
           </varlistentry>
 
@@ -131,8 +129,8 @@
       <term>xinstall</term>
 
       <listitem>
-        <para>xinstall copies files and creates directories; it is
-        intended to be compatible with install(1).</para>
+        <para>xinstall copies files and creates directories; it is intended to
+        be compatible with install(1).</para>
 
         <variablelist>
           <varlistentry>
@@ -157,8 +155,8 @@
             ...</replaceable>] <replaceable>directory</replaceable></term>
 
             <listitem>
-              <para>Change to <option>dir</option> and install file(s) to
-              a destination directory.</para>
+              <para>Change to <option>dir</option> and install file(s) to a
+              destination directory.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -227,21 +225,24 @@
       <term>reinplace</term>
 
       <listitem>
-        <para>Allows text specified by a regular expression to be replaced
-        by new text, in-place (the file will be updated itself, no need to
-        place output into a new file and rename).</para>
+        <para>Allows text specified by a regular expression to be replaced by
+        new text, in-place (the file will be updated itself, no need to place
+        output into a new file and rename).</para>
 
         <variablelist>
           <varlistentry>
             <term>reinplace [-E] [--] <replaceable>command</replaceable>
             <replaceable>file ...</replaceable></term>
+
             <listitem>
               <para>Replace text given by the regular expression portion of
               the command with the replacement text, in all files
               specified.</para>
+
               <para>Use -E to use the extended regular expression style (see
               re_format(7) for a description of the basic and extended
               styles)</para>
+
               <para>Use -- to end option processing and allow any further
               dashes not to be treated as options.</para>
             </listitem>
@@ -272,9 +273,8 @@
             [shell=<replaceable>shell</replaceable>]</term>
 
             <listitem>
-              <para>Add a new local user to the system with the specified
-              uid, gid, password, real name, home directory and login
-              shell.</para>
+              <para>Add a new local user to the system with the specified uid,
+              gid, password, real name, home directory and login shell.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -284,10 +284,10 @@
             <term>existsuser <replaceable>username</replaceable></term>
 
             <listitem>
-              <para>Check if a local user exists.  Returns the uid for
-              the given user, or 0 if the user wasn't found.  Note that 0
-              is a valid uid (root) so don't use this for the root user,
-              which should always exist anyway.</para>
+              <para>Check if a local user exists. Returns the uid for the
+              given user, or 0 if the user wasn't found. Checking for the root
+              user is not supported because its uid is 0, and it will always
+              exist anyway.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -311,8 +311,8 @@
             [users=<replaceable>users</replaceable>]</term>
 
             <listitem>
-              <para>Add a new local group to the system, with the
-              specified gid, password, real name, and with a list users as
+              <para>Add a new local group to the system, with the specified
+              gid, password, real name, and with a list users as
               members.</para>
             </listitem>
           </varlistentry>
@@ -323,8 +323,8 @@
             <term>existsgroup <replaceable>group</replaceable></term>
 
             <listitem>
-              <para>Check if a local group exists and return the
-              corresponding gid. This can be used with adduser:</para>
+              <para>Check if a local group exists and return the corresponding
+              gid. This can be used with adduser:</para>
 
               <programlisting>addgroup foo
 adduser foo gid=[existsgroup foo]</programlisting>
