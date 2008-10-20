@@ -550,7 +550,7 @@ variant sqlite description {Build sqlite support} {
 
       <itemizedlist>
         <listitem>
-          <para>You find existing patch files that do so</para>
+          <para>You find existing patch files that do so.</para>
         </listitem>
 
         <listitem>
