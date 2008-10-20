@@ -284,7 +284,10 @@
             <term>existsuser <replaceable>username</replaceable></term>
 
             <listitem>
-              <para>Check if a local user exists.</para>
+              <para>Check if a local user exists.  Returns the uid for
+              the given user, or 0 if the user wasn't found.  Note that 0
+              is a valid uid (root) so don't use this for the root user,
+              which should always exist anyway.</para>
             </listitem>
           </varlistentry>
         </variablelist>
