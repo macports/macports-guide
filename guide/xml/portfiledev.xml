@@ -621,7 +621,7 @@ variant sqlite description {Build sqlite support} {
           for development purposes, or the patch may be committed to the
           global MacPorts repository for distribution.</para>
 
-          <programlisting>patchfiles          patch-Makefile.in</programlisting>
+          <programlisting>patchfiles          patch-Makefile.in.diff</programlisting>
         </listitem>
       </orderedlist>
     </section>
