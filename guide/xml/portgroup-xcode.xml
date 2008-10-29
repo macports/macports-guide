@@ -2,24 +2,22 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <section id="reference.portgroup.xcode">
-
   <title>PortGroup xcode</title>
 
-  <para>PortGroup xcode allows for efficient porting of Xcode-based
-  opensource software. It handles configuration, build, and destroot phases.
-  It also defines some values for Xcode-based software. A minimum Portfile
-  using the xcode PortGroup class only defines the fetch and the checksum
-  phases.</para>
+  <para><code>PortGroup xcode</code> allows for efficient porting of
+  Xcode-based opensource software. A minimum Portfile for <code>PortGroup
+  xcode</code> uses defaults for the configuration, build, and destroot
+  phases. It also defines some values for Xcode-based software. </para>
 
-  <para>Using PortGroup xcode is a way to make your port able to tolerate
-  Xcode version updates because the PortGroup is tested against all
+  <para>Using <code>PortGroup xcode</code> is a way to make your port able to
+  tolerate Xcode version updates because the PortGroup is tested against all
   supported Mac OS X and Xcode versions.</para>
 
   <section id="reference.portgroup.xcode.keywords">
     <title>xcode PortGroup Specific Keywords</title>
 
-    <para>Portfiles using the xcode PortGroup allow for port authors to set
-    the following keywords in addition to the general Portfile
+    <para>Portfiles using <code>PortGroup xcode</code> allow for port authors
+    to set the following keywords in addition to the general Portfile
     keywords.</para>
 
     <variablelist>
@@ -27,13 +25,18 @@
         <term>xcode.project</term>
 
         <listitem>
-          <para>The path relative to ${build.dir} and ${destroot.dir} of the
-          Xcode project. If unset, let xcode tool figure it out. It usually
+          <para>The path relative to <varname>${build.dir}</varname> and
+          <varname>${destroot.dir}</varname> of the Xcode project. If unset,
+          let Xcode Tools should determine it automatically. It usually
           succeeds if there is a single project in the directory.</para>
 
           <itemizedlist>
             <listitem>
               <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: none</para>
             </listitem>
 
             <listitem>
@@ -57,7 +60,7 @@
             </listitem>
 
             <listitem>
-              <para>Default: Deployment</para>
+              <para>Default: <option>Deployment</option></para>
             </listitem>
 
             <listitem>
@@ -73,12 +76,16 @@
         <term>xcode.target</term>
 
         <listitem>
-          <para>If present, it overrides build.target and
-          destroot.target.</para>
+          <para>If present, it overrides <varname>build.target</varname> and
+          <varname>destroot.target</varname>.</para>
 
           <itemizedlist>
             <listitem>
               <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: none</para>
             </listitem>
 
             <listitem>
@@ -94,12 +101,16 @@
         <term>xcode.build.settings</term>
 
         <listitem>
-          <para>Additional settings passed to the xcode build tool during
-          the build phase. These settings should be in the X=Y form.</para>
+          <para>Additional settings passed to the xcode build tool during the
+          build phase. These settings should be in the X=Y form.</para>
 
           <itemizedlist>
             <listitem>
               <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: none</para>
             </listitem>
 
             <listitem>
@@ -117,7 +128,7 @@
         <listitem>
           <para>Type of project that will be installed. This tells the xcode
           PortGroup how to destroot the project. Correct values are
-          application and framework.</para>
+          <option>application</option> and <option>framework</option>.</para>
 
           <itemizedlist>
             <listitem>
@@ -125,7 +136,7 @@
             </listitem>
 
             <listitem>
-              <para>Default: application</para>
+              <para>Default: <option>application</option></para>
             </listitem>
 
             <listitem>
@@ -151,7 +162,7 @@
             <listitem>
               <para>Default: <filename>/Library/Frameworks</filename> or
               <filename>/Applications/MacPorts</filename> depending on
-              xcode.destroot.type.</para>
+              <code>xcode.destroot.type</code>.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -161,8 +172,33 @@
         <term>xcode.destroot.settings</term>
 
         <listitem>
-          <para>Additional settings passed to the xcode build tool during
-          the destroot phase. These settings should be in the X=Y
+          <para>Additional settings passed to the xcode build tool during the
+          destroot phase. These settings should be in the X=Y form.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>xcode.destroot.settings SKIP_INSTALL=NO</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>xcode.universal.settings</term>
+
+        <listitem>
+          <para>Settings passed to the xcode build tool when the +universal
+          variant is selected. These settings should be in the X=Y
           form.</para>
 
           <itemizedlist>
@@ -171,9 +207,28 @@
             </listitem>
 
             <listitem>
-              <para>Example:</para>
+              <para>Default: <code>ARCHS="${universal_archs}"
+              MACOSX_DEPLOYMENT_TARGET=${universal_target}</code></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
 
-              <programlisting>xcode.destroot.settings SKIP_INSTALL=NO</programlisting>
+      <varlistentry>
+        <term>xcode.universal.sdk</term>
+
+        <listitem>
+          <para>SDK to use when the +universal variant is selected. The
+          argument may be an absolute path to an SDK, or the canonical name of
+          an SDK.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: <code>${universal_sysroot}</code></para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -217,8 +272,8 @@
   <section id="reference.portgroup.xcode.phase-keywords">
     <title>Portfile-Phase Keywords Affecting the xcode PortGroup</title>
 
-    <para>The following Portfile phase keywords affect the xcode PortGroup
-    in a unique way. In most cases, you will not need to set any of these
+    <para>The following Portfile phase keywords affect the xcode PortGroup in
+    a unique way. In most cases, you will not need to set any of these
     keywords in the Portfile. See <citerefentry>
         <refentrytitle>portfile-phase</refentrytitle>
 
@@ -240,7 +295,8 @@
         <listitem>
           <para>Default: ""</para>
 
-          <para>This variable will be ignored if xcode.target is set.</para>
+          <para>This variable will be ignored if
+          <varname>xcode.target</varname> is set.</para>
         </listitem>
       </varlistentry>
 
@@ -266,10 +322,10 @@
         <listitem>
           <para>Default: ""</para>
 
-          <para>This variable will be ignored if xcode.target is set.</para>
+          <para>This variable will be ignored if
+          <varname>xcode.target</varname> is set.</para>
         </listitem>
       </varlistentry>
     </variablelist>
   </section>
-
 </section>
