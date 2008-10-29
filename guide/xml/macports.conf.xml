@@ -134,7 +134,8 @@
         <listitem>
           <para>Directory to install frameworks installed by ports.</para>
 
-          <para>Default: <filename>/Library/Frameworks</filename></para>
+          <para>Default:
+          <filename>${prefix}/Library/Frameworks</filename></para>
         </listitem>
       </varlistentry>
 
@@ -387,8 +388,8 @@
     <title>sources.conf</title>
 
     <para>This file enables rsync synchronization of the default ports tree
-    with the MacPorts rsync server when either of the commands "port
-    selfupdate" or "port sync" are run.</para>
+    with the MacPorts rsync server when either of the commands <command>port
+    selfupdate</command> or <command>port sync</command> are run.</para>
 
     <para>Default:
     <filename>rsync://rsync.macports.org/release/ports/</filename></para>
