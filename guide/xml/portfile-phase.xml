@@ -819,9 +819,8 @@ svn.tag             2100</programlisting>
       this section. However, fetching via Git may cause non-reproducible
       builds, so it is strongly discouraged.</para>
 
-      <para>You have to set <link
-      linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
-      to <option>git</option> to fetch from git.</para>
+      <para>You have to set <varname>fetch.type</varname> to
+      <option>git</option> to fetch from git.</para>
 
       <variablelist>
         <varlistentry>
