@@ -72,7 +72,7 @@
         <term>build</term>
 
         <listitem>
-          <para>Execute the command <command>make</command> in
+          <para>Execute <varname>${build.cmd}</varname> in
           <varname>${worksrcpath}</varname>.</para>
         </listitem>
       </varlistentry>
