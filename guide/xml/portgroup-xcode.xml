@@ -7,7 +7,7 @@
   <para><code>PortGroup xcode</code> allows for efficient porting of
   Xcode-based opensource software. A minimum Portfile for <code>PortGroup
   xcode</code> uses defaults for the configuration, build, and destroot
-  phases. It also defines some values for Xcode-based software. </para>
+  phases. It also defines some values for Xcode-based software.</para>
 
   <para>Using <code>PortGroup xcode</code> is a way to make your port able to
   tolerate Xcode version updates because the PortGroup is tested against all
@@ -160,8 +160,8 @@
             </listitem>
 
             <listitem>
-              <para>Default: <filename>/Library/Frameworks</filename> or
-              <filename>/Applications/MacPorts</filename> depending on
+              <para>Default: <filename>${prefix}/Library/Frameworks</filename>
+              or <filename>/Applications/MacPorts</filename> depending on
               <code>xcode.destroot.type</code>.</para>
             </listitem>
           </itemizedlist>
