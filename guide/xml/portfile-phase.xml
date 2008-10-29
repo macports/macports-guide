@@ -644,9 +644,9 @@ svn.tag             2100</programlisting>
       in this section. However, fetching via CVS may cause non-reproducible
       builds, so it is strongly discouraged.</para>
 
-      <para>You have to set <link
-      linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
-      to <option>cvs</option> to fetch from CVS.</para>
+      <para>The <option>cvs</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch source code from a CVS repository.</para>
 
       <variablelist>
         <varlistentry>
@@ -760,9 +760,9 @@ svn.tag             2100</programlisting>
       the keywords in this section. However, fetching via Subversion may cause
       non-reproducible builds, so it is strongly discouraged.</para>
 
-      <para>You have to set <link
-      linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
-      to <option>svn</option> to fetch from svn.</para>
+      <para>The <option>svn</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch source code from an svn repository.</para>
 
       <variablelist>
         <varlistentry>
@@ -819,8 +819,9 @@ svn.tag             2100</programlisting>
       this section. However, fetching via Git may cause non-reproducible
       builds, so it is strongly discouraged.</para>
 
-      <para>You have to set <varname>fetch.type</varname> to
-      <option>git</option> to fetch from git.</para>
+      <para>The <option>git</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch source code from a git repository.</para>
 
       <variablelist>
         <varlistentry>
@@ -879,9 +880,9 @@ svn.tag             2100</programlisting>
       keywords in this section. However, fetching via Mercurial may cause
       non-reproducible builds, so it is strongly discouraged.</para>
 
-      <para>You have to set <link
-      linkend="reference.phases.fetch.advanced.fetch-type"><varname>fetch.type</varname></link>
-      to <option>hg</option> to fetch from Mercurial.</para>
+      <para>The <option>hg</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch fource code from a Mercurial repository.</para>
 
       <variablelist>
         <varlistentry>
