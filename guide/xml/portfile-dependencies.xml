@@ -108,7 +108,7 @@ depends_run         port:apache2 port:php5</programlisting>
 
 depends_build       bin:glibtool:libtool
 
-depends_run         path:${prefix}/lib/libltdl.a:libtool</programlisting>
+depends_run         path:lib/libltdl.a:libtool</programlisting>
 
     <note>
       <para>When using lib dependencies, only the library name is specified
