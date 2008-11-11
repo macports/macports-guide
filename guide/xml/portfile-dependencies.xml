@@ -100,9 +100,12 @@ depends_run         port:apache2 port:php5</programlisting>
     programs, <option>lib</option> for libraries, and <option>path</option>
     for any installed file. File dependencies are specifed in the form:
     <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filename&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
-    Note that the <replaceable>&lt;port&gt;</replaceable> specified is only
-    installed if the specified library, binary, or file is not found. See the
-    examples below:</para>
+    <replaceable>&lt;filename&gt;</replaceable> is relative to
+    <filename>${prefix}</filename>.</para>
+
+    <para>Note that the <replaceable>&lt;port&gt;</replaceable> specified is
+    only installed if the specified library, binary, or file is not found. See
+    the examples below:</para>
 
     <programlisting>depends_lib         lib:libX11.6:xorg
 
