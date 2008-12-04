@@ -365,8 +365,8 @@
 
         <listitem>
           <para>Create patch file(s) as necessary, attach them to a Trac
-          ticket, and assign the ticket to the maintainer and Cc him or
-          her.</para>
+          ticket, and assign the ticket to the maintainer (or Cc him or
+          her, if you are unable to assign tickets).</para>
         </listitem>
 
         <listitem>
