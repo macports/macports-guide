@@ -177,7 +177,7 @@
           <para>Registry management routines.</para>
 
           <para>Manages the rudimentary port registry in
-          <filename>${prefix}/var/mports/receipts/</filename>.</para>
+          <filename>${prefix}/var/macports/receipts/</filename>.</para>
 
           <itemizedlist>
             <listitem>
