@@ -95,14 +95,17 @@
 
     <orderedlist>
       <listitem>
-        <para>Download and install the latest version of <ulink
-        url="http://developer.apple.com/tools/xcode/">Xcode Tools</ulink> from
-        Apple's developer site—do not install it from a Mac OS X install disk
-        unless you've checked for the latest version on Apple's site; older
-        versions of Xcode Tools often cause port install failures. The latest
-        versions at the time of this writing are Xcode 3.1 for Mac OS X 10.5
-        Leopard, Xcode 2.5 for Mac OS X 10.4 Tiger, and Xcode 1.5 for Mac OS X
-        10.3 Panther.</para>
+        <para>Always make sure to install the latest version of Xcode Tools
+        for your Mac OS X release. Apple's Developer Connection site has a
+        link for the <ulink
+        url="http://developer.apple.com/technology/xcode.html">latest version
+        of Xcode Tools</ulink> for the currently shipping release of Mac OS X,
+        because earlier versions of Xcode Tools may cause port install
+        failures. To download the latest Xcode Tools version for Mac OS X 10.4
+        (2.5) or 10.3 (1.5), see the Developer Connection links <ulink
+        url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">here</ulink>
+        and <ulink url="http://connect.apple.com/">here</ulink>
+        respectively.</para>
       </listitem>
 
       <listitem>
