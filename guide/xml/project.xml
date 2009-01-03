@@ -4,32 +4,83 @@
 <chapter id="project">
   <title>MacPorts Project</title>
 
-  <para>The MacPorts Project uses a system called <ulink
-  url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
-  and enhancement requests. Trac also provides an interface to browse the
-  <ulink url="http://trac.macports.org/browser/">MacPorts
-  Subversion repository</ulink>. Though anyone may search Trac for tickets,
-  you must <ulink
-  url="https://trac.macports.org/auth/register/">register</ulink> for a Trac
-  account to create tickets.</para>
-
   <section id="project.tickets">
-    <title>Creating Trac Tickets</title>
+    <title>Using Trac for tickets</title>
 
-    <para>Once you are logged into Trac, you may click <ulink
-    url="http://trac.macports.org/newticket">New Ticket</ulink> and you
-    will be presented with a new ticket window shown in the graphic below.
-    Follow the Trac ticket guidelines below to fill out the form.</para>
+    <para>The MacPorts Project uses a system called <ulink
+    url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
+    and enhancement requests. Trac also provides an interface to browse the
+    <ulink url="http://trac.macports.org/browser/">MacPorts
+    Subversion repository</ulink>. Though anyone may search Trac for tickets,
+    you must <ulink
+    url="https://trac.macports.org/auth/register/">register</ulink> for a Trac
+    account to create tickets.</para>
 
-    <screenshot>
-      <screeninfo>A new Trac ticket</screeninfo>
+    <section id="project.tickets.prerequisites">
+      <title>Before you file a new ticket</title>
 
-      <mediaobject>
-        <imageobject>
-          <imagedata fileref="trac-default.png" />
-        </imageobject>
-      </mediaobject>
-    </screenshot>
+      <itemizedlist>
+        <listitem>
+          <para>Check the Problem HotList</para>
+          <para>
+            The <ulink
+              url="http://trac.macports.org/wiki/ProblemHotlist">Problem
+              Hotlist</ulink> contains possible solutions to problems that
+            affect many MacPorts users. If a solution to your problem listed
+            there works, don't file a ticket.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Search to see if a Trac ticket has already been filed</para>
+          <para>
+            Avoid filing duplicate bugs. Search for duplicates by:
+            <itemizedlist>
+              <listitem>using the search bar that appears on each page</listitem>
+              <listitem>using <ulink url="http://trac.macports.org/projects/macports/search">the search page</ulink></listitem>
+              <listitem>browsing the list of <ulink url="http://trac.macports.org/report">categorised reports</ulink></listitem>
+              <listitem>making an advanced search by constructing a <ulink url="http://trac.macports.org/query">custom query</ulink></listitem>
+            </itemizedlist>
+          </para>
+        </listitem>
+        <listitem>
+          <para>Is the problem an application error and not related to compiling and installing?</para>
+          <para>
+            In general, application bugs should be reported to the developers of the app
+            ("upstream"), not MacPorts. An application bug that affects a large number of
+            MacPorts users might merit a MacPorts bug for informational purposes only, but
+            this should be done sparingly.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Is the problem with a 'port upgrade' operation?</para>
+          <para>
+            If so, try a 'port uninstall <replaceable>foo</replaceable>' and
+            then reinstall. You might also want to run 'port -fR upgrade
+            <replaceable>foo</replaceable>' to rebuild ports depending upon
+            port <replaceable>foo</replaceable>.
+          </para>
+        </listitem>
+      </itemizedlist>
+    </section>
+
+    <section id="project.tickets.creating">
+      <title>Creating Trac Tickets</title>
+
+      <para>Once you are logged into Trac, you may click <ulink
+      url="http://trac.macports.org/newticket">New Ticket</ulink> and you
+      will be presented with a new ticket window shown in the graphic below.
+      Follow the Trac ticket guidelines below to fill out the form.</para>
+
+      <screenshot>
+        <screeninfo>A new Trac ticket</screeninfo>
+
+        <mediaobject>
+          <imageobject>
+            <imagedata fileref="trac-default.png" />
+          </imageobject>
+        </mediaobject>
+      </screenshot>
+    </section>
 
     <section id="project.tickets.guidelines">
       <title>Trac Ticket Guidelines</title>
