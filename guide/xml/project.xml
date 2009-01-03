@@ -91,7 +91,7 @@
 
       <itemizedlist>
         <listitem>
-          <para><guilabel>Short Summary:</guilabel>
+          <para><guilabel>Summary:</guilabel>
           <replaceable>[port]</replaceable>
           <replaceable>[version]</replaceable> <replaceable>[concise
           description]</replaceable></para>
@@ -102,6 +102,28 @@
               failure"</para>
             </listitem>
           </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><guilabel>Description:</guilabel> All details that might
+          be relevant to someone reading the ticket. <ulink
+          url="http://trac.macports.org/wiki/WikiFormatting">Wiki
+          formatting</ulink> or attached log files should be used for large
+          text blocks. If you want to post a build log make sure you use
+          <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
+          log or it could break the page layout. Example:</para>
+
+          <literallayout>
+{{{
+<replaceable>your build log here</replaceable>
+}}}
+          </literallayout>
+
+          <para>Submitters are advised to trim pastes and logs of any kind to what's
+          really relevant to the report, as otherwise overly large submissions that
+          might contain redundant and/or unnecessary information might become unmanageable.
+          </para>
+
         </listitem>
 
         <listitem>
@@ -120,28 +142,6 @@
               intended purpose.</para>
             </listitem>
           </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para><guilabel>Full Description:</guilabel> All details that might
-          be relevant to someone reading the ticket. <ulink
-          url="http://trac.macports.org/wiki/WikiFormatting">Wiki
-          formatting</ulink> or attached log files should be used for large
-          text blocks. If you want to post a build log make sure you use
-          <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
-          log or it could break the page layout. Example:</para>
-
-          <literallayout>
-{{{
-<replaceable>your build log here</replaceable>
-}}}
-          </literallayout>
-
-	  <para>Submitters are advised to trim pastes and logs of any kind to what's
-          really relevant to the report, as otherwise overly large submissions that
-          might contain redundant and/or unnecessary information might become unmanageable.
-          </para>
-
         </listitem>
 
         <listitem>
@@ -169,6 +169,62 @@
             <listitem>
               <para><guimenu>Not set</guimenu> - Anything that doesn't fit the
               categories high, normal, or low.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+
+        <listitem>
+          <para><guilabel>Milestone:</guilabel> This is a ticket category that
+          allows for search and sorting tickets efficiently.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><guimenu>MacPorts x.y.z</guimenu> - for base-level
+              tickets which have been assigned to a particular future
+              release of MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>MacPorts Future</guimenu> - for base-level
+              tickets which are still under consideration and have not
+              yet been assigned to a specific future release of
+              MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Port Bugs</guimenu> - for tickets reporting or
+              fixing bugs in ports provided by MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Port Enhancements</guimenu> - for submissions
+              providing enhancements to ports provided by MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Port Requests</guimenu> - for requests for ports
+              to be added to MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Port Submissions</guimenu> - for submissions that
+              add a port to MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Port Updates</guimenu> - for submissions that
+              update a port provided by MacPorts.</para>
+            </listitem>
+
+            <listitem>
+              <para><guimenu>Website &amp; Documentation</guimenu> - for
+              tickets relating to the documentation for MacPorts, including
+              the MacPorts guide, Wiki, man pages and the website.</para>
+            </listitem>
+
+            <listitem>
+              <para>Blank - For unclassified tickets that don't fit into any
+              of the provided milestones.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -212,6 +268,11 @@
         </listitem>
 
         <listitem>
+          <para><guilabel>Version:</guilabel> Select the MacPorts version you
+          are using when it is applicable.</para>
+        </listitem>
+
+        <listitem>
           <para><guilabel>Keywords:</guilabel> Type any keywords that might
           help when searching for tickets (portname, type of problem,
           etc).</para>
@@ -226,75 +287,9 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Milestone:</guilabel> This is a ticket category that
-          allows for search and sorting tickets efficiently.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para><guimenu>MacPorts base enhancements</guimenu> - for
-              tickets requesting or providing improvements to the
-              functionality of the MacPorts system.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>MacPorts base bugs</guimenu> - for tickets
-              reporting or fixing bugs in the MacPorts system.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Bugs</guimenu> - for tickets reporting or
-              fixing bugs in ports provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Enhancements</guimenu> - for submissions
-              providing enhancements to ports provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Requests</guimenu> - for requests for ports
-              to be added to MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Submissions</guimenu> - for submissions that
-              add a port to MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Updates</guimenu> - for submissions that
-              update a port provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Website &amp; Documentation</guimenu> - for
-              tickets relating to the documentation for MacPorts, including
-              the MacPorts guide, Wiki, man pages and the website.</para>
-            </listitem>
-
-            <listitem>
-              <para>Blank - For unclassified tickets that don't fit into any
-              of the provided milestones.</para>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-
-        <listitem>
-          <para><guilabel>Version:</guilabel> Select the MacPorts version you
-          are using when it is applicable.</para>
-        </listitem>
-
-        <listitem>
-          <para><guilabel>Assign To:</guilabel> For tickets on ports, enter
-          the email address of the port's maintainer (use <command>port info
-          &lt;portname&gt;</command> to find this). If multiple maintainers
-          are listed, enter the first maintainer's email address here and
-          enter the remainining maintainers' email addresses in the
-          <guimenu>Cc</guimenu> field. Exclude the email address
-          <email>openmaintainer@macports.org</email> if it appears.
-          If the maintainer's email address is
-          <email>nomaintainer@macports.org</email>, leave the field
-          blank.</para>
+          <para><guilabel>Port:</guilabel> For tickets on ports, enter the
+          name of the port (or ports, space-separated, when multiple are
+          affected).</para>
         </listitem>
 
         <listitem>
