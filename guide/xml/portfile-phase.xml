@@ -923,9 +923,9 @@ svn.tag             2100</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>hg.tag                 v1.3</programlisting>
+                <programlisting>hg.tag              v1.3</programlisting>
 
-                <programlisting>hg.tag                 ceb884843737</programlisting>
+                <programlisting>hg.tag              ceb884843737</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
