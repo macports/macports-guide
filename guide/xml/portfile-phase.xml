@@ -683,7 +683,7 @@ svn.tag             2100</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>TODO: add example</programlisting>
+                <programlisting>cvs.password        nice-password</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
