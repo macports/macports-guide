@@ -1012,7 +1012,7 @@ svn.tag             2100</programlisting>
           <para>This keyword is for downloads that are tarred and bzipped.
           When invoked, it automatically sets:</para>
 
-          <literallayout>extract.suffix = .tar.bz
+          <literallayout>extract.suffix = .tar.bz2
 extract.cmd    = bzip
 
 </literallayout>
