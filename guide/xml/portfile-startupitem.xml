@@ -156,15 +156,16 @@
     <emphasis>indirectly</emphasis> via a script, and therefore it
     automatically knows how to monitor a daemon process and restart it if it
     dies. Daemons used with <quote>executable</quote> StartupItems may be
-    programs or scripts (shell, perl, python, etc.), but when a script is used
-    the script <emphasis>itself</emphasis> must be the daemon, rather than
-    merely what launches the daemon (for the latter,<quote>script</quote>
-    StartupItems are to be used).</para>
+    programs or scripts (shell, perl, python, etc.) as long as the script
+    <emphasis>itself</emphasis> is the daemon, rather than merely what
+    launches the daemon. In the latter case <quote>script</quote> StartupItems
+    are to be used.</para>
 
     <note>
-      <para>For a given port, the <quote>executable</quote> StartupItem
-      keyword may not be used with any keywords in the <quote>script</quote>
-      StartupItem category.</para>
+      <para>Since <quote>script</quote> and <quote>executable</quote> are
+      mutually exclusive StartupItem types, the
+      <code>startupitem.executable</code> keyword may not be used in a
+      Portfile that uses <quote>script</quote> StartupItem keywords.</para>
     </note>
 
     <variablelist>
@@ -208,7 +209,7 @@
 
             <programlisting>startupitem.executable    ${prefix}/sbin/vm-pop3d -d 10 -t 600</programlisting>
 
-            <para> generates a .plist file with these tags:</para>
+            <para>generates a .plist file with these tags:</para>
 
             <programlisting>&lt;key&gt;ProgramArguments&lt;/key&gt;
 &lt;array&gt;
@@ -231,12 +232,31 @@
   <section id="reference.startupitems.script">
     <title>Script StartupItems</title>
 
-    <para>StartupItems of type <quote>script</quote> use
-    <command>daemondo</command> to launch a daemon
-    <emphasis>indirectly</emphasis> via a startup script. A typical snippet of
-    a startup script that may be used with a <quote>script</quote> StartupItem
-    is shown below. Notice that the script is not a daemon; rather the script
-    indirectly launches the vm-pop3d daemon.</para>
+    <para>StartupItems of type <quote>script</quote> create a wrapper during
+    port installation for <command>daemondo</command> that that will be used
+    to launch a daemon startup script present in an application's source
+    distribution (MacPorts does not create daemon startup scripts) for daemons
+    that require a script.</para>
+
+    <note>
+      <para><quote>Executable</quote> StartupItems are the preferred type
+      since <quote>script</quote> StartupItems launch daemons
+      <emphasis>indirectly</emphasis>, and this requires that port authors use
+      the <code>startupitem.pidfile</code> keyword so that
+      <command>daemondo</command> can check this pid file to see is a daemon
+      process has died and restart it. Any time a script (or an executable)
+      itself serves as a daemon, use the <quote>executable</quote> StartupItem
+      type so daemondo will launch it directly and track its health
+      automatically. Additionally, since <quote>script</quote> and
+      <quote>executable</quote> are mutually exclusive StartupItem types, the
+      <code>startupitem.executable</code> keyword may not be used in a
+      Portfile that uses <quote>script</quote> StartupItem keywords.</para>
+    </note>
+
+    <para>A typical snippet of a startup script that may be used with a
+    <quote>script</quote> StartupItem is shown below. Notice that the script
+    is not a daemon; rather the script indirectly launches the vm-pop3d
+    daemon.</para>
 
     <programlisting>#!/bin/sh
 
@@ -246,19 +266,6 @@ case "$1" in
         /opt/local/sbin/vm-pop3d -d 10 -t 600
 
 [... trimmed ...]</programlisting>
-
-    <para>But if a script itself is a daemon, use the
-    <quote>executable</quote> StartupItem type since that way it will be
-    launched directly and its health tracked automatically. When using
-    <quote>script</quote> StartupItems, the <code>startupitem.pidfile</code>
-    keyword must be used if you want <command>daemondo</command> to monitor a
-    daemon process and restart it if it dies.</para>
-
-    <note>
-      <para>For a given port, StartupItem keywords in category
-      <quote>script</quote> may not be used with an <quote>executable</quote>
-      StartupItem keyword.</para>
-    </note>
 
     <variablelist>
       <varlistentry>
