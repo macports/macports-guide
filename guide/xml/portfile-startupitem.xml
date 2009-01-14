@@ -165,7 +165,9 @@
       <para>Since <quote>script</quote> and <quote>executable</quote> are
       mutually exclusive StartupItem types, the
       <code>startupitem.executable</code> keyword may not be used in a
-      Portfile that uses <quote>script</quote> StartupItem keywords.</para>
+      Portfile that uses any keywords listed in the <link
+      linkend="reference.startupitems.script">Script StartupItems
+      section</link>.</para>
     </note>
 
     <variablelist>
@@ -182,10 +184,10 @@
             controlling tty before sending themselves to the background, thus
             making themselves a child of the original process. A daemon to be
             started with <code>startupitem.executable</code> must not be
-            allowed to do this (daemondo will think the process has died and
-            start another instance); this can usually be turned off with a
-            switch so the daemon does not detach itself (runs as a foreground
-            process).</para>
+            allowed to do this or daemondo will think the process has died and
+            start multiple instances. Often daemons have a command switch to
+            run in the foreground, and this method should be used for daemons
+            that detach.</para>
           </note>
 
           <itemizedlist>
