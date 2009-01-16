@@ -91,18 +91,24 @@
   <section id="installing.xcode">
     <title>Install Xcode Tools</title>
 
-    <para>To install Xcode Tools and the X11 SDK, follow these steps.</para>
+    <para>To install Xcode Tools and the X11 SDK, follow the steps
+    below.</para>
+
+    <note>
+      <para>Always make sure to install the latest available version of Xcode
+      Tools for your Mac OS X release because using earlier versions of Xcode
+      Tools may cause port install failures. Also note that Xcode Tools are
+      not updated via Mac OS X's Software Update utility.</para>
+    </note>
 
     <orderedlist>
       <listitem>
-        <para>Always make sure to install the latest version of Xcode Tools
-        for your Mac OS X release because using earlier versions of Xcode
-        Tools may cause port install failures. Apple's Developer Connection
-        site has a link for the <ulink
+        <para>Download the <ulink
         url="http://developer.apple.com/technology/xcode.html">latest version
-        of Xcode Tools</ulink> for the currently shipping release of Mac OS X.
-        To download the latest Xcode Tools version for Mac OS X 10.4 (v2.5) or
-        10.3 (v1.5), see the Developer Connection links <ulink
+        of Xcode Tools</ulink> if you have the currently shipping release of
+        Mac OS X. If you have an earlier release of Mac OS X, you may download
+        the latest version of Xcode Tools for OS X 10.4 (v2.5) or 10.3 (v1.5)
+        <ulink
         url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">here</ulink>
         and <ulink url="http://connect.apple.com/">here</ulink>
         respectively.</para>
@@ -123,11 +129,6 @@
         the X11 SDK.</para>
       </listitem>
     </orderedlist>
-
-    <note>
-      <para>Xcode Tools are not updated via Mac OS X's Software Update
-      utility.</para>
-    </note>
   </section>
 
   <section id="installing.macports">
