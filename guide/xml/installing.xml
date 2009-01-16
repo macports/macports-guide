@@ -96,13 +96,13 @@
     <orderedlist>
       <listitem>
         <para>Always make sure to install the latest version of Xcode Tools
-        for your Mac OS X release. Apple's Developer Connection site has a
-        link for the <ulink
+        for your Mac OS X release because using earlier versions of Xcode
+        Tools may cause port install failures. Apple's Developer Connection
+        site has a link for the <ulink
         url="http://developer.apple.com/technology/xcode.html">latest version
-        of Xcode Tools</ulink> for the currently shipping release of Mac OS X,
-        because earlier versions of Xcode Tools may cause port install
-        failures. To download the latest Xcode Tools version for Mac OS X 10.4
-        (2.5) or 10.3 (1.5), see the Developer Connection links <ulink
+        of Xcode Tools</ulink> for the currently shipping release of Mac OS X.
+        To download the latest Xcode Tools version for Mac OS X 10.4 (v2.5) or
+        10.3 (v1.5), see the Developer Connection links <ulink
         url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">here</ulink>
         and <ulink url="http://connect.apple.com/">here</ulink>
         respectively.</para>
@@ -205,129 +205,138 @@
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
         </listitem>
       </orderedlist>
-    
-      </section>
+    </section>
 
-      <section id="installing.macports.subversion">
-        <title>Subversion Install</title>
+    <section id="installing.macports.subversion">
+      <title>Subversion Install</title>
 
-        <para>
-          If you installed MacPorts using the package installer, skip this                                                   
-          section.
-        </para>
+      <para>If you installed MacPorts using the package installer, skip this
+      section.</para>
 
-        <para>
-          There are times when some may want to run MacPorts from a version newer 
-          than the current stable release. Maybe there's a new feature that you'd 
-          like to use, or it fixes an issue you've encountered, or you just like 
-          to be on the cutting edge. These steps explain how to run completely from trunk,
-          using only Subversion to keep MacPorts up to date.
-        </para>
+      <para>There are times when some may want to run MacPorts from a version
+      newer than the current stable release. Maybe there's a new feature that
+      you'd like to use, or it fixes an issue you've encountered, or you just
+      like to be on the cutting edge. These steps explain how to run
+      completely from trunk, using only Subversion to keep MacPorts up to
+      date.</para>
 
-        <orderedlist>
-          <listitem>
-            <para>Check out MacPorts source</para>
-            <para>
-              Pick a location to store a working copy of the MacPorts code. For this example, 
-              <filename>/opt/mports</filename> will be used, but you can put the source anywhere.
-              This example will create <filename>/opt/mports/trunk</filename> containing 
-              everything needed for MacPorts.
-            </para>
-            <programlisting><prompt>%%</prompt> <userinput>mkdir -p /opt/mports</userinput>
+      <orderedlist>
+        <listitem>
+          <para>Check out MacPorts source</para>
+
+          <para>Pick a location to store a working copy of the MacPorts code.
+          For this example, <filename>/opt/mports</filename> will be used, but
+          you can put the source anywhere. This example will create
+          <filename>/opt/mports/trunk</filename> containing everything needed
+          for MacPorts.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>mkdir -p /opt/mports</userinput>
 <prompt>%%</prompt> <userinput>cd /opt/mports</userinput>
 <prompt>%%</prompt> <userinput>svn checkout http://svn.macports.org/repository/macports/trunk</userinput></programlisting>
-            <note>
-              You only really need the base subdirectory to run MacPorts, so you can avoid checking out 
-              the rest if you don't want to use a Subversion-based ports tree (see Step 3 below). To just get
-              the base directory, append <filename>/base</filename> to the end of the svn checkout command
-              above. The resulting directory will then be <filename>/opt/mports/base</filename>
-            </note>
-          </listitem>
 
-          <listitem>
-            <para>Build and Install MacPorts</para>
-	    <para>
-              MacPorts uses autoconf and makefiles for installation. These commands will build
-              and install MacPorts to <filename>/opt/local</filename>. You can add the 
-              <option>--prefix</option> option to <filename>./configure</filename> to relocate 
-              MacPorts to another directory if needed.
-            </para>
-            <programlisting><prompt>%%</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
+          <note>
+             You only really need the base subdirectory to run MacPorts, so you can avoid checking out the rest if you don't want to use a Subversion-based ports tree (see Step 3 below). To just get the base directory, append 
+
+            <filename>/base</filename>
+
+             to the end of the svn checkout command above. The resulting directory will then be 
+
+            <filename>/opt/mports/base</filename>
+
+             
+          </note>
+        </listitem>
+
+        <listitem>
+          <para>Build and Install MacPorts</para>
+
+          <para>MacPorts uses autoconf and makefiles for installation. These
+          commands will build and install MacPorts to
+          <filename>/opt/local</filename>. You can add the
+          <option>--prefix</option> option to <filename>./configure</filename>
+          to relocate MacPorts to another directory if needed.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
 <prompt>%%</prompt> <userinput>./configure --enable-readline</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 <prompt>%%</prompt> <userinput>make distclean</userinput></programlisting>
-          </listitem>
+        </listitem>
 
-          <listitem>
-	    <para>(Optional) Configure MacPorts to use port information from Subversion</para>
-            <para>
-              This step is useful if you want to do port development.
-              Open <filename>/opt/local/etc/macports/sources.conf</filename> in a text editor. 
-              The last line which should look like this:
-            </para>
-	    <programlisting>rsync://rsync.macports.org/release/ports/</programlisting>
-	    <para>Change it to point to the working copy you checked out:</para>	    
-	    <programlisting>file:///opt/mports/trunk/dports</programlisting>
-	    <para>Now MacPorts will look for portfiles in the working copy.</para>
-          </listitem>
+        <listitem>
+          <para>(Optional) Configure MacPorts to use port information from
+          Subversion</para>
 
-          <listitem>
-	    <para>Environment</para>
-	    <para>
-              You should setup your PATH and other environment options according to
-              the <link linkend="installing.shell">following section</link>.
-            </para>
-          </listitem>
-        </orderedlist>
-      </section>
+          <para>This step is useful if you want to do port development. Open
+          <filename>/opt/local/etc/macports/sources.conf</filename> in a text
+          editor. The last line which should look like this:</para>
 
-      <section id="installing.macports.source.multiple">
-        <title>Install Multiple MacPorts Copies</title>
+          <programlisting>rsync://rsync.macports.org/release/ports/</programlisting>
 
-        <para>Occasionally a MacPorts developer may wish to install more than
-        one MacPorts instance on the same host. Only one copy of MacPorts may
-        use the default Tcl library path <filename>/Library/Tcl/</filename>,
-        so for additional installations use the option
-        <option>--with-tclpackage</option> as shown below and substitute
-        NEW_TCL_PACKAGE with any empty directory, for example
-        <filename>/Library/Tcl/macports-new/</filename>.</para>
+          <para>Change it to point to the working copy you checked out:</para>
 
-        <note>
-          <para>The first command temporarily removes the standard MacPorts
-          binary paths because they must not be present while installing a
-          second instance.</para>
-        </note>
+          <programlisting>file:///opt/mports/trunk/dports</programlisting>
 
-        <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
+          <para>Now MacPorts will look for portfiles in the working
+          copy.</para>
+        </listitem>
+
+        <listitem>
+          <para>Environment</para>
+
+          <para>You should setup your PATH and other environment options
+          according to the <link linkend="installing.shell">following
+          section</link>.</para>
+        </listitem>
+      </orderedlist>
+    </section>
+
+    <section id="installing.macports.source.multiple">
+      <title>Install Multiple MacPorts Copies</title>
+
+      <para>Occasionally a MacPorts developer may wish to install more than
+      one MacPorts instance on the same host. Only one copy of MacPorts may
+      use the default Tcl library path <filename>/Library/Tcl/</filename>, so
+      for additional installations use the option
+      <option>--with-tclpackage</option> as shown below and substitute
+      NEW_TCL_PACKAGE with any empty directory, for example
+      <filename>/Library/Tcl/macports-new/</filename>.</para>
+
+      <note>
+        <para>The first command temporarily removes the standard MacPorts
+        binary paths because they must not be present while installing a
+        second instance.</para>
+      </note>
+
+      <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tclpackage=NEW_TCLPACKAGE</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
-      </section>
     </section>
+  </section>
 
-    <section id="installing.macports.upgrade">
-      <title>MacPorts Upgrade</title>
+  <section id="installing.macports.upgrade">
+    <title>MacPorts Upgrade</title>
 
-      <para>MacPorts base upgrades are performed automatically (when a newer
-      release is available) during a <link
-      linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade
-      a copy of MacPorts that was installed from source to the newer release
-      of the source code, simply repeat the <link
-      linkend="installing.macports.source">source install</link> with the
-      newer version of the MacPorts source code.</para>
-    </section>
+    <para>MacPorts base upgrades are performed automatically (when a newer
+    release is available) during a <link
+    linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade a
+    copy of MacPorts that was installed from source to the newer release of
+    the source code, simply repeat the <link
+    linkend="installing.macports.source">source install</link> with the newer
+    version of the MacPorts source code.</para>
+  </section>
 
-    <section id="installing.macports.uninstalling">
-      <title>Uninstall</title>
+  <section id="installing.macports.uninstalling">
+    <title>Uninstall</title>
 
-      <para>To uninstall MacPorts from the default location
-      <filename>/opt/local/</filename>, perform this command from a terminal
-      window.</para>
+    <para>To uninstall MacPorts from the default location
+    <filename>/opt/local/</filename>, perform this command from a terminal
+    window.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
+    <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
     /opt/local \
     /etc/manpaths.d/macports \
     /etc/paths.d/macports \
