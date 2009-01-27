@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<section id="reference.portgroup.perl">
+
+  <title>PortGroup haskell</title>
+
+  <para>PortGroup haskell simplifies the addition of Haskell packages.</para>
+
+  <section id="reference.portgroup.haskell.keywords">
+    <title>haskell PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the haskell PortGroup allow for port authors to set
+    the following keywords in addition to the general Portfile keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>haskell.setup</term>
+
+        <listitem>
+          <para>This keyword sets a number of port variables.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: required</para>
+            </listitem>
+
+            <listitem>
+              <para>Synopsis: the first argument is the package name, as
+              called by hackageDB; the second is the version number</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+              <programlisting>haskell.setup   digest 0.0.0.2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section id="reference.portgroup.haskell.sugar">
+    <title>haskell PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup haskell do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>name</term>
+
+        <listitem>
+          <para>Default: hs-[string tolower ${package}]</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>version</term>
+
+        <listitem>
+          <para>Default: ${version} (from haskell.setup)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>categories</term>
+
+        <listitem>
+          <para>Default: devel haskell</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>homepage</term>
+
+        <listitem>
+          <para>Default: http://hackage.haskell.org</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>master_sites</term>
+
+        <listitem>
+          <para>Default: ${homepage}/packages/archive/${package}/${version}</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>distname</term>
+
+        <listitem>
+          <para>Default: ${package}-${version}</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>depends_build</term>
+
+        <listitem>
+          <para>Default: ghc</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure, build, and destroot phases</term>
+
+        <listitem>
+          <para>Default: proper setup to run these phases</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>post-destroot</term>
+
+        <listitem>
+          <para>Default: creates and installs (into destroot) the register.sh
+          and unregister.sh scripts</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>post-activate</term>
+
+        <listitem>
+          <para>Default: runs the register.sh scripts</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>livecheck</term>
+
+        <listitem>
+          <para>Default: runs livecheck against the package's information
+          page</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>
