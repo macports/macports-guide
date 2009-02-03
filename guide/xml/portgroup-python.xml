@@ -51,4 +51,85 @@
     </variablelist>
   </section>
 
+  <section id="reference.portgroup.python.sugar">
+    <title>python PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup python do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>categories</term>
+
+        <listitem>
+          <para>Default: python</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>dist_subdir</term>
+
+        <listitem>
+          <para>Default: python</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>depends_lib</term>
+
+        <listitem>
+          <para>Default: port:pythonXY (XY as appropriate for the group)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Default: no</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.cmd</term>
+
+        <listitem>
+          <para>Default: ${python.bin} setup.py --no-user-cfg</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.target</term>
+
+        <listitem>
+          <para>Default: build</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.cmd</term>
+
+        <listitem>
+          <para>Default: ${python.bin} setup.py --no-user-cfg</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.destdir</term>
+
+        <listitem>
+          <para>Default: --prefix=${prefix} --root=${destroot}</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>pre-destroot</term>
+
+        <listitem>
+          <para>Default: creates
+          ${destroot}${prefix}/share/doc/${name}/examples</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
 </section>
