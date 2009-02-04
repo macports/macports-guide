@@ -283,7 +283,14 @@
           reporter and assignee who would like to be kept involved in the
           development of the ticket. Multiple email addresses should be
           separated with a comma and a space
-          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).</para>
+          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
+          If you do not see the the <guilabel>Assign to:</guilabel> field
+          (currently only committers can set <guilabel>Assign to:</guilabel>),
+          add the email address of the port's maintainer(s) here; you can use
+          <command>port info <replaceable>portname</replaceable></command>
+          to find the maintainer for a port.  Exclude the addresses
+          <email>openmaintainer@macports.org</email> and
+          <email>nomaintainer@macports.org</email> if they are listed.</para>
         </listitem>
 
         <listitem>
