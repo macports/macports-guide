@@ -30,7 +30,9 @@ span.guimenu { font-weight: bold; }
 	font-family: monospace;
 	font-size: medium;
 	background-color: #E6E6E6;
-	border: thin black inset }
+	border: thin black inset;
+	overflow: auto;
+}
 
 .literallayout {
 	font-family: monospace;
