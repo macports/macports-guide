@@ -75,6 +75,9 @@
         <screeninfo>A new Trac ticket</screeninfo>
 
         <mediaobject>
+          <textobject>
+            <phrase>screenshot of a new ticket on the Trac system</phrase>
+          </textobject>
           <imageobject>
             <imagedata fileref="trac-default.png" />
           </imageobject>
