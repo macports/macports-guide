@@ -94,6 +94,16 @@
           <varname>DESTDIR=${destroot}</varname>in
           <varname>${worksrcpath}</varname>.</para>
 
+          <note>
+            <para>Using a <ulink
+            url="http://www.gnu.org/prep/standards/html_node/DESTDIR.html"><varname>DESTDIR</varname>
+            variable</ulink> is a part of standard GNU coding practices, and
+            this variable must be supported in an application's install
+            routines for MacPorts' destroot phase to work without manual
+            Portfile scripting or source patching. Urge developers to fully
+            support <varname>DESTDIR</varname> in their applications.</para>
+          </note>
+
           <para>Understanding the destroot phase is critical to understanding
           MacPorts, because, unlike some port systems, MacPorts "stages" an
           installation into an intermediate location —not the final file
@@ -114,13 +124,6 @@
               during a later activation phase.</para>
             </listitem>
           </itemizedlist>
-
-          <note>
-            <para>The <varname>DESTDIR</varname> variable must be supported in
-            an application's Makefile for the MacPorts destroot phase to work
-            properly. Urge developers to fully support
-            <varname>DESTDIR</varname> in their Makefiles.</para>
-          </note>
 
           <para>Any empty directories in <varname>${destroot}</varname> upon
           completion of the destroot phase are removed unless a directory name
