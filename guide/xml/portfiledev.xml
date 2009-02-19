@@ -541,9 +541,7 @@ variant sqlite description {Build sqlite support} {
       and generally be of the form
       <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;.diff</replaceable>,
       as shown in this example:
-      <filename>patch-src-Makefile.in.diff</filename>. Patch files should
-      apply with "patch -p0'' from the working source directory of the
-      port.</para>
+      <filename>patch-src-Makefile.in.diff</filename>.</para>
 
       <para>You may use patch files that patch multiple files under these
       conditions:</para>
@@ -570,27 +568,39 @@ variant sqlite description {Build sqlite support} {
           within the unpacked source directory and make a duplicate of
           it.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34/src</userinput>
+          <programlisting><prompt>%%</prompt> <userinput>cd ~/Downloads/foo-1.34/src</userinput>
 <prompt>%%</prompt> <userinput>cp Makefile.in Makefile.in.orig</userinput></programlisting>
         </listitem>
 
         <listitem>
-          <para>Edit the file to make it as you want it to be after it is
-          fetched.</para>
+          <para>Edit the file and modify the text to reflect your
+          corrections.</para>
         </listitem>
 
         <listitem>
-          <para>Now use the Unix command <command>diff -u</command> to create
-          a "unified" diff patch file.</para>
+          <para>Now <command>cd</command> to the top-level directory of the
+          unpacked source, and use the Unix command <command>diff -u</command>
+          to create a "unified" diff patch file.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd foo-1.34</userinput>
-<prompt>%%</prompt> <userinput>diff -u Makefile.in.orig Makefile.in &gt; patch-Makefile.in.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>cd ~/Downloads/foo-1.34</userinput>
+<prompt>%%</prompt> <userinput>diff -u src/Makefile.in.orig src/Makefile.in &gt; patch-src-Makefile.in.diff</userinput></programlisting>
+
+          <para>You should execute the <command>diff</command> command from
+          the top-level directory of the unpacked source code, because during
+          the patch phase MacPorts by default uses the patch argument
+          <option>-p0</option>, which does not strip prefixes containing any
+          leading slashes from file names found in the patch file (as opposed
+          to <option>-p1</option> hat strips one, etc), and any path not
+          relative to the top-level directory of the unpacked source will fail
+          during the patch phase.</para>
 
           <note>
-            <para>You must execute the <command>diff</command> command in the
-            top-level of the unpacked source code. Otherwise the
-            <command>patch</command> command will look for the file to be
-            patched in the wrong path and fail.</para>
+            <para>If you find an existing source file patch you wish to use
+            that contains leading path information (diff was executed from a
+            directory higher than the top-level source directory), you will
+            need to use the <link linkend="reference.phases.patch">patch phase
+            keyword</link> <code>patch.pre_args</code> to specify some
+            prefixes containing leading slashes be stripped off.</para>
           </note>
         </listitem>
 
@@ -600,8 +610,8 @@ variant sqlite description {Build sqlite support} {
           See the example below where a patch adds <varname>DESTDIR</varname>
           support to a <filename>Makefile.in</filename> file.</para>
 
-          <programlisting>--- Makefile.in.orig   2007-06-01 16:30:47.000000000 -0700
-+++ Makefile.in       2007-06-20 10:10:59.000000000 -0700
+          <programlisting>--- src/Makefile.in.orig   2007-06-01 16:30:47.000000000 -0700
++++ src/Makefile.in       2007-06-20 10:10:59.000000000 -0700
 @@ -131,23 +131,23 @@
         $(INSTALL_DATA)/gdata $(INSTALL_DATA)/perl
 
@@ -614,14 +624,16 @@ variant sqlite description {Build sqlite support} {
         </listitem>
 
         <listitem>
-          <para>Place the patch <filename>patch-Makefile.in.diff</filename> in
-          the directory <filename>${portpath}/files</filename> and use it in a
-          port using the <code>patchfiles</code> keyword.
-          <varname>${portpath}</varname> may be in a local Portfile repository
-          for development purposes, or the patch may be committed to the
-          global MacPorts repository for distribution.</para>
+          <para>Place the patch
+          <filename>patch-src-Makefile.in.diff</filename> in the directory
+          <filename>${portpath}/files</filename> and use it in a port using
+          the <code>patchfiles</code> keyword. <varname>${portpath}</varname>
+          may be in a local Portfile repository during development, or
+          <filename>files/</filename> may be in a port's
+          <varname>${portpath}</varname> in the global MacPorts
+          repository.</para>
 
-          <programlisting>patchfiles          patch-Makefile.in.diff</programlisting>
+          <programlisting>patchfiles          patch-src-Makefile.in.diff</programlisting>
         </listitem>
       </orderedlist>
     </section>
