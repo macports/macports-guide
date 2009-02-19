@@ -478,7 +478,7 @@ variant sqlite description {Build sqlite support} {
           must be in the same directory, though it may be any
           directory.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cp Portfile Portfile.orig</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>cp -p Portfile Portfile.orig</userinput></programlisting>
         </listitem>
 
         <listitem>
@@ -569,7 +569,7 @@ variant sqlite description {Build sqlite support} {
           it.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd ~/Downloads/foo-1.34/src</userinput>
-<prompt>%%</prompt> <userinput>cp Makefile.in Makefile.in.orig</userinput></programlisting>
+<prompt>%%</prompt> <userinput>cp -p Makefile.in Makefile.in.orig</userinput></programlisting>
         </listitem>
 
         <listitem>
