@@ -590,7 +590,7 @@ variant sqlite description {Build sqlite support} {
           the patch phase MacPorts by default uses the patch argument
           <option>-p0</option>, which does not strip prefixes containing any
           leading slashes from file names found in the patch file (as opposed
-          to <option>-p1</option> hat strips one, etc), and any path not
+          to <option>-p1</option> that strips one, etc), and any path not
           relative to the top-level directory of the unpacked source will fail
           during the patch phase.</para>
 
