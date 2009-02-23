@@ -2543,6 +2543,26 @@ build.target-delete     compat</programlisting>
       </varlistentry>
 
       <varlistentry>
+        <term>build.env</term>
+
+        <term>build.env-append</term>
+
+        <term>build.env-delete</term>
+
+        <listitem>
+          <para>Set environment variables for build; list modifiers add
+          and delete items from a previous Portfile build.env keyword, or
+          a default set by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>use_parallel_build</term>
 
         <listitem>
@@ -2638,6 +2658,35 @@ build.target-delete     compat</programlisting>
               <para>Example:</para>
 
               <programlisting>test.target         checks</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>test.env</term>
+
+        <term>test.env-append</term>
+
+        <term>test.env-delete</term>
+
+        <listitem>
+          <para>Set environment variables for test; list modifiers add
+          and delete items from a previous Portfile test.env keyword, or
+          a default set by MacPorts base.</para>
+
+          <para>Often <literal>DYLD_LIBRARY_PATH</literal> is set here to
+          support testing dynamically linked libraries.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.env       <literal>DYLD_LIBRARY_PATH=${worksrcpath}/src/.libs</literal></programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
