@@ -96,9 +96,9 @@
 
     <note>
       <para>Always make sure to install the latest available version of Xcode
-      Tools for your Mac OS X release because using earlier versions of Xcode
-      Tools may cause port install failures. Also note that Xcode Tools are
-      not updated via Mac OS X's Software Update utility.</para>
+      Tools for your Mac OS X release; using outdated versions of Xcode Tools
+      may cause port install failures. Also note that Xcode Tools are not
+      updated via Mac OS X's Software Update utility.</para>
     </note>
 
     <orderedlist>
@@ -126,7 +126,10 @@
 
       <listitem>
         <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
-        the X11 SDK.</para>
+        the X11 SDK. If you are using OS X 10.4 or earlier (Xcode v1.x or
+        v2.x), use the <guibutton>Customize</guibutton> button before clicking
+        <guibutton>Install</guibutton> and select <guibutton>X11
+        SDK</guibutton>.</para>
       </listitem>
     </orderedlist>
   </section>
