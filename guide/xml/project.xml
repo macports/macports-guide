@@ -546,28 +546,10 @@
     <title>The PortMgr Team</title>
 
     <para>The MacPorts PortMgr team is the steering group for The MacPorts
-    Project. Its membership was determined by public elections among project
-    members in March of 2005, resulting in the appointing of <personname>
-
-        <firstname>James</firstname>
-
-        <othername role="initial">D.</othername>
-
-        <surname>Berry</surname>
-      </personname>, <personname>
-      <firstname>Juan</firstname>
-
-        <othername role="middlename">Manuel</othername>
-
-        <surname>Palacios</surname>
-      </personname> and <personname>
-
-        <firstname>Markus</firstname>
-
-        <othername role="initial">W.</othername>
-
-        <surname>Weissman</surname>
-      </personname>.
+    Project. Its membership is usually determined by public elections among
+    project members; the current members of the team can be found on the
+    <ulink url="http://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
+    Developers wiki page</ulink>.
 
     They are responsible for matters such as:
 
