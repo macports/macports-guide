@@ -1009,6 +1009,32 @@ svn.tag             2100</programlisting>
       </varlistentry>
 
       <varlistentry>
+        <term>use_7z</term>
+
+        <listitem>
+          <para>This keyword is for downloads that are compressed using the
+          7z algorithm.  When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix = .7z
+extract.cmd    = 7za
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_7z           yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>use_bzip2</term>
 
         <listitem>
