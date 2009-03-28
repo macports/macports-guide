@@ -42,9 +42,9 @@ MAN_XSL         = $(MAN)/resources/macports.xsl
 # DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
 
-.PHONY: all guide man clean validate
+.PHONY: all guide guide-chunked man clean validate
 
-all: guide man
+all: guide guide-chunked man
 
 # Generate the HTML guide using DocBook from the XML sources in $(GUIDE_SRC).
 guide:

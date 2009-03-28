@@ -208,3 +208,34 @@ div.toc:before {
 	content: "MacPorts Guide Contents";
 } */
 
+/* Tabswitch for single page/chunked */
+div#tabswitch {
+    position: absolute;
+    top: 0;
+    right: 0;
+    background-color: #9FB6CD;
+    border: 1px solid black;
+}
+
+div#tabswitch a {
+    padding: 0.3em;
+    line-height: 2em;
+}
+
+div#tabswitch a.selected {
+    font-weight: bold;
+}
+
+div#tabswitch a:link {
+    color: royalblue;
+    text-decoration: none;
+}
+
+div#tabswitch a:hover {
+    color: gray;
+}
+
+div#tabswitch a:visited {
+    color: black;
+    text-decoration: none;
+}
