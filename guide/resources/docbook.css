@@ -132,7 +132,7 @@ div.toc {
 	padding-top: 0px;
 	height: 96%;
 	float: left;
-	overflow: scroll;
+	overflow: auto;
 	position: fixed;
 	top: 12px;
 
