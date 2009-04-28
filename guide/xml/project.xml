@@ -111,10 +111,11 @@
           <para><guilabel>Description:</guilabel> All details that might
           be relevant to someone reading the ticket. <ulink
           url="http://trac.macports.org/wiki/WikiFormatting">Wiki
-          formatting</ulink> or attached log files should be used for large
-          text blocks. If you want to post a build log make sure you use
-          <literal>{{{<replaceable>...</replaceable>}}}</literal> around the
-          log or it could break the page layout. Example:</para>
+          formatting</ulink> should be used to ensure that text is formatted
+          correctly. Use the Preview button before submitting. If you want to
+          post preformatted text such as a log or terminal output, make sure
+          you use <literal>{{{<replaceable>...</replaceable>}}}</literal>
+          around the text or it could break the page layout. Example:</para>
 
           <literallayout>
 {{{
@@ -122,15 +123,17 @@
 }}}
           </literallayout>
 
-          <para>Submitters are advised to trim pastes and logs of any kind to what's
-          really relevant to the report, as otherwise overly large submissions that
-          might contain redundant and/or unnecessary information might become unmanageable.
+          <para>Submitters are advised to trim pastes and logs of any kind to
+          what's really relevant to the report, as otherwise overly large
+          submissions that might contain redundant and/or unnecessary
+          information might become unmanageable. If it is truly necessary to
+          include long output, use an attachment, don't paste it inline.
           </para>
 
         </listitem>
 
         <listitem>
-          <para><guilabel>Type:</guilabel> There are two main types of
+          <para><guilabel>Type:</guilabel> There are five types of
           tickets.</para>
 
           <itemizedlist>
@@ -143,6 +146,23 @@
               <para><guimenu>enhancement</guimenu> - Tickets, with or without
               patches, created to enhance something that isn't failing its
               intended purpose.</para>
+            </listitem>
+            
+            <listitem>
+              <para><guimenu>update</guimenu> - Tickets, with or without
+              patches, involving updating a port to a newer upstream
+              version.</para>
+            </listitem>
+            
+            <listitem>
+              <para><guimenu>submission</guimenu> - Tickets created to submit
+              Portfiles for software not currently available in MacPorts.
+              </para>
+            </listitem>
+            
+            <listitem>
+              <para><guimenu>request</guimenu> - Tickets created to request
+              the creation of a new port.</para>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -177,59 +197,10 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Milestone:</guilabel> This is a ticket category that
-          allows for search and sorting tickets efficiently.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para><guimenu>MacPorts x.y.z</guimenu> - for base-level
-              tickets which have been assigned to a particular future
-              release of MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>MacPorts Future</guimenu> - for base-level
-              tickets which are still under consideration and have not
-              yet been assigned to a specific future release of
-              MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Bugs</guimenu> - for tickets reporting or
-              fixing bugs in ports provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Enhancements</guimenu> - for submissions
-              providing enhancements to ports provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Requests</guimenu> - for requests for ports
-              to be added to MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Submissions</guimenu> - for submissions that
-              add a port to MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Port Updates</guimenu> - for submissions that
-              update a port provided by MacPorts.</para>
-            </listitem>
-
-            <listitem>
-              <para><guimenu>Website &amp; Documentation</guimenu> - for
-              tickets relating to the documentation for MacPorts, including
-              the MacPorts guide, Wiki, man pages and the website.</para>
-            </listitem>
-
-            <listitem>
-              <para>Blank - For unclassified tickets that don't fit into any
-              of the provided milestones.</para>
-            </listitem>
-          </itemizedlist>
+          <para><guilabel>Milestone:</guilabel> This is a ticket label that
+          indicates that the ticket is intended to be fixed in a particular
+          MacPorts release. Leave it blank; it will be set by a project member
+          if appropriate.</para>
         </listitem>
 
         <listitem>
@@ -286,14 +257,29 @@
           reporter and assignee who would like to be kept involved in the
           development of the ticket. Multiple email addresses should be
           separated with a comma and a space
-          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).
-          If you do not see the the <guilabel>Assign to:</guilabel> field
-          (currently only committers can set <guilabel>Assign to:</guilabel>),
-          add the email address of the port's maintainer(s) here; you can use
-          <command>port info <replaceable>portname</replaceable></command>
-          to find the maintainer for a port.  Exclude the addresses
-          <email>openmaintainer@macports.org</email> and
-          <email>nomaintainer@macports.org</email> if they are listed.</para>
+          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).</para>
+          
+          <para>Most users will not be able to assign tickets. If this applies
+          to you, then when reporting port-related tickets, make sure you add
+          the port's maintainer to cc. Otherwise they may not notice the
+          ticket.</para>
+        </listitem>
+        
+        <listitem>
+          <para><guilabel>Assign To:</guilabel> Only users with commit access
+          can edit this field. If this is not you, see the section on the
+          <guimenu>Cc</guimenu> field above.</para>
+          
+          <para>For tickets on ports, enter
+          the email address of the port's maintainer (use <command>port info
+          &lt;portname&gt;</command> to find this). If multiple maintainers
+          are listed, enter the first maintainer's email address here and
+          enter the remainining maintainers' email addresses in the
+          <guimenu>Cc</guimenu> field. Exclude the email address
+          <email>openmaintainer@macports.org</email> if it appears.
+          If the maintainer's email address is
+          <email>nomaintainer@macports.org</email>, leave the field
+          blank.</para>
         </listitem>
 
         <listitem>
@@ -333,12 +319,11 @@
         </listitem>
 
         <listitem>
-          <para>Set the type to <guilabel>enhancement</guilabel>.</para>
+          <para>Set the type to <guilabel>submission</guilabel>.</para>
         </listitem>
 
         <listitem>
-          <para>Set the milestone to <guilabel>Port
-          Submissions</guilabel>.</para>
+          <para>Set the component to <guilabel>ports</guilabel>.</para>
         </listitem>
 
         <listitem>
@@ -369,14 +354,12 @@
 
         <listitem>
           <para>Set the type to <guilabel>enhancement</guilabel> for
-          miscellaneous enhancements or to <guilabel>defect</guilabel> for bug
-          fixes.</para>
+          miscellaneous enhancements, to <guilabel>defect</guilabel> for bug
+          fixes, or to <guilabel>update</guilabel> for version updates.</para>
         </listitem>
 
         <listitem>
-          <para>Set the milestone to <guilabel>Port Enhancements</guilabel>,
-          <guilabel>Port Updates</guilabel> or <guilabel>Port Bugs</guilabel>
-          depending on the case.</para>
+          <para>Set the component to <guilabel>ports</guilabel>.</para>
         </listitem>
 
         <listitem>
