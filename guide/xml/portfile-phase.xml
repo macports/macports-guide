@@ -498,7 +498,8 @@ distfiles           file_one.tar.gz:tagone \
         <listitem>
           <para>Sets the path to source directory relative to workpath. It can
           be used if the extracted source directory has a different name then
-          the distfile.</para>
+          the distfile. Also used if the source to be build is in a
+          subdirectory.</para>
 
           <itemizedlist>
             <listitem>
@@ -506,9 +507,10 @@ distfiles           file_one.tar.gz:tagone \
             </listitem>
 
             <listitem>
-              <para>Example:</para>
+              <para>Examples:</para>
 
               <programlisting>worksrcdir          ${name}-src-${version}</programlisting>
+              <programlisting>worksrcdir          ${distname}/src</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
