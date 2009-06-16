@@ -343,7 +343,8 @@
           (multiple entries must be space delimited). Options include: ppc,
           i386, ppc64, x86_64</para>
 
-          <para>Default: <option>ppc</option> <option>i386</option></para>
+          <para>Default: <option>x86_64 i386</option> (<option>ppc
+          i386</option> for 10.5 and earlier)</para>
         </listitem>
       </varlistentry>
     </variablelist>
