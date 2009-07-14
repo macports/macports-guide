@@ -451,13 +451,18 @@
       <orderedlist>
         <listitem>
           <para>File a new Trac ticket with the summary line [Port
-          Abandoned].</para>
+          Abandoned] <guilabel>portname</guilabel>.</para>
         </listitem>
 
         <listitem>
           <para>Refer to the original unacknowledged ticket in the Port
           Abandoned ticket.</para>
         </listitem>
+
+		<listitem>
+		  <para>Further indicate which port is abandoned via the port
+		  field in the Port Abandoned ticket.</para>
+		</listitem>
 
         <listitem>
           <para>The Port Abandoned ticket may be closed when the new
