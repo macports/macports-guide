@@ -429,7 +429,7 @@
         </listitem>
 
         <listitem>
-          <para>A port is abandoned by it's current maintainer. A port against
+          <para>A port is abandoned by its current maintainer. A port against
           which a Port Abandoned ticket has been filed (see below) can be
           updated without contacting the maintainer.</para>
         </listitem>
