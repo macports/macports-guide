@@ -1434,6 +1434,35 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
         </listitem>
       </varlistentry>
 
+      <varlistentry id="reference.phases.configure.optflags">
+        <term>configure.optflags</term>
+
+        <term>configure.optflags-append</term>
+
+        <term>configure.optflags-delete</term>
+
+        <listitem>
+          <para>Set optimization compiler flags; list modifiers add or delete items
+          from a previous Portfile configure.optflags keyword or the default set
+          by MacPorts base.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>-O2</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.optflags    -Os</programlisting>
+
+              <programlisting>configure.optflags-append     -finline-functions
+configure.optflags-delete     -O2</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
       <varlistentry id="reference.phases.configure.cflags">
         <term>configure.cflags</term>
 
@@ -1448,7 +1477,7 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
@@ -1535,7 +1564,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
@@ -1559,7 +1588,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
@@ -1635,7 +1664,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
@@ -1662,7 +1691,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
@@ -1689,7 +1718,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>${configure.optflags}</literal></para>
             </listitem>
 
             <listitem>
