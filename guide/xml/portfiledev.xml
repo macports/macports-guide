@@ -139,6 +139,51 @@
         <programlisting>categories          net</programlisting>
       </listitem>
 
+<!--
+      <listitem>
+          <para>Port license</para>
+
+        <para>A port's license indicates the class of license employed by the
+        owner. Setting this signals the main intentions of the license with
+        respect to binary and source distribution. It is presently only for
+        informational purposes and MacPorts does not distribute binaries.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><varname>GPL</varname> – signifies the requirements of GNU
+            General Public    License; the source be available in the same place
+            as the binary.</para>
+
+            <para><varname>LGPL</varname> – use this for the GNU Lesser General
+            Public License,    which mandates that    the source and binary are
+            available in the same place.</para>
+
+            <para><varname>BSD</varname> – covering the original and new BSD
+            license as well as MIT and Apache; these licenses allow for optional
+            inclusion of source code.</para>
+
+            <para><varname>Artistic</varname> – aptly named to indicate the
+            Artistic license and derivatives.</para>
+
+            <para><varname>Artistic-GPL</varname> – dual-licensed under the
+            Artistic and GPL licenses.</para>
+
+            <para><varname>/GFDL</varname> and <varname>/LDP</varname> – these
+            suffixes indicate that the documentation provided is under the GNU
+            Free Documentation License or the Linux Documentation Project</para>
+
+            <para><varname>RESTRICT</varname> – when the licenses are
+            restrictive.</para>
+
+            <para><varname>RESTRICT-EYESONLY</varname> – if the license does not
+            permit distribution.</para>
+
+            <para><varname>PUBLIC</varname> – the code is not copyrighted:
+            anyone can do anything</para>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+-->
       <listitem>
         <para>Port maintainers</para>
 
