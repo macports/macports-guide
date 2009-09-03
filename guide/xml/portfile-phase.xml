@@ -178,7 +178,7 @@
 
     <para>In other words, port phase keywords are not located within port
     phase declarations, but rather they <emphasis>refer</emphasis> to port
-    phases and set options for those phases, and they take affect whether or
+    phases and set options for those phases, and they take effect whether or
     not phase declarations have been explicitly defined in a Portfile.</para>
 
     <section id="reference.phases.installation.list-modifiers">
