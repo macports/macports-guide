@@ -16,11 +16,9 @@
     <title>Install X11</title>
 
     <para>It is recommended that you install the X Window System (X11) even if
-    you don't plan to run X11 applications immediately. Apple's X11 is
-    preferred over either of the X11 ports, XFree86 and Xorg, therefore
-    Apple's X11 is normally used to satisfy ports that depend upon X11 (see
-    <link linkend="reference.dependencies.types">non-port
-    dependencies</link>). If Apple's X11 wasn't installed when Mac OS X was
+    you don't plan to run X11 applications immediately. Apple's X11 server is
+    normally used to display X11 applications, though you could also install the
+    xorg-server port. If Apple's X11 wasn't installed when Mac OS X was
     installed, follow these steps.</para>
 
     <orderedlist>
@@ -40,8 +38,9 @@
       </listitem>
     </orderedlist>
 
-    <para>Before launching an X11 application, you must open a terminal window
-    and start an xterm session.</para>
+    <para>Before launching an X11 application on Mac OS X 10.4, you must open X11.app
+    and start an xterm session. Later OS versions should launch X11.app automatically when
+    an X11 application is run from the Terminal.</para>
 
     <programlisting><prompt>%%</prompt> <userinput>xterm</userinput></programlisting>
 
@@ -107,10 +106,11 @@
         url="http://developer.apple.com/technology/xcode.html">latest version
         of Xcode Tools</ulink> if you have the currently shipping release of
         Mac OS X. If you have an earlier release of Mac OS X, you may download
-        the latest version of Xcode Tools for OS X 10.4 (v2.5) or 10.3 (v1.5)
+        the latest version of Xcode Tools for OS X 10.5 (v3.1.3) or 10.4 (v2.5)
         <ulink
+        url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20414">here</ulink>
+        and <ulink
         url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">here</ulink>
-        and <ulink url="http://connect.apple.com/">here</ulink>
         respectively.</para>
       </listitem>
 
@@ -123,11 +123,17 @@
         Applications category and click the check box beside <guibutton>X11
         SDK</guibutton> to add it to the default items.</para>
       </listitem>
+      
+      <listitem>
+        <para>Ensure that the option for command line development, which is
+        labeled <guibutton>Unix Development</guibutton> in the Xcode 3.x installer,
+        is checked.</para>
+      </listitem>
 
       <listitem>
         <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
-        the X11 SDK. If you are using OS X 10.4 or earlier (Xcode v1.x or
-        v2.x), use the <guibutton>Customize</guibutton> button before clicking
+        the X11 SDK. If you are using OS X 10.4 (Xcode v2.x),
+        use the <guibutton>Customize</guibutton> button before clicking
         <guibutton>Install</guibutton> and select <guibutton>X11
         SDK</guibutton>.</para>
       </listitem>
@@ -167,8 +173,8 @@
       <orderedlist>
         <listitem>
           <para>Download the latest <filename>MacPorts-1.x.x.dmg</filename>
-          disk image from the <ulink
-          url="http://svn.macports.org/repository/macports/downloads/">MacPorts
+          disk image (whose name does not contain -beta or -rc) from the <ulink
+          url="http://distfiles.macports.org/MacPorts/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
@@ -342,8 +348,6 @@
 
     <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
     /opt/local \
-    /etc/manpaths.d/macports \
-    /etc/paths.d/macports \
     /Applications/DarwinPorts \
     /Applications/MacPorts \
     /Library/LaunchDaemons/org.macports.* \
@@ -351,7 +355,8 @@
     /Library/Receipts/MacPorts*.pkg \
     /Library/StartupItems/DarwinPortsStartup \
     /Library/Tcl/darwinports1.0 \
-    /Library/Tcl/macports1.0</userinput></programlisting>
+    /Library/Tcl/macports1.0 \
+    ~/.macports</userinput></programlisting>
   </section>
 
   <section id="installing.shell">
