@@ -60,7 +60,7 @@
 
         <listitem>
           <para>Sets the directory where ports are installed. Any path may be
-          used but those with spaces and/or non ascii characters should be
+          used but those with spaces and/or non-ASCII characters should be
           avoided because it can break some ports.</para>
 
           <para>Default: <filename>/opt/local</filename></para>
