@@ -186,7 +186,7 @@
       <term>os.endian</term>
 
       <listitem>
-        <para>Endianness of the processor (i.e. "bigEndian").</para>
+        <para>Endianness of the processor -- either "big" (on PowerPC systems) or "little" (on Intel systems).</para>
       </listitem>
     </varlistentry>
 
