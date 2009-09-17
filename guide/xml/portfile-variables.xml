@@ -161,7 +161,7 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>Identifies platform type (i.e. "darwin", "freebsd", etc).</para>
+        <para>The underlying operating system platform (i.e. "darwin" on Mac OS X, "freebsd", etc.).</para>
       </listitem>
     </varlistentry>
 
@@ -169,7 +169,7 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>Identifies hardware type (i.e. "powerpc", "i386").</para>
+        <para>The hardware architecture -- either "powerpc" or "i386".</para>
       </listitem>
     </varlistentry>
 
