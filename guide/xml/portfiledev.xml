@@ -727,7 +727,7 @@ variant sqlite description {Build sqlite support} {
         editor.</para>
 
         <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
-<prompt>%%</prompt> <userinput>pico sources.conf</userinput></programlisting>
+<prompt>%%</prompt> <userinput>open -e sources.conf</userinput></programlisting>
       </listitem>
 
       <listitem>
@@ -735,7 +735,7 @@ variant sqlite description {Build sqlite support} {
         the rsync URL as shown.</para>
 
         <programlisting>file:///Users/julesverne/ports
-rsync://rsync.macports.org/release/ports
+rsync://rsync.macports.org/release/ports [default]
 </programlisting>
 
         <note>
@@ -782,7 +782,8 @@ Ports failed:                   0</screen>
 
     <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
 
-    <screen>bestevergame   games/bestevergame 1.1   The Best Ever Game</screen>
+    <screen>bestevergame @1.1 (games)
+    The Best Ever Game</screen>
   </section>
 
   <section id="development.practices">
