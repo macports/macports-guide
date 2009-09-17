@@ -98,7 +98,7 @@
         <term>perl5.bin</term>
 
         <listitem>
-          <para>The Perl binary path (ie,
+          <para>The Perl binary path (i.e.,
           <filename>${prefix}/bin/perl</filename>).</para>
         </listitem>
       </varlistentry>

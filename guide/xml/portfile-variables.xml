@@ -161,7 +161,7 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>Identifies platform type (ie "darwin", "freebsd", etc).</para>
+        <para>Identifies platform type (i.e. "darwin", "freebsd", etc).</para>
       </listitem>
     </varlistentry>
 
@@ -169,7 +169,7 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>Identifies hardware type (ie "powerpc", "intel").</para>
+        <para>Identifies hardware type (i.e. "powerpc", "intel").</para>
       </listitem>
     </varlistentry>
 
@@ -177,7 +177,7 @@
       <term>os.version</term>
 
       <listitem>
-        <para>The version number of the host operating system (ie "8.0" for
+        <para>The version number of the host operating system (i.e. "8.0" for
         Darwin 8.0).</para>
       </listitem>
     </varlistentry>
@@ -186,7 +186,7 @@
       <term>os.endian</term>
 
       <listitem>
-        <para>Endianness of the processor (ie "bigEndian").</para>
+        <para>Endianness of the processor (i.e. "bigEndian").</para>
       </listitem>
     </varlistentry>
 
@@ -194,7 +194,7 @@
       <term>os.major</term>
 
       <listitem>
-        <para>The major version number of the host operating system (ie "8"
+        <para>The major version number of the host operating system (i.e. "8"
         for Darwin 8.0).</para>
       </listitem>
     </varlistentry>

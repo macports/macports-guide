@@ -27,7 +27,7 @@
         <term>python.lib</term>
 
         <listitem>
-          <para>The Python dynamic library and path (ie,
+          <para>The Python dynamic library and path (i.e.,
           <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
         </listitem>
       </varlistentry>
@@ -44,7 +44,7 @@
         <term>python.pkgd</term>
 
         <listitem>
-          <para>Path to the Python site-packages directory. (ie,
+          <para>Path to the Python site-packages directory. (i.e.,
           <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
         </listitem>
       </varlistentry>
