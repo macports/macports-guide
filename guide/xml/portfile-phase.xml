@@ -2106,7 +2106,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>???</literal></para>
+              <para>Default: <literal>${prefix}/lib/pkgconfig:${prefix}/share/pkgconfig</literal></para>
             </listitem>
 
             <listitem>
