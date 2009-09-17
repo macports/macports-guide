@@ -69,16 +69,6 @@
       </varlistentry>
 
       <varlistentry>
-        <term>x11prefix</term>
-
-        <listitem>
-          <para>Path containing an X11 installation on your system.</para>
-
-          <para>Default: <filename>/usr/X11R6</filename></para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term>portdbpath</term>
 
         <listitem>
@@ -298,7 +288,7 @@
           environment.</para>
 
           <para>Default:
-          ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
+          ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin</para>
 
           <note>
             <para>The binpath is implicitly defined, but it may be overwritten

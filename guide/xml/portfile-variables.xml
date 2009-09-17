@@ -26,14 +26,6 @@
     </varlistentry>
 
     <varlistentry>
-      <term>x11prefix</term>
-
-      <listitem>
-        <para>Absolute path to X11.</para>
-      </listitem>
-    </varlistentry>
-
-    <varlistentry>
       <term>libpath</term>
 
       <listitem>
@@ -51,7 +43,7 @@
         if other paths are specified by $PATH in a user's environment.</para>
 
         <para>Default:
-        ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin:${x11prefix}/bin</para>
+        ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin</para>
 
         <note>
           <para>The binpath is implicitly defined, but it may be overwritten

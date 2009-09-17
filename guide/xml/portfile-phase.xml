@@ -2112,7 +2112,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.pkg_config_path   ${prefix}/lib/pkgconfig:${x11prefix}/lib/pkgconfig</programlisting>
+              <programlisting>configure.pkg_config_path   ${python.prefix}/lib/pkgconfig</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
