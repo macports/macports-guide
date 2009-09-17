@@ -169,7 +169,7 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>Identifies hardware type (i.e. "powerpc", "intel").</para>
+        <para>Identifies hardware type (i.e. "powerpc", "i386").</para>
       </listitem>
     </varlistentry>
 
