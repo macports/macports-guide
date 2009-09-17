@@ -177,8 +177,8 @@
       <term>os.version</term>
 
       <listitem>
-        <para>The version number of the host operating system (i.e. "8.0" for
-        Darwin 8.0).</para>
+        <para>The version number of the host operating system (i.e. "8.11.0" for
+        Darwin 8.11.0 a.k.a. Mac OS X 10.4.11).</para>
       </listitem>
     </varlistentry>
 
@@ -195,7 +195,7 @@
 
       <listitem>
         <para>The major version number of the host operating system (i.e. "8"
-        for Darwin 8.0).</para>
+        for Darwin 8.x).</para>
       </listitem>
     </varlistentry>
   </variablelist>
