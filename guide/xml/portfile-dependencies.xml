@@ -99,8 +99,17 @@ depends_run         port:apache2 port:php5</programlisting>
     <para>File dependencies may be of three types: <option>bin</option> for
     programs, <option>lib</option> for libraries, and <option>path</option>
     for any installed file. File dependencies are specifed in the form:
-    <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filename&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
-    <replaceable>&lt;filename&gt;</replaceable> is relative to
+    <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filespec&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
+    For <option>bin</option> dependencies,
+    <replaceable>&lt;filespec&gt;</replaceable> is the name of a program in a
+    bin directory like <filename>${prefix}/bin</filename>. For
+    <option>lib</option> dependencies,
+    <replaceable>&lt;filespec&gt;</replaceable> is the name of a library in a
+    lib directory like <filename>${prefix}/lib</filename> but without its
+    extension. For <option>path</option> dependencies,
+    <replaceable>&lt;filespec&gt;</replaceable> is the complete absolute path
+    to the file, or more usually, when the file is inside
+    <filename>${prefix}</filename>, it is specified relative to
     <filename>${prefix}</filename>.</para>
 
     <para>Note that the <replaceable>&lt;port&gt;</replaceable> specified is
@@ -112,10 +121,5 @@ depends_run         port:apache2 port:php5</programlisting>
 depends_build       bin:glibtool:libtool
 
 depends_run         path:lib/libltdl.a:libtool</programlisting>
-
-    <note>
-      <para>When using lib dependencies, only the library name is specified
-      —not its extension. (e.g. ".dylib" ".so", etc.)</para>
-    </note>
   </section>
 </section>
