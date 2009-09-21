@@ -29,8 +29,8 @@
     <variablelist>
       <varlistentry>
         <term>variant <replaceable>name</replaceable> [requires
-        <replaceable>variant</replaceable>] [conflicts
-        <replaceable>variant</replaceable>] [description
+        <replaceable>variant1 variant2 ...</replaceable>] [conflicts
+        <replaceable>variant1 variant2 ...</replaceable>] [description
         <replaceable>description</replaceable>]</term>
 
         <listitem>
