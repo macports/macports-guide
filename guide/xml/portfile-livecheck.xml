@@ -14,7 +14,7 @@
 
   <variablelist>
     <varlistentry>
-      <term>livecheck.check</term>
+      <term>livecheck.type</term>
 
       <listitem>
         <para>Specify what kind of update check to perform.</para>
@@ -53,7 +53,7 @@
           <listitem>
             <para>Examples:</para>
 
-            <programlisting>livecheck.check     regex
+            <programlisting>livecheck.type     regex
 livecheck.url       ${homepage}
 livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
           </listitem>
