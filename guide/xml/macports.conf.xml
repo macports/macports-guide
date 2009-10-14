@@ -113,7 +113,7 @@
           <para>The machine architecture to build for in normal use.
           Options include: ppc, i386, ppc64, x86_64</para>
 
-          <para>Default: 
+          <para>Default: </para>
           <para>(Snow Leopard) <option>x86_64</option> or <option>i386</option> depending on hardware</para>
           <para>(Leopard/Tiger) <option>i386</option> or <option>ppc</option> depending on hardware</para>
         </listitem>
