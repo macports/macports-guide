@@ -2210,14 +2210,16 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>configure.universal_cflags</term>
 
           <listitem>
-            <para>Arguments appended to the configure script to build the port
-            universal.</para>
+            <para>Additional flags to put in the CFLAGS environment variable
+            when invoking the configure script. Default value is based on
+            <literal>${configure.universal_archs}</literal>.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default: <literal>-sysroot
-                /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch
-                ppc</literal></para>
+                <para>Default: </para>
+                <para>(PowerPC Tiger) <literal>-isysroot ${developer_dir}/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc</literal></para>
+                <para>(Leopard / Intel Tiger) <literal>-arch i386 -arch ppc</literal></para>
+                <para>(Snow Leopard) <literal>-arch x86_64 -arch i386</literal></para>
               </listitem>
 
               <listitem>
@@ -2238,7 +2240,9 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: <literal>???</literal></para>
+                <para>Default: </para>
+                <para>(PowerPC Tiger) <literal>-isysroot ${developer_dir}/SDKs/MacOSX10.4u.sdk</literal></para>
+                <para>(Others) none</para>
               </listitem>
 
               <listitem>
@@ -2255,13 +2259,15 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 
           <listitem>
             <para>Additional flags to put in the CXXFLAGS environment variable
-            when invoking the configure script.</para>
+            when invoking the configure script. Default value is based on
+            <literal>${configure.universal_archs}</literal>.</para>
 
             <itemizedlist>
               <listitem>
-                <para>Default: <literal>-isysroot
-                /Developer/SDKs/MacOSX10.4u.sdk -arch i386 -arch
-                ppc</literal></para>
+                <para>Default: </para>
+                <para>(PowerPC Tiger) <literal>-isysroot ${developer_dir}/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc</literal></para>
+                <para>(Leopard / Intel Tiger) <literal>-arch i386 -arch ppc</literal></para>
+                <para>(Snow Leopard) <literal>-arch x86_64 -arch i386</literal></para>
               </listitem>
 
               <listitem>
@@ -2282,7 +2288,10 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 
             <itemizedlist>
               <listitem>
-                <para>Default: <literal>-arch i386 -arch ppc</literal></para>
+                <para>Default: </para>
+                <para>(PowerPC Tiger) <literal>-Wl,-syslibroot,${developer_dir}/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc</literal></para>
+                <para>(Leopard / Intel Tiger) <literal>-arch i386 -arch ppc</literal></para>
+                <para>(Snow Leopard) <literal>-arch x86_64 -arch i386</literal></para>
               </listitem>
 
               <listitem>
@@ -2625,31 +2634,46 @@ build.target-delete     compat</programlisting>
         <listitem>
           <para>This keyword is for specifying whether or not it is safe for a
           port to use multiple CPUs or multiple cores in parallel during its
-          build phase. If <code>use_parallel_build</code> is set to
-          <quote>yes</quote> in a given port, the option <option>-jN</option>
+          build phase. If <code>use_parallel_build</code> is not set to
+          <quote>no</quote> in a given port, the option <option>-j${build.jobs}</option>
           is passed to <varname>${build.cmd}</varname> (if
           <varname>${build.cmd}</varname> is <command>make</command> or
-          <command>scons</command>) where <option>N</option> represents the
-          number of parallel build threads defined by the variable
-          <varname>buildmakejobs</varname> in
-          <filename>macports.conf</filename>. The default value of
-          <varname>buildmakejobs</varname> is set to 1, therefore unless this
-          variable is increased for a given MacPorts installation, parallel
-          builds will not occur in any case.</para>
+          <command>scons</command>).</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>no</option></para>
+              <para>Default: <option>yes</option></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>use_parallel_build  yes</programlisting>
+              <programlisting>use_parallel_build  no</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
       </varlistentry>
+      
+      <varlistentry>
+        <term>build.jobs</term>
+
+        <listitem>
+          <para>The number of simultaneous jobs to run when parallel build is
+          enabled. The default value is based on the variable
+          <varname>buildmakejobs</varname> in
+          <filename>macports.conf</filename>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: If <varname>buildmakejobs</varname> is 0, the
+              number of CPU cores in the machine, or the number of GB of
+              physical memory plus one, whichever is less. Otherwise, 
+              the actual value of <literal>${buildmakejobs}</literal>.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      
     </variablelist>
   </section>
 

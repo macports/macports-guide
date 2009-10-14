@@ -105,6 +105,19 @@
           <para>Default: <option>image</option></para>
         </listitem>
       </varlistentry>
+      
+      <varlistentry>
+        <term>build_arch</term>
+
+        <listitem>
+          <para>The machine architecture to build for in normal use.
+          Options include: ppc, i386, ppc64, x86_64</para>
+
+          <para>Default: 
+          <para>(Snow Leopard) <option>x86_64</option> or <option>i386</option> depending on hardware</para>
+          <para>(Leopard/Tiger) <option>i386</option> or <option>ppc</option> depending on hardware</para>
+        </listitem>
+      </varlistentry>
 
       <varlistentry>
         <term>applications_dir</term>
@@ -125,6 +138,17 @@
 
           <para>Default:
           <filename>${prefix}/Library/Frameworks</filename></para>
+        </listitem>
+      </varlistentry>
+      
+      <varlistentry>
+        <term>developer_dir</term>
+
+        <listitem>
+          <para>Directory where Xcode Tools is installed.</para>
+
+          <para>Default:
+          <filename>/Developer</filename></para>
         </listitem>
       </varlistentry>
 
@@ -220,7 +244,7 @@
           building ports. Using "0" will cause a runtime autodetection to use
           all available processer cores.</para>
 
-          <para>Default: 1</para>
+          <para>Default: 0</para>
         </listitem>
       </varlistentry>
 
@@ -302,28 +326,6 @@
     <para>Options for MacPorts Universal Binaries (+universal variant)</para>
 
     <variablelist>
-      <varlistentry>
-        <term>universal_target</term>
-
-        <listitem>
-          <para>Sets MACOSX_DEPLOYMENT_TARGET</para>
-
-          <para>Example: 10.5</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>universal_sysroot</term>
-
-        <listitem>
-          <para>The SDK "sysroot" full path to use for +universal
-          variant.</para>
-
-          <para>Example:
-          <filename>/Developer/SDKs/MacOSX10.5.sdk</filename></para>
-        </listitem>
-      </varlistentry>
-
       <varlistentry>
         <term>universal_archs</term>
 
