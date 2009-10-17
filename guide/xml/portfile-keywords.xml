@@ -108,11 +108,12 @@
       <term>maintainers</term>
 
       <listitem>
-        <para>A port's maintainer is a person or persons who take
-        responsibility for keeping the port up-to-date, and the maintainer
-        keyword lists maintainer email addresses(s). However, many maintainers
-        wish to hide these addresses from spambots; to do so follow these
-        conventions:</para>
+        <para>A port's maintainers are the people who have agreed to take
+        responsibility for keeping the port up-to-date. Most ports have only a
+        single maintainer, but some ports have two or more comaintainers. The
+        <literal>maintainers</literal> keyword lists the maintainers' email
+        addresses, preferrably in the obfuscated form which hides them
+        from spambots:</para>
 
         <itemizedlist>
           <listitem>
@@ -121,7 +122,7 @@
           </listitem>
 
           <listitem>
-            <para>For addresses in other domains, say
+            <para>For addresses in other domains, e.g.
             <email>account@example.org</email>, use the convention
             example.org:account to specify the address.</para>
           </listitem>
@@ -134,6 +135,15 @@
 
         <programlisting>maintainers         jdoe \
                     example.org:julesverne</programlisting>
+
+        <note>
+          <para>The address <email>nomaintainer</email> designates a port that
+          is not maintained by anybody and may be modified by any committer.
+          Feel free to claim maintainership of a nomaintainer port if desired.
+          The address <email>openmaintainer</email> designates a port that has
+          a maintainer who allows minor changes to be committed without his or
+          her prior approval.</para>
+        </note>
       </listitem>
     </varlistentry>
 

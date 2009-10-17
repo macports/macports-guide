@@ -187,22 +187,18 @@
       <listitem>
         <para>Port maintainers</para>
 
-        <para>A port's maintainer is a person or persons who take
-        responsibility for keeping the port up-to-date, and the maintainer
-        keyword lists maintainer email addresses(s). To hide these addresses
-        from spambots, see the more full explanation of the <link
-        linkend="reference.keywords.maintainers">maintainer keyword</link> in
+        <para>A port's maintainers are the people who have agreed to take
+        responsibility for keeping the port up-to-date. The
+        <literal>maintainers</literal> keyword lists the maintainers' email
+        addresses, preferrably in the obfuscated form which hides them
+        from spambots. For more, see the full explanation of the <link
+        linkend="reference.keywords.maintainers">maintainers keyword</link> in
         the <link linkend="reference.keywords">Global Keywords</link> section
         of the <link linkend="reference">Portfile Reference</link>
         chapter.</para>
 
-        <programlisting>maintainers         julesverne@example.org</programlisting>
-
-        <note>
-          <para>The address <email>nomaintainer@macports.org</email>, or in
-          hidden form <email>nomaintainer</email>, designates a port that may
-          be modified by any committer.</para>
-        </note>
+        <programlisting>maintainers         jdoe \
+                    example.org:julesverne</programlisting>
       </listitem>
 
       <listitem>
