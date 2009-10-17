@@ -276,8 +276,7 @@ RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23<
       <listitem>
         <para>Port configure arguments (optional)</para>
 
-        <programlisting>configure.args      --prefix=${prefix} \
-                    --enable-perl-site-install \
+        <programlisting>configure.args      --enable-perl-site-install \
                     --mandir=${prefix}/share/man</programlisting>
       </listitem>
     </orderedlist>
