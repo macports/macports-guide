@@ -282,11 +282,11 @@
           sourceforge, gnu, etc. If the file(s) declared in
           <varname>${distfiles}</varname> are not successfully fetched after
           trying the <code>master_sites</code> values, the MacPorts Project
-          mirror is always tried last before giving up.</para>
+          svn server is always tried last before giving up.</para>
 
           <para>For a complete list of mirrors and their list of sites, see
           the file <filename>mirror_sites.tcl</filename> located in
-          <filename>${prefix}/share/macports/resources/port1.0/fetch/</filename>.</para>
+          <filename>_resources/port1.0/fetch/</filename> in the ports tree.</para>
 
           <note>
             <para>If a <code>master_sites</code> keyword has multiple values,
@@ -297,9 +297,8 @@
 
           <itemizedlist>
             <listitem>
-              <para>Default: <code>macports</code> (the MacPorts Project
-              mirror - implicit final value of
-              <code>master_sites</code>)</para>
+              <para>Default: <code>none</code> (but the <code>macports_distfiles</code>
+              mirror is always implicitly appended)</para>
             </listitem>
 
             <listitem>
@@ -311,20 +310,12 @@
 </programlisting>
 
               <para>You may also use mirror site lists predefined by MacPorts.
-              Here the sourceforge, gnu, and MacPorts Project mirrors are
+              Here the sourceforge, gnu, and freebsd mirrors are
               used.</para>
 
-              <programlisting>master_sites        sourceforge gnu macports
+              <programlisting>master_sites        sourceforge gnu freebsd
 
 </programlisting>
-
-              <note>
-                <para>Though the MacPorts Project mirror
-                (<code>macports</code>) is always tried last if no
-                <varname>${distfiles}</varname> match is found, if the mirror
-                <code>macports</code> is explicitly declared it is tried in
-                the normal sort order.</para>
-              </note>
 
               <para>When using mirror master_sites, the subdirectory
               <varname>${name}</varname> is checked on every mirror. If the
