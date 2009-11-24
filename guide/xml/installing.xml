@@ -199,7 +199,7 @@
       <orderedlist>
         <listitem>
           <para>Download and unzip the latest MacPorts tarball from the <ulink
-          url="http://svn.macports.org/repository/macports/downloads/">MacPorts
+          url="http://distfiles.macports.org/MacPorts/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
