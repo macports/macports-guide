@@ -379,12 +379,12 @@
     /Library/Tcl/darwinports1.0 \
     /Library/Tcl/macports1.0 \
     ~/.macports</userinput></programlisting>
-  </section>
   
   <para>If you use a shell other than bash (perhaps tcsh), you may need to
   adjust the above to fit your shell's syntax. Also note that depending on which
   version of MacPorts you have and which ports you have installed, not all of
   the above paths will exist on your system. This is OK.</para>
+  </section>
 
   <section id="installing.shell">
     <title>MacPorts and the Shell</title>
