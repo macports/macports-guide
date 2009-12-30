@@ -342,10 +342,32 @@
   <section id="installing.macports.uninstalling">
     <title>Uninstall</title>
 
-    <para>To uninstall MacPorts from the default location
-    <filename>/opt/local/</filename>, perform this command from a terminal
-    window.</para>
+    <para>Uninstalling MacPorts can be a drastic step, and depending on the 
+    issue you are experiencing, you may not need to do so. If you are unsure,
+    ask on the
+    <ulink url="http://lists.macosforge.org/mailman/listinfo.cgi/macports-users">macports-users</ulink>
+    mailing list first.</para>
+    
+    <para>If you need to uninstall MacPorts, and your <command>port</command> command is
+    functioning, first uninstall all the installed ports by running this
+    command in the Terminal:</para>
+    <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall installed</userinput></programlisting>
 
+    <para>All that will be left in your installation prefix now will be files
+    that were not registered to any port. This includes configuration
+    files, databases, any files which MacPorts
+    renamed in order to allow a forced installation or upgrade, and the base
+    MacPorts software itself. You may wish to save your configuration files
+    (most are in <filename>${prefix}/etc</filename>), databases, or any other
+    unique data by moving it aside.</para>
+
+    <para>To remove all remaining traces of MacPorts, run the following
+    command in the Terminal. If you have changed <varname>prefix</varname>,
+    <varname>applications_dir</varname> or <varname>frameworks_dir</varname>
+    from their default values, then replace <filename>/opt/local</filename>
+    with your <varname>prefix</varname>, replace <filename>/Applications/MacPorts</filename>
+    with your <varname>applications_dir</varname>, and/or add your
+    <varname>frameworks_dir</varname> to the list, respectively.</para>
     <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
     /opt/local \
     /Applications/DarwinPorts \
@@ -358,6 +380,11 @@
     /Library/Tcl/macports1.0 \
     ~/.macports</userinput></programlisting>
   </section>
+  
+  <para>If you use a shell other than bash (perhaps tcsh), you may need to
+  adjust the above to fit your shell's syntax. Also note that depending on which
+  version of MacPorts you have and which ports you have installed, not all of
+  the above paths will exist on your system. This is OK.</para>
 
   <section id="installing.shell">
     <title>MacPorts and the Shell</title>
