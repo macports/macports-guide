@@ -36,7 +36,7 @@
             Avoid filing duplicate bugs. Search for duplicates by:
             <itemizedlist>
               <listitem>using the search bar that appears on each page</listitem>
-              <listitem>using <ulink url="http://trac.macports.org/projects/macports/search">the search page</ulink></listitem>
+              <listitem>using <ulink url="http://trac.macports.org/search?portsummarysearch=on">the search page</ulink></listitem>
               <listitem>browsing the list of <ulink url="http://trac.macports.org/report">categorised reports</ulink></listitem>
               <listitem>making an advanced search by constructing a <ulink url="http://trac.macports.org/query">custom query</ulink></listitem>
             </itemizedlist>
@@ -55,7 +55,7 @@
           <para>Is the problem with a 'port upgrade' operation?</para>
           <para>
             If so, try a 'port uninstall <replaceable>foo</replaceable>' and
-            then reinstall. You might also want to run 'port -fR upgrade
+            then reinstall. You might also want to run 'port -nR upgrade --force
             <replaceable>foo</replaceable>' to rebuild ports depending upon
             port <replaceable>foo</replaceable>.
           </para>
