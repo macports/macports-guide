@@ -308,9 +308,10 @@
       one MacPorts instance on the same host. Only one copy of MacPorts may
       use the default Tcl library path <filename>/Library/Tcl/</filename>, so
       for additional installations use the option
-      <option>--with-tclpackage</option> as shown below and substitute
-      NEW_TCL_PACKAGE with any empty directory, for example
-      <filename>/Library/Tcl/macports-new/</filename>.</para>
+      <option>--with-tclpackage</option> as shown below. It's also recommended
+      to change the applications dir using
+      <option>--with-applications-dir</option> to avoid conflicts in
+      <filename>/Applications/MacPorts</filename>.</para>
 
       <note>
         <para>The first command temporarily removes the standard MacPorts
@@ -319,8 +320,8 @@
       </note>
 
       <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
-<prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
-<prompt>%%</prompt> <userinput>./configure --prefix=NEW_PREFIX --with-tclpackage=NEW_TCLPACKAGE</userinput>
+<prompt>%%</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
+<prompt>%%</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-tclpackage=$MP_PREFIX/Library/Tcl --with-applications-dir=$MP_PREFIX/Applications</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
