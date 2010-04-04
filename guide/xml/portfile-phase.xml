@@ -1898,34 +1898,37 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           added for you, as they may be just build- or also run-dependencies.
           Keep in mind that not all compiler suites might be available on your
           platform: <option>gcc-3.3</option> is available on Mac OS X 10.3 and
-          10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4 and
-          10.5, <option>gcc-4.2</option> is available as preview for
-          10.5.</para>
+          10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4+,
+          <option>gcc-4.2</option> and <option>llvm-gcc-4.2</option> are
+          available on 10.5 and 10.6, and clang is available on 10.6.</para>
 
           <para>Only use it if a port really needs a different
           compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>gcc-3.3</option> on Mac OS X 10.3</para>
-            </listitem>
-
-            <listitem>
               <para>Default: <option>gcc-4.0</option> on Mac OS X 10.4 and
               10.5</para>
+            </listitem>
+            
+             <listitem>
+              <para>Default: <option>gcc-4.2</option> on Mac OS X 10.6</para>
             </listitem>
 
             <listitem>
               <para>Values: <option>gcc-3.3</option> <option>gcc-4.0</option>
               <option>gcc-4.2</option> <option>llvm-gcc-4.2</option>
+              <option>clang</option>
               <option>apple-gcc-3.3</option> <option>apple-gcc-4.0</option>
+              <option>apple-gcc-4.2</option>
               <option>macports-gcc-3.3</option>
               <option>macports-gcc-3.4</option>
               <option>macports-gcc-4.0</option>
               <option>macports-gcc-4.1</option>
               <option>macports-gcc-4.2</option>
               <option>macports-gcc-4.3</option>
-              <option>macports-gcc-4.4</option></para>
+              <option>macports-gcc-4.4</option>
+              <option>macports-gcc-4.5</option></para>
             </listitem>
 
             <listitem>
