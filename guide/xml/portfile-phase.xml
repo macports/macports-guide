@@ -2492,7 +2492,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>build.cmd           pbxbuild</programlisting>
+              <programlisting>build.cmd           scons</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -2512,7 +2512,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
             </listitem>
 
             <listitem>
-              <para>Values: <option>gnu</option> <option>bsd</option></para>
+              <para>Values: <option>gnu</option> <option>bsd</option> <option>pbx</option></para>
             </listitem>
 
             <listitem>
@@ -2780,8 +2780,7 @@ build.target-delete     compat</programlisting>
 
         <listitem>
           <para>Install command to run relative to
-          <varname>${worksrcdir}</varname>. Only use it if you can't use
-          <literal>destroot.type</literal>.</para>
+          <varname>${worksrcdir}</varname>.</para>
 
           <itemizedlist>
             <listitem>
@@ -2791,33 +2790,7 @@ build.target-delete     compat</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>destroot.cmd        pbxbuild</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
-        <term>destroot.type</term>
-
-        <listitem>
-          <para>Defines which "make" is required. Sets
-          <varname>${destroot.cmd}</varname> to either "gnumake" or "bsdmake"
-          accordingly.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <varname>${build.type}</varname></para>
-            </listitem>
-
-            <listitem>
-              <para>Values: <option>gnu</option> <option>bsd</option></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>destroot.type       bsd</programlisting>
+              <programlisting>destroot.cmd        scons</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
