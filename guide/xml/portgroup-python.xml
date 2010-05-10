@@ -8,6 +8,38 @@
   <para>PortGroup python allows for efficient porting of python-based open
   source software.</para>
 
+  <section id="reference.portgroup.python.keywords">
+    <title>python PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the python2x PortGroup allow for port authors to
+    set the following keywords in addition to the general Portfile
+    keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>python.link_binaries</term>
+
+        <listitem>
+          <para>When yes (the default), tells the PortGroup to automatically
+          link any executable binaries installed in the bin/ directory within
+          the framework into
+          <filename>${prefix}/bin</filename>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.link_binaries     no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
   <section id="reference.portgroup.python.variables">
     <title>python PortGroup Specific Variables</title>
 
