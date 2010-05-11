@@ -249,8 +249,12 @@
 
         <listitem>
           <para><guilabel>Keywords:</guilabel> Type any keywords that might
-          help when searching for tickets (portname, type of problem,
-          etc).</para>
+          help when searching for tickets. It is not useful to list words here
+          that already appear elsewhere in the ticket. Keywords also serve as
+          tags; for example, use "tiger" if reporting a bug that only
+          affects OS X 10.4, "haspatch" if a fix is attached to the ticket,
+          "maintainer" if you are the port's maintainer, or "LP64" if
+          reporting an issue that only affects 64-bit platforms.</para>
         </listitem>
 
         <listitem>
