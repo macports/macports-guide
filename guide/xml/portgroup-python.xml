@@ -37,6 +37,26 @@
           </itemizedlist>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term>python.add_archflags</term>
+        <listitem>
+          <para>When yes (the default), the PortGroup will automatically
+          try to pass the correct arch-specific flags during build time
+          (via the standard CFLAGS, LDFLAGS, etc environment variables).
+          Set this to no and setup those variables in build.env manually
+          if the default does not work.</para>
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.add_archflags     no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
