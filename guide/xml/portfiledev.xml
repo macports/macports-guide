@@ -139,6 +139,12 @@
         <programlisting>categories          net</programlisting>
       </listitem>
 
+      <listitem>
+        <para>Platform statement</para>
+
+        <programlisting>platforms           darwin</programlisting>
+      </listitem>
+
 <!--
       <listitem>
           <para>Port license</para>
@@ -221,12 +227,6 @@
       </listitem>
 
       <listitem>
-        <para>Platform statement</para>
-
-        <programlisting>platforms           darwin</programlisting>
-      </listitem>
-
-      <listitem>
         <para>A port's download URLs</para>
 
         <programlisting>master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
@@ -300,11 +300,11 @@ PortSystem          1.0
 name                rrdtool
 version             1.2.23
 categories          net
+platforms           darwin
 maintainers         julesverne
 description         Round Robin Database
 long_description    RRDtool is a system to store and display time-series data
 homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
-platforms           darwin
 master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
