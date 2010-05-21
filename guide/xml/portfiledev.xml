@@ -240,9 +240,9 @@
         fetched tarball for security. For the best security, use md5, sha1,
         and rmd160 checksum types.</para>
 
-        <programlisting>checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+        <programlisting>checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
 
         <para>To find the correct checksums for a port's distribution file,
         follow this example:</para>
@@ -308,9 +308,9 @@ homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
 master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
-checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23
+checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23
 
 depends_lib         port:perl5.8 \
                     port:tcl \

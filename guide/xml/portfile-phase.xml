@@ -955,18 +955,18 @@ svn.tag             2100</programlisting>
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>checksums           md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                    rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+              <programlisting>checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
+                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
 
               <programlisting>checksums           ${distname}${extract.suffix} \
-                        md5 dafa161bc9c61e57636a6085c87c1fe8 \
-                        sha1 5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                        rmd160 0c1147242adf476f5e93f4d59b553ee3ea378b23 \
+                        md5     dafa161bc9c61e57636a6085c87c1fe8 \
+                        sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
+                        rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23 \
                     hobbit.tar.gz \
-                        md5 3b8d02c6cf6239b9bdadbc6543c5a683 \
-                        sha1 27874638b23e66d39ed94fe716ca25c967f6e993 \
-                        rmd160 82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
+                        md5     3b8d02c6cf6239b9bdadbc6543c5a683 \
+                        sha1    27874638b23e66d39ed94fe716ca25c967f6e993 \
+                        rmd160  82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
