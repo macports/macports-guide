@@ -359,7 +359,7 @@ configure.args      --enable-perl-site-install \
         <para>Because many software packages do not use
         <option>configure</option>, a keyword is provided to eliminate the
         <option>configure</option> phase. Another exception is the
-        <option>destroot</option> phase may not be overriden. See the
+        <option>destroot</option> phase may not be eliminated. See the
         chapter <link linkend="reference">Portfile Reference</link> for full
         information.</para>
       </note>
