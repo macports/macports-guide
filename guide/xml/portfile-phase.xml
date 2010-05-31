@@ -543,7 +543,7 @@ distfiles           file_one.tar.gz:tagone \
 
                 <programlisting>fetch.type          svn
 svn.url             svn://example.org
-svn.revision         2100</programlisting>
+svn.revision        2100</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -799,7 +799,7 @@ svn.revision         2100</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>svn.revision         37192</programlisting>
+                <programlisting>svn.revision        37192</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
