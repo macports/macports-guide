@@ -543,7 +543,7 @@ distfiles           file_one.tar.gz:tagone \
 
                 <programlisting>fetch.type          svn
 svn.url             svn://example.org
-svn.tag             2100</programlisting>
+svn.revision         2100</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -784,7 +784,7 @@ svn.tag             2100</programlisting>
         </varlistentry>
 
         <varlistentry>
-          <term>svn.tag</term>
+          <term>svn.revision</term>
 
           <listitem>
             <para>Optional tag for fetching with Subversion, this specifies
@@ -799,7 +799,7 @@ svn.tag             2100</programlisting>
               <listitem>
                 <para>Example:</para>
 
-                <programlisting>svn.tag             37192</programlisting>
+                <programlisting>svn.revision         37192</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
