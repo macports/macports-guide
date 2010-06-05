@@ -242,7 +242,7 @@
         <listitem>
           <para>Number of simultaneous make jobs (commands) to use when
           building ports. Using "0" will cause a runtime autodetection to use
-          all available processer cores.</para>
+          all available processor cores.</para>
 
           <para>Default: 0</para>
         </listitem>
