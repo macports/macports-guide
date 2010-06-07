@@ -2300,12 +2300,30 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
     </section>
 
     <section id="reference.phases.configure.automake-autoconf">
-      <title>Automake and Autoconf</title>
+      <title>Automake, Autoconf, and Autoreconf</title>
 
       <para>The list of configure keywords available for ports that need
       automake and/or autoconf.</para>
 
       <variablelist>
+        <varlistentry>
+          <term>use_autoreconf</term>
+          <listitem>
+            <para>Whether or not to use autoreconf</para>
+            <itemizedList>
+              <listitem>
+                <para>Default: <option>no</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>use_autoreconf      yes</programlisting>
+              </listitem>
+            </itemizedList>
+          </listitem>
+        </varlistentry>
+
         <varlistentry>
           <term>use_automake</term>
 
