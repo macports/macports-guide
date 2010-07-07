@@ -84,9 +84,9 @@
 
         <listitem>
           <para>Storage type to use for the MacPorts registry: flat or sqlite.
-          sqlite is not yet supported.</para>
+          Preferred format is sqlite, flat is legacy.</para>
 
-          <para>Default: <option>flat</option></para>
+          <para>Default: <option>sqlite</option></para>
         </listitem>
       </varlistentry>
 
@@ -221,7 +221,7 @@
           <para>Use pipes rather than intermediate files when compiling
           C/C++/etc</para>
 
-          <para>Default: <option>no</option></para>
+          <para>Default: <option>yes</option></para>
         </listitem>
       </varlistentry>
 
