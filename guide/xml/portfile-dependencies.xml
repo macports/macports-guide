@@ -8,31 +8,52 @@
   often require that other ports be installed beforehand; these prerequisites
   for a given port are called a port's <quote>dependencies</quote>.</para>
 
-  <para>The three keywords used when specifying dependencies in a Portfile are
+  <para>The keywords used when specifying dependencies in a Portfile are
   related to port install phases, and they refer to what are called library,
-  build, and run dependencies. Though all of them install dependencies before
-  a given port is installed, specifying dependencies with the correct keyword
-  is important for proper port upgrade and uninstall behavior. For example,
-  you may not uninstall a port that is a library dependency for another port,
-  though you may remove one that is a build dependency; likewise, upgrading a
-  port will upgrade its library and build dependencies also, but not its run
-  dependencies.</para>
+  build, fetch, extract and run dependencies. Though all of them install dependencies
+  before a given port is installed, specifying dependencies with the correct keyword
+  is important for proper port upgrade and uninstall behavior, or when running targets
+  other than install. For example,
+  you may not uninstall a port that is a library dependency for another installed port,
+  though you may remove one that is a build dependency. Likewise, if you run the
+  fetch target for a port, only the fetch dependencies will be installed first, so
+  they should be all that is needed for that target.</para>
 
   <variablelist>
     <varlistentry>
-      <term>depends_lib</term>
+      <term>depends_fetch</term>
 
-      <term>depends_lib-append</term>
+      <term>depends_fetch-append</term>
 
-      <term>depends_lib-delete</term>
+      <term>depends_fetch-delete</term>
 
       <listitem>
         <para>The list of dependencies to check before phases
+        <option>fetch</option>, <option>checksum</option>,
+        <option>extract</option>, <option>patch</option>,
         <option>configure</option>, <option>build</option>,
         <option>destroot</option>, <option>install</option>, and
-        <option>package</option>. Library dependencies are needed both at
-        build time (for headers and libraries to link against) and at run
-        time.</para>
+        <option>package</option>. Fetch dependencies are needed to download
+        the distfiles for a port, and are not needed at all once the software
+        is installed.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>depends_extract</term>
+
+      <term>depends_extract-append</term>
+
+      <term>depends_extract-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phases
+        <option>extract</option>, <option>patch</option>,
+        <option>configure</option>, <option>build</option>,
+        <option>destroot</option>, <option>install</option>, and
+        <option>package</option>. Extract dependencies are needed to unpack a
+        port's distfiles into the work directory, and are not needed at all once
+        the software is installed.</para>
       </listitem>
     </varlistentry>
 
@@ -48,8 +69,24 @@
         <option>configure</option>, <option>build</option>,
         <option>destroot</option>, <option>install</option>, and
         <option>package</option>. Build dependencies are needed when software
-        is compiled, but not needed at all once the software is compiled and
-        installed.</para>
+        is being built, but not needed at all once it is installed.</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>depends_lib</term>
+
+      <term>depends_lib-append</term>
+
+      <term>depends_lib-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phases
+        <option>configure</option>, <option>build</option>,
+        <option>destroot</option>, <option>install</option>, and
+        <option>package</option>. Library dependencies are needed both at
+        build time (for headers and libraries to link against) and at run
+        time.</para>
       </listitem>
     </varlistentry>
 
