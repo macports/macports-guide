@@ -426,8 +426,10 @@
       <itemizedlist>
         <listitem>
           <para>If the maintainer does not respond within 72 hours, you or
-          another committer may review the patches and update the port. If you
-          are not a committer, you may email
+          another committer may review the patches and update the port. The log
+          message of this commit must explain that you are taking advantage of
+          maintainer timeout and include a reference to the ticket. If you are
+          not a committer, you may email
           <email>macports-dev@lists.macosforge.org</email> and request the
           updates be committed.</para>
         </listitem>
