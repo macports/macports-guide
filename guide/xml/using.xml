@@ -19,7 +19,7 @@
     <section id="using.port.selfupdate">
       <title>selfupdate</title>
 
-      <para>The <option>selfupdate</option> option should be used regularly to
+      <para>The <option>selfupdate</option> action should be used regularly to
       <option>sync</option> the local ports tree with the global MacPorts
       ports repository so you will have the latest port versions. It also
       checks for new revisions of the MacPorts infrastructure, called MacPorts
@@ -27,8 +27,8 @@
 
       <note>
         <para>Selfupdate runs only on Mac OS X. If you are running MacPorts on
-        another platform, you must use option <link
-        linkend="using.port.sync">sync</link> to update the ports tree; to
+        another platform, you must use the <link
+        linkend="using.port.sync">sync</link> action to update the ports tree; to
         update MacPorts base you must manually install a newer version from
         source.</para>
       </note>
@@ -66,7 +66,7 @@ Congratulations, you have successfully installed the MacPorts system.</screen>
     <section id="using.port.sync">
       <title>sync</title>
 
-      <para>The <option>sync</option> option performs a subset of
+      <para>The <option>sync</option> action performs a subset of
       <option>selfupdate</option> actions. It synchronizes the ports tree, as
       does <option>selfupdate</option>, but it does not check for upgrades to
       MacPorts base. On Mac OS X, unless there is a special reason not to do
@@ -83,8 +83,9 @@ Congratulations, you have successfully installed the MacPorts system.</screen>
     <section id="using.port.list">
       <title>list</title>
 
-      <para>The <option>list</option> option is used to get a list of all
-      available ports. The list of available ports is very long, so use <link
+      <para>The <option>list</option> action lists the currently available version of
+      the specified ports, or if no ports are specified, displays a list of all available
+      ports. The list of available ports is very long, so use <link
       linkend="using.port.search">search</link> if you know a port's name or
       part of it.</para>
 
@@ -94,7 +95,7 @@ Congratulations, you have successfully installed the MacPorts system.</screen>
     <section id="using.port.search">
       <title>search</title>
 
-      <para>The <option>search</option> option is very useful to find port
+      <para>The <option>search</option> action is very useful to find port
       names by partial matches.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port search rrd</userinput></programlisting>
@@ -106,7 +107,7 @@ php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
     <section id="using.port.info">
       <title>info</title>
 
-      <para>The <option>info</option> option is used to get information about
+      <para>The <option>info</option> action is used to get information about
       a port: description, maintainer, etc.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port info flowd</userinput></programlisting>
@@ -123,7 +124,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.deps">
       <title>deps</title>
 
-      <para>The <option>deps</option> option shows you the dependencies of a
+      <para>The <option>deps</option> action shows you the dependencies of a
       port; dependencies are explicitly declared in
       <filename>Portfile</filename>s.</para>
 
@@ -140,7 +141,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.variants">
       <title>variants</title>
 
-      <para>The <option>variants</option> option allows you to check what
+      <para>The <option>variants</option> action allows you to check what
       variations of a port are available before you install it. Variants are a
       way for port authors to provide options that may be invoked at install
       time. See <link linkend="using.variants.invoking">Invoking Port
@@ -158,7 +159,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.install">
       <title>install</title>
 
-      <para>The option <option>install</option> is used to install a port. See
+      <para>The action <option>install</option> is used to install a port. See
       <link linkend="using.variants.invoking">Invoking Port Variants</link>
       below to install ports that have variants.</para>
 
@@ -176,7 +177,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.clean">
       <title>clean</title>
 
-      <para>The option <option>clean</option> deletes all intermediate files
+      <para>The action <option>clean</option> deletes all intermediate files
       that MacPorts creates while building a port. A <userinput>port
       clean</userinput> is also often necessary to remove corrupted tarballs
       after a failed <userinput>fetch</userinput> phase.</para>
@@ -193,7 +194,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.uninstall">
       <title>uninstall</title>
 
-      <para>The <option>uninstall</option> option will uninstall an installed
+      <para>The <option>uninstall</option> action will uninstall an installed
       port.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port uninstall vile</userinput></programlisting>
@@ -213,7 +214,7 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.contents">
       <title>contents</title>
 
-      <para>The <option>contents</option> option displays the files that have
+      <para>The <option>contents</option> action displays the files that have
       been installed by a given port. Uninstalled ports will always show no
       contents.</para>
 
@@ -230,7 +231,9 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.installed">
       <title>installed</title>
 
-      <para>The <option>installed</option> option displays all installed
+      <para>The <option>installed</option> action displays the installed versions,
+      variants and activation status of the
+      specified ports, or if no ports are specified, all installed
       ports.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port installed</userinput></programlisting>
@@ -252,9 +255,11 @@ Maintainers: nomaintainer@macports.org</screen>
     <section id="using.port.outdated">
       <title>outdated</title>
 
-      <para>The <option>outdated</option> option checks your installed ports
-      against the MacPorts repository to see if updated Portfiles have been
-      released since your ports were installed.</para>
+      <para>The <option>outdated</option> action checks your installed ports
+      against the current ports tree to see if updated Portfiles have been
+      released since your ports were installed. Note that you will not see new
+      versions unless you have updated your ports tree using <option>selfupdate</option>
+      or <option>sync</option>.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
 
@@ -268,7 +273,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     <section id="using.port.upgrade">
       <title>upgrade</title>
 
-      <para>The <option>upgrade</option> option upgrades installed ports and
+      <para>The <option>upgrade</option> action upgrades installed ports and
       their dependencies when a <filename>Portfile</filename> in the
       repository has been updated after a port was installed.</para>
 
@@ -285,7 +290,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       <programlisting><prompt>%%</prompt> <userinput>port upgrade outdated</userinput></programlisting>
 
       <note>
-        <para>The <option>upgrade</option> option by default does not
+        <para>The <option>upgrade</option> action by default does not
         uninstall an upgraded port —it deactivates it. See section <link
         linkend="internals.images">Port Images</link>, and also Destroot and
         Activate phases in <link linkend="reference.phases">Port
@@ -299,7 +304,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
     <section id="using.port.dependents">
       <title>dependents</title>
 
-      <para>The <option>dependents</option> option reports what ports depend
+      <para>The <option>dependents</option> action reports what ports depend
       upon a given port, if any. MacPorts learns about dependents during port
       installation, so uninstalled ports will always report that there are no
       dependents.</para>
@@ -314,7 +319,7 @@ libdap depends on openssl</screen>
     <section id="using.port.livecheck">
       <title>livecheck</title>
 
-      <para>The livecheck option checks to see if the application
+      <para>The livecheck action checks to see if the application
       corresponding to a given port has been updated at the developer's
       download site. It's especially useful for port maintainers, but others
       may also wish to see if a port has the latest available distribution
@@ -337,7 +342,7 @@ libdap depends on openssl</screen>
     <section id="using.port.lint">
       <title>lint</title>
 
-      <para>The lint option checks if the Portfile conforms to the MacPorts
+      <para>The lint action checks if the Portfile conforms to the MacPorts
       standards specified in <link linkend="development">Portfile
       Development</link>.</para>
 
