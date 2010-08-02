@@ -2310,7 +2310,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <term>use_autoreconf</term>
           <listitem>
             <para>Whether or not to use autoreconf</para>
-            <itemizedList>
+            <itemizedlist>
               <listitem>
                 <para>Default: <option>no</option></para>
               </listitem>
@@ -2320,7 +2320,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
 
                 <programlisting>use_autoreconf      yes</programlisting>
               </listitem>
-            </itemizedList>
+            </itemizedlist>
           </listitem>
         </varlistentry>
 
