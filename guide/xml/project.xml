@@ -104,7 +104,7 @@
 
           <itemizedlist>
             <listitem>
-              <para>Example: "rrdtool-1.2.23 Configure error - build
+              <para>Example: "rrdtool @1.2.23 +python Configure error - build
               failure"</para>
             </listitem>
           </itemizedlist>
