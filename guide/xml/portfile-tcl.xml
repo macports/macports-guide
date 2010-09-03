@@ -221,6 +221,44 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry id="reference.tcl-extensions.strsed">
+        <term>strsed</term>
+
+        <listitem>
+            <para>strsed can be used for string manipulations using regular
+            expressions. It supports a small subset of the commands known
+            from sed(1).</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term>strsed <replaceable>string</replaceable>
+                    s/<replaceable>regex</replaceable>/<replaceable>replacement</replaceable>/
+                    </term>
+
+                    <listitem>
+                        <para>Replaces the first instance of
+                        <replaceable>regex</replaceable> with
+                        <replaceable>replacement</replaceable>. Refer to
+                        re_format(7) for a definition of regular expression
+                        syntax.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term>strsed <replaceable>string</replaceable>
+                    g/<replaceable>regex</replaceable>/<replaceable>replacement</replaceable>/
+                    </term>
+
+                    <listitem>
+                        <para>The same as the previous format, except all
+                        instances of the pattern will be replaced, not only
+                        the first (mnemonic: 'g' is for global).</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </listitem>
+    </varlistentry>
+
     <varlistentry>
       <term>reinplace</term>
 
