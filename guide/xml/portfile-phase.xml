@@ -182,16 +182,23 @@
     not phase declarations have been explicitly defined in a Portfile.</para>
 
     <section id="reference.phases.installation.list-modifiers">
-      <title>Keyword List Modifiers (-append / -delete)</title>
+      <title>Keyword List Modifiers (-append, -delete, -replace)</title>
 
-      <para>Keyword list modifiers are keywords that end in -append or
-      -delete. Keywords that support list modifiers are identified under
-      appropriate reference sections below. Keyword list modifiers are most
-      frequently used for these three purposes:</para>
+      <para>Keyword list modifiers are keywords that end in -append, -delete or
+      -replace. Keywords that support list modifiers are identified under
+      appropriate reference sections below.</para>
+
+      <para>-append adds a value to the keyword, -delete removes a previously
+      added item. -replace treats the keyword value as a string and filters it
+      through <link linkend="reference.tcl-extensions.strsed">strsed</link>
+      using a given pattern.</para>
+
+      <para>Keyword list modifiers are most frequently used for these three
+      purposes:</para>
 
       <orderedlist>
         <listitem>
-          <para>Preserve configure Defaults set by a previously executed
+          <para>Preserve configure defaults set by a previously executed
           Portfile keyword or by MacPorts base</para>
 
           <para>MacPorts base sets the gcc compiler flags CFLAGS and LDFLAGS
@@ -234,17 +241,21 @@
           <itemizedlist>
             <listitem>
               <para><code>depends_lib-append</code> or
-              <code>depends_lib-delete</code></para>
+              <code>depends_lib-delete</code>
+              <code>depends_lib-replace</code>
+              </para>
             </listitem>
 
             <listitem>
               <para><code>distfiles-append</code> or
-              <code>distfile-delete</code></para>
+              <code>distfiles-delete</code>
+              <code>distfiles-replace</code></para>
             </listitem>
 
             <listitem>
               <para><code>patchfiles-append</code> or
-              <code>patchfiles-delete</code></para>
+              <code>patchfiles-delete</code>
+              <code>patchfiles-replace</code></para>
             </listitem>
           </itemizedlist>
         </listitem>
