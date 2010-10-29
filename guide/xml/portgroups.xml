@@ -15,17 +15,17 @@
     <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</userinput></programlisting>
 
     <screen>archcheck-1.0.tcl
-            cmake-1.0.tcl
-            crossbinutils-1.0.tcl
-            gnustep-1.0.tcl
-            haskell-1.0.tcl
-            hocbinding-1.0.tcl
-            hunspelldict-1.0.tcl
-            kde4-1.0.tcl
-            kde4-1.1.tcl
-            .
-            .
-            .</screen>
+cmake-1.0.tcl
+crossbinutils-1.0.tcl
+gnustep-1.0.tcl
+haskell-1.0.tcl
+hocbinding-1.0.tcl
+hunspelldict-1.0.tcl
+kde4-1.0.tcl
+kde4-1.1.tcl
+.
+.
+.</screen>
 
 
 </section>
