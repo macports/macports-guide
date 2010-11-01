@@ -5,12 +5,15 @@
 
   <title>PortGroup introduction</title>
 
-  <para>Port groups allow for efficient porting of open source software using the GNU objective-C runtime that defines options for the configuration, build, and destroot phases, and also defines some values for a specific software. A minimum Portfile using a PortGroup class needs to only define the fetch and the checksum phases.</para>
-  
-  <para>See the following folder for currently defined port groups:</para>
+  <para>PortGroups are simply include files for portfiles. They can define as much or as little as
+  a portgroup author feels is necessary to provide a set of definitions or behaviors common to a
+  group of portfiles, in order that those portfiles can be expressed as simply as possible with
+  minimum redundancy.</para>
+
+<para>See the following folder for PortGroup definitions:</para>
   <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</filename>
 
-  <para>This folder contains various tcl files which are describing all port groups. It follows an examplary (incomplete) listing:</para>
+  <para>A sample listing follows:</para>
 
     <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</userinput></programlisting>
 
@@ -27,5 +30,10 @@ kde4-1.1.tcl
 .
 .</screen>
 
-
+   <para>The requirements of a minimum portfile using a portgroup varies by portgroup.
+   The sections below devoted to each portgroup (or, for portgroups not documented there yet, the
+   comments in the header of the portgroup file itself) should provide guidance on how each
+   portgroup is used. Prospective MacPorts developers are also encouraged to examine existing
+   portfiles that use these portgroups.</para>
+   
 </section>
