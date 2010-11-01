@@ -437,14 +437,16 @@ Error: Missing required variable: platforms
     already described somewhere else in this guide, but will give an overview of a typical
     maintenance workflow.</para>
 
+    <para>Mind the 'sudo' for some of the subsequent examples, which is necessary if you have a
+    system-wide MacPorts installation.</para>
+
     <variablelist>
 
       <varlistentry>
         <term>Updating your ports tree</term>
 
         <listitem>
-          <para>is an essential to stay up-to-date with MacPorts (Mind the 'sudo' for
-          some of the subsequent examples, which is necessary if you have a system-wide MacPorts installation.):</para>
+          <para>is essential to stay up-to-date with MacPorts:</para>
 
           <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
@@ -488,10 +490,16 @@ xorg-util-macros               1.10.1_0 &lt; 1.11.0_0</screen>
       </varlistentry>
 
       <varlistentry>
-        <term>Upgrade a certain port</term>
+        <term>Upgrading active ports</term>
 
         <listitem>
-          <para>e.g. in case you don't have enough time to upgrade your whole MacPorts tree:</para>
+          <para>is usually done with the follwoing command:</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
+        </listitem>
+
+        <listitem>
+          <para>In case you want to upgrade only a specific port (for whatever reason):</para>
 
           <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade makedepend</userinput></programlisting>
           <screen>Password:
@@ -559,14 +567,13 @@ xtrap</screen>
       </varlistentry>
 
       <varlistentry>
-        <term>Finding ports which are leaves</term>
+        <term>Finding leaves (nondependent ports)</term>
 
         <listitem>
           <para>can be sometimes worthwhile, since often additional ports get installed when
           a specific port is installed. One can imagine that if one keeps installing and
           uninstalling ports for some time the MacPorts tree can be swamped with ports actually
-          not necessary anymore. Ports not being a dependency for any other port are called leaves
-          and can be found issuing the command:</para>
+          not necessary anymore. Leaves can be found issueing the command:</para>
 
           <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
           <screen>aalib                          @1.4rc5_4 
@@ -590,23 +597,14 @@ coreutils                      @8.5            sysutils/coreutils</screen>
       </varlistentry>
 
       <varlistentry>
-        <term>Define a port as requested (being a rather lengthy usage example)</term>
+        <term>Keep your MacPorts installation lean by defining leaves as requested ports</term>
 
         <listitem>
-          <note>
-            <para>This is a feature introduced with MacPorts version 1.9 and it is in fact
-            necessary to dedicate a seperate subsection to it somewhere in the section covering
-            all port commands.</para>
-          </note>
           
-          <para>Defining a port as a requested port makes maintenance of the MacPorts tree
-          much easier, since the maintainer can, for instance, now more easily spot leftovers
-          (i.e. leaves) of previous installation orgies.:</para>
-
           <para>Well, before we come to the procedure of defining your requested ports,
-          let's have a look at a typical scenario when you want to understand what is
-          actually installed and what is on other hand truely necessary for your system.
-          Say checking leaves on the MacPorts tree gives this output:</para>
+          let's have a look at a typical scenario where you want to understand what is
+          actually installed and what is on the other hand truly necessary for your system.
+          Say checking leaves of your MacPorts installation gives this output:</para>
 
           <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
           <screen>aalib                          @1.4rc5_4 
@@ -617,7 +615,7 @@ cmake                          @2.8.2_4
 coreutils                      @8.5_0 
 physfs                         @2.0.1_0</screen>
 
-          <para>Now it is up to the maintainer to decide what's needed and what is not.
+          <para>Now it is up to the user to decide what's needed and what is not.
           Let's say one certainly would want ports starting with autoconf up to coreutils,
           since they are often used in port installation. Set those as requested ports using:</para>
 
