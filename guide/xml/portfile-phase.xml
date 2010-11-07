@@ -762,7 +762,7 @@ svn.revision        2100</programlisting>
     <section id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
-      <para><ulink url="http://subversion.tigris.org/">Subversion</ulink> may
+      <para><ulink url="http://subversion.apache.org/">Subversion</ulink> may
       be used as an alternative method of fetching distribution files using
       the keywords in this section. However, fetching via Subversion may cause
       non-reproducible builds, so it is strongly discouraged.</para>
@@ -846,7 +846,7 @@ svn.revision        2100</programlisting>
     <section id="reference.phases.fetch.git">
       <title>Fetch from Git</title>
 
-      <para><ulink url="http://git.or.cz/">Git</ulink> may be used as an
+      <para><ulink url="http://git-scm.com/">Git</ulink> may be used as an
       alternative method of fetching distribution files using the keywords in
       this section. However, fetching via Git may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -907,7 +907,7 @@ svn.revision        2100</programlisting>
     <section id="reference.phases.fetch.hg">
       <title>Fetch from Mercurial</title>
 
-      <para><ulink url="http://selenic.com/mercurial">Mercurial</ulink> may be
+      <para><ulink url="http://mercurial.selenic.com/">Mercurial</ulink> may be
       used as an alternative method of fetching distribution files using the
       keywords in this section. However, fetching via Mercurial may cause
       non-reproducible builds, so it is strongly discouraged.</para>
