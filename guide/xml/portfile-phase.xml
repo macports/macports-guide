@@ -815,6 +815,31 @@ svn.revision        2100</programlisting>
             </itemizedlist>
           </listitem>
         </varlistentry>
+
+        <varlistentry>
+          <term>svn.method</term>
+
+          <listitem>
+            <para>Optional tag for fetching with Subversion, this specifies
+            whether to check out the code into a working copy, or just export
+            it without the working copy metadata. An export is preferable
+            because it takes half the disk space, but some software expects
+            to be built in a working copy (for example because it wants to
+            record the revision number into itself somewhere).</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: export</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>svn.method          checkout</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
       </variablelist>
     </section>
 
