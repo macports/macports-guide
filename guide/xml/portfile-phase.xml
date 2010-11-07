@@ -799,7 +799,7 @@ svn.revision        2100</programlisting>
 
           <listitem>
             <para>Optional tag for fetching with Subversion, this specifies
-            the code revision to checkout; it corresponds to the -r option in
+            the peg revision to checkout; it corresponds to the @REV syntax of
             the svn cli.</para>
 
             <itemizedlist>
