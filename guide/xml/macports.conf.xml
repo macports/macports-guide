@@ -304,7 +304,7 @@
         <term>binpath</term>
 
         <listitem>
-          <para>Sets the directory search path for locating system executables
+          <para>Sets env(PATH), the directory search path for locating system executables
           (rsync, tar, etc.) during port installation. Only applications in
           these directories are available while ports are being installed even
           if other paths are specified by $PATH in a user's
