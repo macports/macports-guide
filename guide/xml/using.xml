@@ -455,25 +455,20 @@ Error: Missing required variable: platforms
   <section id="using.common-tasks">
     <title>Common Tasks</title>
 
-    <para>This section lists common operations you may want to perform when
-    managing a MacPorts installation. It might be a bit repetitive, because some commands are
-    already described somewhere else in this guide, but will give an overview of a typical
-    maintenance workflow.</para>
+    <para>This section lists common operations you may want to perform when managing a MacPorts
+    installation. Some commands are described in further details elsewhere in the guide.</para>
 
     <para>Mind the 'sudo' for some of the subsequent examples, which is necessary if you have a
-    system-wide MacPorts installation.</para>
+    root-MacPorts-installation.</para>
 
-    <variablelist>
+    <section id="using.common-tasks.updating">
+      <title>Updating your ports tree</title>
 
-      <varlistentry>
-        <term>Updating your ports tree</term>
+      <para>is essential to stay up-to-date with MacPorts:</para>
 
-        <listitem>
-          <para>is essential to stay up-to-date with MacPorts:</para>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
-          <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
-
-          <screen>Password:
+      <screen>Password:
 --->  Updating the ports tree
 --->  Updating MacPorts base sources using rsync
 MacPorts base version 1.9.1 installed,
@@ -482,19 +477,17 @@ MacPorts base version 1.9.1 downloaded.
 
 The ports tree has been updated. To upgrade your installed ports, you should run
   port upgrade outdated</screen>
-        </listitem>
-      </varlistentry>
+    </section>
 
-      <varlistentry>
-        <term>Show all ports which actually need updating</term>
+    <section id="using.common-tasks.showports">
+      <title>Show all ports which actually need updating</title>
 
-        <listitem>
-          <para>is often useful, in case you don't have time to wait for port upgrades
+      <para>is often useful, in case you don't have time to wait for port upgrades
           (Every port needs to be downloaded, configured, build and installed, which can be -
           depending on your systems resources - a very time consuming procedure.):</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
-          <screen>The following installed ports are outdated:
+      <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
+      <screen>The following installed ports are outdated:
 makedepend                     1.0.2_0 &lt; 1.0.3_0         
 Xft2                           2.1.14_0 &lt; 2.2.0_0        
 xorg-bigreqsproto              1.1.0_0 &lt; 1.1.1_0         
@@ -509,23 +502,19 @@ xorg-scrnsaverproto            1.2.0_0 &lt; 1.2.1_0
 xorg-xcmiscproto               1.2.0_0 &lt; 1.2.1_0         
 xpm                            3.5.8_0 &lt; 3.5.9_0         
 xorg-util-macros               1.10.1_0 &lt; 1.11.0_0</screen>
-        </listitem>
-      </varlistentry>
+    </section>
 
-      <varlistentry>
-        <term>Upgrading active ports</term>
+    <section id="using.common-tasks.upgrading">
+      <title>Upgrading active ports</title>
 
-        <listitem>
-          <para>is usually done with the follwoing command:</para>
+      <para>is usually done with the follwoing command:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
-        </listitem>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
 
-        <listitem>
-          <para>In case you want to upgrade only a specific port (for whatever reason):</para>
+      <para>In case you want to upgrade only a specific port (for whatever reason):</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade makedepend</userinput></programlisting>
-          <screen>Password:
+      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade makedepend</userinput></programlisting>
+      <screen>Password:
 --->  Computing dependencies for makedepend
 --->  Fetching makedepend
 --->  Attempting to fetch makedepend-1.0.3.tar.bz2 from http://lil.fr.distfiles.macports.org/makedepend
@@ -539,43 +528,38 @@ xorg-util-macros               1.10.1_0 &lt; 1.11.0_0</screen>
 --->  Deactivating makedepend @1.0.2_0
 --->  Activating makedepend @1.0.3_0
 --->  Cleaning makedepend</screen>
-        </listitem>
-      </varlistentry>
+    </section>
 
-      <varlistentry>
-        <term>Removing inactive version(s) of upgraded port(s)</term>
+    <section id="using.common-tasks.removeinactive">
+      <title>Removing inactive version(s) of upgraded port(s)</title>
+      
+      <para>makes sense if you are sure that you won't change back to the older version(s)
+            (which could be necessary in case of newly introduced bugs in the upgraded port
+            version):</para>
 
-        <listitem>
-          <para>makes sense if you are sure that you won't change back to the older version(s)
-          (which could be necessary in case of newly introduced bugs in the upgraded port version):</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>port installed inactive</userinput></programlisting>
-          <screen>The following ports are currently installed:
+      <programlisting><prompt>%%</prompt> <userinput>port installed inactive</userinput></programlisting>
+      <screen>The following ports are currently installed:
   makedepend @1.0.2_0</screen>
   
-          <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall inactive</userinput></programlisting>
-          <screen>Password:
+      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall inactive</userinput></programlisting>
+      <screen>Password:
 --->  Uninstalling makedepend @1.0.2_0</screen>
 
-          <para>Of course one could also select only a specific inactive port,
-          but that requires to specify the exact version:</para>
-          <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall makedepend @1.0.2_0</userinput></programlisting>
-          <screen>Password:
+      <para>Of course one could also select only a specific inactive port,
+            but that requires to specify the exact version:</para>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall makedepend @1.0.2_0</userinput></programlisting>
+      <screen>Password:
 --->  Uninstalling makedepend @1.0.2_0</screen>
+    </section>
 
-        </listitem>
-      </varlistentry>
+    <section id="using.common-tasks.finddepending">
+      <title>Finding ports depending on a certain port</title>
 
+      <para>can sometimes be very helpful (example: find ports depending on 'xorg-util-macros'):</para>
 
-      <varlistentry>
-        <term>Finding ports depending on a certain port</term>
+      <programlisting><prompt>%%</prompt> <userinput>port echo depends:xorg-util-macros</userinput></programlisting>
 
-        <listitem>
-          <para>can sometimes be very helpful (example: find ports depending on 'xorg-util-macros'):</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>port echo depends:xorg-util-macros</userinput></programlisting>
-
-          <screen>mkfontscale
+      <screen>mkfontscale
 xorg-libAppleWM
 xorg-libX11
 xorg-libXaw
@@ -586,51 +570,44 @@ xorg-server
 xorg-server-devel
 xscope
 xtrap</screen>
-        </listitem>
-      </varlistentry>
+    </section>
 
-      <varlistentry>
-        <term>Finding leaves (nondependent ports)</term>
+    <section id="using.common-tasks.findleaves">
+      <title>Finding leaves (nondependent ports)</title>
+      <para>can be sometimes worthwhile, since often additional ports get installed when
+            a specific port is installed. One can imagine that if one keeps installing and
+            uninstalling ports for some time the MacPorts tree can be swamped with ports actually
+            not necessary anymore. Leaves can be found issueing the command:</para>
 
-        <listitem>
-          <para>can be sometimes worthwhile, since often additional ports get installed when
-          a specific port is installed. One can imagine that if one keeps installing and
-          uninstalling ports for some time the MacPorts tree can be swamped with ports actually
-          not necessary anymore. Leaves can be found issueing the command:</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-          <screen>aalib                          @1.4rc5_4 
+      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
+      <screen>aalib                          @1.4rc5_4 
 autoconf                       @2.68_0 
 autoconf263                    @2.63_0 
 automake                       @1.11.1_0 
 cmake                          @2.8.2_4 
 coreutils                      @8.5_0</screen>
 
-          <para>The following command delivers a similar result, but works much slower (due to additional parsing):</para>
-          <programlisting><prompt>%%</prompt> <userinput>port list leaves</userinput></programlisting>
-          <screen>aalib                          @1.4rc5         graphics/aalib
+      <para>The following command delivers a similar result, but works much slower (due to additional parsing):</para>
+      <programlisting><prompt>%%</prompt> <userinput>port list leaves</userinput></programlisting>
+      <screen>aalib                          @1.4rc5         graphics/aalib
 autoconf                       @2.68           devel/autoconf
 autoconf263                    @2.63           devel/autoconf263
 automake                       @1.11.1         devel/automake
 cmake                          @2.8.2          devel/cmake
 coreutils                      @8.5            sysutils/coreutils</screen>
 
-          <para>These leaves may be wanted, but could also be unwanted ports. (See the following entry!)</para>
-        </listitem>
-      </varlistentry>
+      <para>These leaves may be wanted, but could also be unwanted ports. (See the following entry!)</para>
+          </section>
 
-      <varlistentry>
-        <term>Keep your MacPorts installation lean by defining leaves as requested ports</term>
+    <section id="using.common-tasks.keeplean">
+      <title>Keep your MacPorts installation lean by defining leaves as requested ports</title>
+      <para>Well, before we come to the procedure of defining your requested ports,
+            let's have a look at a typical scenario where you want to understand what is
+            actually installed and what is on the other hand truly necessary for your system.
+            Say checking leaves of your MacPorts installation gives this output:</para>
 
-        <listitem>
-          
-          <para>Well, before we come to the procedure of defining your requested ports,
-          let's have a look at a typical scenario where you want to understand what is
-          actually installed and what is on the other hand truly necessary for your system.
-          Say checking leaves of your MacPorts installation gives this output:</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-          <screen>aalib                          @1.4rc5_4 
+      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
+      <screen>aalib                          @1.4rc5_4 
 autoconf                       @2.68_0 
 autoconf263                    @2.63_0 
 automake                       @1.11.1_0 
@@ -638,18 +615,18 @@ cmake                          @2.8.2_4
 coreutils                      @8.5_0 
 physfs                         @2.0.1_0</screen>
 
-          <para>Now it is up to the user to decide what's needed and what is not.
-          Let's say one certainly would want ports starting with autoconf up to coreutils,
-          since they are often used in port installation. Set those as requested ports using:</para>
+      <para>Now it is up to the user to decide what's needed and what is not.
+            Let's say one certainly would want ports starting with autoconf up to coreutils,
+            since they are often used in port installation. Set those as requested ports using:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>sudo port setrequested autoconf autoconf263 automake cmake coreutils</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port setrequested autoconf autoconf263 automake cmake coreutils</userinput></programlisting>
 
-          <para>Say port aalib is not needed anymore, while physfs seems odd and since you don't
-          know what to make of it, you need to check out what it actually is and which ports needed
-          its installation at some time in the past.</para>
+      <para>Say port aalib is not needed anymore, while physfs seems odd and since you don't
+            know what to make of it, you need to check out what it actually is and which ports needed
+            its installation at some time in the past.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port info physfs</userinput></programlisting>
-          <screen>physfs @2.0.1 (devel)
+      <programlisting><prompt>%%</prompt> <userinput>port info physfs</userinput></programlisting>
+      <screen>physfs @2.0.1 (devel)
 Variants:             debug, universal
 
 Description:          PhysicsFS is a library to provide abstract access to various
@@ -663,55 +640,51 @@ Platforms:            darwin
 License:              unknown
 Maintainers:          nomaintainer@macports.org</screen>
 
-          <para>Well, hmm, you certainly didn't want to install Quake 3 in the past. So, let's
-          find out which ports actually depend on it, perhaps that might ring a bell:</para>
+      <para>Well, hmm, you certainly didn't want to install Quake 3 in the past. So, let's
+            find out which ports actually depend on it, perhaps that might ring a bell:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port echo depends:physfs</userinput></programlisting>
-          <screen>fbg                             
+      <programlisting><prompt>%%</prompt> <userinput>port echo depends:physfs</userinput></programlisting>
+      <screen>fbg                             
 libsdl_sound                    
 lincity-ng                      
 netpanzer</screen>
 
-          <para>No, you didn't install netpanzer either,
-          but - see there - fbg (The classic Falling Block Game!) was once on your agenda. But
-          unfortunately that port was broken (see issue <ulink url="http://trac.macports.org/ticket/24641">#24641</ulink>) when
-          you were trying to install it... Before you ran into the issue, of course, fbg's dependencies
-          were resolved by MacPorts, which is why port physfs is still present on your system.
-          Uff, great, confusion resolved. :-)</para>
+      <para>No, you didn't install netpanzer either,
+            but - see there - fbg (The classic Falling Block Game!) was once on your agenda. But
+            unfortunately that port was broken
+            (see issue <ulink url="http://trac.macports.org/ticket/24641">#24641</ulink>) when
+            you were trying to install it... Before you ran into the issue, of course, fbg's
+            dependencies were resolved by MacPorts, which is why port physfs is still present on
+            your system. Uff, great, confusion resolved. :-)</para>
 
-          <para>When you've step-by-step figured out which ports you want to keep on your system and
-          have set them as requested, you'll have a list of unnecessary ports, which might be
-          eventually as short as this:</para>
+      <para>When you've step-by-step figured out which ports you want to keep on your system and
+            have set them as requested, you'll have a list of unnecessary ports, which might be
+            eventually as short as this:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-          <screen>aalib                          @1.4rc5_4 
+      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
+      <screen>aalib                          @1.4rc5_4 
 physfs                         @2.0.1_0 </screen>
 
-          <para>Get rid of them by issuing the command:</para>
+      <para>Get rid of them by issuing the command:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port uninstall leaves</userinput></programlisting>
-          <screen>--->  Deactivating physfs @2.0.1_0
+      <programlisting><prompt>%%</prompt> <userinput>port uninstall leaves</userinput></programlisting>
+      <screen>--->  Deactivating physfs @2.0.1_0
 --->  Cleaning physfs
 --->  Uninstalling physfs @2.0.1_0
 --->  Cleaning physfs
 --->  Deactivating aalib @1.4rc5_4
 --->  Uninstalling aalib @1.4rc5_4</screen>
 
-          <para>Find all installed ports you previously set as requested using:</para>
+      <para>Find all installed ports you previously set as requested using:</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>port installed requested</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>port installed requested</userinput></programlisting>
 
-          <para>Checking the list of leaves from time to time will help to keep your system
-          free of too much "garbage". However, keep in mind that some ports may be dependencies
-          only during the installation of a port (library dependencies, installation or
-          configuration tools, etc.). So, be careful when removing seemingly unnecessary leaves,
-          otherwise you'll see them being installed again and again.</para>
-
-        </listitem>
-      </varlistentry>
-
-    </variablelist>
-
+      <para>Checking the list of leaves from time to time will help to keep your system
+            free of too much "garbage". However, keep in mind that some ports may be dependencies
+            only during the installation of a port (library dependencies, installation or
+            configuration tools, etc.). So, be careful when removing seemingly unnecessary leaves,
+            otherwise you'll see them being installed again and again.</para>
+      </section>
   </section>
 
   <section id="using.binaries">
