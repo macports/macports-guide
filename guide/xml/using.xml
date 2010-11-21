@@ -16,6 +16,19 @@
     <filename>Portfile</filename>s and the MacPorts infrastructure, and
     install and manage ports.</para>
 
+    <section id="using.port.help">
+      <title>help</title>
+
+      <para>The <option>help</option> action shows some brief information about
+      the specified action, or if no action is specified, shows basic usage
+      information for the <command>port</command> command in general.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port help selfupdate</userinput></programlisting>
+      <screen>Usage: selfupdate --nosync
+
+Upgrade MacPorts itself and run the sync target</screen>
+    </section>
+
     <section id="using.port.selfupdate">
       <title>selfupdate</title>
 
@@ -95,13 +108,20 @@ Congratulations, you have successfully installed the MacPorts system.</screen>
     <section id="using.port.search">
       <title>search</title>
 
-      <para>The <option>search</option> action is very useful to find port
-      names by partial matches.</para>
+      <para>The <option>search</option> action allows finding ports
+      by partial matches of the name or description. Other fields can be matched
+      against, and matched in different ways, by using options. Run <userinput>port help search</userinput>
+      for details.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port search rrd</userinput></programlisting>
 
-      <screen>rrdtool          net/rrdtool       1.2.23    Round Robin Database
-php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
+      <screen>php5-rrdtool @1.0 (php, net, devel)
+    PHP 5 glue for rrdtool
+
+rrdtool @1.4.4 (net)
+    Round Robin Database
+
+Found 2 ports.</screen>
     </section>
 
     <section id="using.port.info">
@@ -112,13 +132,15 @@ php5-rrdtool     www/php5-rrdtool  1.0       PHP 5 glue for RRDtool</screen>
 
       <programlisting><prompt>%%</prompt> <userinput>port info flowd</userinput></programlisting>
 
-      <screen>flowd 0.9, net/flowd (Variants: universal, darwin_8)
-http://www.mindrot.org/flowd.html
+      <screen>flowd @0.9 (net)
+Variants:             universal
 
-flowd is a small, fast and secure NetFlow collector.
+Description:          flowd is a small, fast and secure NetFlow collector.
+Homepage:             http://www.mindrot.org/flowd.html
 
-Platforms: darwin
-Maintainers: nomaintainer@macports.org</screen>
+Platforms:            darwin
+License:              unknown
+Maintainers:          nomaintainer@macports.org</screen>
     </section>
 
     <section id="using.port.deps">
@@ -130,12 +152,8 @@ Maintainers: nomaintainer@macports.org</screen>
 
       <programlisting><prompt>%%</prompt> <userinput>port deps apache2</userinput></programlisting>
 
-      <screen>apache2 has library dependencies on:
-        apr
-        apr-util
-        expat
-        openssl
-        pcre</screen>
+      <screen>Full Name: apache2 @2.2.17_0+preforkmpm
+Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
     </section>
 
     <section id="using.port.variants">
@@ -150,10 +168,10 @@ Maintainers: nomaintainer@macports.org</screen>
       <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
 
       <screen>nmap has the variants:
-        universal
-        gtk2
-        no_ssl
-        no_pcre</screen>
+   no_pcre: build without pcre support
+   no_ssl: build without ssl support
+   universal: Build for multiple architectures
+   zenmap: build zenmap in addition to nmap</screen>
     </section>
 
     <section id="using.port.install">
@@ -215,17 +233,16 @@ Maintainers: nomaintainer@macports.org</screen>
       <title>contents</title>
 
       <para>The <option>contents</option> action displays the files that have
-      been installed by a given port. Uninstalled ports will always show no
-      contents.</para>
+      been installed by a given port. Uninstalled ports cannot have their
+      contents listed.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port contents render</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>port contents xorg-renderproto</userinput></programlisting>
 
-      <screen>Port render contains:
+      <screen>Port xorg-renderproto contains:
   /opt/local/include/X11/extensions/render.h
   /opt/local/include/X11/extensions/renderproto.h
-  /opt/local/lib/pkgconfig/render.pc
-  /opt/local/share/doc/render/library
-  /opt/local/share/doc/render/protocol</screen>
+  /opt/local/lib/pkgconfig/renderproto.pc
+  /opt/local/share/doc/renderproto/renderproto.txt</screen>
     </section>
 
     <section id="using.port.installed">
@@ -234,7 +251,9 @@ Maintainers: nomaintainer@macports.org</screen>
       <para>The <option>installed</option> action displays the installed versions,
       variants and activation status of the
       specified ports, or if no ports are specified, all installed
-      ports.</para>
+      ports. Use the <option>-v</option> option to also display the platform and
+      CPU architecture(s) for which the ports were built, and any variants which were
+      explicitly negated.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port installed</userinput></programlisting>
 
@@ -246,10 +265,14 @@ Maintainers: nomaintainer@macports.org</screen>
 
 [ ... trimmed ...]
 
-  wxWidgets @2.8.4_2+darwin_8 (active)
+  wxWidgets @2.8.4_2 (active)
   Xft2 @2.1.7_0 (active)
-  xrender @0.9.0_0+darwin_8 (active)
+  xrender @0.9.0_0 (active)
   zlib @1.2.3_1 (active)</screen>
+
+    <programlisting><prompt>%%</prompt> <userinput>port -v installed atlas</userinput></programlisting>
+    <screen>The following ports are currently installed:
+  atlas @3.8.3_4+gcc44-gcc43 (active) platform='darwin 10' archs='x86_64'</screen>
     </section>
 
     <section id="using.port.outdated">
@@ -280,7 +303,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       <programlisting><prompt>%%</prompt> <userinput>port upgrade gnome</userinput></programlisting>
 
       <para>If you wish not to upgrade a port's dependencies, use the
-      <option>-n</option> switch.</para>
+      <option>-n</option> switch. Note that this will often cause problems.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port -n upgrade gnome</userinput></programlisting>
 
