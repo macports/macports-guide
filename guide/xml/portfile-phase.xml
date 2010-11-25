@@ -1252,7 +1252,7 @@ extract.only-delete     foo.tar.gz</programlisting>
 
             <listitem>
               <para><literal>extract.post_args</literal>, defaults to:
-              <literal>"| tar -xf"</literal></para>
+              <literal>"| tar -xf -"</literal></para>
             </listitem>
 
             <listitem>
