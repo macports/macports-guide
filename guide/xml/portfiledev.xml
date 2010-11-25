@@ -342,8 +342,8 @@ configure.args      --enable-perl-site-install \
       define your own installation phases as shown in this example.</para>
 
       <programlisting>destroot {
-    xinstall -m 755 -d ${destroot}${prefix}/bin
-    xinstall -m 755 ${worksrcpath}/cdpr ${destroot}${prefix}/bin
+    xinstall -m 755 -d ${destroot}${prefix}/share/doc/${name}
+    xinstall -m 755 ${worksrcpath}/README ${destroot}${prefix}/share/doc/${name}
 }</programlisting>
     </section>
 
