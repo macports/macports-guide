@@ -1017,6 +1017,27 @@ svn.revision        2100</programlisting>
 
     <variablelist>
       <varlistentry>
+        <term>extract.asroot</term>
+
+        <listitem>
+          <para>This keyword is used to specify that the extract
+          phase should be done as the root user.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no<option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.asroot      no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+        
+      <varlistentry>
         <term>extract.suffix</term>
 
         <listitem>
