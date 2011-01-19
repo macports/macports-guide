@@ -980,7 +980,7 @@ svn.revision        2100</programlisting>
           distribution files, filenames must be included to associate files
           with their checksums.</para>
 
-          <para>All checksum types (md5, sha1 and rmd160) should be used to
+          <para>At least two checksum types (e.g., sha1 and rmd160) should be used to
           ensure the integrity of the distfiles.</para>
 
           <itemizedlist>
