@@ -1025,7 +1025,7 @@ svn.revision        2100</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>no<option></para>
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
