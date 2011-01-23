@@ -374,6 +374,23 @@
         </listitem>
       </varlistentry>
     </variablelist>
+
+    <variablelist>
+      <varlistentry>
+        <term>place_worksymlink</term>
+
+        <listitem>
+            <para>Set whether to place a symlink named "work" from your ports tree to 
+                the build directory of a port, when the port is being built. This
+                is convenient, but may not be ideal if you care about the structure
+                of your ports tree. For example, some developers keep their ports
+                tree synchronized across multiple computers, and don't want to also
+                synch build directories.
+            </para>
+          <para>Default: yes</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
   </section>
 
   <section id="internals.configuration-files.sources-conf">
