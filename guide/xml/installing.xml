@@ -519,14 +519,15 @@ _=/usr/bin/env</screen>
     </section>
 
     <section id="installing.shell.editorvar">
-      <title>Optional EDITOR Variable</title>
+      <title>Optional Editor Variables</title>
 
-      <para>A useful environment variable to set in
-      <filename>.profile</filename> is the <varname>EDITOR</varname> variable.
-      Setting this variable allows you to use the edit option to the port
-      command to edit Portfiles quickly and easily. Set the
-      <varname>EDITOR</varname> variable to point to your favorite text
-      editor.</para>
+      <para>You can set an environment variable in order to use your favorite
+      text editor with edit option of port command.</para>
+      <para>MacPorts will check <varname>MP_EDITOR</varname>,
+      <varname>VISUAL</varname> and <varname>EDITOR</varname> in this order,
+      allowing you to either use a default editor shared with other programs
+      (<varname>VISUAL</varname> and <varname>EDITOR</varname>) or a Macports'
+      specific one (<varname>MP_EDITOR</varname>).</para>
 
       <para>For example, to use the nano editor, add this line to your
       <filename>~/.profile</filename>:</para>
@@ -539,6 +540,13 @@ _=/usr/bin/env</screen>
       <filename>~/.profile</filename>:</para>
 
       <programlisting>export EDITOR=/usr/bin/edit</programlisting>
+      
+      <para>To keep a text editor as default while using a graphic editor with
+      portfiles add this to <filename>~/.profile</filename>: </para>
+
+      <programlisting>
+      export EDITOR=/usr/bin/vi
+      export MP_EDITOR=/usr/bin/edit</programlisting>
     </section>
   </section>
 </chapter>
