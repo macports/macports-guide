@@ -200,7 +200,7 @@ Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
       clean</userinput> is also often necessary to remove corrupted tarballs
       after a failed <userinput>fetch</userinput> phase.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port clean --all vile</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port clean --all vile</userinput></programlisting>
 
       <note>
         <para>You may also clean files selectively by using options
@@ -215,7 +215,7 @@ Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
       <para>The <option>uninstall</option> action will uninstall an installed
       port.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port uninstall vile</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall vile</userinput></programlisting>
 
       <note>
         <para>If a port as installed as a dependency of another port,
@@ -225,7 +225,7 @@ Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
         you should know what you are doing if you force uninstall
         ports.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>port -f uninstall vile</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall vile</userinput></programlisting>
       </note>
     </section>
 
@@ -300,17 +300,17 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
       their dependencies when a <filename>Portfile</filename> in the
       repository has been updated after a port was installed.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port upgrade gnome</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade gnome</userinput></programlisting>
 
       <para>If you wish not to upgrade a port's dependencies, use the
       <option>-n</option> switch. Note that this will often cause problems.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port -n upgrade gnome</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port -n upgrade gnome</userinput></programlisting>
 
       <para>If you'd like to upgrade all outdated ports, use this
       command.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port upgrade outdated</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
 
       <note>
         <para>The <option>upgrade</option> action by default does not
@@ -320,7 +320,7 @@ pkgconfig                      0.21_0 &lt; 0.22_0</screen>
         Phases</link>. If you wish to uninstall the old version, use the
         <option>-u</option> option.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>port -u upgrade vile</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port -u upgrade vile</userinput></programlisting>
       </note>
     </section>
 
@@ -417,12 +417,12 @@ Error: Missing required variable: platforms
       have determined what variants a given port has, if any, you may install
       a port using the variant as shown.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port install fetchmail +ssl</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port install fetchmail +ssl</userinput></programlisting>
 
       <para>Port variant execution may be verified using the
       <command>port</command> command with the verbose switch.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port -v install fetchmail +ssl</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port -v install fetchmail +ssl</userinput></programlisting>
 
       <para>When a port is installed using a valid variant and specified
       correctly, the verbose output will contain:</para>
@@ -439,7 +439,7 @@ Error: Missing required variable: platforms
       default variants, you may install a port without them by negating
       default variants using "-" as shown.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port install fetchmail -ssl</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port install fetchmail -ssl</userinput></programlisting>
 
       <para>To verify that you have properly negated a default variant, you
       may want to use verbose mode. But negated variants are simply not
@@ -667,7 +667,7 @@ physfs                         @2.0.1_0 </screen>
 
       <para>Get rid of them by issuing the command:</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port uninstall leaves</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall leaves</userinput></programlisting>
       <screen>--->  Deactivating physfs @2.0.1_0
 --->  Cleaning physfs
 --->  Uninstalling physfs @2.0.1_0
@@ -703,7 +703,7 @@ physfs                         @2.0.1_0 </screen>
       system. Binary archives are created using the <command>port</command>
       command as shown.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port -d archive logrotate</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port -d archive logrotate</userinput></programlisting>
 
       <para>Debug output is shown below.</para>
 
@@ -749,17 +749,17 @@ DEBUG: Executing archive_finish
       create binary packages with the <command>port</command> command as shown
       in these examples.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port pkg pstree</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port pkg pstree</userinput></programlisting>
 
       <para>You may create a Mac OS X .dmg disk image file as shown.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port dmg pstree</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port dmg pstree</userinput></programlisting>
 
       <para>You may compile a port into an RPM file as shown, in order to
       install it onto a target that has RPM utilities or a full package
       management system that can install RPMs.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port rpm pstree</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>sudo port rpm pstree</userinput></programlisting>
 
       <para>All packages are placed in a port's work directory.</para>
     </section>
