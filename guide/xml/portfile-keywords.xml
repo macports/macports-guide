@@ -191,5 +191,27 @@
         <programlisting>platforms           darwin freebsd</programlisting>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>license</term>
+
+      <listitem>
+        <para>The proper format for license consists of the license name,
+        followed by a hyphen and number if indicating a specific version. A
+        space should be placed between licenses if there is more than one.
+        </para>
+
+		<para>(Additional suggestions: If the version number is a
+		<quote>.0</quote> version, including the <quote>.0</quote> is
+		optional. If the author gives the choice of using a given license or
+		<quote>any later version</quote> of it, include a plus (+) after the
+		version number; if the version specified is also the earliest version,
+		just leave out a version number entirely since it implies all
+		versions. —L2G)</para>
+
+        <programlisting>license           GPL-3</programlisting>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
