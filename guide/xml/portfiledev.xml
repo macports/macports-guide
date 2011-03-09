@@ -849,5 +849,208 @@ variant mysql5 { ... }</programlisting>
       use them anytime it makes updates simpler: distname
       ${name}-src-${version}</para>
     </section>
+
+
+    <section id="development.practices.rename-replace-port">
+      <title>Renaming or replacing a port</title>
+
+      <para>If there is the need to replace a port with another port or a
+      renaming is necessary for some reason, the port should be marked as
+      <quote>replaced_by</quote>.</para>
+      
+      <para>As an illustration of a typical workflow the port 'skrooge-devel'
+      shall be taken. This port had been used for testing new versions of
+      skrooge, but it turned out to have become unnecessary due to the fact
+      that skrooge's developers currently prefer a distribution via port
+      'skrooge' instead. </para>
+      
+      <para>Skrooge's original devel port file looked like this:</para>
+
+<programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+PortGroup           kde4    1.1
+
+fetch.type          svn
+svn.url             svn://anonsvn.kde.org/home/kde/trunk/extragear/office/skrooge
+svn.revision        1215845
+
+name                skrooge-devel
+version             0.8.0-${svn.revision}
+
+categories          kde finance
+maintainers         mk pixilla openmaintainer
+description         Skrooge
+long_description    Personal finance management tool for KDE4, with the aim of being highly intuitive, while \
+                    providing powerful functions such as reporting (including graphics), persistent \
+                    Undo/Redo, encryption, and much more...
+
+conflicts           skrooge
+
+platforms           darwin
+license             GPL-3
+
+homepage            http://skrooge.org
+master_sites        http://skrooge.org/files/
+
+livecheck.type      none
+
+distname            skrooge
+
+depends_lib-append  port:kdelibs4 \
+                    port:libofx \
+                    port:qca-ossl \
+                    port:kdebase4-runtime \
+                    port:oxygen-icons</programlisting>
+
+	<para>The following steps have to be taken to ensure a smooth transition
+	for a MacPorts user updating his local installation using
+	<quote>sudo port upgrade</quote>:</para>
+
+    <orderedlist>
+      <listitem>
+        <para> add the line <quote>replaced_by foo</quote> where foo is the
+        port this one is replaced by; when a user upgrades this port,
+        MacPorts will instead install the replacement port</para>
+		<programlisting>replaced_by         skrooge</programlisting>
+      </listitem>
+
+      <listitem>
+        <para> increase the version, revision, or epoch, so that users who
+        have this port installed will get notice in <quote>port
+        outdated</quote> that they should upgrade it and trigger the above
+        process</para>
+		<programlisting>revision            1</programlisting>
+      </listitem>
+
+      <listitem>
+        <para> clear distfiles (have a line reading only
+        <quote>distfiles</quote>) so that no distfile is downloaded for this
+        stub port</para>
+		<programlisting>distfiles</programlisting>
+      </listitem>
+
+      <listitem>
+        <para> delete master_sites since there aren't any distfiles to
+        download</para>
+      </listitem>
+
+      <listitem>
+        <para> disable livecheck</para>
+        <programlisting>livecheck.type      none</programlisting>
+      </listitem>
+
+      <listitem>
+        <para> add a pre-configure block with a <quote>ui_error</quote> and
+        <quote>return -code error</quote> explaining to users who try to
+        install this port that the port has been replaced</para>
+		<programlisting>pre-configure {
+    ui_error "Please do not install this port since it has been replaced by 'skrooge'."
+    return -code error
+}</programlisting>
+      </listitem>
+    </orderedlist>
+
+	<para>With above modifications the port file eventually looks like
+	this:</para>
+
+<programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+# $Id$
+
+PortSystem          1.0
+
+name                skrooge-devel
+svn.revision        1215845
+version             0.8.0-${svn.revision}
+revision            1
+
+replaced_by         skrooge
+
+categories          kde finance
+maintainers         mk pixilla openmaintainer
+description         Skrooge
+long_description    Personal finance management tool for KDE4, with the aim of being highly intuitive, while \
+                    providing powerful functions such as reporting (including graphics), persistent \
+                    Undo/Redo, encryption, and much more...
+
+conflicts           skrooge
+
+platforms           darwin
+license             GPL-3
+
+homepage            http://skrooge.org
+
+livecheck.type      none
+
+pre-configure {
+    ui_error "Please do not install this port since it has been replaced by 'skrooge'."
+    return -code error
+}
+
+distfiles</programlisting>
+
+	<para>A user upgrading ports will experience for port 'skrooge-devel'
+	the following:</para>
+	<programlisting><prompt>%%</prompt> <userinput>sudo port upgrade skrooge-devel</userinput></programlisting>
+	<screen>--->  skrooge-devel is replaced by skrooge
+--->  Computing dependencies for skrooge
+--->  Fetching skrooge
+--->  Verifying checksum(s) for skrooge
+--->  Extracting skrooge
+--->  Configuring skrooge
+--->  Building skrooge
+--->  Staging skrooge into destroot
+--->  Deactivating skrooge-devel @0.8.0-1215845_0
+--->  Cleaning skrooge-devel
+--->  Computing dependencies for skrooge
+--->  Installing skrooge @0.8.0.6_0
+--->  Activating skrooge @0.8.0.6_0
+##########################################################
+# Don't forget that dbus needs to be started as the local 
+# user (not with sudo) before any KDE programs will launch
+# To start it run the following command:                  
+# launchctl load /Library/LaunchAgents/org.freedesktop.dbus-session.plist
+##########################################################
+ 
+######################################################
+#  Programs will not start until you run the command 
+#  'sudo chown -R $USER ~/Library/Preferences/KDE'  
+#  replacing $USER with your username.              
+######################################################
+--->  Cleaning skrooge</screen>
+
+	<para>In case a user actually tries to install the obsolete port
+	'skrooge-devel' it would be pointed out by an error message that this is
+	impossible now:</para>
+	<programlisting><prompt>%%</prompt> <userinput>sudo port install skrooge-devel</userinput></programlisting>
+	<screen>--->  Fetching skrooge-devel
+--->  Verifying checksum(s) for skrooge-devel
+--->  Extracting skrooge-devel
+--->  Configuring skrooge-devel
+Error: Please do not install this port since it has been replaced by 'skrooge'.
+Error: Target org.macports.configure returned: 
+Log for skrooge-devel is at: /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_kde_skrooge-devel/main.log
+Error: Status 1 encountered during processing.
+To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
+
+    </section>
+    
+    
+    <section id="development.practices.removing-port">
+      <title>Removing a port</title>
+
+      <para>If a port has to be removed from MacPorts one should consider
+      the hints concerning replacing it by some alternative port given
+      <link linkend="development.practices.rename-replace-port">above</link>.
+      If there is no replacement for it, insert a pre-configure
+      block as described there to alert the user about why the port is not
+      allowed for installation anymore.</para>
+
+      <para>It is recommended to wait about a year before the port directory
+      is actually being removed from MacPorts' subversion repository.</para>
+ 
+ 	</section>
+    
   </section>
 </chapter>
