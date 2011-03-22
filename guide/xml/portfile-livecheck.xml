@@ -153,7 +153,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
               </listitem>
 
               <listitem>
-                <para><literal>http://sourceforge.net/export/rss2_projfiles.php?project=${livecheck.name}</literal></para>
+                <para><literal>http://sourceforge.net/api/file/index/project-name/${livecheck.name}/rss</literal></para>
               </listitem>
 
               <listitem>
