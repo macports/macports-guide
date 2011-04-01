@@ -9,7 +9,7 @@
   user-selected variants and platform variants. User-selected variants are
   options selected by a user when a port is installed; platform variants are
   selected automatically by MacPorts base according to the OS or hardware
-  platform (darwin, freebsd, linux, i386, ppc, etc.).</para>
+  platform (darwin, freebsd, linux, i386, powerpc, etc.).</para>
 
   <section id="reference.variants.user-selected">
     <title>User-Selected Variants</title>
@@ -167,38 +167,30 @@
 
           <para><literal>platform darwin
           <replaceable>version</replaceable></literal> can be used to handle
-          different tasks depending on the version of Mac OS X.
-          <replaceable>version</replaceable> can be <literal>6</literal> for
-          10.2 Jaguar, <literal>7</literal> for 10.3 Panther,
-          <literal>8</literal> for 10.4 Tiger or <literal>9</literal> for 10.5
-          Leopard.</para>
+          different tasks depending on the version of Darwin, the core
+          operating system underlying Mac OS X.
+          <replaceable>version</replaceable> is the major version of Darwin,
+          and can be <literal>8</literal> for Mac OS X 10.4 Tiger,
+          <literal>9</literal> for 10.5 Leopard, <literal>10</literal> for
+          10.6 Snow Leopard or <literal>11</literal> for 10.7 Lion.</para>
 
           <itemizedlist>
-            <listitem>
-              <para>Default: ???</para>
-            </listitem>
-
             <listitem>
               <para>Examples:</para>
 
               <programlisting>
-platform darwin 7 {
-    # Only used on Mac OS X 10.3.
-    configure.args-append \
-        --enable-tcl \
-        --with-tcl=/System/Library/Tcl/8.3
+platform darwin 10 {
+    configure.env-append LIBS=-lresolv
 }</programlisting>
 
               <programlisting>
-platform darwin powerpc {
-    # Only used if Mac OS X is running on a PowerPC processor.
-    configure.args-append \
-        --host=${os.arch}-apple-rhapsody${os.version}
-}
 platform darwin i386 {
-    # Only used if Mac OS X is running on an Intel processor.
-    configure.args-append \
-        --host=i386-gnu-rhapsody${os.version}
+    configure.args-append --disable-mmx
+}</programlisting>
+
+              <programlisting>
+platform darwin 8 powerpc {
+    configure.compiler gcc-3.3
 }</programlisting>
             </listitem>
           </itemizedlist>
@@ -207,12 +199,14 @@ platform darwin i386 {
     </variablelist>
 
     <note>
-      <para>Though a combination of OS and hardware platform may be specified
-      in a single platform statement (i. e. darwin i386), it is not possible
-      to select a range of platforms with a single statement. For example, to
-      select darwin versions 7 and 8 while excluding all others, you would
-      need two statements: <code>platform darwin 7</code> and <code>platform
-      darwin 8</code>.</para>
+      <para>Though a combination of OS version and hardware platform may be
+      specified in a single platform statement (i.e. darwin 8 i386), it is not
+      possible to specify a range of platforms with a single statement. For
+      example, to select Darwin versions 9 and 10 while excluding all others,
+      you would need two statements: <code>platform darwin 9</code> and
+      <code>platform darwin 10</code>. Alternately, you could make that
+      behavior the port's default, and add a <code>platform darwin 8</code>
+      block to remove it again.</para>
     </note>
   </section>
 </section>
