@@ -761,8 +761,9 @@ rsync://rsync.macports.org/release/ports [default]
 
       <listitem>
         <para>If your Portfile needs to apply any patches to the port's source
-        files, create a <filename>files</filename> and place the patchfiles in
-        it, and reference the patchfiles in your Portfile, as explained in
+        files, create a <filename>files</filename> directory and place the
+        patchfiles in it, and reference the patchfiles in your Portfile, as
+        explained in
         <link linkend="development.patches.source">Creating Source Code Patches</link>.</para>
       </listitem>
 
