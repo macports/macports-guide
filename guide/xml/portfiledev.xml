@@ -744,7 +744,7 @@ rsync://rsync.macports.org/release/ports [default]
       <listitem>
         <para>Place the Portfiles you create inside a directory whose name
         matches the port, which should in turn be placed inside a directory
-        that reflect the port's primary category (the first category entry in
+        that reflects the port's primary category (the first category entry in
         the Portfile). For example, to create the directory for a hypothetical
         port "bestevergame" and to begin editing its Portfile in TextEdit, you
         can use these commands:</para>
