@@ -157,7 +157,7 @@
       versions of MacPorts base, the ports collection supports no such
       distinction or versioning. The <link
       linkend="using.port.selfupdate">selfupdate</link> command installs the
-      latest port revisions from subversion (at a slight delay), and updates
+      latest port revisions from Subversion (at a slight delay), and updates
       MacPorts base to the latest released version.</para>
     </note>
 

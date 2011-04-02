@@ -713,7 +713,7 @@ variant sqlite description {Build sqlite support} {
     <title>Local Portfile Repositories</title>
 
     <para>To create and test Portfiles that are not yet committed to
-    subversion, you may create a local Portfile repository as shown. Replace
+    Subversion, you may create a local Portfile repository as shown. Replace
     the hypothetical user <filename>julesverne</filename> with your username
     in the example below.</para>
 
@@ -1060,7 +1060,7 @@ To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
       allowed for installation anymore.</para>
 
       <para>It is recommended to wait about a year before the port directory
-      is actually being removed from MacPorts' subversion repository.</para>
+      is actually being removed from MacPorts' Subversion repository.</para>
  
  	</section>
     

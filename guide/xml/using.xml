@@ -787,7 +787,7 @@ DEBUG: Executing archive_finish
     <para>You may setup an rsync replication server on your local network to
     minimize internet delay and bandwidth when performing MacPorts selfupdate
     operations. An rsync replication server pulls the latest MacPorts base,
-    development, and port sources from the remote MacPorts subversion server,
+    development, and port sources from the remote MacPorts Subversion server,
     and then serves as the rsync source when rsync replication clients on the
     local network perform selfupdates. </para>
 
