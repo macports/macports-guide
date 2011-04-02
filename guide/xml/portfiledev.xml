@@ -720,10 +720,9 @@ variant sqlite description {Build sqlite support} {
     <orderedlist>
       <listitem>
         <para>Open the <filename>sources.conf</filename> file in a text
-        editor.</para>
+        editor. For example, to open it into TextEdit:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports/</userinput>
-<prompt>%%</prompt> <userinput>open -e sources.conf</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>open -e ${prefix}/etc/macports/sources.conf</userinput></programlisting>
       </listitem>
 
       <listitem>
@@ -746,21 +745,34 @@ rsync://rsync.macports.org/release/ports [default]
         <para>Place the Portfiles you create inside a directory whose name
         matches the port, which should in turn be placed inside a directory
         that reflect the port's primary category (the first category entry in
-        the Portfile).</para>
+        the Portfile). For example, to create the directory for a hypothetical
+        port "bestevergame" and to begin editing its Portfile in TextEdit, you
+        can use these commands:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>cd /Users/julesverne</userinput>
-<prompt>%%</prompt> <userinput>mkdir -p ports/games/bestevergame</userinput>
-<prompt>%%</prompt> <userinput>cd ports/games/bestevergame</userinput>
-<prompt>%%</prompt> <userinput>touch Portfile</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>mkdir -p ~/ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>cd ~/ports/games/bestevergame</userinput>
+<prompt>%%</prompt> <userinput>touch Portfile</userinput>
+<prompt>%%</prompt> <userinput>open -e Portfile</userinput></programlisting>
+
+        <para>See other sections in the Guide for help writing Portfiles. If
+        you've already written the Portfile elsewhere, you can instead copy
+        the Portfile into this directory.</para>
       </listitem>
 
       <listitem>
-        <para>After a Portfile is created (see below), use the MacPorts
-        <command>portindex</command> command in the local repository's
-        directory to install it into the
-        <filename>Portindex</filename>.</para>
+        <para>If your Portfile needs to apply any patches to the port's source
+        files, create a <filename>files</filename> and place the patchfiles in
+        it, and reference the patchfiles in your Portfile, as explained in
+        <link linkend="development.patches.source">Creating Source Code Patches</link>.</para>
+      </listitem>
 
-        <programlisting>%% <userinput>cd /Users/julesverne/ports</userinput>
+      <listitem>
+        <para>After you create or update your Portfile, use the MacPorts
+        <command>portindex</command> command in the local repository's
+        directory to create or update the index of the ports in your local
+        repository.</para>
+
+        <programlisting>%% <userinput>cd ~/ports</userinput>
 %% <userinput>portindex</userinput></programlisting>
 
         <screen>Creating software index in /Users/julesverne/ports
@@ -772,9 +784,9 @@ Ports failed:                   0</screen>
       </listitem>
     </orderedlist>
 
-    <para>Once the local port is added to the <filename>Portindex</filename>,
+    <para>Once the local port is added to the <filename>PortIndex</filename>,
     it becomes available for searching or installation as with any other
-    Portfile in the MacPorts tree as shown.</para>
+    Portfile in the MacPorts tree:</para>
 
     <programlisting><prompt>%%</prompt> <userinput>port search bestever</userinput></programlisting>
 
