@@ -683,7 +683,7 @@ variant sqlite description {Build sqlite support} {
     <section id="development.patches.applying">
       <title>Manually Applying Patches</title>
 
-      <para>Though MacPorts applies patch files automatically, you may want to
+      <para>MacPorts applies patch files automatically, but you may want to
       know how to apply patch files manually if you want to test patch files
       you have created or you wish to apply uncommitted Portfile
       patches.</para>
@@ -698,10 +698,10 @@ variant sqlite description {Build sqlite support} {
         </listitem>
 
         <listitem>
-          <para>Now apply the patch that is on the current user's desktop. The
-          patchfile knows the filename of the file to be patched.</para>
+          <para>Now apply the patch from your Downloads folder, or wherever you
+          put it. The patchfile knows the name of the file to be patched.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>patch -p0 &lt; ~/Desktop/Portfile-postfix.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>patch -p0 &lt; ~/Downloads/Portfile-postfix.diff</userinput></programlisting>
 
           <screen>patching file Portfile</screen>
         </listitem>
