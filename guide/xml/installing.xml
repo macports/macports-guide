@@ -97,7 +97,8 @@
       <para>Always make sure to install the latest available version of Xcode
       Tools for your Mac OS X release; using outdated versions of Xcode Tools
       may cause port install failures. Also note that Xcode Tools are not
-      updated via Mac OS X's Software Update utility.</para>
+      updated via Mac OS X's Software Update utility on OS versions prior
+      to 10.6.</para>
     </note>
 
     <orderedlist>
@@ -105,7 +106,26 @@
         <para>Download the <ulink
         url="http://developer.apple.com/technology/xcode.html">latest version
         of Xcode Tools</ulink> if you have the currently shipping release of
-        Mac OS X. If you have an earlier release of Mac OS X, you may download
+        Mac OS X. Note that on 10.6 there are two branches of Xcode which could be
+        considered to be the latest, 3.2.x and 4.0.x. Xcode 4 costs money, but
+        Xcode 3 is still available free of charge. There are two options for
+        downloading it:
+        <orderedlist>
+            <listitem>
+            <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20588">
+            Xcode 3.2.2</ulink> - smaller download, but you will need to run Software Update after installing to
+            get the latest version.
+            </listitem>
+            <listitem>
+            <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20792">
+            Xcode 3.2.6 and iOS SDK 4.3</ulink> - includes iOS SDK which is not needed for MacPorts.
+            </listitem>
+        </orderedlist>
+        You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and then run Software Update to get
+        the latest version.
+        </para>
+
+        <para>If you have an earlier release of Mac OS X, you may download
         the latest version of Xcode Tools
         <ulink
         url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20491">for OS X 10.5 (v3.1.4)</ulink>
