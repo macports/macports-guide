@@ -11,10 +11,12 @@
   minimum redundancy.</para>
 
 <para>See the following folder for PortGroup definitions:</para>
-  <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</filename>
+  <para>
+    <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</filename>
+  </para>
 
   <para>A sample listing follows:</para>
-
+    <para>
     <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</userinput></programlisting>
 
     <screen>archcheck-1.0.tcl
@@ -29,6 +31,7 @@ kde4-1.1.tcl
 .
 .
 .</screen>
+    </para>
 
    <para>The requirements of a minimum portfile using a portgroup varies by portgroup.
    The sections below devoted to each portgroup (or, for portgroups not documented there yet, the

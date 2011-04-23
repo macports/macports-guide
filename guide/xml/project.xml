@@ -35,10 +35,10 @@
           <para>
             Avoid filing duplicate bugs. Search for duplicates by:
             <itemizedlist>
-              <listitem>using the search bar that appears on each page</listitem>
-              <listitem>using <ulink url="http://trac.macports.org/search?portsummarysearch=on">the search page</ulink></listitem>
-              <listitem>browsing the list of <ulink url="http://trac.macports.org/report">categorised reports</ulink></listitem>
-              <listitem>making an advanced search by constructing a <ulink url="http://trac.macports.org/query">custom query</ulink></listitem>
+                <listitem><para>using the search bar that appears on each page</para></listitem>
+                <listitem><para>using <ulink url="http://trac.macports.org/search?portsummarysearch=on">the search page</ulink></para></listitem>
+                <listitem><para>browsing the list of <ulink url="http://trac.macports.org/report">categorised reports</ulink></para></listitem>
+                <listitem><para>making an advanced search by constructing a <ulink url="http://trac.macports.org/query">custom query</ulink></para></listitem>
             </itemizedlist>
           </para>
         </listitem>
