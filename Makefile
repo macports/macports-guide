@@ -112,8 +112,5 @@ clean:
 	$(RM) -f  guide.tmp.xml
 
 # Validate the XML files for the guide.
-# These two steps are necessary as otherwise xmllint complains about missing
-# ids.
 validate:
-	$(XMLLINT) --xinclude $(GUIDE_SRC)/guide.xml > guide.tmp.xml
-	$(XMLLINT) --loaddtd --valid --noout guide.tmp.xml
+	$(XMLLINT) --xinclude --loaddtd --postvalid --noout $(GUIDE_SRC)/guide.xml
