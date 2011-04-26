@@ -301,6 +301,7 @@ name                rrdtool
 version             1.2.23
 categories          net
 platforms           darwin
+license             GPL
 maintainers         julesverne
 description         Round Robin Database
 long_description    RRDtool is a system to store and display time-series data
