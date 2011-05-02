@@ -2630,7 +2630,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           <itemizedlist>
             <listitem>
               <para><literal>build.pre_args</literal>, defaults to:
-              <varname>${build.target.current}</varname></para>
+              <varname>${build.target}</varname></para>
             </listitem>
 
             <listitem>
