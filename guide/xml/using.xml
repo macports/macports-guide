@@ -487,7 +487,7 @@ The ports tree has been updated. To upgrade your installed ports, you should run
       <title>Show all ports which actually need updating</title>
 
       <para>is often useful, in case you don't have time to wait for port upgrades
-          (Every port needs to be downloaded, configured, build and installed, which can be -
+          (Every port needs to be downloaded, configured, built and installed, which can be -
           depending on your systems resources - a very time consuming procedure.):</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
@@ -509,9 +509,9 @@ xorg-util-macros               1.10.1_0 &lt; 1.11.0_0</screen>
     </section>
 
     <section id="using.common-tasks.upgrading">
-      <title>Upgrading active ports</title>
+      <title>Upgrading outdated ports</title>
 
-      <para>is usually done with the follwoing command:</para>
+      <para>is usually done with the following command:</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
 
@@ -581,7 +581,7 @@ xtrap</screen>
       <para>can be sometimes worthwhile, since often additional ports get installed when
             a specific port is installed. One can imagine that if one keeps installing and
             uninstalling ports for some time the MacPorts tree can be swamped with ports actually
-            not necessary anymore. Leaves can be found issueing the command:</para>
+            not necessary anymore. Leaves can be found by issuing the command:</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
       <screen>aalib                          @1.4rc5_4 
