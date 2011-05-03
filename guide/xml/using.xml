@@ -410,8 +410,8 @@ Error: Missing required variable: platforms
         ntlm: Enable NTLM authentication</screen>
 
     <note>
-      <para>Variant descriptions are optional, so you may not see descriptions
-      for all variants.</para>
+      <para>In some ports, you may find variants for which descriptions have
+      not yet been written.</para>
     </note>
 
     <section id="using.variants.invoking">
