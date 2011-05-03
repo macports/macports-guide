@@ -591,14 +591,14 @@ automake                       @1.11.1_0
 cmake                          @2.8.2_4 
 coreutils                      @8.5_0</screen>
 
-      <para>The following command delivers a similar result, but works much slower (due to additional parsing):</para>
-      <programlisting><prompt>%%</prompt> <userinput>port list leaves</userinput></programlisting>
-      <screen>aalib                          @1.4rc5         graphics/aalib
-autoconf                       @2.68           devel/autoconf
-autoconf263                    @2.63           devel/autoconf263
-automake                       @1.11.1         devel/automake
-cmake                          @2.8.2          devel/cmake
-coreutils                      @8.5            sysutils/coreutils</screen>
+      <para>The following command delivers a similar result:</para>
+      <programlisting><prompt>%%</prompt> <userinput>port installed leaves</userinput></programlisting>
+      <screen>  aalib @1.4rc5_4 (active)
+  autoconf @2.68_0 (active)
+  autoconf263 @2.63_0 (active)
+  automake @1.11.1_0 (active)
+  cmake @2.8.2_4 (active)
+  coreutils @8.5_0 (active)</screen>
 
       <para>These leaves may be wanted, but could also be unwanted ports. (See the following entry!)</para>
           </section>
