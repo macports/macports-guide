@@ -66,7 +66,7 @@
 
       <para>To launch X11 applications directly from an X11 window (instead of
       a regular terminal window), you need to make it so X11 sessions opened
-      using the menu bar respect your <filename>.~profile</filename>
+      using the menu bar respect your <filename>.profile</filename>
       file.</para>
 
       <orderedlist>
@@ -500,7 +500,7 @@
           <para>Optional: <varname>DISPLAY</varname> variable</para>
 
           <para>Condition: If installing on a Mac OS X version earlier than
-          10.5 (Leopard), and if a<filename> .profile</filename> file exists
+          10.5 (Leopard), and if a <filename>.profile</filename> file exists
           at time of MacPorts installation without a
           <varname>DISPLAY</varname> variable, the postflight script sets a
           <varname>DISPLAY</varname> variable as shown below. The
