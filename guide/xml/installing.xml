@@ -5,9 +5,9 @@
   <title>Installing MacPorts</title>
 
   <para>This chapter shows you how to install MacPorts and its prerequisites
-  step-by-step. Note that the sections about (<link
+  step-by-step. Note that the sections about <link
   linkend="installing.x11">installing X11</link> and <link
-  linkend="installing.xcode">installing Xcode Tools</link>) are Mac OS X
+  linkend="installing.xcode">installing Xcode Tools</link> are Mac OS X
   specific. If you wish to install MacPorts on another platform, first make
   sure you have X11 and gcc installed, and then skip ahead to <link
   linkend="installing.macports.source">installing MacPorts from source</link>
