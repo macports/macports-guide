@@ -198,18 +198,23 @@
       <listitem>
         <para>The proper format for license consists of the license name,
         followed by a hyphen and number if indicating a specific version. A
-        space should be placed between licenses if there is more than one.
+        space should be placed between licenses if there is more than one that
+        applies. If an element in the license list is itself a list, it is
+        interpreted as offering a choice of any one of the licenses in the
+        sub-list.
         </para>
 
-		<para>(Additional suggestions: If the version number is a
-		<quote>.0</quote> version, including the <quote>.0</quote> is
-		optional. If the author gives the choice of using a given license or
-		<quote>any later version</quote> of it, include a plus (+) after the
-		version number; if the version specified is also the earliest version,
-		just leave out a version number entirely since it implies all
-		versions. —L2G)</para>
+		<para>If the version number is a
+		<quote>.0</quote> version, the <quote>.0</quote> should be
+		omitted to make the version an integer. If the author gives the choice
+		of using a given license or <quote>any later version</quote> of it,
+		append a plus sign (+) to the version number. If the version
+		specified in this case is also the earliest version,
+		just leave out the version number entirely since it implies all
+		versions.</para>
 
         <programlisting>license           GPL-3</programlisting>
+        <programlisting>license           {freetype GPL}</programlisting>
       </listitem>
     </varlistentry>
 
