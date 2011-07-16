@@ -136,18 +136,28 @@ depends_run         port:apache2 port:php5</programlisting>
     <para>File dependencies may be of three types: <option>bin</option> for
     programs, <option>lib</option> for libraries, and <option>path</option>
     for any installed file. File dependencies are specifed in the form:
-    <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filespec&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.
-    For <option>bin</option> dependencies,
+    <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filespec&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.</para>
+    
+    <para>For <option>bin</option> dependencies,
     <replaceable>&lt;filespec&gt;</replaceable> is the name of a program in a
-    bin directory like <filename>${prefix}/bin</filename>. For
-    <option>lib</option> dependencies,
-    <replaceable>&lt;filespec&gt;</replaceable> is the name of a library in a
-    lib directory like <filename>${prefix}/lib</filename> but without its
-    extension. For <option>path</option> dependencies,
+    bin directory like <filename>${prefix}/bin</filename>, /usr/bin, /bin, and
+    the associated sbin directories.</para>
+    
+    <para>For <option>lib</option> dependencies,
+    <replaceable>&lt;filespec&gt;</replaceable> is the name of a library
+    (but without its extension) in a lib directory like
+    <filename>${prefix}/lib</filename>, /usr/lib, /lib, some Framework
+    directories, and those found in environment variables like DYLD_LIBRARY_PATH.</para>
+    
+    <para>For <option>path</option> dependencies,
     <replaceable>&lt;filespec&gt;</replaceable> is the complete absolute path
     to the file, or more usually, when the file is inside
     <filename>${prefix}</filename>, it is specified relative to
-    <filename>${prefix}</filename>.</para>
+    <filename>${prefix}</filename>.
+    Since <option>path</option> dependencies are the only ones which would find
+    files only in an absolute path or a path inside <filename>${prefix}</filename>
+    they are - in cases when a port needs to be more restrictive - often used
+    instead of <option>bin</option> and <option>lib</option> dependencies .</para>
 
     <para>Note that the <replaceable>&lt;port&gt;</replaceable> specified is
     only installed if the specified library, binary, or file is not found. See
