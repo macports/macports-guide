@@ -199,7 +199,7 @@
         <listitem>
           <para>Download the latest <filename>MacPorts-1.x.x.dmg</filename>
           disk image (whose name does not contain -beta or -rc) from the <ulink
-          url="http://distfiles.macports.org/MacPorts/">MacPorts
+          url="https://distfiles.macports.org/MacPorts/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
@@ -224,7 +224,7 @@
       <orderedlist>
         <listitem>
           <para>Download and unzip the latest MacPorts tarball from the <ulink
-          url="http://distfiles.macports.org/MacPorts/">MacPorts
+          url="https://distfiles.macports.org/MacPorts/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
@@ -267,7 +267,7 @@
 
           <programlisting><prompt>%%</prompt> <userinput>mkdir -p /opt/mports</userinput>
 <prompt>%%</prompt> <userinput>cd /opt/mports</userinput>
-<prompt>%%</prompt> <userinput>svn checkout http://svn.macports.org/repository/macports/trunk</userinput></programlisting>
+<prompt>%%</prompt> <userinput>svn checkout https://svn.macports.org/repository/macports/trunk</userinput></programlisting>
 
           <note>
               <para>
