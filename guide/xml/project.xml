@@ -10,7 +10,7 @@
     <para>The MacPorts Project uses a system called <ulink
     url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
     and enhancement requests. Trac also provides an interface to browse the
-    <ulink url="http://trac.macports.org/browser/">MacPorts
+    <ulink url="https://trac.macports.org/browser/">MacPorts
     Subversion repository</ulink>. Though anyone may search Trac for tickets,
     you must <ulink
     url="https://trac.macports.org/auth/register/">register</ulink> for a Trac
@@ -24,7 +24,7 @@
           <para>Check the Problem HotList</para>
           <para>
             The <ulink
-              url="http://trac.macports.org/wiki/ProblemHotlist">Problem
+              url="https://trac.macports.org/wiki/ProblemHotlist">Problem
               Hotlist</ulink> contains possible solutions to problems that
             affect many MacPorts users. If a solution to your problem listed
             there works, don't file a ticket.
@@ -36,9 +36,9 @@
             Avoid filing duplicate bugs. Search for duplicates by:
             <itemizedlist>
                 <listitem><para>using the search bar that appears on each page</para></listitem>
-                <listitem><para>using <ulink url="http://trac.macports.org/search?portsummarysearch=on">the search page</ulink></para></listitem>
-                <listitem><para>browsing the list of <ulink url="http://trac.macports.org/report">categorised reports</ulink></para></listitem>
-                <listitem><para>making an advanced search by constructing a <ulink url="http://trac.macports.org/query">custom query</ulink></para></listitem>
+                <listitem><para>using <ulink url="https://trac.macports.org/search?portsummarysearch=on">the search page</ulink></para></listitem>
+                <listitem><para>browsing the list of <ulink url="https://trac.macports.org/report">categorised reports</ulink></para></listitem>
+                <listitem><para>making an advanced search by constructing a <ulink url="https://trac.macports.org/query">custom query</ulink></para></listitem>
             </itemizedlist>
           </para>
         </listitem>
@@ -67,7 +67,7 @@
       <title>Creating Trac Tickets</title>
 
       <para>Once you are logged into Trac, you may click <ulink
-      url="http://trac.macports.org/newticket">New Ticket</ulink> and you
+      url="https://trac.macports.org/newticket">New Ticket</ulink> and you
       will be presented with a new ticket window shown in the graphic below.
       Follow the Trac ticket guidelines below to fill out the form. If you are
       reporting a failed port install and a log was mentioned in the error,
@@ -114,7 +114,7 @@
           <para><guilabel>Description:</guilabel> All details that might
           be relevant to someone reading the ticket. Be sure to mention
           the versions of your operating system and Xcode install. <ulink
-          url="http://trac.macports.org/wiki/WikiFormatting">Wiki
+          url="https://trac.macports.org/wiki/WikiFormatting">Wiki
           formatting</ulink> should be used to ensure that text is formatted
           correctly. Use the Preview button before submitting. If you want to
           post preformatted text such as a log or terminal output, make sure
@@ -546,7 +546,7 @@
     <para>The MacPorts PortMgr team is the steering group for The MacPorts
     Project. Its membership is usually determined by public elections among
     project members; the current members of the team can be found on the
-    <ulink url="http://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
+    <ulink url="https://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
     Developers wiki page</ulink>.
 
     They are responsible for matters such as:
