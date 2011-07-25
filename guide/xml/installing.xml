@@ -7,7 +7,7 @@
   <para>This chapter shows you how to install MacPorts and its prerequisites
   step-by-step. Note that the sections about <link
   linkend="installing.x11">installing X11</link> and <link
-  linkend="installing.xcode">installing Xcode Tools</link> are Mac OS X
+  linkend="installing.xcode">installing Xcode</link> are Mac OS X
   specific. If you wish to install MacPorts on another platform, first make
   sure you have X11 and gcc installed, and then skip ahead to <link
   linkend="installing.macports.source">installing MacPorts from source</link>
@@ -89,15 +89,15 @@
   </section>
 
   <section id="installing.xcode">
-    <title>Install Xcode Tools</title>
+    <title>Install Xcode</title>
 
-    <para>To install Xcode Tools and the X11 SDK, follow the steps
+    <para>To install Xcode and the X11 SDK, follow the steps
     below.</para>
 
     <note>
       <para>Always make sure to install the latest available version of Xcode
-      Tools for your Mac OS X release; using outdated versions of Xcode Tools
-      may cause port install failures. Also note that Xcode Tools are not
+      for your Mac OS X release; using outdated versions of Xcode
+      may cause port install failures. Also note that Xcode is not
       updated via Mac OS X's Software Update utility on OS versions prior
       to 10.6.</para>
     </note>
@@ -106,8 +106,10 @@
       <listitem>
         <para>Download the <ulink
         url="http://developer.apple.com/technology/xcode.html">latest version
-        of Xcode Tools</ulink> if you have the currently shipping release of
-        Mac OS X. Note that on 10.6 there are two branches of Xcode which could be
+        of Xcode</ulink> if you have the currently shipping release of
+        Mac OS X.</para>
+
+        <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be
         considered to be the latest, 3.2.x and 4.0.x. Xcode 4 costs money, but
         Xcode 3 is still available free of charge. There are two options for
         downloading it:
@@ -131,7 +133,7 @@
         </para>
 
         <para>If you have an earlier release of Mac OS X, you may download
-        the latest version of Xcode Tools
+        the latest version of Xcode
         <ulink
         url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20491">for OS X 10.5 (v3.1.4)</ulink>
         or
@@ -140,27 +142,31 @@
       </listitem>
 
       <listitem>
-        <para>Run the Xcode Tools package installer.</para>
+        <para>Run the Xcode package installer.</para>
       </listitem>
 
       <listitem>
-        <para>Click the button <guibutton>Customize</guibutton>, expand the
-        Applications category and click the check box beside <guibutton>X11
-        SDK</guibutton> to add it to the default items.</para>
-      </listitem>
-      
-      <listitem>
-        <para>Ensure that the option for command line development, which is
-        labeled <guibutton>Unix Development</guibutton> in the Xcode 3.x installer,
-        is checked.</para>
+        <para>Ensure that those of the following options that are available in the
+        installer for your version of Xcode are selected:
+        <orderedlist>
+            <listitem>
+                <guibutton>UNIX Development</guibutton>
+            </listitem>
+            <listitem>
+                <guibutton>System Tools</guibutton>
+            </listitem>
+            <listitem>
+                <guibutton>X11 SDK</guibutton>
+            </listitem>
+            <listitem>
+                <guibutton>Command Line Support</guibutton>
+            </listitem>
+        </orderedlist>
+        </para>
       </listitem>
 
       <listitem>
-        <para>Click <guibutton>Install</guibutton> to install Xcode Tools and
-        the X11 SDK. If you are using OS X 10.4 (Xcode v2.x),
-        use the <guibutton>Customize</guibutton> button before clicking
-        <guibutton>Install</guibutton> and select <guibutton>X11
-        SDK</guibutton>.</para>
+        <para>Click <guibutton>Install</guibutton> to install Xcode.</para>
       </listitem>
     </orderedlist>
   </section>
