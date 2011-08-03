@@ -424,31 +424,29 @@
   <section id="installing.shell">
     <title>MacPorts and the Shell</title>
 
-    <para>MacPorts requires that some environmental variables be set in the
+    <para>MacPorts requires that some environment variables be set in the
     shell. When MacPorts is installed using the Mac OS X package installer, a
     <quote>postflight</quote> script is run after installation that
-    automatically copies a <filename>.profile</filename> containing variables
+    automatically adds or modifies a shell configuration file in your home directory,
+    ensuring that it defines variables
     according to the rules described in the following section. Those <link
     linkend="installing.macports.source">installing MacPorts from source
     code</link> must modify their environment manually using the rules as a
     guide.</para>
 
-    <note>
-      <para>If you have either a <filename>.bash_login</filename> or a
-      <filename>.bash_profile</filename> file in your home directory, they may
-      take precedence over <filename>.profile</filename>. You may either
-      remove the previously used file, or add the contents of
-      <filename>.profile</filename> to it.</para>
-    </note>
+    <para>Depending on your shell and which configuration files already exist, the
+    installer may use <filename>.profile</filename>, <filename>.bash_login</filename>,
+    <filename>.bash_profile</filename>, <filename>.tcshrc</filename>, or
+    <filename>.cshrc</filename>.</para>
 
     <section id="installing.shell.postflight">
       <title>The Postflight Script</title>
 
-      <para>The postflight script automatically copies a
-      <filename>.profile</filename> containing the <varname>PATH</varname>
+      <para>The postflight script automatically sets
+      the <varname>PATH</varname>
       variable, and optionally the <varname>MANPATH</varname> and
       <varname>DISPLAY</varname> variables according to the rules described
-      below. If a current <filename>.profile</filename> file exists at
+      below. If a current shell configuration file exists at
       installation time it is renamed to <quote>mpsaved_$timestamp</quote>.
       Those <link linkend="installing.macports.source">installing MacPorts
       from source code</link> must modify their environment manually using the
@@ -508,7 +506,7 @@
           <para>Optional: <varname>DISPLAY</varname> variable</para>
 
           <para>Condition: If installing on a Mac OS X version earlier than
-          10.5 (Leopard), and if a <filename>.profile</filename> file exists
+          10.5 (Leopard), and if a shell configuration file exists
           at time of MacPorts installation without a
           <varname>DISPLAY</varname> variable, the postflight script sets a
           <varname>DISPLAY</varname> variable as shown below. The
@@ -521,16 +519,16 @@
     </section>
 
     <section id="installing.shell.verifyprofile">
-      <title>Verify the .profile</title>
+      <title>Verify the configuration file</title>
 
-      <para>To verify that the <filename>.profile</filename> containing the
+      <para>To verify that the file containing the
       MacPorts variables is in effect, type <command>env</command> in the
       terminal to verify the current environment settings after the
-      <filename>.profile</filename> has been created. Example output for the
+      file has been created. Example output for the
       <command>env</command> command is shown below.</para>
 
       <note>
-        <para>Changes to <filename>~/.profile</filename> do not take effect
+        <para>Changes to shell configuration files do not take effect
         until a new terminal session is opened.</para>
       </note>
 
@@ -564,19 +562,18 @@ _=/usr/bin/env</screen>
       specific one (<varname>MP_EDITOR</varname>).</para>
 
       <para>For example, to use the nano editor, add this line to your
-      <filename>~/.profile</filename>:</para>
+      bash config:</para>
 
       <programlisting>export EDITOR=/usr/bin/nano</programlisting>
 
       <para>To use the user-friendly GUI editor <ulink
       url="http://www.barebones.com/products/textwrangler/">TextWrangler</ulink>
-      (installation required), add this line to your
-      <filename>~/.profile</filename>:</para>
+      (installation required), add this line:</para>
 
       <programlisting>export EDITOR=/usr/bin/edit</programlisting>
       
-      <para>To keep a text editor as default while using a graphic editor with
-      portfiles add this to <filename>~/.profile</filename>: </para>
+      <para>To keep a command-line text editor as default while using a graphic editor with
+      portfiles, add this: </para>
 
       <programlisting>
       export EDITOR=/usr/bin/vi
