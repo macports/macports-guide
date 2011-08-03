@@ -133,20 +133,10 @@
       </varlistentry>
 
       <varlistentry>
-        <term>archive</term>
-
-        <listitem>
-          <para>Use tar to create a tarball of a port's destrooted files and
-          copy it to
-          <filename>${prefix}/var/macports/packages/</filename>.</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term>install</term>
 
         <listitem>
-          <para>Copy a port's destrooted files into
+          <para>Archive a port's destrooted files into
           <filename>${prefix}/var/macports/software</filename>. See <link
           linkend="internals.images">Port Images</link> in the <link
           linkend="internals">MacPorts Internals</link> chapter for
@@ -158,10 +148,10 @@
         <term>activate</term>
 
         <listitem>
-          <para>Set <ulink
-          url="http://en.wikipedia.org/wiki/Hard_link">hardlinks</ulink>
-          pointing to <filename>${prefix}/var/macports/software</filename> to
-          point to <varname>${prefix}</varname>.</para>
+          <para>Extract the port's files from the archive in
+          <filename>${prefix}/var/macports/software</filename> to
+          their final installed locations, usually inside
+          <varname>${prefix}</varname>.</para>
         </listitem>
       </varlistentry>
     </variablelist>
