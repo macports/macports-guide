@@ -227,7 +227,7 @@
                           <term><filename>packages/</filename></term>
 
                           <listitem>
-                            <para>Contains archives (packages) of installed
+                            <para>Obsolete. Formerly contained archives (packages) of installed
                             ports.</para>
                           </listitem>
                         </varlistentry>
@@ -236,17 +236,25 @@
                           <term><filename>receipts/</filename></term>
 
                           <listitem>
-                            <para>Contains the registry information and receipts
-                            for installed ports.</para>
+                            <para>Obsolete. Formerly contained the registry information and receipts
+                            for installed ports, in flat-file format.</para>
                           </listitem>
                         </varlistentry>
+
+                        <varlistentry>
+                          <term><filename>registry/</filename></term>
+
+                          <listitem>
+                            <para>Contains the registry database in sqlite format.</para>
+                          </listitem>
+                        </varlistentry>
+
 
                         <varlistentry>
                           <term><filename>software/</filename></term>
 
                           <listitem>
-                            <para>In image-mode (the default), the installed
-                            files are stored here and linked to ${prefix}</para>
+                            <para>The files for each installed port are stored here.</para>
                           </listitem>
                         </varlistentry>
 
