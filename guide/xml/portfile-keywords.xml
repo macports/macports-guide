@@ -193,6 +193,21 @@
     </varlistentry>
 
     <varlistentry>
+      <term>supported_archs</term>
+
+      <listitem>
+        <para>The CPU architectures for which this port can be built. Archs currently
+        supported by Mac OS X are: i386, ppc, ppc64, x86_64. If this option is not
+        set, it is assumed that the port can build for all archs. If a port does not
+        install any architecture-specific files, use the special value
+        <option>noarch</option>.</para>
+
+        <programlisting>supported_archs           i386 ppc</programlisting>
+        <programlisting>supported_archs           noarch</programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>license</term>
 
       <listitem>
