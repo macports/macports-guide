@@ -107,7 +107,9 @@
         <para>Download the <ulink
         url="http://developer.apple.com/technology/xcode.html">latest version
         of Xcode</ulink> if you have the currently shipping release of
-        Mac OS X.</para>
+        Mac OS X. <note>Downloading Xcode from the Mac App Store does not install
+        it. You need to manually run the installer in your Applications folder after
+        downloading it.</note></para>
 
         <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be
         considered to be the latest, 3.2.x and 4.0.x. Xcode 4 costs money, but
