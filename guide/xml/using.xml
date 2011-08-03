@@ -704,14 +704,14 @@ physfs                         @2.0.1_0 </screen>
       <para>Binary archives can only be used on a target system running
       MacPorts. Binary archives allow MacPorts utilities to begin installation
       after the destroot phase and install and activate a port on the target
-      system. Binary archives are created using the <command>port</command>
-      command as shown.</para>
+      system. Binary archives are created whenever a port is installed, and can also
+      be downloaded from a server.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port -d archive logrotate</userinput></programlisting>
 
       <para>Debug output is shown below.</para>
 
-      <screen>---&gt;  Creating logrotate-3.7_0.i386.tgz
+      <screen>---&gt;  Creating logrotate-3.7_0.i386.tbz2
 
 [ ... trimmed ... ]
 
@@ -731,14 +731,14 @@ DEBUG:
 ./opt/local/man/man8/logrotate.8
 ./opt/local/sbin/
 ./opt/local/sbin/logrotate
----&gt;  Archive logrotate-3.7_0.i386.tgz packaged
+---&gt;  Archive logrotate-3.7_0.i386.tbz2 packaged
 DEBUG: Executing archive_finish
 ---&gt;  Archive for logrotate 3.7_0 packaged</screen>
 
       <para>Binary archive files are placed in
-      <filename>${prefix}/var/macports/packages/</filename>. The archive file
+      <filename>${prefix}/var/macports/software/</filename>. The archive file
       type is set in the <filename>macports.conf</filename> file. The default
-      format is .tgz; other options are: tar, tbz, tbz2, tlz, xar, zip, cpgz,
+      format is .tbz2; other options are: tar, tbz, tbz2, tgz, tlz, txz, xar, zip, cpgz,
       cpio.</para>
     </section>
 
