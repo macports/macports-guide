@@ -1155,6 +1155,33 @@ extract.post_args = "-d ${portpath}/${workdir}"
       </varlistentry>
 
       <varlistentry>
+        <term>use_xz</term>
+
+        <listitem>
+          <para>This keyword is for downloads that are compressed using the xz tool.
+          When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix    = .tar.xz
+extract.cmd       = xz
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_xz             yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+
+      <varlistentry>
         <term>extract.mkdir</term>
 
         <listitem>
