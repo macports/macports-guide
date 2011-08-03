@@ -21,27 +21,24 @@
   <section id="internals.images">
     <title>Port Images</title>
 
-    <para>MacPorts has a unique ability to allow for multiple versions,
-    revisions, and variants of the same port installed at the same time, so
+    <para>MacPorts has a unique ability to allow multiple versions,
+    revisions, and variants of the same port to be installed at the same time, so
     you may test new port versions without uninstalling a previous working
     version.</para>
 
     <para>This capability derives from the fact that a MacPorts port by
     default is not installed into its final or "activated" location, but
     rather to an intermediate location that is only made available to other
-    ports and end-users after an activation phase that makes hard links of all
-    its files in <varname>${prefix}</varname> that point to the port's files
-    in the image repository. Therefore deactivating a port image to install a
-    different version only removes the hard links in
-    <varname>${prefix}</varname> pointing to the previous port version's image
+    ports and end-users after an activation phase that extracts all
+    its files from the image repository. Deactivating a port
+    only removes the files from their activated
+    locations (usually under <varname>${prefix}</varname>)
     —the deactivated port's image is not disturbed.</para>
 
-    <note>
-      <para>MacPorts image mode may be turned off in favor of direct mode by
-      setting the portinstalltype variable in the
-      <filename>macports.conf</filename> file "direct". But unless you know
-      what you're doing, don't change it.</para>
-    </note>
+    <para>The location of an installed port's image can be seen
+    by running:
+    <programlisting><prompt>%%</prompt> <userinput>port location PORTNAME</userinput></programlisting>
+    </para>
   </section>
 
   <section id="internals.apis">
