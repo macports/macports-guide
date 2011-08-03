@@ -205,14 +205,14 @@
 
       <orderedlist>
         <listitem>
-          <para>Download the latest <filename>MacPorts-1.x.x.dmg</filename>
+          <para>Download the latest <filename>MacPorts-x.x.x.dmg</filename>
           disk image (whose name does not contain -beta or -rc) from the <ulink
           url="https://distfiles.macports.org/MacPorts/">MacPorts
           download directory</ulink>.</para>
         </listitem>
 
         <listitem>
-          <para>Double-click the <filename>MacPorts-1.x.x.pkg</filename>
+          <para>Double-click the <filename>MacPorts-x.x.x.pkg</filename>
           package installer on the disk image.</para>
         </listitem>
 
@@ -242,7 +242,7 @@
           option <option>--prefix</option> and substitute a path for
           NEW_PREFIX.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-1.x.x/</userinput>
+          <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-x.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure</userinput> --prefix=NEW_PREFIX  (setting prefix is optional)
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
