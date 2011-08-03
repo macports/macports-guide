@@ -340,9 +340,9 @@
 
       <para>Occasionally a MacPorts developer may wish to install more than
       one MacPorts instance on the same host. Only one copy of MacPorts may
-      use the default Tcl library path <filename>/Library/Tcl/</filename>, so
+      use the default prefix <filename>/opt/local</filename>, so
       for additional installations use the option
-      <option>--with-tclpackage</option> as shown below. It's also recommended
+      <option>--prefix</option> as shown below. It's also recommended
       to change the applications dir using
       <option>--with-applications-dir</option> to avoid conflicts in
       <filename>/Applications/MacPorts</filename>.</para>
@@ -355,7 +355,7 @@
 
       <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <prompt>%%</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
-<prompt>%%</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-tclpackage=$MP_PREFIX/Library/Tcl --with-applications-dir=$MP_PREFIX/Applications</userinput>
+<prompt>%%</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-applications-dir=$MP_PREFIX/Applications</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
