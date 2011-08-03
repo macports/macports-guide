@@ -315,11 +315,11 @@
           <filename>/opt/local/etc/macports/sources.conf</filename> in a text
           editor. The last line which should look like this:</para>
 
-          <programlisting>rsync://rsync.macports.org/release/ports/</programlisting>
+          <programlisting>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</programlisting>
 
           <para>Change it to point to the working copy you checked out:</para>
 
-          <programlisting>file:///opt/mports/trunk/dports</programlisting>
+          <programlisting>file:///opt/mports/trunk/dports [default]</programlisting>
 
           <para>Now MacPorts will look for portfiles in the working
           copy.</para>
