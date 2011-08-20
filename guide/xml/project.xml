@@ -123,15 +123,15 @@
 
           <literallayout>
 {{{
-<replaceable>your build log here</replaceable>
+<replaceable>your error message here</replaceable>
 }}}
           </literallayout>
 
-          <para>Submitters are advised to trim pastes and logs of any kind to
+          <para>Submitters are advised to trim inline pastes and logs to
           what's really relevant to the report, as otherwise overly large
-          submissions that might contain redundant and/or unnecessary
-          information might become unmanageable. If it is truly necessary to
-          include long output, use an attachment, don't paste it inline.
+          ticket pages can become unmanageable. Long output, such as the
+          full log from a port build, should be added as an attachment, not
+          pasted inline. See "I have files to attach to this ticket" below.
           </para>
 
         </listitem>
@@ -301,6 +301,10 @@
           Use this checkbox to attach files to the ticket immediately after
           you create it. Or you can attach files later using the
           <guilabel>Attach File</guilabel> button.</para>
+          <para>If the file you are attaching is larger than 256 KiB, please
+          compress it with bzip2 or gzip first to save space on the server and
+          bandwidth for those downloading it, as
+          Trac will not preview files above that size anyway.</para>
         </listitem>
       </itemizedlist>
     </section>
