@@ -386,7 +386,7 @@
     <para>If you need to uninstall MacPorts, and your <command>port</command> command is
     functioning, first uninstall all the installed ports by running this
     command in the Terminal:</para>
-    <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall installed</userinput></programlisting>
+    <programlisting><prompt>%%</prompt> <userinput>sudo port -fp uninstall --follow-dependents installed</userinput></programlisting>
 
     <para>All that will be left in your installation prefix now will be files
     that were not registered to any port. This includes configuration
