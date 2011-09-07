@@ -160,8 +160,8 @@
             </listitem>
 
             <listitem>
-              <para>Default: <filename>${prefix}/Library/Frameworks</filename>
-              or <filename>/Applications/MacPorts</filename> depending on
+              <para>Default: <filename>${frameworks_dir}</filename>
+              or <filename>${applications_dir}</filename> depending on
               <code>xcode.destroot.type</code>.</para>
             </listitem>
           </itemizedlist>
