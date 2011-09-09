@@ -33,8 +33,9 @@
       <term>name</term>
 
       <listitem>
-        <para>The name of the Port; it should be lowercase to prevent
-        uninstallation problems due to a macports base bug.</para>
+        <para>The name of the port. To avoid special interpretation by shells
+        and the like, names should contain only alphanumeric characters,
+        underscores, dashes or dots.</para>
 
         <programlisting>name                foo</programlisting>
       </listitem>
