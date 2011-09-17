@@ -759,6 +759,15 @@ DEBUG: Executing archive_finish
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port dmg pstree</userinput></programlisting>
 
+      <para>You can also create a metapackage containing packages of a port and all its
+      dependencies:</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>sudo port mpkg gimp2</userinput></programlisting>
+
+      <para>Just as with a single package, a metapackage can also be wrapped in a .dmg.</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>sudo port mdmg gimp2</userinput></programlisting>
+
       <para>You may compile a port into an RPM file as shown, in order to
       install it onto a target that has RPM utilities or a full package
       management system that can install RPMs.</para>
