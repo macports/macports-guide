@@ -31,16 +31,6 @@
 
         <variablelist>
           <varlistentry>
-            <term>file move</term>
-
-            <listitem>
-              <para></para>
-            </listitem>
-          </varlistentry>
-        </variablelist>
-
-        <variablelist>
-          <varlistentry>
             <term>file rename</term>
 
             <listitem>
