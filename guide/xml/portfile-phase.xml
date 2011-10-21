@@ -1985,8 +1985,16 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
               10.5</para>
             </listitem>
             
-             <listitem>
-              <para>Default: <option>gcc-4.2</option> on Mac OS X 10.6</para>
+            <listitem>
+              <para>Default: <option>gcc-4.2</option> with Xcode 3.2 on Mac OS X 10.6</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: <option>llvm-gcc-4.2</option> with Xcode 4.0 and 4.1 on Mac OS X 10.6 and 10.7</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: <option>clang</option> with Xcode 4.2 on Mac OS X 10.6 and 10.7</para>
             </listitem>
 
             <listitem>
