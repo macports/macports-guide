@@ -212,7 +212,7 @@ Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
     <section id="using.port.uninstall">
       <title>uninstall</title>
 
-      <para>The <option>uninstall</option> action will uninstall an installed
+      <para>The <option>uninstall</option> action will remove an installed
       port.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall vile</userinput></programlisting>
@@ -221,15 +221,19 @@ Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
         <para>To also recursively uninstall the ports that the given port depends on,
         use the <option>&#x2011;&#x2011;follow&#x2011;dependencies</option> flag. This will not uninstall
         dependencies that are marked as requested or that have other dependents.</para>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall --follow-dependencies vile</userinput></programlisting>
+
         <para>To recursively uninstall all ports that depend on the given port before uninstalling
         the port itself, use the <option>&#x2011;&#x2011;follow&#x2011;dependents</option> flag.</para>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall --follow-dependents ncurses</userinput></programlisting>
+
         <para>If a port is a dependency of another installed port,
         uninstall will not remove it unless you remove the dependent port(s)
         first. To override this behavior, use the <option>-f</option> (force)
         switch. This will obviously break the dependents. Don't force uninstall ports
         unless you know what you are doing.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall vile</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall ncurses</userinput></programlisting>
       </note>
     </section>
 
