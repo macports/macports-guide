@@ -72,23 +72,19 @@
       <term>epoch</term>
 
       <listitem>
-        <para>An optional keyword (default value is 0) that may be used when
-        ports are updated to a version that is numerically less than the
-        previous version. For example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0. An
-        epoch ensures that port version comparisons work correctly in these
-        cases. Often the epoch is formatted like a date, but it can simply be
-        a number such as 1.</para>
-
-        <programlisting>epoch               20080924</programlisting>
+        <para>An optional keyword (default value is 0) that must be used when
+        a port is updated to a version that is numerically less than the
+        previous version, for example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
+        Some Portfile authors have used large epoch values that look like a
+        date, but there is no reason to do so. The epoch is simply an unsigned
+        integer, and the only requirement is that it never be decreased.</para>
 
         <programlisting>epoch               1</programlisting>
 
         <note>
-          <para>An epoch is not needed for most ports. If an epoch is used it
-          must never be decreased or removed even when a port's version is
-          updated; this would cause port version comparisons to be incorrect
-          since epochs take precedence over versions once epochs have been
-          used.</para>
+          <para>An epoch is not needed for most ports. If a port's version
+          numbers advance in normal dotted-decimal sequence, there is no reason
+          to add an epoch.</para>
         </note>
       </listitem>
     </varlistentry>
