@@ -548,18 +548,18 @@ variant sqlite description {Build sqlite support} {
  PortSystem          1.0
  name                foo
  
--version             1.4.0
-+version             1.3.0
+-version             1.3.0
++version             1.4.0
  categories          net
- maintainers         nomaintainer@macports.org
+ maintainers         nomaintainer
  description         A network monitoring daemon.
 @@ -13,9 +13,9 @@
  
  homepage            http://rsug.itd.umich.edu/software/${name}
  
  master_sites        ${homepage}/files/
--checksums           md5 f0953b21cdb5eb327e40d4b215110b71
-+checksums           md5 01532e67a596bfff6a54aa36face26ae
+-checksums           md5 01532e67a596bfff6a54aa36face26ae
++checksums           md5 f0953b21cdb5eb327e40d4b215110b71
  extract.suffix      .tgz
  platforms           darwin
 </programlisting>
