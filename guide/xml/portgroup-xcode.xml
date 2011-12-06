@@ -27,8 +27,8 @@
         <listitem>
           <para>The path relative to <varname>${build.dir}</varname> and
           <varname>${destroot.dir}</varname> of the Xcode project. If unset,
-          let Xcode Tools should determine it automatically. It usually
-          succeeds if there is a single project in the directory.</para>
+          Xcode Tools should be able to determine it automatically. It usually
+          succeeds if there is only a single project in the directory.</para>
 
           <itemizedlist>
             <listitem>
