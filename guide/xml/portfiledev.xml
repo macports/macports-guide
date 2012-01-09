@@ -237,23 +237,19 @@
         <para>Port checksums</para>
 
         <para>The checksums specified in a Portfile are checked with the
-        fetched tarball for security. For the best security, use md5, sha1,
-        and rmd160 checksum types.</para>
+        fetched tarball for security. For the best security, use rmd160 
+        and sha256 checksum types.</para>
 
-        <programlisting>checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+        <programlisting>checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
 
         <para>To find the correct checksums for a port's distribution file,
         follow this example:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>md5 rrdtool-1.2.23.tar.gz</userinput>
-<prompt>%%</prompt> <userinput>openssl sha1 rrdtool-1.2.23.tar.gz</userinput>
+        <programlisting><prompt>%%</prompt> <userinput>openssl sha256 rrdtool-1.2.23.tar.gz</userinput>
 <prompt>%%</prompt> <userinput>openssl rmd160 rrdtool-1.2.23.tar.gz</userinput></programlisting>
 
-        <screen>MD5 ( ... rrdtool-1.2.23.tar.gz) = dafa161bc9c61e57636a6085c87c1fe8
-
-SHA1( ... rrdtool-1.2.23.tar.gz)= 5da610e1c8bc01b80abc21ab9e98e004363b429c
+        <screen>SHA256( ... rrdtool-1.2.23.tar.gz)= ef6d4e8bdedbe89a7e015ed290883aaf416ebf712606726cd3f54ec6c2e9b60a
 
 RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23</screen>
       </listitem>
@@ -309,11 +305,10 @@ homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
 master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
-checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
+checksums           sha256  ef6d4e8bdedbe89a7e015ed290883aaf416ebf712606726cd3f54ec6c2e9b60a \
                     rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23
 
-depends_lib         port:perl5.8 \
+depends_lib         path:bin/perl:perl5 \
                     port:tcl \
                     port:zlib
 
@@ -542,8 +537,8 @@ variant sqlite description {Build sqlite support} {
           The Portfile patch below will change the version and checksums when
           applied.</para>
 
-          <programlisting>--- Portfile.orig        2007-07-25 18:52:12.000000000 -0700
-+++ Portfile    2007-07-25 18:53:35.000000000 -0700
+          <programlisting>--- Portfile.orig        2011-07-25 18:52:12.000000000 -0700
++++ Portfile    2011-07-25 18:53:35.000000000 -0700
 @@ -2,7 +2,7 @@
  PortSystem          1.0
  name                foo
@@ -558,8 +553,8 @@ variant sqlite description {Build sqlite support} {
  homepage            http://rsug.itd.umich.edu/software/${name}
  
  master_sites        ${homepage}/files/
--checksums           md5 01532e67a596bfff6a54aa36face26ae
-+checksums           md5 f0953b21cdb5eb327e40d4b215110b71
+-checksums           rmd160 f0953b21cdb5eb327e40d4b215110b71
++checksums           rmd160 01532e67a596bfff6a54aa36face26ae
  extract.suffix      .tgz
  platforms           darwin
 </programlisting>
