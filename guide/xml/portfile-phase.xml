@@ -970,29 +970,26 @@ svn.revision        2100</programlisting>
           distribution files, filenames must be included to associate files
           with their checksums.</para>
 
-          <para>At least two checksum types (e.g., sha1 and rmd160) should be used to
+          <para>At least two checksum types (e.g., rmd160 and sha256) should be used to
           ensure the integrity of the distfiles.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: ???</para>
+              <para>Default: none</para>
             </listitem>
 
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>checksums           md5     dafa161bc9c61e57636a6085c87c1fe8 \
-                    sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
-                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23</programlisting>
+              <programlisting>checksums           rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23 \
+                    sha256    baf8a29ff721178317aac7b864c2d392b1accc02de8677dd24c18fd5717bf26e</programlisting>
 
               <programlisting>checksums           ${distname}${extract.suffix} \
-                        md5     dafa161bc9c61e57636a6085c87c1fe8 \
-                        sha1    5da610e1c8bc01b80abc21ab9e98e004363b429c \
                         rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23 \
+                        sha256    883715307c31ae2c145db15d2404d89a837f4d03d7e6932aed21d1d1f21dad89 \
                     hobbit.tar.gz \
-                        md5     3b8d02c6cf6239b9bdadbc6543c5a683 \
-                        sha1    27874638b23e66d39ed94fe716ca25c967f6e993 \
-                        rmd160  82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9</programlisting>
+                        rmd160  82b9991f3bf0ceedbf74c188c5fa44b98b5e40c9 \
+                        sha256    2c3afd16915e9f8eac2351673f8b599f5fd2ff9064d4dfe61f750d72bab740b3</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
