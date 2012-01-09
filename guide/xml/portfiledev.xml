@@ -249,9 +249,9 @@
         <programlisting><prompt>%%</prompt> <userinput>openssl sha256 rrdtool-1.2.23.tar.gz</userinput>
 <prompt>%%</prompt> <userinput>openssl rmd160 rrdtool-1.2.23.tar.gz</userinput></programlisting>
 
-        <screen>SHA256( ... rrdtool-1.2.23.tar.gz)= ef6d4e8bdedbe89a7e015ed290883aaf416ebf712606726cd3f54ec6c2e9b60a
+        <screen>RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
 
-RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 0c1147242adf476f5e93f4d59b553ee3ea378b23</screen>
+SHA256( ... rrdtool-1.2.23.tar.gz)= 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</screen>
       </listitem>
 
       <listitem>
@@ -305,8 +305,8 @@ homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
 master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
-checksums           sha256  ef6d4e8bdedbe89a7e015ed290883aaf416ebf712606726cd3f54ec6c2e9b60a \
-                    rmd160  0c1147242adf476f5e93f4d59b553ee3ea378b23
+checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
 
 depends_lib         path:bin/perl:perl5 \
                     port:tcl \
