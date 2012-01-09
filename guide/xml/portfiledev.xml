@@ -246,8 +246,8 @@
         <para>To find the correct checksums for a port's distribution file,
         follow this example:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>openssl sha256 rrdtool-1.2.23.tar.gz</userinput>
-<prompt>%%</prompt> <userinput>openssl rmd160 rrdtool-1.2.23.tar.gz</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>openssl rmd160 rrdtool-1.2.23.tar.gz</userinput>
+<prompt>%%</prompt> <userinput>openssl sha256 rrdtool-1.2.23.tar.gz</userinput></programlisting>
 
         <screen>RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
 
