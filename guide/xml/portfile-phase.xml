@@ -2004,7 +2004,10 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
               <option>macports-gcc-4.2</option>
               <option>macports-gcc-4.3</option>
               <option>macports-gcc-4.4</option>
-              <option>macports-gcc-4.5</option></para>
+              <option>macports-gcc-4.5</option>
+              <option>macports-clang-2.9</option>
+              <option>macports-clang-3.0</option>
+              <option>macports-clang-3.1</option></para>
             </listitem>
 
             <listitem>
