@@ -872,9 +872,9 @@ svn.revision        2100</programlisting>
           <term>git.branch</term>
 
           <listitem>
-            <para>Optional tag for fetching with git, this specifies a branch
-            (or other commit-ish) that git should checkout. Note that any
-            branch besides HEAD should be prefixed by origin/.</para>
+            <para>Optional tag for fetching with git, this specifies the tag
+            or other commit-ish that git should checkout. Note that any tag on
+            a branch besides HEAD should be prefixed by origin/.</para>
 
             <itemizedlist>
               <listitem>
