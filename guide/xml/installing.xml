@@ -16,11 +16,20 @@
   <section id="installing.x11">
     <title>Install X11</title>
 
-    <para>It is recommended that you install the X Window System (X11) even if
-    you don't plan to run X11 applications immediately. Apple's X11 server is
-    normally used to display X11 applications, though you could also install the
-    xorg-server port. If Apple's X11 wasn't installed when Mac OS X was
-    installed, follow these steps.</para>
+    <para>
+      X11.app allows you to run applications using the X Window System, which
+      is the traditional display server on most other UNIX like systems. Additionally, the
+      <ulink url="http://xquartz.macosforge.org/trac/wiki"> Xquartz</ulink>
+      project provides an updated version of the X server.
+    </para>
+
+    <note>
+      <para>
+      As of Mac OS X 10.5 Leopard, X11.app is included in the default
+      installation. You can just <link linkend="installing.xcode">skip this
+      section</link> for any later version of Mac OS X.
+      </para>
+    </note>
 
     <orderedlist>
       <listitem>
@@ -91,8 +100,11 @@
   <section id="installing.xcode">
     <title>Install Xcode</title>
 
-    <para>To install Xcode and the X11 SDK, follow the steps
-    below.</para>
+    <para>
+      <ulink url="http://developer.apple.com/technology/xcode.html">Xcode</ulink>
+      is a package provided by Apple containing compilers, libraries and
+      additional tools required to develop applications for Mac OS X.
+    </para>
 
     <note>
       <para>Always make sure to install the latest available version of Xcode
@@ -102,75 +114,102 @@
       to 10.6.</para>
     </note>
 
-    <orderedlist>
-      <listitem>
-        <para>Download the <ulink
-        url="http://developer.apple.com/technology/xcode.html">latest version
-        of Xcode</ulink> if you have the currently shipping release of
-        Mac OS X. <note>Downloading Xcode from the Mac App Store does not install
-        it. You need to manually run the installer in your Applications folder after
-        downloading it.</note></para>
+    <para>Follow the instructions for your version of Mac OS X:</para>
 
-        <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be
-        considered to be the latest, 3.2.x and 4.0.x. Xcode 4 costs money, but
-        Xcode 3 is still available free of charge. There are two options for
-        downloading it:
+    <section id="installing.xcode.lion">
+      <title>Install Xcode on Mac OS X 10.7 Lion</title>
+
+      <para>
+        Download the latest version of Xcode as a disk image <ulink
+          url="https://developer.apple.com/downloads/">from the Apple developer
+          website</ulink> or get it <ulink
+          url="http://itunes.apple.com/us/app/xcode/id448457090">using the Mac
+          App Store</ulink>.
+      </para>
+
+      <note>
+        The Xcode download from the Mac App Store is not installed
+        automatically. You need to manually run the application
+        <quote>Install Xcode </quote> from your Applications folder.
+      </note>
+    </section>
+
+    <section id="installing.xcode.snowleopard">
+      <title>Install Xcode on Mac OS X 10.6 Snow Leopard</title>
+
+      <para>If you are using Mac OS X 10.6, there are two branches of Xcode
+        which could be considered to be the latest, 3.2.x and 4.0.x. Xcode 4
+        costs money, but Xcode 3 is still available free of charge. There are
+        two options for downloading it:
         <orderedlist>
-            <listitem>
-                <para>
-                <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20588">
+          <listitem>
+            <para>
+              <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20588">
                 Xcode 3.2.2</ulink> - smaller download, but you will need to run Software Update after installing to
-                get the latest version.
-                </para>
-            </listitem>
-            <listitem>
-                <para>
-                <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20792">
-                    Xcode 3.2.6 and iOS SDK 4.3</ulink> - includes iOS SDK which is not needed for MacPorts.
-                </para>
-            </listitem>
+              get the latest version.
+            </para>
+          </listitem>
+          <listitem>
+            <para>
+              <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20792">
+                Xcode 3.2.6 and iOS SDK 4.3</ulink> - includes iOS SDK which is not needed for MacPorts.
+            </para>
+          </listitem>
         </orderedlist>
         You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and then run Software Update to get
         the latest version.
-        </para>
+      </para>
 
-        <para>If you have an earlier release of Mac OS X, you may download
+      <para>Ensure that those of the following options that are available in the
+      installer for your version of Xcode are selected:
+      <orderedlist>
+          <listitem>
+              <guibutton>UNIX Development</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>System Tools</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>X11 SDK</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>Command Line Support</guibutton>
+          </listitem>
+        </orderedlist>
+      </para>
+    </section>
+
+    <section id="installing.xcode.other">
+      <title>Install Xcode on older releases of Mac OS X</title>
+
+      <para>
+        If you have an earlier release of Mac OS X, you may download
         the latest version of Xcode
         <ulink
-        url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20491">for OS X 10.5 (v3.1.4)</ulink>
+          url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20491">for OS X 10.5 (v3.1.4)</ulink>
         or
         <ulink
-        url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">for 10.4 (v2.5)</ulink>.</para>
-      </listitem>
+          url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">for 10.4 (v2.5)</ulink>.
+      </para>
 
-      <listitem>
-        <para>Run the Xcode package installer.</para>
-      </listitem>
-
-      <listitem>
-        <para>Ensure that those of the following options that are available in the
-        installer for your version of Xcode are selected:
-        <orderedlist>
-            <listitem>
-                <guibutton>UNIX Development</guibutton>
-            </listitem>
-            <listitem>
-                <guibutton>System Tools</guibutton>
-            </listitem>
-            <listitem>
-                <guibutton>X11 SDK</guibutton>
-            </listitem>
-            <listitem>
-                <guibutton>Command Line Support</guibutton>
-            </listitem>
+      <para>Ensure that those of the following options that are available in the
+      installer for your version of Xcode are selected:
+      <orderedlist>
+          <listitem>
+              <guibutton>UNIX Development</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>System Tools</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>X11 SDK</guibutton>
+          </listitem>
+          <listitem>
+              <guibutton>Command Line Support</guibutton>
+          </listitem>
         </orderedlist>
-        </para>
-      </listitem>
-
-      <listitem>
-        <para>Click <guibutton>Install</guibutton> to install Xcode.</para>
-      </listitem>
-    </orderedlist>
+      </para>
+    </section>
   </section>
 
   <section id="installing.macports">
