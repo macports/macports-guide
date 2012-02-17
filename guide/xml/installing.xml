@@ -101,7 +101,7 @@
     <title>Install Xcode</title>
 
     <para>
-      <ulink url="http://developer.apple.com/technology/xcode.html">Xcode</ulink>
+      <ulink url="https://developer.apple.com/xcode/">Xcode</ulink>
       is a package provided by Apple containing compilers, libraries and
       additional tools required to develop applications for Mac OS X.
     </para>
@@ -121,14 +121,14 @@
 
       <para>
         Download the latest version of Xcode as a disk image <ulink
-          url="https://developer.apple.com/downloads/">from the Apple developer
+          url="https://developer.apple.com/downloads/index.action">from the Apple developer
           website</ulink> or get it <ulink
-          url="http://itunes.apple.com/us/app/xcode/id448457090">using the Mac
+          url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac
           App Store</ulink>.
       </para>
 
       <note>
-        The Xcode download from the Mac App Store is not installed
+        Xcode &lt; 4.3 downloads from the Mac App Store are not installed
         automatically. You need to manually run the application
         <quote>Install Xcode </quote> from your Applications folder.
       </note>
