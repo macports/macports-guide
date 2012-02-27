@@ -108,8 +108,7 @@
 
     <note>
       <para>Always make sure to install the latest available version of Xcode
-      for your Mac OS X release (with the exception of Xcode 4.3, see below);
-      using outdated versions of Xcode
+      for your Mac OS X release; using outdated versions of Xcode
       may cause port install failures. Also note that Xcode is not
       updated via Mac OS X's Software Update utility on OS versions prior
       to 10.6, and is updated via the Mac App Store on 10.7.</para>
@@ -121,12 +120,11 @@
       <title>Install Xcode on Mac OS X 10.7 Lion</title>
 
       <para>
-        Download the latest version of Xcode prior to 4.3 as a disk image <ulink
+        Download the latest version of Xcode as a disk image <ulink
           url="https://developer.apple.com/downloads/index.action">from the Apple developer
           website</ulink> or get it <ulink
           url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac
-          App Store</ulink>. <emphasis>MacPorts does not work with Xcode 4.3 at
-          present.</emphasis>
+          App Store</ulink>.
       </para>
 
       <note>
@@ -134,6 +132,22 @@
         automatically. You need to manually run the application
         <quote>Install Xcode </quote> from your Applications folder.
       </note>
+
+      <section id="installing.xcode.lion.43">
+        <title>Xcode 4.3</title>
+        <para>
+          After installing Xcode 4.3, the Command Line Tools must be installed.
+          This is done from the Downloads section of Xcode's preferences.
+        </para>
+        <para>
+          If you wish to create Installer packages with <userinput>port pkg</userinput>,
+          you will also need to install PackageMaker, which is in the "Auxiliary
+          Tools for Xcode" package as of Xcode 4.3. The download page for this package
+          can be opened via the Xcode -> Open Developer Tool -> More Developer Tools...
+          menu item. After downloading and mounting the disk image, drag the PackageMaker
+          application to your /Applications directory.
+        </para>
+      </section>
     </section>
 
     <section id="installing.xcode.snowleopard">
