@@ -23,7 +23,7 @@
         latest file release from <option>sourceforge</option> or
         <option>googlecode</option>, or the project's
         <literal>date_updated</literal> XML tag for
-        <option>freshmeat</option>. These options are automatically used if
+        <option>freecode</option>. These options are automatically used if
         a matching <varname>${master_sites}</varname> URL is used.</para>
 
         <para>Generic download site options are to specify a
@@ -39,11 +39,11 @@
             <para>Default: <option>sourceforge</option> or
             <option>googlecode</option> if the
             <varname>${master_sites}</varname> is one of these, else
-            <option>freshmeat</option>.</para>
+            <option>freecode</option>.</para>
           </listitem>
 
           <listitem>
-            <para>Values: <option>freshmeat</option>
+            <para>Values: <option>freecode</option>
             <option>sourceforge</option> <option>googlecode</option>
             <option>moddate</option> <option>regex</option>
             <option>regexm</option> <option>md5</option>
@@ -66,12 +66,12 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
       <listitem>
         <para>Name of the project for live checks. Is only used with
-        freshmeat, sourceforge, and googlecode livechecks.</para>
+        freecode, sourceforge, and googlecode livechecks.</para>
 
         <itemizedlist>
           <listitem>
             <para>Default: <varname>${name}</varname> or the sourceforge,
-            freshmeat or googlecode project name if it can be guessed from
+            freecode or googlecode project name if it can be guessed from
             <varname>${master_sites}</varname>.</para>
           </listitem>
 
@@ -149,7 +149,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
               </listitem>
 
               <listitem>
-                <para><literal>http://freshmeat.net/projects-xml/${livecheck.name}/${livecheck.name}.xml</literal></para>
+                <para><literal>http://freecode.com/projects-xml/${livecheck.name}/${livecheck.name}.xml</literal></para>
               </listitem>
 
               <listitem>
