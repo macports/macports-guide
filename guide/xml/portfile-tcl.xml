@@ -100,7 +100,7 @@
             <term>touch</term>
 
             <listitem>
-              <para>Mimicks the BSD touch command.</para>
+              <para>Mimics the BSD touch command.</para>
             </listitem>
           </varlistentry>
 
@@ -108,7 +108,7 @@
             <term>ln</term>
 
             <listitem>
-              <para>Mimickes the BSD ln command.</para>
+              <para>Mimics the BSD ln command.</para>
             </listitem>
           </varlistentry>
         </variablelist>
