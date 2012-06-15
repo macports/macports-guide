@@ -19,6 +19,7 @@ SED      = /usr/bin/sed
 TCLSH    = /usr/bin/tclsh
 XSLTPROC = $(PREFIX)/bin/xsltproc
 XMLLINT  = $(PREFIX)/bin/xmllint
+DBLATEX  = $(PREFIX)/bin/dblatex
 
 # Data directories.
 GUIDE = guide
@@ -27,9 +28,10 @@ MAN   = man
 GUIDE_SRC = $(GUIDE)/xml
 MAN_SRC   = $(MAN)/xml
 # Result directories.
-GUIDE_RESULT       = $(GUIDE)/html
-GUIDE_RESULT_CHUNK = $(GUIDE_RESULT)/chunked
-MAN_RESULT         = $(MAN)/man/
+GUIDE_RESULT         = $(GUIDE)/html
+GUIDE_RESULT_CHUNK   = $(GUIDE_RESULT)/chunked
+GUIDE_RESULT_DBLATEX = $(GUIDE)/dblatex
+MAN_RESULT           = $(MAN)/man/
 # Man temporary directory.
 MAN_TMP = $(MAN)/tmp
 
@@ -42,9 +44,9 @@ MAN_XSL         = $(MAN)/resources/macports.xsl
 # DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
 
-.PHONY: all guide guide-chunked man clean validate
+.PHONY: all guide guide-chunked guide-dblatex man clean validate
 
-all: guide guide-chunked man
+all: guide guide-chunked guide-dblatex man
 
 # Generate the HTML guide using DocBook from the XML sources in $(GUIDE_SRC).
 guide:
@@ -79,6 +81,16 @@ guide-chunked:
 	# If someone knows a better way to do this please change it.
 	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT_CHUNK)
 
+guide-dblatex: SUFFIX = pdf
+guide-dblatex:
+	$(MKDIR) -p $(GUIDE_RESULT_DBLATEX)
+	$(DBLATEX) \
+		--fig-path="$(GUIDE)/resources/images" \
+		--type="$(SUFFIX)" \
+		--param='toc.section.depth=2' \
+		--param='doc.section.depth=3' \
+		--output="$(GUIDE_RESULT_DBLATEX)/macports-guide.$(SUFFIX)" \
+	$(GUIDE_SRC)/guide.xml
 
 # Generate the man pages using DocBook from the XML source in $(MAN_SRC).
 # The portfile-*.xml and portgroup-*.xml files in $(GUIDE_SRC) are copied to
