@@ -1991,7 +1991,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
             </listitem>
 
             <listitem>
-              <para>Default: <option>clang</option> with Xcode 4.2 on Mac OS X 10.6 and 10.7</para>
+              <para>Default: <option>clang</option> with Xcode 4.2 and up on Mac OS X 10.6 and up</para>
             </listitem>
 
             <listitem>
@@ -2005,15 +2005,19 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
               <option>macports-gcc-4.3</option>
               <option>macports-gcc-4.4</option>
               <option>macports-gcc-4.5</option>
+              <option>macports-gcc-4.6</option>
+              <option>macports-gcc-4.7</option>
+              <option>macports-gcc-4.8</option>
               <option>macports-clang-2.9</option>
               <option>macports-clang-3.0</option>
-              <option>macports-clang-3.1</option></para>
+              <option>macports-clang-3.1</option>
+              <option>macports-clang-3.2</option></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.compiler  macports-gcc-4.2</programlisting>
+              <programlisting>configure.compiler  macports-gcc-4.5</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
