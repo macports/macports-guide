@@ -12,12 +12,12 @@
 
 <para>See the following folder for PortGroup definitions:</para>
   <para>
-    <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</filename>
+    <filename>${prefix}/var/macports/sources/rsync.macports.org/release/tarballs/ports/_resources/port1.0/group/</filename>
   </para>
 
   <para>A sample listing follows:</para>
     <para>
-    <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/</userinput></programlisting>
+    <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/release/tarballs/ports/_resources/port1.0/group/</userinput></programlisting>
 
     <screen>archcheck-1.0.tcl
 cmake-1.0.tcl
