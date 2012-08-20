@@ -2933,7 +2933,7 @@ build.target-delete     compat</programlisting>
 
             <listitem>
               <para><literal>destroot.post_args</literal>, defaults to:
-              none</para>
+                <varname>${destroot.destdir}</varname></para>
             </listitem>
 
             <listitem>
@@ -2979,8 +2979,9 @@ destroot.target-delete  install-commandmode</programlisting>
         <term>destroot.destdir</term>
 
         <listitem>
-          <para>Arguments passed to <varname>${destroot.cmd}</varname> to
-          install correctly into the destroot.</para>
+          <para>Arguments passed to <varname>${destroot.cmd}</varname> via
+            <varname>${destroot.post_args}</varname> to install correctly
+            into the destroot.</para>
 
           <itemizedlist>
             <listitem>
