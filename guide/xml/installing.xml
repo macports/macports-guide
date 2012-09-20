@@ -130,7 +130,7 @@
       <note>
         Xcode &lt; 4.3 downloads from the Mac App Store are not installed
         automatically. You need to manually run the application
-        <quote>Install Xcode </quote> from your Applications folder.
+        <quote>Install Xcode</quote> from your Applications folder.
       </note>
 
       <section id="installing.xcode.lion.43">
