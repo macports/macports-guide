@@ -776,9 +776,9 @@ svn.revision        2100</programlisting>
               <listitem>
                 <para>Examples:</para>
 
-                <programlisting>svn.url             http://www.domain.com/svn-repo/mydirectory</programlisting>
+                <programlisting>svn.url             http://www.example.com/svn-repo/mydirectory</programlisting>
 
-                <programlisting>svn.url             svn://www.domain.com/svn-repo/mydirectory</programlisting>
+                <programlisting>svn.url             svn://svn.example.com/svn-repo/mydirectory</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
