@@ -2,6 +2,7 @@
 
 # Makefile to generate the MacPorts HTML guide and the man pages.
 # The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be installed.
+# For the guide-dblatex target, the 'dblatex' port is also required.
 
 # If your MacPorts isn't installed in /opt/local you have to change PREFIX
 # here.
@@ -56,7 +57,7 @@ STYLESHEET = docbook.css
 
 .PHONY: all guide guide-chunked guide-dblatex man clean validate
 
-all: guide guide-chunked guide-dblatex man
+all: guide guide-chunked man
 
 # Generate the HTML guide using DocBook from the XML sources in $(GUIDE_SRC).
 guide:
@@ -111,6 +112,7 @@ endif
 	# If someone knows a better way to do this please change it.
 	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT_CHUNK)
 
+# Generate the guide as a PDF.
 guide-dblatex: SUFFIX = pdf
 guide-dblatex:
 	$(MKDIR) -p $(GUIDE_RESULT_DBLATEX)
@@ -157,6 +159,7 @@ endif
 clean:
 	$(RM) -rf $(GUIDE)/resources/xsl
 	$(RM) -rf $(GUIDE_RESULT)
+	$(RM) -rf $(GUIDE_RESULT_DBLATEX)
 	$(RM) -rf $(MAN_RESULT)
 	$(RM) -rf $(MAN_TMP)
 	$(RM) -rf $(MAN_XSL)
