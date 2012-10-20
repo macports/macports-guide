@@ -456,9 +456,19 @@
     <section id="project.update-policies.abandonment">
       <title>Port Abandonment</title>
 
-      <para>A port may be considered abandoned if a bug has not been
-      acknowledged for more than three weeks after a ticket is filed. If this
-      time period has passed and you wish to initiate the Port Abandonment
+      <para>A port may be considered abandoned if any of the following apply:</para>
+        <itemizedlist>
+        <listitem>A bug has not been acknowledged for more than three weeks
+            after a ticket is filed.</listitem>
+        <listitem>All tickets filed against the port have been resolved
+            with no input from the maintainer, after the 72-hour timeout,
+            for a significant period of time (at least three weeks). This
+            needs to involve a reasonable number of tickets; one timeout
+            doesn't make a port abandoned.</listitem>
+        <listitem>The listed maintainer address bounces, and no alternate way
+            of contacting the maintainer is known.</listitem>
+        </itemizedlist>
+      <para>If you wish to initiate the Port Abandonment
       protocol and volunteer as the new maintainer:</para>
 
       <orderedlist>
@@ -468,7 +478,7 @@
         </listitem>
 
         <listitem>
-          <para>Refer to the original unacknowledged ticket in the Port
+          <para>Refer to the original unacknowledged ticket(s) (if any) in the Port
           Abandoned ticket.</para>
         </listitem>
 
@@ -479,9 +489,10 @@
 
         <listitem>
           <para>The Port Abandoned ticket may be closed when the new
-          maintainer is assigned, and the original ticket with the updates may
-          be resolved when the updates attached to the original ticket are
-          committed.</para>
+          maintainer is assigned, and the original ticket(s) with the updates may
+          be resolved as usual. The Port Abandoned ticket should stay open for the
+          usual 72-hour timeout period, to give the maintainer one last chance
+          to indicate that they have not actually abandoned the port.</para>
         </listitem>
       </orderedlist>
     </section>
