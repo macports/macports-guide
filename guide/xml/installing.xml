@@ -435,7 +435,7 @@
     <para>Uninstalling MacPorts can be a drastic step, and depending on the 
     issue you are experiencing, you may not need to do so. If you are unsure,
     ask on the
-    <ulink url="http://lists.macosforge.org/mailman/listinfo.cgi/macports-users">macports-users</ulink>
+    <ulink url="http://lists.macosforge.org/mailman/listinfo/macports-users">macports-users</ulink>
     mailing list first.</para>
     
     <para>If you need to uninstall MacPorts, and your <command>port</command> command is
