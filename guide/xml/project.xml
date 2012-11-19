@@ -21,7 +21,20 @@
 
       <itemizedlist>
         <listitem>
-          <para>Check the Problem HotList</para>
+          <para>Clean and try again</para>
+          <para>
+            If a build fails or is otherwise interrupted, and you try again,
+            MacPorts tries to pick up where it left off. Sometimes this causes
+            new problems, and even if it doesn't, it means that log messages
+            from earlier steps, which can be essential for figuring out why a
+            build failed, are not included in the new log; MacPorts prints
+            "Skipping completed" in the log for each previously-completed phase
+            that was skipped. Before filing a ticket, "sudo port clean" the
+            port that failed, then try again.
+          </para>
+        </listitem>
+        <listitem>
+          <para>Check the problem hotlist</para>
           <para>
             The <ulink
               url="https://trac.macports.org/wiki/ProblemHotlist">Problem
