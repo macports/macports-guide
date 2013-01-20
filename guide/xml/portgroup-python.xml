@@ -3,19 +3,80 @@
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <section id="reference.portgroup.python">
 
-  <title>PortGroup python &amp; python2x</title>
+  <title>PortGroup python</title>
 
   <para>PortGroup python allows for efficient porting of python-based open
   source software.</para>
 
+  <note>
+      <para>
+      A number of python-version-specific PortGroups also exist, such as
+      python27 and python32. These should not be used for new development, and
+      ports using them should be migrated to the unified python PortGroup.
+      </para>
+    </note>
+
   <section id="reference.portgroup.python.keywords">
     <title>python PortGroup Specific Keywords</title>
 
-    <para>Portfiles using the python2x PortGroup allow for port authors to
+    <para>Portfiles using the python PortGroup allow for port authors to
     set the following keywords in addition to the general Portfile
     keywords.</para>
 
     <variablelist>
+      <varlistentry>
+        <term>python.versions</term>
+
+        <listitem>
+          <para>Defines the python versions supported by this port. If the
+          port name starts with "py-", then a subport will be defined for each
+          version in the list. For example, if a port named "py-foo" declares
+          "python.versions 26 27", subports "py26-foo" and "py27-foo" will be
+          created, and will depend on python26 and python27 respectively.</para>
+          <para>If the port name does not start with "py-", it is interpreted
+          as an application written in python rather than a python module. In
+          this case, no subports are defined, and python.versions defaults to
+          the value of python.default_version, which must be set. For example,
+          if a port named "mercurial" sets "python.default_version 27", then
+          python.versions will automatically be set to "27", and a dependency
+          on python27 will be added.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: required for modules, optional for apps</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.versions     25 26 27</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>python.default_version</term>
+
+        <listitem>
+          <para>For modules (i.e. name starts with "py-"), this sets the
+          subport that will be installed if the user asks to install "py-foo"
+          rather than e.g. "py26-foo" or "py27-foo". If not explicitly set, a
+          reasonable default is chosen from the list in python.versions.</para>
+          <para>For apps (i.e. name does not start with "py-"), this chooses
+          which version of python to use, and must be set. It can be changed
+          in variants if desired.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: required for apps, optional for modules</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.default_version     32</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
       <varlistentry>
         <term>python.link_binaries</term>
 
@@ -64,14 +125,43 @@
     <title>python PortGroup Specific Variables</title>
 
     <para>When the python PortGroup is declared within a Portfile, the
-    following variables are provided during port install.</para>
+    following variables are provided.</para>
 
     <variablelist>
+      <varlistentry>
+        <term>python.version</term>
+
+        <listitem>
+          <para>The python version in use in the current subport. This will be
+          one of the versions listed in python.versions.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.branch</term>
+
+        <listitem>
+          <para>The python version in use in the current subport, in normal
+          dotted notation. For example, if python.version is "26",
+          python.branch will be "2.6".</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.prefix</term>
+
+        <listitem>
+          <para>The prefix in which the current python version is installed.
+          For framework builds, this is <filename>${frameworks_dir}/Python.framework/Versions/${python.branch}</filename>,
+          whereas for non-framework builds, it is the same as ${prefix}.</para>
+        </listitem>
+      </varlistentry>
+
       <varlistentry>
         <term>python.bin</term>
 
         <listitem>
-          <para>The MacPorts Python binary location.</para>
+          <para>The path to the MacPorts Python executable.</para>
         </listitem>
       </varlistentry>
 
@@ -79,8 +169,18 @@
         <term>python.lib</term>
 
         <listitem>
-          <para>The Python dynamic library and path (i.e.,
-          <filename>${prefix}/lib/libpython2.x.dylib</filename>).</para>
+          <para>The Python dynamic library path, i.e.
+          <filename>${python.prefix}/Python</filename> (framework builds) or
+          <filename>${prefix}/lib/libpython2.4.dylib</filename> (python24).</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>python.libdir</term>
+
+        <listitem>
+          <para>The path to python's lib directory, i.e.
+          <filename>${python.prefix}/lib/python${python.branch}</filename>.</para>
         </listitem>
       </varlistentry>
 
@@ -97,7 +197,7 @@
 
         <listitem>
           <para>Path to the Python site-packages directory. (i.e.,
-          <filename>${prefix}/lib/python2.4/site-packages</filename>).</para>
+          <filename>${python.prefix}/lib/python${python.branch}/site-packages</filename>).</para>
         </listitem>
       </varlistentry>
     </variablelist>
@@ -119,18 +219,10 @@
       </varlistentry>
 
       <varlistentry>
-        <term>dist_subdir</term>
-
-        <listitem>
-          <para>Default: python</para>
-        </listitem>
-      </varlistentry>
-
-      <varlistentry>
         <term>depends_lib</term>
 
         <listitem>
-          <para>Default: port:pythonXY (XY as appropriate for the group)</para>
+          <para>Default: port:python${python.version}</para>
         </listitem>
       </varlistentry>
 
@@ -170,7 +262,7 @@
         <term>destroot.destdir</term>
 
         <listitem>
-          <para>Default: --prefix=${prefix} --root=${destroot}</para>
+          <para>Default: --prefix=${python.prefix} --root=${destroot}</para>
         </listitem>
       </varlistentry>
 
@@ -178,8 +270,8 @@
         <term>pre-destroot</term>
 
         <listitem>
-          <para>Default: creates
-          ${destroot}${prefix}/share/doc/${name}/examples</para>
+          <para>Default: creates directory
+          <filename>${destroot}${prefix}/share/doc/${subport}/examples</filename>.</para>
         </listitem>
       </varlistentry>
     </variablelist>
