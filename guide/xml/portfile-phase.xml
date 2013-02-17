@@ -2319,7 +2319,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
               <listitem>
                 <para>Default: </para>
                 <para>(PowerPC Tiger) <literal>-isysroot ${developer_dir}/SDKs/MacOSX10.4u.sdk</literal></para>
-                <para>(Others) none</para>
+                <para>(others) none</para>
               </listitem>
 
               <listitem>
@@ -2343,8 +2343,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
               <listitem>
                 <para>Default: </para>
                 <para>(PowerPC Tiger) <literal>-isysroot ${developer_dir}/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc</literal></para>
-                <para>(Leopard / Intel Tiger) <literal>-arch i386 -arch ppc</literal></para>
-                <para>(Snow Leopard) <literal>-arch x86_64 -arch i386</literal></para>
+                <para>(Intel Tiger / Leopard) <literal>-arch i386 -arch ppc</literal></para>
+                <para>(Snow Leopard and later) <literal>-arch x86_64 -arch i386</literal></para>
               </listitem>
 
               <listitem>
@@ -2367,8 +2367,8 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
               <listitem>
                 <para>Default: </para>
                 <para>(PowerPC Tiger) <literal>-Wl,-syslibroot,${developer_dir}/SDKs/MacOSX10.4u.sdk -arch i386 -arch ppc</literal></para>
-                <para>(Leopard / Intel Tiger) <literal>-arch i386 -arch ppc</literal></para>
-                <para>(Snow Leopard) <literal>-arch x86_64 -arch i386</literal></para>
+                <para>(Intel Tiger / Leopard) <literal>-arch i386 -arch ppc</literal></para>
+                <para>(Snow Leopard and later) <literal>-arch x86_64 -arch i386</literal></para>
               </listitem>
 
               <listitem>
