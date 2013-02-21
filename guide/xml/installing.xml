@@ -178,7 +178,7 @@
 
       <para>Ensure that those of the following options that are available in the
       installer for your version of Xcode are selected:
-      <orderedlist>
+      <itemizedlist>
           <listitem>
               <guibutton>UNIX Development</guibutton>
           </listitem>
@@ -191,7 +191,7 @@
           <listitem>
               <guibutton>Command Line Support</guibutton>
           </listitem>
-        </orderedlist>
+        </itemizedlist>
       </para>
     </section>
 
@@ -210,7 +210,7 @@
 
       <para>Ensure that those of the following options that are available in the
       installer for your version of Xcode are selected:
-      <orderedlist>
+      <itemizedlist>
           <listitem>
               <guibutton>UNIX Development</guibutton>
           </listitem>
@@ -223,7 +223,7 @@
           <listitem>
               <guibutton>Command Line Support</guibutton>
           </listitem>
-        </orderedlist>
+        </itemizedlist>
       </para>
     </section>
   </section>
