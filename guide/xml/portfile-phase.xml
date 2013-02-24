@@ -2603,17 +2603,27 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
         <term>build.type</term>
 
         <listitem>
-          <para>Defines which "make" is required. Sets
-          <varname>${build.cmd}</varname> to either "gnumake" or "bsdmake"
-          accordingly.</para>
+          <para>
+            Defines which build software is required and sets
+            <varname>${build.cmd}</varname> accordingly. The available
+            options are BSD Make, GNU Make, and Xcode.
+          </para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>gnu</option></para>
+              <para>
+                Default: <option>default</option> (the default Make on
+                the current platform)
+              </para>
             </listitem>
 
             <listitem>
-              <para>Values: <option>gnu</option> <option>bsd</option> <option>pbx</option></para>
+              <para>
+                Values: <option>default</option>
+                        <option>bsd</option>
+                        <option>gnu</option>
+                        <option>xcode</option>
+              </para>
             </listitem>
 
             <listitem>
