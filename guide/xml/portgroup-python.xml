@@ -99,6 +99,24 @@
         </listitem>
       </varlistentry>
       <varlistentry>
+        <term>python.link_binaries_suffix</term>
+
+        <listitem>
+          <para>Suffix to add the the names of the links created in
+          <filename>${prefix}/bin</filename> when <varname>${python.link_binaries}</varname>
+          is enabled. Can be cleared if no suffix is desired.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+                <para>Default: -<varname>${python.branch}</varname></para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
         <term>python.add_archflags</term>
         <listitem>
           <para>When yes (the default), the PortGroup will automatically
@@ -153,7 +171,7 @@
         <listitem>
           <para>The prefix in which the current python version is installed.
           For framework builds, this is <filename>${frameworks_dir}/Python.framework/Versions/${python.branch}</filename>,
-          whereas for non-framework builds, it is the same as ${prefix}.</para>
+          whereas for non-framework builds, it is the same as <varname>${prefix}</varname>.</para>
         </listitem>
       </varlistentry>
 
@@ -222,7 +240,7 @@
         <term>depends_lib</term>
 
         <listitem>
-          <para>Default: port:python${python.version}</para>
+          <para>Default: port:python<varname>${python.version}</varname></para>
         </listitem>
       </varlistentry>
 
@@ -238,7 +256,7 @@
         <term>build.cmd</term>
 
         <listitem>
-          <para>Default: ${python.bin} setup.py --no-user-cfg</para>
+          <para>Default: <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
         </listitem>
       </varlistentry>
 
@@ -254,7 +272,7 @@
         <term>destroot.cmd</term>
 
         <listitem>
-          <para>Default: ${python.bin} setup.py --no-user-cfg</para>
+          <para>Default: <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
         </listitem>
       </varlistentry>
 
@@ -262,7 +280,7 @@
         <term>destroot.destdir</term>
 
         <listitem>
-          <para>Default: --prefix=${python.prefix} --root=${destroot}</para>
+          <para>Default: --prefix=<varname>${python.prefix}</varname> --root=<varname>${destroot}</varname></para>
         </listitem>
       </varlistentry>
 
