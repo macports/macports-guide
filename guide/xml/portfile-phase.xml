@@ -172,16 +172,19 @@
     not phase declarations have been explicitly defined in a Portfile.</para>
 
     <section id="reference.phases.installation.list-modifiers">
-      <title>Keyword List Modifiers (-append, -delete, -replace)</title>
+      <title>Keyword List Modifiers (-append, -delete, -replace, -strsed)</title>
 
       <para>Keyword list modifiers are keywords that end in -append, -delete or
       -replace. Keywords that support list modifiers are identified under
       appropriate reference sections below.</para>
 
       <para>-append adds a value to the keyword, -delete removes a previously
-      added item. -replace treats the keyword value as a string and filters it
-      through <link linkend="reference.tcl-extensions.strsed">strsed</link>
-      using a given pattern.</para>
+      added item. -replace takes two arguments and replaces the first value
+      from the keyword with the second value. -strsed treats the keyword value
+      as a string and filters it through
+      <link linkend="reference.tcl-extensions.strsed">strsed</link> using the
+      given pattern. There is also a deprecated syntax for -replace which takes
+      only one argument and behaves the same as -strsed.</para>
 
       <para>Keyword list modifiers are most frequently used for these three
       purposes:</para>
