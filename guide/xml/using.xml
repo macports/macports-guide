@@ -752,7 +752,7 @@ DEBUG: Executing archive_finish
       <para>Binary packages are standalone binary installers that are
       precompiled; they do not require MacPorts on the target system. Binary
       files created with MacPorts may be either .pkg (Mac OS X Installer
-      Packages), or RPM (RPM Package Manager) format. MacPorts may also
+      Packages), or .rpm (RPM Package Manager) format. MacPorts may also
       process a .pkg package into a Mac OS X .dmg disk image file. You may
       create binary packages with the <command>port</command> command as shown
       in these examples.</para>
@@ -778,7 +778,12 @@ DEBUG: Executing archive_finish
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port rpm pstree</userinput></programlisting>
 
-      <para>All packages are placed in a port's work directory.</para>
+      <para>All packages are placed in a port's work directory,
+      except for rpms that are placed under the regular "RPMS":</para>
+
+      <programlisting><prompt>%%</prompt> <userinput>port work pstree</userinput></programlisting>
+      <programlisting><prompt>%%</prompt> <userinput>rpm --eval %{_rpmdir}</userinput></programlisting>
+
     </section>
   </section>
 
