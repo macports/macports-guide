@@ -780,17 +780,6 @@ DEBUG: Executing archive_finish
 
       <para>All packages are placed in a port's work directory.</para>
     </section>
-
-    <section id="using.binaries.source-packages">
-      <title>Port Source Packages</title>
-
-      <para>Source packages are bundles consisting of a
-      <filename>Portfile</filename>, patches if needed, and any other files
-      required to install the port. Port source packages are mainly used by
-      developers of package management and port submission frameworks. Port
-      source packages may be in either .portpkg (XAR) or .nosrc.rpm (SRPM)
-      format.</para>
-    </section>
   </section>
 
   <!--
