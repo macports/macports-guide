@@ -19,9 +19,10 @@
       <term>PortSystem</term>
 
       <listitem>
-        <para>The top line of every Portfile; it must be followed by a blank
-        line. It defines which version of the Portfile interpreter will be
-        used.</para>
+        <para>The first non-comment line of every Portfile; it should be
+        followed by PortGroup inclusions (if any) and then a blank line.
+        It defines which version of the Portfile interpreter will be used.
+        (There is currently only one version.)</para>
 
         <programlisting>PortSystem          1.0
 
@@ -35,7 +36,9 @@
       <listitem>
         <para>The name of the port. To avoid special interpretation by shells
         and the like, names should contain only alphanumeric characters,
-        underscores, dashes or dots.</para>
+        underscores, dashes or dots. For projects whose proper names contain
+        "+" characters, change these to "x" (i.e. "libstdc++" becomes
+        "libstdcxx").</para>
 
         <programlisting>name                foo</programlisting>
       </listitem>
