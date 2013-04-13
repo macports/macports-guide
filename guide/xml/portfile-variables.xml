@@ -133,7 +133,9 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>The underlying operating system platform (i.e. "darwin" on Mac OS X, "freebsd", etc.).</para>
+        <para>The underlying operating system platform (i.e.
+        <quote>darwin</quote> on OS X, <quote>freebsd</quote>,
+        etc.).</para>
       </listitem>
     </varlistentry>
 
@@ -141,7 +143,8 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>The hardware architecture -- either "powerpc" or "i386".</para>
+        <para>The hardware architecture -- either <quote>powerpc</quote> or
+        <quote>i386</quote>.</para>
       </listitem>
     </varlistentry>
 
@@ -149,8 +152,8 @@
       <term>os.version</term>
 
       <listitem>
-        <para>The version number of the host operating system (i.e. "8.11.0" for
-        Darwin 8.11.0 a.k.a. Mac OS X 10.4.11).</para>
+        <para>The version number of the host operating system (i.e.
+        <quote>12.3.0</quote> for Darwin 12.3.0 a.k.a. OS X 10.8.3).</para>
       </listitem>
     </varlistentry>
 
@@ -158,7 +161,8 @@
       <term>os.endian</term>
 
       <listitem>
-        <para>Endianness of the processor -- either "big" (on PowerPC systems) or "little" (on Intel systems).</para>
+        <para>Endianness of the processor -- either <quote>big</quote> (on
+        PowerPC systems) or <quote>little</quote> (on Intel systems).</para>
       </listitem>
     </varlistentry>
 
@@ -166,8 +170,8 @@
       <term>os.major</term>
 
       <listitem>
-        <para>The major version number of the host operating system (i.e. "8"
-        for Darwin 8.x).</para>
+        <para>The major version number of the host operating system (i.e.
+        <quote>12</quote> for Darwin 12.x).</para>
       </listitem>
     </varlistentry>
   </variablelist>

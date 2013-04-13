@@ -29,16 +29,16 @@
 
         <listitem>
           <para>Defines the python versions supported by this port. If the
-          port name starts with "py-", then a subport will be defined for each
-          version in the list. For example, if a port named "py-foo" declares
-          "python.versions 26 27", subports "py26-foo" and "py27-foo" will be
+          port name starts with <quote>py-</quote>, then a subport will be defined for each
+          version in the list. For example, if a port named <quote>py-foo</quote> declares
+          <code>python.versions 26 27</code>, subports <quote>py26-foo</quote> and <quote>py27-foo</quote> will be
           created, and will depend on python26 and python27 respectively.</para>
-          <para>If the port name does not start with "py-", it is interpreted
+          <para>If the port name does not start with <quote>py-</quote>, it is interpreted
           as an application written in python rather than a python module. In
-          this case, no subports are defined, and python.versions defaults to
-          the value of python.default_version, which must be set. For example,
-          if a port named "mercurial" sets "python.default_version 27", then
-          python.versions will automatically be set to "27", and a dependency
+          this case, no subports are defined, and <code>python.versions</code> defaults to
+          the value of <code>python.default_version</code>, which must be set. For example,
+          if a port named <quote>mercurial</quote> sets <code>python.default_version 27</code>, then
+          <code>python.versions</code> will automatically be set to <quote>27</quote>, and a dependency
           on python27 will be added.</para>
 
           <itemizedlist>
@@ -57,11 +57,11 @@
         <term>python.default_version</term>
 
         <listitem>
-          <para>For modules (i.e. name starts with "py-"), this sets the
-          subport that will be installed if the user asks to install "py-foo"
-          rather than e.g. "py26-foo" or "py27-foo". If not explicitly set, a
-          reasonable default is chosen from the list in python.versions.</para>
-          <para>For apps (i.e. name does not start with "py-"), this chooses
+          <para>For modules (i.e. name starts with <quote>py-</quote>), this sets the
+          subport that will be installed if the user asks to install <quote>py-foo</quote>
+          rather than e.g. <quote>py26-foo</quote> or <quote>py27-foo</quote>. If not explicitly set, a
+          reasonable default is chosen from the list in <code>python.versions</code>.</para>
+          <para>For apps (i.e. name does not start with <quote>py-</quote>), this chooses
           which version of python to use, and must be set. It can be changed
           in variants if desired.</para>
 
@@ -81,7 +81,7 @@
         <term>python.link_binaries</term>
 
         <listitem>
-          <para>When yes (the default), tells the PortGroup to automatically
+          <para>When <quote>yes</quote> (the default), tells the PortGroup to automatically
           link any executable binaries installed in the bin/ directory within
           the framework into
           <filename>${prefix}/bin</filename>.</para>
@@ -122,7 +122,7 @@
           <para>When yes (the default), the PortGroup will automatically
           try to pass the correct arch-specific flags during build time
           (via the standard CFLAGS, LDFLAGS, etc environment variables).
-          Set this to no and setup those variables in build.env manually
+          Set this to <quote>no</quote> and set up those variables in <code>build.env</code> manually
           if the default does not work.</para>
           <itemizedlist>
             <listitem>
@@ -151,7 +151,7 @@
 
         <listitem>
           <para>The python version in use in the current subport. This will be
-          one of the versions listed in python.versions.</para>
+          one of the versions listed in <code>python.versions</code>.</para>
         </listitem>
       </varlistentry>
 
@@ -160,8 +160,8 @@
 
         <listitem>
           <para>The python version in use in the current subport, in normal
-          dotted notation. For example, if python.version is "26",
-          python.branch will be "2.6".</para>
+          dotted notation. For example, if <code>python.version</code> is <quote>26</quote>,
+          <code>python.branch</code> will be <quote>2.6</quote>.</para>
         </listitem>
       </varlistentry>
 

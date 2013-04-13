@@ -24,12 +24,12 @@
     <para>A common way for Portfiles to augment or override MacPorts base
     default installation phase characteristics is by using
     <filename>Portfile</filename> phase declaration(s). If you use Portfile
-    phase declaration(s), you should know how to identify the "global" section
-    of a Portfile. Any statements not contained within a phase declaration, no
-    matter where they are located in a Portfile, are said to be in the global
-    section of the Portfile; therefore the global section need not be
-    contiguous. Likewise, to remove statements from the global section they
-    must be placed within a phase declaration.</para>
+    phase declaration(s), you should know how to identify the
+    <quote>global</quote> section of a Portfile. Any statements not contained
+    within a phase declaration, no matter where they are located in a Portfile,
+    are said to be in the global section of the Portfile; therefore the global
+    section need not be contiguous. Likewise, to remove statements from the
+    global section they must be placed within a phase declaration.</para>
 
     <para>The main phases you need to be aware of when making a Portfile are
     these:</para>
@@ -387,7 +387,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
 
     <para>Variants are a way for port authors to provide options that may be
     invoked at install time. They are declared in the global section of a
-    Portfile using the "variant" keyword, and should include <link
+    Portfile using the <quote>variant</quote> keyword, and should include <link
     linkend="reference.variants.descriptions">carefully chosen variant
     descriptions</link>.</para>
 
@@ -525,17 +525,17 @@ variant sqlite description {Build sqlite support} {
 
         <listitem>
           <para>Now use the Unix command <command>diff -u </command>to create
-          a "unified" diff patch file. Put the name of the port in the
-          patchfile, for example, Portfile-rrdtool.diff.</para>
+          a <quote>unified</quote> diff patch file. Put the name of the port in
+          the patchfile, for example, Portfile-rrdtool.diff.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>diff -u Portfile.orig Portfile &gt; Portfile-rrdtool.diff</userinput></programlisting>
         </listitem>
 
         <listitem>
-          <para>A patch file that is a "unified" diff file is the easiest to
-          interpret by humans and this type should always be used for ports.
-          The Portfile patch below will change the version and checksums when
-          applied.</para>
+          <para>A patch file that is a <quote>unified</quote> diff file is the
+          easiest to interpret by humans and this type should always be used
+          for ports. The Portfile patch below will change the version and
+          checksums when applied.</para>
 
           <programlisting>--- Portfile.orig        2011-07-25 18:52:12.000000000 -0700
 +++ Portfile    2011-07-25 18:53:35.000000000 -0700
@@ -617,7 +617,7 @@ variant sqlite description {Build sqlite support} {
         <listitem>
           <para>Now <command>cd</command> to the top-level directory of the
           unpacked source, and use the Unix command <command>diff -u</command>
-          to create a "unified" diff patch file.</para>
+          to create a <quote>unified</quote> diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd ~/Downloads/foo-1.34</userinput>
 <prompt>%%</prompt> <userinput>diff -u src/Makefile.in.orig src/Makefile.in &gt; patch-src-Makefile.in.diff</userinput></programlisting>
@@ -643,10 +643,11 @@ variant sqlite description {Build sqlite support} {
         </listitem>
 
         <listitem>
-          <para>A patch file that is a "unified" diff file is the easiest to
-          interpret by humans and this type should always be used for ports.
-          See the example below where a patch adds <varname>DESTDIR</varname>
-          support to a <filename>Makefile.in</filename> file.</para>
+          <para>A patch file that is a <quote>unified</quote> diff file is the
+          easiest to interpret by humans and this type should always be used
+          for ports. See the example below where a patch adds
+          <varname>DESTDIR</varname> support to a
+          <filename>Makefile.in</filename> file.</para>
 
           <programlisting>--- src/Makefile.in.orig   2007-06-01 16:30:47.000000000 -0700
 +++ src/Makefile.in       2007-06-20 10:10:59.000000000 -0700
@@ -742,8 +743,8 @@ rsync://rsync.macports.org/release/ports [default]
         matches the port, which should in turn be placed inside a directory
         that reflects the port's primary category (the first category entry in
         the Portfile). For example, to create the directory for a hypothetical
-        port "bestevergame" and to begin editing its Portfile in TextEdit, you
-        can use these commands:</para>
+        port <quote>bestevergame</quote> and to begin editing its Portfile in
+        TextEdit, you can use these commands:</para>
 
         <programlisting><prompt>%%</prompt> <userinput>mkdir -p ~/ports/games/bestevergame</userinput>
 <prompt>%%</prompt> <userinput>cd ~/ports/games/bestevergame</userinput>
@@ -822,11 +823,11 @@ variant mysql5 { ... }</programlisting>
 
       <para>Frequently multiple items are necessary in the second column. For
       example, to set multiple source download locations, multiple
-      "master_sites" must be defined. Unless the second column items are few
-      and short you should place each additional item on a new line and
-      separate lines with a backslash. Indent the lines after the first line
-      to make it clear the items are second column values and also to
-      emphasize the unity of the block.</para>
+      <code>master_sites</code> must be defined. Unless the second column
+      items are few and short you should place each additional item on a new
+      line and separate lines with a backslash. Indent the lines after the
+      first line to make it clear the items are second column values and also
+      to emphasize the unity of the block.</para>
 
       <programlisting>destroot.keepdirs    ${destroot}${prefix}/var/run \
                      ${destroot}${prefix}/var/log \
@@ -865,13 +866,13 @@ variant mysql5 { ... }</programlisting>
 
       <para>If there is the need to replace a port with another port or a
       renaming is necessary for some reason, the port should be marked as
-      <quote>replaced_by</quote>.</para>
+      <code>replaced_by</code>.</para>
       
-      <para>As an illustration of a typical workflow the port 'skrooge-devel'
-      shall be taken. This port had been used for testing new versions of
-      skrooge, but it turned out to have become unnecessary due to the fact
-      that skrooge's developers currently prefer a distribution via port
-      'skrooge' instead. </para>
+      <para>As an illustration of a typical workflow the port
+      <quote>skrooge-devel</quote> shall be taken. This port had been used for
+      testing new versions of skrooge, but it turned out to have become
+      unnecessary due to the fact that skrooge's developers currently prefer a
+      distribution via port <quote>skrooge</quote> instead. </para>
       
       <para>Skrooge's original devel port file looked like this:</para>
 
@@ -915,11 +916,11 @@ depends_lib-append  port:kdelibs4 \
 
 	<para>The following steps have to be taken to ensure a smooth transition
 	for a MacPorts user updating his local installation using
-	<quote>sudo port upgrade</quote>:</para>
+	<userinput>sudo port upgrade</userinput>:</para>
 
     <orderedlist>
       <listitem>
-        <para> add the line <quote>replaced_by foo</quote> where foo is the
+        <para> add the line <code>replaced_by foo</code> where foo is the
         port this one is replaced by; when a user upgrades this port,
         MacPorts will instead install the replacement port</para>
 		<programlisting>replaced_by         skrooge</programlisting>
@@ -927,15 +928,15 @@ depends_lib-append  port:kdelibs4 \
 
       <listitem>
         <para> increase the version, revision, or epoch, so that users who
-        have this port installed will get notice in <quote>port
-        outdated</quote> that they should upgrade it and trigger the above
+        have this port installed will get notice in <code>port
+        outdated</code> that they should upgrade it and trigger the above
         process</para>
 		<programlisting>revision            1</programlisting>
       </listitem>
 
       <listitem>
         <para> clear distfiles (have a line reading only
-        <quote>distfiles</quote>) so that no distfile is downloaded for this
+        <code>distfiles</code>) so that no distfile is downloaded for this
         stub port</para>
 		<programlisting>distfiles</programlisting>
       </listitem>
@@ -951,8 +952,8 @@ depends_lib-append  port:kdelibs4 \
       </listitem>
 
       <listitem>
-        <para> add a pre-configure block with a <quote>ui_error</quote> and
-        <quote>return -code error</quote> explaining to users who try to
+        <para> add a pre-configure block with a <code>ui_error</code> and
+        <code>return -code error</code> explaining to users who try to
         install this port that the port has been replaced</para>
 		<programlisting>pre-configure {
     ui_error "Please do not install this port since it has been replaced by 'skrooge'."
@@ -997,8 +998,8 @@ pre-configure {
 
 distfiles</programlisting>
 
-	<para>A user upgrading ports will experience for port 'skrooge-devel'
-	the following:</para>
+	<para>A user upgrading ports will experience the following for port
+  <quote>skrooge-devel</quote>:</para>
 	<programlisting><prompt>%%</prompt> <userinput>sudo port upgrade skrooge-devel</userinput></programlisting>
 	<screen>--->  skrooge-devel is replaced by skrooge
 --->  Computing dependencies for skrooge
@@ -1028,8 +1029,8 @@ distfiles</programlisting>
 --->  Cleaning skrooge</screen>
 
 	<para>In case a user actually tries to install the obsolete port
-	'skrooge-devel' it would be pointed out by an error message that this is
-	impossible now:</para>
+	<quote>skrooge-devel</quote> it would be pointed out by an error message that
+  this is impossible now:</para>
 	<programlisting><prompt>%%</prompt> <userinput>sudo port install skrooge-devel</userinput></programlisting>
 	<screen>--->  Fetching skrooge-devel
 --->  Verifying checksum(s) for skrooge-devel

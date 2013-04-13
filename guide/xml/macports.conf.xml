@@ -198,8 +198,8 @@
 
         <listitem>
           <para>Number of simultaneous make jobs (commands) to use when
-          building ports. Using "0" will cause a runtime autodetection to use
-          all available processor cores.</para>
+          building ports. Using <quote>0</quote> will cause a runtime
+          autodetection to use all available processor cores.</para>
 
           <para>Default: 0</para>
         </listitem>
@@ -209,8 +209,8 @@
         <term>portautoclean</term>
 
         <listitem>
-          <para>Set whether to automatically execute "clean" after "install"
-          of ports.</para>
+          <para>Set whether to automatically execute <quote>clean</quote> after
+          <quote>install</quote> of ports.</para>
 
           <para>Default: <option>yes</option></para>
         </listitem>
@@ -305,10 +305,11 @@
 
         <listitem>
           <para>Options for generated startup items, though this may be
-          overridden by the "startupitem.type" Portfile key. Options are
-          "default" option, "SystemStarter", "launchd", or "none". For an
-          empty or "default" option, a startupitem type appropriate to the
-          platform is used; if "none", no port startupitems are
+          overridden by the <code>startupitem.type</code> Portfile key. Options
+          are <quote>default</quote> option, <quote>SystemStarter</quote>,
+          <quote>launchd</quote>, or <quote>none</quote>. For an empty or
+          <quote>default</quote> option, a startupitem type appropriate to the
+          platform is used; if <quote>none</quote>, no port startupitems are
           installed.</para>
 
           <para>Default: <option>default</option></para>
@@ -337,7 +338,7 @@
         <term>place_worksymlink</term>
 
         <listitem>
-            <para>Set whether to place a symlink named "work" from your ports tree to 
+            <para>Set whether to place a symlink named <quote>work</quote> from your ports tree to 
                 the build directory of a port, when the port is being built. This
                 is convenient, but may not be ideal if you care about the structure
                 of your ports tree. For example, some developers keep their ports

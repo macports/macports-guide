@@ -141,8 +141,8 @@
         </para>
         <para>
           If you wish to create Installer packages with <userinput>port pkg</userinput>,
-          you will also need to install PackageMaker, which is in the "Auxiliary
-          Tools for Xcode" package as of Xcode 4.3. The download page for this package
+          you will also need to install PackageMaker, which is in the <quote>Auxiliary
+          Tools for Xcode</quote> package as of Xcode 4.3. The download page for this package
           can be opened via the Xcode -> Open Developer Tool -> More Developer Tools...
           menu item. After downloading and mounting the disk image, drag the PackageMaker
           application to your /Applications directory.

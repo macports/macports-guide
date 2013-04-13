@@ -41,8 +41,8 @@
           <literal>variant_isset</literal> conditional within a phase
           declaration and not within the variant declaration itself.
           Dependencies and conflicts with other variants in the same port can
-          be expressed with <quote>requires</quote> and
-          <quote>conflicts</quote> options as shown below.</para>
+          be expressed with <literal>requires</literal> and
+          <literal>conflicts</literal> options as shown below.</para>
 
           <itemizedlist>
             <listitem>
@@ -90,7 +90,7 @@
           </itemizedlist>
 
           <para>Default variants may be suppressed by preceding a variant name
-          with a "-" as shown in this example.</para>
+          with a <quote>-</quote> as shown in this example.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>port install foo -ssl</userinput></programlisting>
         </listitem>
@@ -127,8 +127,8 @@
     <title>User-Selected Variant Descriptions</title>
 
     <para>User-selected variants ought to provide a description, which will be
-    displayed when using command <quote>port variants foo</quote>. The syntax
-    used for the description keyword is shown below.</para>
+    displayed when using command <userinput>port variants foo</userinput>. The
+    syntax used for the description keyword is shown below.</para>
 
     <programlisting>variant bar description {Add IMAP support} {}</programlisting>
 
@@ -137,9 +137,10 @@
     support, a good rule of thumb is to use sentence fragments for brevity,
     with a capitalized first letter and no trailing punctuation. Think of them
     as short labels such as ones you'd find next to a GUI checkbox or radio
-    button. Thus, it would be better to write "Build with support for foo"
-    instead of "Builds with support for foo"; "Add support for foo" would be
-    better than "Adds support for foo". </para>
+    button. Thus, it would be better to write <quote>Build with support for
+    foo</quote> instead of <quote>Builds with support for foo</quote>;
+    <quote>Add support for foo</quote> would be better than <quote>Adds support
+    for foo</quote>.</para>
 
     <para>Variant descriptions are strings, so one should take care not to put
     whitespace between the brackets and the beginning and end of the variant

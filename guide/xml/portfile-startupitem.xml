@@ -4,7 +4,7 @@
 <section id="reference.startupitems">
   <title>StartupItems</title>
 
-  <para>A StartupItem is a MacPorts facility to run "daemons," a Unix term for
+  <para>A StartupItem is a MacPorts facility to run <quote>daemons,</quote> a Unix term for
   programs that run continuously in the background, rather than under the
   direct control of a user; for example, mail servers, network listeners, etc.
   Ports that use StartupItem keywords create Mac OS X scripts for <ulink
@@ -180,7 +180,7 @@
           arbitrary shell code may not be used.</para>
 
           <note>
-            <para>Some daemons "daemonize" by detaching themselves from the
+            <para>Some daemons <quote>daemonize</quote> by detaching themselves from the
             controlling tty before sending themselves to the background, thus
             making themselves a child of the original process. A daemon to be
             started with <code>startupitem.executable</code> must not be

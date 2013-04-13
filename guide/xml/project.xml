@@ -28,9 +28,10 @@
             new problems, and even if it doesn't, it means that log messages
             from earlier steps, which can be essential for figuring out why a
             build failed, are not included in the new log; MacPorts prints
-            "Skipping completed" in the log for each previously-completed phase
-            that was skipped. Before filing a ticket, "sudo port clean" the
-            port that failed, then try again.
+            <quote>Skipping completed</quote> in the log for each
+            previously-completed phase that was skipped. Before filing a
+            ticket, <userinput>sudo port clean</userinput> the port that
+            failed, then try again.
           </para>
         </listitem>
         <listitem>
@@ -59,7 +60,7 @@
           <para>Is the problem an application error and not related to compiling and installing?</para>
           <para>
             In general, application bugs should be reported to the developers of the app
-            ("upstream"), not MacPorts. An application bug that affects a large number of
+            (<quote>upstream</quote>), not MacPorts. An application bug that affects a large number of
             MacPorts users might merit a MacPorts bug for informational purposes only, but
             this should be done sparingly.
           </para>
@@ -84,8 +85,8 @@
       will be presented with a new ticket window shown in the graphic below.
       Follow the Trac ticket guidelines below to fill out the form. If you are
       reporting a failed port install and a log was mentioned in the error,
-      please use the "I have files to attach to this ticket" checkbox to add
-      that log file to the ticket.</para>
+      please use the <guilabel>I have files to attach to this ticket</guilabel>
+      checkbox to add that log file to the ticket.</para>
 
       <screenshot>
         <screeninfo>A new Trac ticket</screeninfo>
@@ -144,8 +145,8 @@
           what's really relevant to the report, as otherwise overly large
           ticket pages can become unmanageable. Long output, such as the
           full log from a port build, should be added as an attachment, not
-          pasted inline. See "I have files to attach to this ticket" below.
-          </para>
+          pasted inline. See <guilabel>I have files to attach to this
+          ticket</guilabel> below.</para>
 
         </listitem>
 
@@ -267,10 +268,11 @@
           <para><guilabel>Keywords:</guilabel> Type any keywords that might
           help when searching for tickets. It is not useful to list words here
           that already appear elsewhere in the ticket. Keywords also serve as
-          tags; for example, use "tiger" if reporting a bug that only
-          affects OS X 10.4, "haspatch" if a fix is attached to the ticket,
-          "maintainer" if you are the port's maintainer, or "LP64" if
-          reporting an issue that only affects 64-bit platforms.</para>
+          tags; for example, use <quote>tiger</quote> if reporting a bug that
+          only affects OS X 10.4, <quote>haspatch</quote> if a fix is attached
+          to the ticket, <quote>maintainer</quote> if you are the port's
+          maintainer, or <quote>LP64</quote> if reporting an issue that only
+          affects 64-bit platforms.</para>
         </listitem>
 
         <listitem>

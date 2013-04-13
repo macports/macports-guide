@@ -445,7 +445,7 @@ Error: Missing required variable: platforms
       linkend="development.variants">Port Variants</link>. Default variants
       are optional, and not all ports using variants have them. For ports with
       default variants, you may install a port without them by negating
-      default variants using "-" as shown.</para>
+      default variants using <quote>-</quote> as shown.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port install fetchmail -ssl</userinput></programlisting>
 
@@ -688,7 +688,7 @@ physfs                         @2.0.1_0 </screen>
       <programlisting><prompt>%%</prompt> <userinput>port installed requested</userinput></programlisting>
 
       <para>Checking the list of leaves from time to time will help to keep your system
-            free of too much "garbage". However, keep in mind that some ports may be dependencies
+            free of too much <quote>garbage</quote>. However, keep in mind that some ports may be dependencies
             only during the installation of a port (library dependencies, installation or
             configuration tools, etc.). So, be careful when removing seemingly unnecessary leaves,
             otherwise you'll see them being installed again and again.</para>
@@ -779,7 +779,7 @@ DEBUG: Executing archive_finish
       <programlisting><prompt>%%</prompt> <userinput>sudo port rpm pstree</userinput></programlisting>
 
       <para>All packages are placed in a port's work directory,
-      except for rpms that are placed under the regular "RPMS":</para>
+      except for rpms that are placed under the regular <quote>RPMS</quote>:</para>
 
       <programlisting><prompt>%%</prompt> <userinput>port work pstree</userinput></programlisting>
       <programlisting><prompt>%%</prompt> <userinput>rpm --eval %{_rpmdir}</userinput></programlisting>

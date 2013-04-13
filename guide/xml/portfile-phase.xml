@@ -105,9 +105,10 @@
           </note>
 
           <para>Understanding the destroot phase is critical to understanding
-          MacPorts, because, unlike some port systems, MacPorts "stages" an
-          installation into an intermediate location —not the final file
-          destination. MacPorts uses the destroot phase to provide:</para>
+          MacPorts, because, unlike some package management systems, MacPorts
+          <quote>stages</quote> an installation into an intermediate location,
+          not the final file destination. MacPorts uses the destroot phase to
+          provide:</para>
 
           <itemizedlist>
             <listitem>
@@ -162,9 +163,9 @@
 
     <para>MacPorts keywords are used to specify required or optional items
     within a Portfile, or to override default options used by MacPorts base
-    for individual ports. Keywords are to be used within the "global" and
-    "variant" sections of Portfiles, and not within optional port phase
-    declarations.</para>
+    for individual ports. Keywords are to be used within the
+    <quote>global</quote> and <quote>variant</quote> sections of Portfiles,
+    and not within optional port phase declarations.</para>
 
     <para>In other words, port phase keywords are not located within port
     phase declarations, but rather they <emphasis>refer</emphasis> to port

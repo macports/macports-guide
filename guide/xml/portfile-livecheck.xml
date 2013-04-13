@@ -93,7 +93,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
         release. For googlecode releases use the name of the file download,
         including extension. You may use this keyword without
         <code>livecheck.version</code> if you replace the version part of
-        the name with "<literal>(.*)</literal>".</para>
+        the name with <quote><literal>(.*)</literal></quote>.</para>
 
         <itemizedlist>
           <listitem>

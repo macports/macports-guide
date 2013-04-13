@@ -27,7 +27,7 @@
     version.</para>
 
     <para>This capability derives from the fact that a MacPorts port by
-    default is not installed into its final or "activated" location, but
+    default is not installed into its final or <quote>activated</quote> location, but
     rather to an intermediate location that is only made available to other
     ports and end-users after an activation phase that extracts all
     its files from the image repository. Deactivating a port
@@ -68,7 +68,7 @@
       <filename>base/src/port1.0</filename>. The Port API provides all the
       primitives required for a Portfile to be parsed, queried, and executed.
       It also provides a single procedure call that the MacPorts API uses to
-      kick off execution: "eval_targets". The port Tcl library supplies these
+      kick off execution: <code>eval_targets</code>. The port Tcl library supplies these
       procedures, all of which are generated at run-time using the
       <code>options</code> procedure in portutil.tcl.</para>
 
@@ -254,7 +254,7 @@
       <itemizedlist>
         <listitem>
           <para>Calls the <code>mportsearch</code> function to find all ports
-          containing "cm3".</para>
+          containing <quote>cm3</quote>.</para>
         </listitem>
 
         <listitem>
@@ -275,7 +275,7 @@
       <itemizedlist>
         <listitem>
           <para>Calls the <code>mportsearch</code> function to find the first
-          port that matches the name "cm3".</para>
+          port that matches the name <quote>cm3</quote>.</para>
         </listitem>
 
         <listitem>

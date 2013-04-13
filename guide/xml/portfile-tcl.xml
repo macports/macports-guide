@@ -72,7 +72,7 @@
             <term>copy</term>
 
             <listitem>
-              <para>Shorthand alternative to "file copy".</para>
+              <para>Shorthand alternative to <code>file copy</code>.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -82,7 +82,7 @@
             <term>move</term>
 
             <listitem>
-              <para>Shorthand alternative to "file rename".</para>
+              <para>Shorthand alternative to <code>file rename</code>.</para>
             </listitem>
           </varlistentry>
 

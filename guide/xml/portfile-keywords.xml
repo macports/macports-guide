@@ -6,9 +6,9 @@
 
   <para>MacPorts keywords are used to specify required or optional items
   within a Portfile, or to override default options used by MacPorts base for
-  individual ports. Keywords are to be used within the "global" and "variant"
-  sections of Portfiles, and not within optional port phase
-  declarations.</para>
+  individual ports. Keywords are to be used within the <quote>global</quote>
+  and <quote>variant</quote> sections of Portfiles, and not within optional
+  port phase declarations.</para>
 
   <para>The global keywords listed below specify information for ports as a
   whole, whereas the keywords listed under a port phase specify information to
@@ -37,8 +37,8 @@
         <para>The name of the port. To avoid special interpretation by shells
         and the like, names should contain only alphanumeric characters,
         underscores, dashes or dots. For projects whose proper names contain
-        "+" characters, change these to "x" (i.e. "libstdc++" becomes
-        "libstdcxx").</para>
+        <quote>+</quote> characters, change these to <quote>x</quote> (i.e.
+        <quote>libstdc++</quote> becomes <quote>libstdcxx</quote>).</para>
 
         <programlisting>name                foo</programlisting>
       </listitem>
