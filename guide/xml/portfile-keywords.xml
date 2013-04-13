@@ -142,7 +142,8 @@
           Feel free to claim maintainership of a nomaintainer port if desired.
           The address <email>openmaintainer</email> designates a port that has
           a maintainer who allows minor changes to be committed without his or
-          her prior approval.</para>
+          her prior approval. Port maintainers who are not committers are
+          encouraged to add <email>openmaintainer</email> to their ports.</para>
         </note>
       </listitem>
     </varlistentry>
