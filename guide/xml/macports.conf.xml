@@ -138,12 +138,27 @@
       </varlistentry>
 
       <varlistentry>
+        <term>buildfromsource</term>
+
+        <listitem>
+          <para>Controls whether ports are built from source or downloaded as pre-built
+          archives. Setting to 'always' will never use archives, 'never' will always try
+          to use an archive and fail if one is not available. 'ifneeded' will try to fetch
+          an archive and fall back to building from source if that isn't possible.</para>
+
+          <para>Default: <option>ifneeded</option></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>portarchivetype</term>
 
         <listitem>
-          <para>Type of archive to use for port images.
-          Available types are: tgz, tar, tbz, tbz2, tlz, xar, zip, cpgz,
-          cpio.</para>
+          <para>Format of archives in which to store port images. This controls both the
+          type of archive created locally after building from source, and the type to
+          request from remote servers. Changing this will not affect the usability of
+          already installed archives; they can be of any supported type. Supported types
+          are: tgz, tar, tbz, tbz2, tlz, txz, xar, zip, cpgz, cpio</para>
 
           <para>Default: <filename>tbz2</filename></para>
         </listitem>
@@ -276,6 +291,67 @@
             non-default binpath is discouraged and should only be performed by
             advanced users.</para>
           </note>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>host_blacklist</term>
+
+        <listitem>
+          <para>Space separated list of download hosts that should not be used.</para>
+          
+          <para>Default: none</para>
+          
+          <note>
+            <para>This feature is especially useful if a host turns out to be consistently
+            slow and therefore should be excluded for MacPorts' actions.</para>
+          </note>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>preferred_hosts</term>
+
+        <listitem>
+          <para>Space separated list of download hosts that should be used preferentially.</para>
+          
+          <para>Default: none</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>revupgrade_autorun</term>
+
+        <listitem>
+          <para>Controls whether the rev-upgrade action will be run automatically after
+          upgrading ports.</para>
+          
+          <para>Default: yes</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>revupgrade_mode</term>
+
+        <listitem>
+          <para>Controls the rev-upgrade functionality which checks for broken linking and
+          can rebuild ports to fix it. 'rebuild' means ports will automatically be rebuilt
+          when broken linking is detected in their files, while 'report' means broken
+          files will be scanned for and reported but the ports will not be rebuilt.</para>
+          
+          <para>Default: rebuild</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>default_compiler</term>
+
+        <listitem>
+          <para>Default value for configure.compiler. This can be a space-separated list.
+          Later entries will be used if earlier entries are unavailable or blacklisted by
+          a port. Setting this is unsupported.</para>
+          
+          <para>Default: none (internal list based on Xcode version is normally used)</para>
         </listitem>
       </varlistentry>
     </variablelist>
