@@ -874,6 +874,12 @@ variant mysql5 { ... }</programlisting>
       unnecessary due to the fact that skrooge's developers currently prefer a
       distribution via port <quote>skrooge</quote> instead. </para>
       
+      <para>At the end of this section the use of the obsolete PortGroup is suggested
+      as an even shorter approach to the below described workflow.</para>
+
+      <section id="development.replaced_by">
+      <title>The long way</title>
+
       <para>Skrooge's original devel port file looked like this:</para>
 
 <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
@@ -1041,6 +1047,33 @@ Error: Target org.macports.configure returned:
 Log for skrooge-devel is at: /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_kde_skrooge-devel/main.log
 Error: Status 1 encountered during processing.
 To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
+
+	</section>
+
+    <section id="development.obsolete-portgroup">
+    <title>The shortcut: PortGroup obsolete</title>
+
+	<para>Using the PortGroup obsolete makes the task described in the previous subsection
+	much easier:</para>
+
+	<programlisting>
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+# $Id$
+PortSystem          1.0
+replaced_by         skrooge
+PortGroup           obsolete 1.0
+name                skrooge-devel
+svn.revision        1215845
+version             0.8.0-${svn.revision}
+revision            2</programlisting>
+
+	<para>The PortGroup defines a number of reasonable defaults for a port that is only
+	there to inform users that they should uninstall it and install something else
+	instead. You might want to override some of the defaults though. For details have
+	a look at the PortGroup's source code in
+	<filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
+
+    </section>
 
     </section>
     
