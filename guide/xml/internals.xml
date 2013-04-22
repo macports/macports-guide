@@ -668,37 +668,4 @@
     </section>
   </section>
   
-  <section id="internals.buildbot">
-  <title>MacPorts' buildbot</title>
-
-      <para>The <ulink url="https://build.macports.org/">buildbot</ulink> is a port
-      build-service currently supporting building of all committed ports for Snow Leopard,
-      Lion, and Mountain Lion using the MacPorts AutoBuild
-      (<ulink url="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</ulink>)
-      scripts.</para>
-      
-      <para>Every time a maintainer commits changes to MacPorts' central SVN repository
-      the buildbot will check whether a rebuild of the corresponding port(s) would
-      be necessary. If the port(s) in question are distributable their binary
-      archives will be kept for subsequent distribution for the three most current
-      versions of the Mac OS X operating system.</para>
-      
-      <para>If a build error occurred for a port its maintainer will be informed via
-      an email so that problems which did not surface on the maintainer's machine will
-      not go unnoticed.
-      
-      Port maintainers will find the
-      <ulink url="https://build.macports.org/waterfall">waterfall</ulink>
-      and the 
-      <ulink url="https://build.macports.org/builders">builders</ulink>
-      views most useful since they give information about the build status and offer
-      the possibility to build ones port(s) on specific builders.</para>
-      
-      <para>Thus the buildbot helps to keep MacPorts consistent on various
-      OSX versions, i.e. a maintainer does not need access to these versions anymore in
-      order to assure that the port(s) maintained build without problems. Currently only
-      the default port variants will be build and kept.</para>
-
-  </section>
-  
 </chapter>

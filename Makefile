@@ -10,7 +10,7 @@
 UNAME := $(shell uname)
 
 # Prefix of the MacPorts installation.
-PREFIX = /opt/macports-test
+PREFIX = /opt/local
 ifeq ($(UNAME), Linux)
 PREFIX = /usr
 endif
