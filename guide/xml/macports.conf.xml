@@ -342,18 +342,6 @@
           <para>Default: rebuild</para>
         </listitem>
       </varlistentry>
-
-      <varlistentry>
-        <term>default_compiler</term>
-
-        <listitem>
-          <para>Default value for configure.compiler. This can be a space-separated list.
-          Later entries will be used if earlier entries are unavailable or blacklisted by
-          a port. Setting this is unsupported.</para>
-          
-          <para>Default: none (internal list based on Xcode version is normally used)</para>
-        </listitem>
-      </varlistentry>
     </variablelist>
 
     <para>Options for MacPorts Universal Binaries (+universal variant)</para>
