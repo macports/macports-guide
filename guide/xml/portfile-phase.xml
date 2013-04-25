@@ -1467,6 +1467,30 @@ patch.post_args     ???</programlisting>
         </listitem>
       </varlistentry>
 
+    <varlistentry>
+        <term>configure.cmd</term>
+
+        <term>configure.cmd-append</term>
+
+        <term>configure.cmd-delete</term>
+
+        <listitem>
+          <para>Selects the command to be run in the default configure phase.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>./configure</literal></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.cmd       ./config.sh</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
       <varlistentry>
         <term>configure.env</term>
 
