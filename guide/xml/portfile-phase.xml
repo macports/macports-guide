@@ -63,7 +63,7 @@
         <term>configure</term>
 
         <listitem>
-          <para>Execute the command <command>configure</command> in
+          <para>Execute the <varname>${configure.cmd}</varname> in
           <varname>${worksrcpath}</varname>.</para>
         </listitem>
       </varlistentry>
