@@ -370,15 +370,6 @@ configure.args      --enable-perl-site-install \
       <programlisting>startupitem.create      yes
 startupitem.name        nmicmpd
 startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
-
-      <para>Startupitems keywords may also be used within a variant definition
-      to make their installation conditional.</para>
-
-      <programlisting>variant server {
-    startupitem.create  yes
-    startupitem.start   "${prefix}/share/${name}/vm-pop3d.init start"
-    startupitem.stop    "${prefix}/share/${name}/vm-pop3d.init stop"
-}</programlisting>
     </section>
   </section>
 
