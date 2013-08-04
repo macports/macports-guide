@@ -1,12 +1,12 @@
 This is the MacPorts documentation directory.
 
-To generate it you have to checkout the whole "trunk/doc-new" directory and
-you need the "docbook-xsl", "docbook-xml" and "libxslt" ports. If your port
-installation isn't in /opt/local, edit or override the PREFIX Makefile
-variable.
+To generate it you have to checkout the whole "trunk/doc-new" directory,
+and you need the "docbook-xsl", "docbook-xml-4.5" and "libxslt" ports.
+If your port installation isn't in /opt/local, edit or override the
+PREFIX Makefile variable.
 
-To generate the guide and the man pages just use "make" in this directory.
-Then they are generated in guide/html and man/man.
+To generate the guide and the man pages just run "make" in this
+directory; they will be placed in guide/html and man/man.
 
 To generate a PDF version of the guide, use "make guide-dblatex". This
 requires the "dblatex" port.
