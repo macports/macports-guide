@@ -1064,6 +1064,11 @@ revision            2</programlisting>
 	a look at the PortGroup's source code in
 	<filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
 
+      <note>
+        <para>It is important to specify <varname>replaced_by</varname> BEFORE the
+            <varname>PortGroup</varname> line!</para>
+      </note>
+
     </section>
 
     </section>
