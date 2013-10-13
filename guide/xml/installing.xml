@@ -117,10 +117,10 @@
     <para>Follow the instructions for your version of Mac OS X:</para>
 
     <section id="installing.xcode.lion">
-      <title>Install Xcode on Mac OS X 10.7 Lion</title>
+      <title>Install Xcode on OS X 10.7 Lion or later</title>
 
       <para>
-        Download the latest version of Xcode as a disk image <ulink
+        Download the latest version of Xcode <ulink
           url="https://developer.apple.com/downloads/index.action">from the Apple developer
           website</ulink> or get it <ulink
           url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac
