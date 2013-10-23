@@ -120,7 +120,15 @@
       <title>Install Xcode on OS X 10.9 or later</title>
 
       <para>
-        Install Xcode and then open a terminal and run
+        Download the latest version of Xcode <ulink
+        url="https://developer.apple.com/downloads/index.action"> from the
+        Apple developer website</ulink> or get it <ulink
+        url="http://itunes.apple.com/us/app/xcode/id497799835">
+        using the Mac App Store</ulink>.
+      </para>
+      
+      <para>
+        Once you have Xcode installed, open a terminal and run
         <userinput>xcode-select --install</userinput>.
       </para>
     </section>
