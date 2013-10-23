@@ -116,6 +116,15 @@
 
     <para>Follow the instructions for your version of Mac OS X:</para>
 
+    <section id="installing.xcode.mavericks">
+      <title>Install Xcode on OS X 10.9 or later</title>
+
+      <para>
+        Install Xcode and then open a terminal and run
+        <userinput>xcode-select --install</userinput>.
+      </para>
+    </section>
+
     <section id="installing.xcode.lion">
       <title>Install Xcode on OS X 10.7 Lion or later</title>
 
