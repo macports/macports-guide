@@ -302,16 +302,20 @@
         <listitem>
           <para>Download and unzip the latest MacPorts tarball from the <ulink
           url="https://distfiles.macports.org/MacPorts/">MacPorts
-          download directory</ulink>.</para>
+          download directory</ulink>. Use the given commands in a terminal
+          window, replace the placeholders with the latest version number.</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>curl -O https://distfiles.macports.org/MacPorts/MacPorts-x.x.x.tar.bz2</userinput>
+<prompt>%%</prompt> <userinput>tar xf MacPorts-x.x.x.tar.bz2</userinput></programlisting>
         </listitem>
 
         <listitem>
-          <para>Perform the commands shown in a terminal window. If you wish
+          <para>Afterwards, perform the commands shown in the terminal window. If you wish
           to use a path other than <filename>/opt/local</filename>, follow
           the instructions for <link linkend="installing.macports.source.multiple">installing
           multiple copies of MacPorts</link> instead.</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-x.x.x/</userinput>
+          <programlisting><prompt>%%</prompt> <userinput>cd MacPorts-x.x.x/</userinput>
 <prompt>%%</prompt> <userinput>./configure</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
