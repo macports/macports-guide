@@ -312,6 +312,22 @@
         <listitem>
           <para>Double-click the downloaded package installer to perform the default <quote>easy</quote> install.</para>
         </listitem>
+
+        <listitem>
+            <para>After this step you are done already, MacPorts is now
+             installed and your shell environment was set up automatically
+             by the installer. To confirm the installation is working as
+             expected, now try using the <command>port</command> command in
+             a <emphasis>new</emphasis> terminal window.</para>
+
+            <programlisting><prompt>%%</prompt> <userinput>port version</userinput></programlisting>
+            <screen>Version: &macports-version;</screen>
+
+            <para>In case of problems such as <quote>command not found</quote>,
+            consult <xref linkend="installing.shell" />. Otherwise,
+            please skip the remainder of this chapter and continue with
+            <xref linkend="using" /> in this guide.</para>
+        </listitem>
       </orderedlist>
     </section>
 
