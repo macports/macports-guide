@@ -307,12 +307,12 @@
 
         <listitem>
           <para>Perform the commands shown in a terminal window. If you wish
-          to use a path other than <filename>/opt/local</filename>, use the
-          option <option>--prefix</option> and substitute a path for
-          NEW_PREFIX.</para>
+          to use a path other than <filename>/opt/local</filename>, follow
+          the instructions for <link linkend="installing.macports.source.multiple">installing
+          multiple copies of MacPorts</link> instead.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd ~/MacPorts-x.x.x/</userinput>
-<prompt>%%</prompt> <userinput>./configure</userinput> --prefix=NEW_PREFIX  (setting prefix is optional)
+<prompt>%%</prompt> <userinput>./configure</userinput>
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
         </listitem>
