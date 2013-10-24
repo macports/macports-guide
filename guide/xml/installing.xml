@@ -310,7 +310,7 @@
         </listitem>
 
         <listitem>
-          <para>Afterwards, perform the commands shown in the terminal window. If you wish
+          <para>Afterwards, perform the commands shown below. If you wish
           to use a path other than <filename>/opt/local</filename>, follow
           the instructions for <link linkend="installing.macports.source.multiple">installing
           multiple copies of MacPorts</link> instead.</para>
