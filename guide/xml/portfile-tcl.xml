@@ -259,13 +259,26 @@
 
         <variablelist>
           <varlistentry>
-            <term>reinplace [-E] [--] <replaceable>command</replaceable>
-            <replaceable>file ...</replaceable></term>
+            <term>
+              reinplace
+              [-locale <replaceable>locale</replaceable>]
+              [-n]
+              [-W <replaceable>dir</replaceable>]
+              [--] <replaceable>command</replaceable>
+              <replaceable>file ...</replaceable>
+            </term>
 
             <listitem>
               <para>Replace text given by the regular expression portion of
               the command with the replacement text, in all files
               specified.</para>
+
+              <para>Use -locale to set the locale</para>
+
+              <para>-n is passed to sed to suppress echoing result</para>
+
+              <para>-W to set a common working directory for multiple
+              files</para>
 
               <para>Use -E to use the extended regular expression style (see
               re_format(7) for a description of the basic and extended
@@ -279,7 +292,7 @@
 
         <para>Examples:</para>
 
-        <programlisting>reinplace "s|/usr/local|${prefix}|g" ${worksrcpath}/configure</programlisting>
+        <programlisting>reinplace -W ${worksrcpath} "s|/usr/local|${prefix}|g" configure setup.py</programlisting>
 
         <programlisting>reinplace "s|@@PREFIX@@|${prefix}|g" ${worksrcpath}/Makefile</programlisting>
       </listitem>
