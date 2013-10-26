@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
-<!ENTITY macports-version "2.2.0">
+<!ENTITY macports-version "2.2.1">
 ]>
 <chapter id="installing">
   <title>Installing MacPorts</title>
@@ -287,7 +287,7 @@
                 OS X 10.7 Lion:
             </term>
             <listitem>
-               <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
+                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
             </listitem>
             </varlistentry>
             <varlistentry>
@@ -295,7 +295,8 @@
                 OS X 10.8 Mountain Lion:
             </term>
             <listitem>
-               <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>
+                <!--<ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>-->
+                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-2.2.0-10.8-MountainLion.pkg">MacPorts-2.2.0-10.8-MountainLion.pkg</ulink>
             </listitem>
             </varlistentry>
             <varlistentry>
@@ -303,7 +304,7 @@
                 OS X 10.9 Mavericks:
             </term>
             <listitem>
-               MacPorts-&macports-version;-10.9-Mavericks.pkg (not available yet)
+                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
             </listitem>
             </varlistentry>
           </variablelist>
