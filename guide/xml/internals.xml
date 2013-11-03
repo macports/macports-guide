@@ -176,7 +176,6 @@
           <para>Manages the SQLite port registry in
               <filename>${prefix}/var/macports/registry/</filename>. See also
               <xref linkend="internals.registry" />.</para>
-          </itemizedlist>
         </listitem>
 
         <listitem>
