@@ -204,7 +204,7 @@
             </listitem>
 
             <listitem>
-              <para><code>portclose:</code> Given a port handle, closes a
+              <para><code>mportclose:</code> Given a port handle, closes a
               Portfile.</para>
             </listitem>
 
