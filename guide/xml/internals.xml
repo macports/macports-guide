@@ -290,8 +290,8 @@
     API. The registry is queried by MacPorts utilities for information about
     installed ports related to dependencies, port images, and simple user
     information about what is installed. It provides abstraction over a
-    modular receipt storage layer; this allows for flat file receipts as well
-    as receipts stored in a SQLite database.</para>
+    modular receipt storage layer; where the default format is a SQLite
+    database.</para>
 
     <para>The registry allows MacPorts utilities to:</para>
 
@@ -315,22 +315,25 @@
     <section id="internals.registry.files">
       <title>Registry Files</title>
 
-      <para>The flat file registry (MacPorts default registry) files are
+      <para>The SQLite registry used by default is located at
+      <filename>${portdbpath}/registry</filename>, which by default would
+      be <filename>${prefix}/var/macports/registry</filename>. All data is
+      stored in a single file named <filename>registry.db</filename>, although
+      the additional directory <filename>portfiles</filename> is used
+      temporarily for extracting stored Portfiles from the registry.
+      Futhermore, access to the registry may be locked using the
+      <filename>.registry.lock</filename> file with the
+      <computeroutput>registry::exclusive_lock</computeroutput> and
+      <computeroutput>registry::exclusive_unlock</computeroutput> APIs.</para>
+
+      <para>The legacy flat file registry files are
       contained in <filename>${portdbpath}/receipts</filename>, which by
       default is location
       <filename>${prefix}/var/macports/receipts</filename>. File mappings and
-      dependency mappings are tracked in the flat file registry by two
-      files:</para>
-
-      <itemizedlist>
-        <listitem>
-          <para>file_map.db</para>
-        </listitem>
-
-        <listitem>
-          <para>dep_map.bz2</para>
-        </listitem>
-      </itemizedlist>
+      dependency mappings are tracked in the flat file registry by
+      <filename>file_map.db</filename> and <filename>dep_map.bz2</filename>.
+      If found, these will be automatically converted to the new SQLite registry.
+      </para>
     </section>
 
     <section id="internals.registry.api">
