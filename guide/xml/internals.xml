@@ -173,29 +173,9 @@
         <listitem>
           <para>Registry management routines.</para>
 
-          <para>Manages the rudimentary port registry in
-          <filename>${prefix}/var/macports/receipts/</filename>.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para><code>mportregistry::new:</code> create a new port
-              registry entry.</para>
-            </listitem>
-
-            <listitem>
-              <para><code>mportregistry::exists:</code> check if a port
-              registry entry exists (either versioned or not).</para>
-            </listitem>
-
-            <listitem>
-              <para><code>mportregistry::delete:</code> delete an existing
-              registry entry.</para>
-            </listitem>
-
-            <listitem>
-              <para><code>mportregistry::close:</code> closes a new registry
-              entry.</para>
-            </listitem>
+          <para>Manages the SQLite port registry in
+              <filename>${prefix}/var/macports/registry/</filename>. See also
+              <xref linkend="internals.registry" />.</para>
           </itemizedlist>
         </listitem>
 
