@@ -535,11 +535,11 @@
       </listitem>
 
       <listitem>
-        <para>Involvement on MacPorts support lists.</para>
+        <para>Involvement on MacPorts development and/or user support mailing lists.</para>
       </listitem>
 
       <listitem>
-        <para>Contributing with documentation</para>
+        <para>Contributing with documentation.</para>
       </listitem>
     </itemizedlist>
 
@@ -551,8 +551,9 @@
     <itemizedlist>
       <listitem>
         <para>a description of your application and why you think you deserve
-        commit rights (including evidence of contributions to MacPorts as described
-        above).</para>
+        commit rights. Include evidence of contributions to MacPorts as described
+        above; at best add direct links to Trac tickets or Trac searches that
+        make the review easier for the PortMgr team.</para>
       </listitem>
 
       <listitem>
@@ -567,7 +568,7 @@
     </itemizedlist>
 
     <para>The PortMgr team will consider all applications and provide an appropriate
-    response in a timely manner.</para>
+    response as soon as they get to it.</para>
 
   </section>
 
