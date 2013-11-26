@@ -135,7 +135,8 @@ depends_build       port:libtool
 
 depends_run         port:apache2 port:php5</programlisting>
 
-    <para>File dependencies may be of three types: <option>bin</option> for
+    <para>File dependencies should only be used if one of the reasons listed
+    above applies. There are three types: <option>bin</option> for
     programs, <option>lib</option> for libraries, and <option>path</option>
     for any installed file. File dependencies are specifed in the form:
     <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filespec&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.</para>
