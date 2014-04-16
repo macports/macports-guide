@@ -908,7 +908,7 @@ svn.revision        2100</programlisting>
 
       <para>The <option>hg</option> <link
       linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
-      is used to fetch fource code from a Mercurial repository.</para>
+      is used to fetch source code from a Mercurial repository.</para>
 
       <variablelist>
         <varlistentry>
