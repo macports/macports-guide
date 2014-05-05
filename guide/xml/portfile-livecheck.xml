@@ -177,7 +177,8 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
       <listitem>
         <para>Regular expression to parse the resource for regex checks. Be
         sure to use a regular expression grouping around the version
-        component.</para>
+        component. Also remember that square brackets need to be quoted because Tcl
+        otherwise interprets them as a procedure call.</para>
 
         <itemizedlist>
           <listitem>
@@ -187,7 +188,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
           <listitem>
             <para>Example:</para>
 
-            <programlisting>livecheck.regex     4th-([a-z0-9.]+)-unix${extract.suffix}</programlisting>
+            <programlisting>livecheck.regex     4th-(\[a-z0-9.\]+)-unix${extract.suffix}</programlisting>
 
             <!-- TODO: add more examples -->
 
