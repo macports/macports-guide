@@ -485,29 +485,36 @@
             of contacting the maintainer is known.</listitem>
         </itemizedlist>
       <para>If you wish to initiate the Port Abandonment
-      protocol and volunteer as the new maintainer:</para>
+      protocol and optionally volunteer as the new maintainer:</para>
 
       <orderedlist>
         <listitem>
-          <para>File a new Trac ticket with the summary line [Port
+          <para>File a new Trac ticket with the summary line: [Port
           Abandoned] <guilabel>portname</guilabel>.</para>
         </listitem>
 
         <listitem>
-          <para>Refer to the original unacknowledged ticket(s) (if any) in the Port
-          Abandoned ticket.</para>
+          <para>The ticket should be assigned to the maintainer. Non-macports team members should Cc the maintainer.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the ticket Type to Defect.</para>
+        </listitem>
+
+        <listitem>
+          <para>In the Description field, refer to any unacknowledged ticket(s).</para>
         </listitem>
 
 		<listitem>
-		  <para>Further indicate which port is abandoned via the port
-		  field in the Port Abandoned ticket.</para>
+		  <para>In the Port field, indicate which port is abandoned.</para>
 		</listitem>
 
         <listitem>
           <para>The Port Abandoned ticket may be closed when the new
           maintainer is assigned, and the original ticket(s) with the updates may
-          be resolved as usual. The Port Abandoned ticket should stay open for the
-          usual 72-hour timeout period, to give the maintainer one last chance
+          be resolved as usual. All other tickets assigned to the former maintainer should be set to 
+          macports-tickets@lists.macosforge.org as owner. The Port Abandoned ticket should stay open
+          for the usual 72-hour timeout period, to give the maintainer one last chance
           to indicate that they have not actually abandoned the port.</para>
         </listitem>
       </orderedlist>
