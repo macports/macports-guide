@@ -6,114 +6,24 @@
 <chapter id="installing">
   <title>Installing MacPorts</title>
 
-  <para>This chapter shows you how to install MacPorts and its prerequisites
-  step-by-step. Note that the sections about <link
-  linkend="installing.x11">installing X11</link> and <link
-  linkend="installing.xcode">installing Xcode</link> are Mac OS X
-  specific. If you wish to install MacPorts on another platform, first make
-  sure you have X11 and gcc installed, and then skip ahead to <link
-  linkend="installing.macports.source">installing MacPorts from source</link>
-  and continue to the end of the chapter.</para>
-
-  <section id="installing.x11">
-    <title>Install X11</title>
-
-    <para>
-      X11.app allows you to run applications using the X Window System, which
-      is the traditional display server on most other UNIX like systems. Additionally, the
-      <ulink url="http://xquartz.macosforge.org/trac/wiki"> Xquartz</ulink>
-      project provides an updated version of the X server.
-    </para>
-
-    <note>
-      <para>
-      As of Mac OS X 10.5 Leopard, X11.app is included in the default
-      installation. You can just <link linkend="installing.xcode">skip this
-      section</link> for any later version of Mac OS X.
-      </para>
-    </note>
-
-    <orderedlist>
-      <listitem>
-        <para>Insert the <quote>Mac OS X Install Disk</quote> and run the
-        package named <quote>Optional Installs</quote>.</para>
-      </listitem>
-
-      <listitem>
-        <para>At the software selection window expand the
-        <guilabel>Applications</guilabel> category and click the check box
-        beside <guilabel>X11</guilabel> (and nothing else).</para>
-      </listitem>
-
-      <listitem>
-        <para>Click <guibutton>Install</guibutton> to install X11.</para>
-      </listitem>
-    </orderedlist>
-
-    <para>Before launching an X11 application on Mac OS X 10.4, you must open X11.app
-    and start an xterm session. Later OS versions should launch X11.app automatically when
-    an X11 application is run from the Terminal.</para>
-
-    <programlisting><prompt>%%</prompt> <userinput>xterm</userinput></programlisting>
-
-    <para>After the X11 session window opens, you may launch X11 apps from
-    another terminal window. See <link
-    linkend="installing.x11.settings">Optional X11 Settings</link> if you wish
-    to launch X11 applications from an X11 session window.</para>
-
-    <note>
-      <para>X11 and the X11SDK (from Xcode Tools) are both required for X11
-      apps. To verify the presence of both, check for files
-      <filename>com.apple.pkg.X11User.bom</filename> &amp;
-      <filename>com.apple.pkg.X11SDKLeo.bom</filename> in
-      <filename>/Library/Receipts/boms/</filename>. On Mac OS X 10.4, look for
-      files <filename>X11User.pkg</filename> &amp;
-      <filename>X11SDK.pkg</filename> in
-      <filename>/Library/Receipts/</filename>.</para>
-    </note>
-
-    <section id="installing.x11.settings">
-      <title>Optional X11 Settings</title>
-
-      <para>To launch X11 applications directly from an X11 window (instead of
-      a regular terminal window), you need to make it so X11 sessions opened
-      using the menu bar respect your <filename>.profile</filename>
-      file.</para>
-
-      <orderedlist>
-        <listitem>
-          <para>Open X11 and select <guimenuitem>Customize Menu
-          ...</guimenuitem> from the <guimenu>Applications</guimenu>
-          menu.</para>
-        </listitem>
-
-        <listitem>
-          <para>Double-click the menu item <guimenuitem>Terminal</guimenuitem>
-          and change: <quote>xterm</quote> to <quote>xterm -ls</quote></para>
-        </listitem>
-
-        <listitem>
-          <para>Click <guibutton>Done</guibutton> to save the change.</para>
-        </listitem>
-      </orderedlist>
-    </section>
-  </section>
+  <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
+  <link linkend="installing.xcode">installing Xcode</link> is Mac OS X-specific. If you wish to install MacPorts on
+  another platform, first make sure you have a working C compiler installed, skip ahead to <link
+    linkend="installing.macports.source">installing MacPorts from source</link>, and continue to the end of the
+  chapter.</para>
 
   <section id="installing.xcode">
     <title>Install Xcode</title>
 
     <para>
-      <ulink url="https://developer.apple.com/xcode/">Xcode</ulink>
-      is a package provided by Apple containing compilers, libraries and
-      additional tools required to develop applications for Mac OS X.
+      <ulink url="https://developer.apple.com/xcode/">Xcode</ulink> is a package provided by Apple containing compilers,
+      libraries and additional tools required to develop applications for Mac OS X.
     </para>
 
     <note>
-      <para>Always make sure to install the latest available version of Xcode
-      for your Mac OS X release; using outdated versions of Xcode
-      may cause port install failures. Also note that Xcode is not
-      updated via Mac OS X's Software Update utility on OS versions prior
-      to 10.6, and is updated via the Mac App Store on 10.7.</para>
+      <para>Always make sure to install the latest available version of Xcode for your Mac OS X release; using outdated
+        versions of Xcode may cause port install failures. Also note that Xcode is not updated via Mac OS X's Software
+        Update utility on OS versions prior to 10.6, and is updated via the Mac App Store starting with 10.7.</para>
     </note>
 
     <para>Follow the instructions for your version of Mac OS X:</para>
@@ -122,16 +32,16 @@
       <title>Install Xcode on OS X 10.9 or later</title>
 
       <para>
-        Download the latest version of Xcode <ulink
-        url="https://developer.apple.com/downloads/index.action"> from the
-        Apple developer website</ulink> or get it <ulink
-        url="http://itunes.apple.com/us/app/xcode/id497799835">
-        using the Mac App Store</ulink>.
+        Download the latest version of Xcode <ulink url="https://developer.apple.com/downloads/index.action">from the
+          Apple developer website</ulink> or get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using
+          the Mac App Store</ulink>.
       </para>
-      
       <para>
-        Once you have Xcode installed, open a terminal and run
-        <userinput>xcode-select --install</userinput>.
+        Once you have Xcode installed, open a terminal, run <userinput>xcode-select --install</userinput>, and click the
+        Install button to install the required command line developer tools. Don't worry if you see a message telling
+        you the software cannot be installed because it is not currently available from the Software Update Server. This
+        usually means you already have the latest version installed. You can also get the command line tools from <ulink
+          url="https://developer.apple.com/downloads/index.action">the Apple developer website</ulink>.
       </para>
     </section>
 
@@ -139,29 +49,25 @@
       <title>Install Xcode on OS X 10.7 Lion or OS X 10.8 Mountain Lion</title>
 
       <para>
-        Download the latest version of Xcode <ulink
-          url="https://developer.apple.com/downloads/index.action">from the Apple developer
-          website</ulink> or get it <ulink
-          url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac
-          App Store</ulink>.
+        Download the latest version of Xcode <ulink url="https://developer.apple.com/downloads/index.action">from the
+          Apple developer website</ulink> or get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using
+          the Mac App Store</ulink>.
       </para>
 
       <section id="installing.xcode.lion.43">
         <title>Xcode 4.3 and later</title>
         <para>
-          Xcode 4.3 and later do not automatically install the command line tools, but
-          MacPorts requires them. To install them, open the Xcode application, go to the
-          Preferences window, to the Downloads section, and click the Install button
-          next to Command Line Tools. Be sure to return to this window after every Xcode
-          upgrade to ensure that the command line tools are also upgraded.
+          Xcode 4.3 and later do not automatically install the command line tools, but MacPorts requires them. To
+          install them, open the Xcode application, go to the Preferences window, to the Downloads section, and click
+          the Install button next to Command Line Tools. Be sure to return to this window after every Xcode upgrade to
+          ensure that the command line tools are also upgraded.
         </para>
         <para>
-          If you wish to create Installer packages with <userinput>port pkg</userinput>,
-          you will also need to install PackageMaker, which is in the <quote>Auxiliary
-          Tools for Xcode</quote> package as of Xcode 4.3. The download page for this package
-          can be opened via the Xcode -> Open Developer Tool -> More Developer Tools...
-          menu item. After downloading and mounting the disk image, drag the PackageMaker
-          application to your /Applications directory.
+          If you wish to create Installer packages with <userinput>port pkg</userinput>, you will also need to install
+          PackageMaker, which is in the <quote>Auxiliary Tools for Xcode</quote> package as of Xcode 4.3. The download
+          page for this package can be opened via the Xcode -> Open Developer Tool -> More Developer Tools... menu item.
+          After downloading and mounting the disk image, drag the PackageMaker application to your /Applications
+          directory.
         </para>
       </section>
     </section>
@@ -169,43 +75,43 @@
     <section id="installing.xcode.snowleopard">
       <title>Install Xcode on Mac OS X 10.6 Snow Leopard</title>
 
-      <para>If you are using Mac OS X 10.6, there are two branches of Xcode
-        which could be considered to be the latest, 3.2.x and 4.x. Xcode 4
-        costs money, but Xcode 3 is still available free of charge. There are
-        two options for downloading it:
+      <para>
+        If you are using Mac OS X 10.6, there are two branches of Xcode which could be considered to be the latest,
+        3.2.x and 4.x. Xcode 4 costs money, but Xcode 3 is still available free of charge. There are two options for
+        downloading it:
         <orderedlist>
           <listitem>
             <para>
-              <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20588">
-                Xcode 3.2.2</ulink> - smaller download, but you will need to run Software Update after installing to
-              get the latest version.
+              Xcode 3.2 - smaller download, but you will need to run Software Update after installing to get the latest
+              version. Note that Apple might at some point discontinue providing these updates via their update servers.
             </para>
           </listitem>
           <listitem>
             <para>
-              <ulink url="https://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20792">
-                Xcode 3.2.6 and iOS SDK 4.3</ulink> - includes iOS SDK which is not needed for MacPorts.
+              Xcode 3.2.6 and iOS SDK 4.3 - includes the iOS SDK which is not needed for MacPorts.
             </para>
           </listitem>
         </orderedlist>
-        You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and then run Software Update to get
-        the latest version.
+        Both are available from the <ulink url="https://developer.apple.com/downloads/index.action">Apple developer
+          website</ulink>. You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and then run Software
+        Update to get the latest version.
       </para>
 
-      <para>Ensure that those of the following options that are available in the
-      installer for your version of Xcode are selected:
-      <itemizedlist>
+      <para>
+        Ensure that those of the following options that are available in the installer for your version of Xcode are
+        selected:
+        <itemizedlist>
           <listitem>
-              <guibutton>UNIX Development</guibutton>
+            <guibutton>UNIX Development</guibutton>
           </listitem>
           <listitem>
-              <guibutton>System Tools</guibutton>
+            <guibutton>System Tools</guibutton>
           </listitem>
           <listitem>
-              <guibutton>X11 SDK</guibutton>
+            <guibutton>X11 SDK</guibutton>
           </listitem>
           <listitem>
-              <guibutton>Command Line Support</guibutton>
+            <guibutton>Command Line Support</guibutton>
           </listitem>
         </itemizedlist>
       </para>
@@ -215,29 +121,26 @@
       <title>Install Xcode on older releases of Mac OS X</title>
 
       <para>
-        If you have an earlier release of Mac OS X, you may download
-        the latest version of Xcode
-        <ulink
-          url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=20491">for OS X 10.5 (v3.1.4)</ulink>
-        or
-        <ulink
-          url="http://connect.apple.com/cgi-bin/WebObjects/MemberSite.woa/wa/getSoftware?bundleID=19907">for 10.4 (v2.5)</ulink>.
+        If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5 (Xcode
+        3.0 and Xcode 3.1 Developer Tools) or 10.4 (Xcode 2.4.1 and Xcode 2.5 Developer Tools) from the <ulink
+          url="https://developer.apple.com/downloads/index.action">Apple developer website</ulink>.
       </para>
 
-      <para>Ensure that those of the following options that are available in the
-      installer for your version of Xcode are selected:
-      <itemizedlist>
+      <para>
+        Ensure that those of the following options that are available in the installer for your version of Xcode are
+        selected:
+        <itemizedlist>
           <listitem>
-              <guibutton>UNIX Development</guibutton>
+            <guibutton>UNIX Development</guibutton>
           </listitem>
           <listitem>
-              <guibutton>System Tools</guibutton>
+            <guibutton>System Tools</guibutton>
           </listitem>
           <listitem>
-              <guibutton>X11 SDK</guibutton>
+            <guibutton>X11 SDK</guibutton>
           </listitem>
           <listitem>
-              <guibutton>Command Line Support</guibutton>
+            <guibutton>Command Line Support</guibutton>
           </listitem>
         </itemizedlist>
       </para>
