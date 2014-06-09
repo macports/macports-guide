@@ -7,24 +7,39 @@
 */
 
 div.mediaobject {
-        text-align: center;
-        margin: auto;
-        border: thin black inset;
+	text-align: center;
+	margin: auto;
+	border: thin black inset;
 }
 
-.emphasis { font-weight: bold ; }
+.emphasis {
+	font-weight: bold;
+}
 
-a:link { color: #6298E5; text-decoration: none; }
-a:visited { color: #6298E5; text-decoration: none;}
-a:hover { text-decoration: underline; }
- 
-.filename { color: #8B1A1A; }
+a:link {
+	color: #6298E5;
+	text-decoration: none;
+}
+a:visited {
+	color: #6298E5;
+	text-decoration: none;
+}
+a:hover {
+	text-decoration: underline;
+}
 
-span.term { font-weight: bold; }
-
-span.guilabel { font-weight: bold; }
-
-span.guimenu { font-weight: bold; }
+.filename {
+	color: #8B1A1A;
+}
+span.term {
+	font-weight: bold;
+}
+span.guilabel {
+	font-weight: bold;
+}
+span.guimenu {
+	font-weight: bold;
+}
 
 .programlisting {
 	font-family: monospace;
@@ -42,20 +57,24 @@ span.guimenu { font-weight: bold; }
 	font-family: monospace;
 	font-size: medium;
 	border: thin black inset;
-	background-color: white; }
+	background-color: white;
+}
 
 div.screenshot div.mediaobject {
 	text-align: center;
-	margin: auto }
-
-body {
-   font-family: Verdana, Arial, sans-serif;
-   font-size: 14px;
-   line-height: 1.4;
-   color: #696969;
+	margin: auto;
 }
 
-div.note h3.title { color: #C00; }
+body {
+	font-family: Verdana, Arial, sans-serif;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #696969;
+}
+
+div.note h3.title {
+	color: #C00;
+}
 
 .author {
 	font-size: 14px;
@@ -70,41 +89,41 @@ div.note h3.title { color: #C00; }
 
 div.book div.titlepage h1 {
 	font-family: Verdana, Arial, Utopia, sans-serif;
-        font-size: 24pt;
+	font-size: 24pt;
 	color: black;
 	font-weight: bold;
 	text-align: left;
 }
 
 div.book div.titlepage h2 {
-        font-family: Verdana, Arial, Utopia, sans-serif;
-        font-size: 18pt;
+	font-family: Verdana, Arial, Utopia, sans-serif;
+	font-size: 18pt;
 	color: black;
-        font-weight: bold;
-        text-align: left;
+	font-weight: bold;
+	text-align: left;
 }
 
 div.section div.titlepage h2 {
 	font-family: Verdana, Arial, Utopia, sans-serif;
-        font-size: 16pt;
-        color: black;
+	font-size: 16pt;
+	color: black;
 	text-align: left;
 }
 
 div.section div.titlepage h3 {
-        font-family: Verdana, Arial, Utopia, sans-serif;
-        font-size: 14pt;
-        color: black;
-        font-weight: bold;
-	text-align: left;   
+	font-family: Verdana, Arial, Utopia, sans-serif;
+	font-size: 14pt;
+	color: black;
+	font-weight: bold;
+	text-align: left;
 }
 
 div.section div.titlepage h4 {
-        font-family: Verdana, Arial, Utopia, sans-serif;
-        font-size: 12pt;
-        color: black;
-        font-weight: bold;
-        text-align: left;
+	font-family: Verdana, Arial, Utopia, sans-serif;
+	font-size: 12pt;
+	color: black;
+	font-weight: bold;
+	text-align: left;
 }
 
 div.mediaobject {
@@ -112,7 +131,9 @@ div.mediaobject {
 	margin: auto;
 }
 
-p { margin-bottom: 14pt; }
+p {
+	margin-bottom: 14pt;
+}
 
 div.toc {
 	border-width: 1px;
@@ -183,15 +204,31 @@ html*.toc dd dl dt {
 
 
 /* TOC Section Links */
-div.toc dt a:link { color: #F4F6F8; text-decoration: none; }
-div.toc dt a:hover { color: gray; }
-div.toc dt a:visited { color: #F4F6F8; text-decoration: none; }
+div.toc dt a:link {
+	color: #F4F6F8;
+	text-decoration: none;
+}
+div.toc dt a:hover {
+	color: gray;
+}
+div.toc dt a:visited {
+	color: #F4F6F8;
+	text-decoration: none;
+}
 
 
 /* TOC Subsubsection Links */
-div.toc dd dl dt a:link { color: black; text-decoration: none; }
-div.toc dd dl dt a:hover { color: gray; }
-div.toc dd dl dt a:visited { color: black; text-decoration: none; }
+div.toc dd dl dt a:link {
+	color: black;
+	text-decoration: none;
+}
+div.toc dd dl dt a:hover {
+	color: gray;
+}
+div.toc dd dl dt a:visited {
+	color: black;
+	text-decoration: none;
+}
 
 div.book {
 	margin-left: 247px;
@@ -210,32 +247,32 @@ div.toc:before {
 
 /* Tabswitch for single page/chunked */
 div#tabswitch {
-    position: absolute;
-    top: 0;
-    right: 0;
-    background-color: #9FB6CD;
-    border: 1px solid black;
+	position: absolute;
+	top: 0;
+	right: 0;
+	background-color: #9FB6CD;
+	border: 1px solid black;
 }
 
 div#tabswitch a {
-    padding: 0.3em;
-    line-height: 2em;
+	padding: 0.3em;
+	line-height: 2em;
 }
 
 div#tabswitch a.selected {
-    font-weight: bold;
+	font-weight: bold;
 }
 
 div#tabswitch a:link {
-    color: royalblue;
-    text-decoration: none;
+	color: royalblue;
+	text-decoration: none;
 }
 
 div#tabswitch a:hover {
-    color: gray;
+	color: gray;
 }
 
 div#tabswitch a:visited {
-    color: black;
-    text-decoration: none;
+	color: black;
+	text-decoration: none;
 }
