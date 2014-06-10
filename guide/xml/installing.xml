@@ -187,10 +187,10 @@
           <variablelist>
             <varlistentry>
             <term>
-                OS X 10.7 Lion:
+                OS X 10.9 Mavericks:
             </term>
             <listitem>
-                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
+                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
             </listitem>
             </varlistentry>
             <varlistentry>
@@ -203,10 +203,10 @@
             </varlistentry>
             <varlistentry>
             <term>
-                OS X 10.9 Mavericks:
+                OS X 10.7 Lion:
             </term>
             <listitem>
-                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
+                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
             </listitem>
             </varlistentry>
           </variablelist>
@@ -227,9 +227,10 @@
             <screen>Version: &macports-version;</screen>
 
             <para>In case of problems such as <quote>command not found</quote>,
-            consult <xref linkend="installing.shell" />. Otherwise,
-            please skip the remainder of this chapter and continue with
-            <xref linkend="using" /> in this guide.</para>
+            make sure that you opened a new terminal window, consult <xref
+                linkend="installing.shell"/>. Otherwise, please skip the
+            remainder of this chapter and continue with <xref linkend="using"/>
+            in this guide.</para>
         </listitem>
       </orderedlist>
     </section>
