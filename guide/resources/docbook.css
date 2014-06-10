@@ -6,10 +6,228 @@
    CSS design by Mark Duling
 */
 
+div.book {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+body.chunked div.navheader {
+	max-width: 1000px;
+	margin: 0 auto;
+}
+
+body.chunked div.navfooter {
+	margin-left: 183px;
+	padding: 0 0 40px 10px;
+}
+
+body.chunked div.navheader tr:first-child > th {
+	margin: 0;
+	background: url("https://www.macports.org/img/macports-logo-top.png") no-repeat;
+	background-size: 183px 73px;
+	padding-top: 18px;
+	padding-left: 183px;
+	padding-bottom: 35px;
+	font-size: 32px;
+	color: #0155cd;
+	text-align: left;
+}
+
+body.chunked div.titlepage h1 {
+	display: none;
+}
+
+div.book > div.titlepage {
+	padding-bottom: 40px;
+}
+
+body.chunked div.book > div.titlepage {
+	max-width: 600px;
+	margin: 0 auto;
+}
+
+body.singlepage div.book > div.titlepage h1.title {
+	margin: 0;
+	display: block;
+	height: 50px;
+	background: url("https://www.macports.org/img/macports-logo-top.png") no-repeat;
+	background-size: 183px 73px;
+	padding-left: 183px;
+	font-size: 32px;
+	padding-top: 18px;
+	color: #0155cd;
+}
+
+body.singlepage div.book > div.titlepage h1.title span.application,
+body.chunked div.navheader tr:first-child > th span.application {
+	display: none;
+}
+
+div.book > div.titlepage div.authorgroup {
+	text-align: center;
+}
+
+div.book > div.titlepage div.authorgroup div.author {
+	display: inline;
+	margin-left: 20px;
+}
+
+div.book > div.titlepage div.authorgroup div.author h3.author {
+	color: #000;
+	display: inline;
+}
+
+div.book > div.titlepage p.copyright {
+	text-align: center;
+	font-size: 90%;
+	color: #333;
+	margin: 0;
+}
+
+body.chunked div.navheader hr,
+body.chunked div.navfooter hr,
+div.book > div.titlepage hr {
+	display: none;
+}
+
+body.chunked div.toc:first-child,
+body.singlepage div.toc {
+    width: 183px;
+    background: url("https://www.macports.org/img/nav-header.png") top no-repeat #B1BACC;
+    line-height: 1.4em;
+	float: left;
+}
+
+body.chunked div.toc:first-child {
+	position: absolute;
+	top: 130px;
+	margin-bottom: 50px;
+}
+
+body.chunked div.toc:first-child dl.toc,
+body.singlepage div.toc dl.toc {
+	padding: 16px 0;
+	margin: 0;
+	background: url("https://www.macports.org/img/nav-footer.png") bottom no-repeat;
+}
+
+body.singlepage div.toc dl.toc {
+	max-height: 90vh;
+	overflow: auto;
+}
+
+body.chunked div.toc:first-child dl.toc > dt,
+body.singlepage div.toc dl.toc > dt {
+	display: block;
+    margin: 5px 0 0 0;
+    padding: 0 12px;
+    font: bold 100% "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+body.chunked div.toc:first-child dl.toc > dt a,
+body.singlepage div.toc dl.toc > dt a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+
+body.chunked div.toc:first-child dl.toc > dt a:hover,
+body.singlepage div.toc dl.toc > dt a:hover {
+	text-decoration: underline;
+}
+
+body.chunked div.toc:first-child dl.toc dd,
+body.singlepage div.toc dl.toc dd {
+	margin: 0;
+	padding: 0;
+	font-size: 95%;
+}
+
+body.chunked div.toc:first-child dl.toc dd dl dt,
+body.singlepage div.toc dl.toc dd dl dt {
+	display: block;
+	padding: 0 12px 0 16px;
+}
+
+body.chunked div.toc:first-child dl.toc dd dl dt a,
+body.singlepage div.toc dl.toc dd dl dt a {
+	display: block;
+    text-decoration: none;
+    color: #242933;
+}
+
+body.chunked div.toc:first-child dl.toc dd dl dt a:hover,
+body.singlepage div.toc dl.toc dd dl dt a:hover {
+	text-decoration: underline;
+}
+
+body.chunked div.book > div.chapter,
+body.chunked div.book > div.section,
+body.chunked div.book > div.refentry,
+body.singlepage div.chapter {
+	margin-left: 183px;
+	padding: 0 0 40px 10px;
+}
+
+div.chapter h1,
+div.chapter h2,
+div.chapter h3 {
+	color: #314c72;
+	margin: 0;
+}
+
+div.chapter h1 {
+	background: #8695b3;
+	padding: .3em .5em .2em;
+	font: bold 24px "Lucia Grande", Helvetica, Arial, sans-serif;
+}
+
+div.chapter h2 {
+	background: #8695b3;
+	padding: .4em .5em .2em;
+}
+
+div.chapter h1 a,
+div.chapter h2 a {
+	display: block;
+	color: #fff;
+	text-decoration: none;
+}
+
+div.chapter h3 a,
+div.chapter h4 a,
+div.chapter h5 a {
+	color: #314c72;
+}
+
+div.chapter p {
+	margin: 12px 0;
+}
+
+div.note {
+	margin: 0 .5in;
+	padding: 0 15px 0;
+	border-color: #8b1a1a;
+	border-width: 0 3px;
+	border-style: solid;
+}
+
+div.note h3.title {
+	color: #8B1A1A;
+}
+
+div.screenshot div.mediaobject {
+	text-align: center;
+	margin: 12px 0;
+}
+
 div.mediaobject {
 	text-align: center;
-	margin: auto;
-	border: thin black inset;
+	margin: 0;
+}
+
+div.glossdiv {
+	margin-top: 12px;
 }
 
 .emphasis {
@@ -47,6 +265,7 @@ span.guimenu {
 	background-color: #E6E6E6;
 	border: thin black inset;
 	overflow: auto;
+	padding: 2px 5px;
 }
 
 .literallayout {
@@ -58,204 +277,37 @@ span.guimenu {
 	font-size: medium;
 	border: thin black inset;
 	background-color: white;
-}
-
-div.screenshot div.mediaobject {
-	text-align: center;
-	margin: auto;
+	overflow: auto;
+	padding: 2px 5px;
 }
 
 body {
-	font-family: Verdana, Arial, sans-serif;
-	font-size: 14px;
-	line-height: 1.4;
-	color: #696969;
+    margin: 0;
+    padding: 30px 40px;
+    background: url("https://www.macports.org/img/top-backdrop.png") repeat-x #EDEDED;
+    font: 12px Helvetica, Arial, sans-serif;
+    line-height: 1.2em;
 }
-
-div.note h3.title {
-	color: #C00;
-}
-
-.author {
-	font-size: 14px;
-	color: #6298E5;
-	font-weight: bold;
-}
-
-.copyright {
-	font-size: 12px;
-	font-family: times;
-}
-
-div.book div.titlepage h1 {
-	font-family: Verdana, Arial, Utopia, sans-serif;
-	font-size: 24pt;
-	color: black;
-	font-weight: bold;
-	text-align: left;
-}
-
-div.book div.titlepage h2 {
-	font-family: Verdana, Arial, Utopia, sans-serif;
-	font-size: 18pt;
-	color: black;
-	font-weight: bold;
-	text-align: left;
-}
-
-div.section div.titlepage h2 {
-	font-family: Verdana, Arial, Utopia, sans-serif;
-	font-size: 16pt;
-	color: black;
-	text-align: left;
-}
-
-div.section div.titlepage h3 {
-	font-family: Verdana, Arial, Utopia, sans-serif;
-	font-size: 14pt;
-	color: black;
-	font-weight: bold;
-	text-align: left;
-}
-
-div.section div.titlepage h4 {
-	font-family: Verdana, Arial, Utopia, sans-serif;
-	font-size: 12pt;
-	color: black;
-	font-weight: bold;
-	text-align: left;
-}
-
-div.mediaobject {
-	text-align: center;
-	margin: auto;
-}
-
-p {
-	margin-bottom: 14pt;
-}
-
-div.toc {
-	border-width: 1px;
-	border-color: black;
-	border-style: solid;
-/*	background-color: #C2CAD8; Color of macosforge.org sidebar */
-	background-color: #9FB6CD;
-	background-repeat: no-repeat;
-	background-position: center top;
-
-	font-size: 10px;
-	font-family: Verdana, Arial, sans-serif;
-	color: black;
-	left: 8px;
-	width: 234px;
-	padding-left: 2px;
-	padding-top: 0px;
-	height: 96%;
-	float: left;
-	overflow: auto;
-	position: fixed;
-	top: 12px;
-
-/* IE hack */
-
-	position: expression("absolute");
-	top: expression(document.body.scrollTop+this.offsetHeight-this.offsetHeight);
-}
-
-/* Definitions for non-Safari/non-IE toc sections */
-div.toc dt {
-	font-size: 12px;
-	line-height: 22px;
-}
-
-/* Definitions for non-Safari/non-IE toc subsections */
-div.toc dd dl dt {
-	font-size: 11px;
-	line-height: 14px;
-}
-
-/* Definitions for toc sections using Safari Stokely hack */
-html*.toc dt {
-/* Seen by Safari */
-	font-size: 14px;
-	line-height: 16px;
-/* Seen by IE */
-	_font-size: 14px;
-	_line-height: 22px;
-}
-
-/* Definitions for toc subsections using Safari Stokely hack */
-html*.toc dd dl dt {
-/* Seen by Safari */
-	font-size: 11px;
-	line-height: 13px;
-	padding-bottom: 0px;
-/* Seen by IE */
-	_font-size: 11px;
-	_line-height: 14px;
-	_padding-bottom: 0px;
-}
-
-/* TOC All Links */
-/* div.toc a:link { color: royalblue; } */
-/* div.toc a:hover { color: #D00; } */
-/* div.toc a:visited { color: black; text-decoration: none; } */
-
-
-/* TOC Section Links */
-div.toc dt a:link {
-	color: #F4F6F8;
-	text-decoration: none;
-}
-div.toc dt a:hover {
-	color: gray;
-}
-div.toc dt a:visited {
-	color: #F4F6F8;
-	text-decoration: none;
-}
-
-
-/* TOC Subsubsection Links */
-div.toc dd dl dt a:link {
-	color: black;
-	text-decoration: none;
-}
-div.toc dd dl dt a:hover {
-	color: gray;
-}
-div.toc dd dl dt a:visited {
-	color: black;
-	text-decoration: none;
-}
-
-div.book {
-	margin-left: 247px;
-}
-
-/* 
-div.toc:before {
-	font-family: Palatino, Bookman, serif;
-	font-size: 16px;
-	font-weight: bold;
-	text-align: center;
-	display: block;
-	color: black;
-	content: "MacPorts Guide Contents";
-} */
 
 /* Tabswitch for single page/chunked */
 div#tabswitch {
-	position: absolute;
-	top: 0;
+	position: relative;
 	right: 0;
-	background-color: #9FB6CD;
-	border: 1px solid black;
+	background-color: #8695B3;
+	border: 1px solid #000;
+	float: right;
+}
+
+body.singlepage div#tabswitch {
+	top: 75px;
+}
+
+body.chunked div#tabswitch {
+	top: -75px;
 }
 
 div#tabswitch a {
-	padding: 0.3em;
+	padding: .3em;
 	line-height: 2em;
 }
 
@@ -264,15 +316,15 @@ div#tabswitch a.selected {
 }
 
 div#tabswitch a:link {
-	color: royalblue;
+	color: #fff;
 	text-decoration: none;
 }
 
 div#tabswitch a:hover {
-	color: gray;
+	color: #242933;
 }
 
 div#tabswitch a:visited {
-	color: black;
+	color: #fff;
 	text-decoration: none;
 }

@@ -6,17 +6,17 @@
 set file [open "[lindex $argv 0]/index.html"]
 regexp {<div class="toc">.+?</div>} [read $file] replacement
 close $file
-set replacement "<body>$replacement<div class=\"book\">"
+set replacement "<body\\1><div class=\"book\">$replacement"
 
 # Add the table of contents to all other html files.
 foreach path [glob -directory [lindex $argv 0] {*.html}] {
-    if {$path == "index.html"} {
+    if {[file tail $path] == "index.html"} {
         continue
     }
 
     set file [open $path r+]
     set data [read $file]
-    regsub {<body>} $data $replacement data
+    regsub {<body([^>]+)>} $data $replacement data
     regsub {</body>} $data {</div></body>} data
     seek $file 0
     puts $file $data

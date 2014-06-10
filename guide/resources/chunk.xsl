@@ -10,6 +10,9 @@
     <xsl:param name="chunk.first.sections">0</xsl:param>
     <xsl:param name="chunk.section.depth">1</xsl:param>
     <xsl:param name="use.id.as.filename">1</xsl:param>
+    <xsl:template name="body.attributes">
+        <xsl:attribute name="class">chunked</xsl:attribute>
+    </xsl:template>
 
     <!-- Set param for tabs.xml -->
     <xsl:param name="chunkmode">1</xsl:param>

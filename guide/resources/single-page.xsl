@@ -3,6 +3,10 @@
     <xsl:include href="base.xsl"/>
     <!-- Include tab switching for chunk and single-page -->
     <xsl:include href="tabs.xsl"/>
+    <xsl:template name="body.attributes">
+        <xsl:attribute name="class">singlepage</xsl:attribute>
+    </xsl:template>
+    <xsl:include href="sticky-sidebar.xsl"/>
 
     <!-- See http://docbook.sourceforge.net/release/xsl/current/doc/html/ for parameters -->
 

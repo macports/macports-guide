@@ -64,6 +64,7 @@ guide:
 	$(MKDIR) -p $(GUIDE_RESULT)
 	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_RESULT)/$(STYLESHEET)
 	$(CP) $(GUIDE)/resources/images/* $(GUIDE_RESULT)/
+	$(CP) $(GUIDE)/resources/*.js $(GUIDE_RESULT)/
 ifeq ($(UNAME), Linux)
 	$(LN) -sfn $(DOCBOOK) $(GUIDE)/resources/xsl
 else
