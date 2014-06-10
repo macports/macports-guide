@@ -7,8 +7,8 @@
   <para>MacPorts is an easy to use system for compiling, installing, and
   managing open source software. MacPorts may be conceptually divided into two
   main parts: the infrastructure, known as MacPorts base, and the set of
-  available ports. A MacPorts port is a set of specifications contained in a
-  <link linkend="development.introduction">Portfile</link> that defines an
+  available ports. A MacPorts port is a set of specifications contained in
+  a <link linkend="development.introduction">Portfile</link> that defines an
   application, its characteristics, and any files or special instructions
   required to install it. This allows you to use a single command to tell
   MacPorts to automatically download, compile, and install applications and
@@ -39,9 +39,12 @@
     </listitem>
   </itemizedlist>
 
-  <para>MacPorts is developed on Mac OS X, though it is designed to be
-  portable so it can work on other Unix-like systems, especially those
-  descended from the Berkeley Software Distribution (BSD).</para>
+  <para>MacPorts is developed on OS X, though it is designed to be portable so
+  it can work on other Unix-like systems, especially those descended from the
+  Berkeley Software Distribution (BSD). In practice, installing ports only works
+  on OS X. MacPorts base can be compiled on Linux (and possibly other
+  POSIX-compatible systems) where it is mainly used to set up mirrors and
+  generate portindices.</para>
 
   <para>The following notational conventions are used in the MacPorts Guide to
   distinguish between terminal input/output, file text, and other special text
@@ -61,15 +64,22 @@
     <listitem>
       <para>Other special text types.</para>
 
-      <para>A hyperlink: <ulink
-      url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
-      combustion</ulink>.</para>
-
-      <para>A file: <filename>/var/log/system.log</filename>.</para>
-
-      <para>A command: <command>ifconfig</command>.</para>
-
-      <para>An option: port <option>install</option></para>
+      <itemizedlist>
+        <listitem>
+          <para>A hyperlink: <ulink
+              url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
+              combustion</ulink>.</para>
+        </listitem>
+        <listitem>
+          <para>A file: <filename>/var/log/system.log</filename>.</para>
+        </listitem>
+        <listitem>
+          <para>A command: <command>ifconfig</command>.</para>
+        </listitem>
+        <listitem>
+          <para>An option: port <option>install</option></para>
+        </listitem>
+      </itemizedlist>
     </listitem>
   </itemizedlist>
 </chapter>
