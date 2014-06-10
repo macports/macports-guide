@@ -593,9 +593,8 @@ _=/usr/bin/env</screen>
       <para>To keep a command-line text editor as default while using a graphic editor with
       portfiles, add this: </para>
 
-      <programlisting>
-      export EDITOR=/usr/bin/vi
-      export MP_EDITOR=/usr/bin/edit</programlisting>
+      <programlisting>export EDITOR=/usr/bin/vi
+export MP_EDITOR=/usr/bin/edit</programlisting>
     </section>
   </section>
 </chapter>
