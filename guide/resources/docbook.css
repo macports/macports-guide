@@ -104,60 +104,60 @@ body.chunked div.toc:first-child {
 	margin-bottom: 50px;
 }
 
-body.chunked div.toc:first-child dl.toc,
-body.singlepage div.toc dl.toc {
+body.chunked div.toc:first-child > dl,
+body.singlepage div.toc > dl{
 	padding: 16px 0;
 	margin: 0;
 	background: url("https://www.macports.org/img/nav-footer.png") bottom no-repeat;
 }
 
-body.singlepage div.toc dl.toc {
+body.singlepage div.toc > dl {
 	max-height: 90vh;
 	overflow: auto;
 }
 
-body.chunked div.toc:first-child dl.toc > dt,
-body.singlepage div.toc dl.toc > dt {
+body.chunked div.toc:first-child > dl > dt,
+body.singlepage div.toc > dl > dt {
 	display: block;
     margin: 5px 0 0 0;
     padding: 0 12px;
     font: bold 100% "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-body.chunked div.toc:first-child dl.toc > dt a,
-body.singlepage div.toc dl.toc > dt a {
+body.chunked div.toc:first-child > dl > dt a,
+body.singlepage div.toc > dl > dt a {
 	display: block;
 	color: #fff;
 	text-decoration: none;
 }
 
-body.chunked div.toc:first-child dl.toc > dt a:hover,
-body.singlepage div.toc dl.toc > dt a:hover {
+body.chunked div.toc:first-child > dl > dt a:hover,
+body.singlepage div.toc > dl > dt a:hover {
 	text-decoration: underline;
 }
 
-body.chunked div.toc:first-child dl.toc dd,
-body.singlepage div.toc dl.toc dd {
+body.chunked div.toc:first-child > dl dd,
+body.singlepage div.toc > dl dd {
 	margin: 0;
 	padding: 0;
 	font-size: 95%;
 }
 
-body.chunked div.toc:first-child dl.toc dd dl dt,
-body.singlepage div.toc dl.toc dd dl dt {
+body.chunked div.toc:first-child > dl dd dl dt,
+body.singlepage div.toc > dl dd dl dt {
 	display: block;
 	padding: 0 12px 0 16px;
 }
 
-body.chunked div.toc:first-child dl.toc dd dl dt a,
-body.singlepage div.toc dl.toc dd dl dt a {
+body.chunked div.toc:first-child > dl dd dl dt a,
+body.singlepage div.toc > dl dd dl dt a {
 	display: block;
     text-decoration: none;
     color: #242933;
 }
 
-body.chunked div.toc:first-child dl.toc dd dl dt a:hover,
-body.singlepage div.toc dl.toc dd dl dt a:hover {
+body.chunked div.toc:first-child > dl dd dl dt a:hover,
+body.singlepage div.toc > dl dd dl dt a:hover {
 	text-decoration: underline;
 }
 
