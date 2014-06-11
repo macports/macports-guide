@@ -7,12 +7,12 @@
   <para>A StartupItem is a MacPorts facility to run <quote>daemons,</quote> a Unix term for
   programs that run continuously in the background, rather than under the
   direct control of a user; for example, mail servers, network listeners, etc.
-  Ports that use StartupItem keywords create Mac OS X scripts for <ulink
+  Ports that use StartupItem keywords create OS X scripts for <ulink
   url="http://developer.apple.com/macosx/launchd.html">launchd</ulink>, which
   is the Apple facility introduced with Mac OS X 10.4 to replace xinetd for
   starting and managing daemons. To support <command>launchd</command>, a
   program named <command>daemondo</command> is provided by MacPorts base that
-  serves as an adapter between Mac OS X's <command>launchd</command> and
+  serves as an adapter between OS X's <command>launchd</command> and
   daemons (<quote>executable</quote> StartupItems) or traditional Unix startup
   scripts that start daemons (<quote>script</quote> StartupItems).</para>
 

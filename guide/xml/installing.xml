@@ -7,7 +7,7 @@
   <title>Installing MacPorts</title>
 
   <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
-  <link linkend="installing.xcode">installing Xcode</link> is Mac OS X-specific. If you wish to install MacPorts on
+  <link linkend="installing.xcode">installing Xcode</link> is OS X-specific. If you wish to install MacPorts on
   another platform, first make sure you have a working C compiler installed, skip ahead to <link
     linkend="installing.macports.source">installing MacPorts from source</link>, and continue to the end of the
   chapter.</para>
@@ -17,16 +17,16 @@
 
     <para>
       <ulink url="https://developer.apple.com/xcode/">Xcode</ulink> is a package provided by Apple containing compilers,
-      libraries and additional tools required to develop applications for Mac OS X.
+      libraries and additional tools required to develop applications for OS X.
     </para>
 
     <note>
-      <para>Always make sure to install the latest available version of Xcode for your Mac OS X release; using outdated
-        versions of Xcode may cause port install failures. Also note that Xcode is not updated via Mac OS X's Software
+      <para>Always make sure to install the latest available version of Xcode for your OS X release; using outdated
+        versions of Xcode may cause port install failures. Also note that Xcode is not updated via OS X's Software
         Update utility on OS versions prior to 10.6, and is updated via the Mac App Store starting with 10.7.</para>
     </note>
 
-    <para>Follow the instructions for your version of Mac OS X:</para>
+    <para>Follow the instructions for your version of OS X:</para>
 
     <section id="installing.xcode.mavericks">
       <title>Install Xcode on OS X 10.9 or later</title>
@@ -150,14 +150,14 @@
   <section id="installing.macports">
     <title>Install MacPorts</title>
 
-    <para>If you are using Mac OS X, you should install MacPorts using the Mac
-    OS X package installer unless you do not wish to install it to
-    <filename>/opt/local/</filename>, the default MacPorts location, or if you
-    wish to install a pre-release version of MacPorts base. However, if you
-    wish to <link linkend="installing.macports.source.multiple">install
-    multiple copies of MacPorts</link> or install MacPorts on another OS
-    platform, you must <link linkend="installing.macports.source">install
-    MacPorts from the source code</link>.</para>
+	<para>If you are using OS X, you should install MacPorts using the OS
+	X package installer unless you do not wish to install it to
+	<filename>/opt/local/</filename>, the default MacPorts location, or if you
+	wish to install a pre-release version of MacPorts base. However, if you
+	wish to <link linkend="installing.macports.source.multiple">install
+		multiple copies of MacPorts</link> or install MacPorts on another OS
+	platform, you must <link linkend="installing.macports.source">install
+		MacPorts from the source code</link>.</para>
 
     <note>
       <para>Though a distinction is made between pre-release and release
@@ -169,9 +169,9 @@
     </note>
 
     <section id="installing.macports.binary">
-      <title>Mac OS X Package Install</title>
+      <title>OS X Package Install</title>
 
-      <para>The Mac OS X package installer automatically installs MacPorts,
+      <para>The OS X package installer automatically installs MacPorts,
       <link linkend="installing.shell">sets the shell environment</link>, and
       runs a <link linkend="using.port.selfupdate">selfupdate</link> operation
       to update the ports tree and MacPorts base with the latest
@@ -444,7 +444,7 @@
     <title>MacPorts and the Shell</title>
 
     <para>MacPorts requires that some environment variables be set in the
-    shell. When MacPorts is installed using the Mac OS X package installer, a
+    shell. When MacPorts is installed using the OS X package installer, a
     <quote>postflight</quote> script is run after installation that
     automatically adds or modifies a shell configuration file in your home directory,
     ensuring that it defines variables

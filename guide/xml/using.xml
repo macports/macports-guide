@@ -97,14 +97,14 @@ Installing new MacPorts release in /opt/local as root:admin; permissions 755
       <para>The <option>sync</option> action performs a subset of
       <option>selfupdate</option> actions. It synchronizes the ports tree, as
       does <option>selfupdate</option>, but it does not check for upgrades to
-      MacPorts base. On Mac OS X, unless there is a special reason not to do
+      MacPorts base. On OS X, unless there is a special reason not to do
       so, you should run <link
       linkend="using.port.selfupdate">selfupdate</link>.</para>
 
       <note>
-        <para>For platforms other than Mac OS X, <option>sync</option> is the
+        <para>For platforms other than OS X, <option>sync</option> is the
         only way to get port updates because <option>selfupdate</option> is
-        supported only on Mac OS X.</para>
+        supported only on OS X.</para>
       </note>
     </section>
 
@@ -766,15 +766,15 @@ DEBUG: Executing archive_finish
 
       <para>Binary packages are standalone binary installers that are
       precompiled; they do not require MacPorts on the target system. Binary
-      files created with MacPorts may be either .pkg (Mac OS X Installer
+      files created with MacPorts may be either .pkg (OS X Installer
       Packages), or .rpm (RPM Package Manager) format. MacPorts may also
-      process a .pkg package into a Mac OS X .dmg disk image file. You may
+      process a .pkg package into a OS X .dmg disk image file. You may
       create binary packages with the <command>port</command> command as shown
       in these examples.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port pkg pstree</userinput></programlisting>
 
-      <para>You may create a Mac OS X .dmg disk image file as shown.</para>
+      <para>You may create a OS X .dmg disk image file as shown.</para>
 
       <programlisting><prompt>%%</prompt> <userinput>sudo port dmg pstree</userinput></programlisting>
 

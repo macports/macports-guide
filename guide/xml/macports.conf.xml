@@ -108,8 +108,8 @@
         <term>applications_dir</term>
 
         <listitem>
-          <para>Directory to install MacPorts that install Mac OS X .app
-          bundles.</para>
+		  <para>Directory to install MacPorts that install OS X .app
+			  bundles.</para>
 
           <para>Default: <filename>/Applications/MacPorts</filename></para>
         </listitem>

@@ -100,7 +100,7 @@
         <term>universal_variant</term>
 
         <listitem>
-          <para>When using MacPorts on Mac OS X, a universal variant is
+          <para>When using MacPorts on OS X, a universal variant is
           defined by default to configure ports with universal flags. The
           variant can be overridden if the default code does not work (see the
           <link linkend="reference.phases.configure.universal">Configure
@@ -169,7 +169,7 @@
           <para><literal>platform darwin
           <replaceable>version</replaceable></literal> can be used to handle
           different tasks depending on the version of Darwin, the core
-          operating system underlying Mac OS X.
+          operating system underlying OS X.
           <replaceable>version</replaceable> is the major version of Darwin,
           and can be <literal>8</literal> for Mac OS X 10.4 Tiger,
           <literal>9</literal> for 10.5 Leopard, <literal>10</literal> for

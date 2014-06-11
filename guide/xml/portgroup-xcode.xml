@@ -11,7 +11,7 @@
 
   <para>Using <code>PortGroup xcode</code> is a way to make your port able to
   tolerate Xcode version updates because the PortGroup is tested against all
-  supported Mac OS X and Xcode versions.</para>
+  supported OS X and Xcode versions.</para>
 
   <section id="reference.portgroup.xcode.keywords">
     <title>xcode PortGroup Specific Keywords</title>
