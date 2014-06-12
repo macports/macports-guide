@@ -16,5 +16,6 @@
 				</a>
 			</div>
 		</div>
+		<div id="vh-test"></div> <!-- needed for the sticky sidebar -->
 	</xsl:template>
 </xsl:stylesheet>

@@ -2,10 +2,6 @@
  * MacPorts Guide Stylesheet
  */
 
-/*
-   CSS design by Mark Duling
-*/
-
 div.book {
 	max-width: 1000px;
 	margin: 0 auto;
@@ -111,7 +107,7 @@ body.singlepage div.toc > dl{
 	background: url("https://www.macports.org/img/nav-footer.png") bottom no-repeat;
 }
 
-body.singlepage div.toc > dl {
+body.singlepage.vh-supported div.toc > dl {
 	max-height: 90vh;
 	overflow: auto;
 }
@@ -327,4 +323,11 @@ div#tabswitch a:hover {
 div#tabswitch a:visited {
 	color: #fff;
 	text-decoration: none;
+}
+
+div#vh-test {
+	width: 0;
+	float: left;
+	display: none;
+	height: 20px; /* some arbitrary value that's probably not == 100vh */
 }
