@@ -378,6 +378,12 @@
 <prompt>%%</prompt> <userinput>make</userinput>
 <prompt>%%</prompt> <userinput>sudo make install</userinput>
 </programlisting>
+
+      <para>After installing the second instance you might need to add
+      <programlisting>startupitem_install no</programlisting> to
+      <filename>$MP_PREFIX/etc/macports/sources.conf</filename> to avoid
+      conflicts in <filename>/Library/LaunchAgents</filename>.
+      </para>
     </section>
   </section>
 
