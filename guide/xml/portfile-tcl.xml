@@ -198,7 +198,7 @@
 
         <para>Examples:</para>
 
-        <programlisting>xinstall -m 640 ${worksrcpath}/doc README \
+        <programlisting>xinstall -m 640 ${worksrcpath}/README \
    ${destroot}${prefix}/share/doc/${name}</programlisting>
 
         <programlisting>xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
