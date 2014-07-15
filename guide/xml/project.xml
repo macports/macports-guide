@@ -282,10 +282,13 @@
           separated with a comma and a space
           (i.e. <literal>you@example.org, maintainer@macports.org</literal>).</para>
           
-          <para>Most users will not be able to assign tickets. If this applies
-          to you, then when reporting port-related tickets, make sure you add
-          the port's maintainer to cc. Otherwise they may not notice the
-          ticket.</para>
+          <para>When reporting port-related tickets, make sure you add the
+          port maintainers email address to the <guilabel>Cc:</guilabel> field
+          so they are notified of the ticket (unless you have commit access,
+          then see <guilabel>Assign To:</guilabel> below). You can obtain the
+          email address of the port maintainer from the Portfile, or by running
+          <literal>port info --maintainers <replaceable>[port]</replaceable>
+          </literal></para>
         </listitem>
         
         <listitem>
