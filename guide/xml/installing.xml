@@ -210,7 +210,7 @@
                         try using the <command>port</command> command in a <emphasis>new</emphasis> terminal
                         window.</para>
 
-                    <programlisting><prompt>$</prompt><userinput>port version</userinput></programlisting>
+                    <programlisting><prompt>$</prompt> <userinput>port version</userinput></programlisting>
                     <screen>Version: &macports-version;</screen>
 
                     <para>In case of problems such as <quote>command not found</quote>, make sure that you opened a new
