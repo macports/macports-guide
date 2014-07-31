@@ -368,14 +368,24 @@
 
       <para>Enhancements to existing ports may comprise new functionality for
       a given port, bug fixes or even simple version updates. They should
-      always be contributed as <filename>Portfile</filename> patches. See
-      Ticket Submission Guidelines above for a description of all
-      fields.</para>
+      always be contributed as patches against the current
+      <filename>Portfile</filename>. See the <link
+        linkend="project.tickets">Ticket Submission Guidelines</link> for
+      a description of all fields.</para>
 
       <orderedlist>
         <listitem>
-          <para>Create a <filename>Portfile</filename> patch with your changes
-          as described in Portfile Development.</para>
+          <para>Create a <filename>Portfile</filename> patch with your changes.
+            See <link linkend="development">Portfile Development</link> for
+            more information on how to edit Portfiles.</para>
+        </listitem>
+
+        <listitem>
+          <para>Please run
+            <programlisting><prompt>%%</prompt> <userinput>port lint --nitpick $portname</userinput></programlisting>
+            where <userinput>$portname</userinput> is the name of the port you
+            modified. Please fix any warnings and errors before submitting your
+            changes.</para>
         </listitem>
 
         <listitem>
@@ -393,8 +403,26 @@
         </listitem>
 
         <listitem>
+          <para>Put the maintainer's email address into the
+            <guilabel>Cc</guilabel> field. You can use
+            <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
+            where <userinput>$portname</userinput> is the name of the port you
+            want to modify. Note that
+            <email>openmaintainer@macports.org</email> and
+            <email>nomaintainer@macports.org</email> are not real people and should thus not be Cc'd.</para>
+        </listitem>
+
+        <listitem>
           <para>Attach your Portfile patch file and any new or changed patch
-          files (don't patch patches) to the ticket.</para>
+            files to the ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>If your ticket doesn't receive any attention within a few days
+            (for example, because the port you are trying to modify does not
+            have a maintainer), you may email
+            <email>macports-dev@lists.macosforge.org</email> and request
+            a review and/or commit.</para>
         </listitem>
       </orderedlist>
     </section>
