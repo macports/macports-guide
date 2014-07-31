@@ -448,6 +448,237 @@
         </listitem>
       </orderedlist>
     </section>
+
+    <section id="project.contributing.maintaining">
+      <title>Becoming a Port Maintainer</title>
+
+      <para>MacPorts is always looking for people that want to take care of
+        a certain package. If you notice an outdated port, a bug in a port or
+        simply a port without maintainer that you are interested in, feel free
+        to volunteer as maintainer. To become a maintainer you need:</para>
+
+      <itemizedlist>
+        <listitem>
+          <para>An email address.</para>
+        </listitem>
+        <listitem>
+          <para>A copy of the <filename>Portfile</filename>. Do not worry if
+            you don't know where to find one yet. There's more documentation
+            on that below.</para>
+        </listitem>
+        <listitem>
+          <para>An account in the <ulink
+              url="https://trac.macports.org/">MacPorts Trac</ulink>,
+            preferrably with the email address you want to use for your
+            port.</para>
+        </listitem>
+        <listitem>
+          <para>Interest in the software you want to maintain and some time.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>You do <emphasis>not</emphasis> need:</para>
+      <itemizedlist>
+        <listitem>
+          <para>Commit access to the MacPorts repository. Instead, you create
+            patches and open tickets in Trac. You can, however, <link
+              linkend="project.membership">apply for commit access</link>
+            once you have some experience in maintaining ports. In fact, we
+            would like to encourage you to apply after a few months.</para>
+        </listitem>
+        <listitem>
+          <para>Expert knowldge of the software you want to maintain or
+            experience in <filename>Portfile</filename> programming. You can
+            pick those up along the way. Your knowledge about the software
+            you want to maintain is probably more than what most other
+            MacPorts developers have, given the number of ports MacPorts has.
+            Consult <xref linkend="development" /> chapter and <xref
+              linkend="reference" /> on how to write
+            a <filename>Portfile</filename>. If your questions are not
+            answered there, please ask on the
+            <email>macports-dev@lists.macosforge.org</email> mailing
+            list.</para>
+        </listitem>
+      </itemizedlist>
+
+      <para>
+        To become the maintainer of a port, first check whether the port
+        already has a maintainer. Run
+
+        <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
+
+        where <userinput>$portname</userinput> is the name of the port you want
+        to maintain. If the output is
+
+        <screen>maintainer: nomaintainer@macports.org</screen>
+
+        the port is unmaintained and you are more than welcome to take it over.
+        If the output lists a different email address, you can still
+        co-maintain the port, but you should contact the existing maintainer(s)
+        first.
+      </para>
+
+      <para>
+        Once you have verified that a port is unmaintained or the existing
+        maintainer has invited you to co-maintain the port of your choice,
+        follow these steps to become a maintainer:
+      </para>
+
+      <orderedlist>
+        <listitem>
+          <para>Locate the port's directory and make a copy. MacPorts can help
+            you locate the directory that contains the
+            <filename>Portfile</filename> by running <userinput>port dir
+              $portname</userinput>. Copy this directory to a separate location
+            (so you can easily generate a patch later) that is readable by the
+            macports user. In general, your home directory does not fulfill
+            that requirement, but <filename>/var/tmp</filename> does.
+
+            <programlisting><prompt>%%</prompt> <userinput>cp -r $(port dir $portname) /var/tmp</userinput></programlisting>
+
+            Check <filename>/var/tmp</filename> for the new directory. In most
+            cases, its name should be equal to the name of the port you want to
+            maintain. In those few cases where it is not (i.e., the so-called
+            <option>subports</option> feature is used), check the output of
+            <userinput>port dir $portname</userinput> for the correct name.
+          </para>
+        </listitem>
+
+        <listitem>
+          <para>Change to the new directory and run <userinput>port
+              info</userinput> to make sure everything went right. Note that
+            running any port command without a port name tries to use the
+            <filename>Portfile</filename> in the current directory. This is
+            very helpful when testing modifications or new ports, so keep this
+            in mind.
+          </para>
+
+          <programlisting><prompt>%%</prompt> <userinput>cd /var/tmp/$portname</userinput>
+<!--      --><prompt>%%</prompt> <userinput>port info</userinput><!--
+          --></programlisting>
+
+          <para>If you don't see info output for the port, but an error message
+            instead, it will usually be in the following form:</para>
+
+          <screen>Can't map the URL 'file://.' to a port description file ("couldn't read file "Portfile": permission denied").
+Please verify that the directory and portfile syntax are correct.
+To use the current port, you must be in a port's directory.</screen>
+
+          <para>Pay attention to the part in the brackets in the first line. It
+            will either contain a permission problem (in which case you need to
+            adjust the permissions of your <filename>Portfile</filename> and
+            the folders leading up to it), or a Tcl error message, in case of
+            syntax errors in the <filename>Portfile</filename>. Also check that
+            the copy of the working directory is in fact the current working
+            directory in your shell.</para>
+        </listitem>
+
+        <listitem>
+          <para>Open the <filename>Portfile</filename> in your favorite editor
+            and look for the line that starts with <option>maintainer</option>.
+            Delete <option>nomaintainer</option> from the line if it exists and
+            add your own email address in the form
+            <userinput>domain.tld:localpart</userinput>. The address is
+            obfuscated to prevent email harvesters from automatically grabbing
+            your address. If you want, you can start fixing bugs in the
+            <filename>Portfile</filename> as well.</para>
+
+          <para>At this point, please read <xref
+              linkend="project.update-policies.nonmaintainer" /> and
+            familiarize yourself with the meaning of
+            <option>openmaintainer</option>. Consider adding
+            <option>openmaintainer</option> to speed up and simplify small
+            updates of your port. If you decided to allow minor updates without
+            consultation, add <userinput>openmaintainer</userinput>, separated
+            with a space, to the <option>maintainer</option> line of the
+            <filename>Portfile</filename>.</para>
+
+          <para>Once you are done, save the file verify the
+            <filename>Portfile</filename> structure using MacPorts' builtin
+            lint check:</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>port lint --nitpick</userinput></programlisting>
+
+          <para>You will likely see at least one error:</para>
+
+          <screen>Error: Portfile parent directory tmp does not match primary category $XYZ</screen>
+
+          <para>You can safely ignore <emphasis>this</emphasis> message. It is
+            printed because the copy of the port's directory is not in
+            a directory named after the port's primary category, but in
+            <filename>/var/tmp</filename> instead. Please try to address all
+            other warnings and error messages, though. If you need help, feel
+            free to continue and add a note to the ticket you will
+            create asking for instructions.</para>
+
+          <para>Finally, run <userinput>port info</userinput> again. The
+            maintainers line in the output should now contain your email
+            address.</para>
+
+          <note>
+            <para>If you made changes other than the maintainer line, you might
+              want to test build and installation as well. To do that, run
+              <userinput>sudo port destroot</userinput> in the port's
+              directory. If you see</para>
+
+            <screen>Error: Unable to execute port: Could not open file: /private/var/tmp/somewhere/Portfile</screen>
+
+            <para>check the permissions of the <filename>Portfile</filename> and
+              all folders above it. They must be readable by the
+              <option>macports</option> user. The easiest way to ensure this is to run</para>
+
+            <programlisting><prompt>%%</prompt> <userinput>chmod -R go+rX /var/tmp/$portname</userinput></programlisting>
+
+            <para>If the port fails to build, see the
+              <filename>main.log</filename> referenced in the error message for
+              details. If the build completes successfully, run <userinput>sudo
+                port clean</userinput> to clean up all leftovers.</para>
+          </note>
+        </listitem>
+
+        <listitem>
+          <para>Create a patch from the changes you made to the
+            <filename>Portfile</filename> and possible related files. To do that, run</para>
+
+          <programlisting><prompt>%%</prompt> <userinput>diff -uR $(port dir $portname) . > change-$portname-maintainer.diff</userinput></programlisting>
+
+          <para>in the directory where you edited the
+            <filename>Portfile</filename>. You can inspect the generated
+            unified diff in
+            <filename>change-$portname-maintainer.diff</filename> if you
+            want.</para>
+        </listitem>
+
+        <listitem>
+          <para>Now, <ulink url="https://trac.macports.org/newticket">file
+              a new ticket in Trac</ulink>. Set <guilabel>type</guilabel> to
+            <guilabel>request</guilabel> if you only changed the maintainer and
+            an appropriate other type if you also fixed a bug or enhanced or
+            updated the port. Leave the <guilabel>milestone</guilabel> field
+            empty. If you added yourself as co-maintainer, add the other
+            maintainers in the <guilabel>Cc</guilabel> field. Finally, fill in
+            the <guilabel>port</guilabel> field, set
+            <guilabel>keywords</guilabel> to <userinput>haspatch</userinput>
+            (because you are attaching a patch), check the box that you want to
+            attach files to the ticket and submit. After submission, attach the
+            patch you created in the previous step.</para>
+        </listitem>
+
+        <listitem>
+          <para>If your ticket doesn't receive any attention within a few days
+            (for example, because the port you are trying to modify does not
+            have a maintainer), you may email
+            <email>macports-dev@lists.macosforge.org</email> and request
+            a review and/or commit.</para>
+        </listitem>
+      </orderedlist>
+
+      <para>Once you are the maintainer for a port, all new tickets for this
+        port will be assigned to you. You are expected to take a look at these
+        tickets, give advice and try to debug problems. If you are stuck, do
+        not hesitate to ask on the
+        <email>macports-dev@lists.macosforge.org</email> list.</para>
+    </section>
   </section>
 
   <section id="project.update-policies">
