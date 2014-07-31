@@ -340,10 +340,18 @@
     <section id="project.contributing.new">
       <title>New Ports</title>
 
-      <para>Ports are contributed by following these steps. See Ticket
-      Submission Guidelines above for a description of all fields.</para>
+      <para>Ports are contributed by following these steps. See the <link
+        linkend="project.tickets">Ticket Submission Guidelines</link> for
+      a description of all fields.</para>
 
       <orderedlist>
+        <listitem>
+          <para>Please run
+            <programlisting><prompt>%%</prompt> <userinput>port lint --nitpick $portname</userinput></programlisting>
+            where <userinput>$portname</userinput> is the name of the port you
+            are submitting. Please fix any warnings and errors.</para>
+        </listitem>
+
         <listitem>
           <para>Create a Trac ticket.</para>
         </listitem>
@@ -357,8 +365,18 @@
         </listitem>
 
         <listitem>
+          <para>Set the <guilabel>port</guilabel> field to the name of the new port.</para>
+        </listitem>
+
+        <listitem>
           <para>Attach the <filename>Portfile</filename> and any required
-          patchfiles to the ticket.</para>
+            patchfiles to the ticket.</para>
+        </listitem>
+
+        <listitem>
+          <para>If your ticket doesn't receive any attention within a few days
+            you may email <email>macports-dev@lists.macosforge.org</email> and
+            request a review and/or commit.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -400,6 +418,10 @@
 
         <listitem>
           <para>Set the component to <guilabel>ports</guilabel>.</para>
+        </listitem>
+
+        <listitem>
+          <para>Set the <guilabel>port</guilabel> field to the name of the port you want to change.</para>
         </listitem>
 
         <listitem>
