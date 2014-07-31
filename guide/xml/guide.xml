@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- vim:ts=2:sts=2:sw=2:et
+<!-- -*- coding: utf-8; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4:tw=120
 -->
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <book>
-  <title>
-    <application>MacPorts</application> Guide
-  </title>
-  <bookinfo>
-    <authorgroup>
-      <author>
-        <firstname>Mark</firstname>
-        <surname>Duling</surname>
-      </author>
-      <author>
-        <honorific>Dr</honorific>
-        <firstname>Michael</firstname>
-        <surname>Maibaum</surname>
-        <othername role="mi">A</othername>
-      </author>
-      <author>
-        <firstname>Will</firstname>
-        <surname>Barton</surname>
-      </author>
-    </authorgroup>
+    <title>
+        <application>MacPorts</application> Guide
+    </title>
+    <bookinfo>
+        <authorgroup>
+            <author>
+                <firstname>Mark</firstname>
+                <surname>Duling</surname>
+            </author>
+            <author>
+                <honorific>Dr</honorific>
+                <firstname>Michael</firstname>
+                <surname>Maibaum</surname>
+                <othername role="mi">A</othername>
+            </author>
+            <author>
+                <firstname>Will</firstname>
+                <surname>Barton</surname>
+            </author>
+        </authorgroup>
 
-    <copyright>
-      <year>2007–2014</year>
-      <holder>The MacPorts Project</holder>
-    </copyright>
+        <copyright>
+            <year>2007–2014</year>
+            <holder>The MacPorts Project</holder>
+        </copyright>
 
-    <copyright>
-      <year>2002–2004</year>
-      <holder>The OpenDarwin Project</holder>
-    </copyright>
-  </bookinfo>
+        <copyright>
+            <year>2002–2004</year>
+            <holder>The OpenDarwin Project</holder>
+        </copyright>
+    </bookinfo>
 
-  <xi:include href="intro.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="installing.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="using.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="portfiledev.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="portfileref.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="internals.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="project.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
-  <xi:include href="glossary.xml"
-              xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="intro.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="installing.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="using.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="portfiledev.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="portfileref.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="internals.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="project.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
+    <xi:include href="glossary.xml"
+        xmlns:xi="http://www.w3.org/2001/XInclude" />
 </book>

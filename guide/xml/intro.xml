@@ -1,85 +1,75 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- coding: utf-8; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4:tw=120
+-->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter id="introduction">
-  <title>Introduction</title>
+    <title>Introduction</title>
 
-  <para>MacPorts is an easy to use system for compiling, installing, and
-  managing open source software. MacPorts may be conceptually divided into two
-  main parts: the infrastructure, known as MacPorts base, and the set of
-  available ports. A MacPorts port is a set of specifications contained in
-  a <link linkend="development.introduction">Portfile</link> that defines an
-  application, its characteristics, and any files or special instructions
-  required to install it. This allows you to use a single command to tell
-  MacPorts to automatically download, compile, and install applications and
-  libraries. But using MacPorts to manage your open source software provides
-  several other significant advantages. For example, MacPorts:</para>
+    <para>MacPorts is an easy to use system for compiling, installing, and managing open source software. MacPorts may
+        be conceptually divided into two main parts: the infrastructure, known as MacPorts base, and the set of
+        available ports. A MacPorts port is a set of specifications contained in a <link
+            linkend="development.introduction">Portfile</link> that defines an application, its characteristics, and any
+        files or special instructions required to install it. This allows you to use a single command to tell MacPorts
+        to automatically download, compile, and install applications and libraries. But using MacPorts to manage your
+        open source software provides several other significant advantages. For example, MacPorts:</para>
 
-  <itemizedlist>
-    <listitem>
-      <para>Installs automatically any required support software, known as
-      <link linkend="reference.dependencies">dependencies</link>, for a given
-      port.</para>
-    </listitem>
-
-    <listitem>
-      <para>Provides for uninstalls and upgrades for installed ports.</para>
-    </listitem>
-
-    <listitem>
-      <para>Confines ported software to a private <quote>sandbox</quote> that
-      keeps it from intermingling with your operating system and its
-      vendor-supplied software to prevent them from becoming corrupted.</para>
-    </listitem>
-
-    <listitem>
-      <para>Allows you to create pre-compiled binary installers of ported
-      applications to quickly install software on remote computers without
-      compiling from source code.</para>
-    </listitem>
-  </itemizedlist>
-
-  <para>MacPorts is developed on OS X, though it is designed to be portable so
-  it can work on other Unix-like systems, especially those descended from the
-  Berkeley Software Distribution (BSD). In practice, installing ports only works
-  on OS X. MacPorts base can be compiled on Linux (and possibly other
-  POSIX-compatible systems) where it is mainly used to set up mirrors and
-  generate portindices.</para>
-
-  <para>The following notational conventions are used in the MacPorts Guide to
-  distinguish between terminal input/output, file text, and other special text
-  types.</para>
-
-  <itemizedlist>
-    <listitem>
-      <para>Terminal I/O and file text.</para>
-
-      <programlisting><prompt>%% </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
-
-      <screen>Command output to a terminal window.</screen>
-
-      <programlisting>File text.</programlisting>
-    </listitem>
-
-    <listitem>
-      <para>Other special text types.</para>
-
-      <itemizedlist>
+    <itemizedlist>
         <listitem>
-          <para>A hyperlink: <ulink
-              url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
-              combustion</ulink>.</para>
+            <para>Installs automatically any required support software, known as <link
+                    linkend="reference.dependencies">dependencies</link>, for a given port.</para>
         </listitem>
+
         <listitem>
-          <para>A file: <filename>/var/log/system.log</filename>.</para>
+            <para>Provides for uninstalls and upgrades for installed ports.</para>
         </listitem>
+
         <listitem>
-          <para>A command: <command>ifconfig</command>.</para>
+            <para>Confines ported software to a private <quote>sandbox</quote> that keeps it from intermingling with
+                your operating system and its vendor-supplied software to prevent them from becoming corrupted.</para>
         </listitem>
+
         <listitem>
-          <para>An option: port <option>install</option></para>
+            <para>Allows you to create pre-compiled binary installers of ported applications to quickly install software
+                on remote computers without compiling from source code.</para>
         </listitem>
-      </itemizedlist>
-    </listitem>
-  </itemizedlist>
+    </itemizedlist>
+
+    <para>MacPorts is developed on OS X, though it is designed to be portable so it can work on other Unix-like systems,
+        especially those descended from the Berkeley Software Distribution (BSD). In practice, installing ports only
+        works on OS X. MacPorts base can be compiled on Linux (and possibly other POSIX-compatible systems) where it is
+        mainly used to set up mirrors and generate support files for installations on OS X.</para>
+
+    <para>The following notational conventions are used in the MacPorts Guide to distinguish between terminal
+        input/output, file text, and other special text types.</para>
+
+    <itemizedlist>
+        <listitem>
+            <para>Terminal I/O and file text.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>Commands to be typed into a terminal window.</userinput></programlisting>
+            <screen>Command output to a terminal window.</screen>
+            <programlisting>File text.</programlisting>
+        </listitem>
+
+        <listitem>
+            <para>Other special text types.</para>
+
+            <itemizedlist>
+                <listitem>
+                    <para>A hyperlink: <ulink url="http://en.wikipedia.org/wiki/Spontaneous_combustion">spontaneous
+                            combustion</ulink>.</para>
+                </listitem>
+                <listitem>
+                    <para>A file: <filename>/var/log/system.log</filename>.</para>
+                </listitem>
+                <listitem>
+                    <para>A command: <command>ifconfig</command>.</para>
+                </listitem>
+                <listitem>
+                    <para>An option: port <option>install</option></para>
+                </listitem>
+            </itemizedlist>
+        </listitem>
+    </itemizedlist>
 </chapter>

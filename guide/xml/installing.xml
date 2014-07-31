@@ -1,607 +1,543 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- coding: utf-8; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4:tw=120
+-->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
 <!ENTITY macports-version "2.3.1">
 ]>
 <chapter id="installing">
-  <title>Installing MacPorts</title>
+    <title>Installing MacPorts</title>
 
-  <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
-  <link linkend="installing.xcode">installing Xcode</link> is OS X-specific. If you wish to install MacPorts on
-  another platform, first make sure you have a working C compiler installed, skip ahead to <link
-    linkend="installing.macports.source">installing MacPorts from source</link>, and continue to the end of the
-  chapter.</para>
+    <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
+        <link linkend="installing.xcode">installing Xcode</link> is OS X-specific. If you wish to install MacPorts on
+        another platform, first make sure you have a working C compiler installed, skip ahead to <link
+            linkend="installing.macports.source">installing MacPorts from source</link>, and continue to the end of the
+        chapter.</para>
 
-  <section id="installing.xcode">
-    <title>Install Xcode</title>
+    <section id="installing.xcode">
+        <title>Install Xcode</title>
 
-    <para>
-      <ulink url="https://developer.apple.com/xcode/">Xcode</ulink> is a package provided by Apple containing compilers,
-      libraries and additional tools required to develop applications for OS X.
-    </para>
+        <para><ulink url="https://developer.apple.com/xcode/">Xcode</ulink> is a package provided by Apple containing
+            compilers, libraries and additional tools required to develop applications for OS X.</para>
 
-    <note>
-      <para>Always make sure to install the latest available version of Xcode for your OS X release; using outdated
-        versions of Xcode may cause port install failures. Also note that Xcode is not updated via OS X's Software
-        Update utility on OS versions prior to 10.6, and is updated via the Mac App Store starting with 10.7.</para>
-    </note>
+        <note>
+            <para>Always make sure to install the latest available version of Xcode for your OS X release; using
+                outdated versions of Xcode may cause port install failures. Also note that Xcode is not updated via OS
+                X's Software Update utility on OS versions prior to 10.6, and is updated via the Mac App Store starting
+                with 10.7.</para>
+        </note>
 
-    <para>Follow the instructions for your version of OS X:</para>
+        <para>Follow the instructions for your version of OS X:</para>
 
-    <section id="installing.xcode.mavericks">
-      <title>Install Xcode on OS X 10.9 or later</title>
+        <section id="installing.xcode.mavericks">
+            <title>Install Xcode on OS X 10.9 or later</title>
 
-      <para>
-        Download the latest version of Xcode <ulink url="https://developer.apple.com/downloads/index.action">from the
-          Apple developer website</ulink> or get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using
-          the Mac App Store</ulink>.
-      </para>
-      <para>
-        Once you have Xcode installed, open a terminal, run <userinput>xcode-select --install</userinput>, and click the
-        Install button to install the required command line developer tools. Don't worry if you see a message telling
-        you the software cannot be installed because it is not currently available from the Software Update Server. This
-        usually means you already have the latest version installed. You can also get the command line tools from <ulink
-          url="https://developer.apple.com/downloads/index.action">the Apple developer website</ulink>.
-      </para>
-    </section>
+            <para>Download the latest version of Xcode <ulink
+                    url="https://developer.apple.com/downloads/index.action">from the Apple developer website</ulink> or
+                get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
+                    Store</ulink>.</para>
 
-    <section id="installing.xcode.lion">
-      <title>Install Xcode on OS X 10.7 Lion or OS X 10.8 Mountain Lion</title>
+            <para>Once you have Xcode installed, open a terminal, run <userinput>xcode-select --install</userinput>, and
+                click the Install button to install the required command line developer tools. Don't worry if you see
+                a message telling you the software cannot be installed because it is not currently available from the
+                Software Update Server. This usually means you already have the latest version installed. You can also
+                get the command line tools from <ulink url="https://developer.apple.com/downloads/index.action">the
+                    Apple developer website</ulink>.</para>
+        </section>
 
-      <para>
-        Download the latest version of Xcode <ulink url="https://developer.apple.com/downloads/index.action">from the
-          Apple developer website</ulink> or get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using
-          the Mac App Store</ulink>.
-      </para>
+        <section id="installing.xcode.lion">
+            <title>Install Xcode on OS X 10.7 Lion or OS X 10.8 Mountain Lion</title>
 
-      <section id="installing.xcode.lion.43">
-        <title>Xcode 4.3 and later</title>
-        <para>
-          Xcode 4.3 and later do not automatically install the command line tools, but MacPorts requires them. To
-          install them, open the Xcode application, go to the Preferences window, to the Downloads section, and click
-          the Install button next to Command Line Tools. Be sure to return to this window after every Xcode upgrade to
-          ensure that the command line tools are also upgraded.
-        </para>
-        <para>
-          If you wish to create Installer packages with <userinput>port pkg</userinput>, you will also need to install
-          PackageMaker, which is in the <quote>Auxiliary Tools for Xcode</quote> package as of Xcode 4.3. The download
-          page for this package can be opened via the Xcode -> Open Developer Tool -> More Developer Tools... menu item.
-          After downloading and mounting the disk image, drag the PackageMaker application to your /Applications
-          directory.
-        </para>
-      </section>
-    </section>
+            <para>Download the latest version of Xcode <ulink
+                    url="https://developer.apple.com/downloads/index.action">from the Apple developer website</ulink> or
+                get it <ulink url="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
+                    Store</ulink>.</para>
 
-    <section id="installing.xcode.snowleopard">
-      <title>Install Xcode on Mac OS X 10.6 Snow Leopard</title>
+            <section id="installing.xcode.lion.43">
+                <title>Xcode 4.3 and later</title>
 
-      <para>
-        If you are using Mac OS X 10.6, there are two branches of Xcode which could be considered to be the latest,
-        3.2.x and 4.x. Xcode 4 costs money, but Xcode 3 is still available free of charge. There are two options for
-        downloading it:
-        <orderedlist>
-          <listitem>
-            <para>
-              Xcode 3.2 - smaller download, but you will need to run Software Update after installing to get the latest
-              version. Note that Apple might at some point discontinue providing these updates via their update servers.
+                <para>Xcode 4.3 and later do not automatically install the command line tools, but MacPorts requires
+                    them. To install them, open the Xcode application, go to the Preferences window, to the Downloads
+                    section, and click the Install button next to Command Line Tools. Be sure to return to this window
+                    after every Xcode upgrade to ensure that the command line tools are also upgraded.</para>
+
+                <para>If you wish to create Installer packages with <userinput>port pkg</userinput>, you will also need
+                    to install PackageMaker, which is in the <quote>Auxiliary Tools for Xcode</quote> package as of
+                    Xcode 4.3. The download page for this package can be opened via the Xcode -> Open Developer Tool ->
+                    More Developer Tools... menu item. After downloading and mounting the disk image, drag the
+                    PackageMaker application to your /Applications directory.</para>
+            </section>
+        </section>
+
+        <section id="installing.xcode.snowleopard">
+            <title>Install Xcode on Mac OS X 10.6 Snow Leopard</title>
+
+            <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be considered to be the
+                latest, 3.2.x and 4.x. Xcode 4 costs money, but Xcode 3 is still available free of charge. There are two
+                options for downloading it:
+
+                <orderedlist>
+                    <listitem>
+                        <para>Xcode 3.2 - smaller download, but you will need to run Software Update after installing to
+                            get the latest version. Note that Apple might at some point discontinue providing these
+                            updates via their update servers.</para>
+                    </listitem>
+                    <listitem>
+                        <para>Xcode 3.2.6 and iOS SDK 4.3 - includes the iOS SDK which is not needed for
+                            MacPorts.</para>
+                    </listitem>
+                </orderedlist>
+
+                Both are available from the <ulink url="https://developer.apple.com/downloads/index.action">Apple
+                    developer website</ulink>. You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and
+                then run Software Update to get the latest version.</para>
+
+            <para>Ensure that those of the following options that are available in the installer for your version of
+                Xcode are selected:
+
+                <itemizedlist>
+                    <listitem>
+                        <guibutton>UNIX Development</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>System Tools</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>X11 SDK</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>Command Line Support</guibutton>
+                    </listitem>
+                </itemizedlist>
             </para>
-          </listitem>
-          <listitem>
-            <para>
-              Xcode 3.2.6 and iOS SDK 4.3 - includes the iOS SDK which is not needed for MacPorts.
+        </section>
+
+        <section id="installing.xcode.other">
+            <title>Install Xcode on older releases of Mac OS X</title>
+
+            <para>If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5
+                (Xcode 3.0 and Xcode 3.1 Developer Tools) or 10.4 (Xcode 2.4.1 and Xcode 2.5 Developer Tools) from the
+                <ulink url="https://developer.apple.com/downloads/index.action">Apple developer website</ulink>.</para>
+
+            <para>Ensure that those of the following options that are available in the installer for your version of
+                Xcode are selected:
+
+                <itemizedlist>
+                    <listitem>
+                        <guibutton>UNIX Development</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>System Tools</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>X11 SDK</guibutton>
+                    </listitem>
+                    <listitem>
+                        <guibutton>Command Line Support</guibutton>
+                    </listitem>
+                </itemizedlist>
             </para>
-          </listitem>
-        </orderedlist>
-        Both are available from the <ulink url="https://developer.apple.com/downloads/index.action">Apple developer
-          website</ulink>. You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and then run Software
-        Update to get the latest version.
-      </para>
-
-      <para>
-        Ensure that those of the following options that are available in the installer for your version of Xcode are
-        selected:
-        <itemizedlist>
-          <listitem>
-            <guibutton>UNIX Development</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>System Tools</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>X11 SDK</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>Command Line Support</guibutton>
-          </listitem>
-        </itemizedlist>
-      </para>
+        </section>
     </section>
 
-    <section id="installing.xcode.other">
-      <title>Install Xcode on older releases of Mac OS X</title>
+    <section id="installing.macports">
+        <title>Install MacPorts</title>
 
-      <para>
-        If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5 (Xcode
-        3.0 and Xcode 3.1 Developer Tools) or 10.4 (Xcode 2.4.1 and Xcode 2.5 Developer Tools) from the <ulink
-          url="https://developer.apple.com/downloads/index.action">Apple developer website</ulink>.
-      </para>
+        <para>If you are using OS X, you should install MacPorts using the OS X package installer unless you do not wish
+            to install it to <filename>/opt/local/</filename>, the default MacPorts location, or if you wish to install
+            a pre-release version of MacPorts base. However, if you wish to <link
+                linkend="installing.macports.source.multiple">install multiple copies of MacPorts</link> or install
+            MacPorts on another OS platform, you must <link linkend="installing.macports.source">install MacPorts from
+                the source code</link>.</para>
 
-      <para>
-        Ensure that those of the following options that are available in the installer for your version of Xcode are
-        selected:
-        <itemizedlist>
-          <listitem>
-            <guibutton>UNIX Development</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>System Tools</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>X11 SDK</guibutton>
-          </listitem>
-          <listitem>
-            <guibutton>Command Line Support</guibutton>
-          </listitem>
-        </itemizedlist>
-      </para>
-    </section>
-  </section>
+        <note>
+            <para>Though a distinction is made between pre-release and release versions of MacPorts base, the ports
+                collection supports no such distinction or versioning. The <link
+                    linkend="using.port.selfupdate">selfupdate</link> command installs the latest port revisions from
+                Subversion (at a slight delay), and updates MacPorts base to the latest released version.</para>
+        </note>
 
-  <section id="installing.macports">
-    <title>Install MacPorts</title>
+        <section id="installing.macports.binary">
+            <title>OS X Package Install</title>
 
-	<para>If you are using OS X, you should install MacPorts using the OS
-	X package installer unless you do not wish to install it to
-	<filename>/opt/local/</filename>, the default MacPorts location, or if you
-	wish to install a pre-release version of MacPorts base. However, if you
-	wish to <link linkend="installing.macports.source.multiple">install
-		multiple copies of MacPorts</link> or install MacPorts on another OS
-	platform, you must <link linkend="installing.macports.source">install
-		MacPorts from the source code</link>.</para>
+            <para>The OS X package installer automatically installs MacPorts, <link linkend="installing.shell">sets the
+                    shell environment</link>, and runs a <link linkend="using.port.selfupdate">selfupdate</link>
+                operation to update the ports tree and MacPorts base with the latest release.</para>
 
-    <note>
-      <para>Though a distinction is made between pre-release and release
-      versions of MacPorts base, the ports collection supports no such
-      distinction or versioning. The <link
-      linkend="using.port.selfupdate">selfupdate</link> command installs the
-      latest port revisions from Subversion (at a slight delay), and updates
-      MacPorts base to the latest released version.</para>
-    </note>
+            <orderedlist>
+                <listitem>
+                    <para>Download the latest
+                        <filename>MacPorts-&macports-version;-<emphasis>...</emphasis>.pkg</filename> installer from the
+                        <ulink url="https://distfiles.macports.org/MacPorts/">MacPorts download directory</ulink>. Here
+                        are direct links for the latest versions of OS X:</para>
 
-    <section id="installing.macports.binary">
-      <title>OS X Package Install</title>
+                    <variablelist>
+                        <varlistentry>
+                            <term>
+                                OS X 10.9 Mavericks:
+                            </term>
+                            <listitem>
+                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
+                                OS X 10.8 Mountain Lion:
+                            </term>
+                            <listitem>
+                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
+                                OS X 10.7 Lion:
+                            </term>
+                            <listitem>
+                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
+                            </listitem>
+                        </varlistentry>
+                    </variablelist>
+                </listitem>
 
-      <para>The OS X package installer automatically installs MacPorts,
-      <link linkend="installing.shell">sets the shell environment</link>, and
-      runs a <link linkend="using.port.selfupdate">selfupdate</link> operation
-      to update the ports tree and MacPorts base with the latest
-      release.</para>
+                <listitem>
+                    <para>Double-click the downloaded package installer to perform the default <quote>easy</quote>
+                        install.</para>
+                </listitem>
 
-      <orderedlist>
-        <listitem>
-            <para>Download the latest <filename>MacPorts-&macports-version;-<emphasis>...</emphasis>.pkg</filename>
-          installer from the <ulink
-          url="https://distfiles.macports.org/MacPorts/">MacPorts
-          download directory</ulink>. Here are direct links for the latest versions of OS X:</para>
+                <listitem>
+                    <para>After this step you are done already, MacPorts is now installed and your shell environment was
+                        set up automatically by the installer. To confirm the installation is working as expected, now
+                        try using the <command>port</command> command in a <emphasis>new</emphasis> terminal
+                        window.</para>
 
-          <variablelist>
-            <varlistentry>
-            <term>
-                OS X 10.9 Mavericks:
-            </term>
-            <listitem>
-                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
-            </listitem>
-            </varlistentry>
-            <varlistentry>
-            <term>
-                OS X 10.8 Mountain Lion:
-            </term>
-            <listitem>
-                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>
-            </listitem>
-            </varlistentry>
-            <varlistentry>
-            <term>
-                OS X 10.7 Lion:
-            </term>
-            <listitem>
-                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.7-Lion.pkg">MacPorts-&macports-version;-10.7-Lion.pkg</ulink>
-            </listitem>
-            </varlistentry>
-          </variablelist>
-        </listitem>
+                    <programlisting><prompt>$</prompt><userinput>port version</userinput></programlisting>
+                    <screen>Version: &macports-version;</screen>
 
-        <listitem>
-          <para>Double-click the downloaded package installer to perform the default <quote>easy</quote> install.</para>
-        </listitem>
+                    <para>In case of problems such as <quote>command not found</quote>, make sure that you opened a new
+                        terminal window or consult <xref linkend="installing.shell"/>. Otherwise, please skip the
+                        remainder of this chapter and continue with <xref linkend="using"/> in this guide.</para>
+                </listitem>
+            </orderedlist>
+        </section>
 
-        <listitem>
-            <para>After this step you are done already, MacPorts is now
-             installed and your shell environment was set up automatically
-             by the installer. To confirm the installation is working as
-             expected, now try using the <command>port</command> command in
-             a <emphasis>new</emphasis> terminal window.</para>
+        <section id="installing.macports.source">
+            <title>Source Install</title>
 
-            <programlisting><prompt>%%</prompt> <userinput>port version</userinput></programlisting>
-            <screen>Version: &macports-version;</screen>
+            <para>If you installed MacPorts using the package installer, skip this section. To install MacPorts from the
+                source code, follow the steps below.</para>
 
-            <para>In case of problems such as <quote>command not found</quote>,
-            make sure that you opened a new terminal window, consult <xref
-                linkend="installing.shell"/>. Otherwise, please skip the
-            remainder of this chapter and continue with <xref linkend="using"/>
-            in this guide.</para>
-        </listitem>
-      </orderedlist>
-    </section>
+            <orderedlist>
+                <listitem>
+                    <para>Download and extract the <ulink
+                            url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;.tar.bz2"> MacPorts
+                            &macports-version; tarball</ulink>. Either do so using your browser and the Finder, or use
+                        the given commands in a terminal window.</para>
 
-    <section id="installing.macports.source">
-      <title>Source Install</title>
+                    <programlisting><prompt>$</prompt> <userinput>curl -O https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;.tar.bz2</userinput>
+<!--                --><prompt>$</prompt> <userinput>tar xf MacPorts-&macports-version;.tar.bz2</userinput></programlisting>
+                </listitem>
 
-      <para>If you installed MacPorts using the package installer, skip this
-      section. To install MacPorts from the source code, follow the steps
-      below.</para>
+                <listitem>
+                    <para>Afterwards, perform the commands shown in the terminal window. If you wish to use a path other
+                        than <filename>/opt/local</filename>, follow the instructions for <link
+                            linkend="installing.macports.source.multiple">installing multiple copies of MacPorts</link>
+                        instead.</para>
 
-      <orderedlist>
-        <listitem>
-          <para>Download and extract the <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;.tar.bz2">
-          MacPorts &macports-version; tarball</ulink>. Either do so using your browser and the Finder, or use the given commands
-          in a terminal window.</para>
+                    <programlisting><prompt>$</prompt> <userinput>cd MacPorts-&macports-version;/</userinput>
+<!--                --><prompt>$</prompt> <userinput>./configure</userinput>
+<!--                --><prompt>$</prompt> <userinput>make</userinput>
+<!--                --><prompt>$</prompt> <userinput>sudo make install</userinput></programlisting>
+                </listitem>
 
-          <programlisting><prompt>%%</prompt> <userinput>curl -O https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;.tar.bz2</userinput>
-<prompt>%%</prompt> <userinput>tar xf MacPorts-&macports-version;.tar.bz2</userinput></programlisting>
-        </listitem>
+                <listitem>
+                    <para>Please continue with <xref linkend="installing.shell" /> to set up your shell
+                        environment.</para>
+                </listitem>
+            </orderedlist>
+        </section>
 
-        <listitem>
-          <para>Afterwards, perform the commands shown in the terminal window. If you wish
-          to use a path other than <filename>/opt/local</filename>, follow
-          the instructions for <link linkend="installing.macports.source.multiple">installing
-          multiple copies of MacPorts</link> instead.</para>
+        <section id="installing.macports.subversion">
+            <title>Subversion Install</title>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd MacPorts-&macports-version;/</userinput>
-<prompt>%%</prompt> <userinput>./configure</userinput>
-<prompt>%%</prompt> <userinput>make</userinput>
-<prompt>%%</prompt> <userinput>sudo make install</userinput></programlisting>
-        </listitem>
+            <para>If you installed MacPorts using the package installer, skip this section.</para>
 
-        <listitem>
-          <para>Please continue with <xref linkend="installing.shell" /> to set up your shell environment.</para>
-        </listitem>
-      </orderedlist>
-    </section>
+            <para>There are times when some may want to run MacPorts from a version newer than the current stable
+                release. Maybe there's a new feature that you'd like to use, or it fixes an issue you've encountered, or
+                you just like to be on the cutting edge. These steps explain how to run completely from trunk, using
+                only Subversion to keep MacPorts up to date.</para>
 
-    <section id="installing.macports.subversion">
-      <title>Subversion Install</title>
+            <orderedlist>
+                <listitem>
+                    <para>Check out MacPorts source</para>
 
-      <para>If you installed MacPorts using the package installer, skip this
-      section.</para>
+                    <para>Pick a location to store a working copy of the MacPorts code. For this example,
+                        <filename>/opt/mports</filename> will be used, but you can put the source anywhere. This example
+                        will create <filename>/opt/mports/trunk</filename> containing everything needed for
+                        MacPorts.</para>
 
-      <para>There are times when some may want to run MacPorts from a version
-      newer than the current stable release. Maybe there's a new feature that
-      you'd like to use, or it fixes an issue you've encountered, or you just
-      like to be on the cutting edge. These steps explain how to run
-      completely from trunk, using only Subversion to keep MacPorts up to
-      date.</para>
+                    <programlisting><prompt>$</prompt> <userinput>mkdir -p /opt/mports</userinput>
+<!--                --><prompt>$</prompt> <userinput>cd /opt/mports</userinput>
+<!--                --><prompt>$</prompt> <userinput>svn checkout https://svn.macports.org/repository/macports/trunk</userinput></programlisting>
 
-      <orderedlist>
-        <listitem>
-          <para>Check out MacPorts source</para>
+                    <note>
+                        <para>You only really need the base subdirectory to run MacPorts, so you can avoid checking out
+                            the rest if you don't want to use a Subversion-based ports tree (see Step 3 below). To just
+                            get the base directory, append <filename>/base</filename> to the end of the svn checkout
+                            command above. The resulting directory will then be
+                            <filename>/opt/mports/base</filename>.</para>
+                    </note>
+                </listitem>
 
-          <para>Pick a location to store a working copy of the MacPorts code.
-          For this example, <filename>/opt/mports</filename> will be used, but
-          you can put the source anywhere. This example will create
-          <filename>/opt/mports/trunk</filename> containing everything needed
-          for MacPorts.</para>
+                <listitem>
+                    <para>Build and Install MacPorts</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>mkdir -p /opt/mports</userinput>
-<prompt>%%</prompt> <userinput>cd /opt/mports</userinput>
-<prompt>%%</prompt> <userinput>svn checkout https://svn.macports.org/repository/macports/trunk</userinput></programlisting>
+                    <para>MacPorts uses autoconf and makefiles for installation. These commands will build and install
+                        MacPorts to <filename>/opt/local</filename>. You can add the <option>--prefix</option> option to
+                        <filename>./configure</filename> to relocate MacPorts to another directory if needed.</para>
 
-          <note>
-              <para>
-             You only really need the base subdirectory to run MacPorts, so you can avoid checking out the rest if you don't want to use a Subversion-based ports tree (see Step 3 below). To just get the base directory, append 
+                    <programlisting><prompt>$</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
+<!--                --><prompt>$</prompt> <userinput>./configure --enable-readline</userinput>
+<!--                --><prompt>$</prompt> <userinput>make</userinput>
+<!--                --><prompt>$</prompt> <userinput>sudo make install</userinput>
+<!--                --><prompt>$</prompt> <userinput>make distclean</userinput></programlisting>
+                </listitem>
 
-            <filename>/base</filename>
+                <listitem>
+                    <para>(Optional) Configure MacPorts to use port information from Subversion</para>
 
-             to the end of the svn checkout command above. The resulting directory will then be 
+                    <para>This step is useful if you want to do port development. Open
+                        <filename>/opt/local/etc/macports/sources.conf</filename> in a text editor. The last line which
+                        should look like this:</para>
 
-            <filename>/opt/mports/base</filename>
+                    <programlisting>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</programlisting>
 
-            </para>
-          </note>
-        </listitem>
+                    <para>Change it to point to the working copy you checked out:</para>
 
-        <listitem>
-          <para>Build and Install MacPorts</para>
+                    <programlisting>file:///opt/mports/trunk/dports [default]</programlisting>
 
-          <para>MacPorts uses autoconf and makefiles for installation. These
-          commands will build and install MacPorts to
-          <filename>/opt/local</filename>. You can add the
-          <option>--prefix</option> option to <filename>./configure</filename>
-          to relocate MacPorts to another directory if needed.</para>
+                    <para>Now MacPorts will look for portfiles in the working copy and use Subversion instead of rsync
+                        to update your ports tree.</para>
+                </listitem>
 
-          <programlisting><prompt>%%</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
-<prompt>%%</prompt> <userinput>./configure --enable-readline</userinput>
-<prompt>%%</prompt> <userinput>make</userinput>
-<prompt>%%</prompt> <userinput>sudo make install</userinput>
-<prompt>%%</prompt> <userinput>make distclean</userinput></programlisting>
-        </listitem>
+                <listitem>
+                    <para>Environment</para>
 
-        <listitem>
-          <para>(Optional) Configure MacPorts to use port information from
-          Subversion</para>
+                    <para>You should setup your PATH and other environment options according to <xref
+                        linkend="installing.shell" />.</para>
+                </listitem>
+            </orderedlist>
+        </section>
 
-          <para>This step is useful if you want to do port development. Open
-          <filename>/opt/local/etc/macports/sources.conf</filename> in a text
-          editor. The last line which should look like this:</para>
+        <section id="installing.macports.source.multiple">
+            <title>Install Multiple MacPorts Copies</title>
 
-          <programlisting>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</programlisting>
+            <para>Occasionally a MacPorts developer may wish to install more than one MacPorts instance on the same
+                host. Only one copy of MacPorts may use the default prefix <filename>/opt/local</filename>, so for
+                additional installations use the option <option>--prefix</option> as shown below. It's also recommended
+                to change the applications dir using <option>--with-applications-dir</option> to avoid conflicts in
+                <filename>/Applications/MacPorts</filename>.</para>
 
-          <para>Change it to point to the working copy you checked out:</para>
+            <note>
+                <para>The first command temporarily removes the standard MacPorts binary paths because they must not be
+                    present while installing a second instance.</para>
+            </note>
 
-          <programlisting>file:///opt/mports/trunk/dports [default]</programlisting>
+            <programlisting><prompt>$</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
+<!--                --><prompt>$</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
+<!--                --><prompt>$</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-applications-dir=$MP_PREFIX/Applications</userinput>
+<!--                --><prompt>$</prompt> <userinput>make</userinput>
+<!--                --><prompt>$</prompt> <userinput>sudo make install</userinput></programlisting>
 
-          <para>Now MacPorts will look for portfiles in the working
-          copy.</para>
-        </listitem>
-
-        <listitem>
-          <para>Environment</para>
-
-          <para>You should setup your PATH and other environment options
-          according to <xref linkend="installing.shell" />.</para>
-        </listitem>
-      </orderedlist>
+            <para>After installing the second instance you might need to add
+                <programlisting>startupitem_install no</programlisting>
+                to <filename>$MP_PREFIX/etc/macports/macports.conf</filename> to avoid conflicts in
+                <filename>/Library/LaunchAgents</filename>.</para>
+        </section>
     </section>
 
-    <section id="installing.macports.source.multiple">
-      <title>Install Multiple MacPorts Copies</title>
+    <section id="installing.macports.upgrade">
+        <title>MacPorts Upgrade</title>
 
-      <para>Occasionally a MacPorts developer may wish to install more than
-      one MacPorts instance on the same host. Only one copy of MacPorts may
-      use the default prefix <filename>/opt/local</filename>, so
-      for additional installations use the option
-      <option>--prefix</option> as shown below. It's also recommended
-      to change the applications dir using
-      <option>--with-applications-dir</option> to avoid conflicts in
-      <filename>/Applications/MacPorts</filename>.</para>
-
-      <note>
-        <para>The first command temporarily removes the standard MacPorts
-        binary paths because they must not be present while installing a
-        second instance.</para>
-      </note>
-
-      <programlisting><prompt>%%</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
-<prompt>%%</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
-<prompt>%%</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-applications-dir=$MP_PREFIX/Applications</userinput>
-<prompt>%%</prompt> <userinput>make</userinput>
-<prompt>%%</prompt> <userinput>sudo make install</userinput>
-</programlisting>
-
-      <para>After installing the second instance you might need to add
-      <programlisting>startupitem_install no</programlisting> to
-      <filename>$MP_PREFIX/etc/macports/macports.conf</filename> to avoid
-      conflicts in <filename>/Library/LaunchAgents</filename>.
-      </para>
-    </section>
-  </section>
-
-  <section id="installing.macports.upgrade">
-    <title>MacPorts Upgrade</title>
-
-    <para>MacPorts base upgrades are performed automatically (when a newer
-    release is available) during a <link
-    linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade a
-    copy of MacPorts that was installed from source to the newer release of
-    the source code, simply repeat the <link
-    linkend="installing.macports.source">source install</link> with the newer
-    version of the MacPorts source code.</para>
-  </section>
-
-  <section id="installing.macports.uninstalling">
-    <title>Uninstall</title>
-
-    <para>Uninstalling MacPorts can be a drastic step, and depending on the 
-    issue you are experiencing, you may not need to do so. If you are unsure,
-    ask on the
-    <ulink url="http://lists.macosforge.org/mailman/listinfo/macports-users">macports-users</ulink>
-    mailing list first.</para>
-    
-    <para>If you need to uninstall MacPorts, and your <command>port</command> command is
-    functioning, first uninstall all the installed ports by running this
-    command in the Terminal:</para>
-    <programlisting><prompt>%%</prompt> <userinput>sudo port -fp uninstall installed</userinput></programlisting>
-
-    <para>All that will be left in your installation prefix now will be files
-    that were not registered to any port. This includes configuration
-    files, databases, any files which MacPorts
-    renamed in order to allow a forced installation or upgrade, and the base
-    MacPorts software itself. You may wish to save your configuration files
-    (most are in <filename>${prefix}/etc</filename>), databases, or any other
-    unique data by moving it aside.</para>
-
-    <para>To remove all remaining traces of MacPorts, run the following
-    command in the Terminal. If you have changed <varname>prefix</varname>,
-    <varname>applications_dir</varname> or <varname>frameworks_dir</varname>
-    from their default values, then replace <filename>/opt/local</filename>
-    with your <varname>prefix</varname>, replace <filename>/Applications/MacPorts</filename>
-    with your <varname>applications_dir</varname>, and/or add your
-    <varname>frameworks_dir</varname> to the list, respectively.</para>
-    <programlisting><prompt>%%</prompt> <userinput>sudo rm -rf \
-    /opt/local \
-    /Applications/DarwinPorts \
-    /Applications/MacPorts \
-    /Library/LaunchDaemons/org.macports.* \
-    /Library/Receipts/DarwinPorts*.pkg \
-    /Library/Receipts/MacPorts*.pkg \
-    /Library/StartupItems/DarwinPortsStartup \
-    /Library/Tcl/darwinports1.0 \
-    /Library/Tcl/macports1.0 \
-    ~/.macports</userinput></programlisting>
-  
-  <para>If you use a shell other than bash (perhaps tcsh), you may need to
-  adjust the above to fit your shell's syntax. Also note that depending on which
-  version of MacPorts you have and which ports you have installed, not all of
-  the above paths will exist on your system. This is OK.</para>
-  </section>
-
-  <section id="installing.shell">
-    <title>MacPorts and the Shell</title>
-
-    <para>MacPorts requires that some environment variables be set in the
-    shell. When MacPorts is installed using the OS X package installer, a
-    <quote>postflight</quote> script is run after installation that
-    automatically adds or modifies a shell configuration file in your home directory,
-    ensuring that it defines variables
-    according to the rules described in the following section. Those <link
-    linkend="installing.macports.source">installing MacPorts from source
-    code</link> must modify their environment manually using the rules as a
-    guide.</para>
-
-    <para>Depending on your shell and which configuration files already exist, the
-    installer may use <filename>.profile</filename>, <filename>.bash_login</filename>,
-    <filename>.bash_profile</filename>, <filename>.tcshrc</filename>, or
-    <filename>.cshrc</filename>.</para>
-
-    <section id="installing.shell.postflight">
-      <title>The Postflight Script</title>
-
-      <para>The postflight script automatically sets
-      the <varname>PATH</varname>
-      variable, and optionally the <varname>MANPATH</varname> and
-      <varname>DISPLAY</varname> variables according to the rules described
-      below. If a current shell configuration file exists at
-      installation time it is renamed to <quote>mpsaved_$timestamp</quote>.
-      Those <link linkend="installing.macports.source">installing MacPorts
-      from source code</link> must modify their environment manually using the
-      rules as a guide.</para>
-
-      <itemizedlist>
-        <listitem>
-          <para>Required: <varname>PATH</varname> variable</para>
-
-          <para>This variable is set by the postflight script to append the
-          MacPorts executable paths to the default path as shown. The MacPorts
-          paths are appended at the front of <varname>PATH</varname> so the
-          MacPorts libraries will take precedence over vendor-supplied
-          libraries for ported software at runtime.</para>
-
-          <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
-
-          <note>
-            <para>The user environment's $PATH is not in effect while ports
-            are being installed, because the $PATH is scrubbed before ports
-            are installed, and restored afterwards. To change the search path
-            for locating system executables (rsync, tar, etc.) during port
-            installation, see the <link
-            linkend="internals.configuration-files.macports-conf">macports.conf</link>
-            file variable <varname>binpath</varname>. But changing this
-            variable is for advanced users only, and is not generally needed
-            or recomended.</para>
-          </note>
-        </listitem>
-
-        <listitem>
-          <para>Optional: <varname>MANPATH</varname> variable</para>
-
-          <para>Condition: If prior to MacPorts installation a
-          <varname>MANPATH</varname> variable exists in a current
-          <filename>.profile</filename> that contains neither the value
-          <filename>${prefix}/share/man,</filename> nor any empty values, the
-          postflight script sets the <varname>MANPATH</varname> variable as
-          shown below. Otherwise, the <varname>MANPATH</varname> variable is
-          omitted.</para>
-
-          <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
-
-          <para>Here are some examples of paths that contain empty
-          values:</para>
-
-          <simplelist>
-            <member>/usr/share/man:</member>
-
-            <member>:/usr/share/man</member>
-
-            <member>/usr/share/man::/usr/X11R6/man</member>
-          </simplelist>
-        </listitem>
-
-        <listitem>
-          <para>Optional: <varname>DISPLAY</varname> variable</para>
-
-          <para>Condition: If installing on a Mac OS X version earlier than
-          10.5 (Leopard), and if a shell configuration file exists
-          at time of MacPorts installation without a
-          <varname>DISPLAY</varname> variable, the postflight script sets a
-          <varname>DISPLAY</varname> variable as shown below. The
-          <varname>DISPLAY</varname> variable is always omitted on Mac OS X
-          10.5 or higher.</para>
-
-          <programlisting>export DISPLAY=:0.0</programlisting>
-        </listitem>
-      </itemizedlist>
+        <para>MacPorts base upgrades are performed automatically (when a newer release is available) during a <link
+                linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade a copy of MacPorts that was
+            installed from source to the newer release of the source code, simply repeat the <link
+                linkend="installing.macports.source">source install</link> with the newer version of the MacPorts source
+            code.</para>
     </section>
 
-    <section id="installing.shell.verifyprofile">
-      <title>Verify the configuration file</title>
+    <section id="installing.macports.uninstalling">
+        <title>Uninstall</title>
 
-      <para>To verify that the file containing the
-      MacPorts variables is in effect, type <command>env</command> in the
-      terminal to verify the current environment settings after the
-      file has been created. Example output for the
-      <command>env</command> command is shown below.</para>
+        <para>Uninstalling MacPorts can be a drastic step, and depending on the issue you are experiencing, you may not
+            need to do so. If you are unsure, ask on the <ulink
+                url="http://lists.macosforge.org/mailman/listinfo/macports-users">macports-users</ulink> mailing list
+            first.</para>
 
-      <note>
-        <para>Changes to shell configuration files do not take effect
-        until a new terminal session is opened.</para>
-      </note>
+        <para>If you need to uninstall MacPorts, and your <command>port</command> command is functioning, first
+        uninstall all the installed ports by running this command in the Terminal:</para>
 
-      <screen>MANPATH=
-TERM_PROGRAM=Apple_Terminal
-TERM=xterm-color
-SHELL=/bin/bash
-TERM_PROGRAM_VERSION=237
-USER=joebob
-__CF_USER_TEXT_ENCODING=0x1FC:0:0
-PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
-PWD=/Users/joebob
-EDITOR=/usr/bin/pico
-SHLVL=1
-HOME=/Users/joebob
-LOGNAME=joebob
-DISPLAY=:0.0
-SECURITYSESSIONID=b0cea0
-_=/usr/bin/env</screen>
+        <programlisting><prompt>$</prompt> <userinput>sudo port -fp uninstall installed</userinput></programlisting>
+
+        <para>All that will be left in your installation prefix now will be files that were not registered to any port.
+            This includes configuration files, databases, any files which MacPorts renamed in order to allow a forced
+            installation or upgrade, and the base MacPorts software itself. You may wish to save your configuration
+            files (most are in <filename>$prefix/etc</filename>), databases, or any other unique data by moving it
+            aside.</para>
+
+        <para>To remove all remaining traces of MacPorts, run the following command in the Terminal. If you have changed
+            <varname>prefix</varname>, <varname>applications_dir</varname> or <varname>frameworks_dir</varname> from
+            their default values, then replace <filename>/opt/local</filename> with your <varname>prefix</varname>,
+            replace <filename>/Applications/MacPorts</filename> with your <varname>applications_dir</varname>, and/or
+            add your <varname>frameworks_dir</varname> to the list, respectively.</para>
+
+        <programlisting><prompt>$</prompt> <userinput>sudo rm -rf \
+        /opt/local \
+        /Applications/DarwinPorts \
+        /Applications/MacPorts \
+        /Library/LaunchDaemons/org.macports.* \
+        /Library/Receipts/DarwinPorts*.pkg \
+        /Library/Receipts/MacPorts*.pkg \
+        /Library/StartupItems/DarwinPortsStartup \
+        /Library/Tcl/darwinports1.0 \
+        /Library/Tcl/macports1.0 \
+        ~/.macports</userinput></programlisting>
+
+        <para>If you use a shell other than bash (perhaps tcsh), you may need to adjust the above to fit your shell's
+            syntax. Also note that depending on which version of MacPorts you have and which ports you have installed,
+            not all of the above paths will exist on your system. This is OK.</para>
     </section>
 
-    <section id="installing.shell.editorvar">
-      <title>Optional Editor Variables</title>
+    <section id="installing.shell">
+        <title>MacPorts and the Shell</title>
 
-      <para>You can set an environment variable in order to use your favorite
-      text editor with edit option of port command.</para>
-      <para>MacPorts will check <varname>MP_EDITOR</varname>,
-      <varname>VISUAL</varname> and <varname>EDITOR</varname> in this order,
-      allowing you to either use a default editor shared with other programs
-      (<varname>VISUAL</varname> and <varname>EDITOR</varname>) or a Macports'
-      specific one (<varname>MP_EDITOR</varname>).</para>
+        <para>MacPorts requires that some environment variables be set in the shell. When MacPorts is installed using
+            the OS X package installer, a <quote>postflight</quote> script is run after installation that automatically
+            adds or modifies a shell configuration file in your home directory, ensuring that it defines variables
+            according to the rules described in the following section. Those <link
+                linkend="installing.macports.source">installing MacPorts from source code</link> must modify their
+            environment manually using the rules as a guide.</para>
 
-      <para>For example, to use the nano editor, add this line to your
-      bash config:</para>
+        <para>Depending on your shell and which configuration files already exist, the installer may use
+            <filename>.profile</filename>, <filename>.bash_login</filename>, <filename>.bash_profile</filename>,
+            <filename>.tcshrc</filename>, or <filename>.cshrc</filename>.</para>
 
-      <programlisting>export EDITOR=/usr/bin/nano</programlisting>
+        <section id="installing.shell.postflight">
+            <title>The Postflight Script</title>
 
-      <para>To use the user-friendly GUI editor <ulink
-      url="http://www.barebones.com/products/textwrangler/">TextWrangler</ulink>
-      (installation required), add this line:</para>
+            <para>The postflight script automatically sets the <varname>PATH</varname> variable, and optionally the
+                <varname>MANPATH</varname> and <varname>DISPLAY</varname> variables according to the rules described
+                below. If a current shell configuration file exists at installation time it is renamed to
+                <quote>mpsaved_$timestamp</quote>. Those <link linkend="installing.macports.source">installing MacPorts
+                    from source code</link> must modify their environment manually using the rules as a guide.</para>
 
-      <programlisting>export EDITOR=/usr/bin/edit</programlisting>
-      
-      <para>To keep a command-line text editor as default while using a graphic editor with
-      portfiles, add this: </para>
+            <itemizedlist>
+                <listitem>
+                    <para>Required: <varname>PATH</varname> variable</para>
 
-      <programlisting>export EDITOR=/usr/bin/vi
-export MP_EDITOR=/usr/bin/edit</programlisting>
+                    <para>This variable is set by the postflight script to append the MacPorts executable paths to the
+                        default path as shown. The MacPorts paths are appended at the front of <varname>PATH</varname>
+                        so the MacPorts libraries will take precedence over vendor-supplied libraries for ported
+                        software at runtime.</para>
+
+                    <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
+
+                    <note>
+                        <para>The user environment's $PATH is not in effect while ports are being installed, because the
+                            $PATH is scrubbed before ports are installed, and restored afterwards. To change the search
+                            path for locating system executables (rsync, tar, etc.) during port installation, see the
+                            <link linkend="internals.configuration-files.macports-conf">macports.conf</link> file
+                            variable <varname>binpath</varname>. But changing this variable is for advanced users only,
+                            and is not generally needed or recomended.</para>
+                    </note>
+                </listitem>
+
+                <listitem>
+                    <para>Optional: <varname>MANPATH</varname> variable</para>
+
+                    <para>Condition: If prior to MacPorts installation a <varname>MANPATH</varname> variable exists in
+                        a current <filename>.profile</filename> that contains neither the value
+                        <filename>${prefix}/share/man,</filename> nor any empty values, the postflight script sets the
+                        <varname>MANPATH</varname> variable as shown below. Otherwise, the <varname>MANPATH</varname>
+                        variable is omitted.</para>
+
+                    <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
+
+                    <para>Here are some examples of paths that contain empty values:</para>
+
+                    <simplelist>
+                        <member>/usr/share/man:</member>
+                        <member>:/usr/share/man</member>
+                        <member>/usr/share/man::/usr/X11R6/man</member>
+                    </simplelist>
+                </listitem>
+
+                <listitem>
+                    <para>Optional: <varname>DISPLAY</varname> variable</para>
+
+                    <para>Condition: If installing on a Mac OS X version earlier than 10.5 (Leopard), and if a shell
+                        configuration file exists at time of MacPorts installation without a <varname>DISPLAY</varname>
+                        variable, the postflight script sets a <varname>DISPLAY</varname> variable as shown below. The
+                        <varname>DISPLAY</varname> variable is always omitted on Mac OS X 10.5 or higher.</para>
+
+                    <programlisting>export DISPLAY=:0.0</programlisting>
+                </listitem>
+            </itemizedlist>
+        </section>
+
+        <section id="installing.shell.verifyprofile">
+            <title>Verify the configuration file</title>
+
+            <para>To verify that the file containing the MacPorts variables is in effect, type <command>env</command> in
+                the terminal to verify the current environment settings after the file has been created. Example output
+                for the <command>env</command> command is shown below.</para>
+
+            <note>
+                <para>Changes to shell configuration files do not take effect until a new terminal session is
+                    opened.</para>
+            </note>
+
+            <screen>MANPATH=
+<!--        -->TERM_PROGRAM=Apple_Terminal
+<!--        -->TERM=xterm-color
+<!--        -->SHELL=/bin/bash
+<!--        -->TERM_PROGRAM_VERSION=237
+<!--        -->USER=joebob
+<!--        -->__CF_USER_TEXT_ENCODING=0x1FC:0:0
+<!--        -->PATH=/opt/local/bin:/opt/local/sbin:/bin:/sbin:/usr/bin:/usr/sbin
+<!--        -->PWD=/Users/joebob
+<!--        -->EDITOR=/usr/bin/pico
+<!--        -->SHLVL=1
+<!--        -->HOME=/Users/joebob
+<!--        -->LOGNAME=joebob
+<!--        -->DISPLAY=:0.0
+<!--        -->SECURITYSESSIONID=b0cea0
+<!--        -->_=/usr/bin/env</screen>
+        </section>
+
+        <section id="installing.shell.editorvar">
+            <title>Optional Editor Variables</title>
+
+            <para>You can set an environment variable in order to use your favorite text editor with edit option of port
+                command.</para> <para>MacPorts will check <varname>MP_EDITOR</varname>, <varname>VISUAL</varname> and
+                <varname>EDITOR</varname> in this order, allowing you to either use a default editor shared with other
+                programs (<varname>VISUAL</varname> and <varname>EDITOR</varname>) or a Macports' specific one
+                (<varname>MP_EDITOR</varname>).</para>
+
+            <para>For example, to use the nano editor, add this line to your bash config:</para>
+
+            <programlisting>export EDITOR=/usr/bin/nano</programlisting>
+
+            <para>To use the user-friendly GUI editor <ulink
+                    url="http://www.barebones.com/products/textwrangler/">TextWrangler</ulink> (installation required),
+                add this line:</para>
+
+            <programlisting>export EDITOR=/usr/bin/edit</programlisting>
+
+            <para>To keep a command-line text editor as default while using a graphic editor with portfiles, add
+                this:</para>
+
+            <programlisting>export EDITOR=/usr/bin/vi
+<!--        -->export MP_EDITOR=/usr/bin/edit</programlisting>
+        </section>
     </section>
-  </section>
 </chapter>
