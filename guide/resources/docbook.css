@@ -101,7 +101,7 @@ body.chunked div.toc:first-child {
 }
 
 body.chunked div.toc:first-child > dl,
-body.singlepage div.toc > dl{
+body.singlepage div.toc > dl {
 	padding: 16px 0;
 	margin: 0;
 	background: url("https://www.macports.org/img/nav-footer.png") bottom no-repeat;
@@ -167,9 +167,23 @@ body.singlepage div.chapter {
 
 div.chapter h1,
 div.chapter h2,
+div.chapter h3,
+div.chapter h4 {
+	margin-bottom: 5px;
+	margin-top: 25px;
+}
+
+div.chapter div.note h1,
+div.chapter div.note h2,
+div.chapter div.note h3,
+div.chapter div.note h4 {
+	margin-top: 5px;
+}
+
+div.chapter h1,
+div.chapter h2,
 div.chapter h3 {
 	color: #314c72;
-	margin: 0;
 }
 
 div.chapter h1 {
@@ -197,11 +211,11 @@ div.chapter h5 a {
 }
 
 div.chapter p {
-	margin: 12px 0;
+	margin: 6px 0;
 }
 
 div.note {
-	margin: 0 .5in;
+	margin: .2in .3in;
 	padding: 0 15px 0;
 	border-color: #8b1a1a;
 	border-width: 0 3px;
@@ -262,6 +276,7 @@ span.guimenu {
 	border: thin black inset;
 	overflow: auto;
 	padding: 2px 5px;
+	margin: 2px;
 }
 
 .literallayout {
@@ -275,6 +290,7 @@ span.guimenu {
 	background-color: white;
 	overflow: auto;
 	padding: 2px 5px;
+	margin: 2px;
 }
 
 body {
