@@ -186,7 +186,8 @@ div.chapter h3 {
 	color: #314c72;
 }
 
-div.chapter h1 {
+div.chapter h1,
+div.chapter > div.titlepage h2.title {
 	background: #8695b3;
 	padding: .3em .5em .2em;
 	font: bold 24px "Lucia Grande", Helvetica, Arial, sans-serif;
