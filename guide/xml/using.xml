@@ -661,7 +661,7 @@ Port xorg-renderproto contains:
                 </varlistentry>
 
                 <varlistentry>
-                    <term><option>--units=UNIT</option></term>
+                    <term><option>--units UNIT</option></term>
                     <listitem>
                         <para>Used in conjunction with <option>--size</option> to choose the unit of the file size.
                             Valid parameters for <option>UNIT</option> are</para>
