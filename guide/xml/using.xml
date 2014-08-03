@@ -1,916 +1,1511 @@
 <?xml version="1.0" encoding="UTF-8"?>
+<!-- -*- coding: utf-8; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4:tw=120
+-->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
 <!ENTITY macports-prev-version "2.3.0">
 <!ENTITY macports-version "2.3.1">
 ]>
 <chapter id="using">
-  <title>Using MacPorts</title>
+    <title>Using MacPorts</title>
 
-  <para>This chapter describes using the <command>port</command> command, port
-  variants, common tasks and port binaries<!--, and setting up an rsync
-  replication server-->.</para>
+    <para>This chapter describes using the <command>port</command> command, port variants, common tasks and port
+    binaries.</para>
 
-  <section id="using.port">
-    <title>The port Command</title>
+    <section id="using.port">
+        <title>The port Command</title>
 
-    <para>The MacPorts <command>port</command> command is the main utility
-    used to interact with MacPorts. It is used to update
-    <filename>Portfile</filename>s and the MacPorts infrastructure, and
-    install and manage ports.</para>
+        <para>The MacPorts <command>port</command> command is the main utility used to interact with MacPorts. It is
+            used to update <filename>Portfile</filename>s and the MacPorts infrastructure, and install and manage
+            ports.</para>
 
-    <section id="using.port.help">
-      <title>help</title>
+        <section id="using.port.help">
+            <title>port help</title>
 
-      <para>The <option>help</option> action shows some brief information about
-      the specified action, or if no action is specified, shows basic usage
-      information for the <command>port</command> command in general.</para>
+            <para>The <option>help</option> action shows some brief information about the specified action, or if no
+                action is specified, shows basic usage information for the <command>port</command> command in
+                general.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port help selfupdate</userinput></programlisting>
-      <screen>Usage: selfupdate --nosync
+            <programlisting><prompt>$</prompt> <userinput>port help selfupdate</userinput></programlisting>
 
-Upgrade MacPorts itself and run the sync target</screen>
-    </section>
+            <screen>
+Usage: selfupdate --nosync
 
-    <section id="using.port.selfupdate">
-      <title>selfupdate</title>
+Upgrade MacPorts itself and run the sync target
 
-      <para>The <option>selfupdate</option> action should be used regularly to
-      <option>sync</option> the local ports tree with the global MacPorts
-      ports repository so you will have the latest port versions. It also
-      checks for new revisions of the MacPorts infrastructure, called MacPorts
-      base, and upgrades it when necessary.</para>
+--nosync   Do not run the sync target, i.e. do not update the ports tree.
+           Only checks for (and installs, if available) new versions of
+           MacPorts.</screen>
+        </section>
 
-      <note>
-        <para>Selfupdate is only tested on OS X. If you are running MacPorts on
-          another platform, <option>selfupdate</option> may not work correctly.
-          In this case, you should use the <link
-            linkend="using.port.sync">sync</link> action to update the ports
-          tree; to update MacPorts base you must manually install a newer
-          version from source.</para>
-      </note>
+        <section id="using.port.selfupdate">
+            <title>port selfupdate</title>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
+            <para>The <option>selfupdate</option> action should be used regularly to update the local ports tree with
+                the global MacPorts ports repository so you will have the latest versions of software packages
+                available. It also checks for new releases of MacPorts itself, and upgrades it when necessary.</para>
 
-      <screen>
---->  Updating MacPorts base sources using rsync
-MacPorts base version &macports-version; installed,
-MacPorts base version &macports-version; downloaded.
---->  Updating the ports tree
---->  MacPorts base is already the latest version
-</screen>
+            <programlisting><prompt>$</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
 
-      <para>As always, you can use the debug flag for verbose output. This is
-        useful to debug problems with <option>selfupdate</option>.</para>
+            <screen>
+<!--        -->---&gt; Updating MacPorts base sources using rsync
+<!--        -->MacPorts base version &macports-version; installed,
+<!--        -->MacPorts base version &macports-version; downloaded.
+<!--        -->---&gt; Updating the ports tree
+<!--        -->---&gt; MacPorts base is already the latest version</screen>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port -d selfupdate</userinput></programlisting>
+            <para>If <option>selfupdate</option> detects that a newer version of MacPorts is available, it automatically
+                updates the installed copy of MacPorts base to the latest released version. In that case, you will see
+                this message:</para>
 
-      <para>If <option>selfupdate</option> detects that a newer version of
-      MacPorts base is available, it automatically updates the installed copy
-      of MacPorts base to the latest released version. In that case, you will
-      see this message:</para>
+            <screen>
+<!--        -->---&gt; Updating MacPorts base sources using rsync
+<!--        -->MacPorts base version &macports-prev-version; installed,
+<!--        -->MacPorts base version &macports-version; downloaded.
+<!--        -->---&gt; Updating the ports tree
+<!--        -->---&gt; MacPorts base is outdated, installing new version &macports-version;
+<!--        -->Installing new MacPorts release in /opt/local as root:admin; permissions 755</screen>
 
-      <screen>
---->  Updating MacPorts base sources using rsync
-MacPorts base version &macports-prev-version; installed,
-MacPorts base version &macports-version; downloaded.
---->  Updating the ports tree
---->  MacPorts base is outdated, installing new version &macports-version;
-Installing new MacPorts release in /opt/local as root:admin; permissions 755
-</screen>
+            <para>If the <option>selfupdate</option> procedure fails you'll see a message like this:</para>
 
-      <para>If the <option>selfupdate</option> procedure fails you'll see
-      a message like this:</para>
+            <screen>Error installing new MacPorts base: command execution failed</screen>
 
-      <screen>Error installing new MacPorts base: command execution failed</screen>
+            <para>As always, you can use the debug flag <option>-d</option> to enable verbose output. If your
+                <option>selfupdate</option> failed, re-run it with debug output enabled to see all output generated by
+                the build system.</para>
 
-      <para>Re-run <option>selfupdate</option> with the <option>-d</option>
-      flag to see all output generated by the build system. The output may give
-      you an idea why the build failed. If it doesn't, please <link
-        linkend="project.tickets">file a ticket</link> and attach the output
-      generated by <command>sudo port -d selfupdate</command>.</para>
-    </section>
+            <programlisting><prompt>$</prompt> <userinput>sudo port -d selfupdate</userinput></programlisting>
 
-    <section id="using.port.sync">
-      <title>sync</title>
+            <para>The output may give you an idea why the build failed. Look for the first occurances of
+                <quote>error</quote>. If you cannot figure out what's wrong yourself, feel free to ask on the
+                <email>macports-users@lists.macosforge.org</email> mailing list and attach the output generated by
+                <command>sudo port -d selfupdate</command>.</para>
 
-      <para>The <option>sync</option> action performs a subset of
-      <option>selfupdate</option> actions. It synchronizes the ports tree, as
-      does <option>selfupdate</option>, but it does not check for upgrades to
-      MacPorts base. On OS X, unless there is a special reason not to do
-      so, you should run <link
-      linkend="using.port.selfupdate">selfupdate</link>.</para>
+            <para><option>selfupdate</option> accepts a single switch:</para>
 
-      <note>
-        <para>For platforms other than OS X, <option>sync</option> is the
-        only way to get port updates because <option>selfupdate</option> is
-        supported only on OS X.</para>
-      </note>
-    </section>
+            <variablelist>
+                <varlistentry>
+                    <term><option>--nosync</option></term>
+                    <listitem>
+                        <para>Only update MacPorts itself, do not update the tree of <filename>Portfile</filename>s.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
 
-    <section id="using.port.list">
-      <title>list</title>
+        <section id="using.port.sync">
+            <title>port sync</title>
 
-      <para>The <option>list</option> action lists the currently available version of
-      the specified ports, or if no ports are specified, displays a list of all available
-      ports. The list of available ports is very long, so use <link
-      linkend="using.port.search">search</link> if you know a port's name or
-      part of it.</para>
+            <para>The <option>sync</option> action performs a subset of <option>selfupdate</option>. It synchronizes the
+                ports tree, as does <option>selfupdate</option>, but it does not check for MacPorts upgrades. On OS X,
+                unless there is a special reason not to do so, you should alawys run <link
+                    linkend="using.port.selfupdate">selfupdate</link>.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port list</userinput></programlisting>
-    </section>
+            <para><option>sync</option> does not accept any switches.</para>
+        </section>
 
-    <section id="using.port.search">
-      <title>search</title>
+        <section id="using.port.list">
+            <title>port list</title>
 
-      <para>The <option>search</option> action allows finding ports
-      by partial matches of the name or description. Other fields can be matched
-      against, and matched in different ways, by using options. Run <userinput>port help search</userinput>
-      for details.</para>
+            <para>The <option>list</option> action lists the currently available version of the specified ports, or if
+                no ports are specified, displays a list of all available ports. The list of available ports is very
+                long, so use <link linkend="using.port.search">search</link> if you are looking for a specific
+                port.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port search rrd</userinput></programlisting>
+            <programlisting><prompt>$</prompt> <userinput>port list</userinput></programlisting>
 
-      <screen>php5-rrdtool @1.0 (php, net, devel)
-    PHP 5 glue for rrdtool
+            <note>
+                <para><command>port list</command> always lists the most recent version available in MacPorts, which is
+                    not necessarily the version you have installed. For this reason, <command>port list
+                        installed</command> likely produces unexpected output. In most cases where you would
+                    <option>list</option>, using <option>installed</option> or <option>echo</option> is the better
+                    choice instead. Both <command>port installed</command> and <command>port echo installed</command>
+                    would produce the output you might expect from the command, <command>port list installed</command>
+                    will not (and, to make matters worse, will be slow).</para>
 
-rrdtool @1.4.4 (net)
+                <para>You will hardly need <command>port list</command> at all to work with MacPorts. When searching,
+                    <command>port search</command> is the better choice and when trying to list ports, <command>port
+                        installed</command> and <command>port echo</command> are much more useful.</para>
+            </note>
+        </section>
+
+        <section id="using.port.search">
+            <title>port search</title>
+
+            <para>The <option>search</option> action allows finding ports by partial matches of the name or description.
+                Other fields can be matched against, and matched in different ways, by using options. <command>port
+                    search</command> is the tool of choice if you are looking for a specific software in MacPorts. We
+                recommend you read up on some of its flags to improve your efficiency when searching for ports. Run
+                <command>port help search</command> for an exhaustive list of possible switches.</para>
+
+            <para>Suppose you are looking for PHP in MacPorts. You might start with <command>port search php</command>
+                and notice your query produces a lot of output. In fact, at the time of writing this, this search
+                produces 661 matches. By default, <command>port search</command> searches both name and description of
+                a port. While we're looking for PHP, we can reduce the number of hits by using the
+                <option>--name</option> flag. Furthermore, we only want ports whose name starts with <quote>php</quote>,
+                so we add the <option>--glob</option> flag (actually, we could leave it out because it is the default)
+                and modify the search term to <userinput>php*</userinput>:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port search --name --glob 'php*'</userinput></programlisting>
+
+            <para>Furthermore, we can enable compact output by using the <option>--line</option> switch. This causes only
+                a single line to be printed for each match:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port search --name --line --glob 'php*'</userinput></programlisting>
+
+            <para>Among a large number of PHP modules you will find the main PHP ports, which are named
+                php<varname>&lt;version&gt;</varname>. Choose one to install.</para>
+
+            <para>If you know regex and know about the format of the PHP versions, you can further reduce the output of
+                <command>port search</command>:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port search --name --line --regex '^php\d*$'</userinput></programlisting>
+
+            <screen><!--
+            -->php     5.5       lang www    PHP: Hypertext Preprocessor
+<!--        -->php4    4.4.9     lang www    PHP: Hypertext Preprocessor
+<!--        -->php5    5.3.28    lang www    PHP: Hypertext Preprocessor
+<!--        -->php52   5.2.17    lang www    PHP: Hypertext Preprocessor
+<!--        -->php53   5.3.28    lang www    PHP: Hypertext Preprocessor
+<!--        -->php54   5.4.31    lang www    PHP: Hypertext Preprocessor
+<!--        -->php55   5.5.15    lang www    PHP: Hypertext Preprocessor
+<!--        -->php56   5.6.0RC2  lang www    PHP: Hypertext Preprocessor</screen>
+
+            <para>Let us look at another example that is less complicated. Assuming you are looking for
+                <userinput>rrdtool</userinput>, a popular system to store and graph time-series data, the simple search
+                approach works well:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port search rrd</userinput></programlisting>
+
+            <screen>
+cacti @0.8.8b (net)
+    Cacti is a complete RRDtool network graphing solution.
+
+jrrd @1.0.4 (java)
+    Java interface to RRDTool
+
+netmrg @0.20 (net)
+    An RRDtool frontend for network monitoring, reporting, and graphing that generates day/week/month
+    MRTG style graphs.
+
+network-weathermap @0.97c (net)
+    Weathermap is a network visualisation tool, to take graphs you already have and display an
+    overview of your network as a map. It supports RRD, MRTG (RRD and old log-format), and
+    tab-delimited text files. Other sources are via plugins or external scripts.
+
+php-rrd @1.1.3 (php, net, devel)
+    PHP rrdtool extension
+
+php5-rrd @1.1.3 (php, net, devel)
+    PHP rrdtool extension
+
+php5-rrdtool @1.0.5 (php, net, devel)
+    this port is only a stub and has been made obsolete by php5-rrd
+
+php53-rrd @1.1.3 (php, net, devel)
+    PHP rrdtool extension
+
+php54-rrd @1.1.3 (php, net, devel)
+    PHP rrdtool extension
+
+php55-rrd @1.1.3 (php, net, devel)
+    PHP rrdtool extension
+
+rrdtool @1.4.7_5 (net)
     Round Robin Database
 
-Found 2 ports.</screen>
-    </section>
+Found 11 ports.</screen>
 
-    <section id="using.port.info">
-      <title>info</title>
+            <para>The possible switches to <option>search</option> and their meaning are:</para>
 
-      <para>The <option>info</option> action is used to get information about
-      a port: description, maintainer, etc.</para>
+            <variablelist>
+                <varlistentry>
+                    <term><option>--case-sensitive</option></term>
+                    <listitem>
+                        <para>Match the search string in a case-sensitive manner.</para>
+                    </listitem>
+                </varlistentry>
 
-      <programlisting><prompt>%%</prompt> <userinput>port info flowd</userinput></programlisting>
+                <varlistentry>
+                    <term><option>--exact</option></term>
+                    <listitem>
+                        <para>Match the literal search string exactly.</para>
+                    </listitem>
+                </varlistentry>
 
-      <screen>flowd @0.9 (net)
+                <varlistentry>
+                    <term><option>--glob</option></term>
+                    <listitem>
+                        <para>Treat the given search string as glob search string (i.e., expand wildcards
+                            <option>*</option>, <option>?</option>, and <option>[<varname>chars</varname>]</option>).
+                            This is the default behavior.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--regex</option></term>
+                    <listitem>
+                        <para>Treat the given search string as regular expression.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--<varname>&lt;field&gt;</varname></option></term>
+                    <listitem>
+                        <para>Test the search string against <varname>&lt;field&gt;</varname>. Can be specified multiple
+                            times to test against multiple fields. The default is <option>--name --description</option>.
+                            Possible values for <varname>&lt;field&gt;</varname> are</para>
+
+                        <variablelist>
+                            <varlistentry>
+                                <term><option>--category</option>, <option>--categories</option></term>
+                                <listitem>
+                                    <para>Search for ports in a given category.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term>
+                                    <option>--depends</option>,
+                                    <option>--depends_build</option>,
+                                    <option>--depends_extract</option>,
+                                    <option>--depends_fetch</option>,
+                                    <option>--depends_lib</option>,
+                                    <option>--depends_run</option></term>
+                                <listitem>
+                                    <para>Search for ports that depend on the port given as search string. The
+                                        <option>--depends</option> is an alias for all other <option>--depends_</option>
+                                        options combined. Note that only dependencies specified in default variants will
+                                        be found.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--description</option>, <option>--long_description</option></term>
+                                <listitem>
+                                    <para>Test the search string against ports' descriptions.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--homepage</option></term>
+                                <listitem>
+                                    <para>Test the search string against the homepage field of all ports.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--maintainer</option>, <option>--maintainer</option></term>
+                                <listitem>
+                                    <para>Search for ports maintained by a specific maintainer.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--name</option></term>
+                                <listitem>
+                                    <para>Search only ports' names.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--portdir</option></term>
+                                <listitem>
+                                    <para>Test the search string against the path of the directory that contains the port.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>--variant</option>, <option>--variants</option></term>
+                                <listitem>
+                                    <para>Search for variant names.</para>
+                                </listitem>
+                            </varlistentry>
+                        </variablelist>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.info">
+            <title>port info</title>
+
+            <para>The <option>info</option> action is used to get information about a port: name, version, description,
+                variants, homepage, dependencies, license, and maintainers.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port info yubico-pam</userinput></programlisting>
+
+            <screen>
+yubico-pam @2.16 (security)
 Variants:             universal
 
-Description:          flowd is a small, fast and secure NetFlow collector.
-Homepage:             http://www.mindrot.org/flowd.html
+Description:          The Yubico PAM module provides an easy way to integrate the YubiKey into your
+                      existing user authentication infrastructure. The module can be configured to
+                      validate YubiKeys against Yubico's YubiCloud infrastructure, a custom YubiKey
+                      validation server or it can be used for offline authentication with newer
+                      YubiKeys supporting a challenge-response protocol.
+Homepage:             https://github.com/Yubico/yubico-pam
 
+Build Dependencies:   pkgconfig, autoconf, automake, libtool
+Library Dependencies: ykpers, yubico-c-client
 Platforms:            darwin
-License:              unknown
-Maintainers:          nomaintainer@macports.org</screen>
-    </section>
+License:              BSD
+Maintainers:          cal@macports.org</screen>
+        </section>
 
-    <section id="using.port.deps">
-      <title>deps</title>
+        <section id="using.port.deps">
+            <title>port deps</title>
 
-      <para>The <option>deps</option> action shows you the dependencies of a
-      port; dependencies are explicitly declared in
-      <filename>Portfile</filename>s.</para>
+            <para>The <option>deps</option> action lists the dependencies of a port. Dependencies are the packages are
+                required by a port at runtime (library and runtime dependencies) or required to install it (build,
+                fetch, and extract dependencies).</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port deps apache2</userinput></programlisting>
+            <programlisting><prompt>$ </prompt><userinput>port deps apache2</userinput></programlisting>
 
-      <screen>Full Name: apache2 @2.2.17_0+preforkmpm
-Library Dependencies: apr, apr-util, expat, openssl, pcre</screen>
-    </section>
+            <screen>Full Name: apache2 @2.2.27_0+preforkmpm
+<!--        -->Library Dependencies: apr, apr-util, expat, openssl, pcre, perl5, zlib</screen>
 
-    <section id="using.port.variants">
-      <title>variants</title>
+            <para>Note that the list of dependencies might depend on the variants you chose. For example, choosing the
+                <option>+openldap</option> variant of <option>apache2</option> adds a dependency on
+                <option>openldap</option>:</para>
 
-      <para>The <option>variants</option> action allows you to check what
-      variations of a port are available before you install it. Variants are a
-      way for port authors to provide options that may be invoked at install
-      time. See <link linkend="using.variants.invoking">Invoking Port
-      Variants</link> below to install ports that have variants.</para>
+            <programlisting><prompt>$ </prompt><userinput>port deps apache2 +openldap</userinput></programlisting>
 
-      <programlisting><prompt>%%</prompt> <userinput>port variants nmap</userinput></programlisting>
+            <screen>Full Name: apache2 @2.2.27_0+openldap+preforkmpm
+<!--        -->Library Dependencies: apr, apr-util, expat, openssl, pcre, perl5, zlib, openldap</screen>
 
-      <screen>nmap has the variants:
-   no_pcre: build without pcre support
-   no_ssl: build without ssl support
+            <para><option>deps</option> accepts two switches:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--index</option></term>
+                    <listitem>
+                        <para>Do not read the <filename>Portfile</filename> to determine dependencies. Instead, rely on
+                            the information cached in the port index. Note that (despite specifying them), this option
+                            will ignore any effects of variants. It is, however, much faster.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-build</option></term>
+                    <listitem>
+                        <para>Exclude dependencies only required at build time, i.e. fetch, extract, and build
+                            dependencies.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+
+        </section>
+
+        <section id="using.port.variants">
+            <title>port variants</title>
+
+            <para>The <option>variants</option> action allows you to check what variations of a port are available
+                before you install it. Variants are a way for port authors to provide options you can use to customize
+                your build at install time. See <link linkend="using.variants.invoking">Invoking Port Variants</link>
+                below to install ports that have variants.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port variants apache2</userinput></programlisting>
+
+            <screen>
+apache2 has the variants:
+   eventmpm: Use event MPM (experimental)
+     * conflicts with preforkmpm workermpm
+   openldap: Enable LDAP support through OpenLDAP
+[+]preforkmpm: Use prefork MPM
+     * conflicts with eventmpm workermpm
    universal: Build for multiple architectures
-   zenmap: build zenmap in addition to nmap</screen>
-    </section>
+   workermpm: Use worker MPM
+     * conflicts with eventmpm preforkmpm</screen>
 
-    <section id="using.port.install">
-      <title>install</title>
+            <para>This output lists all variants followed by their description. If a variant depends on or conflicts
+                with other variants, a line with the details on that follows. Variant lines that start with
+                <option>[+]</option> are enabled by default by the <filename>Portfile</filename>. Variants that are
+                marked with <option>(+)</option> are selected because of your configuration in
+                <filename>$prefix/etc/macports/variants.conf</filename>. See <xref
+                    linkend="internals.configuration-files.variants-conf" /> for more information on the
+                <filename>variants.conf</filename> file.</para>
+        </section>
 
-      <para>The action <option>install</option> is used to install a port. See
-      <link linkend="using.variants.invoking">Invoking Port Variants</link>
-      below to install ports that have variants.</para>
+        <section id="using.port.install">
+            <title>port install</title>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port install nmap</userinput></programlisting>
+            <para>The action <option>install</option> is used to install a port. Once you determined the name of a port
+                you want (possibly using <link linkend="using.port.search"><command>port search</command></link>), you
+                can install it using this command. See <xref linkend="using.variants.invoking" /> on how to choose
+                variants when installing a new port. For example,</para>
 
-      <note>
-        <para>You may break up a port's installation into smaller steps for
-        troubleshooting by passing <command>port</command> a prior
-        installation phase such as fetch, configure, build, or destroot. See
-        section <link linkend="reference.phases">Port Phases</link> for a
-        complete list of phases.</para>
-      </note>
-    </section>
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 -preforkmpm +workermpm</userinput></programlisting>
 
-    <section id="using.port.clean">
-      <title>clean</title>
+            <para>installs the <option>apache2</option> port without the <option>preforkmpm</option>, but with the
+                <option>workermpm</option> variant.</para>
 
-      <para>The action <option>clean</option> deletes all intermediate files
-      that MacPorts creates while building a port. A <userinput>port
-      clean</userinput> is also often necessary to remove corrupted tarballs
-      after a failed <userinput>fetch</userinput> phase.</para>
+            <para>If the installation of a port fails, you can enable verbose or debug output by giving the
+                <option>-v</option> or <option>-d</option> flag to port:</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port clean --all vile</userinput></programlisting>
+            <programlisting><prompt>$ </prompt><userinput>sudo port -v install apache2</userinput></programlisting>
 
-      <note>
-        <para>You may also clean files selectively by using options
-        <option>--dist</option>, <option>--archive</option>, or
-        <option>--work</option>.</para>
-      </note>
-    </section>
+            <para>All debug information is also kept in the <filename>main.log</filename> file for the port you
+                installed. Its path will be printed automatically if the installation fails. You can manually get the
+                path using <command>port logfile <varname>&lt;portname&gt;</varname></command>. Note that logfiles will
+                automatically be deleted on successful installation.</para>
 
-    <section id="using.port.uninstall">
-      <title>uninstall</title>
+            <para>If the installation of a port fails, you should always clean and try again, i.e., run</para>
 
-      <para>The <option>uninstall</option> action will remove an installed
-      port.</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port clean <varname>&lt;portname&gt;</varname></userinput></programlisting>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall vile</userinput></programlisting>
+            <para>and re-execute the command you ran before.</para>
 
-      <note>
-        <para>To also recursively uninstall the ports that the given port depends on,
-        use the <option>&#x2011;&#x2011;follow&#x2011;dependencies</option> flag. This will not uninstall
-        dependencies that are marked as requested or that have other dependents.</para>
-        <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall --follow-dependencies vile</userinput></programlisting>
+            <para>You might also want to try enabling trace mode, which can prevent conflicts caused by files installed
+                by other ports or in common system locations, such as <filename>/usr/local</filename>. To do that,
+                re-run the installation with the <option>-t</option> flag, i.e.,</para>
 
-        <para>To recursively uninstall all ports that depend on the given port before uninstalling
-        the port itself, use the <option>&#x2011;&#x2011;follow&#x2011;dependents</option> flag.</para>
-        <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall --follow-dependents ncurses</userinput></programlisting>
+            <programlisting><prompt>$ </prompt><userinput>sudo port -t install <varname>&lt;portname&gt;</varname></userinput></programlisting>
 
-        <para>If a port is a dependency of another installed port,
-        uninstall will not remove it unless you remove the dependent port(s)
-        first. To override this behavior, use the <option>-f</option> (force)
-        switch. This will obviously break the dependents. Don't force uninstall ports
-        unless you know what you are doing.</para>
+            <para>If the port still fails to install after you have followed these steps, please <link
+                    linkend="project.tickets">file a ticket</link> and attach the <filename>main.log</filename> of
+                a clean attempt.</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>sudo port -f uninstall ncurses</userinput></programlisting>
-      </note>
-    </section>
+            <note>
+                <para>The installation of a single port consists of multiple phases. These phases are fetch, extract,
+                    patch, configure, build, destroot, archive, and finally install. You may break up a port's
+                    installation into smaller steps for troubleshooting by using the name of one of these phases as
+                    action rather than <option>install</option>. For example</para>
 
-    <section id="using.port.contents">
-      <title>contents</title>
+                <programlisting><prompt>$ </prompt><userinput>sudo port destroot apache2</userinput></programlisting>
 
-      <para>The <option>contents</option> action displays the files that have
-      been installed by a given port. Uninstalled ports cannot have their
-      contents listed.</para>
+                <para>will run the installation of <option>apache2</option> until the destroot phase. See <xref
+                    linkend="reference.phases" /> for a complete list of phases and a detailed description.</para>
+            </note>
 
-      <programlisting><prompt>%%</prompt> <userinput>port contents xorg-renderproto</userinput></programlisting>
+            <para><option>install</option> takes the following switches:</para>
 
-      <screen>Port xorg-renderproto contains:
+            <variablelist>
+                <varlistentry>
+                    <term><option>--no-rev-upgrade</option></term>
+                    <listitem>
+                        <para>By default, a binary sanity check called <option>rev-upgrade</option> is run automatically
+                            after each successful installation. Pass this flag, if you want to avoid running this step,
+                            for example if you want to run it explicitly later after a number of installations using
+                            <command>sudo port rev-upgrade</command>, or if you know it will detect problems but want to
+                            defer dealing with them.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--unrequested</option></term>
+                    <listitem>
+                        <para>By default, each port you install using the <option>install</option> (vs. as a dependency
+                            of a different port) is marked as <quote>requested</quote>. If you want MacPorts to treat
+                            a port you installed manually as if it was automatically installed as a dependency (e.g., if
+                            a dependency failed to build and you re-tried installing the dependency only), pass this
+                            flag.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.clean">
+            <title>port clean</title>
+
+            <para>The action <option>clean</option> deletes intermediate files created by MacPorts while installing
+                a port. A <command>port clean</command> is often necessary when builds fail and should be the first
+                thing to try after a failed installation attempt.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port clean <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para><command>port clean</command> can also be used to remove corrupted downloads after a failed
+                <option>fetch</option> phase, by specifying the <option>--dist</option> flag:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port clean --dist <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para>deletes all files that have been downloaded for the given port.</para>
+
+            <para><option>clean</option> accepts the following options:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--archive</option></term>
+                    <listitem>
+                        <para>Remove temporary archives.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--dist</option></term>
+                    <listitem>
+                        <para>Remove downloaded files.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--logs</option></term>
+                    <listitem>
+                        <para>Remove log files.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--work</option></term>
+                    <listitem>
+                        <para>Remove the <filename>work</filename> directory, i.e., the directory used by MacPorts to
+                            build a software. This removes all traces of an attempted build and is the default
+                            operation.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--all</option></term>
+                    <listitem>
+                        <para>All of the above combined.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.uninstall">
+            <title>port uninstall</title>
+
+            <para>The <option>uninstall</option> action will remove an installed port. It is one of the actions you will
+                use fairly often in MacPorts.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para>MacPorts will refuse to uninstall ports that are still needed by other ports. For example:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall libcomerr</userinput></programlisting>
+
+            <screen>
+---&gt;  Unable to uninstall libcomerr @1.42.9_0, the following ports depend on it:
+---&gt;    kerberos5 @1.11.3_0
+---&gt;    subversion @1.8.9_0
+---&gt;    subversion-perlbindings-5.16 @1.8.9_0
+Error: port uninstall failed: Please uninstall the ports that depend on libcomerr first.</screen>
+
+            <para>You can recursively uninstall all ports that depend on the given port before uninstalling the port
+                itself to work around this. To do that, use the <option>--follow-dependents</option> flag.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall --follow-dependents libcomerr</userinput></programlisting>
+
+            <para>You can also override this safety check using the <option>-f</option> (force) flag. <emphasis>Since
+                    this will obviously break the dependents you shouldn't do this unless you know what you are
+                    doing.</emphasis></para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port -f uninstall libcomerr</userinput></programlisting>
+
+            <para>Uninstalling a port will not uninstall ports that have been automatically installed as dependencies of
+                the uninstalled port and are otherwise unused. You can trigger this behavior by passing the
+                <option>--follow-dependencies</option> flag. Ports that were manually installed (i.e., are marked as
+                <quote>requested</quote>) or have other dependents will not be removed. You can manually uninstall the
+                unneeded ports later using the <option>leaves</option> pseudo-port, e.g., using <command>sudo port
+                    uninstall leaves</command>.</para>
+
+            <para><option>uninstall</option> supports the following switches:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--follow-dependents</option></term>
+                    <listitem>
+                        <para>Recursively uninstall ports that depend on the specified port before uninstalling the port
+                            itself. See also the textual description above.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--follow-dependencies</option></term>
+                    <listitem>
+                        <para>Also uninstall ports that were automatically installed as dependencies of the removed port
+                            and are no longer needed.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-exec</option></term>
+                    <listitem>
+                        <para>Avoid running any uninstall hooks, such as commands that update cache files.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.contents">
+            <title>port contents</title>
+
+            <para>The <option>contents</option> action displays a list of all files that have been installed by a given
+                port. You can only use <option>contents</option> for ports you installed.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port contents xorg-renderproto</userinput></programlisting>
+
+            <screen>
+Port xorg-renderproto contains:
   /opt/local/include/X11/extensions/render.h
   /opt/local/include/X11/extensions/renderproto.h
   /opt/local/lib/pkgconfig/renderproto.pc
   /opt/local/share/doc/renderproto/renderproto.txt</screen>
+
+            <para>Common uses for <option>contents</option> are finding the location of a port's executable after
+                installing it. The following line is usually helpful in this case:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port -q contents <varname>&lt;portname&gt;</varname> | grep -E '/s?bin/'</userinput></programlisting>
+
+            <para>The <option>-q</option> (quiet) flag supresses the header line in this case, but is not strictly necessary.</para>
+
+            <para><option>contents</option> accepts:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--size</option></term>
+                    <listitem>
+                        <para>Prints a human-readable representation of the files' sizes.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--units=UNIT</option></term>
+                    <listitem>
+                        <para>Used in conjunction with <option>--size</option> to choose the unit of the file size.
+                            Valid parameters for <option>UNIT</option> are</para>
+
+                        <variablelist>
+                            <varlistentry>
+                                <term><option>B</option></term>
+                                <listitem>
+                                    <para>List sizes in bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term><option>K</option>, <option>Ki</option>, or <option>KiB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>KiB</option>, i.e., 1024 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term><option>Mi</option>, or <option>MiB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>MiB</option>, i.e., 1024 * 1024 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term><option>Gi</option>, or <option>GiB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>GiB</option>, i.e., 1024 * 1024 * 1024 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+
+                            <varlistentry>
+                                <term><option>k</option>, or <option>kB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>kB</option>, i.e., 1000 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term><option>M</option>, or <option>MB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>MB</option>, i.e., 1000 * 1000 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                            <varlistentry>
+                                <term><option>G</option>, or <option>GB</option></term>
+                                <listitem>
+                                    <para>List sizes in <option>GB</option>, i.e., 1000 * 1000 * 1000 bytes.</para>
+                                </listitem>
+                            </varlistentry>
+                        </variablelist>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.installed">
+            <title>port installed</title>
+
+            <para>The <option>installed</option> action displays the installed versions and variants of the specified
+                ports, or if no ports are specified, all installed ports. It also displays whether a port is
+                <quote>active</quote>, i.e., whether the files belonging to this port are currently present on disk or
+                inactive, i.e., stashed away in a compressed tarball.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port installed</userinput></programlisting>
+
+            <screen>
+The following ports are currently installed:
+  a52dec @0.7.4_0 (active)
+  adns @1.4_0 (active)
+  apache2 @2.2.27_0+preforkmpm (active)
+  apr @1.5.1_0 (active)
+  apr-util @1.5.3_0 (active)
+  aquaterm @1.1.1_0 (active)
+  asciidoc @8.6.9_1+python27 (active)
+  …
+  XviD @1.3.3_0 (active)
+  xz @5.0.5_0 (active)
+  yasm @1.2.0_0 (active)
+  ykpers @1.12.0_0 (active)
+  youtube-dl @2014.07.25.1_0+python27 (active)
+  yubico-c-client @2.12_0 (active)
+  yubico-pam @2.16_0 (active)
+  zlib @1.2.8_0 (active)</screen>
+
+            <para>Use the <option>-v</option> option to also display the platform and CPU architecture(s) for which the
+                ports were built, and any variants which were explicitly negated.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port -v installed libsdl</userinput></programlisting>
+            <screen>
+The following ports are currently installed:
+  libsdl @1.2.15_3-x11 (active) platform='darwin 13' archs='x86_64'</screen>
+        </section>
+
+        <section id="using.port.outdated">
+            <title>port outdated</title>
+
+            <para>The <option>outdated</option> action checks your installed ports against the current ports tree to see
+                they have been updated since you installed them. Note that you will only get new versions by updating
+                your ports tree using <option><link linkend="using.port.selfupdate">selfupdate</link></option> (or
+                <option>sync</option>).</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port outdated</userinput></programlisting>
+
+            <screen>
+The following installed ports are outdated:
+gnupg                          1.4.16_0 &lt; 1.4.18_0
+gnupg2                         2.0.22_2 &lt; 2.0.25_0
+gpg-agent                      2.0.22_1 &lt; 2.0.25_0
+gpgme                          1.5.0_0 &lt; 1.5.1_0
+HexFiend                       2.1.2_1 &lt; 2.3.0_0
+libksba                        1.0.8_0 &lt; 1.3.0_0
+p5.16-class-methodmaker        2.180.0_1 &lt; 2.210.0_0
+p5.16-gnupg-interface          0.330.0_3 &lt; 0.500.0_1
+p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
+
+            <para><command>port outdated</command> lists the ports for which an upgrade is available and on the second
+                column, why MacPorts thinks the port needs an upgrade. In most cases, this will be an increase in the
+                version number. If it isn't, more details will be given.</para>
+        </section>
+
+        <section id="using.port.upgrade">
+            <title>port upgrade</title>
+
+            <para>The <option>upgrade</option> action upgrades installed ports and their dependencies to the latest
+                version available in MacPorts. In most cases, you will run</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port upgrade outdated</userinput></programlisting>
+
+            <para>to update all ports that have an upgrade available. You can, however, selectively upgrade ports if you
+                want to delay other upgrades until later. To do that, specify the name(s) of the port(s) to upgrade:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port upgrade gnupg2</userinput></programlisting>
+
+            <para>Note that MacPorts may decide to upgrade other dependent ports before upgrading the port you requested
+                to be updated. Do not attempt to prevent this, since it will very likely lead to problems later.</para>
+
+            <note>
+                <para><option>upgrade</option> does not uninstall the old version of a port. Instead, it deactivates it,
+                    i.e., it stashes the files belonging to the older version away in a tarball. This allows you to go
+                    back to the older version if there happens to be a problem with the updated one. To do that,
+                    run</para>
+
+                <programlisting><prompt>$ </prompt><userinput>port installed <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+                <para>to determine the version number of the old version you want to re-activate, and run</para>
+
+                <programlisting><prompt>$ </prompt><userinput>sudo port activate <varname>&lt;portname&gt;</varname> @<varname>&lt;old-version&gt;</varname></userinput></programlisting>
+
+                <para>to go back to the old version.</para>
+
+                <para>If you do not want to keep the old versions around while upgrading, you can pass the
+                    <option>-u</option> option when upgrading:</para>
+
+                <programlisting><prompt>$ </prompt><userinput>sudo port -u upgrade outdated</userinput></programlisting>
+
+                <para>However, we instead recommend keeping the older versions around for a while and running</para>
+
+                <programlisting><prompt>$ </prompt><userinput>sudo port uninstall inactive</userinput></programlisting>
+
+                <para>once in a while.</para>
+            </note>
+
+            <para><option>upgrade</option> accepts a number of switches:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--force</option></term>
+                    <listitem>
+                        <para>Always consider the given ports outdated, regardless of whether they actually are.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--enforce-variants</option></term>
+                    <listitem>
+                        <para>If the installed variants do not match those requested, upgrade (and change variants) even
+                            if the port is not outdated. You can use this to switch the variant selection on an
+                            installed port, e.g. using</para>
+
+                        <programlisting><prompt>$ </prompt><userinput>sudo port upgrade --enforce-variants apache2 -preforkmpm +workermpm</userinput></programlisting>
+
+                        <para>Note that <option>--enforce-variants</option> will also enforce your variant selection in
+                            all dependencies. If you know this is not necessary, you can avoid processing dependencies
+                            using the global <option>-n</option> flag:</para>
+
+                        <programlisting><prompt>$ </prompt><userinput>sudo port -n upgrade --enforce-variants apache2 -preforkmpm +workermpm</userinput></programlisting>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-replace</option></term>
+                    <listitem>
+                        <para>Do not automatically install replacement ports for a port that you have installed, but was
+                            replaced with a different one.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
+
+        <section id="using.port.dependents">
+            <title>port dependents</title>
+
+            <para>The <option>dependents</option> action reports what ports depend upon a given (installed) port, if
+                any.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port dependents openssl</userinput></programlisting>
+
+            <screen>apache2 depends on openssl
+curl depends on openssl
+cyrus-sasl2 depends on openssl
+git depends on openssl
+kerberos5 depends on openssl
+lftp depends on openssl
+libssh depends on openssl
+mosh depends on openssl
+openldap depends on openssl
+p5.16-net-ssleay depends on openssl
+python27 depends on openssl
+python32 depends on openssl
+qt4-mac depends on openssl
+ruby19 depends on openssl
+serf1 depends on openssl
+textmate2 depends on openssl
+wireshark depends on openssl</screen>
+
+            <para>Note that <option>dependents</option> does not work for ports that are not installed on your system.
+                If you want to find out, which ports depend on a port that you have not installed, you can use</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port echo depends:<varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para>This command will, however, not cover dependencies that are only present in non-default variants.</para>
+        </section>
+
+        <section id="using.port.livecheck">
+            <title>port livecheck</title>
+
+            <para>The <option>livecheck</option> action checks to see if the application corresponding to a given port
+                has been updated at the developer's download site. This action is mostly useful for port maintainers to
+                determine whether their port needs to be updated, but other may also wish to see if a port packages the
+                latest available version. See <xref linkend="reference.livecheck" /> for more information on
+                livecheck.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port livecheck rb19-sass</userinput></programlisting>
+
+            <screen>rb19-sass seems to have been updated (port version: 3.3.10, new version: 3.3.14)</screen>
+
+            <note>
+                <para>If <option>livecheck</option> finds no higher version at the port's download site, it prints
+                    nothing. The option <option>-d</option> (debug) may be used for detailed livecheck processing
+                    information.</para>
+            </note>
+        </section>
+
+        <section id="using.port.lint">
+            <title>port lint</title>
+
+            <para>The lint action checks if the <filename>Portfile</filename> conforms to the MacPorts standards
+                    specified in <link linkend="development">Portfile Development</link>. You should use this if you
+                    modified a <filename>Portfile</filename> before submitting patches back to MacPorts.</para>
+
+            <para>If a <filename>Portfile</filename> validates fine the following message is shown.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port lint rb19-sass</userinput></programlisting>
+
+            <screen>
+---&gt;  Verifying Portfile for rb19-sass
+---&gt;  0 errors and 0 warnings found.</screen>
+
+            <para>Otherwise the warnings and errors are listed.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port lint abiword</userinput></programlisting>
+
+            <screen>
+---&gt;  Verifying Portfile for abiword
+Warning: Variant use_binary does not have a description
+Warning: Variant use_source does not have a description
+Warning: no license set
+---&gt;  0 errors and 3 warnings found.</screen>
+
+            <para><option>lint</option> has the following flag:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--nitpick</option></term>
+                    <listitem>
+                        <para>Enables additional checks that are mostly whitespace-related and best practices.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+        </section>
     </section>
 
-    <section id="using.port.installed">
-      <title>installed</title>
+    <section id="using.variants">
+        <title>Port Variants</title>
 
-      <para>The <option>installed</option> action displays the installed versions,
-      variants and activation status of the
-      specified ports, or if no ports are specified, all installed
-      ports. Use the <option>-v</option> option to also display the platform and
-      CPU architecture(s) for which the ports were built, and any variants which were
-      explicitly negated.</para>
+        <para>Variants are a way for port authors to provide options for a port that may be chosen at installation.
+            Typically, variants are optional features that can be enabled, but are not necessarily useful for all users
+            and are thus not enabled by default. To display the available variants for a port, if any, use this
+            command:</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port installed</userinput></programlisting>
+        <programlisting><prompt>$ </prompt><userinput>port variants <varname>&lt;portname&gt;</varname></userinput></programlisting>
 
-      <screen>The following ports are currently installed:
-  aalib @1.4rc5_2 (active)
-  apr @1.2.8_0 (active)
-  apr-util @1.2.8_2 (active)
-  atk @1.18.0_0 (active)
+        <para>For example:</para>
 
-[ ... trimmed ...]
+        <programlisting><prompt>$ </prompt><userinput>port variants apache2</userinput></programlisting>
 
-  wxWidgets @2.8.4_2 (active)
-  Xft2 @2.1.7_0 (active)
-  xrender @0.9.0_0 (active)
-  zlib @1.2.3_1 (active)</screen>
+        <screen>
+apache2 has the variants:
+   eventmpm: Use event MPM (experimental)
+     * conflicts with preforkmpm workermpm
+   openldap: Enable LDAP support through OpenLDAP
+[+]preforkmpm: Use prefork MPM
+     * conflicts with eventmpm workermpm
+   universal: Build for multiple architectures
+   workermpm: Use worker MPM
+     * conflicts with eventmpm preforkmpm</screen>
 
-    <programlisting><prompt>%%</prompt> <userinput>port -v installed atlas</userinput></programlisting>
-    <screen>The following ports are currently installed:
-  atlas @3.8.3_4+gcc44-gcc43 (active) platform='darwin 10' archs='x86_64'</screen>
+        <para>This output lists all variants followed by their description. If a variant depends on or conflicts with
+            other variants, a line with the details on that follows. Variant lines that start with <option>[+]</option>
+            are enabled by default by the <filename>Portfile</filename>. Variants that are marked with
+            <option>(+)</option> are selected because of your configuration in
+            <filename>$prefix/etc/macports/variants.conf</filename>. See <xref
+                linkend="internals.configuration-files.variants-conf" /> for more information on the
+            <filename>variants.conf</filename> file.</para>
+
+        <section id="using.variants.invoking">
+            <title>Invoking Variants</title>
+
+            <para>A variant can only be invoked when a port is installed. After you have determined what variants
+                a given port has, if any, you may install a port using the variant by specifying its name preceeded by
+                a plus or minus sign on the command line, for example</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 +openldap</userinput></programlisting>
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 -preforkmpm +workermpm</userinput></programlisting>
+
+            <para>Note that you will not see any confirmation of successful variant selection and MacPorts will not warn
+                you if you misspelled a variant's name. If your installation is successful, but the chosen feature still
+                seems to be missing, check for possible typos. You can use <command><link
+                        linkend="using.port.installed">port installed</link></command> to verify that the port has been
+                installed with the chosen variant.</para>
+
+            <para>This happens because MacPorts will also use the specified variants for any dependencies. For example,</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 +mariadb</userinput></programlisting>
+
+            <para>even though <option>apache2</option> does not have a <option>+mariadb</option> variant. Instead, this
+                will cause the <option>apr-util</option> port to be installed with the <option>+mariadb</option>
+                variant.</para>
+
+            <para>MacPorts will remember the variants that were used when installing a port. If you upgrade a port
+                later, the same variants will be used, unless you use manually specify different variants and use the
+                <option>--enforce-variants</option> flag of <option>upgrade</option>.</para>
+        </section>
+
+        <section id="using.variants.negating">
+            <title>Negating Default Variants</title>
+
+            <para>A <filename>Portfile</filename> can specify a default set of variants that will be used when you do
+                not manually override it. Not all ports specify default variants – if there are no default variants, no
+                variants are chosen by default.</para>
+
+            <para>If you wish to disable a variant that has been enabled by default, either by the
+                <filename>Portfile</filename>, or by your configuration in <filename>variants.conf</filename>, you can
+                negate the variant in question by prefixing the variant name with a minus on the command line:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 -preformmpm +workermpm</userinput></programlisting>
+        </section>
     </section>
 
-    <section id="using.port.outdated">
-      <title>outdated</title>
+    <section id="using.common-tasks">
+        <title>Common Tasks</title>
 
-      <para>The <option>outdated</option> action checks your installed ports
-      against the current ports tree to see if updated Portfiles have been
-      released since your ports were installed. Note that you will not see new
-      versions unless you have updated your ports tree using <option>selfupdate</option>
-      or <option>sync</option>.</para>
+        <para>This section lists common operations you may want to perform when managing a MacPorts installation. These
+            are the workflows you will need most while using MacPorts. We recommend you read at least this section as
+            a primer into how to use MacPorts. More details about the usage can be found in <xref linkend="using.port"/>
+            and the <option>port(1)</option> manpage available by running <command>man 1 port</command> in
+            a Terminal.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
+        <para>Mind the <quote>sudo</quote> for some of the subsequent examples, which is necessary if you have a default
+            MacPorts installation.</para>
 
-      <screen>apr                            1.2.8_0 &lt; 1.2.9_0
-autoconf                       2.61_0 &lt; 2.61_1
-gimp                           2.2.14_0 &lt; 2.2.16_0
-libtool                        1.5.22_0 &lt; 1.5.24_0
-pkgconfig                      0.21_0 &lt; 0.22_0</screen>
+        <section id="using.common-tasks.updating">
+            <title>Updating Your Ports Tree</title>
+
+            <para>The local ports tree is a collection of files that contain information on which packages are available
+                through MacPorts and how they can be installed. You should regularly update your ports tree to get
+                access to updated versions of software and bug fixes. To do that, use <option>selfupdate</option>:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port selfupdate</userinput></programlisting>
+
+            <screen>Password:
+<!--        -->---&gt; Updating MacPorts base sources using rsync
+<!--        -->MacPorts base version &macports-version; installed,
+<!--        -->MacPorts base version &macports-version; downloaded.
+<!--        -->---&gt; Updating the ports tree
+<!--        -->---&gt; MacPorts base is already the latest version
+<!--        -->
+<!--        -->The ports tree has been updated. To upgrade your installed ports, you should run
+<!--        -->  port upgrade outdated</screen>
+        </section>
+
+        <section id="using.common-tasks.showports">
+            <title>Show Ports Which Need Updating</title>
+
+            <para>To see what's new after running <option>selfupdate</option>, you can use <command>port
+                    outdated</command> to generate a list of ports that have newer versions available. This can help in
+                estimating the time required for <command>sudo port upgrade outdated</command>, even though this depends
+                on further factors such as binary package availability and a port's build time.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port outdated</userinput></programlisting>
+
+            <screen>
+<!--        -->The following installed ports are outdated:
+<!--        -->gnupg                          1.4.16_0 &lt; 1.4.18_0
+<!--        -->gnupg2                         2.0.22_2 &lt; 2.0.25_0
+<!--        -->gpg-agent                      2.0.22_1 &lt; 2.0.25_0
+<!--        -->gpgme                          1.5.0_0 &lt; 1.5.1_0
+<!--        -->HexFiend                       2.1.2_1 &lt; 2.3.0_0
+<!--        -->libksba                        1.0.8_0 &lt; 1.3.0_0
+<!--        -->p5.16-class-methodmaker        2.180.0_1 &lt; 2.210.0_0
+<!--        -->p5.16-gnupg-interface          0.330.0_3 &lt; 0.500.0_1
+<!--        -->p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
+        </section>
+
+        <section id="using.common-tasks.upgrading">
+            <title>Upgrading Outdated Ports</title>
+
+            <para>To upgrade all your installed and outdated ports, run</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port upgrade outdated</userinput></programlisting>
+
+            <para>In case you want to upgrade only a specific port, replace <quote>outdated</quote> in the command given
+                above with the port's name:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port upgrade makedepend</userinput></programlisting>
+
+            <screen>Password:
+<!--        -->---&gt; Computing dependencies for makedepend
+<!--        -->---&gt; Fetching makedepend
+<!--        -->---&gt; Attempting to fetch makedepend-1.0.3.tar.bz2 from http://lil.fr.distfiles.macports.org/makedepend
+<!--        -->---&gt; Verifying checksum(s) for makedepend
+<!--        -->---&gt; Extracting makedepend
+<!--        -->---&gt; Configuring makedepend
+<!--        -->---&gt; Building makedepend
+<!--        -->---&gt; Staging makedepend into destroot
+<!--        -->---&gt; Computing dependencies for makedepend
+<!--        -->---&gt; Installing makedepend @1.0.3_0
+<!--        -->---&gt; Deactivating makedepend @1.0.2_0
+<!--        -->---&gt; Activating makedepend @1.0.3_0
+<!--        -->---&gt; Cleaning makedepend</screen>
+
+            <para>Note that MacPorts will upgrade any dependencies of a port first before updating the port itself. So
+                even if you request the update of a single port only, other ports may be upgraded first because they are
+                in the dependency tree. Do <emphasis>not</emphasis> try to avoid this, as it will very likely lead to
+                problems later on – the new version of the port you want to upgrade might require the newer dependency,
+                or it might only have been upgraded at all to be rebuilt against the updated dependency, in which case
+                avoiding the update of the dependency defeats the purpose of the reinstallation.</para>
+        </section>
+
+        <section id="using.common-tasks.removeinactive">
+            <title>Removing Inactive Version(s) of Upgraded Port(s)</title>
+
+            <para>By default, upgrading ports in MacPorts does not remove the older versions. This is a safety measure
+                to ensure you can go back to a working and tested version in case an update goes wrong. To save disk
+                space, you should periodically uninstall any old versions you no longer need.</para>
+
+            <para>Use</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port installed inactive</userinput></programlisting>
+
+            <para>to get a list of inactive ports you likely no longer need.</para>
+
+            <screen>The following ports are currently installed:
+<!--        -->  gnupg @1.4.16_0
+<!--        -->  gnupg2 @2.0.22_2
+<!--        -->  gpg-agent @2.0.22_1
+<!--        -->  gpgme @1.5.0_0
+<!--        -->  HexFiend @2.1.2_1
+<!--        -->  libksba @1.0.8_0
+<!--        -->  p5.16-class-methodmaker @2.180.0_1
+<!--        -->  p5.16-gnupg-interface @0.330.0_3
+<!--        -->  p5.16-ipc-run @0.910.0_1</screen>
+
+            <para>Check the list for any ports you might still want to keep. To remove all of them at once, run</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall inactive</userinput></programlisting>
+
+            <screen>Password:
+<!--        -->---&gt;  Uninstalling p5.16-gnupg-interface @0.330.0_3
+<!--        -->---&gt;  Cleaning p5.16-gnupg-interface
+<!--        -->---&gt;  Uninstalling gnupg @1.4.16_0
+<!--        -->---&gt;  Cleaning gnupg
+<!--        -->---&gt;  Uninstalling gpgme @1.5.0_0
+<!--        -->---&gt;  Cleaning gpgme
+<!--        -->---&gt;  Uninstalling gnupg2 @2.0.22_2
+<!--        -->---&gt;  Cleaning gnupg2
+<!--        -->---&gt;  Uninstalling gpg-agent @2.0.22_1
+<!--        -->---&gt;  Cleaning gpg-agent
+<!--        -->---&gt;  Uninstalling HexFiend @2.1.2_1
+<!--        -->---&gt;  Cleaning HexFiend
+<!--        -->---&gt;  Uninstalling libksba @1.0.8_0
+<!--        -->---&gt;  Cleaning libksba
+<!--        -->---&gt;  Uninstalling p5.16-class-methodmaker @2.180.0_1
+<!--        -->---&gt;  Cleaning p5.16-class-methodmaker
+<!--        -->---&gt;  Uninstalling p5.16-ipc-run @0.910.0_1
+<!--        -->---&gt;  Cleaning p5.16-ipc-run</screen>
+
+            <para>Of course you could also select only a specific inactive port, but that requires to specify the exact
+                version:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall HexFiend @2.1.2_1</userinput></programlisting>
+
+            <screen>Password:
+<!--        -->---&gt;  Uninstalling HexFiend @2.1.2_1
+<!--        -->---&gt;  Cleaning HexFiend</screen>
+
+            <para>To uninstall all inactive ports but a single one, you can use the following shortcut:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall inactive and not <varname>&lt;portname&gt;</varname></userinput></programlisting>
+        </section>
+
+        <section id="using.common-tasks.finddepending">
+            <title>Finding Ports Depending on a Certain Port</title>
+
+            <para>If you want to find all ports that depend on a given other port, you can use</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port echo depends:<varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para>If you are only interested in the dependent ports that you actually have installed, you can use the
+                quicker and more accurate <option>dependents</option>:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port dependents <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <programlisting><prompt>$ </prompt><userinput>port dependents libksba</userinput></programlisting>
+
+            <screen>gnupg2 depends on libksba
+<!--        -->gpg-agent depends on libksba</screen>
+
+            <para>MacPorts also has a recursive version of the <option>dependents</option> action called <option>rdependents</option>:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port rdependents libksba</userinput></programlisting>
+
+            <screen>The following ports are dependent on libksba:
+<!--        -->  gnupg2
+<!--        -->    gpgme
+<!--        -->  gpg-agent</screen>
+
+            <para>Finally, to find out which port you manually installed caused the automatic installation of
+                a dependency, use the following expression:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port installed requested and rdependentof:<varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <programlisting><prompt>$ </prompt><userinput>port installed requested and rdependentof:libksba</userinput></programlisting>
+
+            <screen>The following ports are currently installed:
+<!--        -->  gnupg2 @2.0.25_0 (active)</screen>
+        </section>
+
+        <section id="using.common-tasks.findleaves">
+            <title>Finding Leaves</title>
+
+            <para>After a while of using MacPorts, installing and uninstalling ports, packages that have been
+                automatically installed as dependencies for other ports are left behind, even though they are no longer
+                necessary. Ports that have not been manually installed (<quote>requested</quote>) and do not have any
+                dependents are called <quote>leaves</quote> and can be identified using the <option>leaves</option>
+                pseudo-port, for example in conjunction with the <option>echo</option> or <option>installed</option>
+                action.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port echo leaves</userinput></programlisting>
+
+            <screen>
+<!--        -->git-flow                       @0.4.1_2
+<!--        -->gmake                          @4.0_0
+<!--        -->gpgme                          @1.5.1_0
+<!--        -->hs-download-curl               @0.1.4_0
+<!--        -->pkgconfig                      @0.28_0
+<!--        -->py27-docutils                  @0.12_0
+<!--        -->python32                       @3.2.5_0
+<!--        -->texi2html                      @5.0_1
+<!--        -->yasm                           @1.2.0_0</screen>
+
+            <para>These leaves may be wanted, but are in most cases unneeded. See <xref
+                    linkend="using.common-tasks.keeplean"/> to find out how to mark some of the leaves as requested. You
+                can uninstall all leaves using</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall leaves</userinput></programlisting>
+
+            <para>Note that the uninstallation can mark new ports as leaves. To uninstall all leaves, you have to repeat
+                the process until <command>port echo leaves</command> comes back empty. To simplify this, consider
+                installing the <option>port_cutleaves</option> port and running <command>sudo
+                    port_cutleaves</command>.</para>
+        </section>
+
+        <section id="using.common-tasks.keeplean">
+            <title>Keep Your Installation Lean by Defining Leaves as Requested Ports</title>
+
+            <para>Well, before we come to the procedure of defining your requested ports, let's have a look at a typical
+                scenario where you want to understand what is actually installed and what is on the other hand truly
+                necessary for your system. Say checking leaves of your MacPorts installation gives this output:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port echo leaves</userinput></programlisting>
+
+            <screen>
+<!--        -->git-flow                       @0.4.1_2
+<!--        -->gmake                          @4.0_0
+<!--        -->gpgme                          @1.5.1_0
+<!--        -->hs-download-curl               @0.1.4_0
+<!--        -->pkgconfig                      @0.28_0
+<!--        -->py27-docutils                  @0.12_0
+<!--        -->python32                       @3.2.5_0
+<!--        -->texi2html                      @5.0_1
+<!--        -->yasm                           @1.2.0_0</screen>
+
+            <para>Now it is up to the user to decide what's needed and what is not. We've noticed
+                <option>pkgconfig</option> is needed to build many ports, and while it is strictly not needed after
+                installation, we'd like to keep it around to avoid installing it over and over again.
+                <option>python32</option>, <option>texi2html</option>, and <option>yasm</option> are only needed to
+                update <option>mplayer2</option>, and since that software is rarely updated, we will re-install those
+                ports again when they are needed. Since they are all distributable, MacPorts will use pre-built binaries
+                for their installation anyway, so re-installing them wouldn't take long anyway. We don't really know why
+                the rest of the leaves were installed, so we're just going to remove them for now.</para>
+
+            <para>Since we decided to keep <option>pkgconfig</option>, we are going to mark it as manually installed
+                (<quote>requested</quote> in MacPorts lingo) using:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port setrequested pkgconfig</userinput></programlisting>
+
+            <para>When you've step-by-step figured out which ports you want to keep on your system and have set them as
+                requested, you'll have a list of unnecessary ports, which you can get rid of using</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port uninstall leaves</userinput></programlisting>
+
+            <para>Note that uninstalling leaves may mark new ports as leaves, so you will have to repeat the process.
+                You can install the <option>port_cutleaves</option> port, which is a special script for the job. It
+                allows you to interactively decide whether to keep or uninstall a port. Run it as</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port_cutleaves</userinput></programlisting>
+
+            <screen>
+<!--        -->[Leaf 1 of 8] hs-download-curl @0.1.4_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort:
+<!--        -->** hs-download-curl @0.1.4_0 will be kept.
+<!--        -->
+<!--        -->[Leaf 2 of 8] gmake @4.0_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** gmake @4.0_0 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 3 of 8] texi2html @5.0_1 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** texi2html @5.0_1 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 4 of 8] yasm @1.2.0_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** yasm @1.2.0_0 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 5 of 8] python32 @3.2.5_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** python32 @3.2.5_0 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 6 of 8] py27-docutils @0.12_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** py27-docutils @0.12_0 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 7 of 8] git-flow @0.4.1_2 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** git-flow @0.4.1_2 will be uninstalled.
+<!--        -->
+<!--        -->[Leaf 8 of 8] gpgme @1.5.1_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** gpgme @1.5.1_0 will be uninstalled.
+<!--        -->
+<!--        -->---&gt;  Deactivating gmake @4.0_0
+<!--        -->---&gt;  Cleaning gmake
+<!--        -->---&gt;  Uninstalling gmake @4.0_0
+<!--        -->---&gt;  Cleaning gmake
+<!--        -->---&gt;  Deactivating texi2html @5.0_1
+<!--        -->---&gt;  Cleaning texi2html
+<!--        -->---&gt;  Uninstalling texi2html @5.0_1
+<!--        -->---&gt;  Cleaning texi2html
+<!--        -->---&gt;  Deactivating yasm @1.2.0_0
+<!--        -->---&gt;  Cleaning yasm
+<!--        -->---&gt;  Uninstalling yasm @1.2.0_0
+<!--        -->---&gt;  Cleaning yasm
+<!--        -->---&gt;  Deactivating python32 @3.2.5_0
+<!--        -->---&gt;  Cleaning python32
+<!--        -->---&gt;  Uninstalling python32 @3.2.5_0
+<!--        -->---&gt;  Cleaning python32
+<!--        -->---&gt;  Deactivating py27-docutils @0.12_0
+<!--        -->---&gt;  Cleaning py27-docutils
+<!--        -->---&gt;  Uninstalling py27-docutils @0.12_0
+<!--        -->---&gt;  Cleaning py27-docutils
+<!--        -->---&gt;  Deactivating git-flow @0.4.1_2
+<!--        -->---&gt;  Cleaning git-flow
+<!--        -->---&gt;  Uninstalling git-flow @0.4.1_2
+<!--        -->---&gt;  Cleaning git-flow
+<!--        -->---&gt;  Deactivating gpgme @1.5.1_0
+<!--        -->---&gt;  Cleaning gpgme
+<!--        -->---&gt;  Uninstalling gpgme @1.5.1_0
+<!--        -->---&gt;  Cleaning gpgme
+<!--        -->
+<!--        -->The following ports were uninstalled:
+<!--        -->  gmake @4.0_0
+<!--        -->  texi2html @5.0_1
+<!--        -->  yasm @1.2.0_0
+<!--        -->  python32 @3.2.5_0
+<!--        -->  py27-docutils @0.12_0
+<!--        -->  git-flow @0.4.1_2
+<!--        -->  gpgme @1.5.1_0
+<!--        -->
+<!--        -->Search for new leaves?
+<!--        -->  [no] / (y)es: y
+<!--        -->
+<!--        -->[Leaf 1 of 1] py27-roman @2.0.0_0 (active):
+<!--        -->  [keep] / (u)ninstall / (f)lush / (a)bort: u
+<!--        -->** py27-roman @2.0.0_0 will be uninstalled.
+<!--        -->
+<!--        -->---&gt;  Deactivating py27-roman @2.0.0_0
+<!--        -->---&gt;  Cleaning py27-roman
+<!--        -->---&gt;  Uninstalling py27-roman @2.0.0_0
+<!--        -->---&gt;  Cleaning py27-roman
+<!--        -->
+<!--        -->The following ports were uninstalled:
+<!--        -->  py27-roman @2.0.0_0
+<!--        -->
+<!--        -->Search for new leaves?
+<!--        -->  [no] / (y)es: y
+<!--        -->
+<!--        -->There are no new leaves to process.</screen>
+
+            <para>You can get a list of all ports you previously set as requested (or installed manually) using:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port installed requested</userinput></programlisting>
+
+            <para>We recommend you check the list of leaves from time to time to keep your system free of too much
+                <quote>garbage</quote>. You should also periodically check the list of your requested ports and mark any
+                ports you no longer need as unrequested using</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port unsetrequested <varname>&lt;portname&gt;</varname></userinput></programlisting>
+
+            <para>Then check for new leaves to cut down the number of installed ports and the size of your MacPorts
+                installation.</para>
+        </section>
     </section>
 
-    <section id="using.port.upgrade">
-      <title>upgrade</title>
+    <section id="using.binaries">
+        <title>Port Binaries</title>
 
-      <para>The <option>upgrade</option> action upgrades installed ports and
-      their dependencies when a <filename>Portfile</filename> in the
-      repository has been updated after a port was installed.</para>
+        <para>MacPorts can pre-compile ports into binaries so applications need not be compiled when installing on
+            a target system. MacPorts supports two types of binaries: archives and packages.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade gnome</userinput></programlisting>
+        <section id="using.binaries.archives">
+            <title>Binary Archives</title>
 
-      <para>If you wish not to upgrade a port's dependencies, use the
-      <option>-n</option> switch. Note that this will often cause problems.</para>
+            <para>Binary archives can only be used on a target system running MacPorts. They allow MacPorts utilities to
+                skip the build (which is usually the phase that takes longest) and begin installation after the destroot
+                phase. Binary archives are automatically created whenever a port is installed, and can also be
+                downloaded from a server. MacPorts runs a buildbot infrastructure that creates prebuilt binary packages
+                for all ports in MacPorts for the default installation prefix. Buildbots exist for systems later or
+                equal to Snow Leopard. If a port builds successfully and its license and those of its dependencies allow
+                binary redistribution, they archives are uploaded to <option>packages.macports.org</option> and will be
+                automatically used by MacPorts during installation.</para>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port -n upgrade gnome</userinput></programlisting>
+            <para>You can manually create an archive (and see debug output for its creation) using</para>
 
-      <para>If you'd like to upgrade all outdated ports, use this
-      command.</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port -d archive logrotate</userinput></programlisting>
+            <screen>
+<!--        -->---&gt;  Installing logrotate @3.8.6_2+gzip
+<!--        -->[…]
+<!--        -->DEBUG: Creating logrotate-3.8.6_2+gzip.darwin_13.x86_64.tbz2
+<!--        -->[…]
+<!--        -->a .
+<!--        -->a ./+COMMENT
+<!--        -->a ./+CONTENTS
+<!--        -->a ./+DESC
+<!--        -->a ./+PORTFILE
+<!--        -->a ./+STATE
+<!--        -->a ./opt
+<!--        -->a ./opt/local
+<!--        -->a ./opt/local/etc
+<!--        -->a ./opt/local/sbin
+<!--        -->a ./opt/local/share
+<!--        -->a ./opt/local/var
+<!--        -->a ./opt/local/var/run
+<!--        -->a ./opt/local/var/run/logrotate
+<!--        -->a ./opt/local/var/run/logrotate/.turd_logrotate
+<!--        -->a ./opt/local/share/logrotate
+<!--        -->a ./opt/local/share/man
+<!--        -->a ./opt/local/share/man/man5
+<!--        -->a ./opt/local/share/man/man8
+<!--        -->a ./opt/local/share/man/man8/logrotate.8.gz
+<!--        -->a ./opt/local/share/man/man5/logrotate.conf.5.gz
+<!--        -->a ./opt/local/share/logrotate/CHANGES
+<!--        -->a ./opt/local/share/logrotate/COPYING
+<!--        -->a ./opt/local/share/logrotate/logrotate.conf.example
+<!--        -->a ./opt/local/share/logrotate/org.macports.logrotate.plist.example
+<!--        -->a ./opt/local/sbin/logrotate
+<!--        -->a ./opt/local/etc/logrotate.d
+<!--        -->a ./opt/local/etc/logrotate.d/.turd_logrotate
+<!--        -->DEBUG: Archive logrotate-3.8.6_2+gzip.darwin_13.x86_64.tbz2 packaged</screen>
 
-      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
+            <para>Binary archive files are placed in <filename>${prefix}/var/macports/software/</filename>. The archive
+                file type is set in the <filename>macports.conf</filename> file using the
+                <option>portarchivetype</option> key. The default format is <option>tbz2</option>; other options are:
+                <option>tar</option>, <option>tbz</option>, <option>tbz2</option>, <option>tgz</option>,
+                <option>tlz</option>, <option>txz</option>, <option>xar</option>, <option>zip</option>,
+                <option>cpgz</option>, and <option>cpio</option>. Note that changing this setting will prevent MacPorts
+                from downloading and using pre-built binaries, so you should probably leave it as-is.</para>
+        </section>
 
-      <note>
-        <para>The <option>upgrade</option> action by default does not
-        uninstall an upgraded port —it deactivates it. See section <link
-        linkend="internals.images">Port Images</link>, and also Destroot and
-        Activate phases in <link linkend="reference.phases">Port
-        Phases</link>. If you wish to uninstall the old version, use the
-        <option>-u</option> option.</para>
+        <section id="using.binaries.binary-packages">
+            <title>Binary Packages</title>
 
-        <programlisting><prompt>%%</prompt> <userinput>sudo port -u upgrade vile</userinput></programlisting>
-      </note>
+            <para>Binary packages are standalone binary installers that are precompiled; they do not require MacPorts on
+                the target system. As such, they are helpful in generating disk images or installers to be redistributed
+                to users without relying on MacPorts for installation. Binary installers created with MacPorts are
+                usually <option>.pkg</option> (OS X Installer Packages). MacPorts can also convert
+                a <option>.pkg</option> package into an OS X <option>.dmg</option> disk image. You can create binary
+                packages with the <command>port</command> command as shown in the following examples.</para>
+
+            <warning>
+                <para>If you want to create installer packages using MacPorts for redistribution, make sure you do not
+                    use a standard installation of MacPorts in <filename>/opt/local</filename>. If you do that, your
+                    installer package conflicts with MacPorts on systems that <emphasis>do</emphasis> have MacPorts
+                    installed.</para>
+
+                <para>Instead, follow <xref linkend="installing.macports.source.multiple"/> and choose a prefix specific
+                    to the software you are trying to package, e.g., <filename>/opt/logrotate</filename> for
+                    <option>logrotate</option>. Then use this custom MacPorts installation to build your package.</para>
+            </warning>
+
+            <para>Create an OS X <option>.pkg</option> installer for the <option>pstree</option> port:</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port pkg pstree</userinput></programlisting>
+
+            <para>You may also create an OS X <option>.dmg</option> disk image file instead:</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port dmg pstree</userinput></programlisting>
+
+            <para>In most cases you probably want to package a port and all its library and runtime dependencies in
+                a single package. You can use a metapackage to do this. Create one using:</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port mpkg gimp2</userinput></programlisting>
+
+            <para>Just as with a single package, a metapackage can also be wrapped in a <option>.dmg</option>.</para>
+            <programlisting><prompt>$ </prompt><userinput>sudo port mdmg gimp2</userinput></programlisting>
+
+            <para>All packages are placed in a port's work directory, which you can locate using:</para>
+            <programlisting><prompt>$ </prompt><userinput>port work <varname>&lt;portname&gt;</varname></userinput></programlisting>
+        </section>
     </section>
-
-    <section id="using.port.dependents">
-      <title>dependents</title>
-
-      <para>The <option>dependents</option> action reports what ports depend
-      upon a given port, if any. MacPorts learns about dependents during port
-      installation, so uninstalled ports will always report that there are no
-      dependents.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port dependents openssl</userinput></programlisting>
-
-      <screen>neon depends on openssl
-gnome-vfs depends on openssl
-libdap depends on openssl</screen>
-    </section>
-
-    <section id="using.port.livecheck">
-      <title>livecheck</title>
-
-      <para>The livecheck action checks to see if the application
-      corresponding to a given port has been updated at the developer's
-      download site. It's especially useful for port maintainers, but others
-      may also wish to see if a port has the latest available distribution
-      source. See section <link linkend="reference.livecheck">Livecheck</link>
-      for more information.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port livecheck rrdtool</userinput></programlisting>
-
-      <screen>rrdtool seems to have been updated (port version: 1.2.23, new version: 1.3beta1)</screen>
-
-      <note>
-        <para>If livecheck finds no higher version at the port's download
-        site, it prints nothing. The option <option>-d</option> (debug) may be
-        used for detailed livecheck processing information.</para>
-      </note>
-
-      <para></para>
-    </section>
-
-    <section id="using.port.lint">
-      <title>lint</title>
-
-      <para>The lint action checks if the Portfile conforms to the MacPorts
-      standards specified in <link linkend="development">Portfile
-      Development</link>.</para>
-
-      <para>If a Portfile validates fine the following message is
-      shown.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port lint chemtool</userinput></programlisting>
-
-      <screen>--->  Verifying Portfile for chemtool
---->  0 errors and 0 warnings found.</screen>
-
-      <para>Otherwise the warnings and errors are listed.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port lint KeyArcher</userinput></programlisting>
-
-      <screen>--->  Verifying Portfile for KeyArcher
-Warning: Line 2 should be a newline (after RCS tag)
-Warning: Line 5 has trailing whitespace before newline
-Error: Missing required variable: platforms
---->  1 errors and 2 warnings found.
-</screen>
-    </section>
-  </section>
-
-  <section id="using.variants">
-    <title>Port Variants</title>
-
-    <para>Variants are a way for port authors to provide options for a port
-    that may be chosen during the port install. To display the available
-    variants, if any, use this command:</para>
-
-    <programlisting><prompt>%%</prompt> <userinput>port variants fetchmail</userinput></programlisting>
-
-    <screen>fetchmail has the variants:
-        universal
-        ssl: Support secure connections using OpenSSL
-        fetchmailconf: Install a graphical configurator
-        ntlm: Enable NTLM authentication</screen>
-
-    <note>
-      <para>In some ports, you may find variants for which descriptions have
-      not yet been written.</para>
-    </note>
-
-    <section id="using.variants.invoking">
-      <title>Invoking Variants</title>
-
-      <para>A variant can only be invoked when a port is installed. After you
-      have determined what variants a given port has, if any, you may install
-      a port using the variant as shown.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port install fetchmail +ssl</userinput></programlisting>
-
-      <para>Port variant execution may be verified using the
-      <command>port</command> command with the verbose switch.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port -v install fetchmail +ssl</userinput></programlisting>
-
-      <para>When a port is installed using a valid variant and specified
-      correctly, the verbose output will contain:</para>
-
-      <screen>DEBUG: Executing variant ssl provides ssl</screen>
-    </section>
-
-    <section id="using.variants.negating">
-      <title>Negating Default Variants</title>
-
-      <para>For an explanation of default variants see <link
-      linkend="development.variants">Port Variants</link>. Default variants
-      are optional, and not all ports using variants have them. For ports with
-      default variants, you may install a port without them by negating
-      default variants using <quote>-</quote> as shown.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port install fetchmail -ssl</userinput></programlisting>
-
-      <para>To verify that you have properly negated a default variant, you
-      may want to use verbose mode. But negated variants are simply not
-      reported in any way by the <command>port</command> command, as if they
-      did not exist. You will know you have successfully negated the default
-      variant in the example above if you do <emphasis>not</emphasis> see this
-      line in the verbose output.</para>
-
-      <screen>DEBUG: Executing variant ssl provides ssl</screen>
-    </section>
-  </section>
-
-  <section id="using.common-tasks">
-    <title>Common Tasks</title>
-
-    <para>This section lists common operations you may want to perform when managing a MacPorts
-    installation. Some commands are described in further details elsewhere in the guide.</para>
-
-    <para>Mind the 'sudo' for some of the subsequent examples, which is necessary if you have a
-    root-MacPorts-installation.</para>
-
-    <section id="using.common-tasks.updating">
-      <title>Updating your ports tree</title>
-
-      <para>is essential to stay up-to-date with MacPorts:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port selfupdate</userinput></programlisting>
-
-      <screen>Password:
---->  Updating the ports tree
---->  Updating MacPorts base sources using rsync
-MacPorts base version 1.9.1 installed,
-MacPorts base version 1.9.1 downloaded.
---->  MacPorts base is already the latest version
-
-The ports tree has been updated. To upgrade your installed ports, you should run
-  port upgrade outdated</screen>
-    </section>
-
-    <section id="using.common-tasks.showports">
-      <title>Show all ports which actually need updating</title>
-
-      <para>is often useful, in case you don't have time to wait for port upgrades
-          (Every port needs to be downloaded, configured, built and installed, which can be -
-          depending on your systems resources - a very time consuming procedure.):</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port outdated</userinput></programlisting>
-      <screen>The following installed ports are outdated:
-makedepend                     1.0.2_0 &lt; 1.0.3_0         
-Xft2                           2.1.14_0 &lt; 2.2.0_0        
-xorg-bigreqsproto              1.1.0_0 &lt; 1.1.1_0         
-xorg-compositeproto            0.4.1_0 &lt; 0.4.2_0         
-xorg-damageproto               1.2.0_0 &lt; 1.2.1_0         
-xorg-fixesproto                4.1.1_0 &lt; 4.1.2_0         
-xorg-libXdmcp                  1.0.3_0 &lt; 1.1.0_0         
-xorg-libXmu                    1.0.5_0 &lt; 1.1.0_0         
-xorg-libXScrnSaver             1.2.0_0 &lt; 1.2.1_0         
-xorg-randrproto                1.3.1_0 &lt; 1.3.2_0         
-xorg-scrnsaverproto            1.2.0_0 &lt; 1.2.1_0         
-xorg-xcmiscproto               1.2.0_0 &lt; 1.2.1_0         
-xpm                            3.5.8_0 &lt; 3.5.9_0         
-xorg-util-macros               1.10.1_0 &lt; 1.11.0_0</screen>
-    </section>
-
-    <section id="using.common-tasks.upgrading">
-      <title>Upgrading outdated ports</title>
-
-      <para>is usually done with the following command:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade outdated</userinput></programlisting>
-
-      <para>In case you want to upgrade only a specific port (for whatever reason):</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade makedepend</userinput></programlisting>
-      <screen>Password:
---->  Computing dependencies for makedepend
---->  Fetching makedepend
---->  Attempting to fetch makedepend-1.0.3.tar.bz2 from http://lil.fr.distfiles.macports.org/makedepend
---->  Verifying checksum(s) for makedepend
---->  Extracting makedepend
---->  Configuring makedepend
---->  Building makedepend
---->  Staging makedepend into destroot
---->  Computing dependencies for makedepend
---->  Installing makedepend @1.0.3_0
---->  Deactivating makedepend @1.0.2_0
---->  Activating makedepend @1.0.3_0
---->  Cleaning makedepend</screen>
-    </section>
-
-    <section id="using.common-tasks.removeinactive">
-      <title>Removing inactive version(s) of upgraded port(s)</title>
-      
-      <para>makes sense if you are sure that you won't change back to the older version(s)
-            (which could be necessary in case of newly introduced bugs in the upgraded port
-            version):</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port installed inactive</userinput></programlisting>
-      <screen>The following ports are currently installed:
-  makedepend @1.0.2_0</screen>
-  
-      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall inactive</userinput></programlisting>
-      <screen>Password:
---->  Uninstalling makedepend @1.0.2_0</screen>
-
-      <para>Of course one could also select only a specific inactive port,
-            but that requires to specify the exact version:</para>
-      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall makedepend @1.0.2_0</userinput></programlisting>
-      <screen>Password:
---->  Uninstalling makedepend @1.0.2_0</screen>
-    </section>
-
-    <section id="using.common-tasks.finddepending">
-      <title>Finding ports depending on a certain port</title>
-
-      <para>can sometimes be very helpful (example: find ports depending on 'xorg-util-macros'):</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port echo depends:xorg-util-macros</userinput></programlisting>
-
-      <screen>mkfontscale
-xorg-libAppleWM
-xorg-libX11
-xorg-libXaw
-xorg-libXevie
-xorg-libXp
-xorg-libXt
-xorg-server
-xorg-server-devel
-xscope
-xtrap</screen>
-    </section>
-
-    <section id="using.common-tasks.findleaves">
-      <title>Finding leaves (nondependent ports)</title>
-      <para>can be sometimes worthwhile, since often additional ports get installed when
-            a specific port is installed. One can imagine that if one keeps installing and
-            uninstalling ports for some time the MacPorts tree can be swamped with ports actually
-            not necessary anymore. Leaves can be found by issuing the command:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-      <screen>aalib                          @1.4rc5_4 
-autoconf                       @2.68_0 
-autoconf263                    @2.63_0 
-automake                       @1.11.1_0 
-cmake                          @2.8.2_4 
-coreutils                      @8.5_0</screen>
-
-      <para>The following command delivers a similar result:</para>
-      <programlisting><prompt>%%</prompt> <userinput>port installed leaves</userinput></programlisting>
-      <screen>  aalib @1.4rc5_4 (active)
-  autoconf @2.68_0 (active)
-  autoconf263 @2.63_0 (active)
-  automake @1.11.1_0 (active)
-  cmake @2.8.2_4 (active)
-  coreutils @8.5_0 (active)</screen>
-
-      <para>These leaves may be wanted, but could also be unwanted ports. (See the following entry!)</para>
-          </section>
-
-    <section id="using.common-tasks.keeplean">
-      <title>Keep your MacPorts installation lean by defining leaves as requested ports</title>
-      <para>Well, before we come to the procedure of defining your requested ports,
-            let's have a look at a typical scenario where you want to understand what is
-            actually installed and what is on the other hand truly necessary for your system.
-            Say checking leaves of your MacPorts installation gives this output:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-      <screen>aalib                          @1.4rc5_4 
-autoconf                       @2.68_0 
-autoconf263                    @2.63_0 
-automake                       @1.11.1_0 
-cmake                          @2.8.2_4 
-coreutils                      @8.5_0 
-physfs                         @2.0.1_0</screen>
-
-      <para>Now it is up to the user to decide what's needed and what is not.
-            Let's say one certainly would want ports starting with autoconf up to coreutils,
-            since they are often used in port installation. Set those as requested ports using:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port setrequested autoconf autoconf263 automake cmake coreutils</userinput></programlisting>
-
-      <para>Say port aalib is not needed anymore, while physfs seems odd and since you don't
-            know what to make of it, you need to check out what it actually is and which ports needed
-            its installation at some time in the past.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port info physfs</userinput></programlisting>
-      <screen>physfs @2.0.1 (devel)
-Variants:             debug, universal
-
-Description:          PhysicsFS is a library to provide abstract access to various
-                      archives. It is intended for use in video games, and the design
-                      was somewhat inspired by Quake 3's file subsystem.
-Homepage:             http://icculus.org/physfs/
-
-Build Dependencies:   cmake
-Library Dependencies: zlib
-Platforms:            darwin
-License:              unknown
-Maintainers:          nomaintainer@macports.org</screen>
-
-      <para>Well, hmm, you certainly didn't want to install Quake 3 in the past. So, let's
-            find out which ports actually depend on it, perhaps that might ring a bell:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port echo depends:physfs</userinput></programlisting>
-      <screen>fbg                             
-libsdl_sound                    
-lincity-ng                      
-netpanzer</screen>
-
-      <para>No, you didn't install netpanzer either,
-            but - see there - fbg (The classic Falling Block Game!) was once on your agenda. But
-            unfortunately that port was broken
-            (see issue <ulink url="http://trac.macports.org/ticket/24641">#24641</ulink>) when
-            you were trying to install it... Before you ran into the issue, of course, fbg's
-            dependencies were resolved by MacPorts, which is why port physfs is still present on
-            your system. Uff, great, confusion resolved. :-)</para>
-
-      <para>When you've step-by-step figured out which ports you want to keep on your system and
-            have set them as requested, you'll have a list of unnecessary ports, which might be
-            eventually as short as this:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port echo leaves</userinput></programlisting>
-      <screen>aalib                          @1.4rc5_4 
-physfs                         @2.0.1_0 </screen>
-
-      <para>Get rid of them by issuing the command:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port uninstall leaves</userinput></programlisting>
-      <screen>--->  Deactivating physfs @2.0.1_0
---->  Cleaning physfs
---->  Uninstalling physfs @2.0.1_0
---->  Cleaning physfs
---->  Deactivating aalib @1.4rc5_4
---->  Uninstalling aalib @1.4rc5_4</screen>
-
-      <para>Find all installed ports you previously set as requested using:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port installed requested</userinput></programlisting>
-
-      <para>Checking the list of leaves from time to time will help to keep your system
-            free of too much <quote>garbage</quote>. However, keep in mind that some ports may be dependencies
-            only during the installation of a port (library dependencies, installation or
-            configuration tools, etc.). So, be careful when removing seemingly unnecessary leaves,
-            otherwise you'll see them being installed again and again.</para>
-      </section>
-  </section>
-
-  <section id="using.binaries">
-    <title>Port Binaries</title>
-
-    <para>MacPorts can pre-compile ports into binaries so applications need
-    not be compiled when installing on a target system. MacPorts may create
-    two types of binaries: archives and packages.</para>
-
-    <section id="using.binaries.archives">
-      <title>Binary Archives</title>
-
-      <para>Binary archives can only be used on a target system running
-      MacPorts. Binary archives allow MacPorts utilities to begin installation
-      after the destroot phase and install and activate a port on the target
-      system. Binary archives are created whenever a port is installed, and can also
-      be downloaded from a server.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port -d archive logrotate</userinput></programlisting>
-
-      <para>Debug output is shown below.</para>
-
-      <screen>---&gt;  Creating logrotate-3.7_0.i386.tbz2
-
-[ ... trimmed ... ]
-
-DEBUG:
-./
-./+COMMENT
-./+CONTENTS
-./+DESC
-./+PORTFILE
-./+STATE
-./opt/
-./opt/local/
-./opt/local/etc/
-./opt/local/etc/logrotate.conf
-./opt/local/man/
-./opt/local/man/man8/
-./opt/local/man/man8/logrotate.8
-./opt/local/sbin/
-./opt/local/sbin/logrotate
----&gt;  Archive logrotate-3.7_0.i386.tbz2 packaged
-DEBUG: Executing archive_finish
----&gt;  Archive for logrotate 3.7_0 packaged</screen>
-
-      <para>Binary archive files are placed in
-      <filename>${prefix}/var/macports/software/</filename>. The archive file
-      type is set in the <filename>macports.conf</filename> file. The default
-      format is .tbz2; other options are: tar, tbz, tbz2, tgz, tlz, txz, xar, zip, cpgz,
-      cpio.</para>
-    </section>
-
-    <section id="using.binaries.binary-packages">
-      <title>Binary Packages</title>
-
-      <para>Binary packages are standalone binary installers that are
-      precompiled; they do not require MacPorts on the target system. Binary
-      files created with MacPorts may be either .pkg (OS X Installer
-      Packages), or .rpm (RPM Package Manager) format. MacPorts may also
-      process a .pkg package into a OS X .dmg disk image file. You may
-      create binary packages with the <command>port</command> command as shown
-      in these examples.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port pkg pstree</userinput></programlisting>
-
-      <para>You may create a OS X .dmg disk image file as shown.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port dmg pstree</userinput></programlisting>
-
-      <para>You can also create a metapackage containing packages of a port and all its
-      dependencies:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port mpkg gimp2</userinput></programlisting>
-
-      <para>Just as with a single package, a metapackage can also be wrapped in a .dmg.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port mdmg gimp2</userinput></programlisting>
-
-      <para>You may compile a port into an RPM file as shown, in order to
-      install it onto a target that has RPM utilities or a full package
-      management system that can install RPMs.</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>sudo port rpm pstree</userinput></programlisting>
-
-      <para>All packages are placed in a port's work directory,
-      except for rpms that are placed under the regular <quote>RPMS</quote>:</para>
-
-      <programlisting><prompt>%%</prompt> <userinput>port work pstree</userinput></programlisting>
-      <programlisting><prompt>%%</prompt> <userinput>rpm --eval %{_rpmdir}</userinput></programlisting>
-
-    </section>
-  </section>
-
-  <!--
-  <section id="using.rsync-replication">
-    <title>Rsync Replication Servers</title>
-
-    <para>You may setup an rsync replication server on your local network to
-    minimize internet delay and bandwidth when performing MacPorts selfupdate
-    operations. An rsync replication server pulls the latest MacPorts base,
-    development, and port sources from the remote MacPorts Subversion server,
-    and then serves as the rsync source when rsync replication clients on the
-    local network perform selfupdates. </para>
-
-    <note>
-      <para>Only advanced users should attempt to setup an rsync replication
-      server. Before doing so, please contact <email>macports-mgr @
-      lists.macosforge.org</email>. If the scripts are run too often you may overload
-      the MacPorts rsync mirrors; it must not be run any more often than each
-      one-half hour and should be run at an offset to the clock half hour
-      periods.</para>
-    </note>
-
-    <section id="using.rsync-replication.server-setup">
-      <title>Rsync Server Setup</title>
-
-      <para>TODO: This section needs to be completed.</para>
-
-      <para>To setup a host as an rsync replication server, follow these
-      steps:</para>
-
-      <orderedlist>
-        <listitem>
-          <para>Change to the portmgr directory where
-          <filename>mprsyncup</filename> and <filename>rsync.repos</filename>
-          reside.</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/var/macports/sources/rsync.macports.org/release/ \
-        base/portmgr</userinput>
-</programlisting>
-        </listitem>
-
-        <listitem>
-          <para>Set variables in the <filename>mprsyncup</filename>
-          script.</para>
-
-          <programlisting>???</programlisting>
-        </listitem>
-
-        <listitem>
-          <para>Set variables in the <filename>rsync.repos</filename>
-          script.</para>
-
-          <programlisting>???</programlisting>
-        </listitem>
-
-        <listitem>
-          <para>Set the <filename>mprsyncup</filename> and
-          <filename>rsync.repos</filename> scripts in
-          <filename>crontab</filename>.</para>
-
-          <note>
-            <para>If you wish to setup and rsync replication server, please
-            contact <email>macports-mgr@lists.macosforge.org</email>. If the
-            scripts are run too often you may overload the MacPorts rsync mirrors;
-            It must not be run any more often than each one-half hour and should
-            be run at an offset to the clock half hour periods.</para>
-          </note>
-
-          <programlisting><prompt>%%</prompt> <userinput>sudo crontab -e</userinput></programlisting>
-
-          <programlisting>15 * * * * ${prefix}/var/macports/sources/rsync.macports.org/release/ \
-          base/portmgr/mprsyncup</programlisting>
-        </listitem>
-      </orderedlist>
-    </section>
-
-    <section id="using.rsync-replication.client-setup">
-      <title>Rsync Client Setup</title>
-
-      <para>To setup a host as an rsync replication client, follow these
-      steps:</para>
-
-      <orderedlist>
-        <listitem>
-          <para>Change to the MacPorts <filename>etc/</filename> directory to
-          access <filename>macports.conf</filename> and
-          <filename>sources.conf</filename>.</para>
-
-          <programlisting><prompt>%%</prompt> <userinput>cd ${prefix}/etc/macports</userinput></programlisting>
-        </listitem>
-
-        <listitem>
-          <para>In <filename>macports.conf</filename>, set variable
-          <varname>rsync_server</varname> to the rsync replication server; the
-          <varname>rsync_dir</varname> path variable can be left at the
-          default if you follow the defaults that the MacPorts mirrors
-          use.</para>
-
-          <programlisting>rsync_server            rsync.mycompany.com
-
-rsync_dir               release/base/</programlisting>
-        </listitem>
-
-        <listitem>
-          <para>In <filename>sources.conf</filename>, set the URL rsync:// to
-          the rsync replication server.</para>
-
-          <programlisting>rsync://rsync.mycompany.com/release/ports/</programlisting>
-        </listitem>
-      </orderedlist>
-    </section>
-  </section>
--->
 </chapter>
