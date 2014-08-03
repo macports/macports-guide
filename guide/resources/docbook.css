@@ -227,6 +227,19 @@ div.note h3.title {
 	color: #8B1A1A;
 }
 
+div.warning {
+	margin: .2in .3in;
+	padding: 10px 15px 5px;
+	border-color: #8b1a1a;
+	border-width: 5px;
+	border-style: double;
+}
+
+div.warning h3.title {
+	color: #8b1a1a;
+	margin: 0;
+}
+
 div.screenshot div.mediaobject {
 	text-align: center;
 	margin: 12px 0;
