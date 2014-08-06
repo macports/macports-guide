@@ -1466,8 +1466,7 @@ apache2 has the variants:
                 <option>portarchivetype</option> key. The default format is <option>tbz2</option>; other options are:
                 <option>tar</option>, <option>tbz</option>, <option>tbz2</option>, <option>tgz</option>,
                 <option>tlz</option>, <option>txz</option>, <option>xar</option>, <option>zip</option>,
-                <option>cpgz</option>, and <option>cpio</option>. Note that changing this setting will prevent MacPorts
-                from downloading and using pre-built binaries, so you should probably leave it as-is.</para>
+                <option>cpgz</option>, and <option>cpio</option>.</para>
         </section>
 
         <section id="using.binaries.binary-packages">
