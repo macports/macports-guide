@@ -593,7 +593,7 @@ To use the current port, you must be in a port's directory.</screen>
             with a space, to the <option>maintainer</option> line of the
             <filename>Portfile</filename>.</para>
 
-          <para>Once you are done, save the file verify the
+          <para>Once you are done, save the file and verify the
             <filename>Portfile</filename> structure using MacPorts' builtin
             lint check:</para>
 
@@ -652,9 +652,9 @@ To use the current port, you must be in a port's directory.</screen>
         <listitem>
           <para>Now, <ulink url="https://trac.macports.org/newticket">file
               a new ticket in Trac</ulink>. Set <guilabel>type</guilabel> to
-            <guilabel>request</guilabel> if you only changed the maintainer and
-            an appropriate other type if you also fixed a bug or enhanced or
-            updated the port. Leave the <guilabel>milestone</guilabel> field
+            <guilabel>enhancement</guilabel> if you only changed the maintainer
+            and an appropriate other type if you also fixed a bug or enhanced
+            or updated the port. Leave the <guilabel>milestone</guilabel> field
             empty. If you added yourself as co-maintainer, add the other
             maintainers in the <guilabel>Cc</guilabel> field. Finally, fill in
             the <guilabel>port</guilabel> field, set
