@@ -104,6 +104,41 @@ Upgrade MacPorts itself and run the sync target
             <para><option>sync</option> does not accept any switches.</para>
         </section>
 
+        <section id="using.port.doctor">
+            <title>port doctor</title>
+
+            <para>The <option>doctor</option> action checks for common issues in the user's environment and reports all
+                issues it finds to the user, along with possible fixes for said problem.</para>
+
+            <para><option>selfupdate</option> accepts a single switch:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--quiet</option></term>
+                    <listitem>
+                        <para>Only displays warnings and errors, rather than the status of all tests run.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+
+            <note>
+                <para>This command will only be availible in MacPorts version 2.4 and above.</para>
+            </note>
+        </section>
+
+        <section id="using.port.reclaim">
+            <title>port reclaim</title>
+
+            <para>The <option>reclaim</option> action attempts to reclaim space by uninstalling inactive ports, and
+            removing unnecessary files that were downloaded during the installation process. </para>
+
+            <para><option>reclaim</option> does not accept any switches.</para>
+
+            <note>
+                <para> This command will only be availible in MacPorts version 2.4 and above.</para>
+            </note>
+        </section>
+
         <section id="using.port.list">
             <title>port list</title>
 
