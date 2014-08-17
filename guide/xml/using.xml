@@ -110,7 +110,7 @@ Upgrade MacPorts itself and run the sync target
             <para>The <option>doctor</option> action checks for common issues in the user's environment and reports all
                 issues it finds to the user, along with possible fixes for said problem.</para>
 
-            <para><option>selfupdate</option> accepts a single switch:</para>
+            <para><option>doctor</option> accepts a single switch:</para>
 
             <variablelist>
                 <varlistentry>
