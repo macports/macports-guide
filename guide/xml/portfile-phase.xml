@@ -525,10 +525,11 @@ distfiles           file_one.tar.gz:tagone \
 
           <listitem>
             <para>Change the fetch type. This is only necessary if a <link
-            linkend="reference.phases.fetch.cvs">CVS</link>, <link
-            linkend="reference.phases.fetch.svn">svn</link>, <link
-            linkend="reference.phases.fetch.git">git</link> or <link
-            linkend="reference.phases.fetch.hg">hg</link> checkout is be used.
+            linkend="reference.phases.fetch.bzr">bzr</link>, <link
+            linkend="reference.phases.fetch.cvs">cvs</link>, <link
+            linkend="reference.phases.fetch.git">git</link>, <link
+            linkend="reference.phases.fetch.hg">hg</link>, or <link
+            linkend="reference.phases.fetch.svn">svn</link> checkout is be used.
             <option>standard</option> is used for a normal http or ftp fetch
             using <varname>${distfiles}</varname> and is used as
             default.</para>
@@ -539,8 +540,9 @@ distfiles           file_one.tar.gz:tagone \
               </listitem>
 
               <listitem>
-                <para>Values: <option>standard</option> <option>cvs</option>
-                <option>svn</option> <option>git</option></para>
+                <para>Values: <option>standard</option> <option>bzr</option>
+                <option>cvs</option> <option>git</option>
+                <option>hg</option> <option>svn</option></para>
               </listitem>
 
               <listitem>
@@ -635,6 +637,11 @@ svn.revision        2100</programlisting>
           </listitem>
         </varlistentry>
       </variablelist>
+    </section>
+
+    <section id="reference.phases.fetch.bzr">
+      <title>Fetch from BZR</title>
+
     </section>
 
     <section id="reference.phases.fetch.cvs">
@@ -753,89 +760,6 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.svn">
-      <title>Fetch from Subversion</title>
-
-      <para><ulink url="http://subversion.apache.org/">Subversion</ulink> may
-      be used as an alternative method of fetching distribution files using
-      the keywords in this section. However, fetching via Subversion may cause
-      non-reproducible builds, so it is strongly discouraged.</para>
-
-      <para>The <option>svn</option> <link
-      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
-      is used to fetch source code from an svn repository.</para>
-
-      <variablelist>
-        <varlistentry>
-          <term>svn.url</term>
-
-          <listitem>
-            <para>This specifies the url from which to fetch files.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Examples:</para>
-
-                <programlisting>svn.url             http://www.example.com/svn-repo/mydirectory</programlisting>
-
-                <programlisting>svn.url             svn://svn.example.com/svn-repo/mydirectory</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>svn.revision</term>
-
-          <listitem>
-            <para>Optional tag for fetching with Subversion, this specifies
-            the peg revision to checkout; it corresponds to the @REV syntax of
-            the svn cli.</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: none</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>svn.revision        37192</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-
-        <varlistentry>
-          <term>svn.method</term>
-
-          <listitem>
-            <para>Optional tag for fetching with Subversion, this specifies
-            whether to check out the code into a working copy, or just export
-            it without the working copy metadata. An export is preferable
-            because it takes half the disk space, but some software expects
-            to be built in a working copy (for example because it wants to
-            record the revision number into itself somewhere).</para>
-
-            <itemizedlist>
-              <listitem>
-                <para>Default: export</para>
-              </listitem>
-
-              <listitem>
-                <para>Example:</para>
-
-                <programlisting>svn.method          checkout</programlisting>
-              </listitem>
-            </itemizedlist>
-          </listitem>
-        </varlistentry>
-      </variablelist>
-    </section>
 
     <section id="reference.phases.fetch.git">
       <title>Fetch from Git</title>
@@ -952,6 +876,90 @@ svn.revision        2100</programlisting>
                 <programlisting>hg.tag              v1.3</programlisting>
 
                 <programlisting>hg.tag              ceb884843737</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section id="reference.phases.fetch.svn">
+      <title>Fetch from Subversion</title>
+
+      <para><ulink url="http://subversion.apache.org/">Subversion</ulink> may
+      be used as an alternative method of fetching distribution files using
+      the keywords in this section. However, fetching via Subversion may cause
+      non-reproducible builds, so it is strongly discouraged.</para>
+
+      <para>The <option>svn</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch source code from an svn repository.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>svn.url</term>
+
+          <listitem>
+            <para>This specifies the url from which to fetch files.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Examples:</para>
+
+                <programlisting>svn.url             http://www.example.com/svn-repo/mydirectory</programlisting>
+
+                <programlisting>svn.url             svn://svn.example.com/svn-repo/mydirectory</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>svn.revision</term>
+
+          <listitem>
+            <para>Optional tag for fetching with Subversion, this specifies
+            the peg revision to checkout; it corresponds to the @REV syntax of
+            the svn cli.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>svn.revision        37192</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>svn.method</term>
+
+          <listitem>
+            <para>Optional tag for fetching with Subversion, this specifies
+            whether to check out the code into a working copy, or just export
+            it without the working copy metadata. An export is preferable
+            because it takes half the disk space, but some software expects
+            to be built in a working copy (for example because it wants to
+            record the revision number into itself somewhere).</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: export</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>svn.method          checkout</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
