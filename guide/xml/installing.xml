@@ -447,7 +447,7 @@
                             path for locating system executables (rsync, tar, etc.) during port installation, see the
                             <link linkend="internals.configuration-files.macports-conf">macports.conf</link> file
                             variable <varname>binpath</varname>. But changing this variable is for advanced users only,
-                            and is not generally needed or recomended.</para>
+                            and is not generally needed or recommended.</para>
                     </note>
                 </listitem>
 

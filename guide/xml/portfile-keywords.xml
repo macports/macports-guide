@@ -110,9 +110,9 @@
       <listitem>
         <para>A port's maintainers are the people who have agreed to take
         responsibility for keeping the port up-to-date. Most ports have only a
-        single maintainer, but some ports have two or more comaintainers. The
+        single maintainer, but some ports have two or more co-maintainers. The
         <literal>maintainers</literal> keyword lists the maintainers' email
-        addresses, preferrably in the obfuscated form which hides them
+        addresses, preferably in the obfuscated form which hides them
         from spambots:</para>
 
         <itemizedlist>

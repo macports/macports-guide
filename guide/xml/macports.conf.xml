@@ -433,7 +433,7 @@
     <title>variants.conf</title>
 
     <para>This optional file specifies any variants you'd like to be invoked
-    globally. If a variant specified ib this file is not supported by a given
+    globally. If a variant specified in this file is not supported by a given
     Portfile, the variant is simply ignored.</para>
 
     <para>Default: none</para>

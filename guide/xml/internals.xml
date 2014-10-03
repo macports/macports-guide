@@ -321,7 +321,7 @@
       stored in a single file named <filename>registry.db</filename>, although
       the additional directory <filename>portfiles</filename> is used
       temporarily for extracting stored Portfiles from the registry.
-      Futhermore, access to the registry may be locked using the
+      Furthermore, access to the registry may be locked using the
       <filename>.registry.lock</filename> file with the
       <computeroutput>registry::exclusive_lock</computeroutput> and
       <computeroutput>registry::exclusive_unlock</computeroutput> APIs.</para>

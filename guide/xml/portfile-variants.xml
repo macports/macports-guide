@@ -144,7 +144,7 @@
 
     <para>Variant descriptions are strings, so one should take care not to put
     whitespace between the brackets and the beginning and end of the variant
-    description, and also not to use unnceccessary whitespace, unlike with
+    description, and also not to use unnecessary whitespace, unlike with
     port descriptions and long_descriptions.</para>
   </section>
 
