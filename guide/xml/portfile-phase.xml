@@ -642,6 +642,59 @@ svn.revision        2100</programlisting>
     <section id="reference.phases.fetch.bzr">
       <title>Fetch from BZR</title>
 
+      <para><ulink url="http://bazaar.canonical.com/en/">Bzr</ulink> may be used as
+      an alternative method of fetching distribution files using the keywords
+      in this section. However, fetching via bzr may cause non-reproducible
+      builds, so it is strongly discouraged.</para>
+
+      <para>The <option>bzr</option> <link
+      linkend="reference.phases.fetch.advanced.fetch-type">fetch.type</link>
+      is used to fetch source code from a bzr repository.</para>
+
+      <variablelist>
+        <varlistentry>
+          <term>bzr.url</term>
+
+          <listitem>
+            <para>This specifies the url from which to fetch files.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: none</para>
+              </listitem>
+
+              <listitem>
+                <para>Examples:</para>
+
+                <programlisting>bzr.url             lp:inkscape</programlisting>
+
+                <programlisting>bzr.url             lp:~callelejdfors/pycg/trunk</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>bzr.revision</term>
+
+          <listitem>
+            <para>Optional tag for fetching with bzr, this specifies
+            the revision to checkout</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: -1 (the last committed revision)</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>bzr.revision          2209</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
     </section>
 
     <section id="reference.phases.fetch.cvs">
