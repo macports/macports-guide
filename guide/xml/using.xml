@@ -454,10 +454,11 @@ apache2 has the variants:
      * conflicts with eventmpm preforkmpm</screen>
 
             <para>This output lists all variants followed by their description. If a variant depends on or conflicts
-                with other variants, a line with the details on that follows. Variant lines that start with
-                <option>[+]</option> are enabled by default by the <filename>Portfile</filename>. Variants that are
-                marked with <option>(+)</option> are selected because of your configuration in
-                <filename>$prefix/etc/macports/variants.conf</filename>. See <xref
+                with other variants, a line with the details on that follows. Variant lines that have a
+                <option>+</option> are enabled and those with <option>-</option> are disabled.
+                Any <option>[]</option> are derived from the <filename>Portfile</filename>.
+                While <option>()</option> are derived from the <filename>variants.conf</filename>.
+                See <xref
                     linkend="internals.configuration-files.variants-conf" /> for more information on the
                 <filename>variants.conf</filename> file.</para>
         </section>
@@ -1013,12 +1014,13 @@ apache2 has the variants:
    workermpm: Use worker MPM
      * conflicts with eventmpm preforkmpm</screen>
 
-        <para>This output lists all variants followed by their description. If a variant depends on or conflicts with
-            other variants, a line with the details on that follows. Variant lines that start with <option>[+]</option>
-            are enabled by default by the <filename>Portfile</filename>. Variants that are marked with
-            <option>(+)</option> are selected because of your configuration in
-            <filename>$prefix/etc/macports/variants.conf</filename>. See <xref
-                linkend="internals.configuration-files.variants-conf" /> for more information on the
+         <para>This output lists all variants followed by their description. If a variant depends on or conflicts
+                with other variants, a line with the details on that follows. Variant lines that have a
+                <option>+</option> are enabled and those with <option>-</option> are disabled.
+                Any <option>[]</option> are derived from the <filename>Portfile</filename>.
+                While <option>()</option> are derived from the <filename>variants.conf</filename>.
+                See <xref
+                    linkend="internals.configuration-files.variants-conf" /> for more information on the
             <filename>variants.conf</filename> file.</para>
 
         <section id="using.variants.invoking">
