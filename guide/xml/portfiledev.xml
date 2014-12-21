@@ -576,12 +576,13 @@ variant sqlite description {Build sqlite support} {
       author so the modifications may be included in the next version of the
       application.</para>
 
-      <para>Generally speaking, you should create one patch file for each file
-      to be patched. Patchfile filenames should uniquely distinguish the file
-      and generally be of the form
-      <filename>patch-</filename><replaceable>&lt;directory&gt;</replaceable>-<replaceable>&lt;filename&gt;.diff</replaceable>,
-      as shown in this example:
-      <filename>patch-src-Makefile.in.diff</filename>.</para>
+      <para>Generally speaking, you should create one patch file for each
+      logical change that needs to be applied. Patchfile filenames should
+      uniquely distinguish the file and generally be of the form
+      <filename>patch-</filename><replaceable>&lt;identifier&gt;</replaceable><filename>.diff</filename>,
+      where the <replaceable>identifier</replaceable> is a hint of what the
+      patch does. For example, this can be the filename of the patched file as in
+      <filename>patch-</filename><replaceable>src-Makefile.in</replaceable><filename>.diff</filename>.</para>
 
       <para>You may use patch files that patch multiple files under these
       conditions:</para>
@@ -593,9 +594,9 @@ variant sqlite description {Build sqlite support} {
 
         <listitem>
           <para>If fixing a particular problem or bug requires changes in
-          multiple files -in those cases the patch filename should reference
+          multiple files&mdash;in those cases the patch filename should reference
           the problem or bug, for example:
-          <filename>patch-</filename><replaceable>&lt;destroot_variable_fix&gt;.diff</replaceable></para>
+          <filename>patch-</filename><replaceable>destdir-variable-fix</replaceable><filename>.diff</filename></para>
         </listitem>
       </itemizedlist>
 
