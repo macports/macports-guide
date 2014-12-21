@@ -4,8 +4,20 @@
 <chapter id="development">
   <title>Portfile Development</title>
 
-  <para>This chapter covers a brief introduction to Portfiles, how to create a
-  local Portfile repository for development, and creating Portfiles.</para>
+  <para>A port is a distribution of software that can be compiled and
+  installed using MacPorts. A <filename>Portfile</filename> describes all
+  the required steps such as where to get the source code from upstream,
+  which patches have to be applied and which other tools and commands are
+  required to build the source code.</para>
+
+  <para>Each port consists of multiple files in a directory, usually within
+  a category subdirectory of the root of a ports tree. The MacPorts
+  Project distributes the main ports tree that is by default
+  <link linkend="internals.configuration-files.sources-conf">configured</link>
+  in all installations of MacPorts. This section serves as a reference for
+  the directory structure of a single port and the layout of the files
+  within. The only required file in a port is the
+  <filename>Portfile</filename>.</para>
 
   <section id="development.introduction">
     <title>Portfile Introduction</title>
@@ -793,11 +805,16 @@ Ports failed:                   0</screen>
     <section id="development.practices.portstyle">
       <title>Port Style</title>
 
-      <para>Portfiles may be thought of as a table of keys and values in two
-      columns separated by spaces (not tabs), so you should set your editor to
-      use soft tabs, which are tabs emulated by spaces. By default, the top
-      line of all Portfiles should use a modeline that defines soft tabs for
-      the vim and emacs editors as shown.</para>
+      <para>Portfiles may be thought of as a set of declarations rather than
+      a piece of code. It is best to format the port file is if it were
+      a table consisting of keys and values. In fact, the simplest of ports
+      will only contain a small block of values. Nicely formatted compact
+      tables will result in more values being visible at the same time.</para>
+
+      <para>The two columns should be separated by spaces (not tabs), so you
+      should set your editor to use soft tabs, which are tabs emulated by
+      spaces. By default, the top line of all Portfiles should use
+      a modeline that defines soft tabs for the vim and emacs editors as shown.</para>
 
       <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4</programlisting>
 
@@ -807,10 +824,26 @@ Ports failed:                   0</screen>
       may be considered a single word on the left side, with a single space
       between words.</para>
 
-      <programlisting>set libver "8.5"
+      <programlisting>set libver "8.5"</programlisting>
 
+      <para>When items require multiple lines with line continuation, they can
+      be separated from the previous and next items with a blank line.
+      Indent the additional lines to the same column that the right side
+      begins on in the first line.</para>
 
-variant mysql5 { ... }</programlisting>
+      <programlisting>checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
+      
+      <para>Should a key item such as a phase or variant require braces, the
+      opening brace should appear on the same line and the closing brace should
+      be on its own line. The block formed by the braces is indented for visual
+      clearance. Braces merely quoting strings, for example the description of
+      variants, are placed on the same line without line breaks.</para>
+
+    <programlisting>variant mysql5 description {Enable support for MySQL 5} {
+    depends_lib-append        port:mysql5
+    configure.args-replace    --without-mysql5 --with-mysql5
+}</programlisting>
 
       <para>Frequently multiple items are necessary in the second column. For
       example, to set multiple source download locations, multiple
