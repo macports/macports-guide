@@ -1114,12 +1114,12 @@ revision            2</programlisting>
       <para>If a port has to be removed from MacPorts one should consider
       the hints concerning replacing it by some alternative port given
       <link linkend="development.practices.rename-replace-port">above</link>.
-      If there is no replacement for it, insert a pre-configure
-      block as described there to alert the user about why the port is not
-      allowed for installation anymore.</para>
+      It is recommended to wait one year before the port directory
+      is actually removed from MacPorts' Subversion repository.
+      </para>
 
-      <para>It is recommended to wait about a year before the port directory
-      is actually being removed from MacPorts' Subversion repository.</para>
+      <para>If there is no replacement for a port, it can simply be deleted
+      immediately.</para>
  
  	</section>
     
