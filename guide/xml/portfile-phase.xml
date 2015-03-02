@@ -2939,6 +2939,46 @@ build.target-delete     compat</programlisting>
       </varlistentry>
 
       <varlistentry>
+        <term>test.args</term>
+
+        <term>test.pre_args</term>
+
+        <term>test.post_args</term>
+
+        <listitem>
+          <para>Main arguments to <varname>test.cmd</varname>; optional
+          argument modifiers pass arguments before and after the main
+          arguments.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.args    -f Makefile.test</programlisting>
+            </listitem>
+          </itemizedlist>
+
+          <para>The following argument modifiers are available:</para>
+
+          <itemizedlist>
+            <listitem>
+              <para><literal>test.pre_args</literal>, defaults to:
+              <literal>${test.target}</literal></para>
+            </listitem>
+
+            <listitem>
+              <para><literal>test.post_args</literal>, defaults to:
+              none</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>test.env</term>
 
         <term>test.env-append</term>
