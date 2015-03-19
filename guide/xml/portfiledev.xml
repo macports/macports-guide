@@ -256,7 +256,7 @@
                         sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
 
         <para>To find the correct checksums for a port's distribution file,
-        follow this example:</para>
+        follow one of these examples:</para>
 
         <programlisting><prompt>%%</prompt> <userinput>openssl dgst -rmd160 rrdtool-1.2.23.tar.gz</userinput>
 <prompt>%%</prompt> <userinput>openssl dgst -sha256 rrdtool-1.2.23.tar.gz</userinput></programlisting>
@@ -264,6 +264,31 @@
         <screen>RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
 
 SHA256( ... rrdtool-1.2.23.tar.gz)= 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</screen>
+
+        <para>or update the version in the Portfile:</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port edit rrdtool</userinput></programlisting>
+
+        <para>and run:</para>
+
+        <programlisting><prompt>%%</prompt> <userinput>port -v checksum rrdtool</userinput></programlisting>
+
+        <screen>--->  Fetching distfiles for rrdtool
+--->  Verifying checksums for rrdtool
+--->  Checksumming rrdtool-1.2.23.tar.gz
+Error: Checksum (rmd160) mismatch for rrdtool-1.2.23.tar.gz
+Portfile checksum: rrdtool-1.2.23.tar.gz rmd160 ...WRONGCHECKSUM...
+Distfile checksum: rrdtool-1.2.23.tar.gz rmd160 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
+Error: Checksum (sha256) mismatch for rrdtool-1.2.23.tar.gz
+Portfile checksum: rrdtool-1.2.23.tar.gz sha256 ...WRONGCHECKSUM...
+Distfile checksum: rrdtool-1.2.23.tar.gz sha256 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+The correct checksum line may be:
+checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa5
+Error: Failed to checksum rrdtool: Unable to verify file checksums
+Error: See ...SOMEPATH.../rrdtool/main.log for details.
+Error: Follow http://guide.macports.org/#project.tickets to report a bug.
+Error: Processing of port rrdtool failed</screen>
       </listitem>
 
       <listitem>
