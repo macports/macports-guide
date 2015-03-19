@@ -267,7 +267,7 @@ SHA256( ... rrdtool-1.2.23.tar.gz)= 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f3
 
         <para>or update the version in the Portfile:</para>
 
-        <programlisting><prompt>%%</prompt> <userinput>port edit rrdtool</userinput></programlisting>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port edit rrdtool</userinput></programlisting>
 
         <para>and run:</para>
 
