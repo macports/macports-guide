@@ -188,6 +188,14 @@
                                 <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
                             </listitem>
                         </varlistentry>
+                        <varlistentry>
+                            <term>
+                                OS X 10.8 Mountain Lion:
+                            </term>
+                            <listitem>
+                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>
+                            </listitem>
+                        </varlistentry>
                     </variablelist>
                 </listitem>
 
