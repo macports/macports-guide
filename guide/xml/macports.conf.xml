@@ -90,7 +90,7 @@
           <para>Default: <option>sqlite</option></para>
         </listitem>
       </varlistentry>
-      
+
       <varlistentry>
         <term>build_arch</term>
 
@@ -108,8 +108,8 @@
         <term>applications_dir</term>
 
         <listitem>
-		  <para>Directory to install MacPorts that install OS X .app
-			  bundles.</para>
+            <para>Directory to install MacPorts that install OS X .app
+                bundles.</para>
 
           <para>Default: <filename>/Applications/MacPorts</filename></para>
         </listitem>
@@ -125,7 +125,7 @@
           <filename>${prefix}/Library/Frameworks</filename></para>
         </listitem>
       </varlistentry>
-      
+
       <varlistentry>
         <term>developer_dir</term>
 
@@ -299,9 +299,9 @@
 
         <listitem>
           <para>Space separated list of download hosts that should not be used.</para>
-          
+
           <para>Default: none</para>
-          
+
           <note>
             <para>This feature is especially useful if a host turns out to be consistently
             slow and therefore should be excluded for MacPorts' actions.</para>
@@ -314,7 +314,7 @@
 
         <listitem>
           <para>Space separated list of download hosts that should be used preferentially.</para>
-          
+
           <para>Default: none</para>
         </listitem>
       </varlistentry>
@@ -325,7 +325,7 @@
         <listitem>
           <para>Controls whether the rev-upgrade action will be run automatically after
           upgrading ports.</para>
-          
+
           <para>Default: yes</para>
         </listitem>
       </varlistentry>
@@ -338,7 +338,7 @@
           can rebuild ports to fix it. 'rebuild' means ports will automatically be rebuilt
           when broken linking is detected in their files, while 'report' means broken
           files will be scanned for and reported but the ports will not be rebuilt.</para>
-          
+
           <para>Default: rebuild</para>
         </listitem>
       </varlistentry>

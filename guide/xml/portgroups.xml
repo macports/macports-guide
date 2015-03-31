@@ -38,5 +38,5 @@ kde4-1.1.tcl
    comments in the header of the portgroup file itself) should provide guidance on how each
    portgroup is used. Prospective MacPorts developers are also encouraged to examine existing
    portfiles that use these portgroups.</para>
-   
+
 </section>

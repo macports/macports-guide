@@ -140,18 +140,18 @@ depends_run         port:apache2 port:php5</programlisting>
     programs, <option>lib</option> for libraries, and <option>path</option>
     for any installed file. File dependencies are specified in the form:
     <replaceable>&lt;type&gt;</replaceable>:<replaceable>&lt;filespec&gt;</replaceable>:<replaceable>&lt;port&gt;</replaceable>.</para>
-    
+
     <para>For <option>bin</option> dependencies,
     <replaceable>&lt;filespec&gt;</replaceable> is the name of a program in a
     bin directory like <filename>${prefix}/bin</filename>, /usr/bin, /bin, and
     the associated sbin directories.</para>
-    
+
     <para>For <option>lib</option> dependencies,
     <replaceable>&lt;filespec&gt;</replaceable> is the name of a library
     (but without its extension) in a lib directory like
     <filename>${prefix}/lib</filename>, /usr/lib, /lib, some Framework
     directories, and those found in environment variables like DYLD_LIBRARY_PATH.</para>
-    
+
     <para>For <option>path</option> dependencies,
     <replaceable>&lt;filespec&gt;</replaceable> is the complete absolute path
     to the file, or more usually, when the file is inside

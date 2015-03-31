@@ -1088,7 +1088,7 @@ svn.revision        2100</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
-        
+
       <varlistentry>
         <term>extract.suffix</term>
 
@@ -2070,7 +2070,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
               <para>Default: <option>gcc-4.0</option> on Mac OS X 10.4 and
               10.5</para>
             </listitem>
-            
+
             <listitem>
               <para>Default: <option>gcc-4.2</option> with Xcode 3.2 on Mac OS X 10.6</para>
             </listitem>
@@ -2847,7 +2847,7 @@ build.target-delete     compat</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      
+
       <varlistentry>
         <term>build.jobs</term>
 
@@ -2867,7 +2867,7 @@ build.target-delete     compat</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
-      
+
     </variablelist>
   </section>
 

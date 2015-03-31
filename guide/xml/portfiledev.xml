@@ -681,7 +681,7 @@ variant sqlite description {Build sqlite support} {
 +++ src/Makefile.in       2007-06-20 10:10:59.000000000 -0700
 @@ -131,23 +131,23 @@
         $(INSTALL_DATA)/gdata $(INSTALL_DATA)/perl
-
+ 
  install-lib:
 -       -mkdir -p $(INSTALL_LIB)
 +       -mkdir -p $(DESTDIR)$(INSTALL_LIB)
@@ -858,14 +858,14 @@ Ports failed:                   0</screen>
 
       <programlisting>checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
                         sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
-      
+
       <para>Should a key item such as a phase or variant require braces, the
       opening brace should appear on the same line and the closing brace should
       be on its own line. The block formed by the braces is indented for visual
       clearance. Braces merely quoting strings, for example the description of
       variants, are placed on the same line without line breaks.</para>
 
-    <programlisting>variant mysql5 description {Enable support for MySQL 5} {
+      <programlisting>variant mysql5 description {Enable support for MySQL 5} {
     depends_lib-append        port:mysql5
     configure.args-replace    --without-mysql5 --with-mysql5
 }</programlisting>
@@ -916,22 +916,22 @@ Ports failed:                   0</screen>
       <para>If there is the need to replace a port with another port or a
       renaming is necessary for some reason, the port should be marked as
       <code>replaced_by</code>.</para>
-      
+
       <para>As an illustration of a typical workflow the port
       <quote>skrooge-devel</quote> shall be taken. This port had been used for
       testing new versions of skrooge, but it turned out to have become
       unnecessary due to the fact that skrooge's developers currently prefer a
       distribution via port <quote>skrooge</quote> instead. </para>
-      
+
       <para>At the end of this section the use of the obsolete PortGroup is suggested
       as an even shorter approach to the below described workflow.</para>
 
       <section id="development.replaced_by">
-      <title>The long way</title>
+        <title>The long way</title>
 
-      <para>Skrooge's original devel port file looked like this:</para>
+        <para>Skrooge's original devel port file looked like this:</para>
 
-<programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
 # $Id$
 
 PortSystem          1.0
@@ -969,58 +969,58 @@ depends_lib-append  port:kdelibs4 \
                     port:kdebase4-runtime \
                     port:oxygen-icons</programlisting>
 
-	<para>The following steps have to be taken to ensure a smooth transition
-	for a MacPorts user updating his local installation using
-	<userinput>sudo port upgrade</userinput>:</para>
+        <para>The following steps have to be taken to ensure a smooth transition
+          for a MacPorts user updating his local installation using
+          <userinput>sudo port upgrade</userinput>:</para>
 
-    <orderedlist>
-      <listitem>
-        <para> add the line <code>replaced_by foo</code> where foo is the
-        port this one is replaced by; when a user upgrades this port,
-        MacPorts will instead install the replacement port</para>
-		<programlisting>replaced_by         skrooge</programlisting>
-      </listitem>
+        <orderedlist>
+          <listitem>
+            <para> add the line <code>replaced_by foo</code> where foo is the
+              port this one is replaced by; when a user upgrades this port,
+              MacPorts will instead install the replacement port</para>
+            <programlisting>replaced_by         skrooge</programlisting>
+          </listitem>
 
-      <listitem>
-        <para> increase the version, revision, or epoch, so that users who
-        have this port installed will get notice in <code>port
-        outdated</code> that they should upgrade it and trigger the above
-        process</para>
-		<programlisting>revision            1</programlisting>
-      </listitem>
+          <listitem>
+            <para> increase the version, revision, or epoch, so that users who
+              have this port installed will get notice in <code>port
+                outdated</code> that they should upgrade it and trigger the above
+              process</para>
+            <programlisting>revision            1</programlisting>
+          </listitem>
 
-      <listitem>
-        <para> clear distfiles (have a line reading only
-        <code>distfiles</code>) so that no distfile is downloaded for this
-        stub port</para>
-		<programlisting>distfiles</programlisting>
-      </listitem>
+          <listitem>
+            <para> clear distfiles (have a line reading only
+              <code>distfiles</code>) so that no distfile is downloaded for this
+              stub port</para>
+            <programlisting>distfiles</programlisting>
+          </listitem>
 
-      <listitem>
-        <para> delete master_sites since there aren't any distfiles to
-        download</para>
-      </listitem>
+          <listitem>
+            <para> delete master_sites since there aren't any distfiles to
+              download</para>
+          </listitem>
 
-      <listitem>
-        <para> disable livecheck</para>
-        <programlisting>livecheck.type      none</programlisting>
-      </listitem>
+          <listitem>
+            <para> disable livecheck</para>
+            <programlisting>livecheck.type      none</programlisting>
+          </listitem>
 
-      <listitem>
-        <para> add a pre-configure block with a <code>ui_error</code> and
-        <code>return -code error</code> explaining to users who try to
-        install this port that the port has been replaced</para>
-		<programlisting>pre-configure {
+          <listitem>
+            <para> add a pre-configure block with a <code>ui_error</code> and
+              <code>return -code error</code> explaining to users who try to
+              install this port that the port has been replaced</para>
+            <programlisting>pre-configure {
     ui_error "Please do not install this port since it has been replaced by 'skrooge'."
     return -code error
 }</programlisting>
-      </listitem>
-    </orderedlist>
+          </listitem>
+        </orderedlist>
 
-	<para>With above modifications the port file eventually looks like
-	this:</para>
+        <para>With above modifications the port file eventually looks like
+          this:</para>
 
-<programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
 # $Id$
 
 PortSystem          1.0
@@ -1053,10 +1053,10 @@ pre-configure {
 
 distfiles</programlisting>
 
-	<para>A user upgrading ports will experience the following for port
-  <quote>skrooge-devel</quote>:</para>
-	<programlisting><prompt>%%</prompt> <userinput>sudo port upgrade skrooge-devel</userinput></programlisting>
-	<screen>--->  skrooge-devel is replaced by skrooge
+        <para>A user upgrading ports will experience the following for port
+          <quote>skrooge-devel</quote>:</para>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port upgrade skrooge-devel</userinput></programlisting>
+        <screen>--->  skrooge-devel is replaced by skrooge
 --->  Computing dependencies for skrooge
 --->  Fetching skrooge
 --->  Verifying checksum(s) for skrooge
@@ -1075,7 +1075,7 @@ distfiles</programlisting>
 # To start it run the following command:                  
 # launchctl load /Library/LaunchAgents/org.freedesktop.dbus-session.plist
 ##########################################################
- 
+
 ######################################################
 #  Programs will not start until you run the command 
 #  'sudo chown -R $USER ~/Library/Preferences/KDE'  
@@ -1083,11 +1083,11 @@ distfiles</programlisting>
 ######################################################
 --->  Cleaning skrooge</screen>
 
-	<para>In case a user actually tries to install the obsolete port
-	<quote>skrooge-devel</quote> it would be pointed out by an error message that
-  this is impossible now:</para>
-	<programlisting><prompt>%%</prompt> <userinput>sudo port install skrooge-devel</userinput></programlisting>
-	<screen>--->  Fetching skrooge-devel
+        <para>In case a user actually tries to install the obsolete port
+          <quote>skrooge-devel</quote> it would be pointed out by an error message that
+          this is impossible now:</para>
+        <programlisting><prompt>%%</prompt> <userinput>sudo port install skrooge-devel</userinput></programlisting>
+        <screen>--->  Fetching skrooge-devel
 --->  Verifying checksum(s) for skrooge-devel
 --->  Extracting skrooge-devel
 --->  Configuring skrooge-devel
@@ -1097,15 +1097,15 @@ Log for skrooge-devel is at: /opt/local/var/macports/logs/_opt_local_var_macport
 Error: Status 1 encountered during processing.
 To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
 
-	</section>
+      </section>
 
-    <section id="development.obsolete-portgroup">
-    <title>The shortcut: PortGroup obsolete</title>
+      <section id="development.obsolete-portgroup">
+        <title>The shortcut: PortGroup obsolete</title>
 
-	<para>Using the PortGroup obsolete makes the task described in the previous subsection
-	much easier:</para>
+        <para>Using the PortGroup obsolete makes the task described in the previous subsection
+          much easier:</para>
 
-	<programlisting>
+        <programlisting>
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
 # $Id$
 PortSystem          1.0
@@ -1116,70 +1116,69 @@ svn.revision        1215845
 version             0.8.0-${svn.revision}
 revision            2</programlisting>
 
-	<para>The PortGroup defines a number of reasonable defaults for a port that is only
-	there to inform users that they should uninstall it and install something else
-	instead. You might want to override some of the defaults though. For details have
-	a look at the PortGroup's source code in
-	<filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
+        <para>The PortGroup defines a number of reasonable defaults for a port that is only
+          there to inform users that they should uninstall it and install something else
+          instead. You might want to override some of the defaults though. For details have
+          a look at the PortGroup's source code in
+          <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
 
-      <note>
-        <para>It is important to specify <varname>replaced_by</varname> BEFORE the
+        <note>
+          <para>It is important to specify <varname>replaced_by</varname> BEFORE the
             <varname>PortGroup</varname> line!</para>
-      </note>
+        </note>
+
+      </section>
 
     </section>
 
-    </section>
-    
-    
     <section id="development.practices.removing-port">
       <title>Removing a port</title>
 
       <para>If a port has to be removed from MacPorts one should consider
-      the hints concerning replacing it by some alternative port given
-      <link linkend="development.practices.rename-replace-port">above</link>.
-      It is recommended to wait one year before the port directory
-      is actually removed from MacPorts' Subversion repository.
+        the hints concerning replacing it by some alternative port given
+        <link linkend="development.practices.rename-replace-port">above</link>.
+        It is recommended to wait one year before the port directory
+        is actually removed from MacPorts' Subversion repository.
       </para>
 
       <para>If there is no replacement for a port, it can simply be deleted
-      immediately.</para>
- 
- 	</section>
-    
+        immediately.</para>
+
+    </section>
+
   </section>
 
   <section id="development.buildbot">
-  <title>MacPorts' buildbot</title>
+    <title>MacPorts' buildbot</title>
 
-      <para>The <ulink url="https://build.macports.org/">buildbot</ulink> is a port
+    <para>The <ulink url="https://build.macports.org/">buildbot</ulink> is a port
       build-service currently supporting building of all committed ports for Snow Leopard,
       Lion, and Mountain Lion using the MacPorts AutoBuild
       (<ulink url="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</ulink>)
       scripts.</para>
-      
-      <para>Every time a maintainer commits changes to MacPorts' central SVN repository
+
+    <para>Every time a maintainer commits changes to MacPorts' central SVN repository
       the buildbot will check whether a rebuild of the corresponding port(s) would
       be necessary. If the port(s) in question are distributable their binary
       archives will be kept for subsequent distribution for the three most current
       versions of the OS X operating system.</para>
-      
-      <para>If a build error occurred for a port its maintainer will be informed via
+
+    <para>If a build error occurred for a port its maintainer will be informed via
       an email so that problems which did not surface on the maintainer's machine will
       not go unnoticed.
-      
+
       Port maintainers will find the
       <ulink url="https://build.macports.org/waterfall">waterfall</ulink>
-      and the 
+      and the
       <ulink url="https://build.macports.org/builders">builders</ulink>
       views most useful since they give information about the build status and offer
       the possibility to build ones port(s) on specific builders.</para>
-      
-      <para>Thus the buildbot helps to keep MacPorts consistent on various
+
+    <para>Thus the buildbot helps to keep MacPorts consistent on various
       OSX versions, i.e., a maintainer does not need access to these versions anymore in
       order to assure that the port(s) maintained build without problems. Currently only
       the default port variants will be built and kept.</para>
 
   </section>
-  
+
 </chapter>

@@ -164,19 +164,19 @@
               patches, created to enhance something that isn't failing its
               intended purpose.</para>
             </listitem>
-            
+
             <listitem>
               <para><guimenu>update</guimenu> - Tickets, with or without
               patches, involving updating a port to a newer upstream
               version.</para>
             </listitem>
-            
+
             <listitem>
               <para><guimenu>submission</guimenu> - Tickets created to submit
               Portfiles for software not currently available in MacPorts.
               </para>
             </listitem>
-            
+
             <listitem>
               <para><guimenu>request</guimenu> - Tickets created to request
               the creation of a new port.</para>
@@ -280,7 +280,7 @@
           development of the ticket. Multiple email addresses should be
           separated with a comma and a space
           (e.g., <literal>you@example.org, maintainer@macports.org</literal>).</para>
-          
+
           <para>When reporting port-related tickets, make sure you add the
           port maintainers email address to the <guilabel>Cc:</guilabel> field
           so they are notified of the ticket (unless you have commit access,
@@ -289,12 +289,12 @@
           <literal>port info --maintainers <replaceable>[port]</replaceable>
           </literal></para>
         </listitem>
-        
+
         <listitem>
           <para><guilabel>Assign To:</guilabel> Only users with commit access
           can edit this field. If this is not you, see the section on the
           <guimenu>Cc</guimenu> field above.</para>
-          
+
           <para>For tickets on ports, enter
           the email address of the port's maintainer (use <command>port info
           &lt;portname&gt;</command> to find this). If multiple maintainers
@@ -787,9 +787,9 @@ To use the current port, you must be in a port's directory.</screen>
           <para>In the Description field, refer to any unacknowledged ticket(s).</para>
         </listitem>
 
-		<listitem>
-		  <para>In the Port field, indicate which port is abandoned.</para>
-		</listitem>
+        <listitem>
+          <para>In the Port field, indicate which port is abandoned.</para>
+        </listitem>
 
         <listitem>
           <para>The Port Abandoned ticket may be closed when the new

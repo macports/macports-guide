@@ -226,14 +226,14 @@
         sub-list.
         </para>
 
-		<para>If the version number is a
-		<quote>.0</quote> version, the <quote>.0</quote> should be
-		omitted to make the version an integer. If the author gives the choice
-		of using a given license or <quote>any later version</quote> of it,
-		append a plus sign (+) to the version number. If the version
-		specified in this case is also the earliest version,
-		just leave out the version number entirely since it implies all
-		versions.</para>
+        <para>If the version number is a
+        <quote>.0</quote> version, the <quote>.0</quote> should be
+        omitted to make the version an integer. If the author gives the choice
+        of using a given license or <quote>any later version</quote> of it,
+        append a plus sign (+) to the version number. If the version
+        specified in this case is also the earliest version,
+        just leave out the version number entirely since it implies all
+        versions.</para>
 
         <programlisting>license           GPL-3</programlisting>
         <programlisting>license           {freetype GPL}</programlisting>
