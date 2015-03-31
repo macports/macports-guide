@@ -1175,7 +1175,7 @@ revision            2</programlisting>
       the possibility to build ones port(s) on specific builders.</para>
 
     <para>Thus the buildbot helps to keep MacPorts consistent on various
-      OSX versions, i.e., a maintainer does not need access to these versions anymore in
+      OS X versions, i.e., a maintainer does not need access to these versions anymore in
       order to assure that the port(s) maintained build without problems. Currently only
       the default port variants will be built and kept.</para>
 
