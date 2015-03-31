@@ -5,7 +5,7 @@
   <title>MacPorts Project</title>
 
   <section id="project.tickets">
-    <title>Using Trac for tickets</title>
+    <title>Using Trac for Tickets</title>
 
     <para>The MacPorts Project uses a system called <ulink
     url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs

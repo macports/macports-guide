@@ -30,7 +30,7 @@
         <para>Follow the instructions for your version of OS X:</para>
 
         <section id="installing.xcode.mavericks">
-            <title>Install Xcode on OS X 10.9 or later</title>
+            <title>Install Xcode on OS X 10.9 or Later</title>
 
             <para>Download the latest version of Xcode <ulink
                     url="https://developer.apple.com/downloads/index.action">from the Apple developer website</ulink> or
@@ -54,7 +54,7 @@
                     Store</ulink>.</para>
 
             <section id="installing.xcode.lion.43">
-                <title>Xcode 4.3 and later</title>
+                <title>Xcode 4.3 and Later</title>
 
                 <para>Xcode 4.3 and later do not automatically install the command line tools, but MacPorts requires
                     them. To install them, open the Xcode application, go to the Preferences window, to the Downloads
@@ -113,7 +113,7 @@
         </section>
 
         <section id="installing.xcode.other">
-            <title>Install Xcode on older releases of Mac OS X</title>
+            <title>Install Xcode on Older Releases of Mac OS X</title>
 
             <para>If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5
                 (Xcode 3.0 and Xcode 3.1 Developer Tools) or 10.4 (Xcode 2.4.1 and Xcode 2.5 Developer Tools) from the
@@ -485,7 +485,7 @@
         </section>
 
         <section id="installing.shell.verifyprofile">
-            <title>Verify the configuration file</title>
+            <title>Verify the Configuration File</title>
 
             <para>To verify that the file containing the MacPorts variables is in effect, type <command>env</command> in
                 the terminal to verify the current environment settings after the file has been created. Example output

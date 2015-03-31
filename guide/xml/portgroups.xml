@@ -3,7 +3,7 @@
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <section id="reference.portgroup.intro">
 
-  <title>PortGroup introduction</title>
+  <title>PortGroup Introduction</title>
 
   <para>PortGroups are simply include files for portfiles. They can define as much or as little as
   a portgroup author feels is necessary to provide a set of definitions or behaviors common to a
