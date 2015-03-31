@@ -207,7 +207,7 @@
                 <listitem>
                     <para>After this step you are done already, MacPorts is now installed and your shell environment was
                         set up automatically by the installer. To confirm the installation is working as expected, now
-                        try using the <command>port</command> command in a <emphasis>new</emphasis> terminal
+                        try using <command>port</command> in a <emphasis>new</emphasis> terminal
                         window.</para>
 
                     <programlisting><prompt>$</prompt> <userinput>port version</userinput></programlisting>
@@ -292,7 +292,7 @@
                     <para>Build and Install MacPorts</para>
 
                     <para>MacPorts uses autoconf and makefiles for installation. These commands will build and install
-                        MacPorts to <filename>/opt/local</filename>. You can add the <option>--prefix</option> option to
+                        MacPorts to <filename>/opt/local</filename>. You can add <option>--prefix</option> to
                         <filename>./configure</filename> to relocate MacPorts to another directory if needed.</para>
 
                     <programlisting><prompt>$</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
@@ -373,7 +373,7 @@
                 url="http://lists.macosforge.org/mailman/listinfo/macports-users">macports-users</ulink> mailing list
             first.</para>
 
-        <para>If you need to uninstall MacPorts, and your <command>port</command> command is functioning, first
+        <para>If you need to uninstall MacPorts, and <command>port</command> is functioning, first
         uninstall all the installed ports by running this command in the Terminal:</para>
 
         <programlisting><prompt>$</prompt> <userinput>sudo port -fp uninstall installed</userinput></programlisting>
@@ -489,7 +489,7 @@
 
             <para>To verify that the file containing the MacPorts variables is in effect, type <command>env</command> in
                 the terminal to verify the current environment settings after the file has been created. Example output
-                for the <command>env</command> command is shown below.</para>
+                for <command>env</command> is shown below.</para>
 
             <note>
                 <para>Changes to shell configuration files do not take effect until a new terminal session is

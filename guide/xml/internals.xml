@@ -215,8 +215,8 @@
             <listitem>
               <para><code>mportinfo:</code> Given a port handle, this returns
               the PortInfo array (as a flat list of array elements). This is a
-              little tricky and unstable and only used by the
-              <command>portindex</command> command.</para>
+              little tricky and unstable and only used by
+              <command>portindex</command>.</para>
             </listitem>
 
             <listitem>
@@ -321,8 +321,8 @@
       stored in a single file named <filename>registry.db</filename>, although
       the additional directory <filename>portfiles</filename> is used
       temporarily for extracting stored Portfiles from the registry.
-      Furthermore, access to the registry may be locked using the
-      <filename>.registry.lock</filename> file with the
+      Furthermore, access to the registry may be locked using
+      <filename>.registry.lock</filename> with the
       <computeroutput>registry::exclusive_lock</computeroutput> and
       <computeroutput>registry::exclusive_unlock</computeroutput> APIs.</para>
 

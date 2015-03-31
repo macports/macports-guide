@@ -9,13 +9,13 @@
 <chapter id="using">
     <title>Using MacPorts</title>
 
-    <para>This chapter describes using the <command>port</command> command, port variants, common tasks and port
+    <para>This chapter describes using <command>port</command>, port variants, common tasks and port
     binaries.</para>
 
     <section id="using.port">
         <title>The port Command</title>
 
-        <para>The MacPorts <command>port</command> command is the main utility used to interact with MacPorts. It is
+        <para><command>port</command> is the main utility used to interact with MacPorts. It is
             used to update <filename>Portfile</filename>s and the MacPorts infrastructure, and install and manage
             ports.</para>
 
@@ -23,8 +23,7 @@
             <title>port help</title>
 
             <para>The <option>help</option> action shows some brief information about the specified action, or if no
-                action is specified, shows basic usage information for the <command>port</command> command in
-                general.</para>
+                action is specified, shows basic usage information for <command>port</command> in general.</para>
 
             <programlisting><prompt>$</prompt> <userinput>port help selfupdate</userinput></programlisting>
 
@@ -459,8 +458,8 @@ apache2 has the variants:
                 Any <option>[]</option> are derived from the <filename>Portfile</filename>.
                 While <option>()</option> are derived from the <filename>variants.conf</filename>.
                 See <xref
-                    linkend="internals.configuration-files.variants-conf" /> for more information on the
-                <filename>variants.conf</filename> file.</para>
+                    linkend="internals.configuration-files.variants-conf" /> for more information on
+                <filename>variants.conf</filename>.</para>
         </section>
 
         <section id="using.port.install">
@@ -481,7 +480,7 @@ apache2 has the variants:
 
             <programlisting><prompt>$ </prompt><userinput>sudo port -v install apache2</userinput></programlisting>
 
-            <para>All debug information is also kept in the <filename>main.log</filename> file for the port you
+            <para>All debug information is also kept in <filename>main.log</filename> for the port you
                 installed. Its path will be printed automatically if the installation fails. You can manually get the
                 path using <command>port logfile <varname>&lt;portname&gt;</varname></command>. Note that logfiles will
                 automatically be deleted on successful installation.</para>
@@ -781,7 +780,7 @@ The following ports are currently installed:
   yubico-pam @2.16_0 (active)
   zlib @1.2.8_0 (active)</screen>
 
-            <para>Use the <option>-v</option> option to also display the platform and CPU architecture(s) for which the
+            <para>Use <option>-v</option> to also display the platform and CPU architecture(s) for which the
                 ports were built, and any variants which were explicitly negated.</para>
 
             <programlisting><prompt>$ </prompt><userinput>port -v installed libsdl</userinput></programlisting>
@@ -847,8 +846,8 @@ p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
 
                 <para>to go back to the old version.</para>
 
-                <para>If you do not want to keep the old versions around while upgrading, you can pass the
-                    <option>-u</option> option when upgrading:</para>
+                <para>If you do not want to keep the old versions around while upgrading, you can pass
+                    <option>-u</option> when upgrading:</para>
 
                 <programlisting><prompt>$ </prompt><userinput>sudo port -u upgrade outdated</userinput></programlisting>
 
@@ -1020,8 +1019,8 @@ apache2 has the variants:
                 Any <option>[]</option> are derived from the <filename>Portfile</filename>.
                 While <option>()</option> are derived from the <filename>variants.conf</filename>.
                 See <xref
-                    linkend="internals.configuration-files.variants-conf" /> for more information on the
-            <filename>variants.conf</filename> file.</para>
+                    linkend="internals.configuration-files.variants-conf" /> for more information on
+            <filename>variants.conf</filename>.</para>
 
         <section id="using.variants.invoking">
             <title>Invoking Variants</title>
@@ -1499,7 +1498,7 @@ apache2 has the variants:
 <!--        -->DEBUG: Archive logrotate-3.8.6_2+gzip.darwin_13.x86_64.tbz2 packaged</screen>
 
             <para>Binary archive files are placed in <filename>${prefix}/var/macports/software/</filename>. The archive
-                file type is set in the <filename>macports.conf</filename> file using the
+                file type is set in <filename>macports.conf</filename> using the
                 <option>portarchivetype</option> key. The default format is <option>tbz2</option>; other options are:
                 <option>tar</option>, <option>tbz</option>, <option>tbz2</option>, <option>tgz</option>,
                 <option>tlz</option>, <option>txz</option>, <option>xar</option>, <option>zip</option>,
@@ -1514,7 +1513,7 @@ apache2 has the variants:
                 to users without relying on MacPorts for installation. Binary installers created with MacPorts are
                 usually <option>.pkg</option> (OS X Installer Packages). MacPorts can also convert
                 a <option>.pkg</option> package into an OS X <option>.dmg</option> disk image. You can create binary
-                packages with the <command>port</command> command as shown in the following examples.</para>
+                packages using <command>port</command> as shown in the following examples.</para>
 
             <warning>
                 <para>If you want to create installer packages using MacPorts for redistribution, make sure you do not
