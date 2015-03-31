@@ -165,7 +165,7 @@
             <orderedlist>
                 <listitem>
                     <para>Download the latest
-                        <filename>MacPorts-&macports-version;-<emphasis>...</emphasis>.pkg</filename> installer from the
+                        <filename>MacPorts-&macports-version;-<replaceable>....</replaceable>pkg</filename> installer from the
                         <ulink url="https://distfiles.macports.org/MacPorts/">MacPorts download directory</ulink>. Here
                         are direct links for the latest versions of OS X:</para>
 
