@@ -61,7 +61,7 @@
           subport that will be installed if the user asks to install <quote>py-foo</quote>
           rather than, e.g., <quote>py26-foo</quote> or <quote>py27-foo</quote>. If not explicitly set, a
           reasonable default is chosen from the list in <code>python.versions</code>.</para>
-          <para>For apps (i.e., name does not start with <quote>py-</quote>), this chooses
+          <para>For applications (i.e., name does not start with <quote>py-</quote>), this chooses
           which version of python to use, and must be set. It can be changed
           in variants if desired.</para>
 
@@ -102,7 +102,7 @@
         <term>python.link_binaries_suffix</term>
 
         <listitem>
-          <para>Suffix to add the the names of the links created in
+          <para>Suffix to add to the names of the links created in
           <filename>${prefix}/bin</filename> when <varname>${python.link_binaries}</varname>
           is enabled. Can be cleared if no suffix is desired.</para>
 

@@ -17,7 +17,7 @@
     account to create tickets.</para>
 
     <section id="project.tickets.prerequisites">
-      <title>Before you file a new ticket</title>
+      <title>Before Filing a New Ticket</title>
 
       <itemizedlist>
         <listitem>
@@ -848,7 +848,7 @@ To use the current port, you must be in a port's directory.</screen>
       </listitem>
 
       <listitem>
-        <para>the identity you'd like to use as a member of the project, A.K.A. the
+        <para>the identity you'd like to use as a member of the project, a.k.a. the
         &ldquo;handle&rdquo;, as part of your <literal><replaceable>handle</replaceable>@macports.org</literal>
         alias.</para>
       </listitem>

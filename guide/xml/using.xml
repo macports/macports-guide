@@ -97,8 +97,8 @@ Upgrade MacPorts itself and run the sync target
 
             <para>The <option>sync</option> action performs a subset of <option>selfupdate</option>. It synchronizes the
                 ports tree, as does <option>selfupdate</option>, but it does not check for MacPorts upgrades. On OS X,
-                unless there is a special reason not to do so, you should always run <link
-                    linkend="using.port.selfupdate">selfupdate</link>.</para>
+                unless there is a special reason not to do so, run <link
+                    linkend="using.port.selfupdate">selfupdate</link> instead.</para>
 
             <para><option>sync</option> does not accept any switches.</para>
         </section>
@@ -530,11 +530,11 @@ apache2 has the variants:
                 <varlistentry>
                     <term><option>--unrequested</option></term>
                     <listitem>
-                        <para>By default, each port you install using the <option>install</option> (vs. as a dependency
-                            of a different port) is marked as <quote>requested</quote>. If you want MacPorts to treat
-                            a port you installed manually as if it was automatically installed as a dependency (e.g., if
-                            a dependency failed to build and you re-tried installing the dependency only), pass this
-                            flag.</para>
+                        <para>By default, each port you install using the <option>install</option> explicitly (contrary to ports
+                            installed as a dependency of a different port) is marked as <quote>requested</quote>.
+                            If you want MacPorts to treat a port you installed manually as if it was automatically installed
+                            as a dependency (e.g., if a dependency failed to build and you re-tried installing the dependency only),
+                            pass this flag.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
@@ -1025,7 +1025,7 @@ apache2 has the variants:
         <section id="using.variants.invoking">
             <title>Invoking Variants</title>
 
-            <para>A variant can only be invoked when a port is installed. After you have determined what variants
+            <para>A variant can only be selected when a port is installed. After you have determined what variants
                 a given port has, if any, you may install a port using the variant by specifying its name preceded by
                 a plus or minus sign on the command line, for example</para>
 

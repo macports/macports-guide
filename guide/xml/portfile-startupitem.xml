@@ -235,7 +235,7 @@
     <title>Script StartupItems</title>
 
     <para>StartupItems of type <quote>script</quote> create a wrapper during
-    port installation for <command>daemondo</command> that that will be used
+    port installation for <command>daemondo</command> that will be used
     to launch a daemon startup script present in an application's source
     distribution (MacPorts does not create daemon startup scripts) for daemons
     that require a script.</para>
