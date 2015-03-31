@@ -31,8 +31,7 @@
             <quote>Skipping completed</quote> in the log for each
             previously-completed phase that was skipped. Before filing a
             ticket, <userinput>sudo port clean</userinput> the port that
-            failed, then try again.
-          </para>
+            failed, then try again.</para>
         </listitem>
         <listitem>
           <para>Check the problem hotlist</para>
@@ -48,13 +47,13 @@
           <para>Search to see if a Trac ticket has already been filed</para>
           <para>
             Avoid filing duplicate bugs. Search for duplicates by:
+          </para>
             <itemizedlist>
                 <listitem><para>using the search bar that appears on each page</para></listitem>
                 <listitem><para>using <ulink url="https://trac.macports.org/search?portsummarysearch=on">the search page</ulink></para></listitem>
                 <listitem><para>browsing the list of <ulink url="https://trac.macports.org/report">categorized reports</ulink></para></listitem>
                 <listitem><para>making an advanced search by constructing a <ulink url="https://trac.macports.org/query">custom query</ulink></para></listitem>
             </itemizedlist>
-          </para>
         </listitem>
         <listitem>
           <para>Is the problem an application error and not related to compiling and installing?</para>
@@ -757,15 +756,15 @@ To use the current port, you must be in a port's directory.</screen>
 
       <para>A port may be considered abandoned if any of the following apply:</para>
         <itemizedlist>
-        <listitem>A bug has not been acknowledged for more than three weeks
-            after a ticket is filed.</listitem>
-        <listitem>All tickets filed against the port have been resolved
+        <listitem><para>A bug has not been acknowledged for more than three weeks
+            after a ticket is filed.</para></listitem>
+        <listitem><para>All tickets filed against the port have been resolved
             with no input from the maintainer, after the 72-hour timeout,
             for a significant period of time (at least three weeks). This
             needs to involve a reasonable number of tickets; one timeout
-            doesn't make a port abandoned.</listitem>
-        <listitem>The listed maintainer address bounces, and no alternate way
-            of contacting the maintainer is known.</listitem>
+            doesn't make a port abandoned.</para></listitem>
+        <listitem><para>The listed maintainer address bounces, and no alternate way
+            of contacting the maintainer is known.</para></listitem>
         </itemizedlist>
       <para>If you wish to initiate the Port Abandonment
       protocol and optionally volunteer as the new maintainer:</para>
@@ -870,9 +869,9 @@ To use the current port, you must be in a port's directory.</screen>
     Project. Its membership is usually determined by public elections among
     project members; the current members of the team can be found on the
     <ulink url="https://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
-    Developers wiki page</ulink>.
+    Developers wiki page</ulink>.</para>
 
-    They are responsible for matters such as:
+    <para>They are responsible for matters such as:</para>
 
     <itemizedlist>
         <listitem>
@@ -895,7 +894,7 @@ To use the current port, you must be in a port's directory.</screen>
         <listitem>
           <para>engineering releases.</para>
         </listitem>
-      </itemizedlist></para>
+      </itemizedlist>
 
   </section>
 </chapter>

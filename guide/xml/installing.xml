@@ -74,7 +74,7 @@
 
             <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be considered to be the
                 latest, 3.2.x and 4.x. Xcode 4 costs money, but Xcode 3 is still available free of charge. There are two
-                options for downloading it:
+                options for downloading it:</para>
 
                 <orderedlist>
                     <listitem>
@@ -88,28 +88,27 @@
                     </listitem>
                 </orderedlist>
 
-                Both are available from the <ulink url="https://developer.apple.com/downloads/index.action">Apple
+                <para>Both are available from the <ulink url="https://developer.apple.com/downloads/index.action">Apple
                     developer website</ulink>. You may also be able to install Xcode 3.2 from your Mac OS X 10.6 DVD and
                 then run Software Update to get the latest version.</para>
 
             <para>Ensure that those of the following options that are available in the installer for your version of
-                Xcode are selected:
+                Xcode are selected:</para>
 
                 <itemizedlist>
                     <listitem>
-                        <guibutton>UNIX Development</guibutton>
+                        <para><guibutton>UNIX Development</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>System Tools</guibutton>
+                        <para><guibutton>System Tools</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>X11 SDK</guibutton>
+                        <para><guibutton>X11 SDK</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>Command Line Support</guibutton>
+                        <para><guibutton>Command Line Support</guibutton></para>
                     </listitem>
                 </itemizedlist>
-            </para>
         </section>
 
         <section id="installing.xcode.other">
@@ -120,23 +119,22 @@
                 <ulink url="https://developer.apple.com/downloads/index.action">Apple developer website</ulink>.</para>
 
             <para>Ensure that those of the following options that are available in the installer for your version of
-                Xcode are selected:
+                Xcode are selected:</para>
 
                 <itemizedlist>
                     <listitem>
-                        <guibutton>UNIX Development</guibutton>
+                        <para><guibutton>UNIX Development</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>System Tools</guibutton>
+                        <para><guibutton>System Tools</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>X11 SDK</guibutton>
+                        <para><guibutton>X11 SDK</guibutton></para>
                     </listitem>
                     <listitem>
-                        <guibutton>Command Line Support</guibutton>
+                        <para><guibutton>Command Line Support</guibutton></para>
                     </listitem>
                 </itemizedlist>
-            </para>
         </section>
     </section>
 
@@ -177,7 +175,7 @@
                                 OS X 10.10 Yosemite:
                             </term>
                             <listitem>
-                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.10-Yosemite.pkg">MacPorts-&macports-version;-10.10-Yosemite.pkg</ulink>
+                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.10-Yosemite.pkg">MacPorts-&macports-version;-10.10-Yosemite.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -185,7 +183,7 @@
                                 OS X 10.9 Mavericks:
                             </term>
                             <listitem>
-                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink>
+                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -193,7 +191,7 @@
                                 OS X 10.8 Mountain Lion:
                             </term>
                             <listitem>
-                                <ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink>
+                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                     </variablelist>
