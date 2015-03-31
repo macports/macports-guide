@@ -209,7 +209,7 @@
 
             <listitem>
               <para><code>mportexec:</code> Given a port handle, executes a
-              target (i.e. install).</para>
+              target (e.g., install).</para>
             </listitem>
 
             <listitem>

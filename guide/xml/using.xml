@@ -33,7 +33,7 @@ Usage: selfupdate --nosync
 
 Upgrade MacPorts itself and run the sync target
 
---nosync   Do not run the sync target, i.e. do not update the ports tree.
+--nosync   Do not run the sync target, i.e., do not update the ports tree.
            Only checks for (and installs, if available) new versions of
            MacPorts.</screen>
         </section>
@@ -424,7 +424,7 @@ Maintainers:          cal@macports.org</screen>
                 <varlistentry>
                     <term><option>--no-build</option></term>
                     <listitem>
-                        <para>Exclude dependencies only required at build time, i.e. fetch, extract, and build
+                        <para>Exclude dependencies only required at build time, i.e., fetch, extract, and build
                             dependencies.</para>
                     </listitem>
                 </varlistentry>
@@ -874,7 +874,7 @@ p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
                     <listitem>
                         <para>If the installed variants do not match those requested, upgrade (and change variants) even
                             if the port is not outdated. You can use this to switch the variant selection on an
-                            installed port, e.g. using</para>
+                            installed port, e.g., using</para>
 
                         <programlisting><prompt>$ </prompt><userinput>sudo port upgrade --enforce-variants apache2 -preforkmpm +workermpm</userinput></programlisting>
 

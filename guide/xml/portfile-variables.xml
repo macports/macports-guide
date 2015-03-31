@@ -133,7 +133,7 @@
       <term>os.platform</term>
 
       <listitem>
-        <para>The underlying operating system platform (i.e.
+        <para>The underlying operating system platform (e.g.,
         <quote>darwin</quote> on OS X, <quote>freebsd</quote>,
         etc.).</para>
       </listitem>
@@ -152,7 +152,7 @@
       <term>os.version</term>
 
       <listitem>
-        <para>The version number of the host operating system (i.e.
+        <para>The version number of the host operating system (e.g.,
         <quote>12.3.0</quote> for Darwin 12.3.0 a.k.a. OS X 10.8.3).</para>
       </listitem>
     </varlistentry>
@@ -170,7 +170,7 @@
       <term>os.major</term>
 
       <listitem>
-        <para>The major version number of the host operating system (i.e.
+        <para>The major version number of the host operating system (e.g.,
         <quote>12</quote> for Darwin 12.x).</para>
       </listitem>
     </varlistentry>

@@ -37,7 +37,7 @@
         <para>The name of the port. To avoid special interpretation by shells
         and the like, names should contain only alphanumeric characters,
         underscores, dashes or dots. For projects whose proper names contain
-        <quote>+</quote> characters, change these to <quote>x</quote> (i.e.
+        <quote>+</quote> characters, change these to <quote>x</quote> (e.g.,
         <quote>libstdc++</quote> becomes <quote>libstdcxx</quote>).</para>
 
         <programlisting>name                foo</programlisting>
@@ -122,7 +122,7 @@
           </listitem>
 
           <listitem>
-            <para>For addresses in other domains, e.g.
+            <para>For addresses in other domains, e.g.,
             <email>account@example.org</email>, use the convention
             example.org:account to specify the address.</para>
           </listitem>

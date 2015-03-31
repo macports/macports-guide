@@ -280,7 +280,7 @@
           reporter and assignee who would like to be kept involved in the
           development of the ticket. Multiple email addresses should be
           separated with a comma and a space
-          (i.e. <literal>you@example.org, maintainer@macports.org</literal>).</para>
+          (e.g., <literal>you@example.org, maintainer@macports.org</literal>).</para>
           
           <para>When reporting port-related tickets, make sure you add the
           port maintainers email address to the <guilabel>Cc:</guilabel> field
@@ -876,7 +876,7 @@ To use the current port, you must be in a port's directory.</screen>
 
     <itemizedlist>
         <listitem>
-          <para>approving new project members (i.e. granting commit
+          <para>approving new project members (i.e., granting commit
           rights);</para>
         </listitem>
 

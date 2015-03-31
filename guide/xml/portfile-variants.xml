@@ -201,7 +201,7 @@ platform darwin 8 powerpc {
 
     <note>
       <para>Though a combination of OS version and hardware platform may be
-      specified in a single platform statement (i.e. darwin 8 i386), it is not
+      specified in a single platform statement (e.g., darwin 8 i386), it is not
       possible to specify a range of platforms with a single statement. For
       example, to select Darwin versions 9 and 10 while excluding all others,
       you would need two statements: <code>platform darwin 9</code> and

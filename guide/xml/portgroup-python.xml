@@ -57,11 +57,11 @@
         <term>python.default_version</term>
 
         <listitem>
-          <para>For modules (i.e. name starts with <quote>py-</quote>), this sets the
+          <para>For modules (i.e., name starts with <quote>py-</quote>), this sets the
           subport that will be installed if the user asks to install <quote>py-foo</quote>
-          rather than e.g. <quote>py26-foo</quote> or <quote>py27-foo</quote>. If not explicitly set, a
+          rather than, e.g., <quote>py26-foo</quote> or <quote>py27-foo</quote>. If not explicitly set, a
           reasonable default is chosen from the list in <code>python.versions</code>.</para>
-          <para>For apps (i.e. name does not start with <quote>py-</quote>), this chooses
+          <para>For apps (i.e., name does not start with <quote>py-</quote>), this chooses
           which version of python to use, and must be set. It can be changed
           in variants if desired.</para>
 
@@ -187,7 +187,7 @@
         <term>python.lib</term>
 
         <listitem>
-          <para>The Python dynamic library path, i.e.
+          <para>The Python dynamic library path, i.e.,
           <filename>${python.prefix}/Python</filename> (framework builds) or
           <filename>${prefix}/lib/libpython2.4.dylib</filename> (python24).</para>
         </listitem>
@@ -197,7 +197,7 @@
         <term>python.libdir</term>
 
         <listitem>
-          <para>The path to python's lib directory, i.e.
+          <para>The path to python's lib directory, i.e.,
           <filename>${python.prefix}/lib/python${python.branch}</filename>.</para>
         </listitem>
       </varlistentry>
