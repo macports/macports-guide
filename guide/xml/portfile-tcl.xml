@@ -153,9 +153,9 @@
 
         <variablelist>
           <varlistentry>
-            <term>eval xinstall [-o <replaceable>owner</replaceable>] [-g
+            <term>xinstall [-o <replaceable>owner</replaceable>] [-g
             <replaceable>group</replaceable>] [-m
-            <replaceable>mode</replaceable>] [glob
+            <replaceable>mode</replaceable>] {*}[glob
             <replaceable>pattern</replaceable>]
             <replaceable>directory</replaceable></term>
 
@@ -204,7 +204,7 @@
         <programlisting>xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
    ${destroot}${prefix}/share/doc/${name}</programlisting>
 
-        <programlisting>eval xinstall -m 640 [glob ${worksrcpath}/doc/*] \
+        <programlisting>xinstall -m 640 {*}[glob ${worksrcpath}/doc/*] \
    ${destroot}${prefix}/share/doc/${name}</programlisting>
 
         <programlisting>xinstall -d ${destroot}${prefix}/share/doc/${name}</programlisting>
