@@ -161,7 +161,9 @@
 
             <listitem>
               <para>Install the file(s) matching the glob pattern to a
-              destination directory.</para>
+              destination directory. Note the use of the <option>{*}</option>
+              operator to convert the list returned by <command>glob</command>
+              into separate arguments to <command>xinstall</command>.</para>
             </listitem>
           </varlistentry>
         </variablelist>
