@@ -194,7 +194,7 @@
           </listitem>
 
           <listitem>
-            <para>mode -</para>
+            <para>mode - <option>0755</option></para>
           </listitem>
         </itemizedlist>
 
