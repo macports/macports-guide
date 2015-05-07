@@ -116,7 +116,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>xcode.build.settings FRAMEWORK_SEARCH_PATHS=${prefix}/Library/Frameworks</programlisting>
+              <programlisting>xcode.build.settings FRAMEWORK_SEARCH_PATHS=${frameworks_dir}</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
