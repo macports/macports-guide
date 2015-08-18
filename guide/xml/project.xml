@@ -667,10 +667,10 @@ To use the current port, you must be in a port's directory.</screen>
             a ticket, attach a patch fixing the bug there and file the
             maintainer change in a separate ticket (with a separate patch) as
             discussed above. In general, please create a separate patch for
-            each semantic change. Doing so enables each independent change to
-            be accepted without worries about conflicts that sometimes arise
-            when several changes are rolled into one patch and simplifies
-            reviewing. Do not worry that you cannot change the
+            each semantic change. Doing so simplifies reviewing. It enables
+            each independent change to be accepted without worries about
+            conflicts that sometimes arise when several changes are rolled into
+            one patch. Do not worry that you cannot change the
             <guilabel>keywords</guilabel> to <userinput>haspatch</userinput> on
             existing tickets.</para>
         </listitem>
