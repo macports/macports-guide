@@ -71,6 +71,10 @@
             then reinstall. You might also want to run 'port -nR upgrade --force
             <replaceable>foo</replaceable>' to rebuild ports depending upon
             port <replaceable>foo</replaceable>.
+            Note that it is safest and recommended that most users always upgrade
+            with 'port upgrade outdated' to update all ports at once. Upgrading a
+            single port can lead to software errors in other ports that have not
+            yet been upgraded.
           </para>
         </listitem>
       </itemizedlist>

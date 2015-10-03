@@ -825,7 +825,9 @@ p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
             <programlisting><prompt>$ </prompt><userinput>sudo port upgrade outdated</userinput></programlisting>
 
             <para>to update all ports that have an upgrade available. You can, however, selectively upgrade ports if you
-                want to delay other upgrades until later. To do that, specify the name(s) of the port(s) to upgrade:</para>
+                want to delay other upgrades until later. This is not recommended unless you know what you are doing,
+                since you might experience software errors for the ports that have not yet been upgraded. To upgrade
+                individual ports, specify the name(s) of the port(s) to upgrade:</para>
 
             <programlisting><prompt>$ </prompt><userinput>sudo port upgrade gnupg2</userinput></programlisting>
 
@@ -1128,8 +1130,8 @@ apache2 has the variants:
 
             <programlisting><prompt>$ </prompt><userinput>sudo port upgrade outdated</userinput></programlisting>
 
-            <para>In case you want to upgrade only a specific port, replace <quote>outdated</quote> in the command given
-                above with the port's name:</para>
+            <para>In case you want to upgrade only a specific port (not recommended unless you know what you are doing),
+                replace <quote>outdated</quote> in the command given above with the port's name:</para>
 
             <programlisting><prompt>$ </prompt><userinput>sudo port upgrade makedepend</userinput></programlisting>
 
