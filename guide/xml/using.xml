@@ -1049,8 +1049,7 @@ apache2 has the variants:
                 variant.</para>
 
             <para>MacPorts will remember the variants that were used when installing a port. If you upgrade a port
-                later, the same variants will be used, unless you use manually specify different variants and use the
-                <option>--enforce-variants</option> flag of <option>upgrade</option>.</para>
+                later, the same variants will be used, unless you manually specify different variants.</para>
         </section>
 
         <section id="using.variants.negating">
