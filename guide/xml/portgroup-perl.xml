@@ -35,6 +35,27 @@
           </itemizedlist>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term>perl5.use_module_build</term>
+
+        <listitem>
+          <para>Perl modules are ordinarily assumed to be built with
+          ExtUtils::MakeMaker. Use this keyword if a module must be built using
+          Module::Build instead.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>perl5.use_module_build</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
