@@ -439,7 +439,7 @@ Maintainers:          cal@macports.org</screen>
                 your build at install time. See <link linkend="using.variants.invoking">Invoking Port Variants</link>
                 below to install ports that have variants.</para>
 
-            <programlisting><prompt>$ </prompt><userinput>port variants apache2</userinput></programlisting>
+            <programlisting><prompt>$ </prompt><userinput>port variants apache2 +universal</userinput></programlisting>
 
             <screen>
 apache2 has the variants:
@@ -448,13 +448,15 @@ apache2 has the variants:
    openldap: Enable LDAP support through OpenLDAP
 [+]preforkmpm: Use prefork MPM
      * conflicts with eventmpm workermpm
-   universal: Build for multiple architectures
+  +universal: Build for multiple architectures
    workermpm: Use worker MPM
      * conflicts with eventmpm preforkmpm</screen>
 
             <para>This output lists all variants followed by their description. If a variant depends on or conflicts
-                with other variants, a line with the details on that follows. Variant lines that have a
-                <option>+</option> are enabled and those with <option>-</option> are disabled.
+                with other variants, a line detailing that follows. A variant name prefixed by <option>+</option>
+                indicates that it has been enabled (on the command line), while a prefix <option>-</option> indicates
+                that it has been disabled. When bracketed, a prefix <option>+</option> means that the variant is enabled
+                by default.
                 Any <option>[]</option> are derived from the <filename>Portfile</filename>.
                 While <option>()</option> are derived from the <filename>variants.conf</filename>.
                 See <xref
