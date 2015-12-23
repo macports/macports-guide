@@ -82,7 +82,10 @@
 
         <listitem>
           <para>Execute commands to run test suites bundled with a
-          port.</para>
+          port, available only for a fraction of ports.
+	  This is an optional phase, run only if <command>port test</command> is executed,
+	  and always works with a build from source, not a binary. A failure is only for the user's
+	  information, and does not block a subsequent installation from the build.</para>
         </listitem>
       </varlistentry>
 
