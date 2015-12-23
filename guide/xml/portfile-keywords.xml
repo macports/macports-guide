@@ -185,11 +185,15 @@
       <term>platforms</term>
 
       <listitem>
-        <para>The platforms on which the port has been tested.</para>
+        <para>A list of the platforms on which the port has been tested.
+	Required, but not interpreted in any way by the software at this time; it is purely informational for users.
+	Possible values: <code>darwin</code> (= <code>macosx</code> or <code>puredarwin</code>), <code>macosx</code>,
+	<code>puredarwin</code>, <code>freebsd</code>, <code>linux</code>, <code>sunos</code>, <code>netbsd</code>.
+	In general, it can just be set to <code>darwin</code>. (<code>puredarwin</code> is an OS based on Apple's
+	open-source Darwin releases wihtout any of Apple's proprietary bits.) See also <varname>os.platform</varname>.
+	</para>
 
-        <!-- TODO: add possible values -->
-
-        <programlisting>platforms           darwin freebsd</programlisting>
+        <programlisting>platforms           darwin</programlisting>
       </listitem>
     </varlistentry>
 
