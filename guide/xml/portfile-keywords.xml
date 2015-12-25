@@ -190,7 +190,7 @@
 	Possible values: <code>darwin</code> (= <code>macosx</code> or <code>puredarwin</code>), <code>macosx</code>,
 	<code>puredarwin</code>, <code>freebsd</code>, <code>linux</code>, <code>sunos</code>, <code>netbsd</code>.
 	In general, it can just be set to <code>darwin</code>. (<code>puredarwin</code> is an OS based on Apple's
-	open-source Darwin releases wihtout any of Apple's proprietary bits.) See also <varname>os.platform</varname>.
+	open-source Darwin releases without any of Apple's proprietary bits.) See also <varname>os.platform</varname>.
 	</para>
 
         <programlisting>platforms           darwin</programlisting>
