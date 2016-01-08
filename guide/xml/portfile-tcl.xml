@@ -275,7 +275,9 @@
               the command with the replacement text, in all files
               specified.</para>
 
-              <para>Use -locale to set the locale</para>
+              <para>Use -locale to set the locale. For example, <code>locale -C</code>
+	      if a non-ASCII file is being modified (which may otherwise give the error
+	      "sed: RE error: illegal byte sequence").</para>
 
               <para>-n is passed to sed to suppress echoing result</para>
 
