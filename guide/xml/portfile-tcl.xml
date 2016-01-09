@@ -275,9 +275,11 @@
               the command with the replacement text, in all files
               specified.</para>
 
-              <para>Use -locale to set the locale. For example, <code>locale -C</code>
-	      if a non-ASCII file is being modified (which may otherwise give the error
-	      "sed: RE error: illegal byte sequence").</para>
+              <para>Use -locale to set the locale. The default locale is <code>en_US.UTF-8</code>.
+	      For example, <code>-locale C</code> will allow a non-UTF-8 file to be modified (which
+	      may otherwise give the error "sed: RE error: illegal byte sequence"), but only operating
+	      on ASCII characters. If you need it to work on non-ASCII characters you need to set a
+	      locale with the correct charset for the file, e.g. "en_US.ISO8859-1".</para>
 
               <para>-n is passed to sed to suppress echoing result</para>
 
