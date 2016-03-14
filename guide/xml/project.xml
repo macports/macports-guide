@@ -380,7 +380,7 @@
           <para>If your ticket doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macosforge.org</email> and request a
-            review and/or commit.</para>
+            review and/or commit. Please include a link to the ticket.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -447,7 +447,7 @@
           <para>If your ticket doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macosforge.org</email> and request a
-            review and/or commit.</para>
+            review and/or commit. Please include a link to the ticket.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -683,7 +683,7 @@ To use the current port, you must be in a port's directory.</screen>
           <para>If your ticket doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macosforge.org</email> and request
-            a review and/or commit.</para>
+            a review and/or commit. Please include a link to the ticket.</para>
         </listitem>
       </orderedlist>
 
