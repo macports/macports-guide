@@ -2,29 +2,36 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <section id="reference.tcl-extensions">
-  <title>Tcl Extensions</title>
+  <title>Tcl Extensions &amp; Useful Tcl Commands</title>
 
   <para>A MacPorts Portfile is a Tcl script, so it may contain any arbitrary
   Tcl code you may learn about in a <ulink
   url="http://tmml.sourceforge.net/doc/tcl/">Tcl reference manual</ulink>.
   However, few authors will use arbitrary Tcl code; the vast majority will use
-  Tcl extensions that are coded within MacPorts for performing the most common
-  tasks needed for Portfiles. The list below is a list of Tcl extensions
-  provided by MacPorts base.</para>
+  a subset of Tcl commands and a number of Tcl extensions that are coded within
+  MacPorts for performing the most common tasks needed for Portfiles. The list
+  below is a list of useful Tcl commands for Portfile development and Tcl
+  extensions provided by MacPorts base.</para>
 
   <variablelist>
     <varlistentry>
       <term>file</term>
 
       <listitem>
-        <para>Description.</para>
+        <para>The standard Tcl <command>file</command> command can be used for
+          a number of operations on files, such as moving, renaming, deleting,
+          or creating directories, among others. For a complete list, consult
+          the <ulink url="http://tmml.sourceforge.net/doc/tcl/file.html">Tcl
+            reference manual for the <command>file</command> command</ulink>,
+          or the Tcl file manpage in the <option>n</option> section of manpages
+          on your machine using <command>man n file</command></para>
 
         <variablelist>
           <varlistentry>
             <term>file copy</term>
 
             <listitem>
-              <para></para>
+              <para>Copy a file.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -34,7 +41,7 @@
             <term>file rename</term>
 
             <listitem>
-              <para></para>
+              <para>Rename a file.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -44,7 +51,8 @@
             <term>file delete [-force]</term>
 
             <listitem>
-              <para></para>
+              <para>Remove a file or (with <option>-force</option>) a directory
+                and its contents.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -54,7 +62,7 @@
             <term>file mkdir</term>
 
             <listitem>
-              <para></para>
+              <para>Create a directory.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -65,7 +73,11 @@
       <term>macros</term>
 
       <listitem>
-        <para>Description.</para>
+        <para>For the above operations provided by Tcl's
+          <command>file</command> command, MacPorts provides the following
+          shorthands. These used to be separate functions to work around bugs
+          in older Tcl versions or on old versions of OS X. Nowadays those are
+          simple aliases.</para>
 
         <variablelist>
           <varlistentry>
@@ -91,8 +103,9 @@
 
             <listitem>
               <para>Deletes each of the given files/directories. Behaves
-              similarly to file delete -force except that file delete -force
-              will fail to delete directories properly on 10.3 systems.</para>
+                similarly to file delete -force except that file delete -force
+                will fail to delete directories properly on 10.3
+                systems.</para>
             </listitem>
           </varlistentry>
 
