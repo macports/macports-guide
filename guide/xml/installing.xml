@@ -3,7 +3,7 @@
 -->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd"[
-<!ENTITY macports-version "2.3.3">
+<!ENTITY macports-version "2.3.4">
 ]>
 <chapter id="installing">
     <title>Installing MacPorts</title>
