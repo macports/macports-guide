@@ -1,7 +1,3 @@
-guide.tmp.xml
-
+guide/dblatex/
 guide/html/
 guide/resources/xsl
-
-man/man/
-man/resources/macports.xsl
