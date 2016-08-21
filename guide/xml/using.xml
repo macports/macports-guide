@@ -103,13 +103,13 @@ Upgrade MacPorts itself and run the sync target
             <para><option>sync</option> does not accept any switches.</para>
         </section>
 
-        <section id="using.port.doctor">
-            <title>port doctor</title>
+        <section id="using.port.diagnose">
+            <title>port diagnose</title>
 
-            <para>The <option>doctor</option> action checks for common issues in the user's environment and reports all
+            <para>The <option>diagnose</option> action checks for common issues in the user's environment and reports all
                 issues it finds to the user, along with possible fixes for said problem.</para>
 
-            <para><option>doctor</option> accepts a single switch:</para>
+            <para><option>diagnose</option> accepts a single switch:</para>
 
             <variablelist>
                 <varlistentry>
