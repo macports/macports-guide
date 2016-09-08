@@ -172,6 +172,14 @@
                     <variablelist>
                         <varlistentry>
                             <term>
+                                OS X 10.11 El Capitan:
+                            </term>
+                            <listitem>
+                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.11-ElCapitan.pkg">MacPorts-&macports-version;-10.11-ElCapitan.pkg</ulink></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
                                 OS X 10.10 Yosemite:
                             </term>
                             <listitem>
