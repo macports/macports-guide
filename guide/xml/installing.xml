@@ -172,6 +172,14 @@
                     <variablelist>
                         <varlistentry>
                             <term>
+                                macOS 10.12 Sierra:
+                            </term>
+                            <listitem>
+                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.12-Sierra.pkg">MacPorts-&macports-version;-10.12-Sierra.pkg</ulink></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
                                 OS X 10.11 El Capitan:
                             </term>
                             <listitem>
@@ -192,14 +200,6 @@
                             </term>
                             <listitem>
                                 <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink></para>
-                            </listitem>
-                        </varlistentry>
-                        <varlistentry>
-                            <term>
-                                OS X 10.8 Mountain Lion:
-                            </term>
-                            <listitem>
-                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.8-MountainLion.pkg">MacPorts-&macports-version;-10.8-MountainLion.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                     </variablelist>
