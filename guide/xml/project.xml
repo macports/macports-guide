@@ -218,10 +218,14 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Milestone:</guilabel> This is a ticket label that
-          indicates that the ticket is intended to be fixed in a particular
-          MacPorts release. Leave it blank; it will be set by a project member
-          if appropriate.</para>
+          <para><guilabel>Milestone:</guilabel> Leave this blank. MacPorts
+            developers will set this to the version of MacPorts that contains
+            a fix for the ticket when they commit a change. Note that this is
+            only meaningful for changes in MacPorts itself, since changes to
+            ports are continously provided to users. If the milestone is
+            <guilabel>MacPorts Future</guilabel> no version of MacPorts with
+            the fix has been released yet.
+          </para>
         </listitem>
 
         <listitem>
