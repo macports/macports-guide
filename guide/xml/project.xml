@@ -108,6 +108,153 @@
     <section id="project.tickets.guidelines">
       <title>Trac Ticket Guidelines</title>
 
+      <para>This is a short overview of the guidelines for Trac tickets. Please
+        see below for longer and more detailed explanations.</para>
+
+      <tip>
+        <title>TL;DR</title>
+        <informaltable frame="none">
+          <tgroup cols="2">
+            <thead>
+              <row>
+                <entry>Field</entry>
+                <entry>Content</entry>
+              </row>
+            </thead>
+            <tbody>
+              <row>
+                <entry><guilabel>Summary</guilabel></entry>
+                <entry>
+                  <para>
+                    <replaceable>$port</replaceable>
+                    <replaceable>$version</replaceable>
+                    <replaceable>[$variants]</replaceable>: <replaceable>short
+                      problem summary</replaceable>
+                  </para>
+                  <para>
+                    <emphasis role="strong">Example:</emphasis> openssl
+                    @1.0.1e_1+universal: DTLS handshake error messages with
+                    openconnect
+                  </para>
+                </entry>
+              </row>
+              <row>
+                <entry><guilabel>Description</guilabel></entry>
+                <entry>
+                  Describe your problem. Preformatted text (such as terminal
+                  output) should be put in <literal>{{{<replaceable>three curly
+                      brackets</replaceable>}}}</literal>. Please attach large
+                  amounts of output rather than pasting. Use the preview
+                  button!
+                </entry>
+              </row>
+              <row>
+                <entry><guilabel>Type</guilabel></entry>
+                <entrytbl cols="2" colsep="0" rowsep="0">
+                  <tbody>
+                    <row>
+                      <entry><guimenu>defect</guimenu></entry>
+                      <entry>Bugs, build failures, documentation fixes</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>enhancement</guimenu></entry>
+                      <entry>Improving existing work</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>update</guimenu></entry>
+                      <entry>Update requests or patch submissions for ports</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>submissions</guimenu></entry>
+                      <entry>Submission of new <filename>Portfile</filename>s</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>request</guimenu></entry>
+                      <entry>Requests for new ports</entry>
+                    </row>
+                  </tbody>
+                </entrytbl>
+              </row>
+              <row>
+                <entry><guilabel>Priority</guilabel></entry>
+                <entry>
+                  Use <guimenu>normal</guimenu> or <guimenu>low</guimenu>.
+                  <guimenu>High</guimenu> is reserved for MacPorts developers.
+                </entry>
+              </row>
+              <row>
+                <entry><guilabel>Milestone</guilabel></entry>
+                <entry>Leave empty.</entry>
+              </row>
+              <row>
+                <entry><guilabel>Component</guilabel></entry>
+                <entrytbl cols="2" colsep="0" rowsep="0">
+                  <tbody>
+                    <row>
+                      <entry><guimenu>base</guimenu></entry>
+                      <entry>Tickets affecting MacPorts itself</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>guide</guimenu></entry>
+                      <entry>Use for documentation</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>ports</guimenu></entry>
+                      <entry>Tickets affecting specific ports. Remember to set
+                        the <guilabel>port</guilabel> field!</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>server/hosting</guimenu></entry>
+                      <entry>Use for infrastructure issues</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>website</guimenu></entry>
+                      <entry>Enhancements and fixes for the web site</entry>
+                    </row>
+                    <row>
+                      <entry><guimenu>wiki</guimenu></entry>
+                      <entry>Enhancements and fixes for the wiki (or just edit
+                        it directly!)</entry>
+                    </row>
+                  </tbody>
+                </entrytbl>
+              </row>
+              <row>
+                <entry><guilabel>Version</guilabel></entry>
+                <entry>The version of MacPorts you are running.</entry>
+              </row>
+              <row>
+                <entry><guilabel>Keywords</guilabel></entry>
+                <entry><literal>maintainer</literal> if you are the port's
+                  maintainer. <literal>haspatch</literal> if you are attaching
+                  a patch. <ulink url="https://trac.macports.org/wiki/TicketsKeywordGuidelines">Full
+                    list</ulink>.
+                </entry>
+              </row>
+              <row>
+                <entry><guilabel>Port</guilabel></entry>
+                <entry>The name of the port affected by this ticket. Separate
+                  multiple using spaces. Leave empty for non-port
+                  tickets.</entry>
+              </row>
+              <row>
+                <entry><guilabel>Owner</guilabel>/<guilabel>Cc</guilabel></entry>
+                <entry>Full email address of the port's maintainer. Run
+                  <command>port info --maintainer
+                    <replaceable>&lt;portname&gt;</replaceable></command> to
+                  look this up. Do not add
+                  <email>nomaintainer@macports.org</email> or
+                  <email>openmaintainer@macports.org</email>. For ports with
+                  multiple maintainers, only put the first maintainer into the
+                  <guilabel>Owner</guilabel> field and all others in the
+                  <guilabel>Cc</guilabel> field. You do not need to Cc
+                  yourself.</entry>
+              </row>
+            </tbody>
+          </tgroup>
+        </informaltable>
+      </tip>
+
       <para>There are certain conventions used to ensure that Trac tickets
       convey as much accurate information as possible so problems and
       contributions may be acted upon efficiently.</para>
@@ -250,8 +397,7 @@
 
             <listitem>
               <para><guimenu>server/hosting</guimenu> - For MacPorts hosting
-              &amp; server-side issues, reserved for MacPorts PortMgr team
-              members.</para>
+              &amp; server-side issues.</para>
             </listitem>
 
             <listitem>
@@ -280,6 +426,11 @@
           to the ticket, <quote>maintainer</quote> if you are the port's
           maintainer, or <quote>LP64</quote> if reporting an issue that only
           affects 64-bit platforms.</para>
+
+          <para>See
+            <ulink url="https://trac.macports.org/wiki/TicketsKeywordGuidelines">the
+              TicketsKeywordGuidelines wiki page</ulink> for a clickable list
+            of all keywords.</para>
         </listitem>
 
         <listitem>
