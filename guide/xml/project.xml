@@ -369,7 +369,7 @@
             developers will set this to the version of MacPorts that contains
             a fix for the ticket when they commit a change. Note that this is
             only meaningful for changes in MacPorts itself, since changes to
-            ports are continously provided to users. If the milestone is
+            ports are continuously provided to users. If the milestone is
             <guilabel>MacPorts Future</guilabel> no version of MacPorts with
             the fix has been released yet.
           </para>
