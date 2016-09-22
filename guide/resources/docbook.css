@@ -215,31 +215,6 @@ div.chapter p {
 	margin: 6px 0;
 }
 
-div.note {
-	margin: .2in .3in;
-	padding: 0 15px 0;
-	border-color: #8b1a1a;
-	border-width: 0 3px;
-	border-style: solid;
-}
-
-div.note h3.title {
-	color: #8B1A1A;
-}
-
-div.warning {
-	margin: .2in .3in;
-	padding: 10px 15px 5px;
-	border-color: #8b1a1a;
-	border-width: 5px;
-	border-style: double;
-}
-
-div.warning h3.title {
-	color: #8b1a1a;
-	margin: 0;
-}
-
 div.screenshot div.mediaobject {
 	text-align: center;
 	margin: 12px 0;
@@ -360,4 +335,64 @@ div#vh-test {
 	float: left;
 	display: none;
 	height: 20px; /* some arbitrary value that's probably not == 100vh */
+}
+
+div.note {
+    background: #ffedcc;
+    border-left: 8px solid #ffa500;
+    padding: 10px;
+	margin: .2in .3in;
+}
+div.note h3.title {
+	color: #ffa500;
+	margin: 0 0 10px;
+}
+
+div.warning {
+	background: #f3e8e8;
+	border-left: 8px solid #8b1a1a;
+	padding: 10px;
+	margin: .2in .3in;
+}
+div.warning h3.title {
+	color: #8b1a1a;
+	margin: 0 0 10px;;
+}
+
+div.tip {
+    background: #e5ede5;
+    border-left: 8px solid #00b200;
+    padding: 10px;
+}
+div.tip h3.title {
+	color: #00b200;
+	margin: 0 0 10px;
+}
+div.tip table {
+    border-collapse: collapse;
+}
+div.tip table tr td,
+div.tip table tr th {
+    border-bottom: 1px solid #999;
+    margin: 0;
+    padding: 4px 6px;
+    vertical-align: top;
+}
+.tip table thead tr th {
+    border-bottom: 3px double #333;
+    text-align: left;
+}
+.tip table tr td table tr td {
+    border: none;
+    padding: 1px 4px;
+}
+div.tip table tr td p {
+    margin: 0;
+    padding: 0.05ex 0;
+}
+div.tip table tr:nth-child(odd) {
+    background: #e5ede5;
+}
+div.tip table tr:nth-child(even) {
+    background: #eff4ef;
 }
