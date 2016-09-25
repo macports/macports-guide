@@ -1030,10 +1030,17 @@ apache2 has the variants:
             <title>Invoking Variants</title>
 
             <para>A variant can only be selected when a port is installed. After you have determined what variants
-                a given port has, if any, you may install a port using the variant by specifying its name preceded by
-                a plus or minus sign on the command line, for example</para>
+                a given port has, if any, you may install a port using a variant by specifying its name preceded by
+                a plus sign on the command line, for example</para>
 
             <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 +openldap</userinput></programlisting>
+
+            <para>Multiple variants can be selected by simply listing them one after another separated by a space.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 +openldap +universal</userinput></programlisting>
+
+            <para>Use a minus sign to deselect a variant that is on by default.</para>
+
             <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 -preforkmpm +workermpm</userinput></programlisting>
 
             <para>Note that you will not see any confirmation of successful variant selection and MacPorts will not warn
@@ -1046,9 +1053,9 @@ apache2 has the variants:
 
             <programlisting><prompt>$ </prompt><userinput>sudo port install apache2 +mariadb</userinput></programlisting>
 
-            <para>even though <option>apache2</option> does not have a <option>+mariadb</option> variant. Instead, this
-                will cause the <option>apr-util</option> port to be installed with the <option>+mariadb</option>
-                variant.</para>
+            <para>is accepted even though <option>apache2</option> does not have a <option>+mariadb</option> variant. However,
+                it depends on the <option>apr-util</option> port which does have the <option>+mariadb</option>
+                variant and will be installed with it.</para>
 
             <para>MacPorts will remember the variants that were used when installing a port. If you upgrade a port
                 later, the same variants will be used, unless you manually specify different variants.</para>
