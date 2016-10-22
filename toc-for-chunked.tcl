@@ -16,7 +16,7 @@ foreach path [glob -directory [lindex $argv 0] {*.html}] {
 
     set file [open $path r+]
     set data [read $file]
-    regsub {<body([^>]+)>} $data $replacement data
+    regsub {<body([^>]+)>} $data [regsub -all {\W} $replacement {\\&}] data
     regsub {</body>} $data {</div></body>} data
     seek $file 0
     puts $file $data
