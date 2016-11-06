@@ -1157,11 +1157,14 @@ revision            2</programlisting>
       (<ulink url="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</ulink>)
       scripts.</para>
 
-    <para>Every time a maintainer commits changes to MacPorts' central SVN repository
-      the buildbot will check whether a rebuild of the corresponding port(s) would
-      be necessary. If the port(s) in question are distributable their binary
-      archives will be kept for subsequent distribution for the three most current
-      versions of the OS X operating system.</para>
+    <para>Every time a maintainer commits changes to MacPorts' ports Git
+      repository the buildbot will check whether a rebuild of the corresponding
+      port(s) would be necessary. If the port(s) in question are distributable
+      their binary archives will be kept for subsequent distribution for all
+      versions of the Mac operating system for which build machines are
+      available. See the <ulink url="https://build.macports.org/builders">list
+        of builders</ulink> to find out which platforms these currently
+      are.</para>
 
     <para>If a build error occurred for a port its maintainer will be informed via
       an email so that problems which did not surface on the maintainer's machine will
