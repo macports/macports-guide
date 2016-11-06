@@ -205,17 +205,19 @@
       <listitem>
         <para>Port maintainers</para>
 
-        <para>A port's maintainers are the people who have agreed to take
-        responsibility for keeping the port up-to-date. The
-        <literal>maintainers</literal> keyword lists the maintainers' email
-        addresses, preferably in the obfuscated form which hides them
-        from spambots. For more, see the full explanation of the <link
-        linkend="reference.keywords.maintainers">maintainers keyword</link> in
-        the <link linkend="reference.keywords">Global Keywords</link> section
-        of the <link linkend="reference">Portfile Reference</link>
-        chapter.</para>
+        <para>
+          A port's maintainers are the people who have agreed to take
+          responsibility for keeping the port up-to-date. The
+          <literal>maintainers</literal> keyword lists the maintainers' GitHub
+          usernames or email addresses, preferably in the obfuscated form which
+          hides them from spambots. For more, see the full explanation of the
+          <link linkend="reference.keywords.maintainers">maintainers
+            keyword</link> in the <link linkend="reference.keywords">Global
+            Keywords</link> section of the <link linkend="reference">Portfile
+            Reference</link> chapter.</para>
 
-        <programlisting>maintainers         jdoe \
+        <programlisting>maintainers         @neverpanic \
+                    jdoe \
                     example.org:julesverne</programlisting>
       </listitem>
 

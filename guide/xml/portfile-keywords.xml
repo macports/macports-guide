@@ -108,12 +108,14 @@
       <term>maintainers</term>
 
       <listitem>
-        <para>A port's maintainers are the people who have agreed to take
-        responsibility for keeping the port up-to-date. Most ports have only a
-        single maintainer, but some ports have two or more co-maintainers. The
-        <literal>maintainers</literal> keyword lists the maintainers' email
-        addresses, preferably in the obfuscated form which hides them
-        from spambots:</para>
+        <para>
+          A port's maintainers are the people who have agreed to take
+          responsibility for keeping the port up-to-date. Most ports have only
+          a single maintainer, but some ports have two or more co-maintainers.
+          The <literal>maintainers</literal> keyword lists the maintainers'
+          GitHub usernames or email addresses. GitHub usernames start with an
+          <literal>@</literal> symbol. Email addresses are preferably listed in
+          the obfuscated form below to hide them from spambots:</para>
 
         <itemizedlist>
           <listitem>
@@ -128,12 +130,13 @@
           </listitem>
         </itemizedlist>
 
-        <para>In the example below, the maintainer email addresses
-        <email>jdoe@macports.org</email> and
-        <email>julesverne@example.org</email> are hidden using these
-        conventions.</para>
+        <para>In the example below, the port is maintained by a GitHub user
+          named neverpanic, and the owners of the two email addresses
+          <email>jdoe@macports.org</email> and
+          <email>julesverne@example.org</email></para>
 
-        <programlisting>maintainers         jdoe \
+        <programlisting>maintainers         @neverpanic\
+                    jdoe \
                     example.org:julesverne</programlisting>
 
         <note>
