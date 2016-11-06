@@ -237,8 +237,8 @@
               </row>
               <row>
                 <entry><guilabel>Owner</guilabel>/<guilabel>Cc</guilabel></entry>
-                <entry>Full email address of the port's maintainer. Run
-                  <command>port info --maintainer
+                <entry>Full email address or GitHub username of the port's
+                  maintainer. Run <command>port info --maintainer
                     <replaceable>&lt;portname&gt;</replaceable></command> to
                   look this up. Do not add
                   <email>nomaintainer@macports.org</email> or
@@ -432,36 +432,41 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Cc:</guilabel> Anyone else besides the ticket
-          reporter and assignee who would like to be kept involved in the
-          development of the ticket. Multiple email addresses should be
-          separated with a comma and a space
-          (e.g., <literal>you@example.org, maintainer@macports.org</literal>).</para>
+          <para>
+            <guilabel>Cc:</guilabel> Anyone else besides the ticket reporter
+            and assignee who would like to be kept involved in the development
+            of the ticket. Multiple email addresses or GitHub usernames should
+            be separated with a comma and a space (e.g., <literal>neverpanic,
+              you@example.org, maintainer@macports.org</literal>).</para>
 
-          <para>When reporting port-related tickets, make sure you add the
-          port maintainers email address to the <guilabel>Cc:</guilabel> field
-          so they are notified of the ticket (unless you have commit access,
-          then see <guilabel>Assign To:</guilabel> below). You can obtain the
-          email address of the port maintainer from the Portfile, or by running
-          <literal>port info --maintainers <replaceable>[port]</replaceable>
-          </literal></para>
+          <para>
+            When reporting port-related tickets, make sure you add the port
+            maintainers email address or GitHub username to the
+            <guilabel>Cc:</guilabel> field so they are notified of the ticket
+            (unless you have commit access, then see <guilabel>Assign
+              To:</guilabel> below). You can obtain the email address or GitHub
+            username of the port maintainer by running <command>port info
+              --maintainers <replaceable>[port]</replaceable></command></para>
         </listitem>
 
         <listitem>
-          <para><guilabel>Assign To:</guilabel> Only users with commit access
-          can edit this field. If this is not you, see the section on the
-          <guimenu>Cc</guimenu> field above.</para>
+          <para>
+            <guilabel>Assign To:</guilabel> Only users with commit access can
+            edit this field. If this is not you, see the section on the
+            <guimenu>Cc</guimenu> field above.</para>
 
-          <para>For tickets on ports, enter
-          the email address of the port's maintainer (use <command>port info
-          &lt;portname&gt;</command> to find this). If multiple maintainers
-          are listed, enter the first maintainer's email address here and
-          enter the remaining maintainers' email addresses in the
-          <guimenu>Cc</guimenu> field. Exclude the email address
-          <email>openmaintainer@macports.org</email> if it appears.
-          If the maintainer's email address is
-          <email>nomaintainer@macports.org</email>, leave the field
-          blank.</para>
+          <para>
+            For tickets on ports, enter the email address or GitHub username of
+            the port's maintainer (use <command>port info
+              <replaceable>[port]</replaceable></command> to find this). If
+            multiple maintainers are listed, enter the first maintainer's email
+            address or GitHub username here and enter the remaining
+            maintainers' email addresses or GitHub usernames in the
+            <guimenu>Cc</guimenu> field. Exclude the email address
+            <email>openmaintainer@macports.org</email> if it appears. If the
+            maintainer's email address is
+            <email>nomaintainer@macports.org</email>, leave the field
+            blank.</para>
         </listitem>
 
         <listitem>
@@ -589,7 +594,8 @@
             </listitem>
 
             <listitem>
-              <para>Put the maintainer's email address into the
+            <para>
+                Put the maintainer's email address or GitHub username into the
                 <guilabel>Cc</guilabel> field. You can use
                 <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
                 where <userinput>$portname</userinput> is the name of the port you
@@ -628,7 +634,7 @@
 
       <itemizedlist>
         <listitem>
-          <para>An email address.</para>
+          <para>An email address or a GitHub account.</para>
         </listitem>
         <listitem>
           <para>A copy of the <filename>Portfile</filename>. Do not worry if
@@ -746,7 +752,9 @@ To use the current port, you must be in a port's directory.</screen>
           <para>Open the <filename>Portfile</filename> in your favorite editor
             and look for the line that starts with <option>maintainer</option>.
             Delete <option>nomaintainer</option> from the line if it exists and
-            add your own email address in the form
+            add your own GitHub username or email address. For GitHub
+            usernames, prefix your username with an <literal>@</literal> sign.
+            Email addresses should be written in the form
             <userinput>domain.tld:localpart</userinput>. The address is
             obfuscated to prevent email harvesters from automatically grabbing
             your address. If you want, you can start fixing bugs in the
@@ -782,7 +790,7 @@ To use the current port, you must be in a port's directory.</screen>
 
           <para>Finally, run <userinput>port info</userinput> again. The
             maintainers line in the output should now contain your email
-            address.</para>
+            address or GitHub username.</para>
 
           <note>
             <para>If you made changes other than the maintainer line, you might
