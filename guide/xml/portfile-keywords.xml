@@ -123,8 +123,9 @@
 
           <listitem>
             <para>For addresses in other domains, e.g.,
-            <email>account@example.org</email>, use the convention
-            example.org:account to specify the address.</para>
+              <email>account@example.org</email>, use the convention
+              <literal>example.org:account</literal> to specify the
+              address.</para>
           </listitem>
         </itemizedlist>
 
@@ -137,13 +138,15 @@
                     example.org:julesverne</programlisting>
 
         <note>
-          <para>The address <email>nomaintainer</email> designates a port that
-          is not maintained by anybody and may be modified by any committer.
-          Feel free to claim maintainership of a nomaintainer port if desired.
-          The address <email>openmaintainer</email> designates a port that has
-          a maintainer who allows minor changes to be committed without his or
-          her prior approval. Port maintainers who are not committers are
-          encouraged to add <email>openmaintainer</email> to their ports.</para>
+          <para>
+            The address <literal>nomaintainer</literal> designates a port that
+            is not maintained by anybody and may be modified by any committer.
+            Feel free to claim maintainership of a nomaintainer port if
+            desired. The address <literal>openmaintainer</literal> designates
+            a port that has a maintainer who allows minor changes to be
+            committed without his or her prior approval. Port maintainers who
+            are not committers are encouraged to add
+            <literal>openmaintainer</literal> to their ports.</para>
         </note>
       </listitem>
     </varlistentry>
