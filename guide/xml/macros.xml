@@ -3,11 +3,12 @@
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 
 <!-- This section will be hidden by a xsl:template in resources/base.xsl -->
-<section id='macros'>
+<chapter id='macros'>
+<title>Macros</title>
 
 <warning role='macro-outdated'><para>
   This section is outdated <?macro-param name="reason" ?> and needs to be reworked.
   Please see <xref linkend="project.docs" /> if you can contribute updated instructions.
 </para></warning>
 
-</section>
+</chapter>

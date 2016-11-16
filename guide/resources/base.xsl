@@ -56,7 +56,11 @@
 
 
     <!-- all macro content is defined in guide/xml/macros.xml, but hidden from normal output -->
-    <xsl:template match="section[@id = 'macros']">
+    <xsl:template match="chapter[@id = 'macros']">
+        <!-- no output -->
+    </xsl:template>
+
+    <xsl:template match="chapter[@id = 'macros']"  mode="toc">
         <!-- no output -->
     </xsl:template>
 
