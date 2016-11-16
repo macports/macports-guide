@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
+"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+
+<!-- This section will be hidden by a xsl:template in resources/base.xsl -->
+<section id='macros'>
+
+<warning role='macro-outdated'><para>
+    This section is outdated <macro-param name="reason" /> and needs to be reworked.
+  Please see <xref linkend="project.docs" /> if you can contribute updated instructions.
+</para></warning>
+
+</section>
