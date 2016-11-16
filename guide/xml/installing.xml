@@ -265,6 +265,8 @@
         <section id="installing.macports.subversion">
             <title>Subversion Install</title>
 
+            <?macro-outdated reason="after the move to Git and GitHub" ?>
+
             <para>If you installed MacPorts using the package installer, skip this section.</para>
 
             <para>There are times when some may want to run MacPorts from a version newer than the current stable
