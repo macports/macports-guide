@@ -726,10 +726,9 @@ variant sqlite description {Build sqlite support} {
   <section id="development.local-repositories">
     <title>Local Portfile Repositories</title>
 
-    <para>To create and test Portfiles that are not yet committed to
-    Subversion, you may create a local Portfile repository as shown. Replace
-    the hypothetical user <filename>julesverne</filename> with your username
-    in the example below.</para>
+    <para>To create and test Portfiles that are not yet published in the MacPorts ports tree,
+      you may create a local Portfile repository as shown. Replace the hypothetical user
+      <filename>julesverne</filename> with your username in the example below.</para>
 
     <orderedlist>
       <listitem>
@@ -1125,7 +1124,7 @@ revision            2</programlisting>
         the hints concerning replacing it by some alternative port given
         <link linkend="development.practices.rename-replace-port">above</link>.
         It is recommended to wait one year before the port directory
-        is actually removed from MacPorts' Subversion repository.
+        is actually removed from the MacPorts ports tree.
       </para>
 
       <para>If there is no replacement for a port, it can simply be deleted

@@ -287,10 +287,10 @@
 
           <para>Keyword values for <code>master_sites</code> may include
           predefined site lists known as <quote>mirrors</quote>, such as
-          sourceforge, gnu, etc. If the file(s) declared in
-          <varname>${distfiles}</varname> are not successfully fetched after
-          trying the <code>master_sites</code> values, the MacPorts Project
-          svn server is always tried last before giving up.</para>
+          sourceforge, gnu, etc. The file(s) declared in <varname>${distfiles}</varname>
+          will be fetched from one of the locations defined in
+          <code>master_sites</code>, while trying to find the best reachable
+          mirror for the user's connection.</para>
 
           <para>For a complete list of mirrors and their list of sites, see
           the file <filename>mirror_sites.tcl</filename> located in
