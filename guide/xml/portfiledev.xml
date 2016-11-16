@@ -920,7 +920,7 @@ Ports failed:                   0</screen>
 
         <para>Skrooge's original devel port file looked like this:</para>
 
-        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
 PortGroup           kde4    1.1
@@ -1008,7 +1008,7 @@ depends_lib-append  port:kdelibs4 \
         <para>With above modifications the port file eventually looks like
           this:</para>
 
-        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+        <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
 
@@ -1093,7 +1093,7 @@ To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
           much easier:</para>
 
         <programlisting>
-# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
 
 PortSystem          1.0
 replaced_by         skrooge
