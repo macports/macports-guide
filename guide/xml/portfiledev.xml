@@ -111,17 +111,6 @@
       </listitem>
 
       <listitem>
-        <para>Subversion ID tag line</para>
-
-        <para>This must be a Portfile's second line (or the first, if a
-        modeline is not used). When a port is committed to the repository, ID
-        tags are expanded to include the filename and the revision number,
-        date and time, and author of the last commit.</para>
-
-        <programlisting># $Id$</programlisting>
-      </listitem>
-
-      <listitem>
         <para>PortSystem line</para>
 
         <para>This statement is required for all ports.</para>
@@ -326,9 +315,7 @@ Error: Processing of port rrdtool failed</screen>
     <section id="development.examples.basic">
       <title>A Basic Portfile</title>
 
-      <programlisting># $Id$
-
-PortSystem          1.0
+      <programlisting>PortSystem          1.0
 
 name                rrdtool
 version             1.2.23
@@ -932,7 +919,6 @@ Ports failed:                   0</screen>
         <para>Skrooge's original devel port file looked like this:</para>
 
         <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
-# $Id$
 
 PortSystem          1.0
 PortGroup           kde4    1.1
@@ -1021,7 +1007,6 @@ depends_lib-append  port:kdelibs4 \
           this:</para>
 
         <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
-# $Id$
 
 PortSystem          1.0
 
@@ -1107,7 +1092,7 @@ To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
 
         <programlisting>
 # -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4; truncate-lines: t -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4
-# $Id$
+
 PortSystem          1.0
 replaced_by         skrooge
 PortGroup           obsolete 1.0
