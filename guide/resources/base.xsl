@@ -42,8 +42,8 @@
     </xsl:template>
 
     <!-- replace macro-param with value -->
-    <xsl:template match="macro-param" mode="macro-replace">
-        <xsl:variable name="name" select="@name" />
+    <xsl:template match="processing-instruction('macro-param')" mode="macro-replace">
+        <xsl:variable name="name" select="substring-before(substring-after(., 'name=&quot;'), '&quot;')" />
         <xsl:copy-of select="following::macro-with-param[@name = $name]/text()" />
     </xsl:template>
 
