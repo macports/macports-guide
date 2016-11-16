@@ -148,13 +148,6 @@
             MacPorts on another OS platform, you must <link linkend="installing.macports.source">install MacPorts from
                 the source code</link>.</para>
 
-        <note>
-            <para>Though a distinction is made between pre-release and release versions of MacPorts base, the ports
-                collection supports no such distinction or versioning. The <link
-                    linkend="using.port.selfupdate">selfupdate</link> command installs the latest port revisions from
-                Subversion (at a slight delay), and updates MacPorts base to the latest released version.</para>
-        </note>
-
         <section id="installing.macports.binary">
             <title>OS X Package Install</title>
 
@@ -273,6 +266,10 @@
                 release. Maybe there's a new feature that you'd like to use, or it fixes an issue you've encountered, or
                 you just like to be on the cutting edge. These steps explain how to run completely from trunk, using
                 only Subversion to keep MacPorts up to date.</para>
+
+            <para>Though a distinction is made between pre-release and release versions of MacPorts base, the ports
+                collection supports no such distinction or versioning. The <link linkend="using.port.selfupdate">selfupdate</link>
+                command installs the latest ports tree, and updates MacPorts base to the latest released version.</para>
 
             <orderedlist>
                 <listitem>
