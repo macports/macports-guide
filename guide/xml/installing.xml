@@ -158,8 +158,8 @@
             <orderedlist>
                 <listitem>
                     <para>Download the latest
-                        <filename>MacPorts-&macports-version;-<replaceable>....</replaceable>pkg</filename> installer from the
-                        <ulink url="https://distfiles.macports.org/MacPorts/">MacPorts download directory</ulink>. Here
+                        <filename>MacPorts-&macports-version;-<replaceable>....</replaceable>pkg</filename> installer from the releases
+                        <ulink url="https://github.com/macports/macports-base/releases/">on GitHub</ulink>. Here
                         are direct links for the latest versions of OS X:</para>
 
                     <variablelist>
@@ -168,7 +168,7 @@
                                 macOS 10.12 Sierra:
                             </term>
                             <listitem>
-                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.12-Sierra.pkg">MacPorts-&macports-version;-10.12-Sierra.pkg</ulink></para>
+                                <para><ulink url="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.12-Sierra.pkg">MacPorts-&macports-version;-10.12-Sierra.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -176,7 +176,7 @@
                                 OS X 10.11 El Capitan:
                             </term>
                             <listitem>
-                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.11-ElCapitan.pkg">MacPorts-&macports-version;-10.11-ElCapitan.pkg</ulink></para>
+                                <para><ulink url="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.11-ElCapitan.pkg">MacPorts-&macports-version;-10.11-ElCapitan.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -184,7 +184,7 @@
                                 OS X 10.10 Yosemite:
                             </term>
                             <listitem>
-                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.10-Yosemite.pkg">MacPorts-&macports-version;-10.10-Yosemite.pkg</ulink></para>
+                                <para><ulink url="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.10-Yosemite.pkg">MacPorts-&macports-version;-10.10-Yosemite.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                         <varlistentry>
@@ -192,7 +192,7 @@
                                 OS X 10.9 Mavericks:
                             </term>
                             <listitem>
-                                <para><ulink url="https://distfiles.macports.org/MacPorts/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink></para>
+                                <para><ulink url="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.9-Mavericks.pkg">MacPorts-&macports-version;-10.9-Mavericks.pkg</ulink></para>
                             </listitem>
                         </varlistentry>
                     </variablelist>
