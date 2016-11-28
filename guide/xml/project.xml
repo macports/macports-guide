@@ -8,11 +8,11 @@
     <title>Using Trac for Tickets</title>
 
     <para>The MacPorts Project uses a system called <ulink
-    url="http://trac.edgewall.org/">Trac</ulink> to file tickets to report bugs
+    url="https://trac.macports.org/">Trac</ulink> to file tickets to report bugs
     and enhancement requests. Though anyone may search Trac for tickets,
     you must have a <ulink
-    url="https://github.com/join">GitHub account</ulink> in
-    order to login to Trac to create tickets.</para>
+    url="https://github.com/join">GitHub account</ulink> in order to login to
+    <ulink url="https://trac.macports.org/">Trac</ulink> to create tickets.</para>
 
     <section id="project.tickets.prerequisites">
       <title>Before Filing a New Ticket</title>
