@@ -255,17 +255,15 @@
             </orderedlist>
         </section>
 
-        <section id="installing.macports.subversion">
-            <title>Subversion Install</title>
-
-            <?macro-outdated reason="after the move to Git and GitHub" ?>
+        <section id="installing.macports.git">
+            <title>Git Install</title>
 
             <para>If you installed MacPorts using the package installer, skip this section.</para>
 
             <para>There are times when some may want to run MacPorts from a version newer than the current stable
                 release. Maybe there's a new feature that you'd like to use, or it fixes an issue you've encountered, or
-                you just like to be on the cutting edge. These steps explain how to run completely from trunk, using
-                only Subversion to keep MacPorts up to date.</para>
+                you just like to be on the cutting edge. These steps explain how to run completely from master, using
+                only Git to keep MacPorts up to date.</para>
 
             <para>Though a distinction is made between pre-release and release versions of MacPorts base, the ports
                 collection supports no such distinction or versioning. The <link linkend="using.port.selfupdate">selfupdate</link>
@@ -277,20 +275,13 @@
 
                     <para>Pick a location to store a working copy of the MacPorts code. For this example,
                         <filename>/opt/mports</filename> will be used, but you can put the source anywhere. This example
-                        will create <filename>/opt/mports/trunk</filename> containing everything needed for
+                        will create <filename>/opt/mports/macports-base</filename> containing everything needed for
                         MacPorts.</para>
 
                     <programlisting><prompt>$</prompt> <userinput>mkdir -p /opt/mports</userinput>
 <!--                --><prompt>$</prompt> <userinput>cd /opt/mports</userinput>
-<!--                --><prompt>$</prompt> <userinput>svn checkout https://svn.macports.org/repository/macports/trunk</userinput></programlisting>
+<!--                --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-base.git</userinput></programlisting>
 
-                    <note>
-                        <para>You only really need the base subdirectory to run MacPorts, so you can avoid checking out
-                            the rest if you don't want to use a Subversion-based ports tree (see Step 3 below). To just
-                            get the base directory, append <filename>/base</filename> to the end of the svn checkout
-                            command above. The resulting directory will then be
-                            <filename>/opt/mports/base</filename>.</para>
-                    </note>
                 </listitem>
 
                 <listitem>
@@ -300,7 +291,7 @@
                         MacPorts to <filename>/opt/local</filename>. You can add <option>--prefix</option> to
                         <filename>./configure</filename> to relocate MacPorts to another directory if needed.</para>
 
-                    <programlisting><prompt>$</prompt> <userinput>cd /opt/mports/trunk/base</userinput>
+                    <programlisting><prompt>$</prompt> <userinput>cd /opt/mports/macports-base</userinput>
 <!--                --><prompt>$</prompt> <userinput>./configure --enable-readline</userinput>
 <!--                --><prompt>$</prompt> <userinput>make</userinput>
 <!--                --><prompt>$</prompt> <userinput>sudo make install</userinput>
@@ -308,19 +299,25 @@
                 </listitem>
 
                 <listitem>
-                    <para>(Optional) Configure MacPorts to use port information from Subversion</para>
+                    <para>(Optional) Configure MacPorts to use port information from Git</para>
 
-                    <para>This step is useful if you want to do port development. Open
-                        <filename>/opt/local/etc/macports/sources.conf</filename> in a text editor. The last line which
+                    <para>This step is useful if you want to do port development. Check out the ports tree from git:</para>
+
+                    <programlisting><prompt>$</prompt> <userinput>cd /opt/mports</userinput>
+<!--                --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-ports.git</userinput></programlisting>
+
+
+                    <para>Then open
+                        <filename>/opt/local/etc/macports/sources.conf</filename> in a text editor. The last line
                         should look like this:</para>
 
                     <programlisting>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</programlisting>
 
                     <para>Change it to point to the working copy you checked out:</para>
 
-                    <programlisting>file:///opt/mports/trunk/dports [default]</programlisting>
+                    <programlisting>file:///opt/mports/macports-ports [default]</programlisting>
 
-                    <para>Now MacPorts will look for portfiles in the working copy and use Subversion instead of rsync
+                    <para>Now MacPorts will look for portfiles in the working copy and use Git instead of rsync
                         to update your ports tree.</para>
                 </listitem>
 
