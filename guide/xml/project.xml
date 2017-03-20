@@ -963,8 +963,8 @@ To use the current port, you must be in a port's directory.</screen>
         <listitem>
           <para>The Port Abandoned ticket may be closed when the new
           maintainer is assigned, and the original ticket(s) with the updates may
-          be resolved as usual. All other tickets assigned to the former maintainer should be set to 
-          macports-tickets@lists.macports.org as owner. The Port Abandoned ticket should stay open
+          be resolved as usual. The former maintainer should be removed from all other tickets on
+          which they were assigned as owner. The Port Abandoned ticket should stay open
           for the usual 72-hour timeout period, to give the maintainer one last chance
           to indicate that they have not actually abandoned the port.</para>
         </listitem>
