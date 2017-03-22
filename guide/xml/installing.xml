@@ -436,10 +436,9 @@
                 <listitem>
                     <para>Required: <varname>PATH</varname> variable</para>
 
-                    <para>This variable is set by the postflight script to append the MacPorts executable paths to the
-                        default path as shown. The MacPorts paths are appended at the front of <varname>PATH</varname>
-                        so the MacPorts libraries will take precedence over vendor-supplied libraries for ported
-                        software at runtime.</para>
+                    <para>This variable is set by the postflight script to prepend the MacPorts executable paths to the
+                        current path as shown. This puts the MacPorts paths at the front of <varname>PATH</varname>
+                        so that the MacPorts binaries will take precedence over vendor-supplied binaries.</para>
 
                     <programlisting>export PATH=/opt/local/bin:/opt/local/sbin:$PATH</programlisting>
 
