@@ -329,7 +329,7 @@ Found 11 ports.</screen>
                             </varlistentry>
 
                             <varlistentry>
-                                <term><option>--maintainer</option>, <option>--maintainer</option></term>
+                                <term><option>--maintainer</option>, <option>--maintainers</option></term>
                                 <listitem>
                                     <para>Search for ports maintained by a specific maintainer.</para>
                                 </listitem>
