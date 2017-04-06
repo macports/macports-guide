@@ -529,16 +529,16 @@
             <programlisting>export EDITOR=/usr/bin/nano</programlisting>
 
             <para>To use the user-friendly GUI editor <ulink
-                    url="http://www.barebones.com/products/textwrangler/">TextWrangler</ulink> (installation required),
+                    url="http://www.barebones.com/products/bbedit/">BBEdit</ulink> (installation required),
                 add this line:</para>
 
-            <programlisting>export EDITOR=/usr/bin/edit</programlisting>
+            <programlisting>export EDITOR=/Applications/BBEdit.app/Contents/Helpers/bbedit_tool</programlisting>
 
-            <para>To keep a command-line text editor as default while using a graphic editor with portfiles, add
+            <para>To keep a command-line text editor as default while using BBEdit with portfiles, add
                 this:</para>
 
             <programlisting>export EDITOR=/usr/bin/vi
-<!--        -->export MP_EDITOR=/usr/bin/edit</programlisting>
+<!--        -->export MP_EDITOR=/Applications/BBEdit.app/Contents/Helpers/bbedit_tool</programlisting>
         </section>
     </section>
 </chapter>
