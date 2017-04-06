@@ -518,10 +518,10 @@
         <section id="installing.shell.editorvar">
             <title>Optional Editor Variables</title>
 
-            <para>You can set an environment variable in order to use your favorite text editor with edit option of port
+            <para>You can set an environment variable in order to use your favorite text editor with the <command>port edit</command>
                 command.</para> <para>MacPorts will check <varname>MP_EDITOR</varname>, <varname>VISUAL</varname> and
                 <varname>EDITOR</varname> in this order, allowing you to either use a default editor shared with other
-                programs (<varname>VISUAL</varname> and <varname>EDITOR</varname>) or a Macports' specific one
+                programs (<varname>VISUAL</varname> and <varname>EDITOR</varname>) or a MacPorts-specific one
                 (<varname>MP_EDITOR</varname>).</para>
 
             <para>For example, to use the nano editor, add this line to your bash config:</para>
