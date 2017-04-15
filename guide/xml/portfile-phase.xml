@@ -1602,16 +1602,16 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-O2</literal></para>
+              <para>Default: <literal>-Os</literal></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>configure.optflags    -Os</programlisting>
+              <programlisting>configure.optflags    -O2</programlisting>
 
               <programlisting>configure.optflags-append     -finline-functions
-configure.optflags-delete     -O2</programlisting>
+configure.optflags-delete     -Os</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -1660,7 +1660,7 @@ configure.cflags-delete     -O2</programlisting>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <literal>-L${prefix}/lib</literal></para>
+              <para>Default: <literal>-L${prefix}/lib -Wl,-headerpad_max_install_names</literal></para>
             </listitem>
 
             <listitem>
