@@ -512,31 +512,36 @@
         </listitem>
 
         <listitem>
-          <para>Create a Trac ticket.</para>
+          <para>Either create a Trac ticket ...</para>
+          <orderedlist>
+            <listitem>
+            <para>Set the type to <guilabel>submission</guilabel>.</para>
+            </listitem>
+
+            <listitem>
+            <para>Set the component to <guilabel>ports</guilabel>.</para>
+            </listitem>
+
+            <listitem>
+            <para>Set the <guilabel>port</guilabel> field to the name of the new port.</para>
+            </listitem>
+
+            <listitem>
+            <para>Attach the <filename>Portfile</filename> and any required
+                patchfiles to the ticket.</para>
+            </listitem>
+          </orderedlist>
         </listitem>
 
         <listitem>
-          <para>Set the type to <guilabel>submission</guilabel>.</para>
+          <para>... or submit the port update through a pull request on GitHub.</para>
         </listitem>
 
         <listitem>
-          <para>Set the component to <guilabel>ports</guilabel>.</para>
-        </listitem>
-
-        <listitem>
-          <para>Set the <guilabel>port</guilabel> field to the name of the new port.</para>
-        </listitem>
-
-        <listitem>
-          <para>Attach the <filename>Portfile</filename> and any required
-            patchfiles to the ticket.</para>
-        </listitem>
-
-        <listitem>
-          <para>If your ticket doesn't receive any attention within a few days
+          <para>If your ticket or pull request doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macports.org</email> and request a
-            review and/or commit. Please include a link to the ticket.</para>
+            review and/or commit. Please include a link to the ticket or pull request.</para>
         </listitem>
       </orderedlist>
     </section>
@@ -567,43 +572,48 @@
         </listitem>
 
         <listitem>
-          <para>Create a Trac ticket.</para>
+          <para>Either create a Trac ticket ...</para>
+          <orderedlist>
+            <listitem>
+              <para>Set the type to <guilabel>enhancement</guilabel> for
+              miscellaneous enhancements, to <guilabel>defect</guilabel> for bug
+              fixes, or to <guilabel>update</guilabel> for version updates.</para>
+            </listitem>
+
+            <listitem>
+              <para>Set the component to <guilabel>ports</guilabel>.</para>
+            </listitem>
+
+            <listitem>
+              <para>Set the <guilabel>port</guilabel> field to the name of the port you want to change.</para>
+            </listitem>
+
+            <listitem>
+              <para>Put the maintainer's email address into the
+                <guilabel>Cc</guilabel> field. You can use
+                <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
+                where <userinput>$portname</userinput> is the name of the port you
+                want to modify. Note that
+                <email>openmaintainer@macports.org</email> and
+                <email>nomaintainer@macports.org</email> are not real people and should thus not be Cc'd.</para>
+            </listitem>
+
+            <listitem>
+              <para>Attach your Portfile patch file and any new or changed patch
+                files to the ticket.</para>
+            </listitem>
+          </orderedlist>
         </listitem>
 
         <listitem>
-          <para>Set the type to <guilabel>enhancement</guilabel> for
-          miscellaneous enhancements, to <guilabel>defect</guilabel> for bug
-          fixes, or to <guilabel>update</guilabel> for version updates.</para>
+          <para>... or submit the new port through a pull request on GitHub.</para>
         </listitem>
 
         <listitem>
-          <para>Set the component to <guilabel>ports</guilabel>.</para>
-        </listitem>
-
-        <listitem>
-          <para>Set the <guilabel>port</guilabel> field to the name of the port you want to change.</para>
-        </listitem>
-
-        <listitem>
-          <para>Put the maintainer's email address into the
-            <guilabel>Cc</guilabel> field. You can use
-            <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
-            where <userinput>$portname</userinput> is the name of the port you
-            want to modify. Note that
-            <email>openmaintainer@macports.org</email> and
-            <email>nomaintainer@macports.org</email> are not real people and should thus not be Cc'd.</para>
-        </listitem>
-
-        <listitem>
-          <para>Attach your Portfile patch file and any new or changed patch
-            files to the ticket.</para>
-        </listitem>
-
-        <listitem>
-          <para>If your ticket doesn't receive any attention within a few days
+          <para>If your ticket or pull request doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macports.org</email> and request a
-            review and/or commit. Please include a link to the ticket.</para>
+            review and/or commit. Please include a link to the ticket or pull request.</para>
         </listitem>
       </orderedlist>
     </section>
