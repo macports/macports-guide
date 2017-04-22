@@ -489,7 +489,7 @@
 
     <para>You may contribute new ports and enhancements of any kind to already
         existing ports using Trac tickets. As an alternative, you may instead open a pull request on
-        <ulink url="https://github.com/macports/macports-ports/">GitHub</ulink>,
+        <ulink url="https://github.com/macports/macports-ports/pulls">GitHub</ulink>,
         in which case no Trac ticket is required.
     </para>
 
