@@ -679,7 +679,7 @@
         where <userinput>$portname</userinput> is the name of the port you want
         to maintain. If the output is
 
-        <screen>maintainer: nomaintainer@macports.org</screen>
+        <screen>maintainer: </screen>
 
         the port is unmaintained and you are more than welcome to take it over.
         If the output lists a different email address, you can still
