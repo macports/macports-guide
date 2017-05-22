@@ -140,6 +140,14 @@
                     jdoe \
                     example.org:julesverne</programlisting>
 
+        <para>Braces can be used to express that these refer to the same
+            person, for example the GitHub username and an email. In the
+            following example, the port is maintained by a GitHub user named
+            jverne, that can also be contacted directly at
+            <email>julesverne@example.org</email>.</para>
+
+        <programlisting>maintainers         {@jverne example.org:julesverne}</programlisting>
+
         <note>
           <para>
             The address <literal>nomaintainer</literal> designates a port that
