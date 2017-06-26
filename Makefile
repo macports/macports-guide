@@ -20,9 +20,12 @@ MKDIR    = /bin/mkdir
 CP       = /bin/cp
 RM       = /bin/rm
 LN       = /bin/ln
-SED      = /usr/bin/sed
 ifeq ($(UNAME), Linux)
 SED      = /bin/sed
+REINPLACE = $(SED) -i -r
+else
+SED      = /usr/bin/sed
+REINPLACE = $(SED) -i '' -E
 endif
 TCLSH    = /usr/bin/tclsh
 XSLTPROC = $(PREFIX)/bin/xsltproc
@@ -69,15 +72,9 @@ endif
 	    $(GUIDE_XSL) $(GUIDE_SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
-ifeq ($(UNAME), Linux)
-	$(SED) -i -r -e \
+	$(REINPLACE) \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE_RESULT)/index.html
-else
-	$(SED) -i "" -E \
-	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE_RESULT)/index.html
-endif
 
 # Generate the chunked HTML guide with one section per file.
 guide-chunked:
@@ -94,15 +91,9 @@ endif
 	    $(GUIDE_XSL_CHUNK) $(GUIDE_SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
-ifeq ($(UNAME), Linux)
-	$(SED) -i -r -e \
+	$(REINPLACE) \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE_RESULT_CHUNK)/*.html
-else
-	$(SED) -i "" -E \
-	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE_RESULT_CHUNK)/*.html
-endif
 	# Add the table of contents to every junked HTML file.
 	# If someone knows a better way to do this please change it.
 	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT_CHUNK)
