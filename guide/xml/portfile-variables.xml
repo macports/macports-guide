@@ -30,7 +30,7 @@
       <term>libpath</term>
 
       <listitem>
-        <para>Path to the MacPorts TCL libraries.</para>
+        <para>Path to the MacPorts Tcl libraries.</para>
       </listitem>
     </varlistentry>
 

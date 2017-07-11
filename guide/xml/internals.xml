@@ -81,7 +81,7 @@
       <note>
         <para>Portfiles are executed in a Tcl interpreter as Tcl code (and not
         truly parsed strictly speaking), so every Portfile option must be a
-        TCL procedure.</para>
+        Tcl procedure.</para>
       </note>
 
       <para>The Ports API performs the following functions:</para>
@@ -277,8 +277,8 @@
     <section id="internals.apis.pextlib">
       <title>pextlib</title>
 
-      <para>The pextlib TCL library provides a variety of C extensions to add
-      capabilities to TCL procedures; for example, an interface to flock(2)
+      <para>The pextlib Tcl library provides a variety of C extensions to add
+      capabilities to Tcl procedures; for example, an interface to flock(2)
       and mkstemp(3).</para>
     </section>
   </section>

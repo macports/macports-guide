@@ -23,10 +23,10 @@
     <title>Portfile Introduction</title>
 
     <para>A MacPorts Portfile is a <ulink
-    url="http://en.wikipedia.org/wiki/Tcl">TCL</ulink> script that usually
+    url="http://en.wikipedia.org/wiki/Tcl">Tcl</ulink> script that usually
     contains only the simple keyword/value combinations and Tcl extensions as
     described in the <link linkend="reference">Portfile Reference</link>
-    chapter, though it may also contain arbitrary TCL code. Every port has a
+    chapter, though it may also contain arbitrary Tcl code. Every port has a
     corresponding Portfile, but Portfiles do not completely define a port's
     installation behavior since MacPorts base has default port installation
     characteristics coded within it. Therefore Portfiles need only specify
