@@ -1102,7 +1102,9 @@ PortGroup           obsolete 1.0
 name                skrooge-devel
 svn.revision        1215845
 version             0.8.0-${svn.revision}
-revision            2</programlisting>
+revision            2
+categories          kde finance
+        </programlisting>
 
         <para>The PortGroup defines a number of reasonable defaults for a port that is only
           there to inform users that they should uninstall it and install something else
