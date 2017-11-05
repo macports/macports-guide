@@ -169,7 +169,7 @@
 
         <listitem>
           <para>Use ccache (C/C++ compiler cache) - see
-          http://ccache.samba.org/</para>
+          https://ccache.samba.org/</para>
 
           <para>Default: <option>no</option></para>
         </listitem>
@@ -180,7 +180,7 @@
 
         <listitem>
           <para>Use distcc (distributed compiler) - see
-          http://distcc.samba.org/</para>
+          https://distcc.samba.org/</para>
 
           <para>Default: <option>no</option></para>
         </listitem>

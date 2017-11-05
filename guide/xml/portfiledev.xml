@@ -23,7 +23,7 @@
     <title>Portfile Introduction</title>
 
     <para>A MacPorts Portfile is a <link
-    xlink:href="http://en.wikipedia.org/wiki/Tcl">Tcl</link> script that usually
+    xlink:href="https://en.wikipedia.org/wiki/Tcl">Tcl</link> script that usually
     contains only the simple keyword/value combinations and Tcl extensions as
     described in the <link linkend="reference">Portfile Reference</link>
     chapter, though it may also contain arbitrary Tcl code. Every port has a
@@ -226,13 +226,13 @@
       <listitem>
         <para>A port's application homepage</para>
 
-        <programlisting>homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
+        <programlisting>homepage            https://people.ee.ethz.ch/~oetiker/webtools/rrdtool/</programlisting>
       </listitem>
 
       <listitem>
         <para>A port's download URLs</para>
 
-        <programlisting>master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
+        <programlisting>master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/</programlisting>
       </listitem>
 
@@ -278,7 +278,7 @@ checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
                     sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa5
 Error: Failed to checksum rrdtool: Unable to verify file checksums
 Error: See ...SOMEPATH.../rrdtool/main.log for details.
-Error: Follow http://guide.macports.org/#project.tickets to report a bug.
+Error: Follow https://guide.macports.org/#project.tickets to report a bug.
 Error: Processing of port rrdtool failed</screen>
       </listitem>
 
@@ -329,8 +329,8 @@ license             GPL-2+
 maintainers         julesverne
 description         Round Robin Database
 long_description    RRDtool is a system to store and display time-series data
-homepage            http://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
-master_sites        http://oss.oetiker.ch/rrdtool/pub/ \
+homepage            https://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
 checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
@@ -945,8 +945,8 @@ conflicts           skrooge
 platforms           darwin
 license             GPL-3
 
-homepage            http://skrooge.org
-master_sites        http://skrooge.org/files/
+homepage            https://skrooge.org
+master_sites        https://skrooge.org/files/
 
 livecheck.type      none
 
@@ -1030,7 +1030,7 @@ long_description    Personal finance management tool for KDE4, with the aim of b
 platforms           darwin
 license             GPL-3
 
-homepage            http://skrooge.org
+homepage            https://skrooge.org
 
 livecheck.type      none
 
@@ -1083,7 +1083,7 @@ Error: Please do not install this port since it has been replaced by 'skrooge'.
 Error: Target org.macports.configure returned: 
 Log for skrooge-devel is at: /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_kde_skrooge-devel/main.log
 Error: Status 1 encountered during processing.
-To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
+To report a bug, see &lt;https://guide.macports.org/#project.tickets&gt;</screen>
 
       </section>
 
@@ -1144,7 +1144,7 @@ categories          kde finance
     <para>The <link xlink:href="https://build.macports.org/">buildbot</link> is a port
       build-service currently supporting building of all committed ports for Snow Leopard,
       Lion, and Mountain Lion using the MacPorts AutoBuild
-      (<link xlink:href="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</link>)
+      (<link xlink:href="https://svn.macports.org/repository/macports/contrib/mpab/">MPAB</link>)
       scripts.</para>
 
     <para>Every time a maintainer commits changes to MacPorts' ports Git

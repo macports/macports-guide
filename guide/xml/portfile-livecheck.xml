@@ -20,8 +20,8 @@
         <para>Specify what kind of update check to perform.</para>
 
         <para>Open source mirror site options are to use the project's
-        latest file release from <option>sourceforge</option> or
-        <option>googlecode</option>, or the project's
+        latest file release from <option>sourceforge</option>
+        or the project's
         <literal>date_updated</literal> XML tag for
         <option>freecode</option>. These options are automatically used if
         a matching <varname>${master_sites}</varname> URL is used.</para>
@@ -66,12 +66,12 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
 
       <listitem>
         <para>Name of the project for live checks. Is only used with
-        freecode, sourceforge, and googlecode livechecks.</para>
+        freecode, sourceforge</para>
 
         <itemizedlist>
           <listitem>
             <para>Default: <varname>${name}</varname> or the sourceforge,
-            freecode or googlecode project name if it can be guessed from
+            freecode project name if it can be guessed from
             <varname>${master_sites}</varname>.</para>
           </listitem>
 
@@ -88,18 +88,16 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
       <term>livecheck.distname</term>
 
       <listitem>
-        <para>Name of the file release for sourceforge and googlecode
-        checks. For sourceforge releases use the name of the package
-        release. For googlecode releases use the name of the file download,
-        including extension. You may use this keyword without
+        <para>Name of the file release for sourceforge
+        checks. Use the name of the package release.
+        You may use this keyword without
         <code>livecheck.version</code> if you replace the version part of
         the name with <quote><literal>(.*)</literal></quote>.</para>
 
         <itemizedlist>
           <listitem>
             <para>Default: sourceforge:
-            <varname>${livecheck.name}</varname>, googlecode: first
-            <varname>${distfiles}</varname> item</para>
+            <varname>${livecheck.name}</varname></para>
           </listitem>
 
           <listitem>
@@ -153,11 +151,11 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
               </listitem>
 
               <listitem>
-                <para><literal>http://sourceforge.net/api/file/index/project-name/${livecheck.name}/rss</literal></para>
+                <para><literal>https://sourceforge.net/api/file/index/project-name/${livecheck.name}/rss</literal></para>
               </listitem>
 
               <listitem>
-                <para><literal>http://code.google.com/p/${livecheck.name}/downloads/list</literal></para>
+                <para><literal>https://code.google.com/p/${livecheck.name}/downloads/list</literal></para>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -165,7 +163,7 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
           <listitem>
             <para>Example:</para>
 
-            <programlisting>livecheck.url       http://ftp.gnu.org/gnu/bison/</programlisting>
+            <programlisting>livecheck.url       https://ftp.gnu.org/gnu/bison/</programlisting>
           </listitem>
         </itemizedlist>
       </listitem>

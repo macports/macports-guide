@@ -53,7 +53,7 @@
 
         <listitem>
           <para>Apply optional <link
-          xlink:href="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</link> files
+          xlink:href="https://en.wikipedia.org/wiki/Patch_(Unix)">patch</link> files
           specified in <varname>${patchfiles}</varname> to modify a port's
           source code file(s).</para>
         </listitem>
@@ -99,7 +99,7 @@
 
           <note>
             <para>Using a <link
-            xlink:href="http://www.gnu.org/prep/standards/html_node/DESTDIR.html"><varname>DESTDIR</varname>
+            xlink:href="https://www.gnu.org/prep/standards/html_node/DESTDIR.html"><varname>DESTDIR</varname>
             variable</link> is a part of standard GNU coding practices, and
             this variable must be supported in an application's install
             routines for MacPorts' destroot phase to work without manual
@@ -312,8 +312,8 @@
             <listitem>
               <para>Examples:</para>
 
-              <programlisting>master_sites        http://www.example.org/files/ \
-                    http://www.examplemirror.org/example_org/files/
+              <programlisting>master_sites        https://www.example.org/files/ \
+                    https://mirror.example.org/example_org/files/
 
 </programlisting>
 
@@ -645,7 +645,7 @@ svn.revision        2100</programlisting>
     <section xml:id="reference.phases.fetch.bzr">
       <title>Fetch from BZR</title>
 
-      <para><link xlink:href="http://bazaar.canonical.com/en/">Bzr</link> may be used as
+      <para><link xlink:href="https://bazaar.canonical.com/en/">Bzr</link> may be used as
       an alternative method of fetching distribution files using the keywords
       in this section. However, fetching via bzr may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -820,7 +820,7 @@ svn.revision        2100</programlisting>
     <section xml:id="reference.phases.fetch.git">
       <title>Fetch from Git</title>
 
-      <para><link xlink:href="http://git-scm.com/">Git</link> may be used as an
+      <para><link xlink:href="https://git-scm.com/">Git</link> may be used as an
       alternative method of fetching distribution files using the keywords in
       this section. However, fetching via Git may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -846,7 +846,7 @@ svn.revision        2100</programlisting>
 
                 <programlisting>git.url             git://git.kernel.org/pub/scm/git/git.git</programlisting>
 
-                <programlisting>git.url             http://www.kernel.org/pub/scm/git/git.git</programlisting>
+                <programlisting>git.url             https://www.kernel.org/pub/scm/git/git.git</programlisting>
               </listitem>
             </itemizedlist>
           </listitem>
@@ -881,7 +881,7 @@ svn.revision        2100</programlisting>
     <section xml:id="reference.phases.fetch.hg">
       <title>Fetch from Mercurial</title>
 
-      <para><link xlink:href="http://mercurial.selenic.com/">Mercurial</link> may be
+      <para><link xlink:href="https://mercurial.selenic.com/">Mercurial</link> may be
       used as an alternative method of fetching distribution files using the
       keywords in this section. However, fetching via Mercurial may cause
       non-reproducible builds, so it is strongly discouraged.</para>
@@ -905,7 +905,7 @@ svn.revision        2100</programlisting>
               <listitem>
                 <para>Examples:</para>
 
-                <programlisting>hg.url              http://www.kernel.org/hg/index.cgi/linux-2.6/</programlisting>
+                <programlisting>hg.url              https://www.kernel.org/hg/index.cgi/linux-2.6/</programlisting>
 
                 <programlisting>hg.url              http://hg.intevation.org/mercurial</programlisting>
               </listitem>
@@ -942,7 +942,7 @@ svn.revision        2100</programlisting>
     <section xml:id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
-      <para><link xlink:href="http://subversion.apache.org/">Subversion</link> may
+      <para><link xlink:href="https://subversion.apache.org/">Subversion</link> may
       be used as an alternative method of fetching distribution files using
       the keywords in this section. However, fetching via Subversion may cause
       non-reproducible builds, so it is strongly discouraged.</para>
@@ -966,7 +966,7 @@ svn.revision        2100</programlisting>
               <listitem>
                 <para>Examples:</para>
 
-                <programlisting>svn.url             http://www.example.com/svn-repo/mydirectory</programlisting>
+                <programlisting>svn.url             https://www.example.com/svn-repo/mydirectory</programlisting>
 
                 <programlisting>svn.url             svn://svn.example.com/svn-repo/mydirectory</programlisting>
               </listitem>

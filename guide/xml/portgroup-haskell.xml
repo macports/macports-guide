@@ -75,7 +75,7 @@
         <term>homepage</term>
 
         <listitem>
-          <para>Default: http://hackage.haskell.org</para>
+          <para>Default: https://hackage.haskell.org</para>
         </listitem>
       </varlistentry>
 

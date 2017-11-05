@@ -34,7 +34,7 @@
 
             <para>Download the latest version of Xcode <link
                     xlink:href="https://developer.apple.com/downloads/index.action">from the Apple developer website</link> or
-                get it <link xlink:href="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
+                get it <link xlink:href="https://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
                     Store</link>.</para>
 
             <para>Once you have Xcode installed, open a terminal, run <userinput>xcode-select --install</userinput>, and
@@ -50,7 +50,7 @@
 
             <para>Download the latest version of Xcode <link
                     xlink:href="https://developer.apple.com/downloads/index.action">from the Apple developer website</link> or
-                get it <link xlink:href="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
+                get it <link xlink:href="https://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
                     Store</link>.</para>
 
             <section xml:id="installing.xcode.lion.43">
@@ -522,7 +522,7 @@
             <programlisting>export EDITOR=/usr/bin/nano</programlisting>
 
             <para>To use the user-friendly GUI editor <link
-                    xlink:href="http://www.barebones.com/products/bbedit/">BBEdit</link> (installation required),
+                    xlink:href="https://www.barebones.com/products/bbedit/">BBEdit</link> (installation required),
                 add this line:</para>
 
             <programlisting>export EDITOR=/Applications/BBEdit.app/Contents/Helpers/bbedit_tool</programlisting>

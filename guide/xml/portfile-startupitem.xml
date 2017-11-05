@@ -8,7 +8,7 @@
   programs that run continuously in the background, rather than under the
   direct control of a user; for example, mail servers, network listeners, etc.
   Ports that use StartupItem keywords create OS X scripts for <link
-  xlink:href="http://developer.apple.com/macosx/launchd.html">launchd</link>, which
+  xlink:href="https://developer.apple.com/macosx/launchd.html">launchd</link>, which
   is the Apple facility introduced with Mac OS X 10.4 to replace xinetd for
   starting and managing daemons. To support <command>launchd</command>, a
   program named <command>daemondo</command> is provided by MacPorts base that
