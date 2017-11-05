@@ -45,14 +45,6 @@
       </glossentry>
 
       <glossentry>
-        <glossterm>BSD Unix</glossterm>
-
-        <glossdef>
-          <para />
-        </glossdef>
-      </glossentry>
-
-      <glossentry>
         <glossterm>destroot phase</glossterm>
 
         <glossdef>
