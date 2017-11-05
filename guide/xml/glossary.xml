@@ -2,9 +2,11 @@
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
 "http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
 <chapter id="guide-terms">
-  <title>MacPorts Guide Terms</title>
+  <title>MacPorts Guide Glossary</title>
 
-  <para><!-- TODO: add a description here --></para>
+  <para>This section defines a number of words which may be new to
+    the reader. These are all defined in the context of Macports
+    instead of as general purpose definition.</para>
 
   <glossary id="glossary">
     <glossdiv id="terms">
@@ -51,14 +53,6 @@
       </glossentry>
 
       <glossentry>
-        <glossterm>CVS</glossterm>
-
-        <glossdef>
-          <para />
-        </glossdef>
-      </glossentry>
-
-      <glossentry>
         <glossterm>destroot phase</glossterm>
 
         <glossdef>
@@ -94,7 +88,9 @@
         <glossterm>checksum</glossterm>
 
         <glossdef>
-          <para />
+          <para>A checksum is a small piece of data, derived from from
+            an original that can be used to ensure that two files are
+            identical.</para>
         </glossdef>
       </glossentry>
 
