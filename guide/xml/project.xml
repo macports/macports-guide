@@ -999,87 +999,93 @@ To use the current port, you must be in a port's directory.</screen>
     <section id="project.docs.guide">
       <title>Updating the Guide</title>
 
-      <para>
-        The sources for this guide are kept in a <ulink url="https://github.com/macports/macports-guide">
-        Git repository on GitHub</ulink>. If you spot any error or outdated information, you are
-        encouraged to submit a pull request following the steps outlined below.
-      </para>
+      <para>The sources for this guide are kept in a <ulink
+      url="https://github.com/macports/macports-guide"> Git repository on
+      GitHub</ulink>. If you spot any error or outdated information, you are
+      encouraged to submit a pull request following the steps outlined
+      below.</para>
 
-      <section id="project.docs.guide.preparing-changes">
-        <title>Preparing Changes</title>
+      <section id="project.docs.guide.one-time">
+        <title>One Time Preperations</title>
 
-        <orderedlist>
-          <listitem>
-            <para>First, clone the sources to your computer and switch to a new branch for your changes:</para>
+        <para>In order to submit changes you'll need to do some one time
+        setup.</para>
+
+        <procedure>
+          <step>
+            <para>Visit <ulink
+            url="https://github.com/macports/macports-guide">the
+            macports-guide repository on GitHub</ulink> and press the
+            <guibutton>Fork</guibutton> button in the upper right corner. This
+            will create a macports-guide repository in your own GitHub
+            account.</para>
+          </step>
+
+          <step>
+            <para>Clone the sources to your computer:</para>
+
             <programlisting><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-guide.git</userinput>
-<!--                     --><prompt>$</prompt> <userinput>cd macports-guide</userinput>
-<!--                     --><prompt>$</prompt> <userinput>git checkout -b my-changes origin/master</userinput></programlisting>
-          </listitem>
+<!--        --><prompt>$</prompt> <userinput>cd macports-guide</userinput>
+<!--        --><prompt>$</prompt> <userinput>git remote add <replaceable>username</replaceable> https://github.com/<replaceable>username</replaceable>/macports-guide.git</userinput></programlisting>
+          </step>
 
-          <listitem>
-            <para>
-              Make your changes to the file in the <filename>guide/xml/</filename> directory that
-              corresponds to the section you want to make changes to.
-            </para>
-            <programlisting><prompt>$</prompt> <userinput>$EDITOR guide/xml/</userinput></programlisting>
-          </listitem>
+          <step>
+            <para>Install the required ports:</para>
 
-          <listitem>
-            <para>
-              Verify your changes are still valid XML. First, install the required software from
-              MacPorts if you do not already have it installed. If the <command>make validate</command>
-              command reports errors, fix the XML sources until you see no more error messages.
-            </para>
-            <programlisting><prompt>$</prompt> <userinput>sudo port install libxslt docbook-xsl</userinput>
-<!--                     --><prompt>$</prompt> <userinput>make validate</userinput></programlisting>
-          </listitem>
-
-          <listitem>
-            <para>
-              Convert the guide to HTML and view the new version in your browser.
-            </para>
-            <programlisting><prompt>$</prompt> <userinput>make guide</userinput>
-<!--                     --><prompt>$</prompt> <userinput>open guide/html/index.html</userinput></programlisting>
-          </listitem>
-
-          <listitem>
-            <para>
-              Commit your changes to the local branch and describe your changes in the commit
-              message. See also our wiki page <ulink url="https://trac.macports.org/wiki/CommitMessages">CommitMessages</ulink>
-              that explains how to write good commit messages.
-            </para>
-            <programlisting><prompt>$</prompt> <userinput>git commit -a</userinput></programlisting>
-          </listitem>
-        </orderedlist>
+            <programlisting><prompt>$</prompt> <userinput>sudo port install libxslt docbook-xsl</userinput></programlisting>
+          </step>
+        </procedure>
       </section>
 
-      <section id="project.docs.guide.pull-request">
-        <title>Creating a Pull Request</title>
-        <para>
-          You can submit your changes for inclusion in the guide by making a pull request on GitHub.
-        </para>
+      <section id="project.docs.guide.each-time">
+        <title>Proposing a Change</title>
 
-        <orderedlist>
-          <listitem>
-            <para>
-              Visit <ulink url="https://github.com/macports/macports-guide">the macports-guide repository on GitHub</ulink> and press the <userinput>Fork</userinput> button in the
-              upper right corner. This will create a macports-guide repository in your own GitHub
-              account. Add your new repository as a remote to your local repository, rebase your
-              changes on top of the current upstream master and push the result to your new
-              repository on GitHub.
-            </para>
-            <programlisting><prompt>$</prompt> <userinput>git remote add &lt;username&gt; https://github.com/&lt;username&gt;/macports-guide.git</userinput>
-<!--                     --><prompt>$</prompt> <userinput>git pull --rebase</userinput>
-<!--                     --><prompt>$</prompt> <userinput>git push &lt;username&gt; my-changes</userinput></programlisting>
-          </listitem>
+        <para>For each change you want to make:</para>
 
-          <listitem>
-            <para>
-              From here on, follow the GitHub documentation on <ulink url="https://help.github.com/articles/creating-a-pull-request/">
-              how to create a pull request</ulink>.
-            </para>
-          </listitem>
-        </orderedlist>
+        <procedure>
+          <step>
+            <para>Make your changes to the file in the
+              <filename>guide/xml/</filename> directory that corresponds to the
+              section you want to make changes to.</para>
+
+            <programlisting><prompt>$</prompt> <userinput>$EDITOR guide/xml/<replaceable>guide.xml</replaceable></userinput></programlisting>
+          </step>
+
+          <step>
+            <para>Verify your changes are still valid XML.
+            If the <command>make validate</command> command reports
+            errors, fix the XML sources until you see no more error
+            messages</para>
+
+            <programlisting><prompt>$</prompt> <userinput>make validate guide</userinput></programlisting>
+          </step>
+
+          <step>
+            <para>Convert the guide to HTML and view the new version in your
+            browser.</para>
+
+            <programlisting><prompt>$</prompt> <userinput>make guide</userinput>
+<prompt>$</prompt> <userinput>open guide/html/index.html</userinput></programlisting>
+          </step>
+
+          <step>
+            <para>Commit your changes to the local branch and describe your
+            changes in the commit message. See also our wiki page <ulink
+            url="https://trac.macports.org/wiki/CommitMessages">CommitMessages</ulink>
+            that explains how to write good commit messages.</para>
+
+            <programlisting><prompt>$</prompt> <userinput>git commit -a</userinput></programlisting>
+          </step>
+
+          <step>
+            <para>Submit the changes for inclusion in the guide by <ulink
+            url="https://help.github.com/articles/creating-a-pull-request/">making
+            a pull request on GitHub</ulink>.</para>
+
+            <programlisting><prompt>$</prompt> <userinput>git pull --rebase</userinput>
+<prompt>$</prompt> <userinput>git push <replaceable>username</replaceable> my-changes</userinput></programlisting>
+          </step>
+        </procedure>
       </section>
     </section>
   </section>
