@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
-<section id="reference.livecheck">
+<section xml:id="reference.livecheck">
   <title>Livecheck / Distcheck</title>
 
   <para>Options livecheck and distcheck are especially useful for port

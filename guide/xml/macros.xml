@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
 <!-- This section will be hidden by a xsl:template in resources/base.xsl -->
-<chapter id='macros'>
+<chapter xml:id='macros'>
 <title>Macros</title>
 
 <warning role='macro-outdated'><para>

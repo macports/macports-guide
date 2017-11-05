@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.phases">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.phases">
   <title>Port Phases</title>
 
-  <section id="reference.phases.introduction">
+  <section xml:id="reference.phases.introduction">
     <title>Introduction</title>
 
     <para>The MacPorts port installation process has a number of distinct
@@ -52,8 +52,8 @@
         <term>patch</term>
 
         <listitem>
-          <para>Apply optional <ulink
-          url="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</ulink> files
+          <para>Apply optional <link
+          xlink:href="http://en.wikipedia.org/wiki/Patch_(Unix)">patch</link> files
           specified in <varname>${patchfiles}</varname> to modify a port's
           source code file(s).</para>
         </listitem>
@@ -98,9 +98,9 @@
           <varname>${worksrcpath}</varname>.</para>
 
           <note>
-            <para>Using a <ulink
-            url="http://www.gnu.org/prep/standards/html_node/DESTDIR.html"><varname>DESTDIR</varname>
-            variable</ulink> is a part of standard GNU coding practices, and
+            <para>Using a <link
+            xlink:href="http://www.gnu.org/prep/standards/html_node/DESTDIR.html"><varname>DESTDIR</varname>
+            variable</link> is a part of standard GNU coding practices, and
             this variable must be supported in an application's install
             routines for MacPorts' destroot phase to work without manual
             Portfile scripting or source patching. Urge developers to fully
@@ -161,7 +161,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.phases.installation">
+  <section xml:id="reference.phases.installation">
     <title>Installation Phase Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -175,7 +175,7 @@
     phases and set options for those phases, and they take effect whether or
     not phase declarations have been explicitly defined in a Portfile.</para>
 
-    <section id="reference.phases.installation.list-modifiers">
+    <section xml:id="reference.phases.installation.list-modifiers">
       <title>Keyword List Modifiers (-append, -delete, -replace, -strsed)</title>
 
       <para>Keyword list modifiers are keywords that end in -append, -delete or
@@ -259,7 +259,7 @@
       </orderedlist>
     </section>
 
-    <section id="reference.phases.installation.argument-modifiers">
+    <section xml:id="reference.phases.installation.argument-modifiers">
       <title>Keyword Argument Modifiers (.pre_args / .post_args)</title>
 
       <para>Keywords that support pre_args and post_args are used to assemble
@@ -272,7 +272,7 @@
     </section>
   </section>
 
-  <section id="reference.phases.fetch">
+  <section xml:id="reference.phases.fetch">
     <title>Fetch Phase Keywords</title>
 
     <para>The list of keywords related to the fetch phase.</para>
@@ -516,14 +516,14 @@ distfiles           file_one.tar.gz:tagone \
       </varlistentry>
     </variablelist>
 
-    <section id="reference.phases.fetch.advanced">
+    <section xml:id="reference.phases.fetch.advanced">
       <title>Advanced Fetch Options</title>
 
       <para>Some mirrors require special options for a resource to be properly
       fetched.</para>
 
       <variablelist>
-        <varlistentry id="reference.phases.fetch.advanced.fetch-type">
+        <varlistentry xml:id="reference.phases.fetch.advanced.fetch-type">
           <term>fetch.type</term>
 
           <listitem>
@@ -642,10 +642,10 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.bzr">
+    <section xml:id="reference.phases.fetch.bzr">
       <title>Fetch from BZR</title>
 
-      <para><ulink url="http://bazaar.canonical.com/en/">Bzr</ulink> may be used as
+      <para><link xlink:href="http://bazaar.canonical.com/en/">Bzr</link> may be used as
       an alternative method of fetching distribution files using the keywords
       in this section. However, fetching via bzr may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -700,10 +700,10 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.cvs">
+    <section xml:id="reference.phases.fetch.cvs">
       <title>Fetch from CVS</title>
 
-      <para><ulink url="http://www.nongnu.org/cvs/">CVS</ulink> may be used as
+      <para><link xlink:href="http://www.nongnu.org/cvs/">CVS</link> may be used as
       an alternative method of fetching distribution files using the keywords
       in this section. However, fetching via CVS may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -817,10 +817,10 @@ svn.revision        2100</programlisting>
     </section>
 
 
-    <section id="reference.phases.fetch.git">
+    <section xml:id="reference.phases.fetch.git">
       <title>Fetch from Git</title>
 
-      <para><ulink url="http://git-scm.com/">Git</ulink> may be used as an
+      <para><link xlink:href="http://git-scm.com/">Git</link> may be used as an
       alternative method of fetching distribution files using the keywords in
       this section. However, fetching via Git may cause non-reproducible
       builds, so it is strongly discouraged.</para>
@@ -878,10 +878,10 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.hg">
+    <section xml:id="reference.phases.fetch.hg">
       <title>Fetch from Mercurial</title>
 
-      <para><ulink url="http://mercurial.selenic.com/">Mercurial</ulink> may be
+      <para><link xlink:href="http://mercurial.selenic.com/">Mercurial</link> may be
       used as an alternative method of fetching distribution files using the
       keywords in this section. However, fetching via Mercurial may cause
       non-reproducible builds, so it is strongly discouraged.</para>
@@ -939,10 +939,10 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.svn">
+    <section xml:id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
-      <para><ulink url="http://subversion.apache.org/">Subversion</ulink> may
+      <para><link xlink:href="http://subversion.apache.org/">Subversion</link> may
       be used as an alternative method of fetching distribution files using
       the keywords in this section. However, fetching via Subversion may cause
       non-reproducible builds, so it is strongly discouraged.</para>
@@ -1024,7 +1024,7 @@ svn.revision        2100</programlisting>
     </section>
   </section>
 
-  <section id="reference.phases.checksum">
+  <section xml:id="reference.phases.checksum">
     <title>Checksum Phase Keywords</title>
 
     <para>The list of keywords related to the checksum phase.</para>
@@ -1065,7 +1065,7 @@ svn.revision        2100</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.extract">
+  <section xml:id="reference.phases.extract">
     <title>Extract Phase Keywords</title>
 
     <para>The list of keywords related to the extract phase.</para>
@@ -1370,7 +1370,7 @@ extract.post_args   "| gnutar -x"</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.patch">
+  <section xml:id="reference.phases.patch">
     <title>Patch Phase Keywords</title>
 
     <para>The list of keywords related to the patch phase.</para>
@@ -1497,7 +1497,7 @@ patch.post_args     ???</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.configure">
+  <section xml:id="reference.phases.configure">
     <title>Configure Phase Keywords</title>
 
     <para>The list of keywords related to the configure phase.</para>
@@ -1588,7 +1588,7 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="reference.phases.configure.optflags">
+      <varlistentry xml:id="reference.phases.configure.optflags">
         <term>configure.optflags</term>
 
         <term>configure.optflags-append</term>
@@ -1617,7 +1617,7 @@ configure.optflags-delete     -Os</programlisting>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="reference.phases.configure.cflags">
+      <varlistentry xml:id="reference.phases.configure.cflags">
         <term>configure.cflags</term>
 
         <term>configure.cflags-append</term>
@@ -2339,7 +2339,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       </varlistentry>
     </variablelist>
 
-    <section id="reference.phases.configure.universal">
+    <section xml:id="reference.phases.configure.universal">
       <title>Configure Universal</title>
 
       <para>Universal keywords are used to make a port compile on OS X for
@@ -2474,7 +2474,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.configure.automake-autoconf">
+    <section xml:id="reference.phases.configure.automake-autoconf">
       <title>Automake, Autoconf, and Autoreconf</title>
 
       <para>The list of configure keywords available for ports that need
@@ -2664,7 +2664,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
     </section>
   </section>
 
-  <section id="reference.phases.build">
+  <section xml:id="reference.phases.build">
     <title>Build Phase Keywords</title>
 
     <para>The list of keywords related to the build phase.</para>
@@ -2874,7 +2874,7 @@ build.target-delete     compat</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.test">
+  <section xml:id="reference.phases.test">
     <title>Test Phase Keywords</title>
 
     <para>The list of keywords related to the test phase.</para>
@@ -3012,7 +3012,7 @@ build.target-delete     compat</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.destroot">
+  <section xml:id="reference.phases.destroot">
     <title>Destroot Phase Keywords</title>
 
     <para>The list of keywords related to the destroot phase.</para>

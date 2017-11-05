@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.portgroup.xcode">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.xcode">
   <title>PortGroup xcode</title>
 
   <para><code>PortGroup xcode</code> allows for efficient porting of
@@ -13,7 +13,7 @@
   tolerate Xcode version updates because the PortGroup is tested against all
   supported OS X and Xcode versions.</para>
 
-  <section id="reference.portgroup.xcode.keywords">
+  <section xml:id="reference.portgroup.xcode.keywords">
     <title>xcode PortGroup Specific Keywords</title>
 
     <para>Portfiles using <code>PortGroup xcode</code> allow for port authors
@@ -236,7 +236,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.portgroup.xcode.sugar">
+  <section xml:id="reference.portgroup.xcode.sugar">
     <title>xcode PortGroup Sugar</title>
 
     <para>Portfiles using the xcode PortGroup do not need to define the
@@ -269,7 +269,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.portgroup.xcode.phase-keywords">
+  <section xml:id="reference.portgroup.xcode.phase-keywords">
     <title>Portfile-Phase Keywords Affecting the xcode PortGroup</title>
 
     <para>The following Portfile phase keywords affect the xcode PortGroup in

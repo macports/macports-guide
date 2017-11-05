@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.portgroup.haskell">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.haskell">
 
   <title>PortGroup haskell</title>
 
   <para>PortGroup haskell simplifies the addition of Haskell packages.</para>
 
-  <section id="reference.portgroup.haskell.keywords">
+  <section xml:id="reference.portgroup.haskell.keywords">
     <title>haskell PortGroup Specific Keywords</title>
 
     <para>Portfiles using the haskell PortGroup allow for port authors to set
@@ -40,7 +40,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.portgroup.haskell.sugar">
+  <section xml:id="reference.portgroup.haskell.sugar">
     <title>haskell PortGroup Sugar</title>
 
     <para>Portfiles using PortGroup haskell do not need to define the

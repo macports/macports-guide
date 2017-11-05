@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="guide-terms">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<chapter xml:id="guide-terms">
   <title>MacPorts Guide Glossary</title>
 
   <para>This section defines a number of words which may be new to
     the reader. These are all defined in the context of Macports
     instead of as general purpose definition.</para>
 
-  <glossary id="glossary">
-    <glossdiv id="terms">
+  <glossary xml:id="glossary">
+    <glossdiv xml:id="terms">
       <title>MacPorts Guide Terms</title>
 
       <glossentry>

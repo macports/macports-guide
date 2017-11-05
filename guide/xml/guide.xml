@@ -1,36 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- -*- coding: utf-8; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:et:sw=4:ts=4:sts=4:tw=120
 -->
-<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
+<!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+
 <book>
     <title>
         <application>MacPorts</application> Guide
     </title>
-    <bookinfo>
+    <info>
         <authorgroup>
             <author>
-                <firstname>Mark</firstname>
-                <surname>Duling</surname>
+                <personname>
+                    <firstname>Mark</firstname>
+                    <surname>Duling</surname>
+                </personname>
             </author>
             <author>
-                <honorific>Dr</honorific>
-                <firstname>Michael</firstname>
-                <surname>Maibaum</surname>
-                <othername role="mi">A</othername>
+                <personname>
+                    <honorific>Dr</honorific>
+                    <firstname>Michael</firstname>
+                    <surname>Maibaum</surname>
+                    <othername role="mi">A</othername>
+                </personname>
             </author>
             <author>
-                <firstname>Will</firstname>
-                <surname>Barton</surname>
+                <personname>
+                    <firstname>Will</firstname>
+                    <surname>Barton</surname>
+                </personname>
             </author>
             <author>
-                <firstname>Clemens</firstname>
-                <surname>Lang</surname>
+                <personname>
+                    <firstname>Clemens</firstname>
+                    <surname>Lang</surname>
+                </personname>
             </author>
         </authorgroup>
 
         <copyright>
-            <year>2007–2014</year>
+            <year>2007–2017</year>
             <holder>The MacPorts Project</holder>
         </copyright>
 
@@ -38,7 +47,7 @@
             <year>2002–2004</year>
             <holder>The OpenDarwin Project</holder>
         </copyright>
-    </bookinfo>
+    </info>
 
     <xi:include href="intro.xml"
         xmlns:xi="http://www.w3.org/2001/XInclude" />

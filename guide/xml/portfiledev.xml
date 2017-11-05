@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="development">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<chapter xml:id="development">
   <title>Portfile Development</title>
 
   <para>A port is a distribution of software that can be compiled and
@@ -19,11 +19,11 @@
   within. The only required file in a port is the
   <filename>Portfile</filename>.</para>
 
-  <section id="development.introduction">
+  <section xml:id="development.introduction">
     <title>Portfile Introduction</title>
 
-    <para>A MacPorts Portfile is a <ulink
-    url="http://en.wikipedia.org/wiki/Tcl">Tcl</ulink> script that usually
+    <para>A MacPorts Portfile is a <link
+    xlink:href="http://en.wikipedia.org/wiki/Tcl">Tcl</link> script that usually
     contains only the simple keyword/value combinations and Tcl extensions as
     described in the <link linkend="reference">Portfile Reference</link>
     chapter, though it may also contain arbitrary Tcl code. Every port has a
@@ -90,7 +90,7 @@
     </note>
   </section>
 
-  <section id="development.creating-portfile">
+  <section xml:id="development.creating-portfile">
     <title>Creating a Portfile</title>
 
     <para>Here we list the individual Portfile components for an application
@@ -302,7 +302,7 @@ Error: Processing of port rrdtool failed</screen>
     </orderedlist>
   </section>
 
-  <section id="development.examples">
+  <section xml:id="development.examples">
     <title>Example Portfiles</title>
 
     <para>In this section we begin by taking a look at a complete simple
@@ -314,7 +314,7 @@ Error: Processing of port rrdtool failed</screen>
     linkend="development.examples.eliminate">eliminate port
     phases</link>.</para>
 
-    <section id="development.examples.basic">
+    <section xml:id="development.examples.basic">
       <title>A Basic Portfile</title>
 
       <programlisting># -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
@@ -344,7 +344,7 @@ configure.args      --enable-perl-site-install \
                     --mandir=${prefix}/share/man</programlisting>
     </section>
 
-    <section id="development.examples.augment">
+    <section xml:id="development.examples.augment">
       <title>Augment Phases Using pre- / post-</title>
 
       <para>To augment a port's installation phase, and not override it, you
@@ -359,7 +359,7 @@ configure.args      --enable-perl-site-install \
 }</programlisting>
     </section>
 
-    <section id="development.examples.override">
+    <section xml:id="development.examples.override">
       <title>Overriding Phases</title>
 
       <para>To override the automatic MacPorts installation phase processing,
@@ -371,7 +371,7 @@ configure.args      --enable-perl-site-install \
 }</programlisting>
     </section>
 
-    <section id="development.examples.eliminate">
+    <section xml:id="development.examples.eliminate">
       <title>Eliminating Phases</title>
 
       <para>To eliminate a default phase, simply define a phase with no
@@ -389,7 +389,7 @@ configure.args      --enable-perl-site-install \
       </note>
     </section>
 
-    <section id="development.examples.startupitem">
+    <section xml:id="development.examples.startupitem">
       <title>Creating a StartupItem</title>
 
       <para>Startupitems may be placed in the global section of a
@@ -401,7 +401,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     </section>
   </section>
 
-  <section id="development.variants">
+  <section xml:id="development.variants">
     <title>Port Variants</title>
 
     <para>Variants are a way for port authors to provide options that may be
@@ -410,7 +410,7 @@ startupitem.executable  "${prefix}/bin/nmicmpd"</programlisting>
     linkend="reference.variants.descriptions">carefully chosen variant
     descriptions</link>.</para>
 
-    <section id="development.variants.options">
+    <section xml:id="development.variants.options">
       <title>Example Variants</title>
 
       <para>The most common actions for user-selected variants is to add or
@@ -472,7 +472,7 @@ variant sqlite description {Build sqlite support} {
 }</programlisting>
     </section>
 
-    <section id="development.variants.phase">
+    <section xml:id="development.variants.phase">
       <title>Variant Actions in a Phase</title>
 
       <para>If a variant requires options in addition to those provided by
@@ -494,7 +494,7 @@ variant sqlite description {Build sqlite support} {
 }</programlisting>
     </section>
 
-    <section id="development.variants.default">
+    <section xml:id="development.variants.default">
       <title>Default Variants</title>
 
       <para>Variants are used to specify actions that lie outside the core
@@ -513,7 +513,7 @@ variant sqlite description {Build sqlite support} {
     </section>
   </section>
 
-  <section id="development.patches">
+  <section xml:id="development.patches">
     <title>Patch Files</title>
 
     <para>Patch files are files created with the Unix command
@@ -521,7 +521,7 @@ variant sqlite description {Build sqlite support} {
     <command>patch</command> to modify text files to fix bugs or extend
     functionality.</para>
 
-    <section id="development.patches.portfile">
+    <section xml:id="development.patches.portfile">
       <title>Creating Portfile Patches</title>
 
       <para>If you wish to contribute modifications or fixes to a Portfile,
@@ -584,7 +584,7 @@ variant sqlite description {Build sqlite support} {
       the port author to evaluate.</para>
     </section>
 
-    <section id="development.patches.source">
+    <section xml:id="development.patches.source">
       <title>Creating Source Code Patches</title>
 
       <para>Necessary or useful patches to application source code should
@@ -610,7 +610,7 @@ variant sqlite description {Build sqlite support} {
 
         <listitem>
           <para>If fixing a particular problem or bug requires changes in
-          multiple files&mdash;in those cases the patch filename should reference
+          multiple files the patch filename should reference
           the problem or bug, for example:
           <filename>patch-</filename><replaceable>destdir-variable-fix</replaceable><filename>.diff</filename></para>
         </listitem>
@@ -696,7 +696,7 @@ variant sqlite description {Build sqlite support} {
       </orderedlist>
     </section>
 
-    <section id="development.patches.applying">
+    <section xml:id="development.patches.applying">
       <title>Manually Applying Patches</title>
 
       <para>MacPorts applies patch files automatically, but you may want to
@@ -725,7 +725,7 @@ variant sqlite description {Build sqlite support} {
     </section>
   </section>
 
-  <section id="development.local-repositories">
+  <section xml:id="development.local-repositories">
     <title>Local Portfile Repositories</title>
 
     <para>To create and test Portfiles that are not yet published in the MacPorts ports tree,
@@ -810,14 +810,14 @@ Ports failed:                   0</screen>
     The Best Ever Game</screen>
   </section>
 
-  <section id="development.practices">
+  <section xml:id="development.practices">
     <title>Portfile Best Practices</title>
 
     <para>This section contains practical guidelines for creating Portfiles
     that install smoothly and provide consistency between ports. The following
     sections are on the TODO list.</para>
 
-    <section id="development.practices.portstyle">
+    <section xml:id="development.practices.portstyle">
       <title>Port Style</title>
 
       <para>Portfiles may be thought of as a set of declarations rather than
@@ -873,25 +873,25 @@ Ports failed:                   0</screen>
                      ${destroot}${prefix}/var/cache/mrtg</programlisting>
     </section>
 
-    <section id="development.practices.dont-overwrite">
+    <section xml:id="development.practices.dont-overwrite">
       <title>Don't Overwrite Config Files</title>
 
       <para>TODO:</para>
     </section>
 
-    <section id="development.practices.install-docs">
+    <section xml:id="development.practices.install-docs">
       <title>Install Docs and Examples</title>
 
       <para>TODO:</para>
     </section>
 
-    <section id="development.practices.provide-messages">
+    <section xml:id="development.practices.provide-messages">
       <title>Provide User Messages</title>
 
       <para>TODO:</para>
     </section>
 
-    <section id="development.practices.use-variables">
+    <section xml:id="development.practices.use-variables">
       <title>Use Variables</title>
 
       <para>TODO: Set variables so changing paths may be done in one place;
@@ -900,7 +900,7 @@ Ports failed:                   0</screen>
     </section>
 
 
-    <section id="development.practices.rename-replace-port">
+    <section xml:id="development.practices.rename-replace-port">
       <title>Renaming or replacing a port</title>
 
       <para>If there is the need to replace a port with another port or a
@@ -916,7 +916,7 @@ Ports failed:                   0</screen>
       <para>At the end of this section the use of the obsolete PortGroup is suggested
       as an even shorter approach to the below described workflow.</para>
 
-      <section id="development.replaced_by">
+      <section xml:id="development.replaced_by">
         <title>The long way</title>
 
         <para>Skrooge's original devel port file looked like this:</para>
@@ -1087,7 +1087,7 @@ To report a bug, see &lt;http://guide.macports.org/#project.tickets&gt;</screen>
 
       </section>
 
-      <section id="development.obsolete-portgroup">
+      <section xml:id="development.obsolete-portgroup">
         <title>The shortcut: PortGroup obsolete</title>
 
         <para>Using the PortGroup obsolete makes the task described in the previous subsection
@@ -1121,7 +1121,7 @@ categories          kde finance
 
     </section>
 
-    <section id="development.practices.removing-port">
+    <section xml:id="development.practices.removing-port">
       <title>Removing a port</title>
 
       <para>If a port has to be removed from MacPorts one should consider
@@ -1138,13 +1138,13 @@ categories          kde finance
 
   </section>
 
-  <section id="development.buildbot">
+  <section xml:id="development.buildbot">
     <title>MacPorts' buildbot</title>
 
-    <para>The <ulink url="https://build.macports.org/">buildbot</ulink> is a port
+    <para>The <link xlink:href="https://build.macports.org/">buildbot</link> is a port
       build-service currently supporting building of all committed ports for Snow Leopard,
       Lion, and Mountain Lion using the MacPorts AutoBuild
-      (<ulink url="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</ulink>)
+      (<link xlink:href="http://svn.macports.org/repository/macports/contrib/mpab/">MPAB</link>)
       scripts.</para>
 
     <para>Every time a maintainer commits changes to MacPorts' ports Git
@@ -1152,8 +1152,8 @@ categories          kde finance
       port(s) would be necessary. If the port(s) in question are distributable
       their binary archives will be kept for subsequent distribution for all
       versions of the Mac operating system for which build machines are
-      available. See the <ulink url="https://build.macports.org/builders">list
-        of builders</ulink> to find out which platforms these currently
+      available. See the <link xlink:href="https://build.macports.org/builders">list
+        of builders</link> to find out which platforms these currently
       are.</para>
 
     <para>If a build error occurred for a port its maintainer will be informed via
@@ -1161,9 +1161,9 @@ categories          kde finance
       not go unnoticed.
 
       Port maintainers will find the
-      <ulink url="https://build.macports.org/waterfall">waterfall</ulink>
+      <link xlink:href="https://build.macports.org/waterfall">waterfall</link>
       and the
-      <ulink url="https://build.macports.org/builders">builders</ulink>
+      <link xlink:href="https://build.macports.org/builders">builders</link>
       views most useful since they give information about the build status and offer
       the possibility to build ones port(s) on specific builders.</para>
 
