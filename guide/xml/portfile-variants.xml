@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.variants">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.variants">
   <title>Variants</title>
 
   <para>MacPorts variants are conditional modifications of port installation
@@ -11,7 +11,7 @@
   selected automatically by MacPorts base according to the OS or hardware
   platform (darwin, freebsd, linux, i386, powerpc, etc.).</para>
 
-  <section id="reference.variants.user-selected">
+  <section xml:id="reference.variants.user-selected">
     <title>User-Selected Variants</title>
 
     <para>User-selected variants are those that are defined so a user can
@@ -123,7 +123,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.variants.descriptions">
+  <section xml:id="reference.variants.descriptions">
     <title>User-Selected Variant Descriptions</title>
 
     <para>User-selected variants ought to provide a description, which will be
@@ -148,7 +148,7 @@
     port descriptions and long_descriptions.</para>
   </section>
 
-  <section id="reference.variants.platform">
+  <section xml:id="reference.variants.platform">
     <title>Platform Variants</title>
 
     <para>Platform variants are either defined by default in MacPorts base, or

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="reference">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<chapter xml:id="reference">
   <title>Portfile Reference</title>
 
   <para>This chapter serves as a reference for the major elements of a
@@ -32,7 +32,7 @@
   <xi:include href="portfile-livecheck.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <section id="reference.portgroup">
+  <section xml:id="reference.portgroup">
     <title>PortGroups</title>
 
     <xi:include href="portgroups.xml"

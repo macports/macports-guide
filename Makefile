@@ -73,7 +73,7 @@ endif
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(REINPLACE) \
-	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
+	    's|(<h[0-9] [^>]*><a xml:id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE_RESULT)/index.html
 
 # Generate the chunked HTML guide with one section per file.
@@ -92,7 +92,7 @@ endif
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(REINPLACE) \
-	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
+	    's|(<h[0-9] [^>]*><a xml:id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
 	    $(GUIDE_RESULT_CHUNK)/*.html
 	# Add the table of contents to every junked HTML file.
 	# If someone knows a better way to do this please change it.

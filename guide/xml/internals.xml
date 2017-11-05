@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="internals">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<chapter xml:id="internals">
   <title>MacPorts Internals</title>
 
   <para>This chapter contains information about the MacPorts file layout,
   configuration files, a few fundamental port installation concepts, and the
   MacPorts APIs.</para>
 
-  <section id="internals.hierarchy">
+  <section xml:id="internals.hierarchy">
     <title>File Hierarchy</title>
 
     <xi:include href="internals-hier.xml"
@@ -18,7 +18,7 @@
   <xi:include href="macports.conf.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
-  <section id="internals.images">
+  <section xml:id="internals.images">
     <title>Port Images</title>
 
     <para>MacPorts has a unique ability to allow multiple versions,
@@ -41,7 +41,7 @@
     </para>
   </section>
 
-  <section id="internals.apis">
+  <section xml:id="internals.apis">
     <title>APIs and Libs</title>
 
     <para>The MacPorts system is composed of three Tcl libraries:</para>
@@ -61,7 +61,7 @@
       </listitem>
     </itemizedlist>
 
-    <section id="internals.apis.ports">
+    <section xml:id="internals.apis.ports">
       <title>Ports API</title>
 
       <para>The code for the Port API is located in
@@ -123,7 +123,7 @@
       </itemizedlist>
     </section>
 
-    <section id="internals.apis.macports">
+    <section xml:id="internals.apis.macports">
       <title>MacPorts API</title>
 
       <para>The code for the MacPorts API is located in
@@ -274,7 +274,7 @@
       </itemizedlist>
     </section>
 
-    <section id="internals.apis.pextlib">
+    <section xml:id="internals.apis.pextlib">
       <title>pextlib</title>
 
       <para>The pextlib Tcl library provides a variety of C extensions to add
@@ -283,7 +283,7 @@
     </section>
   </section>
 
-  <section id="internals.registry">
+  <section xml:id="internals.registry">
     <title>The MacPorts Registry</title>
 
     <para>This chapter provides an overview of the MacPorts registry and its
@@ -312,7 +312,7 @@
       </listitem>
     </itemizedlist>
 
-    <section id="internals.registry.files">
+    <section xml:id="internals.registry.files">
       <title>Registry Files</title>
 
       <para>The SQLite registry used by default is located at
@@ -336,7 +336,7 @@
       </para>
     </section>
 
-    <section id="internals.registry.api">
+    <section xml:id="internals.registry.api">
       <title>The Registry API</title>
 
       <para>The MacPorts registry provides a public API in the registry1.0 Tcl

@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<section id="reference.portgroup.ruby">
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.ruby">
 
   <title>PortGroup ruby</title>
 
   <para>PortGroup ruby allows for efficient porting of ruby-based open
   source software.</para>
 
-  <section id="reference.portgroup.ruby.variables">
+  <section xml:id="reference.portgroup.ruby.variables">
     <title>ruby PortGroup Specific Variables</title>
 
     <para>When the ruby PortGroup is declared within a Portfile, the

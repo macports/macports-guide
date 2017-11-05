@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V4.5//EN"
-"http://www.oasis-open.org/docbook/xml/4.5/docbookx.dtd">
-<chapter id="project">
+<!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<chapter xml:id="project">
   <title>MacPorts Project</title>
 
-  <section id="project.tickets">
+  <section xml:id="project.tickets">
     <title>Using Trac for Tickets</title>
 
-    <para>The MacPorts Project uses a system called <ulink
-    url="https://trac.macports.org/">Trac</ulink> to file tickets to report bugs
+    <para>The MacPorts Project uses a system called <link
+    xlink:href="https://trac.macports.org/">Trac</link> to file tickets to report bugs
     and enhancement requests. Though anyone may search Trac for tickets,
-    you must have a <ulink
-    url="https://github.com/join">GitHub account</ulink> in order to login to
-    <ulink url="https://trac.macports.org/">Trac</ulink> to create tickets.</para>
+    you must have a <link
+    xlink:href="https://github.com/join">GitHub account</link> in order to login to
+    <link xlink:href="https://trac.macports.org/">Trac</link> to create tickets.</para>
 
-    <section id="project.tickets.prerequisites">
+    <section xml:id="project.tickets.prerequisites">
       <title>Before Filing a New Ticket</title>
 
       <itemizedlist>
@@ -34,9 +34,9 @@
         <listitem>
           <para>Check the problem hotlist</para>
           <para>
-            The <ulink
-              url="https://trac.macports.org/wiki/ProblemHotlist">Problem
-              Hotlist</ulink> contains possible solutions to problems that
+            The <link
+              xlink:href="https://trac.macports.org/wiki/ProblemHotlist">Problem
+              Hotlist</link> contains possible solutions to problems that
             affect many MacPorts users. If a solution to your problem listed
             there works, don't file a ticket.
           </para>
@@ -48,9 +48,9 @@
           </para>
             <itemizedlist>
                 <listitem><para>using the search bar that appears on each page</para></listitem>
-                <listitem><para>using <ulink url="https://trac.macports.org/search?portsummarysearch=on">the search page</ulink></para></listitem>
-                <listitem><para>browsing the list of <ulink url="https://trac.macports.org/report">categorized reports</ulink></para></listitem>
-                <listitem><para>making an advanced search by constructing a <ulink url="https://trac.macports.org/query">custom query</ulink></para></listitem>
+                <listitem><para>using <link xlink:href="https://trac.macports.org/search?portsummarysearch=on">the search page</link></para></listitem>
+                <listitem><para>browsing the list of <link xlink:href="https://trac.macports.org/report">categorized reports</link></para></listitem>
+                <listitem><para>making an advanced search by constructing a <link xlink:href="https://trac.macports.org/query">custom query</link></para></listitem>
             </itemizedlist>
         </listitem>
         <listitem>
@@ -78,11 +78,11 @@
       </itemizedlist>
     </section>
 
-    <section id="project.tickets.creating">
+    <section xml:id="project.tickets.creating">
       <title>Creating Trac Tickets</title>
 
-      <para>Once you are logged into Trac, you may click <ulink
-      url="https://trac.macports.org/newticket">New Ticket</ulink> and you
+      <para>Once you are logged into Trac, you may click <link
+      xlink:href="https://trac.macports.org/newticket">New Ticket</link> and you
       will be presented with a new ticket window shown in the graphic below.
       Follow the Trac ticket guidelines below to fill out the form. If you are
       reporting a failed port install and a log was mentioned in the error,
@@ -90,7 +90,9 @@
       checkbox to add that log file to the ticket.</para>
 
       <screenshot>
-        <screeninfo>A new Trac ticket</screeninfo>
+        <info>
+          <title>A new Trac ticket</title>
+        </info>
 
         <mediaobject>
           <textobject>
@@ -103,7 +105,7 @@
       </screenshot>
     </section>
 
-    <section id="project.tickets.guidelines">
+    <section xml:id="project.tickets.guidelines">
       <title>Trac Ticket Guidelines</title>
 
       <para>This is a short overview of the guidelines for Trac tickets. Please
@@ -225,8 +227,8 @@
                 <entry><guilabel>Keywords</guilabel></entry>
                 <entry><literal>maintainer</literal> if you are the port's
                   maintainer. <literal>haspatch</literal> if you are attaching
-                  a patch. <ulink url="https://trac.macports.org/wiki/TicketsKeywordGuidelines">Full
-                    list</ulink>.
+                  a patch. <link xlink:href="https://trac.macports.org/wiki/TicketsKeywordGuidelines">Full
+                    list</link>.
                 </entry>
               </row>
               <row>
@@ -275,9 +277,9 @@
         <listitem>
           <para><guilabel>Description:</guilabel> All details that might
           be relevant to someone reading the ticket. Be sure to mention
-          the versions of your operating system and Xcode install. <ulink
-          url="https://trac.macports.org/wiki/WikiFormatting">Wiki
-          formatting</ulink> should be used to ensure that text is formatted
+          the versions of your operating system and Xcode install. <link
+          xlink:href="https://trac.macports.org/wiki/WikiFormatting">Wiki
+          formatting</link> should be used to ensure that text is formatted
           correctly. Use the Preview button before submitting. If you want to
           post preformatted text such as a log or terminal output, make sure
           you use <literal>{{{<replaceable>...</replaceable>}}}</literal>
@@ -426,8 +428,8 @@
           affects 64-bit platforms.</para>
 
           <para>See
-            <ulink url="https://trac.macports.org/wiki/TicketsKeywordGuidelines">the
-              TicketsKeywordGuidelines wiki page</ulink> for a clickable list
+            <link xlink:href="https://trac.macports.org/wiki/TicketsKeywordGuidelines">the
+              TicketsKeywordGuidelines wiki page</link> for a clickable list
             of all keywords.</para>
         </listitem>
 
@@ -489,19 +491,19 @@
     </section>
   </section>
 
-  <section id="project.contributing">
+  <section xml:id="project.contributing">
     <title>Contributing to MacPorts</title>
 
     <para>You may contribute new ports and enhancements of any kind to already
         existing ports using Trac tickets. As an alternative, you may instead open a pull request on
-        <ulink url="https://github.com/macports/macports-ports/pulls">GitHub</ulink>,
+        <link xlink:href="https://github.com/macports/macports-ports/pulls">GitHub</link>,
         in which case no Trac ticket is required.
     </para>
 
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
 
-    <section id="project.contributing.new">
+    <section xml:id="project.contributing.new">
       <title>New Ports</title>
 
       <para>Ports are contributed by following these steps. See the <link
@@ -551,7 +553,7 @@
       </orderedlist>
     </section>
 
-    <section id="project.contributing.updates">
+    <section xml:id="project.contributing.updates">
       <title>Port Enhancements</title>
 
       <para>Enhancements to existing ports may comprise new functionality for
@@ -624,7 +626,7 @@
       </orderedlist>
     </section>
 
-    <section id="project.contributing.maintaining">
+    <section xml:id="project.contributing.maintaining">
       <title>Becoming a Port Maintainer</title>
 
       <para>MacPorts is always looking for people that want to take care of
@@ -642,8 +644,8 @@
             on that below.</para>
         </listitem>
         <listitem>
-          <para>An account in the <ulink
-              url="https://trac.macports.org/">MacPorts Trac</ulink>,
+          <para>An account in the <link
+              xlink:href="https://trac.macports.org/">MacPorts Trac</link>,
             preferably with the email address you want to use for your
             port.</para>
         </listitem>
@@ -827,9 +829,9 @@ To use the current port, you must be in a port's directory.</screen>
         </listitem>
 
         <listitem>
-          <para>If you are only changing the maintainer, <ulink
-              url="https://trac.macports.org/newticket">file a new ticket in
-              Trac</ulink>. Set <guilabel>type</guilabel> to
+          <para>If you are only changing the maintainer, <link
+              xlink:href="https://trac.macports.org/newticket">file a new ticket in
+              Trac</link>. Set <guilabel>type</guilabel> to
             <guilabel>enhancement</guilabel>. Leave the
             <guilabel>milestone</guilabel> field empty. If you added yourself
             as co-maintainer, add the other maintainers in the
@@ -869,7 +871,7 @@ To use the current port, you must be in a port's directory.</screen>
     </section>
   </section>
 
-  <section id="project.update-policies">
+  <section xml:id="project.update-policies">
     <title>Port Update Policies</title>
 
     <para>Port maintainers normally are given commit privileges to the
@@ -880,7 +882,7 @@ To use the current port, you must be in a port's directory.</screen>
     port it is a good practice to inform a port's maintainer. See details
     below.</para>
 
-    <section id="project.update-policies.nonmaintainer">
+    <section xml:id="project.update-policies.nonmaintainer">
       <title>Non-Maintainer Port Updates</title>
 
       <para>If you have a port update or bugfix for a port you do not
@@ -941,7 +943,7 @@ To use the current port, you must be in a port's directory.</screen>
       </itemizedlist>
     </section>
 
-    <section id="project.update-policies.abandonment">
+    <section xml:id="project.update-policies.abandonment">
       <title>Port Abandonment</title>
 
       <para>A port may be considered abandoned if any of the following apply:</para>
@@ -993,37 +995,23 @@ To use the current port, you must be in a port's directory.</screen>
     </section>
   </section>
 
-  <section id="project.docs">
+  <section xml:id="project.docs">
     <title>Updating Documentation</title>
 
-    <section id="project.docs.guide">
+    <section xml:id="project.docs.guide">
       <title>Updating the Guide</title>
 
-      <para>The sources for this guide are kept in a <ulink
-      url="https://github.com/macports/macports-guide"> Git repository on
-      GitHub</ulink>. If you spot any error or outdated information, you are
-      encouraged to submit a pull request following the steps outlined
-      below.</para>
+      <para>
+        The sources for this guide are kept in a <link xlink:href="https://github.com/macports/macports-guide">
+        Git repository on GitHub</link>. If you spot any error or outdated information, you are
+        encouraged to submit a pull request following the steps outlined below.
+      </para>
 
-      <section id="project.docs.guide.one-time">
-        <title>One Time Preperations</title>
-
-        <para>In order to submit changes you'll need to do some one time
-        setup.</para>
+      <section xml:id="project.docs.guide.one-time">
+        <title>Preparing Changes</title>
 
         <procedure>
           <step>
-            <para>Visit <ulink
-            url="https://github.com/macports/macports-guide">the
-            macports-guide repository on GitHub</ulink> and press the
-            <guibutton>Fork</guibutton> button in the upper right corner. This
-            will create a macports-guide repository in your own GitHub
-            account.</para>
-          </step>
-
-          <step>
-            <para>Clone the sources to your computer:</para>
-
             <programlisting><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-guide.git</userinput>
 <!--        --><prompt>$</prompt> <userinput>cd macports-guide</userinput>
 <!--        --><prompt>$</prompt> <userinput>git remote add <replaceable>username</replaceable> https://github.com/<replaceable>username</replaceable>/macports-guide.git</userinput></programlisting>
@@ -1037,7 +1025,7 @@ To use the current port, you must be in a port's directory.</screen>
         </procedure>
       </section>
 
-      <section id="project.docs.guide.each-time">
+      <section xml:id="project.docs.guide.each-time">
         <title>Proposing a Change</title>
 
         <para>For each change you want to make:</para>
@@ -1070,27 +1058,17 @@ To use the current port, you must be in a port's directory.</screen>
 
           <step>
             <para>Commit your changes to the local branch and describe your
-            changes in the commit message. See also our wiki page <ulink
-            url="https://trac.macports.org/wiki/CommitMessages">CommitMessages</ulink>
-            that explains how to write good commit messages.</para>
-
+            changes in the commit message. See also our wiki page <link
+            xlink:href="https://trac.macports.org/wiki/CommitMessages">CommitMessages</link>
+          that explains how to write good commit messages.</para>
             <programlisting><prompt>$</prompt> <userinput>git commit -a</userinput></programlisting>
-          </step>
-
-          <step>
-            <para>Submit the changes for inclusion in the guide by <ulink
-            url="https://help.github.com/articles/creating-a-pull-request/">making
-            a pull request on GitHub</ulink>.</para>
-
-            <programlisting><prompt>$</prompt> <userinput>git pull --rebase</userinput>
-<prompt>$</prompt> <userinput>git push <replaceable>username</replaceable> my-changes</userinput></programlisting>
           </step>
         </procedure>
       </section>
     </section>
   </section>
 
-  <section id="project.membership">
+  <section xml:id="project.membership">
     <title>MacPorts Membership</title>
 
     <para>A requirement for a person to become a MacPorts committer is to
@@ -1122,7 +1100,7 @@ To use the current port, you must be in a port's directory.</screen>
 
     <para>To apply for MacPorts commit rights, send a brief email to the
     PortMgr team at <email>macports-mgr@lists.macports.org</email> entitled
-    &ldquo;Commit access: <replaceable>Your Name</replaceable>&rdquo; with the
+    "Commit access: <replaceable>Your Name</replaceable>" with the
     following contents:</para>
 
     <itemizedlist>
@@ -1135,7 +1113,7 @@ To use the current port, you must be in a port's directory.</screen>
 
       <listitem>
         <para>the identity you'd like to use as a member of the project, a.k.a. the
-        &ldquo;handle&rdquo;, as part of your <literal><replaceable>handle</replaceable>@macports.org</literal>
+        "handle", as part of your <literal><replaceable>handle</replaceable>@macports.org</literal>
         alias.</para>
       </listitem>
 
@@ -1149,14 +1127,14 @@ To use the current port, you must be in a port's directory.</screen>
 
   </section>
 
-  <section id="project.portmgr">
+  <section xml:id="project.portmgr">
     <title>The PortMgr Team</title>
 
     <para>The MacPorts PortMgr team is the steering group for The MacPorts
     Project. Its membership is usually determined by public elections among
     project members; the current members of the team can be found on the
-    <ulink url="https://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
-    Developers wiki page</ulink>.</para>
+    <link xlink:href="https://trac.macports.org/wiki/MacPortsDevelopers">MacPorts
+    Developers wiki page</link>.</para>
 
     <para>They are responsible for matters such as:</para>
 
