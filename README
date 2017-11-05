@@ -1,6 +1,6 @@
 This is the MacPorts documentation directory.
 
-To generate it you have to checkout the whole "trunk/doc-new" directory,
+To generate it you have to checkout the entire "macports-guide" repository,
 and you need the "docbook-xsl", "docbook-xml-4.5" and "libxslt" ports.
 If your port installation isn't in /opt/local, edit or override the
 PREFIX Makefile variable.
