@@ -91,6 +91,22 @@
     </varlistentry>
 
     <varlistentry>
+      <term>depends_test</term>
+
+      <term>depends_test-append</term>
+
+      <term>depends_test-delete</term>
+
+      <listitem>
+        <para>The list of dependencies to check before phase
+        <option>test</option>.
+        Test dependencies are only needed when the port enables
+        testing (i.e. <option>test.run            yes</option>).
+        </para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>depends_run</term>
 
       <term>depends_run-append</term>
