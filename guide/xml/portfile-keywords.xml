@@ -258,5 +258,22 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry>
+      <term>license_noconflict</term>
+
+      <listitem>
+        <para>By default, it is assumed that ports may use libraries or
+        headers from their dependencies and thus form a derivative work.
+        A dependency with an incompatible license thus prevents the port
+        from being distributed in binary form. If a dependency with an
+        incompatible license is not used in such a way that a derivative
+        work is formed, or should not prevent binary distribution for any
+        other reason, add its name to this list.
+        </para>
+        <programlisting>license_noconflict openssl</programlisting>
+        <programlisting>license_noconflict readline gdbm</programlisting>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
