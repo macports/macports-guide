@@ -254,8 +254,8 @@
 
             <para>There are times when some may want to run MacPorts from a version newer than the current stable
                 release. Maybe there's a new feature that you'd like to use, or it fixes an issue you've encountered, or
-                you just like to be on the cutting edge. These steps explain how to run completely from master, using
-                only Git to keep MacPorts up to date.</para>
+                you just like to be on the cutting edge. These steps explain how to setup MacPorts for developers,
+                using only Git to keep MacPorts up to date.</para>
 
             <para>Though a distinction is made between pre-release and release versions of MacPorts base, the ports
                 collection supports no such distinction or versioning. The <link linkend="using.port.selfupdate">selfupdate</link>
@@ -272,7 +272,8 @@
 
                     <programlisting><prompt>$</prompt> <userinput>mkdir -p /opt/mports</userinput>
 <!--                --><prompt>$</prompt> <userinput>cd /opt/mports</userinput>
-<!--                --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-base.git</userinput></programlisting>
+<!--                --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-base.git</userinput>
+<!--                --><prompt>$</prompt> <userinput>git checkout v&macports-version;  # skip this if you want to use the development version</userinput></programlisting>
 
                 </listitem>
 
