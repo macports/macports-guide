@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.portgroup.python">
+<section id="reference.portgroup.python">
 
   <title>PortGroup python</title>
 
@@ -16,7 +16,7 @@
       </para>
     </note>
 
-  <section xml:id="reference.portgroup.python.keywords">
+  <section id="reference.portgroup.python.keywords">
     <title>python PortGroup Specific Keywords</title>
 
     <para>Portfiles using the python PortGroup allow for port authors to
@@ -139,7 +139,7 @@
     </variablelist>
   </section>
 
-  <section xml:id="reference.portgroup.python.variables">
+  <section id="reference.portgroup.python.variables">
     <title>python PortGroup Specific Variables</title>
 
     <para>When the python PortGroup is declared within a Portfile, the
@@ -221,7 +221,7 @@
     </variablelist>
   </section>
 
-  <section xml:id="reference.portgroup.python.sugar">
+  <section id="reference.portgroup.python.sugar">
     <title>python PortGroup Sugar</title>
 
     <para>Portfiles using PortGroup python do not need to define the

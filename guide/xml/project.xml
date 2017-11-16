@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<chapter xml:id="project">
+<chapter id="project">
   <title>MacPorts Project</title>
 
-  <section xml:id="project.tickets">
+  <section id="project.tickets">
     <title>Using Trac for Tickets</title>
 
     <para>The MacPorts Project uses a system called <link
@@ -14,7 +14,7 @@
     xlink:href="https://github.com/join">GitHub account</link> in order to login to
     <link xlink:href="https://trac.macports.org/">Trac</link> to create tickets.</para>
 
-    <section xml:id="project.tickets.prerequisites">
+    <section id="project.tickets.prerequisites">
       <title>Before Filing a New Ticket</title>
 
       <itemizedlist>
@@ -78,7 +78,7 @@
       </itemizedlist>
     </section>
 
-    <section xml:id="project.tickets.creating">
+    <section id="project.tickets.creating">
       <title>Creating Trac Tickets</title>
 
       <para>Once you are logged into Trac, you may click <link
@@ -105,7 +105,7 @@
       </screenshot>
     </section>
 
-    <section xml:id="project.tickets.guidelines">
+    <section id="project.tickets.guidelines">
       <title>Trac Ticket Guidelines</title>
 
       <para>This is a short overview of the guidelines for Trac tickets. Please
@@ -491,7 +491,7 @@
     </section>
   </section>
 
-  <section xml:id="project.contributing">
+  <section id="project.contributing">
     <title>Contributing to MacPorts</title>
 
     <para>You may contribute new ports and enhancements of any kind to already
@@ -503,7 +503,7 @@
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
 
-    <section xml:id="project.contributing.new">
+    <section id="project.contributing.new">
       <title>New Ports</title>
 
       <para>Ports are contributed by following these steps. See the <link
@@ -553,7 +553,7 @@
       </orderedlist>
     </section>
 
-    <section xml:id="project.contributing.updates">
+    <section id="project.contributing.updates">
       <title>Port Enhancements</title>
 
       <para>Enhancements to existing ports may comprise new functionality for
@@ -626,7 +626,7 @@
       </orderedlist>
     </section>
 
-    <section xml:id="project.contributing.maintaining">
+    <section id="project.contributing.maintaining">
       <title>Becoming a Port Maintainer</title>
 
       <para>MacPorts is always looking for people that want to take care of
@@ -871,7 +871,7 @@ To use the current port, you must be in a port's directory.</screen>
     </section>
   </section>
 
-  <section xml:id="project.update-policies">
+  <section id="project.update-policies">
     <title>Port Update Policies</title>
 
     <para>Port maintainers normally are given commit privileges to the
@@ -882,7 +882,7 @@ To use the current port, you must be in a port's directory.</screen>
     port it is a good practice to inform a port's maintainer. See details
     below.</para>
 
-    <section xml:id="project.update-policies.nonmaintainer">
+    <section id="project.update-policies.nonmaintainer">
       <title>Non-Maintainer Port Updates</title>
 
       <para>If you have a port update or bugfix for a port you do not
@@ -943,7 +943,7 @@ To use the current port, you must be in a port's directory.</screen>
       </itemizedlist>
     </section>
 
-    <section xml:id="project.update-policies.abandonment">
+    <section id="project.update-policies.abandonment">
       <title>Port Abandonment</title>
 
       <para>A port may be considered abandoned if any of the following apply:</para>
@@ -995,10 +995,10 @@ To use the current port, you must be in a port's directory.</screen>
     </section>
   </section>
 
-  <section xml:id="project.docs">
+  <section id="project.docs">
     <title>Updating Documentation</title>
 
-    <section xml:id="project.docs.guide">
+    <section id="project.docs.guide">
       <title>Updating the Guide</title>
 
       <para>
@@ -1007,7 +1007,7 @@ To use the current port, you must be in a port's directory.</screen>
         encouraged to submit a pull request following the steps outlined below.
       </para>
 
-      <section xml:id="project.docs.guide.one-time">
+      <section id="project.docs.guide.one-time">
         <title>Preparing Changes</title>
 
         <procedure>
@@ -1025,7 +1025,7 @@ To use the current port, you must be in a port's directory.</screen>
         </procedure>
       </section>
 
-      <section xml:id="project.docs.guide.each-time">
+      <section id="project.docs.guide.each-time">
         <title>Proposing a Change</title>
 
         <para>For each change you want to make:</para>
@@ -1068,7 +1068,7 @@ To use the current port, you must be in a port's directory.</screen>
     </section>
   </section>
 
-  <section xml:id="project.membership">
+  <section id="project.membership">
     <title>MacPorts Membership</title>
 
     <para>A requirement for a person to become a MacPorts committer is to
@@ -1127,7 +1127,7 @@ To use the current port, you must be in a port's directory.</screen>
 
   </section>
 
-  <section xml:id="project.portmgr">
+  <section id="project.portmgr">
     <title>The PortMgr Team</title>
 
     <para>The MacPorts PortMgr team is the steering group for The MacPorts
