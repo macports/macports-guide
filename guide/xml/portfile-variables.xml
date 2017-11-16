@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.variables">
+<section id="reference.variables">
   <title>Global Variables</title>
 
   <para>Global variables are variables available to any Portfile. For a list

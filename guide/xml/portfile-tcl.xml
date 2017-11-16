@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.tcl-extensions">
+<section id="reference.tcl-extensions">
   <title>Tcl Extensions &amp; Useful Tcl Commands</title>
 
   <para>A MacPorts Portfile is a Tcl script, so it may contain any arbitrary
@@ -226,7 +226,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry xml:id="reference.tcl-extensions.strsed">
+    <varlistentry id="reference.tcl-extensions.strsed">
         <term>strsed</term>
 
         <listitem>
@@ -325,8 +325,8 @@
 
         <variablelist>
           <varlistentry>
-            <term>adduser username [uxml:id=<replaceable>uid</replaceable>]
-            [gxml:id=<replaceable>gid</replaceable>]
+            <term>adduser username [uid=<replaceable>uid</replaceable>]
+            [gid=<replaceable>gid</replaceable>]
             [passwd=<replaceable>passwd</replaceable>]
             [realname=<replaceable>realname</replaceable>]
             [home=<replaceable>home</replaceable>]
@@ -365,7 +365,7 @@
         <variablelist>
           <varlistentry>
             <term>addgroup <replaceable>group</replaceable>
-            [gxml:id=<replaceable>gid</replaceable>]
+            [gid=<replaceable>gid</replaceable>]
             [passwd=<replaceable>passwd</replaceable>]
             [realname=<replaceable>realname</replaceable>]
             [users=<replaceable>users</replaceable>]</term>
@@ -387,7 +387,7 @@
               gid. This can be used with adduser:</para>
 
               <programlisting>addgroup foo
-adduser foo gxml:id=[existsgroup foo]</programlisting>
+adduser foo gid=[existsgroup foo]</programlisting>
             </listitem>
           </varlistentry>
         </variablelist>

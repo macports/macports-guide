@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.startupitems">
+<section id="reference.startupitems">
   <title>StartupItems</title>
 
   <para>A StartupItem is a MacPorts facility to run <quote>daemons,</quote> a Unix term for
@@ -28,7 +28,7 @@
     in Portfiles; this prevents StartupItems from being created.</para>
   </note>
 
-  <section xml:id="reference.startupitems.attributes">
+  <section id="reference.startupitems.attributes">
     <title>StartupItem Attributes</title>
 
     <para>The keywords in this section may be used with either
@@ -145,7 +145,7 @@
     </variablelist>
   </section>
 
-  <section xml:id="reference.startupitems.executable">
+  <section id="reference.startupitems.executable">
     <title>Executable StartupItems</title>
 
     <para>Daemons run continuously, so monitoring the health of daemon
@@ -231,7 +231,7 @@
     </variablelist>
   </section>
 
-  <section xml:id="reference.startupitems.script">
+  <section id="reference.startupitems.script">
     <title>Script StartupItems</title>
 
     <para>StartupItems of type <quote>script</quote> create a wrapper during
@@ -406,7 +406,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
     </variablelist>
   </section>
 
-  <section xml:id="reference.startupitems.launchd">
+  <section id="reference.startupitems.launchd">
     <title>Loading / Unloading StartupItems into launchd</title>
 
     <para>A port with a StartupItem places a link to a .plist file for the
@@ -425,7 +425,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
     <programlisting><prompt>%%</prompt> <userinput>sudo launchctl unload -w /Library/LaunchDaemons/org.macports.mysql5.plist</userinput></programlisting>
   </section>
 
-  <section xml:id="reference.startupitems.internals">
+  <section id="reference.startupitems.internals">
     <title>StartupItem Internals</title>
 
     <para>During port installation a MacPorts StartupItem creates a .plist
