@@ -5,7 +5,7 @@
 "http://docbook.org/xml/5.0/dtd/docbook.dtd"[
 <!ENTITY macports-version "2.4.2">
 ]>
-<chapter xml:id="installing">
+<chapter id="installing">
     <title>Installing MacPorts</title>
 
     <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
@@ -14,7 +14,7 @@
             linkend="installing.macports.source">installing MacPorts from source</link>, and continue to the end of the
         chapter.</para>
 
-    <section xml:id="installing.xcode">
+    <section id="installing.xcode">
         <title>Install Xcode</title>
 
         <para><link xlink:href="https://developer.apple.com/xcode/">Xcode</link> is a package provided by Apple containing
@@ -29,7 +29,7 @@
 
         <para>Follow the instructions for your version of macOS:</para>
 
-        <section xml:id="installing.xcode.mavericks">
+        <section id="installing.xcode.mavericks">
             <title>Install Xcode on OS X 10.9 or Later</title>
 
             <para>Download the latest version of Xcode <link
@@ -45,7 +45,7 @@
                     Apple developer website</link>.</para>
         </section>
 
-        <section xml:id="installing.xcode.lion">
+        <section id="installing.xcode.lion">
             <title>Install Xcode on OS X 10.7 Lion or OS X 10.8 Mountain Lion</title>
 
             <para>Download the latest version of Xcode <link
@@ -53,7 +53,7 @@
                 get it <link xlink:href="http://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
                     Store</link>.</para>
 
-            <section xml:id="installing.xcode.lion.43">
+            <section id="installing.xcode.lion.43">
                 <title>Xcode 4.3 and Later</title>
 
                 <para>Xcode 4.3 and later do not automatically install the command line tools, but MacPorts requires
@@ -69,7 +69,7 @@
             </section>
         </section>
 
-        <section xml:id="installing.xcode.snowleopard">
+        <section id="installing.xcode.snowleopard">
             <title>Install Xcode on Mac OS X 10.6 Snow Leopard</title>
 
             <para>If you are using Mac OS X 10.6, there are two branches of Xcode which could be considered to be the
@@ -111,7 +111,7 @@
                 </itemizedlist>
         </section>
 
-        <section xml:id="installing.xcode.other">
+        <section id="installing.xcode.other">
             <title>Install Xcode on Older Releases of Mac OS X</title>
 
             <para>If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5
@@ -138,7 +138,7 @@
         </section>
     </section>
 
-    <section xml:id="installing.macports">
+    <section id="installing.macports">
         <title>Install MacPorts</title>
 
         <para>If you are using macOS, you should install MacPorts using the macOS package installer unless you do not wish
@@ -148,7 +148,7 @@
             MacPorts on another OS platform, you must <link linkend="installing.macports.source">install MacPorts from
                 the source code</link>.</para>
 
-        <section xml:id="installing.macports.binary">
+        <section id="installing.macports.binary">
             <title>macOS Package Install</title>
 
             <para>The macOS package installer automatically installs MacPorts, <link linkend="installing.shell">sets the
@@ -211,7 +211,7 @@
             </orderedlist>
         </section>
 
-        <section xml:id="installing.macports.source">
+        <section id="installing.macports.source">
             <title>Source Install</title>
 
             <para>If you installed MacPorts using the package installer, skip this section. To install MacPorts from the
@@ -247,7 +247,7 @@
             </orderedlist>
         </section>
 
-        <section xml:id="installing.macports.git">
+        <section id="installing.macports.git">
             <title>Git Install</title>
 
             <para>If you installed MacPorts using the package installer, skip this section.</para>
@@ -323,7 +323,7 @@
             </orderedlist>
         </section>
 
-        <section xml:id="installing.macports.source.multiple">
+        <section id="installing.macports.source.multiple">
             <title>Install Multiple MacPorts Copies</title>
 
             <para>Occasionally a MacPorts developer may wish to install more than one MacPorts instance on the same
@@ -350,7 +350,7 @@
         </section>
     </section>
 
-    <section xml:id="installing.macports.upgrade">
+    <section id="installing.macports.upgrade">
         <title>MacPorts Upgrade</title>
 
         <para>MacPorts base upgrades are performed automatically (when a newer release is available) during a <link
@@ -360,7 +360,7 @@
             code.</para>
     </section>
 
-    <section xml:id="installing.macports.uninstalling">
+    <section id="installing.macports.uninstalling">
         <title>Uninstall</title>
 
         <para>Uninstalling MacPorts can be a drastic step, and depending on the issue you are experiencing, you may not
@@ -402,7 +402,7 @@
             not all of the above paths will exist on your system. This is OK.</para>
     </section>
 
-    <section xml:id="installing.shell">
+    <section id="installing.shell">
         <title>MacPorts and the Shell</title>
 
         <para>MacPorts requires that some environment variables be set in the shell. When MacPorts is installed using
@@ -416,7 +416,7 @@
             <filename>.profile</filename>, <filename>.bash_login</filename>, <filename>.bash_profile</filename>,
             <filename>.tcshrc</filename>, or <filename>.cshrc</filename>.</para>
 
-        <section xml:id="installing.shell.postflight">
+        <section id="installing.shell.postflight">
             <title>The Postflight Script</title>
 
             <para>The postflight script automatically sets the <varname>PATH</varname> variable, and optionally the
@@ -478,7 +478,7 @@
             </itemizedlist>
         </section>
 
-        <section xml:id="installing.shell.verifyprofile">
+        <section id="installing.shell.verifyprofile">
             <title>Verify the Configuration File</title>
 
             <para>To verify that the file containing the MacPorts variables is in effect, type <command>env</command> in
@@ -508,7 +508,7 @@
 <!--        -->_=/usr/bin/env</screen>
         </section>
 
-        <section xml:id="installing.shell.editorvar">
+        <section id="installing.shell.editorvar">
             <title>Optional Editor Variables</title>
 
             <para>You can set an environment variable in order to use your favorite text editor with the <command>port edit</command>

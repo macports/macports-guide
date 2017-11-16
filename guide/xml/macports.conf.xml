@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="internals.configuration-files">
+<section id="internals.configuration-files">
   <title>Configuration Files</title>
 
   <para>The MacPorts configuration files often do not need to be modified for the
@@ -19,7 +19,7 @@
   separated by either a space or a tab. Lines beginning with '#' are comments,
   empty lines are ignored.</para>
 
-  <section xml:id="internals.configuration-files.macports-conf">
+  <section id="internals.configuration-files.macports-conf">
     <title>macports.conf</title>
 
     <para>macports.conf is the configuration file used to bootstrap the
@@ -415,7 +415,7 @@
     </variablelist>
   </section>
 
-  <section xml:id="internals.configuration-files.sources-conf">
+  <section id="internals.configuration-files.sources-conf">
     <title>sources.conf</title>
 
     <para>This file enables rsync synchronization of the default ports tree
@@ -429,7 +429,7 @@
     <replaceable>file:///path/to/localportsrepository</replaceable></para>
   </section>
 
-  <section xml:id="internals.configuration-files.variants-conf">
+  <section id="internals.configuration-files.variants-conf">
     <title>variants.conf</title>
 
     <para>This optional file specifies any variants you'd like to be invoked
