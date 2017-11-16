@@ -6,20 +6,20 @@
 <!ENTITY macports-prev-version "2.4.1">
 <!ENTITY macports-version "2.4.2">
 ]>
-<chapter id="using">
+<chapter xml:id="using">
     <title>Using MacPorts</title>
 
     <para>This chapter describes using <command>port</command>, port variants, common tasks and port
     binaries.</para>
 
-    <section id="using.port">
+    <section xml:id="using.port">
         <title>The port Command</title>
 
         <para><command>port</command> is the main utility used to interact with MacPorts. It is
             used to update <filename>Portfile</filename>s and the MacPorts infrastructure, and install and manage
             ports.</para>
 
-        <section id="using.port.help">
+        <section xml:id="using.port.help">
             <title>port help</title>
 
             <para>The <option>help</option> action shows some brief information about the specified action, or if no
@@ -37,7 +37,7 @@ Upgrade MacPorts itself and run the sync target
            MacPorts.</screen>
         </section>
 
-        <section id="using.port.selfupdate">
+        <section xml:id="using.port.selfupdate">
             <title>port selfupdate</title>
 
             <para>The <option>selfupdate</option> action should be used regularly to update the local ports tree with
@@ -92,7 +92,7 @@ Upgrade MacPorts itself and run the sync target
             </variablelist>
         </section>
 
-        <section id="using.port.sync">
+        <section xml:id="using.port.sync">
             <title>port sync</title>
 
             <para>The <option>sync</option> action performs a subset of <option>selfupdate</option>. It synchronizes the
@@ -103,7 +103,7 @@ Upgrade MacPorts itself and run the sync target
             <para><option>sync</option> does not accept any switches.</para>
         </section>
 
-        <section id="using.port.diagnose">
+        <section xml:id="using.port.diagnose">
             <title>port diagnose</title>
 
             <para>The <option>diagnose</option> action checks for common issues in the user's environment and reports all
@@ -125,7 +125,7 @@ Upgrade MacPorts itself and run the sync target
             </note>
         </section>
 
-        <section id="using.port.reclaim">
+        <section xml:id="using.port.reclaim">
             <title>port reclaim</title>
 
             <para>The <option>reclaim</option> action attempts to reclaim space by uninstalling inactive ports, and
@@ -138,7 +138,7 @@ Upgrade MacPorts itself and run the sync target
             </note>
         </section>
 
-        <section id="using.port.list">
+        <section xml:id="using.port.list">
             <title>port list</title>
 
             <para>The <option>list</option> action lists the currently available version of the specified ports, or if
@@ -163,7 +163,7 @@ Upgrade MacPorts itself and run the sync target
             </note>
         </section>
 
-        <section id="using.port.search">
+        <section xml:id="using.port.search">
             <title>port search</title>
 
             <para>The <option>search</option> action allows finding ports by partial matches of the name or description.
@@ -361,7 +361,7 @@ Found 11 ports.</screen>
             </variablelist>
         </section>
 
-        <section id="using.port.info">
+        <section xml:id="using.port.info">
             <title>port info</title>
 
             <para>The <option>info</option> action is used to get information about a port: name, version, description,
@@ -387,7 +387,7 @@ License:              BSD
 Maintainers:          cal@macports.org</screen>
         </section>
 
-        <section id="using.port.deps">
+        <section xml:id="using.port.deps">
             <title>port deps</title>
 
             <para>The <option>deps</option> action lists the dependencies of a port. Dependencies are the packages are
@@ -431,7 +431,7 @@ Maintainers:          cal@macports.org</screen>
 
         </section>
 
-        <section id="using.port.variants">
+        <section xml:id="using.port.variants">
             <title>port variants</title>
 
             <para>The <option>variants</option> action allows you to check what variations of a port are available
@@ -464,7 +464,7 @@ apache2 has the variants:
                 <filename>variants.conf</filename>.</para>
         </section>
 
-        <section id="using.port.install">
+        <section xml:id="using.port.install">
             <title>port install</title>
 
             <para>The action <option>install</option> is used to install a port. Once you determined the name of a port
@@ -542,7 +542,7 @@ apache2 has the variants:
             </variablelist>
         </section>
 
-        <section id="using.port.clean">
+        <section xml:id="using.port.clean">
             <title>port clean</title>
 
             <para>The action <option>clean</option> deletes intermediate files created by MacPorts while installing
@@ -600,7 +600,7 @@ apache2 has the variants:
             </variablelist>
         </section>
 
-        <section id="using.port.uninstall">
+        <section xml:id="using.port.uninstall">
             <title>port uninstall</title>
 
             <para>The <option>uninstall</option> action will remove an installed port. It is one of the actions you will
@@ -665,7 +665,7 @@ Error: port uninstall failed: Please uninstall the ports that depend on libcomer
             </variablelist>
         </section>
 
-        <section id="using.port.contents">
+        <section xml:id="using.port.contents">
             <title>port contents</title>
 
             <para>The <option>contents</option> action displays a list of all files that have been installed by a given
@@ -753,7 +753,7 @@ Port xorg-renderproto contains:
             </variablelist>
         </section>
 
-        <section id="using.port.installed">
+        <section xml:id="using.port.installed">
             <title>port installed</title>
 
             <para>The <option>installed</option> action displays the installed versions and variants of the specified
@@ -791,7 +791,7 @@ The following ports are currently installed:
   libsdl @1.2.15_3-x11 (active) platform='darwin 13' archs='x86_64'</screen>
         </section>
 
-        <section id="using.port.outdated">
+        <section xml:id="using.port.outdated">
             <title>port outdated</title>
 
             <para>The <option>outdated</option> action checks your installed ports against the current ports tree to see
@@ -818,7 +818,7 @@ p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
                 version number. If it isn't, more details will be given.</para>
         </section>
 
-        <section id="using.port.upgrade">
+        <section xml:id="using.port.upgrade">
             <title>port upgrade</title>
 
             <para>The <option>upgrade</option> action upgrades installed ports and their dependencies to the latest
@@ -899,7 +899,7 @@ p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
             </variablelist>
         </section>
 
-        <section id="using.port.dependents">
+        <section xml:id="using.port.dependents">
             <title>port dependents</title>
 
             <para>The <option>dependents</option> action reports what ports depend upon a given (installed) port, if
@@ -933,7 +933,7 @@ wireshark depends on openssl</screen>
             <para>This command will, however, not cover dependencies that are only present in non-default variants.</para>
         </section>
 
-        <section id="using.port.livecheck">
+        <section xml:id="using.port.livecheck">
             <title>port livecheck</title>
 
             <para>The <option>livecheck</option> action checks to see if the application corresponding to a given port
@@ -953,7 +953,7 @@ wireshark depends on openssl</screen>
             </note>
         </section>
 
-        <section id="using.port.lint">
+        <section xml:id="using.port.lint">
             <title>port lint</title>
 
             <para>The lint action checks if the <filename>Portfile</filename> conforms to the MacPorts standards
@@ -992,7 +992,7 @@ Warning: no license set
         </section>
     </section>
 
-    <section id="using.variants">
+    <section xml:id="using.variants">
         <title>Port Variants</title>
 
         <para>Variants are a way for port authors to provide options for a port that may be chosen at installation.
@@ -1026,7 +1026,7 @@ apache2 has the variants:
                     linkend="internals.configuration-files.variants-conf" /> for more information on
             <filename>variants.conf</filename>.</para>
 
-        <section id="using.variants.invoking">
+        <section xml:id="using.variants.invoking">
             <title>Invoking Variants</title>
 
             <para>A variant can only be selected when a port is installed. After you have determined what variants
@@ -1061,7 +1061,7 @@ apache2 has the variants:
                 later, the same variants will be used, unless you manually specify different variants.</para>
         </section>
 
-        <section id="using.variants.negating">
+        <section xml:id="using.variants.negating">
             <title>Negating Default Variants</title>
 
             <para>A <filename>Portfile</filename> can specify a default set of variants that will be used when you do
@@ -1076,7 +1076,7 @@ apache2 has the variants:
         </section>
     </section>
 
-    <section id="using.common-tasks">
+    <section xml:id="using.common-tasks">
         <title>Common Tasks</title>
 
         <para>This section lists common operations you may want to perform when managing a MacPorts installation. These
@@ -1088,7 +1088,7 @@ apache2 has the variants:
         <para>Mind the <quote>sudo</quote> for some of the subsequent examples, which is necessary if you have a default
             MacPorts installation.</para>
 
-        <section id="using.common-tasks.updating">
+        <section xml:id="using.common-tasks.updating">
             <title>Updating Your Ports Tree</title>
 
             <para>The local ports tree is a collection of files that contain information on which packages are available
@@ -1108,7 +1108,7 @@ apache2 has the variants:
 <!--        -->  port upgrade outdated</screen>
         </section>
 
-        <section id="using.common-tasks.showports">
+        <section xml:id="using.common-tasks.showports">
             <title>Show Ports Which Need Updating</title>
 
             <para>To see what's new after running <option>selfupdate</option>, you can use <command>port
@@ -1131,7 +1131,7 @@ apache2 has the variants:
 <!--        -->p5.16-ipc-run                  0.910.0_1 &lt; 0.920.0_0</screen>
         </section>
 
-        <section id="using.common-tasks.upgrading">
+        <section xml:id="using.common-tasks.upgrading">
             <title>Upgrading Outdated Ports</title>
 
             <para>To upgrade all your installed and outdated ports, run</para>
@@ -1166,7 +1166,7 @@ apache2 has the variants:
                 avoiding the update of the dependency defeats the purpose of the reinstallation.</para>
         </section>
 
-        <section id="using.common-tasks.removeinactive">
+        <section xml:id="using.common-tasks.removeinactive">
             <title>Removing Inactive Version(s) of Upgraded Port(s)</title>
 
             <para>By default, upgrading ports in MacPorts does not remove the older versions. This is a safety measure
@@ -1228,7 +1228,7 @@ apache2 has the variants:
             <programlisting><prompt>$ </prompt><userinput>sudo port uninstall inactive and not <replaceable>portname</replaceable></userinput></programlisting>
         </section>
 
-        <section id="using.common-tasks.finddepending">
+        <section xml:id="using.common-tasks.finddepending">
             <title>Finding Ports Depending on a Certain Port</title>
 
             <para>If you want to find all ports that depend on a given other port, you can use</para>
@@ -1263,7 +1263,7 @@ apache2 has the variants:
 <!--        -->  gnupg2 @2.0.25_0 (active)</screen>
         </section>
 
-        <section id="using.common-tasks.findleaves">
+        <section xml:id="using.common-tasks.findleaves">
             <title>Finding Leaves</title>
 
             <para>After a while of using MacPorts, installing and uninstalling ports, packages that have been
@@ -1303,7 +1303,7 @@ apache2 has the variants:
                 <programlisting><prompt>$ </prompt><userinput>sudo port_cutleaves</userinput></programlisting>
         </section>
 
-        <section id="using.common-tasks.keeplean">
+        <section xml:id="using.common-tasks.keeplean">
             <title>Keep Your Installation Lean by Defining Leaves as Requested Ports</title>
 
             <para>Well, before we come to the procedure of defining your requested ports, let's have a look at a typical
@@ -1454,13 +1454,13 @@ apache2 has the variants:
         </section>
     </section>
 
-    <section id="using.binaries">
+    <section xml:id="using.binaries">
         <title>Port Binaries</title>
 
         <para>MacPorts can pre-compile ports into binaries so applications need not be compiled when installing on
             a target system. MacPorts supports two types of binaries: archives and packages.</para>
 
-        <section id="using.binaries.archives">
+        <section xml:id="using.binaries.archives">
             <title>Binary Archives</title>
 
             <para>Binary archives can only be used on a target system running MacPorts. They allow MacPorts utilities to
@@ -1518,7 +1518,7 @@ apache2 has the variants:
                 <option>cpgz</option>, and <option>cpio</option>.</para>
         </section>
 
-        <section id="using.binaries.binary-packages">
+        <section xml:id="using.binaries.binary-packages">
             <title>Binary Packages</title>
 
             <para>Binary packages are standalone binary installers that are precompiled; they do not require MacPorts on

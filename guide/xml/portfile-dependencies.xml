@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section id="reference.dependencies">
+<section xml:id="reference.dependencies">
   <title>Dependencies</title>
 
   <para>Free and open source software is highly modular, and MacPorts ports
@@ -122,7 +122,7 @@
     </varlistentry>
   </variablelist>
 
-  <section id="reference.dependencies.types">
+  <section xml:id="reference.dependencies.types">
     <title>Port and File Dependencies</title>
 
     <para>There are two types of dependencies: port dependencies and file

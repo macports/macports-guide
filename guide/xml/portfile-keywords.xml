@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section id="reference.keywords">
+<section xml:id="reference.keywords">
   <title>Global Keywords</title>
 
   <para>MacPorts keywords are used to specify required or optional items
@@ -104,7 +104,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry id="reference.keywords.maintainers">
+    <varlistentry xml:id="reference.keywords.maintainers">
       <term>maintainers</term>
 
       <listitem>

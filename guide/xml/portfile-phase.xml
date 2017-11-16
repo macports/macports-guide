@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section id="reference.phases">
+<section xml:id="reference.phases">
   <title>Port Phases</title>
 
-  <section id="reference.phases.introduction">
+  <section xml:id="reference.phases.introduction">
     <title>Introduction</title>
 
     <para>The MacPorts port installation process has a number of distinct
@@ -161,7 +161,7 @@
     </variablelist>
   </section>
 
-  <section id="reference.phases.installation">
+  <section xml:id="reference.phases.installation">
     <title>Installation Phase Keywords</title>
 
     <para>MacPorts keywords are used to specify required or optional items
@@ -175,7 +175,7 @@
     phases and set options for those phases, and they take effect whether or
     not phase declarations have been explicitly defined in a Portfile.</para>
 
-    <section id="reference.phases.installation.list-modifiers">
+    <section xml:id="reference.phases.installation.list-modifiers">
       <title>Keyword List Modifiers (-append, -delete, -replace, -strsed)</title>
 
       <para>Keyword list modifiers are keywords that end in -append, -delete or
@@ -259,7 +259,7 @@
       </orderedlist>
     </section>
 
-    <section id="reference.phases.installation.argument-modifiers">
+    <section xml:id="reference.phases.installation.argument-modifiers">
       <title>Keyword Argument Modifiers (.pre_args / .post_args)</title>
 
       <para>Keywords that support pre_args and post_args are used to assemble
@@ -272,7 +272,7 @@
     </section>
   </section>
 
-  <section id="reference.phases.fetch">
+  <section xml:id="reference.phases.fetch">
     <title>Fetch Phase Keywords</title>
 
     <para>The list of keywords related to the fetch phase.</para>
@@ -516,14 +516,14 @@ distfiles           file_one.tar.gz:tagone \
       </varlistentry>
     </variablelist>
 
-    <section id="reference.phases.fetch.advanced">
+    <section xml:id="reference.phases.fetch.advanced">
       <title>Advanced Fetch Options</title>
 
       <para>Some mirrors require special options for a resource to be properly
       fetched.</para>
 
       <variablelist>
-        <varlistentry id="reference.phases.fetch.advanced.fetch-type">
+        <varlistentry xml:id="reference.phases.fetch.advanced.fetch-type">
           <term>fetch.type</term>
 
           <listitem>
@@ -642,7 +642,7 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.bzr">
+    <section xml:id="reference.phases.fetch.bzr">
       <title>Fetch from BZR</title>
 
       <para><link xlink:href="http://bazaar.canonical.com/en/">Bzr</link> may be used as
@@ -700,7 +700,7 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.cvs">
+    <section xml:id="reference.phases.fetch.cvs">
       <title>Fetch from CVS</title>
 
       <para><link xlink:href="http://www.nongnu.org/cvs/">CVS</link> may be used as
@@ -817,7 +817,7 @@ svn.revision        2100</programlisting>
     </section>
 
 
-    <section id="reference.phases.fetch.git">
+    <section xml:id="reference.phases.fetch.git">
       <title>Fetch from Git</title>
 
       <para><link xlink:href="http://git-scm.com/">Git</link> may be used as an
@@ -878,7 +878,7 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.hg">
+    <section xml:id="reference.phases.fetch.hg">
       <title>Fetch from Mercurial</title>
 
       <para><link xlink:href="http://mercurial.selenic.com/">Mercurial</link> may be
@@ -939,7 +939,7 @@ svn.revision        2100</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.fetch.svn">
+    <section xml:id="reference.phases.fetch.svn">
       <title>Fetch from Subversion</title>
 
       <para><link xlink:href="http://subversion.apache.org/">Subversion</link> may
@@ -1024,7 +1024,7 @@ svn.revision        2100</programlisting>
     </section>
   </section>
 
-  <section id="reference.phases.checksum">
+  <section xml:id="reference.phases.checksum">
     <title>Checksum Phase Keywords</title>
 
     <para>The list of keywords related to the checksum phase.</para>
@@ -1065,7 +1065,7 @@ svn.revision        2100</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.extract">
+  <section xml:id="reference.phases.extract">
     <title>Extract Phase Keywords</title>
 
     <para>The list of keywords related to the extract phase.</para>
@@ -1370,7 +1370,7 @@ extract.post_args   "| gnutar -x"</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.patch">
+  <section xml:id="reference.phases.patch">
     <title>Patch Phase Keywords</title>
 
     <para>The list of keywords related to the patch phase.</para>
@@ -1497,7 +1497,7 @@ patch.post_args     ???</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.configure">
+  <section xml:id="reference.phases.configure">
     <title>Configure Phase Keywords</title>
 
     <para>The list of keywords related to the configure phase.</para>
@@ -1588,7 +1588,7 @@ configure.env-delete    TCLROOT=${prefix}</programlisting>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="reference.phases.configure.optflags">
+      <varlistentry xml:id="reference.phases.configure.optflags">
         <term>configure.optflags</term>
 
         <term>configure.optflags-append</term>
@@ -1617,7 +1617,7 @@ configure.optflags-delete     -Os</programlisting>
         </listitem>
       </varlistentry>
 
-      <varlistentry id="reference.phases.configure.cflags">
+      <varlistentry xml:id="reference.phases.configure.cflags">
         <term>configure.cflags</term>
 
         <term>configure.cflags-append</term>
@@ -2339,7 +2339,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       </varlistentry>
     </variablelist>
 
-    <section id="reference.phases.configure.universal">
+    <section xml:id="reference.phases.configure.universal">
       <title>Configure Universal</title>
 
       <para>Universal keywords are used to make a port compile on OS X for
@@ -2474,7 +2474,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
       </variablelist>
     </section>
 
-    <section id="reference.phases.configure.automake-autoconf">
+    <section xml:id="reference.phases.configure.automake-autoconf">
       <title>Automake, Autoconf, and Autoreconf</title>
 
       <para>The list of configure keywords available for ports that need
@@ -2664,7 +2664,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
     </section>
   </section>
 
-  <section id="reference.phases.build">
+  <section xml:id="reference.phases.build">
     <title>Build Phase Keywords</title>
 
     <para>The list of keywords related to the build phase.</para>
@@ -2874,7 +2874,7 @@ build.target-delete     compat</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.test">
+  <section xml:id="reference.phases.test">
     <title>Test Phase Keywords</title>
 
     <para>The list of keywords related to the test phase.</para>
@@ -3012,7 +3012,7 @@ build.target-delete     compat</programlisting>
     </variablelist>
   </section>
 
-  <section id="reference.phases.destroot">
+  <section xml:id="reference.phases.destroot">
     <title>Destroot Phase Keywords</title>
 
     <para>The list of keywords related to the destroot phase.</para>

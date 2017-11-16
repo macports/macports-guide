@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE refentry PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<refentry id="porthier">
+<refentry xml:id="porthier">
   <refmeta>
     <refentrytitle>PORTHIER</refentrytitle>
 
