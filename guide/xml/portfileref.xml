@@ -38,6 +38,9 @@
     <xi:include href="portgroups.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
 
+    <xi:include href="portgroup-github.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
+
     <xi:include href="portgroup-gnustep.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
 
