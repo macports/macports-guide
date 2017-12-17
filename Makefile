@@ -44,7 +44,7 @@ GUIDE_RESULT_DBLATEX = $(GUIDE)/dblatex
 # Path to the DocBook XSL files.
 DOCBOOK         = $(PREFIX)/share/xsl/docbook-xsl
 ifeq ($(UNAME), Linux)
-DOCBOOK         = /usr/local/share/xsl/docbook-xsl
+DOCBOOK         = $(PREFIX)/share/xml/docbook/stylesheet/docbook-xsl
 endif
 GUIDE_XSL       = $(GUIDE)/resources/single-page.xsl
 GUIDE_XSL_CHUNK = $(GUIDE)/resources/chunk.xsl
