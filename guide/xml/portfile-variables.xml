@@ -106,10 +106,8 @@
       <listitem>
         <para>Location to store downloaded distfiles.</para>
 
-        <!-- TODO: which value have the variables? -->
-
         <para>Value:
-        <varname>${sysportpath}/distfiles/${dist_subdir}/</varname></para>
+        <varname>${portdbpath}/distfiles/${dist_subdir}/</varname></para>
       </listitem>
     </varlistentry>
 
