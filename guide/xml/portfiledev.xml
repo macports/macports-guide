@@ -1142,9 +1142,8 @@ categories          kde finance
     <title>MacPorts' buildbot</title>
 
     <para>The <link xlink:href="https://build.macports.org/">buildbot</link> is a port
-      build-service currently supporting building of all committed ports for Snow Leopard,
-      Lion, and Mountain Lion using the MacPorts AutoBuild
-      (<link xlink:href="https://svn.macports.org/repository/macports/contrib/mpab/">MPAB</link>)
+      build service which builds ports using the MacPorts Buildbot
+      (<link xlink:href="https://github.com/macports/mpbb">MPBB</link>)
       scripts.</para>
 
     <para>Every time a maintainer commits changes to MacPorts' ports Git
@@ -1165,10 +1164,10 @@ categories          kde finance
       and the
       <link xlink:href="https://build.macports.org/builders">builders</link>
       views most useful since they give information about the build status and offer
-      the possibility to build ones port(s) on specific builders.</para>
+      the possibility to build one's port(s) on specific builders.</para>
 
     <para>Thus the buildbot helps to keep MacPorts consistent on various
-      OS X versions, i.e., a maintainer does not need access to these versions anymore in
+      macOS versions, i.e., a maintainer does not need access to these versions anymore in
       order to assure that the port(s) maintained build without problems. Currently only
       the default port variants will be built and kept.</para>
 
