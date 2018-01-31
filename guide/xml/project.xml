@@ -1112,7 +1112,7 @@ To use the current port, you must be in a port's directory.</screen>
       </listitem>
 
       <listitem>
-        <para>the identity you'd like to use as a member of the project, a.k.a. the
+        <para>your github username. This will be used as the identity the
         "handle", as part of your <literal><replaceable>handle</replaceable>@macports.org</literal>
         alias.</para>
       </listitem>
