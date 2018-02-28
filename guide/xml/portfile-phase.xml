@@ -1892,7 +1892,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cc</term>
 
         <listitem>
-          <para>Set CC compiler flags for selecting a C compiler.</para>
+          <para>C compiler for the CC environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1912,7 +1912,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cpp</term>
 
         <listitem>
-          <para>Set CPP compiler flags for selecting a C preprocessor.</para>
+          <para>C preprocessor for the CPP environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1932,7 +1932,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.cxx</term>
 
         <listitem>
-          <para>Set CXX compiler flags for selecting a C++ compiler.</para>
+          <para>C++ compiler for the CXX environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1952,8 +1952,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.objc</term>
 
         <listitem>
-          <para>Set OBJC compiler flags for selecting an Objective-C
-          compiler.</para>
+          <para>Objective-C compiler for the OBJC environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1973,7 +1972,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.fc</term>
 
         <listitem>
-          <para>Set FC compiler flags for selecting a Fortran compiler.</para>
+          <para>Fortran compiler for the FC environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -1993,8 +1992,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.f77</term>
 
         <listitem>
-          <para>Set F77 compiler flags for selecting a Fortran 77
-          compiler.</para>
+          <para>Fortran 77 compiler for the F77 environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -2014,8 +2012,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.f90</term>
 
         <listitem>
-          <para>Set F90 compiler flags for selecting a Fortran 90
-          compiler.</para>
+          <para>Fortran 90 compiler for the F90 environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
@@ -2035,7 +2032,7 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <term>configure.javac</term>
 
         <listitem>
-          <para>Set JAVAC compiler flags for selecting a Java compiler.</para>
+          <para>Java compiler for the JAVAC environment variable when invoking the configure script.</para>
 
           <itemizedlist>
             <listitem>
