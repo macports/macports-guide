@@ -304,7 +304,7 @@
                         <filename>/opt/local/etc/macports/sources.conf</filename> in a text editor. The last line
                         should look like this:</para>
 
-                    <programlisting>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</programlisting>
+                    <programlisting>rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]</programlisting>
 
                     <para>Change it to point to the working copy you checked out:</para>
 

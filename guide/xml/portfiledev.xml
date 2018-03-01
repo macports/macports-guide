@@ -745,7 +745,7 @@ variant sqlite description {Build sqlite support} {
         the rsync URL as shown.</para>
 
         <programlisting>file:///Users/julesverne/ports
-rsync://rsync.macports.org/release/ports [default]
+rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]
 </programlisting>
 
         <note>
@@ -1110,7 +1110,7 @@ categories          kde finance
           there to inform users that they should uninstall it and install something else
           instead. You might want to override some of the defaults though. For details have
           a look at the PortGroup's source code in
-          <filename>${prefix}/var/macports/sources/rsync.macports.org/release/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
+          <filename>${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/obsolete-1.0.tcl</filename>.</para>
 
         <note>
           <para>It is important to specify <varname>replaced_by</varname> BEFORE the

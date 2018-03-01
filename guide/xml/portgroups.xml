@@ -12,7 +12,7 @@
 
   <para>See the following folder for PortGroup definitions:</para>
   <para>
-    <filename>${prefix}/var/macports/sources/rsync.macports.org/release/tarballs/ports/_resources/port1.0/group/</filename>
+    <filename>${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/</filename>
   </para>
 
   <para>A sample listing follows:</para>

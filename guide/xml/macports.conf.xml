@@ -423,7 +423,7 @@
     selfupdate</command> or <command>port sync</command> are run.</para>
 
     <para>Default:
-    <filename>rsync://rsync.macports.org/release/tarballs/ports.tar [default]</filename></para>
+    <filename>rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]</filename></para>
 
     <para>Optional local repositories are enabled using a file url:
     <replaceable>file:///path/to/localportsrepository</replaceable></para>
