@@ -2054,53 +2054,59 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
         <listitem>
           <para>Select a compiler suite to fill the compiler environment
           variables. All variables/tools a compiler suite can provide are set.
-          Manually set variables are not overwritten. Dependencies are not
-          added for you, as they may be just build- or also run-dependencies.
+          Manually set variables are not overwritten.
           Keep in mind that not all compiler suites might be available on your
           platform: <option>gcc-3.3</option> is available on Mac OS X 10.3 and
-          10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4+,
+          10.4 PowerPC, <option>gcc-4.0</option> is available on 10.4 and 10.5,
           <option>gcc-4.2</option> and <option>llvm-gcc-4.2</option> are
-          available on 10.5 and 10.6, and clang is available on 10.6.</para>
+          available on 10.5 and 10.6, and <option>clang</option> is available
+          on 10.6 and later.</para>
 
           <para>Only use it if a port really needs a different
           compiler.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <option>gcc-4.0</option> on Mac OS X 10.4 and
-              10.5</para>
+              <para>Default: <option>apple-gcc-4.2</option> on Mac OS X 10.4</para>
             </listitem>
 
             <listitem>
-              <para>Default: <option>gcc-4.2</option> with Xcode 3.2 on Mac OS X 10.6</para>
+              <para>Default: <option>gcc-4.2</option> with Xcode 3.x on Mac OS X 10.5 and 10.6</para>
             </listitem>
 
             <listitem>
-              <para>Default: <option>llvm-gcc-4.2</option> with Xcode 4.0 and 4.1 on Mac OS X 10.6 and 10.7</para>
+              <para>Default: <option>llvm-gcc-4.2</option> with Xcode 4.0 through 4.2 on Mac OS X 10.6 and 10.7</para>
             </listitem>
 
             <listitem>
-              <para>Default: <option>clang</option> with Xcode 4.2 and up on Mac OS X 10.6 and up</para>
+              <para>Default: <option>clang</option> with Xcode 4.3 and later on OS X 10.7 and later</para>
             </listitem>
 
             <listitem>
               <para>Values: <option>gcc-3.3</option> <option>gcc-4.0</option>
               <option>gcc-4.2</option> <option>llvm-gcc-4.2</option>
               <option>clang</option>
+              <option>macports-clang-3.3</option>
+              <option>macports-clang-3.4</option>
+              <option>macports-clang-3.7</option>
+              <option>macports-clang-3.8</option>
+              <option>macports-clang-3.9</option>
+              <option>macports-clang-4.0</option>
+              <option>macports-clang-5.0</option>
+              <option>macports-clang-6.0</option>
               <option>apple-gcc-4.0</option>
               <option>apple-gcc-4.2</option>
-              <option>macports-gcc-4.1</option>
-              <option>macports-gcc-4.2</option>
               <option>macports-gcc-4.3</option>
               <option>macports-gcc-4.4</option>
               <option>macports-gcc-4.5</option>
               <option>macports-gcc-4.6</option>
               <option>macports-gcc-4.7</option>
               <option>macports-gcc-4.8</option>
-              <option>macports-clang-2.9</option>
-              <option>macports-clang-3.0</option>
-              <option>macports-clang-3.1</option>
-              <option>macports-clang-3.2</option></para>
+              <option>macports-gcc-4.9</option>
+              <option>macports-gcc-5</option>
+              <option>macports-gcc-6</option>
+              <option>macports-gcc-7</option>
+              <option>macports-gcc-8</option></para>
             </listitem>
 
             <listitem>
