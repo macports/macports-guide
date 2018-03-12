@@ -132,7 +132,7 @@
 
       <listitem>
         <para>The underlying operating system platform (e.g.,
-        <quote>darwin</quote> on OS X, <quote>freebsd</quote>,
+        <quote>darwin</quote> on macOS, <quote>freebsd</quote>,
         etc.).</para>
       </listitem>
     </varlistentry>

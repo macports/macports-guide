@@ -96,7 +96,7 @@ Upgrade MacPorts itself and run the sync target
             <title>port sync</title>
 
             <para>The <option>sync</option> action performs a subset of <option>selfupdate</option>. It synchronizes the
-                ports tree, as does <option>selfupdate</option>, but it does not check for MacPorts upgrades. On OS X,
+                ports tree, as does <option>selfupdate</option>, but it does not check for MacPorts upgrades. On macOS,
                 unless there is a special reason not to do so, run <link
                     linkend="using.port.selfupdate">selfupdate</link> instead.</para>
 
@@ -1524,8 +1524,8 @@ apache2 has the variants:
             <para>Binary packages are standalone binary installers that are precompiled; they do not require MacPorts on
                 the target system. As such, they are helpful in generating disk images or installers to be redistributed
                 to users without relying on MacPorts for installation. Binary installers created with MacPorts are
-                usually <option>.pkg</option> (OS X Installer Packages). MacPorts can also convert
-                a <option>.pkg</option> package into an OS X <option>.dmg</option> disk image. You can create binary
+                usually <option>.pkg</option> (macOS Installer packages). MacPorts can also convert
+                a <option>.pkg</option> package into a macOS <option>.dmg</option> disk image. You can create binary
                 packages using <command>port</command> as shown in the following examples.</para>
 
             <warning>
@@ -1539,10 +1539,10 @@ apache2 has the variants:
                     <option>logrotate</option>. Then use this custom MacPorts installation to build your package.</para>
             </warning>
 
-            <para>Create an OS X <option>.pkg</option> installer for the <option>pstree</option> port:</para>
+            <para>Create a macOS <option>.pkg</option> installer for the <option>pstree</option> port:</para>
             <programlisting><prompt>$ </prompt><userinput>sudo port pkg pstree</userinput></programlisting>
 
-            <para>You may also create an OS X <option>.dmg</option> disk image file instead:</para>
+            <para>You may also create a macOS <option>.dmg</option> disk image file instead:</para>
             <programlisting><prompt>$ </prompt><userinput>sudo port dmg pstree</userinput></programlisting>
 
             <para>In most cases you probably want to package a port and all its library and runtime dependencies in

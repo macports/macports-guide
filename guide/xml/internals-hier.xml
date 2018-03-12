@@ -90,7 +90,7 @@
               <term><filename>Library/Frameworks/</filename></term>
 
               <listitem>
-                <para>Native Mac OS X Library Frameworks</para>
+                <para>Native macOS frameworks.</para>
               </listitem>
             </varlistentry>
           </variablelist>
@@ -331,7 +331,7 @@
         <term><filename>/Applications/MacPorts/</filename></term>
 
         <listitem>
-          <para>Native Mac OS X applications.</para>
+          <para>Native macOS applications.</para>
         </listitem>
       </varlistentry>
     </variablelist>

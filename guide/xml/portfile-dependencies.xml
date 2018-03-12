@@ -137,7 +137,7 @@
     preferred for special reasons, or when it is possible for more than one
     port to satisfy a dependency, then file dependencies may be used. An
     example of the former is with ubiquitous utilities like awk, grep, make or
-    sed, where OS X's versions are often sufficient; an example of the latter
+    sed, where the versions in macOS are often sufficient; an example of the latter
     is with <quote>-devel</quote> ports—these ports provide a different
     version of the same files (though only one can be activated at a
     time).</para>
