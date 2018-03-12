@@ -114,7 +114,7 @@
         <section xml:id="installing.xcode.other">
             <title>Install Xcode on Older Releases of Mac OS X</title>
 
-            <para>If you have an earlier release of Mac OS X, you may download the latest version of Xcode for OS X 10.5
+            <para>If you have an earlier release of Mac OS X, you may download the latest version of Xcode for Mac OS X 10.5
                 (Xcode 3.0 and Xcode 3.1 Developer Tools) or 10.4 (Xcode 2.4.1 and Xcode 2.5 Developer Tools) from the
                 <link xlink:href="https://developer.apple.com/downloads/index.action">Apple developer website</link>.</para>
 

@@ -422,7 +422,7 @@
           help when searching for tickets. It is not useful to list words here
           that already appear elsewhere in the ticket. Keywords also serve as
           tags; for example, use <quote>tiger</quote> if reporting a bug that
-          only affects OS X 10.4, <quote>haspatch</quote> if a fix is attached
+          only affects Mac OS X 10.4, <quote>haspatch</quote> if a fix is attached
           to the ticket, <quote>maintainer</quote> if you are the port's
           maintainer, or <quote>LP64</quote> if reporting an issue that only
           affects 64-bit platforms.</para>
