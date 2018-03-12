@@ -75,16 +75,15 @@
       <listitem>
         <para>For the above operations provided by Tcl's
           <command>file</command> command, MacPorts provides the following
-          shorthands. These used to be separate functions to work around bugs
-          in older Tcl versions or on old versions of OS X. Nowadays those are
-          simple aliases.</para>
+          shorthands. These should be used in preference to the Tcl commands
+          above, as they may work around certain bugs.</para>
 
         <variablelist>
           <varlistentry>
             <term>copy</term>
 
             <listitem>
-              <para>Shorthand alternative to <code>file copy</code>.</para>
+              <para>Shorthand for <code>file copy</code>.</para>
             </listitem>
           </varlistentry>
         </variablelist>
@@ -94,18 +93,17 @@
             <term>move</term>
 
             <listitem>
-              <para>Shorthand alternative to <code>file rename</code>.</para>
+              <para>Similar to <code>file rename</code> but correctly handles
+              renames that only change the case of a file on a case-insensitive
+              filesystem.</para>
             </listitem>
           </varlistentry>
 
           <varlistentry>
-            <term>delete file ...</term>
+            <term>delete</term>
 
             <listitem>
-              <para>Deletes each of the given files/directories. Behaves
-                similarly to file delete -force except that file delete -force
-                will fail to delete directories properly on 10.3
-                systems.</para>
+              <para>Shorthand for <code>file delete -force<code>.</para>
             </listitem>
           </varlistentry>
 
