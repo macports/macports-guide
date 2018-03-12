@@ -171,9 +171,9 @@
           different tasks depending on the version of Darwin, the core
           operating system underlying OS X.
           <replaceable>version</replaceable> is the major version of Darwin,
-          and can be <literal>8</literal> for Mac OS X 10.4 Tiger,
-          <literal>9</literal> for 10.5 Leopard, <literal>10</literal> for
-          10.6 Snow Leopard or <literal>11</literal> for 10.7 Lion.</para>
+          and can be <literal>17</literal> for macOS High Sierra v10.13,
+          <literal>16</literal> for macOS Sierra v10.12, <literal>15</literal>
+          for OS X El Capitan v10.11, and so on.</para>
 
           <itemizedlist>
             <listitem>
