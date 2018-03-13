@@ -103,7 +103,7 @@
             <term>delete</term>
 
             <listitem>
-              <para>Shorthand for <code>file delete -force<code>.</para>
+              <para>Shorthand for <code>file delete -force</code>.</para>
             </listitem>
           </varlistentry>
 
