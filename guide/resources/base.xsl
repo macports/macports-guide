@@ -6,7 +6,12 @@
     <xsl:param name="html.stylesheet">docbook.css</xsl:param>
     <xsl:param name="section.autolabel">1</xsl:param>
     <xsl:param name="toc.section.depth">1</xsl:param>
-    <xsl:param name="generate.toc">book toc</xsl:param>
+    <xsl:param name="generate.toc">
+        book toc
+        chapter toc
+        section toc
+    </xsl:param>
+    <xsl:param name="generate.section.toc.level">1</xsl:param>
     <xsl:param name="section.label.includes.component.label">1</xsl:param>
     <xsl:param name="profile.condition">noman</xsl:param>
     <xsl:param name="css.decoration">0</xsl:param>
