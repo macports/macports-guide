@@ -4,7 +4,7 @@ $(function() {
 	if (testElement.height() == window.innerHeight) {
 		$('body').addClass('vh-supported');
 
-		var stickyElement = $('div.toc');
+		var stickyElement = $('div.book > div.toc');
 		var stickyTop = stickyElement.offset().top;
 
 		$(window).scroll(function() {

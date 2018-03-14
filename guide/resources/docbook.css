@@ -86,74 +86,117 @@ div.book > div.titlepage hr {
 	display: none;
 }
 
-body.chunked div.toc:first-child,
-body.singlepage div.toc {
+body.chunked div.chapter > div.toc,
+body.chunked div.section > div.toc,
+body.singlepage div.chapter > div.toc,
+body.singlepage div.section > div.toc {
+	padding: 2ex 0;
+	margin: 6px 0 6px 10px;
+	border-radius: 5px;
+	background-color: #b1bacc;
+	line-height: 1.5;
+	float: right;
+}
+
+body.chunked div.chapter > div.toc dl,
+body.chunked div.section > div.toc dl,
+body.singlepage div.chapter > div.toc dl,
+body.singlepage div.section > div.toc dl {
+	margin: 0;
+}
+
+body.chunked div.chapter > div.toc > dl dt,
+body.chunked div.section > div.toc > dl dt,
+body.singlepage div.chapter > div.toc > dl dt,
+body.singlepage div.section > div.toc > dl dt {
+	display: block;
+	padding: 0 1em;
+}
+
+body.chunked div.chapter > div.toc > dl dt a,
+body.chunked div.section > div.toc > dl dt a,
+body.singlepage div.chapter > div.toc > dl dt a,
+body.singlepage div.section > div.toc > dl dt a {
+	display: block;
+    text-decoration: none;
+    color: #242933;
+}
+
+body.chunked div.chapter > div.toc > dl dt a:hover,
+body.chunked div.section > div.toc > dl dt a:hover,
+body.singlepage div.chapter > div.toc > dl dt a:hover,
+body.singlepage div.section > div.toc > dl dt a:hover {
+	text-decoration: underline;
+}
+
+body.chunked div.book > div.toc:first-child,
+body.singlepage div.book > div.toc {
     width: 183px;
     background: url("https://www.macports.org/img/nav-header.png") top no-repeat #B1BACC;
     line-height: 1.4em;
 	float: left;
 }
 
-body.chunked div.toc:first-child {
+body.chunked div.book > div.toc:first-child {
 	position: absolute;
 	top: 130px;
 	margin-bottom: 50px;
 }
 
-body.chunked div.toc:first-child > dl,
-body.singlepage div.toc > dl {
+body.chunked div.book > div.toc:first-child > dl,
+body.singlepage div.book > div.toc > dl {
 	padding: 16px 0;
 	margin: 0;
 	background: url("https://www.macports.org/img/nav-footer.png") bottom no-repeat;
 }
 
-body.singlepage.vh-supported div.toc > dl {
+body.singlepage.vh-supported div.book > div.toc > dl {
 	max-height: 90vh;
 	overflow: auto;
 }
 
-body.chunked div.toc:first-child > dl > dt,
-body.singlepage div.toc > dl > dt {
+body.chunked div.book > div.toc:first-child > dl > dt,
+body.singlepage div.book > div.toc > dl > dt {
 	display: block;
     margin: 5px 0 0 0;
     padding: 0 12px;
     font: bold 100% "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-body.chunked div.toc:first-child > dl > dt a,
-body.singlepage div.toc > dl > dt a {
+body.chunked div.book > div.toc:first-child > dl > dt a,
+body.singlepage div.book > div.toc > dl > dt a {
 	display: block;
 	color: #fff;
 	text-decoration: none;
 }
 
-body.chunked div.toc:first-child > dl > dt a:hover,
-body.singlepage div.toc > dl > dt a:hover {
+body.chunked div.book > div.toc:first-child > dl > dt a:hover,
+body.singlepage div.book > div.toc > dl > dt a:hover {
 	text-decoration: underline;
 }
 
-body.chunked div.toc:first-child > dl dd,
-body.singlepage div.toc > dl dd {
+body.chunked div.book > div.toc:first-child > dl dd,
+body.singlepage div.book > div.toc > dl dd {
 	margin: 0;
 	padding: 0;
 	font-size: 95%;
 }
 
-body.chunked div.toc:first-child > dl dd dl dt,
-body.singlepage div.toc > dl dd dl dt {
+body.chunked div.book > div.toc:first-child > dl dd dl dt,
+body.singlepage div.book > div.toc > dl dd dl dt {
 	display: block;
 	padding: 0 12px 0 16px;
 }
 
-body.chunked div.toc:first-child > dl dd dl dt a,
-body.singlepage div.toc > dl dd dl dt a {
+body.chunked div.book > div.toc:first-child > dl dd dl dt a,
+body.singlepage div.book > div.toc > dl dd dl dt a {
 	display: block;
     text-decoration: none;
     color: #242933;
 }
 
-body.chunked div.toc:first-child > dl dd dl dt a:hover,
-body.singlepage div.toc > dl dd dl dt a:hover {
+body.chunked div.book > div.toc:first-child > dl dd dl dt a:hover,
+body.singlepage div.book > div.toc > dl dd dl dt a:hover {
 	text-decoration: underline;
 }
 
@@ -190,12 +233,14 @@ div.chapter h1,
 div.chapter > div.titlepage h2.title {
 	background: #8695b3;
 	padding: .3em .5em .2em;
+	margin-bottom: 0;
 	font: bold 24px "Lucia Grande", Helvetica, Arial, sans-serif;
 }
 
 div.chapter h2 {
 	background: #8695b3;
 	padding: .4em .5em .2em;
+	clear: right;
 }
 
 div.chapter h1 a,
@@ -342,6 +387,7 @@ div.note {
     border-left: 8px solid #ffa500;
     padding: 10px;
 	margin: .2in .3in;
+	clear: right;
 }
 div.note h3.title {
 	color: #ffa500;
