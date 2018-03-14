@@ -1,6 +1,6 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
 	<xsl:template name="user.header.content">
-		<div class="book">
+		<div style="max-width: 1000px; margin: 0 auto;">
 			<div id="tabswitch">
 				<a href="/index.html">
 					<xsl:if test="$chunkmode = 0">
@@ -16,6 +16,11 @@
 				</a>
 			</div>
 		</div>
+		<xsl:if test="$chunkmode = 1">
+			<!-- Only clear in chunk mode, otherwise the header moves down on
+				 the single-page version -->
+			<div style="clear: right;"></div>
+		</xsl:if>
 		<div id="vh-test"></div> <!-- needed for the sticky sidebar -->
 	</xsl:template>
 </xsl:stylesheet>

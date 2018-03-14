@@ -334,6 +334,10 @@ body {
     font: 12px Helvetica, Arial, sans-serif;
     line-height: 1.2em;
 }
+body.chunked {
+	/* For some reason, the header in chunked mode is lower; fix that */
+	padding-top: 28px;
+}
 
 /* Tabswitch for single page/chunked */
 div#tabswitch {
