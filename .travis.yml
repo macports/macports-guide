@@ -7,6 +7,7 @@ addons:
     - docbook
     - docbook-xml
     - docbook-xsl
+    - docbook5-xml
     - libxml2-utils
     - docbook-xsl-doc-html
     - docbook-dsssl
