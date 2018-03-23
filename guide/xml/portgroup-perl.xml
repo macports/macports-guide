@@ -78,7 +78,7 @@
         <term>master_sites</term>
 
         <listitem>
-          <para>Default: http://search.cpan.org/dist/${distname}</para>
+          <para>Default: perl_cpan:${perl5.cpandir}</para>
         </listitem>
       </varlistentry>
 
@@ -86,7 +86,7 @@
         <term>depends_lib</term>
 
         <listitem>
-          <para>Default: perl5.8</para>
+          <para>Default: perl5.26</para>
         </listitem>
       </varlistentry>
 
