@@ -8,14 +8,6 @@
   <para>PortGroup python allows for efficient porting of python-based open
   source software.</para>
 
-  <note>
-      <para>
-      A number of python-version-specific PortGroups also exist, such as
-      python27 and python32. These should not be used for new development, and
-      ports using them should be migrated to the unified python PortGroup.
-      </para>
-    </note>
-
   <section xml:id="reference.portgroup.python.keywords">
     <title>python PortGroup Specific Keywords</title>
 
