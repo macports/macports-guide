@@ -474,8 +474,14 @@ distfiles           file_one.tar.gz:tagone \
         <term>dist_subdir</term>
 
         <listitem>
-          <para>Create a sub-directory in distpath to store all fetched
-          files.</para>
+          <para>
+            The last path component of <varname>${distpath}</varname>.  Override
+            it to store multiple ports' distfiles in the same directory (such as
+            multiple ports providing different versions of the same software),
+            or if a <link
+            xlink:href="https://trac.macports.org/wiki/PortfileRecipes#stealth-updates">stealth
+            update</link> has occurred.
+          </para>
 
           <itemizedlist>
             <listitem>
@@ -483,9 +489,11 @@ distfiles           file_one.tar.gz:tagone \
             </listitem>
 
             <listitem>
-              <para>Example:</para>
+              <para>Examples:</para>
 
-              <programlisting>dist_subdir         vim${version}</programlisting>
+              <programlisting>dist_subdir         gcc</programlisting>
+
+              <programlisting>dist_subdir         ${name}/${version}_1</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
