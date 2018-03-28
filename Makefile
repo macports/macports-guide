@@ -38,7 +38,6 @@ GUIDE = guide
 GUIDE_SRC = $(GUIDE)/xml
 # Result directories.
 GUIDE_RESULT         = $(GUIDE)/html
-GUIDE_RESULT_CHUNK   = $(GUIDE_RESULT)/chunked
 GUIDE_RESULT_DBLATEX = $(GUIDE)/dblatex
 
 # Path to the DocBook XSL files.
@@ -56,47 +55,34 @@ STYLESHEET = docbook.css
 
 all: guide guide-chunked
 
-# Generate the HTML guide using DocBook from the XML sources in $(GUIDE_SRC).
-guide:
-	$(MKDIR) -p $(GUIDE_RESULT)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_RESULT)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE_RESULT)/
-	$(CP) $(GUIDE)/resources/*.js $(GUIDE_RESULT)/
+# Generate the HTML guide using DocBook from the XML sources
+guide: GUIDE_OUTDIR= $(GUIDE_RESULT)
+guide-chunked: GUIDE_OUTDIR = $(GUIDE_RESULT)/chunked
+guide-chunked: GUIDE_XSL = $(GUIDE_XSL_CHUNK)
+
+guide guide-chunked::
+	$(MKDIR) -p $(GUIDE_OUTDIR)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_OUTDIR)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE_OUTDIR)/
+	$(CP) $(GUIDE)/resources/*.js $(GUIDE_OUTDIR)/
 ifeq ($(UNAME), Linux)
 	$(LN) -sfn $(DOCBOOK) $(GUIDE)/resources/xsl
 else
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 endif
 	$(XSLTPROC) --xinclude \
-	    --output $(GUIDE_RESULT)/index.html \
+	    --output $(GUIDE_OUTDIR)/index.html \
 	    $(GUIDE_XSL) $(GUIDE_SRC)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(REINPLACE) \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE_RESULT)/index.html
+	    $(GUIDE_OUTDIR)/index.html
 
-# Generate the chunked HTML guide with one section per file.
-guide-chunked:
-	$(MKDIR) -p $(GUIDE_RESULT_CHUNK)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_RESULT_CHUNK)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE_RESULT_CHUNK)/
-ifeq ($(UNAME), Linux)
-	$(LN) -sfn $(DOCBOOK) $(GUIDE)/resources/xsl
-else
-	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
-endif
-	$(XSLTPROC) --xinclude \
-	    --output $(GUIDE_RESULT_CHUNK)/index.html \
-	    $(GUIDE_XSL_CHUNK) $(GUIDE_SRC)/guide.xml
-	# Convert all sections (h1-h9) to a link so it's easy to link to them.
+guide-chunked::
+	# Add the table of contents to every chunked HTML file.
 	# If someone knows a better way to do this please change it.
-	$(REINPLACE) \
-	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE_RESULT_CHUNK)/*.html
-	# Add the table of contents to every junked HTML file.
-	# If someone knows a better way to do this please change it.
-	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT_CHUNK)
+	$(TCLSH) toc-for-chunked.tcl $(GUIDE_OUTDIR)
 
 # Generate the guide as a PDF.
 guide-dblatex: SUFFIX = pdf
