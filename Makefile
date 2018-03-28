@@ -60,16 +60,18 @@ guide: GUIDE_OUTDIR= $(GUIDE_RESULT)
 guide-chunked: GUIDE_OUTDIR = $(GUIDE_RESULT)/chunked
 guide-chunked: GUIDE_XSL = $(GUIDE_XSL_CHUNK)
 
-guide guide-chunked::
-	$(MKDIR) -p $(GUIDE_OUTDIR)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_OUTDIR)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE_OUTDIR)/
-	$(CP) $(GUIDE)/resources/*.js $(GUIDE_OUTDIR)/
+$(GUIDE)/resources/xsl:
 ifeq ($(UNAME), Linux)
 	$(LN) -sfn $(DOCBOOK) $(GUIDE)/resources/xsl
 else
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 endif
+
+guide guide-chunked:: $(GUIDE)/resources/xsl
+	$(MKDIR) -p $(GUIDE_OUTDIR)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_OUTDIR)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(GUIDE_OUTDIR)/
+	$(CP) $(GUIDE)/resources/*.js $(GUIDE_OUTDIR)/
 	$(XSLTPROC) --xinclude \
 	    --output $(GUIDE_OUTDIR)/index.html \
 	    $(GUIDE_XSL) $(GUIDE_SRC)/guide.xml
