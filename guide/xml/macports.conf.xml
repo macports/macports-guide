@@ -379,6 +379,21 @@
           <para>Default: <option>default</option></para>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>startupitem_install</term>
+
+        <listitem>
+          <para>Create system-level symlinks to generated StartupItems. If set
+            to <quote>no</quote>, symlinks will not be created; otherwise, symlinks will be
+            placed in <filename>/Library/LaunchDaemons</filename> or
+            <filename>/Library/LaunchAgents</filename> as appropriate. This
+            setting only applies when building ports from
+            source.</para>
+
+          <para>Default: <option>yes</option></para>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
     <para>Other options</para>
