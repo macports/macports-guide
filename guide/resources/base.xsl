@@ -1,4 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'
+  xmlns:d="http://docbook.org/ns/docbook"
   xmlns:exslt="http://exslt.org/common"
 >
     <!-- See http://docbook.sourceforge.net/release/xsl/current/doc/html/ for parameters -->
@@ -61,11 +62,11 @@
 
 
     <!-- all macro content is defined in guide/xml/macros.xml, but hidden from normal output -->
-    <xsl:template match="chapter[@id = 'macros']">
+    <xsl:template match="d:chapter[@xml:id = 'macros']">
         <!-- no output -->
     </xsl:template>
 
-    <xsl:template match="chapter[@id = 'macros']"  mode="toc">
+    <xsl:template match="d:chapter[@xml:id = 'macros']" mode="toc">
         <!-- no output -->
     </xsl:template>
 
