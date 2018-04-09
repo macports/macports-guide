@@ -80,7 +80,7 @@
         <glossterm>checksum</glossterm>
 
         <glossdef>
-          <para>A checksum is a small piece of data, derived from from
+          <para>A checksum is a small piece of data, derived from
             an original that can be used to ensure that two files are
             identical.</para>
         </glossdef>

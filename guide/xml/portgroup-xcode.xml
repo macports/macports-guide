@@ -101,7 +101,7 @@
         <term>xcode.build.settings</term>
 
         <listitem>
-          <para>Additional settings passed to the xcode build tool during the
+          <para>Additional settings passed to the xcodebuild tool during the
           build phase. These settings should be in the X=Y form.</para>
 
           <itemizedlist>
@@ -126,8 +126,8 @@
         <term>xcode.destroot.type</term>
 
         <listitem>
-          <para>Type of project that will be installed. This tells the xcode
-          PortGroup how to destroot the project. Correct values are
+          <para>Type of project that will be installed. This tells the
+          PortGroup xcode how to destroot the project. Correct values are
           <option>application</option> and <option>framework</option>.</para>
 
           <itemizedlist>
@@ -172,7 +172,7 @@
         <term>xcode.destroot.settings</term>
 
         <listitem>
-          <para>Additional settings passed to the xcode build tool during the
+          <para>Additional settings passed to the xcodebuild tool during the
           destroot phase. These settings should be in the X=Y form.</para>
 
           <itemizedlist>
@@ -197,7 +197,7 @@
         <term>xcode.universal.settings</term>
 
         <listitem>
-          <para>Settings passed to the xcode build tool when the +universal
+          <para>Settings passed to the xcodebuild tool when the +universal
           variant is selected. These settings should be in the X=Y
           form.</para>
 
@@ -239,7 +239,7 @@
   <section xml:id="reference.portgroup.xcode.sugar">
     <title>xcode PortGroup Sugar</title>
 
-    <para>Portfiles using the xcode PortGroup do not need to define the
+    <para>Portfiles using the PortGroup xcode do not need to define the
     following variables:</para>
 
     <variablelist>
@@ -270,9 +270,9 @@
   </section>
 
   <section xml:id="reference.portgroup.xcode.phase-keywords">
-    <title>Portfile-Phase Keywords Affecting the xcode PortGroup</title>
+    <title>Portfile-Phase Keywords Affecting the PortGroup xcode</title>
 
-    <para>The following Portfile phase keywords affect the xcode PortGroup in
+    <para>The following Portfile phase keywords affect the PortGroup xcode in
     a unique way. In most cases, you will not need to set any of these
     keywords in the Portfile. See <citerefentry>
         <refentrytitle>portfile-phase</refentrytitle>

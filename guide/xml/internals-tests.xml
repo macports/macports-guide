@@ -118,7 +118,7 @@
             <listitem><para>each proc in a file has a corresponding test case (test proc_name) in the</para></listitem>
             <listitem><para>each test case must be independent from each other, so they can be run individually if needed</para></listitem>
             <listitem><para>each test must clean all auxiliary files or directories it creates and revert all ports it installs</para></listitem>
-            <listitem><para>use a single test proceduce for each tested proc; sub-test cases should be included in the same body</para></listitem>
+            <listitem><para>use a single test procedure for each tested proc; sub-test cases should be included in the same body</para></listitem>
             <listitem><para>when adding new regression tests, make sure to specify its name in the test_suite list of 'trunk/base/tests/test.tcl'</para></listitem>
             <listitem><para>variables used in tests can be set at install-time using the '[module]_test_autoconf.tcl.in' file in each module (macports_autoconf.tcl.in, port_autoconf.tcl.in)</para></listitem>
             <listitem><para>for some tests in package1.0, an update of the ports tree is required; this is done automatically if they are run using the 'test' target in the Makefile, with root privileges </para></listitem>

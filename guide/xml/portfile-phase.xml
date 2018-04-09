@@ -540,7 +540,7 @@ distfiles           file_one.tar.gz:tagone \
             linkend="reference.phases.fetch.cvs">cvs</link>, <link
             linkend="reference.phases.fetch.git">git</link>, <link
             linkend="reference.phases.fetch.hg">hg</link>, or <link
-            linkend="reference.phases.fetch.svn">svn</link> checkout is be used.
+            linkend="reference.phases.fetch.svn">svn</link> checkout is being used.
             <option>standard</option> is used for a normal http or ftp fetch
             using <varname>${distfiles}</varname> and is used as
             default.</para>
