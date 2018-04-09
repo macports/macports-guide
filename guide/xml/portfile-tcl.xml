@@ -370,7 +370,7 @@
 
             <listitem>
               <para>Add a new local group to the system, with the specified
-              gid, password, real name, and with a list users as
+              gid, password, real name, and with a list of users as
               members.</para>
             </listitem>
           </varlistentry>

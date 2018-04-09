@@ -1469,7 +1469,7 @@ apache2 has the variants:
                 downloaded from a server. MacPorts runs a buildbot infrastructure that creates prebuilt binary packages
                 for all ports in MacPorts for the default installation prefix. Buildbots exist for systems later or
                 equal to Snow Leopard. If a port builds successfully and its license and those of its dependencies allow
-                binary redistribution, they archives are uploaded to <option>packages.macports.org</option> and will be
+                binary redistribution, the archives are uploaded to <option>packages.macports.org</option> and will be
                 automatically used by MacPorts during installation.</para>
 
             <para>You can manually create an archive (and see debug output for its creation) using</para>
