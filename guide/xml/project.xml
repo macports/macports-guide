@@ -552,7 +552,8 @@
         carefully.</para>
         <para>Changes to Portfiles should also pass <command>port lint</command>.</para></listitem>
         <listitem><para>Commit your changes to your branch, making sure
-        to follow the MacPorts standard for commit messages.</para></listitem>
+        to follow the <link xlink:href="https://trac.macports.org/wiki/CommitMessages">
+        MacPorts standard for commit messages</link>.</para></listitem>
         <listitem><para>Be sure to rebase your changes so as to
         minimize the number of commits. Ideally, you should have just
         one.</para>
