@@ -491,11 +491,106 @@
     </section>
   </section>
 
+  <section xml:id="project.github">
+    <title>Using Git and GitHub</title>
+
+    <para>The MacPorts project uses the
+    <link xlink:href="https://git-scm.com/">Git distributed version
+    control system</link> to manage the code for the entire
+    project. Our master repositories are hosted on
+    <link xlink:href="https://github.com/">GitHub</link>.</para>
+
+    <para>
+      We maintain
+      <link
+          xlink:href="https://github.com/macports">
+      public repositories</link>
+      for almost all our
+      project code and documentation, including a GitHub
+      repository for the
+      <link xlink:href="https://github.com/macports/macports-base">
+        MacPorts system itself</link>,
+        for the <link
+        xlink:href="https://github.com/macports/macports-ports">MacPorts
+        ports</link>,
+        and <link
+        xlink:href="https://github.com/macports/macports-guide">even for
+        the guide you are reading right now</link>.
+    </para>
+
+    <para>
+      If you're not familiar with Git and need an introduction, we
+      recommend the book
+      <link
+      xlink:href="https://git-scm.com/book/en/v2">Pro Git, by Scott
+      Chacon and Ben Straub</link>.
+      The book is available for free
+      online, and is published under a Creative Commons license.
+    </para>
+
+    <para>
+      You should feel free to fork any of our code repositories, make
+      improvements to the code, and contribute them back to us via a
+      GitHub pull request. We are grateful for improvements to
+      absolutely everything, including new ports, fixes to ports,
+      improvements to our base software, improvements to our
+      documentation and our web site, or anything else you see.
+    </para>
+
+    <para>
+      The main steps for submitting a pull request are:
+    </para>
+    <orderedlist>
+      <listitem><para>Make your changes in your own Git repository:</para>
+      <orderedlist>
+        <listitem><para>Fork the appropriate repository, say
+        <link xlink:href="https://github.com/macports/macports-ports">macports-ports</link>.</para></listitem>
+        <listitem><para>Create a branch for your changes.</para></listitem>
+        <listitem><para>Make your changes.</para>
+        <para>For changes to ports and code, please follow the
+        information elsewhere in this guide, and test your changes
+        carefully.</para>
+        <para>Changes to Portfiles should also pass <command>port lint</command>.</para></listitem>
+        <listitem><para>Commit your changes to your branch, making sure
+        to follow the MacPorts standard for commit messages.</para></listitem>
+        <listitem><para>Be sure to rebase your changes so as to
+        minimize the number of commits. Ideally, you should have just
+        one.</para>
+        <para>(There are exceptions. If you have several unrelated fixes, or
+        you're changing multiple packages, etc., you might need more
+        than one commit. The point is to minimize them,
+        ideally with one commit per logical change.)</para></listitem>
+      </orderedlist>
+      </listitem>
+      <listitem><para>Push the change branch to your own GitHub repository.</para></listitem>
+      <listitem><para>Make a pull request from your branch in your own
+      git repository to the appropriate MacPorts repository.</para>
+      <para>You can do this on the appropriate GitHub
+      page. For example, you can request a pull of a Portfile on
+      <link
+          xlink:href="https://github.com/macports/macports-ports/pulls">
+      the macports-ports repository pull request page</link>.</para></listitem>
+      <listitem><para>Go through the process of waiting for the CI
+      system to build your new port, receiving feedback from our team,
+      possibly being asked to make changes to your requested
+      pull, and making those changes. (If you are asked for additional
+      changes, please squish them to avoid unnecessary
+      commits.)</para></listitem>
+    </orderedlist>
+
+    <para> We try to process pull requests very quickly. If you do not
+    see activity on your request within a few days, please feel free
+    to get in touch with us on the
+    <email>macports-dev@lists.macports.org</email> mailing list to
+    request a review and/or commit. Please include a link to the pull
+    request in your email.</para>
+  </section>
+
   <section xml:id="project.contributing">
     <title>Contributing to MacPorts</title>
 
     <para>You may contribute new ports and enhancements of any kind to already
-        existing ports using Trac tickets. As an alternative, you may instead open a pull request on
+        existing ports using Trac tickets. However, we prefer that you open a pull request on
         <link xlink:href="https://github.com/macports/macports-ports/pulls">GitHub</link>,
         in which case no Trac ticket is required.
     </para>
