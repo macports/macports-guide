@@ -500,6 +500,16 @@
         in which case no Trac ticket is required.
     </para>
 
+    <para>
+      <emphasis>
+      The GitHub pull request method is strongly preferred over
+      submitting Trac tickets.
+      Submitting a Pull Request will likely result in your
+      contribution being merged into MacPorts much faster, as the
+      workflow is much easier for the maintainers.
+      </emphasis>
+    </para>
+
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
 
@@ -519,7 +529,12 @@
         </listitem>
 
         <listitem>
-          <para>Either create a Trac ticket ...</para>
+          <para>Either submit the new port through
+          <link xlink:href="https://github.com/macports/macports-ports/pulls">a pull request on GitHub</link>...</para>
+        </listitem>
+
+        <listitem>
+          <para>...or create a Trac ticket.</para>
           <orderedlist>
             <listitem>
             <para>Set the type to <guilabel>submission</guilabel>.</para>
@@ -538,10 +553,6 @@
                 patchfiles to the ticket.</para>
             </listitem>
           </orderedlist>
-        </listitem>
-
-        <listitem>
-          <para>... or submit the new port through a pull request on GitHub.</para>
         </listitem>
 
         <listitem>
@@ -579,7 +590,12 @@
         </listitem>
 
         <listitem>
-          <para>Either create a Trac ticket ...</para>
+          <para>Either submit the port update through
+          <link xlink:href="https://github.com/macports/macports-ports/pulls">a pull request on GitHub</link>...</para>
+        </listitem>
+
+        <listitem>
+          <para>...or create a Trac ticket.</para>
           <orderedlist>
             <listitem>
               <para>Set the type to <guilabel>enhancement</guilabel> for
@@ -614,10 +630,6 @@
         </listitem>
 
         <listitem>
-          <para>... or submit the port update through a pull request on GitHub.</para>
-        </listitem>
-
-        <listitem>
           <para>If your ticket or pull request doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macports.org</email> and request a
@@ -636,7 +648,7 @@
 
       <itemizedlist>
         <listitem>
-          <para>An email address or a GitHub account.</para>
+          <para>An email address and a GitHub account.</para>
         </listitem>
         <listitem>
           <para>A copy of the <filename>Portfile</filename>. Do not worry if
@@ -657,8 +669,10 @@
       <para>You do <emphasis>not</emphasis> need:</para>
       <itemizedlist>
         <listitem>
-          <para>Commit access to the MacPorts repository. Instead, you create
-            patches and open tickets in Trac. You can, however, <link
+          <para>Commit access to the MacPorts repository. Instead, you
+            open pull requests in GitHub
+            (or create patches and open tickets in Trac.)
+            You can, however, <link
               linkend="project.membership">apply for commit access</link>
             once you have some experience in maintaining ports. In fact, we
             would like to encourage you to apply after a few months.</para>
@@ -829,9 +843,17 @@ To use the current port, you must be in a port's directory.</screen>
         </listitem>
 
         <listitem>
-          <para>If you are only changing the maintainer, <link
+          <para>If you are only changing the maintainer,
+          <link
+              xlink:href="https://github.com/macports/macports-ports/pulls">file
+          a pull request on GitHub</link>.</para>
+        </listitem>
+        <listitem>
+          <para>You may also
+          <link
               xlink:href="https://trac.macports.org/newticket">file a new ticket in
-              Trac</link>. Set <guilabel>type</guilabel> to
+            Trac</link> to change the maintainer, though GitHub pull requests are preferred.
+            Set <guilabel>type</guilabel> to
             <guilabel>enhancement</guilabel>. Leave the
             <guilabel>milestone</guilabel> field empty. If you added yourself
             as co-maintainer, add the other maintainers in the
@@ -841,8 +863,11 @@ To use the current port, you must be in a port's directory.</screen>
             a patch), check the box that you want to attach files to the ticket
             and submit. After submission, attach the patch you created in the
             previous step.</para>
+        </listitem>
 
-          <para>If you are also fixing a bug, attach a separate patch for that
+        <listitem>
+          <para>If you are also fixing a bug, make a separate commit
+            for that in your pull request, or attach a separate patch for that
             change to the same ticket. If you are fixing a bug that already has
             a ticket, attach a patch fixing the bug there and file the
             maintainer change in a separate ticket (with a separate patch) as
@@ -856,15 +881,17 @@ To use the current port, you must be in a port's directory.</screen>
         </listitem>
 
         <listitem>
-          <para>If your ticket doesn't receive any attention within a few days
+          <para>If your pull request or ticket doesn't receive any attention within a few days
             you may send an email to
             <email>macports-dev@lists.macports.org</email> and request
-            a review and/or commit. Please include a link to the ticket.</para>
+            a review and/or commit. Please include a link to the pull
+            request or ticket.</para>
         </listitem>
       </orderedlist>
 
-      <para>Once you are the maintainer for a port, all new tickets for this
-        port will be assigned to you. You are expected to take a look at these
+      <para>Once you are the maintainer for a port, all new pull requests
+        and tickets for this port will be assigned to you.
+        You are expected to take a look at these pull requests and
         tickets, give advice and try to debug problems. If you are stuck, do
         not hesitate to ask on the
         <email>macports-dev@lists.macports.org</email> list.</para>
