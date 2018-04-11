@@ -902,7 +902,7 @@ To use the current port, you must be in a port's directory.</screen>
     <title>Port Update Policies</title>
 
     <para>Port maintainers normally are given commit privileges to the
-    Subversion repository so they can make updates to their own ports as
+    Git repository so they can make updates to their own ports as
     described in <xref linkend="project.membership" />.
     However, The MacPorts Project does not restrict commit privileges for
     maintainers, so before a person other than a port's maintainer updates a
