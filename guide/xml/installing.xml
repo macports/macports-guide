@@ -331,10 +331,9 @@
                 additional installations use the option <option>--prefix</option> as shown below. It's also recommended
                 to change the applications dir using <option>--with-applications-dir</option> to avoid conflicts in
                 <filename>/Applications/MacPorts</filename>.
-                <phrase audience="2.5">Use <option>--without-startupitems</option> to automatically set
-                <option>startupitem_install no</option> in the new <filename>macports.conf</filename>, which is
-                required to avoid conflicts in <filename>/Library/LaunchAgents</filename> or
-                <filename>/Library/LaunchDaemons</filename>.</phrase>
+                Use <option>--without-startupitems</option> to automatically set <option>startupitem_install no</option>
+                in the new <filename>macports.conf</filename>, which is required to avoid conflicts in
+                <filename>/Library/LaunchAgents</filename> or <filename>/Library/LaunchDaemons</filename>.
             </para>
 
             <note>
@@ -342,18 +341,7 @@
                     present while installing a second instance.</para>
             </note>
 
-            <programlisting audience="2.4"><prompt>$</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
-<!--                --><prompt>$</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
-<!--                --><prompt>$</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-applications-dir=$MP_PREFIX/Applications</userinput>
-<!--                --><prompt>$</prompt> <userinput>make</userinput>
-<!--                --><prompt>$</prompt> <userinput>sudo make install</userinput></programlisting>
-
-            <para audience="2.4">After installing the second instance you might need to add
-                <programlisting>startupitem_install no</programlisting>
-                to <filename>$MP_PREFIX/etc/macports/macports.conf</filename> to avoid conflicts in
-                <filename>/Library/LaunchAgents</filename>.</para>
-
-            <programlisting audience="2.5"><prompt>$</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
+            <programlisting><prompt>$</prompt> <userinput>export PATH=/bin:/sbin:/usr/bin:/usr/sbin</userinput>
 <!--                --><prompt>$</prompt> <userinput>MP_PREFIX=/opt/macports-test</userinput>
 <!--                --><prompt>$</prompt> <userinput>./configure --prefix=$MP_PREFIX --with-applications-dir=$MP_PREFIX/Applications --without-startupitems</userinput>
 <!--                --><prompt>$</prompt> <userinput>make</userinput>
