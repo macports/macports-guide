@@ -4,6 +4,14 @@ The MacPorts guide is the main documentation of MacPorts, providing information
 on the use of the port(1) tool, the Portfile format, and the project's
 policies.
 
+## Branches
+
+  * **master**:       Automatically published to https://guide.macports.org
+  * **release-X.Y**:  Documentation for upcoming releases, not meant to be public yet
+
+When a new MacPorts X.Y.0 is released, the release-X.Y branch will be merged to
+master to make the documentation available.
+
 ## Building
 
 To generate it you have to checkout the entire "macports-guide" repository,
