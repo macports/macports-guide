@@ -1,6 +1,9 @@
 # The MacPorts Guide
 
-This is the MacPorts documentation directory.
+The MacPorts guide is the main documentation of MacPorts, providing information
+on the use of the port(1) tool, the Portfile format, and the project's
+policies.
+
 ## Building
 
 To generate it you have to checkout the entire "macports-guide" repository,
