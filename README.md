@@ -14,17 +14,43 @@ master to make the documentation available.
 
 ## Building
 
-To generate it you have to checkout the entire "macports-guide" repository,
-and you need the "docbook-xsl", "docbook-xml-5.0" and "libxslt" ports.
-If your port installation isn't in /opt/local, edit or override the
-PREFIX Makefile variable.
+To generate  the guide, clone the macports-guide repository:
+
+```
+$ git clone https://github.com/macports/macports-guide.git
+$ cd macports-guide/
+```
+
+You will also need the following tools which are required to convert the
+DocBook XML sources to the desired output format. You can install them from
+MacPorts with this command:
+
+```
+$ sudo port install libxml2 libxslt docbook-xsl docbook-xml-5.0
+```
 
 ### HTML Output
 
-To generate the guide just run "make" in this directory; the HTML version will
-be placed in guide/html.
+To generate the guide just run `make` in this directory; the HTML version will
+be placed in `guide/html/`.
+
+```
+$ make
+$ open guide/html/index.html
+```
 
 ### PDF Output
 
-To generate a PDF version of the guide, use "make guide-dblatex". This
-requires the "dblatex" port.
+In addition to the dependencies listed above, the PDF output format also
+requires the `dblatex` port.
+
+```
+$ sudo port install dblatex
+```
+
+To generate a PDF version of the guide, use `make guide-dblatex`.
+
+```
+$ make guide-dblatex
+$ open guide/dblatex/macports-guide.pdf
+```
