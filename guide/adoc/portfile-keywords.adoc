@@ -1,0 +1,232 @@
+[[_reference.keywords]]
+= Global Keywords
+
+MacPorts keywords are used to specify required or optional items within a Portfile, or to override default options used by MacPorts base for individual ports.
+Keywords are to be used within the "`global`" and "`variant`" sections of Portfiles, and not within optional port phase declarations.
+
+The global keywords listed below specify information for ports as a whole, whereas the keywords listed under a port phase specify information to be used during a particular installation phase.
+
+PortSystem::
+The first non-comment line of every Portfile; it should be followed by PortGroup inclusions (if any) and then a blank line.
+It defines which version of the Portfile interpreter will be used.
+(There is currently only one version.)
++
+
+
+[source]
+----
+PortSystem          1.0
+----
+name::
+The name of the port.
+To avoid special interpretation by shells and the like, names should contain only alphanumeric characters, underscores, dashes or dots.
+For projects whose proper names contain "`+`" characters, change these to "`x`" (e.g., "`libstdc++`" becomes "`libstdcxx`").
++
+
+
+[source]
+----
+name                foo
+----
+version::
+The version of the ported software.
++
+
+
+[source]
+----
+version             1.23.45
+----
+revision::
+Optional keyword (default is 0) that is used to track port revisions.
+It should not be incremented for port revisions unless it would benefit users to upgrade an installed port, and cleared when the port is updated to a newer version.
++
+It should be used if a bug in the Portfile was found and all installations of this port have to be updated.
+If the change only affects new installations, there is no need to increase it.
++
+
+
+[source]
+----
+revision            1
+----
+epoch::
+An optional keyword (default value is 0) that must be used when a port is updated to a version that is numerically less than the previous version, for example 1.10 -> 1.2 or 20070928 -> 1.0.
+Some Portfile authors have used large epoch values that look like a date, but there is no reason to do so.
+The epoch is simply an unsigned integer, and the only requirement is that it never be decreased.
++
+
+
+[source]
+----
+epoch               1
+----
++
+
+[NOTE]
+====
+An epoch is not needed for most ports.
+If a port's version numbers advance in normal dotted-decimal sequence, there is no reason to add an epoch.
+====
+categories::
+The category under which the ported software falls.
+The first category should be the same as the directory within which the Portfile is stored; secondary and tertiary categories may be selected.
++
+
+
+[source]
+----
+categories          net security
+----
+maintainers::
+A port's maintainers are the people who have agreed to take responsibility for keeping the port up-to-date.
+Most ports have only a single maintainer, but some ports have two or more co-maintainers.
+The `maintainers` keyword lists the maintainers' GitHub usernames or email addresses.
+GitHub usernames start with an `@` symbol.
+Email addresses are preferably listed in the obfuscated form below to hide them from spambots:
+
+* For addresses in domain @macports.org, simply omit the domain name.
+* For addresses in other domains, e.g., 
++
+// <email>account@example.org</email>
+, use the convention `example.org:account` to specify the address.
+
++
+In the example below, the port is maintained by a GitHub user named neverpanic, and the owners of the two email addresses 
++
+// <email>jdoe@macports.org</email>
+ and 
+// <email>julesverne@example.org</email>
+
++
+
+
+[source]
+----
+maintainers         @neverpanic \
+                    jdoe \
+                    example.org:julesverne
+----
++
+Braces can be used to express that these refer to the same person, for example the GitHub username and an email.
+In the following example, the port is maintained by a GitHub user named jverne, that can also be contacted directly at 
++
+// <email>julesverne@example.org</email>
+$$.$$
++
+
+
+[source]
+----
+maintainers         {@jverne example.org:julesverne}
+----
++
+
+[NOTE]
+====
+The address `nomaintainer` designates a port that is not maintained by anybody and may be modified by any committer.
+Feel free to claim maintainership of a nomaintainer port if desired.
+The address `openmaintainer` designates a port that has a maintainer who allows minor changes to be committed without his or her prior approval.
+Port maintainers who are not committers are encouraged to add `openmaintainer` to their ports.
+====
+description::
+A one-sentence description of the ported software.
++
+
+
+[source]
+----
+description         A classic shooter arcade game.
+----
+long_description::
+A long description of the ported software.
+Break long lines with escaped newlines.
++
+
+
+[source]
+----
+long_description    A classic shooter arcade game derived from \
+                    the game alien-munchers.  Not suitable for \
+                    children under two years old.
+----
+homepage::
+Port application's homepage.
++
+
+
+[source]
+----
+homepage            https://www.example.org/apps
+----
+platforms::
+A list of the platforms on which the port has been tested.
+Required, but not interpreted in any way by the software at this time; it is purely informational for users.
+Possible values: `darwin` (= `macosx` or ``puredarwin``), ``macosx``, ``puredarwin``, ``freebsd``, ``linux``, ``sunos``, ``netbsd``.
+In general, it can just be set to ``darwin``.
+(``puredarwin`` is an OS based on Apple's open-source Darwin releases without any of Apple's proprietary bits.) See also [var]``os.platform``. 
++
+
+
+[source]
+----
+platforms           darwin
+----
+supported_archs::
+The CPU architectures for which this port can be built.
+Archs currently supported by macOS are: i386, ppc, ppc64, x86_64.
+If this option is not set, it is assumed that the port can build for all archs.
+If a port does not install any architecture-specific files, use the special value [option]``noarch``.
++
+If the building architecture isn't among supported_archs, port fails with an error message, except when building on x86_64 and supported_archs contains i386 or when building on ppc64 and supported_archs contains ppc, in which case the port will be built in 32-bit mode.
++
+
+
+[source]
+----
+supported_archs           i386 ppc
+----
++
+
+[source]
+----
+supported_archs           noarch
+----
+license::
+The proper format for license consists of the license name, followed by a hyphen and number if indicating a specific version.
+A space should be placed between licenses if there is more than one that applies.
+If an element in the license list is itself a list, it is interpreted as offering a choice of any one of the licenses in the sub-list. 
++
+If the version number is a "`$$.$$0`" version, the "`$$.$$0`" should be omitted to make the version an integer.
+If the author gives the choice of using a given license or "`any later version`" of it, append a plus sign (+) to the version number.
+If the version specified in this case is also the earliest version, just leave out the version number entirely since it implies all versions.
++
+
+
+[source]
+----
+license           GPL-3
+----
++
+
+[source]
+----
+license           {freetype GPL}
+----
+license_noconflict::
+By default, it is assumed that ports may use libraries or headers from their dependencies and thus form a derivative work.
+A dependency with an incompatible license thus prevents the port from being distributed in binary form.
+If a dependency with an incompatible license is not used in such a way that a derivative work is formed, or should not prevent binary distribution for any other reason, add its name to this list. 
++
+
+
+[source]
+----
+license_noconflict openssl
+----
++
+
+[source]
+----
+license_noconflict readline gdbm
+----

@@ -1,0 +1,73 @@
+[[_reference.variables]]
+= Global Variables
+
+Global variables are variables available to any Portfile.
+For a list of additional variables available to ports that are assigned to a MacPorts Portgroup, see portgroup(7).
+
+All of these variables except [var]``prefix`` are read-only!
+
+prefix::
+Installation prefix, set at compile time and displayed in [path]_${prefix}/etc/macports/macports.conf_ --- may be overridden on a per-port basis, for example to install into a wholly-contained subdirectory of ${prefix}, but most ports should have no reason to do so.
++
+Default: [path]_/opt/local_
+
+libpath::
+Path to the MacPorts Tcl libraries.
+
+portpath::
+Full path to the Portfile of the port being executed.
+Portfile repositories are defined in the file <<_internals.configuration_files.sources_conf,sources.conf>>.
++
+Default: [path]_${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/<category>/<portname>/_
+
+filesdir::
+Path to files directory relative to [var]``${portpath}``.
++
+Value: `files`
+
+filespath::
+Full path to files directory.
++
+Value: [var]``${portpath}/${filesdir}``
+
+workpath::
+Full path to work directory.
++
+Value: [var]``${portbuildpath}/work``
+
+worksrcpath::
+Full path to extracted source code.
++
+Value: [var]``${workpath}/${worksrcdir}``
+
+destroot::
+Full path into which software will be destrooted.
++
+Value: [var]``${workpath}/destroot``
+
+distpath::
+Location to store downloaded distfiles.
++
+Value: [var]``${portdbpath}/distfiles/${dist_subdir}/``
+
+install.user::
+The Unix user at the time of port installation.
+
+install.group::
+The Unix group at the time of port installation.
+
+os.platform::
+The underlying operating system platform (e.g., "`darwin`" on macOS, "`freebsd`", etc.).
+
+os.arch::
+The hardware architecture -- either "`powerpc`" or "`i386`".
+
+os.version::
+The version number of the host operating system (e.g., "`12.3.0`" for Darwin 12.3.0 a.k.a.
+OS X 10.8.3).
+
+os.endian::
+Endianness of the processor -- either "`big`" (on PowerPC systems) or "`little`" (on Intel systems).
+
+os.major::
+The major version number of the host operating system (e.g., "`12`" for Darwin 12.x).

@@ -1,0 +1,374 @@
+// <refentry xml:id="porthier">
+//   <refmeta>
+//     <refentrytitle>PORTHIER</refentrytitle>
+// 
+//     <manvolnum>7</manvolnum>
+//   </refmeta>
+// 
+//   <refnamediv>
+//     <refname>porthier</refname>
+// 
+//     <refpurpose>layout of the ports filesystems</refpurpose>
+//   </refnamediv>
+// 
+//   <refsection>
+//     <title>Description</title>
+// 
+//     <para>A map of the filesystem hierarchy used by MacPorts and the ports it
+//     installs. Much of it is based on <citerefentry>
+//         <refentrytitle>hier</refentrytitle>
+// 
+//         <manvolnum>7</manvolnum>
+//       </citerefentry>.</para>
+// 
+//     <variablelist>
+//       <varlistentry>
+//         <term><varname>${prefix}</varname></term>
+// 
+//         <listitem>
+//           <para>The base of the MacPorts filesystem hierarchy.</para>
+// 
+//           <para>Default: <filename>/opt/local/</filename></para>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>bin/</filename></term>
+// 
+//               <listitem>
+//                 <para>Common utilities, programming tools, and
+//                 applications.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>etc/</filename></term>
+// 
+//               <listitem>
+//                 <para>System configuration files and scripts.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>include/</filename></term>
+// 
+//               <listitem>
+//                 <para>Standard C include files.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>lib/</filename></term>
+// 
+//               <listitem>
+//                 <para>Archive libraries.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>libexec/</filename></term>
+// 
+//               <listitem>
+//                 <para>System daemons and system utilities (executed by other
+//                 programs).</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>Library/Frameworks/</filename></term>
+// 
+//               <listitem>
+//                 <para>Native macOS frameworks.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>sbin/</filename></term>
+// 
+//               <listitem>
+//                 <para>System programs and administration utilities.</para>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+// 
+//           <variablelist>
+//             <varlistentry>
+//               <term><filename>share/</filename></term>
+// 
+//               <listitem>
+//                 <para>Architecture-independent files.</para>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>doc/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Miscellaneous documentation.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>examples/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Examples for users and programmers.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>info/</filename></term>
+// 
+//                     <listitem>
+//                       <para>GNU Info hypertext system.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>locale/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Localization files.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>man/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Manual pages.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>misc/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Miscellaneous system-wide ASCII text files.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+//               </listitem>
+//             </varlistentry>
+// 
+//             <varlistentry>
+//               <term><filename>src/</filename></term>
+// 
+//               <listitem>
+//                 <para>Source code.</para>
+//               </listitem>
+//             </varlistentry>
+// 
+//             <varlistentry>
+//               <term><filename>var/</filename></term>
+// 
+//               <listitem>
+//                 <para>Multi-purpose log, temporary, transient and spool
+//                 files.</para>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>db/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Miscellaneous automatically generated
+//                       system-specific database files.</para>
+//                     </listitem>
+//                   </varlistentry>
+// 
+//                   <varlistentry>
+//                     <term><filename>macports/</filename></term>
+// 
+//                     <listitem>
+//                       <para>MacPorts package building topdir.</para>
+// 
+//                       <variablelist>
+//                         <varlistentry>
+//                           <term><filename>build/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Where ports are built and destrooted.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+//                         <varlistentry>
+//                           <term><filename>distfiles/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Storage location for the distfiles of fetched
+//                             ports.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+//                         <varlistentry>
+//                           <term><filename>packages/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Obsolete. Formerly contained archives (packages) of installed
+//                             ports.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+//                         <varlistentry>
+//                           <term><filename>receipts/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Obsolete. Formerly contained the registry information and receipts
+//                             for installed ports, in flat-file format.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+//                         <varlistentry>
+//                           <term><filename>registry/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Contains the registry database in sqlite format.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+// 
+//                         <varlistentry>
+//                           <term><filename>software/</filename></term>
+// 
+//                           <listitem>
+//                             <para>The files for each installed port are stored here.</para>
+//                           </listitem>
+//                         </varlistentry>
+// 
+//                         <varlistentry>
+//                           <term><filename>sources/</filename></term>
+// 
+//                           <listitem>
+//                             <para>Holds the sources for the ports tree (the
+//                             Portfiles) and also MacPorts base.</para>
+//                           </listitem>
+//                         </varlistentry>
+//                       </variablelist>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>spool/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Directory containing output spool files.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>log/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Miscellaneous system log files.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>run/</filename></term>
+// 
+//                     <listitem>
+//                       <para>System information files describing various
+//                       information about the system since it was booted.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+//               </listitem>
+//             </varlistentry>
+// 
+//             <varlistentry>
+//               <term><filename>www/</filename></term>
+// 
+//               <listitem>
+//                 <para>Files to be served by an http server.</para>
+// 
+//                 <variablelist>
+//                   <varlistentry>
+//                     <term><filename>cgi-bin/</filename></term>
+// 
+//                     <listitem>
+//                       <para>Directory for cgi executables.</para>
+//                     </listitem>
+//                   </varlistentry>
+//                 </variablelist>
+//               </listitem>
+//             </varlistentry>
+//           </variablelist>
+//         </listitem>
+//       </varlistentry>
+//     </variablelist>
+// 
+//     <variablelist>
+//       <varlistentry>
+//         <term><filename>/Applications/MacPorts/</filename></term>
+// 
+//         <listitem>
+//           <para>Native macOS applications.</para>
+//         </listitem>
+//       </varlistentry>
+//     </variablelist>
+//   </refsection>
+// 
+//   <refsection>
+//     <title>SEE ALSO</title>
+// 
+//     <para><citerefentry>
+//         <refentrytitle>port</refentrytitle>
+// 
+//         <manvolnum>1</manvolnum>
+//       </citerefentry>, <citerefentry>
+//         <refentrytitle>macports.conf</refentrytitle>
+// 
+//         <manvolnum>5</manvolnum>
+//       </citerefentry>, <citerefentry>
+//         <refentrytitle>portfile</refentrytitle>
+// 
+//         <manvolnum>7</manvolnum>
+//       </citerefentry>, <citerefentry>
+//         <refentrytitle>portgroup</refentrytitle>
+// 
+//         <manvolnum>7</manvolnum>
+//       </citerefentry>, <citerefentry>
+//         <refentrytitle>portstyle</refentrytitle>
+// 
+//         <manvolnum>7</manvolnum>
+//       </citerefentry>, <citerefentry>
+//         <refentrytitle>hier</refentrytitle>
+// 
+//         <manvolnum>7</manvolnum>
+//       </citerefentry></para>
+//   </refsection>
+// 
+//   <refsection>
+//     <title>AUTHORS</title>
+// 
+//     <para>Felix Kroniage <email>fkr@opendarwin.org</email></para>
+// 
+//     <para>Juan Manuel Palacios <email>jmpp@macports.org</email></para>
+//   </refsection>
+// </refentry>

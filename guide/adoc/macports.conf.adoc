@@ -1,0 +1,238 @@
+[[_internals.configuration_files]]
+= Configuration Files
+
+The MacPorts configuration files often do not need to be modified for the general end user.
+They contain options that may be of use to advanced users and port developers.
+Some automatically configured options may need to be updated when migrating to a new CPU architecture or a new OS version.
+
+There are three MacPorts configuration files that define important variables used by the MacPorts system: [path]_macports.conf_, [path]_sources.conf_, and [path]_variants.conf_.
+All MacPorts configurations files are located in [path]_${prefix}/etc/macports_.
+
+MacPorts configuration file format is a simple key/value pair separated by either a space or a tab.
+Lines beginning with '#' are comments, empty lines are ignored.
+
+[[_internals.configuration_files.macports_conf]]
+== macports.conf
+
+macports.conf is the configuration file used to bootstrap the MacPorts system.
+This file is read by the port command and determines how it behaves.
+
+Options locating other .conf files.
+
+sources_conf::
+Where to find the sources list.
++
+Default: [path]_${prefix}/etc/macports/sources.conf_
+
+variants_conf::
+Where to find global variants definition file (optional).
++
+Default: [path]_${prefix}/etc/macports/variants.conf_
+
+Options for MacPorts general operating characteristics.
+
+prefix::
+Sets the directory where ports are installed.
+Any path may be used but those with spaces and/or non-ASCII characters should be avoided because it can break some ports.
++
+Default: [path]_/opt/local_
+
+portdbpath::
+Directory where MacPorts keeps working data such as downloaded sources, installed port receipts, and the main registry.
+Same path restrictions apply as for '${prefix}'.
++
+Default: ${prefix}/var/macports
+
+portdbformat::
+Formerly selected the storage type to use for the MacPorts registry: flat or sqlite.
+Currently, only sqlite can be used.
++
+Default: [option]``sqlite``
+
+build_arch::
+The machine architecture for which to build in normal use.
+Options include: ppc, i386, ppc64, x86_64
++
+Default: 
++
+(Snow Leopard and later) [option]``x86_64`` or [option]``i386`` depending on hardware
++
+(Leopard/Tiger) [option]``i386`` or [option]``ppc`` depending on hardware
+
+applications_dir::
+Directory in which ports will install native macOS application bundles.
++
+Default: [path]_/Applications/MacPorts_
+
+frameworks_dir::
+Directory in which ports will install native macOS frameworks.
++
+Default: [path]_${prefix}/Library/Frameworks_
+
+developer_dir::
+Directory where Xcode is installed.
++
+Default: [path]_/Developer_
+
+buildfromsource::
+Controls whether ports are built from source or downloaded as pre-built archives.
+Setting to 'always' will never use archives, 'never' will always try to use an archive and fail if one is not available.
+'ifneeded' will try to fetch an archive and fall back to building from source if that isn't possible.
++
+Default: [option]``ifneeded``
+
+portarchivetype::
+Format of archives in which to store port images.
+This controls both the type of archive created locally after building from source, and the type to request from remote servers.
+Changing this will not affect the usability of already installed archives; they can be of any supported type.
+Supported types are: tgz, tar, tbz, tbz2, tlz, txz, xar, zip, cpgz, cpio
++
+Default: [path]_tbz2_
+
+configureccache::
+Use ccache (C/C++ compiler cache) - see https://ccache.samba.org/
++
+Default: [option]``no``
+
+configuredistcc::
+Use distcc (distributed compiler) - see https://distcc.samba.org/
++
+Default: [option]``no``
+
+configurepipe::
+Use pipes rather than intermediate files when compiling C/C++/etc
++
+Default: [option]``yes``
+
+buildnicevalue::
+Lowered scheduling priority (0-20) to use for make when building ports.
++
+Default: 0
+
+buildmakejobs::
+Number of simultaneous make jobs (commands) to use when building ports.
+Using "`0`" will cause a runtime autodetection to use all available processor cores.
++
+Default: 0
+
+portautoclean::
+Set whether to automatically execute "`clean`" after "`install`" of ports.
++
+Default: [option]``yes``
+
+rsync_server::
+Rsync server from which to fetch MacPorts sources.
++
+Default: rsync.macports.org
+
+rsync_dir::
+Rsync directory from which to pull the base/ component (infrastructure) of MacPorts.
++
+Default: [path]_release/tarballs/base.tar_
+
+rsync_options::
+Rsync options
++
+Default: -rtzv --delete-after
+
+destroot_umask::
+Umask value to use during the destrooting of a port.
++
+Default: 022
+
+binpath::
+Sets env(PATH), the directory search path for locating system executables (rsync, tar, etc.) during port installation.
+Only applications in these directories are available while ports are being installed even if other paths are specified by $PATH in a user's environment.
++
+Default: ${prefix}/bin:${prefix}/sbin:/bin:/sbin:/usr/bin:/usr/sbin
++
+
+
+[NOTE]
+====
+The binpath is implicitly defined, but it may be overwritten by defining the variable in macports.conf.
+However, using a non-default binpath is discouraged and should only be performed by advanced users.
+====
+host_blacklist::
+Space-separated list of download hosts that should not be used.
++
+Default: none
++
+
+
+[NOTE]
+====
+This feature is especially useful if a host turns out to be consistently slow and therefore should be excluded for MacPorts' actions.
+====
+preferred_hosts::
+Space-separated list of download hosts that should be used preferentially.
++
+Default: none
+
+revupgrade_autorun::
+Controls whether the rev-upgrade action will be run automatically after upgrading ports.
++
+Default: yes
+
+revupgrade_mode::
+Controls the rev-upgrade functionality which checks for broken linking and can rebuild ports to fix it.
+'rebuild' means ports will automatically be rebuilt when broken linking is detected in their files, while 'report' means broken files will be scanned for and reported but the ports will not be rebuilt.
++
+Default: rebuild
+
+Options for MacPorts Universal Binaries (+universal variant)
+
+universal_archs::
+The machine architectures to use for +universal variant (multiple entries must be space delimited). Options include: ppc, i386, ppc64, x86_64
++
+Default: [option]``x86_64 i386`` ([option]``ppc
+i386`` for 10.5 and earlier)
+
+Options for StartupItems
+
+startupitem_type::
+Options for generated startup items, though this may be overridden by the `startupitem.type` Portfile key.
+Options are "`default`" option, "`SystemStarter`", "`launchd`", or "`none`".
+For an empty or "`default`" option, a startupitem type appropriate to the platform is used; if "`none`", no port startupitems are installed.
++
+Default: [option]``default``
+
+startupitem_install::
+Create system-level symlinks to generated StartupItems.
+If set to "`no`", symlinks will not be created; otherwise, symlinks will be placed in [path]_/Library/LaunchDaemons_ or [path]_/Library/LaunchAgents_ as appropriate.
+This setting only applies when building ports from source.
++
+Default: [option]``yes``
+
+Other options
+
+extra_env::
+Extra environment variables to keep.
+Any variables listed here are added to the list of variables that are not removed from the environment used while processing ports.
++
+Default: none
+
+place_worksymlink::
+Set whether to place a symlink named "`work`" from your ports tree to  the build directory of a port, when the port is being built.
+This is convenient, but may not be ideal if you care about the structure of your ports tree.
+For example, some developers keep their ports tree synchronized across multiple computers, and don't want to also synch build directories. 
++
+Default: yes
+
+[[_internals.configuration_files.sources_conf]]
+== sources.conf
+
+This file enables rsync synchronization of the default ports tree with the MacPorts rsync server when either of the commands `port
+    selfupdate` or `port sync` are run.
+
+Default: [path]_rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]_
+
+Optional local repositories are enabled using a file url: [replaceable]``file:///path/to/localportsrepository``
+
+[[_internals.configuration_files.variants_conf]]
+== variants.conf
+
+This optional file specifies any variants you'd like to be invoked globally.
+If a variant specified in this file is not supported by a given Portfile, the variant is simply ignored.
+
+Default: none

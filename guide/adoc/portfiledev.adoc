@@ -1,0 +1,974 @@
+[[_development]]
+= Portfile Development
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+A port is a distribution of software that can be compiled and installed using MacPorts.
+A [path]_Portfile_ describes all the required steps such as where to get the source code from upstream, which patches have to be applied and which other tools and commands are required to build the source code.
+
+Each port consists of multiple files in a directory, usually within a category subdirectory of the root of a ports tree.
+The MacPorts Project distributes the main ports tree that is by default <<_internals.configuration_files.sources_conf,configured>> in all installations of MacPorts.
+This section serves as a reference for the directory structure of a single port and the layout of the files within.
+The only required file in a port is the [path]_Portfile_.
+
+[[_development.introduction]]
+== Portfile Introduction
+
+A MacPorts Portfile is a link:Tcl script that usually contains only the simple keyword/value combinations and Tcl extensions as described in the <<_reference,Portfile Reference>> chapter, though it may also contain arbitrary Tcl code.
+Every port has a corresponding Portfile, but Portfiles do not completely define a port's installation behavior since MacPorts base has default port installation characteristics coded within it.
+Therefore Portfiles need only specify required options, though some ports may require non-default options.
+
+A common way for Portfiles to augment or override MacPorts base default installation phase characteristics is by using [path]_Portfile_ phase declaration(s). If you use Portfile phase declaration(s), you should know how to identify the "`global`" section of a Portfile.
+Any statements not contained within a phase declaration, no matter where they are located in a Portfile, are said to be in the global section of the Portfile; therefore the global section need not be contiguous.
+Likewise, to remove statements from the global section they must be placed within a phase declaration.
+
+The main phases you need to be aware of when making a Portfile are these:
+
+* Fetch
+* Extract
+* Patch
+* Configure
+* Build
+* Destroot
+
+The default installation phase behavior performed by the MacPorts base works fine for applications that use the standard ``configure``, ``make``, and `make
+    install` steps, which conform to phases configure, build, and destroot respectively.
+For applications that do not conform to this standard behavior, any installation phase may be augmented using <<_development.examples.augment,pre- and/or post- phases>>, or even <<_development.examples.override,overridden>> or <<_development.examples.eliminate,eliminated>>.
+See <<_development.examples,Example Portfiles>> below.
+
+[NOTE]
+====
+For a detailed description of all port phases, see the <<_reference.phases,Portfile Reference>> chapter.
+====
+
+[[_development.creating_portfile]]
+== Creating a Portfile
+
+Here we list the individual Portfile components for an application that conforms to the standard ``configure``, ``make``, and `make install` steps of most open source application installs.
+
+. Modeline
++
+This should be the first line of a Portfile.
+It sets the correct editing options for vim and emacs.
+See <<_development.practices.portstyle,Port Style>> for more information.
+Its use is optional and up to the port maintainer.
++
+
+[source]
+----
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+----
+. PortSystem line
++
+This statement is required for all ports.
++
+
+[source]
+----
+PortSystem          1.0
+----
+. Port name
++
+
+[source]
+----
+name                rrdtool
+----
+. Port version
++
+
+[source]
+----
+version             1.2.23
+----
+. Port categories
++
+A port may belong to more than one category, but the first (primary) category should match the directory name in the ports tree where the Portfile is to reside.
++
+
+[source]
+----
+categories          net
+----
+. Platform statement
++
+
+[source]
+----
+platforms           darwin
+----
+. Port maintainers
++
+A port's maintainers are the people who have agreed to take responsibility for keeping the port up-to-date.
+The `maintainers` keyword lists the maintainers' GitHub usernames or email addresses, preferably in the obfuscated form which hides them from spambots.
+For more, see the full explanation of the <<_reference.keywords.maintainers,maintainers
+keyword>> in the <<_reference.keywords,Global
+Keywords>> section of the <<_reference,Portfile
+Reference>> chapter.
++
+
+[source]
+----
+maintainers         @neverpanic \
+                    jdoe \
+                    example.org:julesverne
+----
+. Port description
++
+
+[source]
+----
+description         Round Robin Database
+----
+. Port long_description
++
+
+[source]
+----
+long_description    RRDtool is a system to store and display time-series \
+                    data
+----
+. A port's application homepage
++
+
+[source]
+----
+homepage            https://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+----
+. A port's download URLs
++
+
+[source]
+----
+master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
+                    ftp://ftp.pucpr.br/rrdtool/
+----
+. Port checksums
++
+The checksums specified in a Portfile are checked with the fetched tarball for security.
+For the best security, use rmd160  and sha256 checksum types.
++
+
+[source]
+----
+checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+----
++
+To find the correct checksums for a port's distribution file, follow one of these examples:
++
+
+[source]
+----
+%% openssl dgst -rmd160 rrdtool-1.2.23.tar.gz
+%% openssl dgst -sha256 rrdtool-1.2.23.tar.gz
+----
++
+
+----
+RIPEMD160( ... rrdtool-1.2.23.tar.gz)= 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
+
+SHA256( ... rrdtool-1.2.23.tar.gz)= 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+----
++
+or update the version in the Portfile:
++
+
+[source]
+----
+%% sudo port edit rrdtool
+----
++
+and run:
++
+
+[source]
+----
+%% port -v checksum rrdtool
+----
++
+
+----
+--->  Fetching distfiles for rrdtool
+--->  Verifying checksums for rrdtool
+--->  Checksumming rrdtool-1.2.23.tar.gz
+Error: Checksum (rmd160) mismatch for rrdtool-1.2.23.tar.gz
+Portfile checksum: rrdtool-1.2.23.tar.gz rmd160 ...WRONGCHECKSUM...
+Distfile checksum: rrdtool-1.2.23.tar.gz rmd160 7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a
+Error: Checksum (sha256) mismatch for rrdtool-1.2.23.tar.gz
+Portfile checksum: rrdtool-1.2.23.tar.gz sha256 ...WRONGCHECKSUM...
+Distfile checksum: rrdtool-1.2.23.tar.gz sha256 2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+The correct checksum line may be:
+checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa5
+Error: Failed to checksum rrdtool: Unable to verify file checksums
+Error: See ...SOMEPATH.../rrdtool/main.log for details.
+Error: Follow https://guide.macports.org/#project.tickets to report a bug.
+Error: Processing of port rrdtool failed
+----
+. Port dependencies
++
+A port's dependencies are ports that must be installed before another port is installed.
++
+
+[source]
+----
+depends_lib         port:perl5.8 \
+                    port:tcl \
+                    port:zlib
+----
+. Port configure arguments (optional)
++
+
+[source]
+----
+configure.args      --enable-perl-site-install \
+                    --mandir=${prefix}/share/man
+----
+
+
+[[_development.examples]]
+== Example Portfiles
+
+In this section we begin by taking a look at a complete simple Portfile; then we see how to <<_development.examples.augment,augment default phases>> by defining pre- and post- phases, how to <<_development.examples.override,override default phases>>, and finally how to <<_development.examples.eliminate,eliminate port
+    phases>>.
+
+[[_development.examples.basic]]
+=== A Basic Portfile
+
+[source]
+----
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                rrdtool
+version             1.2.23
+categories          net
+platforms           darwin
+license             GPL-2+
+maintainers         julesverne
+description         Round Robin Database
+long_description    RRDtool is a system to store and display time-series data
+homepage            https://people.ee.ethz.ch/~oetiker/webtools/rrdtool/
+master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
+                    ftp://ftp.pucpr.br/rrdtool/
+
+checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+
+depends_lib         path:bin/perl:perl5 \
+                    port:tcl \
+                    port:zlib
+
+configure.args      --enable-perl-site-install \
+                    --mandir=${prefix}/share/man
+----
+
+[[_development.examples.augment]]
+=== Augment Phases Using pre- / post-
+
+To augment a port's installation phase, and not override it, you may use pre- and post- installation phases as shown in this example.
+
+[source]
+----
+post-destroot {
+    # Install example files not installed by the Makefile
+    file mkdir ${destroot}${prefix}/share/doc/${name}/examples
+    file copy ${worksrcpath}/examples/ \
+        ${destroot}${prefix}/share/doc/${name}/examples
+}
+----
+
+[[_development.examples.override]]
+=== Overriding Phases
+
+To override the automatic MacPorts installation phase processing, define your own installation phases as shown in this example.
+
+[source]
+----
+destroot {
+    xinstall -m 755 -d ${destroot}${prefix}/share/doc/${name}
+    xinstall -m 755 ${worksrcpath}/README ${destroot}${prefix}/share/doc/${name}
+}
+----
+
+[[_development.examples.eliminate]]
+=== Eliminating Phases
+
+To eliminate a default phase, simply define a phase with no contents as shown.
+
+[source]
+----
+build {}
+----
+
+[NOTE]
+====
+Because many software packages do not use [option]``configure``, a keyword is provided to eliminate the [option]``configure`` phase.
+Another exception is the [option]``destroot`` phase may not be eliminated.
+See the chapter <<_reference,Portfile Reference>> for full information.
+====
+
+[[_development.examples.startupitem]]
+=== Creating a StartupItem
+
+Startupitems may be placed in the global section of a Portfile.
+
+[source]
+----
+startupitem.create      yes
+startupitem.name        nmicmpd
+startupitem.executable  "${prefix}/bin/nmicmpd"
+----
+
+[[_development.variants]]
+== Port Variants
+
+Variants are a way for port authors to provide options that may be invoked at install time.
+They are declared in the global section of a Portfile using the "`variant`" keyword, and should include <<_reference.variants.descriptions,carefully chosen variant
+    descriptions>>.
+
+[[_development.variants.options]]
+=== Example Variants
+
+The most common actions for user-selected variants is to add or remove dependencies, configure arguments, and build arguments according to various options a port author wishes to provide.
+Here is an example of several variants that modify depends_lib and configure arguments for a port.
+
+[source]
+----
+variant fastcgi description {Add fastcgi binary} {
+    configure.args-append \
+            --enable-fastcgi \
+            --enable-force-cgi-redirect \
+            --enable-memory-limit
+}
+
+variant gmp description {Add GNU MP functions} {
+    depends_lib-append port:gmp
+    configure.args-append --with-gmp=${prefix}
+
+}
+
+variant sqlite description {Build sqlite support} {
+    depends_lib-append \
+        port:sqlite3
+    configure.args-delete \
+        --without-sqlite \
+        --without-pdo-sqlite
+    configure.args-append \
+        --with-sqlite \
+        --with-pdo-sqlite=${prefix} \
+        --enable-sqlite-utf8
+}
+----
+
+[NOTE]
+====
+Variant names may contain only the characters A-Z, a-z, and the underscore character "`_`".
+Therefore, take care to never use hyphens in variant names.
+====
+
+In the example variant declaration below, the configure argument `--without-x` is removed and a number of others are appended.
+
+[source]
+----
+variant x11 description {Builds port as an X11 program with Lucid widgets} {
+    configure.args-delete   --without-x
+    configure.args-append   --with-x-toolkit=lucid \
+                            --without-carbon \
+                            --with-xpm \
+                            --with-jpeg \
+                            --with-tiff \
+                            --with-gif \
+                            --with-png
+    depends_lib-append      lib:libX11:XFree86 \
+                            lib:libXpm:XFree86 \
+                            port:jpeg \
+                            port:tiff \
+                            port:libungif \
+                            port:libpng
+}
+----
+
+[[_development.variants.phase]]
+=== Variant Actions in a Phase
+
+If a variant requires options in addition to those provided by keywords using -append and/or -delete, in other words, any actions that would normally take place within a port installation phase, do not try to do this within the variant declaration.
+Rather, modify the behavior of any affected phases when the variant is invoked using the variant_isset keyword.
+
+[source]
+----
+post-destroot {
+    xinstall -m 755 -d ${destroot}${prefix}/etc/
+    xinstall ${worksrcpath}/examples/foo.conf \
+        ${destroot}${prefix}/etc/
+
+    if {[variant_isset carbon]} {
+        delete ${destroot}${prefix}/bin/emacs
+        delete ${destroot}${prefix}/bin/emacs-${version}
+    }
+}
+----
+
+[[_development.variants.default]]
+=== Default Variants
+
+Variants are used to specify actions that lie outside the core functions of an application or port, but there may be some cases where you wish to specify these non-core functions by default.
+For this purpose you may use the keyword default_variants.
+
+[source]
+----
+default_variants    +foo +bar
+----
+
+[NOTE]
+====
+The default_variant keyword may only be used in the global Portfile section.
+====
+
+[[_development.patches]]
+== Patch Files
+
+Patch files are files created with the Unix command `diff` that are applied using the command `patch` to modify text files to fix bugs or extend functionality.
+
+[[_development.patches.portfile]]
+=== Creating Portfile Patches
+
+If you wish to contribute modifications or fixes to a Portfile, you should do so in the form of a patch.
+Follow the steps below to create Portfile patch files
+
+. Make a copy of the Portfile you wish to modify; both files must be in the same directory, though it may be any directory.
++
+
+[source]
+----
+%% cp -p Portfile Portfile.orig
+----
+. Edit the file to make it as you want it to be after it is fetched.
+. Now use the Unix command ``diff -u ``to create a "`unified`" diff patch file. Put the name of the port in the patchfile, for example, Portfile-rrdtool.diff.
++
+
+[source]
+----
+%% diff -u Portfile.orig Portfile > Portfile-rrdtool.diff
+----
+. A patch file that is a "`unified`" diff file is the easiest to interpret by humans and this type should always be used for ports. The Portfile patch below will change the version and checksums when applied.
++
+
+[source]
+----
+--- Portfile.orig        2011-07-25 18:52:12.000000000 -0700
++++ Portfile    2011-07-25 18:53:35.000000000 -0700
+@@ -2,7 +2,7 @@
+ PortSystem          1.0
+ name                foo
+ 
+-version             1.3.0
++version             1.4.0
+ categories          net
+ maintainers         nomaintainer
+ description         A network monitoring daemon.
+@@ -13,9 +13,9 @@
+ 
+ homepage            http://rsug.itd.umich.edu/software/${name}
+ 
+ master_sites        ${homepage}/files/
+-checksums           rmd160 f0953b21cdb5eb327e40d4b215110b71
++checksums           rmd160 01532e67a596bfff6a54aa36face26ae
+ extract.suffix      .tgz
+ platforms           darwin
+----
+
+Now you may attach the patch file to a MacPorts Trac ticket for the port author to evaluate.
+
+[[_development.patches.source]]
+=== Creating Source Code Patches
+
+Necessary or useful patches to application source code should generally be sent to the application developer rather than the port author so the modifications may be included in the next version of the application.
+
+Generally speaking, you should create one patch file for each logical change that needs to be applied.
+Patchfile filenames should uniquely distinguish the file and generally be of the form [path]_patch-_[replaceable]``<identifier>``[path]_.diff_, where the [replaceable]``identifier`` is a reference to the problem or bug it is supposed to solve.
+An example filename would be [path]_patch-_[replaceable]``destdir-variable-fix``[path]_.diff_.
+
+To create a patch to modify a single file, follow the steps below.
+
+. Locate the file you wish to patch in its original location within the unpacked source directory and make a duplicate of it.
++
+
+[source]
+----
+%% cd ~/Downloads/foo-1.34/src
+%% cp -p Makefile.in Makefile.in.orig
+----
+. Edit the file and modify the text to reflect your corrections.
+. Now `cd` to the top-level directory of the unpacked source, and use the Unix command `diff -u` to create a "`unified`" diff patch file.
++
+
+[source]
+----
+%% cd ~/Downloads/foo-1.34
+%% diff -u src/Makefile.in.orig src/Makefile.in > patch-destdir-variable-fix.diff
+----
++
+You should execute `diff` from the top-level directory of the unpacked source code, because during the patch phase MacPorts by default uses the patch argument [option]``-p0``, which does not strip prefixes with any leading slashes from file names found in the patch file (as opposed to [option]``-p1`` that strips one, etc), and any path not relative to the top-level directory of the unpacked source will fail during the patch phase.
++
+
+[NOTE]
+====
+If you find an existing source file patch you wish to use that contains leading path information (diff was executed from a directory higher than the top-level source directory), you will need to use the <<_reference.phases.patch,patch phase
+            keyword>>``patch.pre_args`` to specify a [option]``-px`` value for how many prefixes with leading slashes are to be stripped off.
+====
+. A patch file that is a "`unified`" diff file is the easiest to interpret by humans and this type should always be used for ports. See the example below where a patch adds [var]``DESTDIR`` support to [path]_Makefile.in_.
++
+
+[source]
+----
+--- src/Makefile.in.orig   2007-06-01 16:30:47.000000000 -0700
++++ src/Makefile.in       2007-06-20 10:10:59.000000000 -0700
+@@ -131,23 +131,23 @@
+        $(INSTALL_DATA)/gdata $(INSTALL_DATA)/perl
+ 
+ install-lib:
+-       -mkdir -p $(INSTALL_LIB)
++       -mkdir -p $(DESTDIR)$(INSTALL_LIB)
+        $(PERL) tools/install_lib -s src -l $(INSTALL_LIB) $(LIBS)
+-       cp $(TEXT) $(INSTALL_LIB)/
++       cp $(TEXT) $(DESTDIR)$(INSTALL_LIB)/
+----
+. Place the patch [path]_patch-destdir-variable-fix.diff_ in the directory [path]_${portpath}/files_ and use it in a port using the `patchfiles` keyword. [var]``${portpath}`` may be in a local Portfile repository during development, or [path]_files/_ may be in a port's [var]``${portpath}`` in the global MacPorts repository.
++
+
+[source]
+----
+patchfiles          patch-destdir-variable-fix.diff
+----
+
+
+[[_development.patches.applying]]
+=== Manually Applying Patches
+
+MacPorts applies patch files automatically, but you may want to know how to apply patch files manually if you want to test patch files you have created or you wish to apply uncommitted Portfile patches.
+
+. Change to the directory containing the file to be patched. In this example, we'll apply a Portfile patch to the postfix port.
++
+
+[source]
+----
+%% cd $(port dir postfix)
+----
+. Now apply the patch from your Downloads folder, or wherever you put it. The patchfile knows the name of the file to be patched.
++
+
+[source]
+----
+%% patch -p0 < ~/Downloads/Portfile-postfix.diff
+----
++
+
+----
+patching file Portfile
+----
+
+
+[[_development.local_repositories]]
+== Local Portfile Repositories
+
+To create and test Portfiles that are not yet published in the MacPorts ports tree, you may create a local Portfile repository as shown.
+Replace the hypothetical user [path]_julesverne_ with your username in the example below.
+
+. Open [path]_sources.conf_ in a text editor. For example, to open it into TextEdit:
++
+
+[source]
+----
+%% open -e ${prefix}/etc/macports/sources.conf
+----
+. Insert a URL pointing to your local repository location before the rsync URL as shown.
++
+
+[source]
+----
+file:///Users/julesverne/ports
+rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]
+----
++
+
+[NOTE]
+====
+The file URL should always appear before the rsync URL so that local Portfiles can be tested that are duplicated in the MacPorts tree, because `port` will always operate on the first Portfile it encounters.
+====
+. Place the Portfiles you create inside a directory whose name matches the port, which should in turn be placed inside a directory that reflects the port's primary category (the first category entry in the Portfile). For example, to create the directory for a hypothetical port "`bestevergame`" and to begin editing its Portfile in TextEdit, you can use these commands:
++
+
+[source]
+----
+%% mkdir -p ~/ports/games/bestevergame
+%% cd ~/ports/games/bestevergame
+%% touch Portfile
+%% open -e Portfile
+----
++
+See other sections in the Guide for help writing Portfiles.
+If you've already written the Portfile elsewhere, you can instead copy the Portfile into this directory.
+. If your Portfile needs to apply any patches to the port's source files, create a [path]_files_ directory and place the patchfiles in it, and reference the patchfiles in your Portfile, as explained in <<_development.patches.source,Creating Source Code Patches>>.
+. After you create or update your Portfile, use `portindex` in the local repository's directory to create or update the index of the ports in your local repository.
++
+
+[source]
+----
+%% cd ~/ports
+%% portindex
+----
++
+
+----
+Creating software index in /Users/julesverne/ports
+Adding port games/bestevergame
+
+Total number of ports parsed:   1
+Ports successfully parsed:      1
+Ports failed:                   0
+----
+
+Once the local port is added to the [path]_PortIndex_, it becomes available for searching or installation as with any other Portfile in the MacPorts tree:
+
+[source]
+----
+%% port search bestever
+----
+
+----
+bestevergame @1.1 (games)
+    The Best Ever Game
+----
+
+[[_development.practices]]
+== Portfile Best Practices
+
+This section contains practical guidelines for creating Portfiles that install smoothly and provide consistency between ports.
+The following sections are on the TODO list.
+
+[[_development.practices.portstyle]]
+=== Port Style
+
+Portfiles may be thought of as a set of declarations rather than a piece of code.
+It is best to format the port file is if it were a table consisting of keys and values.
+In fact, the simplest of ports will only contain a small block of values.
+Nicely formatted compact tables will result in more values being visible at the same time.
+
+The two columns should be separated by spaces (not tabs), so you should set your editor to use soft tabs, which are tabs emulated by spaces.
+By default, the top line of all Portfiles should use a modeline that defines soft tabs for the vim and emacs editors as shown.
+
+[source]
+----
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+----
+
+The left column should consist of single words, and will be separated from the more complex right side by spaces in multiples of four.
+Variable assignments and variant declarations are exceptions, and may be considered a single word on the left side, with a single space between words.
+
+[source]
+----
+set libver "8.5"
+----
+
+When items require multiple lines with line continuation, they can be separated from the previous and next items with a blank line.
+Indent the additional lines to the same column that the right side begins on in the first line.
+
+[source]
+----
+checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+----
+
+Should a key item such as a phase or variant require braces, the opening brace should appear on the same line and the closing brace should be on its own line.
+The block formed by the braces is indented for visual clearance.
+Braces merely quoting strings, for example the description of variants, are placed on the same line without line breaks.
+
+[source]
+----
+variant mysql5 description {Enable support for MySQL 5} {
+    depends_lib-append        port:mysql5
+    configure.args-replace    --without-mysql5 --with-mysql5
+}
+----
+
+Frequently multiple items are necessary in the second column.
+For example, to set multiple source download locations, multiple `master_sites` must be defined.
+Unless the second column items are few and short you should place each additional item on a new line and separate lines with a backslash.
+Indent the lines after the first line to make it clear the items are second column values and also to emphasize the unity of the block.
+
+[source]
+----
+destroot.keepdirs    ${destroot}${prefix}/var/run \
+                     ${destroot}${prefix}/var/log \
+                     ${destroot}${prefix}/var/cache/mrtg
+----
+
+[[_development.practices.dont_overwrite]]
+=== Don't Overwrite Config Files
+
+TODO:
+
+[[_development.practices.install_docs]]
+=== Install Docs and Examples
+
+TODO:
+
+[[_development.practices.provide_messages]]
+=== Provide User Messages
+
+TODO:
+
+[[_development.practices.use_variables]]
+=== Use Variables
+
+TODO: Set variables so changing paths may be done in one place; use them anytime it makes updates simpler: distname ${name}-src-${version}
+
+[[_development.practices.rename_replace_port]]
+=== Renaming or replacing a port
+
+If there is the need to replace a port with another port or a renaming is necessary for some reason, the port should be marked as ``replaced_by``.
+
+As an illustration of a typical workflow the port "`skrooge-devel`" shall be taken.
+This port had been used for testing new versions of skrooge, but it turned out to have become unnecessary due to the fact that skrooge's developers currently prefer a distribution via port "`skrooge`" instead. 
+
+At the end of this section the use of the obsolete PortGroup is suggested as an even shorter approach to the below described workflow.
+
+[[_development.replaced_by]]
+==== The long way
+
+Skrooge's original devel port file looked like this:
+
+[source]
+----
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           kde4    1.1
+
+fetch.type          svn
+svn.url             svn://anonsvn.kde.org/home/kde/trunk/extragear/office/skrooge
+svn.revision        1215845
+
+name                skrooge-devel
+version             0.8.0-${svn.revision}
+
+categories          kde finance
+maintainers         mk pixilla openmaintainer
+description         Skrooge
+long_description    Personal finance management tool for KDE4, with the aim of being highly intuitive, while \
+                    providing powerful functions such as reporting (including graphics), persistent \
+                    Undo/Redo, encryption, and much more...
+
+conflicts           skrooge
+
+platforms           darwin
+license             GPL-3
+
+homepage            https://skrooge.org
+master_sites        https://skrooge.org/files/
+
+livecheck.type      none
+
+distname            skrooge
+
+depends_lib-append  port:kdelibs4 \
+                    port:libofx \
+                    port:qca-ossl \
+                    port:kdebase4-runtime \
+                    port:oxygen-icons
+----
+
+The following steps have to be taken to ensure a smooth transition for a MacPorts user updating his local installation using ``sudo port upgrade``:
+
+. add the line `replaced_by foo` where foo is the port this one is replaced by; when a user upgrades this port, MacPorts will instead install the replacement port
++
+
+[source]
+----
+replaced_by         skrooge
+----
+. increase the version, revision, or epoch, so that users who have this port installed will get notice in `port outdated` that they should upgrade it and trigger the above process
++
+
+[source]
+----
+revision            1
+----
+. clear distfiles (have a line reading only ``distfiles``) so that no distfile is downloaded for this stub port
++
+
+[source]
+----
+distfiles
+----
+. delete master_sites since there aren't any distfiles to download
+. disable livecheck
++
+
+[source]
+----
+livecheck.type      none
+----
+. add a pre-configure block with a `ui_error` and `return -code error` explaining to users who try to install this port that the port has been replaced
++
+
+[source]
+----
+pre-configure {
+    ui_error "Please do not install this port since it has been replaced by 'skrooge'."
+    return -code error
+}
+----
+
+With above modifications the port file eventually looks like this:
+
+[source]
+----
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+
+name                skrooge-devel
+svn.revision        1215845
+version             0.8.0-${svn.revision}
+revision            1
+
+replaced_by         skrooge
+
+categories          kde finance
+maintainers         mk pixilla openmaintainer
+description         Skrooge
+long_description    Personal finance management tool for KDE4, with the aim of being highly intuitive, while \
+                    providing powerful functions such as reporting (including graphics), persistent \
+                    Undo/Redo, encryption, and much more...
+
+platforms           darwin
+license             GPL-3
+
+homepage            https://skrooge.org
+
+livecheck.type      none
+
+pre-configure {
+    ui_error "Please do not install this port since it has been replaced by 'skrooge'."
+    return -code error
+}
+
+distfiles
+----
+
+A user upgrading ports will experience the following for port "`skrooge-devel`":
+
+[source]
+----
+%% sudo port upgrade skrooge-devel
+----
+
+----
+--->  skrooge-devel is replaced by skrooge
+--->  Computing dependencies for skrooge
+--->  Fetching skrooge
+--->  Verifying checksum(s) for skrooge
+--->  Extracting skrooge
+--->  Configuring skrooge
+--->  Building skrooge
+--->  Staging skrooge into destroot
+--->  Deactivating skrooge-devel @0.8.0-1215845_0
+--->  Cleaning skrooge-devel
+--->  Computing dependencies for skrooge
+--->  Installing skrooge @0.8.0.6_0
+--->  Activating skrooge @0.8.0.6_0
+##########################################################
+# Don't forget that dbus needs to be started as the local 
+# user (not with sudo) before any KDE programs will launch
+# To start it run the following command:                  
+# launchctl load /Library/LaunchAgents/org.freedesktop.dbus-session.plist
+##########################################################
+
+######################################################
+#  Programs will not start until you run the command 
+#  'sudo chown -R $USER ~/Library/Preferences/KDE'  
+#  replacing $USER with your username.              
+######################################################
+--->  Cleaning skrooge
+----
+
+In case a user actually tries to install the obsolete port "`skrooge-devel`" it would be pointed out by an error message that this is impossible now:
+
+[source]
+----
+%% sudo port install skrooge-devel
+----
+
+----
+--->  Fetching skrooge-devel
+--->  Verifying checksum(s) for skrooge-devel
+--->  Extracting skrooge-devel
+--->  Configuring skrooge-devel
+Error: Please do not install this port since it has been replaced by 'skrooge'.
+Error: Target org.macports.configure returned: 
+Log for skrooge-devel is at: /opt/local/var/macports/logs/_opt_local_var_macports_sources_rsync.macports.org_release_ports_kde_skrooge-devel/main.log
+Error: Status 1 encountered during processing.
+To report a bug, see <https://guide.macports.org/#project.tickets>
+----
+
+[[_development.obsolete_portgroup]]
+==== The shortcut: PortGroup obsolete
+
+Using the PortGroup obsolete makes the task described in the previous subsection much easier:
+
+[source]
+----
+
+# -*- coding: utf-8; mode: tcl; tab-width: 4; indent-tabs-mode: nil; c-basic-offset: 4 -*- vim:fenc=utf-8:ft=tcl:et:sw=4:ts=4:sts=4
+
+PortSystem          1.0
+PortGroup           obsolete 1.0
+
+name                skrooge-devel
+replaced_by         skrooge
+svn.revision        1215845
+version             0.8.0-${svn.revision}
+revision            2
+categories          kde finance
+----
+
+The PortGroup defines a number of reasonable defaults for a port that is only there to inform users that they should uninstall it and install something else instead.
+You might want to override some of the defaults though.
+For details have a look at the PortGroup's source code in [path]_${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/obsolete-1.0.tcl_.
+
+[NOTE]
+====
+[var]``replaced_by`` can be specified before or after the [var]``PortGroup`` line.
+====
+
+[[_development.practices.removing_port]]
+=== Removing a port
+
+If a port has to be removed from MacPorts one should consider the hints concerning replacing it by some alternative port given <<_development.practices.rename_replace_port,above>>.
+It is recommended to wait one year before the port directory is actually removed from the MacPorts ports tree. 
+
+If there is no replacement for a port, it can simply be deleted immediately.
+
+[[_development.buildbot]]
+== MacPorts' buildbot
+
+The link:buildbot is a port build service which builds ports using the MacPorts Buildbot (link:MPBB) scripts.
+
+Every time a maintainer commits changes to MacPorts' ports Git repository the buildbot will check whether a rebuild of the corresponding port(s) would be necessary.
+If the port(s) in question are distributable their binary archives will be kept for subsequent distribution for all versions of the Mac operating system for which build machines are available.
+See the link:list
+        of builders to find out which platforms these currently are.
+
+If a build error occurred for a port its maintainer will be informed via an email so that problems which did not surface on the maintainer's machine will not go unnoticed.
+Port maintainers will find the link:waterfall and the link:builders views most useful since they give information about the build status and offer the possibility to build one's port(s) on specific builders.
+
+Thus the buildbot helps to keep MacPorts consistent on various macOS versions, i.e., a maintainer does not need access to these versions anymore in order to assure that the port(s) maintained build without problems.
+Currently only the default port variants will be built and kept.

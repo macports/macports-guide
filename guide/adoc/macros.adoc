@@ -1,0 +1,13 @@
+= Macros
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+[WARNING]
+====
+This section is outdated and needs to be reworked.
+Please see <<_project.docs>> if you can contribute updated instructions. 
+====

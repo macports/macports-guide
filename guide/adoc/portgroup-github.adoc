@@ -1,0 +1,118 @@
+[[_reference.portgroup.github]]
+= PortGroup github
+
+The `github` portgroup allows for efficient porting of software hosted on GitHub.
+
+[[_reference.portgroup.github.description]]
+== Description
+
+This portgroup greatly simplifies the porting of software hosted on GitHub.
+Provided a GitHub repository author follows common GitHub practices, a port can be almost fully configured simply by declaring the repository coordinates.
+The `github` portgroup is indeed capable of configuring, amongst other things: 
+
+* The port ``name``.
+* The port ``version``.
+* The `distfiles` (if the project uses GitHub releases).
+* The `livecheck` parameters.
+
+
+[[_reference.portgroup.github.setup]]
+== Setting up the GitHub repository coordinates
+
+The main port configuration is triggered by the usage of the `github.setup` keyword: 
+[source]
+----
+
+PortGroup           github 1.0
+github.setup        author project version [tag_prefix]
+----
+
+By default, the port `name` will be set to the GitHub project name (``project``) and `version` will be set to the GitHub project ``version``.
+The port name can be overridden by using the `name` keyword. 
+
+The `tag_prefix` is optional, and it's used to specify a prefix to use when constructing the tag name.
+If, for example, the project uses tags such as ``v1.0.0``, then the `tag_prefix` should be set to ``v``, as in the following example: 
+[source]
+----
+
+github.setup        author project version v
+----
+
+[[_reference.portgroup.github.distfilestrategy]]
+== Choosing a distfile strategy
+
+GitHub, and as a consequence the `github` portgroup, offers multiple mechanisms to get a distfile: 
+
+* Distfile from a `git` commit or tag.
+* Distfile from a GitHub link:release. 
+* Distfile from a GitHub link:download. 
+
+The default behaviour of the portgroup is using GitHub automatically generated distfile from a `git` commit or tag.
+However, the best practice should be using a GitHub release. 
+
+[[_reference.portgroup.github.distfile]]
+== Distfile from tag or commit
+
+The default behaviour of the `github` portgroup is leveraging GitHub's ability to create a distfile from a `git` tag or commit.
+In this case, the `distname` is irrelevant and should not be set. 
+
+If the project's developers do not tag their releases, they should be encouraged to do so.
+Until they do, or in the case in which an untagged development version has to be used, port maintainers have the possibility of specifying a `git` commit hash and manually set the `version` field.
+If the project does not assign version numbers the port maintainer has to define one.
+Such versions typically format the date of the chosen commit using the `YYYYMMDD` pattern.
+If, for example, the port maintainer decides to use a changeset with the hash ``0ff25277c3842598d919cd3c73d60768``, committed on April 1, 2014, then the following would be used: 
+[source]
+----
+
+github.setup        someone someproject 0ff25277c3842598d919cd3c73d60768
+version             20140401
+----
+
+[[_reference.portgroup.github.releases]]
+== Distfile from a GitHub release
+
+The `github` portgroup allows maintainers to easily configure the distfiles when the project uses GitHub releases.
+A release is the best distfile candidate, and project maintainers should be encouraged to use them.
+To enable this feature, the following keyword must be used: 
+[source]
+----
+
+github.tarball_from releases
+----
+By default, the `github` portgroup sets `distname` to: 
+[source]
+----
+
+distname            ${github.project}-${github.version}
+----
+However, GitHub does not enforce any rule for release distfiles, so port maintainers may need to override the `distname` as they would do for other ports. 
+
+[[_reference.portgroup.github.downloads]]
+== Distfile from a GitHub download
+
+Older projects use the discontinued link:downloads service.
+New GitHub downloads can no longer be created, but old ones are still available. 
+
+If the project doesn't have GitHub releases but does have GitHub downloads, they can be used using the following keyword: 
+[source]
+----
+
+github.tarball_from downloads
+----
+Since GitHub doesn't enforce any naming rules for downloads, the portgroup can only provide a sensible default value for ``distname``, which can be overridden if necessary. 
+
+[[_reference.portgroup.github.submodule]]
+== Using repositories with git submodules
+
+If the project uses `git` submodules, some projects' tag- or commit-based distfiles will not contain all the necessary files.
+Once again, the best distfile candidate (if available) is a distfile from GitHub releases, as described in the previous sections.
+However, in the case a project doesn't provide any other alternative, a project using submodules can be successfully retrieved by fetching the sources using `git` and then using a `post-fetch` to initialize the submodules: 
+[source]
+----
+
+fetch.type          git
+
+post-fetch {
+    system -W ${worksrcpath} "git submodule update --init"
+}
+----

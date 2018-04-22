@@ -1,0 +1,145 @@
+[[_reference.variants]]
+= Variants
+
+MacPorts variants are conditional modifications of port installation behavior during port installation.
+There are two types of variants: user-selected variants and platform variants.
+User-selected variants are options selected by a user when a port is installed; platform variants are selected automatically by MacPorts base according to the OS or hardware platform (darwin, freebsd, linux, i386, powerpc, etc.).
+
+[[_reference.variants.user_selected]]
+== User-Selected Variants
+
+User-selected variants are those that are defined so a user can invoke them to enable port options at install time.
+They also allow a port author a level of modularity and control using the keyword `default_variants` (see below).
+
+[NOTE]
+====
+Variant names may contain only letters, numbers and underscore characters.
+In particular, the hyphen is not a valid character in variant names because it would conflict with the notation for deselecting a variant.
+====
+
+variant [replaceable]``name`` [requires [replaceable]``variant1 variant2 ...``] [conflicts [replaceable]``variant1 variant2 ...``] [description [replaceable]``description``]::
+The variant declaration may contain any keywords that can be placed in a Portfile's global section.
+If you wish to execute system (shell) calls or Tcl extensions during the execution of a port phase, you should place those statements within a `variant_isset` conditional within a phase declaration and not within the variant declaration itself.
+Dependencies and conflicts with other variants in the same port can be expressed with `requires` and `conflicts` options as shown below.
+
+* Default: none
+* Examples:
++
+
+[source]
+----
+variant gnome requires glib {
+    configure.args-append   --with-gnome
+    depends_lib-append      port:gnome-session
+}
+----
++
+
+[source]
+----
+variant apache2 conflicts apache {
+    configure.args-append \
+        --with-apxs2=${prefix}/apache2/bin/apxs
+}
+----
+
+default_variants::
+The optional `default_variants` keyword is used to specify variants that a port author wishes to have enabled by default.
+This allows for Portfile modularity and also allows users to suppress default variants if they wish.
+
+* Default: none
+* Example:
++
+
+[source]
+----
+default_variants    +ssl +tcpd
+----
+
++
+Default variants may be suppressed by preceding a variant name with a "`-`" as shown in this example.
++
+
+
+[source]
+----
+%% port install foo -ssl
+----
+universal_variant::
+When using MacPorts on macOS, a universal variant is defined by default to configure ports with universal flags.
+The variant can be overridden if the default code does not work (see the <<_reference.phases.configure.universal,Configure
+Universal>> section above), or suppressed if a universal variant does not function properly for a given port.
+
+* Default: [option]``yes``
+* Example:
++
+
+[source]
+----
+universal_variant   no
+----
+
+[[_reference.variants.descriptions]]
+== User-Selected Variant Descriptions
+
+User-selected variants ought to provide a description, which will be displayed when using command ``port variants foo``.
+The syntax used for the description keyword is shown below.
+
+[source]
+----
+variant bar description {Add IMAP support} {}
+----
+
+Descriptions should be short but clear, and not merely repeat the name of the variant.
+To allow for compatibility for possible MacPorts GUI support, a good rule of thumb is to use sentence fragments for brevity, with a capitalized first letter and no trailing punctuation.
+Think of them as short labels such as ones you'd find next to a GUI checkbox or radio button.
+Thus, it would be better to write "`Build with support for
+    foo`" instead of "`Builds with support for foo`"; "`Add support for foo`" would be better than "`Adds support
+    for foo`".
+
+Variant descriptions are strings, so one should take care not to put whitespace between the brackets and the beginning and end of the variant description, and also not to use unnecessary whitespace, unlike with port descriptions and long_descriptions.
+
+[[_reference.variants.platform]]
+== Platform Variants
+
+Platform variants are either defined by default in MacPorts base, or defined by a port author to customize a port's installation according to OS (operating system) or hardware platform.
+
+platform [replaceable]``os`` [[replaceable]``version``] [[replaceable]``arch``]::
+MacPorts allows platform-specific port options to be specified in a Portfile for handling differences between platforms and versions of the same platform.
++
+`platform darwin [replaceable]``version``` can be used to handle different tasks depending on the version of Darwin, the core operating system underlying macOS. [replaceable]``version`` is the major version of Darwin, and can be `17` for macOS High Sierra v10.13, `16` for macOS Sierra v10.12, `15` for OS X El Capitan v10.11, and so on.
+
+* Examples:
++
+
+[source]
+----
+
+platform darwin 10 {
+    configure.env-append LIBS=-lresolv
+}
+----
++
+
+[source]
+----
+
+platform darwin i386 {
+    configure.args-append --disable-mmx
+}
+----
++
+
+[source]
+----
+
+platform darwin 8 powerpc {
+    configure.compiler gcc-3.3
+}
+----
+
+[NOTE]
+====Though a combination of OS version and hardware platform may be specified in a single platform statement (e.g., darwin 8 i386), it is not possible to specify a range of platforms with a single statement.
+For example, to select Darwin versions 9 and 10 while excluding all others, you would need two statements: `platform darwin 9` and ``platform darwin 10``.
+Alternately, you could make that behavior the port's default, and add a `platform darwin 8` block to remove it again.
+====

@@ -1,0 +1,24 @@
+[[_reference.portgroup.ruby]]
+= PortGroup ruby
+
+PortGroup ruby allows for efficient porting of ruby-based open source software.
+
+[[_reference.portgroup.ruby.variables]]
+== ruby PortGroup Specific Variables
+
+When the ruby PortGroup is declared within a Portfile, the following variables are provided during port install.
+
+ruby.version::
+The MacPorts Ruby version.
+
+ruby.bin::
+The Ruby binary location.
+
+ruby.lib::
+Path to the Ruby vendorlibdir directory (i.e., [path]_${prefix}/lib/ruby/vendor_ruby/${ruby.version}_)
+
+ruby.arch::
+The name for the Ruby architecture-dependent directory name (i.e., ``i686-darwin8.10.1``).
+
+ruby.archlib::
+Path to the Ruby vendor archdir (i.e., [path]_${ruby.lib}/${ruby.arch}_).

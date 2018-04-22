@@ -1,0 +1,60 @@
+[[_reference.portgroup.haskell]]
+= PortGroup haskell
+
+PortGroup haskell simplifies the addition of Haskell packages.
+
+[[_reference.portgroup.haskell.keywords]]
+== haskell PortGroup Specific Keywords
+
+Portfiles using the haskell PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
+
+haskell.setup::
+This keyword sets a number of port variables.
+
+* Type: required
+* Synopsis: the first argument is the package name, as called by hackageDB; the second is the version number
+* Example:
++
+
+[source]
+----
+haskell.setup   digest 0.0.0.2
+----
+
+[[_reference.portgroup.haskell.sugar]]
+== haskell PortGroup Sugar
+
+Portfiles using PortGroup haskell do not need to define the following variables:
+
+name::
+Default: hs-[string tolower ${package}]
+
+version::
+Default: ${version} (from haskell.setup)
+
+categories::
+Default: devel haskell
+
+homepage::
+Default: https://hackage.haskell.org
+
+master_sites::
+Default: ${homepage}/packages/archive/${package}/${version}
+
+distname::
+Default: ${package}-${version}
+
+depends_build::
+Default: ghc
+
+configure, build, and destroot phases::
+Default: proper setup to run these phases
+
+post-destroot::
+Default: creates and installs (into destroot) the register.sh and unregister.sh scripts
+
+post-activate::
+Default: runs the register.sh scripts
+
+livecheck::
+Default: runs livecheck against the package's information page

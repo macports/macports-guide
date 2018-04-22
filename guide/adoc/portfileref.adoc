@@ -1,0 +1,77 @@
+[[_reference]]
+= Portfile Reference
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+This chapter serves as a reference for the major elements of a Portfile: port phases, dependencies, StartupItems, variables, keywords, and Tcl extensions.
+
+:leveloffset: 1
+include::portfile-keywords.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-variables.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-phase.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-dependencies.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-variants.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-tcl.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-startupitem.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::portfile-livecheck.adoc[]
+:leveloffset: 0
+
+[[_reference.portgroup]]
+== PortGroups
+
+:leveloffset: 2
+include::portgroups.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-github.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-gnustep.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-haskell.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-perl.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-python.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-ruby.adoc[]
+:leveloffset: 0
+
+:leveloffset: 2
+include::portgroup-xcode.adoc[]
+:leveloffset: 0

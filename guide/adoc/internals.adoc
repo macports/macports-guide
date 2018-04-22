@@ -1,0 +1,249 @@
+[[_internals]]
+= MacPorts Internals
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:sourcedir: .
+
+This chapter contains information about the MacPorts file layout, configuration files, a few fundamental port installation concepts, and the MacPorts APIs.
+
+[[_internals.hierarchy]]
+== File Hierarchy
+
+:leveloffset: 2
+include::internals-hier.adoc[]
+:leveloffset: 0
+
+:leveloffset: 1
+include::macports.conf.adoc[]
+:leveloffset: 0
+
+[[_internals.images]]
+== Port Images
+
+MacPorts has a unique ability to allow multiple versions, revisions, and variants of the same port to be installed at the same time, so you may test new port versions without uninstalling a previous working version.
+
+This capability derives from the fact that a MacPorts port by default is not installed into its final or "`activated`" location, but rather to an intermediate location that is only made available to other ports and end-users after an activation phase that extracts all its files from the image repository.
+Deactivating a port only removes the files from their activated locations (usually under [var]``${prefix}``)--the deactivated port's image is not disturbed.
+
+The location of an installed port's image can be seen by running: 
+[source]
+----
+%% port location PORTNAME
+----
+
+[[_internals.apis]]
+== APIs and Libs
+
+The MacPorts system is composed of three Tcl libraries:
+
+* MacPorts API - MacPorts public API for handling Portfiles, dependencies, and registry
+* Ports API - API for Portfile parsing and execution
+* pextlib - C extensions to Tcl
+
+
+[[_internals.apis.ports]]
+=== Ports API
+
+The code for the Port API is located in [path]_base/src/port1.0_.
+The Port API provides all the primitives required for a Portfile to be parsed, queried, and executed.
+It also provides a single procedure call that the MacPorts API uses to kick off execution: ``eval_targets``.
+The port Tcl library supplies these procedures, all of which are generated at run-time using the `options` procedure in portutil.tcl.
+
+The macports Tcl library loads the Portfile into a sub-interpreter, within which all port-specific code is run.
+This process ensures that there will never be pollution of the Tcl space of other ports, nor the MacPorts libraries, nor the calling application.
+
+[NOTE]
+====
+Portfiles are executed in a Tcl interpreter as Tcl code (and not truly parsed strictly speaking), so every Portfile option must be a Tcl procedure.
+====
+
+The Ports API performs the following functions:
+
+* Manages target registrations. All targets register themselves with the Port API. Accordingly, the Port API creates pre-/post-/main overrides for each of the targets.
+* Option/Default handling. All Portfile options (name, version, revision ...) are registered by targets. The Port API creates procedures for these options, and sets up the complex variable traces necessary to support option defaults.
+* Executes target procedures, including the pre/post/main routines.
+* Manages a state file containing information about what variants were specified and what targets have run successfully.
+* Provides essential Portfile Tcl extensions (reinplace, xinstall, etc).
+* Provides simple access to the ui_event mechanism by providing the various ui_ procedures (i.e., ui_msg, ui_error).
+
+
+[[_internals.apis.macports]]
+=== MacPorts API
+
+The code for the MacPorts API is located in [path]_base/src/macports1.0_.
+The MacPorts API provides a public API into the MacPorts system by providing simple primitives for handling Portfiles, dependencies, and registry operations, and exports the MacPorts API for the `port` command line utility, or any other.
+The API has very little information about the contents Portfiles; instead, it relies entirely upon the `port` Tcl library.
+By keeping the high level API simple and generic, revisions to the underlying ports system will not necessarily require a revision of the high level MacPorts API.
+
+The MacPorts API is also responsible for loading user specified options into a sub-interpreter to be evaluated by the ports API.
+In that case it sets the variable name in the sub-interpreter and adds the option to the sub-interpreter's global array user_options(). User options are passed as part of the call to ``mportopen``.
+
+The MacPorts API performs the following functions:
+
+* Dependency support.
++
+This is implemented in a highly generic fashion, and is used throughout the system.
+The dependency functions are exported to the Port API, and the Port API uses them to execute targets in the correct order.
+* Dependency processing.
++
+Software dependencies are handled at this layer using the dependency support layer.
+* UI abstractions.
++
+UI Abstractions are handled at this layer.
+Each port action is provided a context, and a mechanism for posting user interface events is exported to the Port API (ui_event).
+* Registry management routines.
++
+Manages the SQLite port registry in [path]_${prefix}/var/macports/registry/_.
+See also <<_internals.registry>>.
+* Exports the MacPorts API for use by client applications.
++
+The following routines are defined.
+** `mportinit:` Initializes the MacPorts system. Should be called before trying to use any other procedure.
+** `mportsearch:` Given a regexp, searches the [path]_PortIndex_ for ports with matching names.
+** `mportopen:` Given a URI to a port, opens a Portfile and returns an opaque handle to it.
+** `mportclose:` Given a port handle, closes a Portfile.
+** `mportexec:` Given a port handle, executes a target (e.g., install).
+** `mportinfo:` Given a port handle, this returns the PortInfo array (as a flat list of array elements). This is a little tricky and unstable and only used by ``portindex``.
+** `mportdepends:` Given a port handle, returns a list of ports upon which the specified port depends.
+
+For an example of the MacPorts API, when one executes ``port search cm3``, the port utility:
+
+* Calls the `mportsearch` function to find all ports containing "`cm3`".
+* Returns Tcl array(s) containing data from the [path]_PortIndex_: port name, version, revision, variants, etc.
+* Formats the list of arrays in the standard viewing format.
+
+For another MacPorts API example, when one executes ``port
+      install cm3``, the port utility:
+
+* Calls the `mportsearch` function to find the first port that matches the name "`cm3`".
+* Calls the `mportopen` function to open the port.
+* Calls the `mportexec` function to execute the install target in the port.
+* Calls the `mportclose` function to close the port.
+
+
+[[_internals.apis.pextlib]]
+=== pextlib
+
+The pextlib Tcl library provides a variety of C extensions to add capabilities to Tcl procedures; for example, an interface to flock(2) and mkstemp(3).
+
+[[_internals.registry]]
+== The MacPorts Registry
+
+This chapter provides an overview of the MacPorts registry and its API.
+The registry is queried by MacPorts utilities for information about installed ports related to dependencies, port images, and simple user information about what is installed.
+It provides abstraction over a modular receipt storage layer; where the default format is a SQLite database.
+
+The registry allows MacPorts utilities to:
+
+* Modify receipts to reflect changes made to installed ports being maintained by MacPorts.
+* Query the global file and dependency databases for file conflicts between a port being installed and a port already installed.
+* Maintain dependency trees of installed ports.
+
+
+[[_internals.registry.files]]
+=== Registry Files
+
+The SQLite registry used by default is located at [path]_${portdbpath}/registry_, which by default would be [path]_${prefix}/var/macports/registry_.
+All data is stored in a single file named [path]_registry.db_, although the additional directory [path]_portfiles_ is used temporarily for extracting stored Portfiles from the registry.
+Furthermore, access to the registry may be locked using [path]_.registry.lock_ with the `registry::exclusive_lock` and `registry::exclusive_unlock` APIs.
+
+The legacy flat file registry files are contained in [path]_${portdbpath}/receipts_, which by default is location [path]_${prefix}/var/macports/receipts_.
+File mappings and dependency mappings are tracked in the flat file registry by [path]_file_map.db_ and [path]_dep_map.bz2_.
+If found, these will be automatically converted to the new SQLite registry. 
+
+[[_internals.registry.api]]
+=== The Registry API
+
+The MacPorts registry provides a public API in the registry1.0 Tcl package.
+Using this API listed below you can access the MacPorts Registry using the default receipt storage mechanism chosen in [path]_macports.conf_.
+
+`registry::new_entry {name version {revision 0} {variants ""}}`::
+Begin the creation of a new registry entry for the given port.
+Returns a reference ID to the registry entry created.
+
+`registry::open_entry {name {version 0} {revision 0} {variants ""}}`::
+Opens an existing registry entry.
+Returns a reference ID to the registry entry that was opened.
+
+`registry::entry_exists {name version {revision 0} {variants ""}}`::
+Checks to see if a port exists in the registry.
+Returns 1 if the entry exists, 0 if not.
+
+`registry::write_entry {ref}`::
+Writes the receipt associated with the given reference.
+
+`registry::delete_entry {ref}`::
+Deletes the receipt associated with the given reference.
+
+`registry::property_store {ref property value}`::
+Store the given value with the property name in the receipt associated with the given reference.
+
+`registry::property_retrieve {ref property}`::
+Retrieve the property name from the receipt associated with the given reference.
+Returns the value of the property, if the property exists.
+
+`registry::installed {{name ""} {version ""}}`::
+Get all installed ports, optionally all installed ports matching the given name, or the given name and version.
+Returns a list of the installed ports.
+
+`registry::location {portname portversion}`::
+Returns the physical location the port is installed in on the disk.
+This is primarily useful for finding out where a port image is installed.
+
+`registry::open_file_map {args}`::
+Opens the file map that contains file-port relationships.
+
+`registry::file_registered {file}`::
+Returns the name of the port that owns the given file, if the file is registered as installed, and 0 otherwise.
+
+`registry::port_registered {name}`::
+Returns a list of all files associated with the given port if that port is installed, and 0 otherwise.
+
+`registry::register_file {file port}`::
+Registers the given file in the file map as belonging to the given port.
+
+`registry::unregister_file {file}`::
+Removes the file from the file map.
+
+`registry::write_file_map {args}`::
+Write the changes to the file map.
+
+`registry::open_dep_map {args}`::
+Opens the dependency map that contains port dependency relationships.
+
+`registry::fileinfo_for_file {fname}`::
+Returns a list for the given file name representing all data currently known about the file.
+This is a 6-tuple in the form of:
+
+. file path
+. uid
+. gid
+. mode
+. size
+. md5 checksum
+
+`registry::fileinfo_for_index {flist}`::
+Returns a list of information concerning each file in the given file list, if that file exists in the registry.
+The information if obtained through registry::fileinfo_for_file
+
+`registry::list_depends {name}`::
+Returns a list of all the ports that given port name depends on.
+
+`registry::list_dependents {name}`::
+Returns a list of all the ports that depend on the given port name.
+
+`registry::register_dep {dep type port}`::
+Registers the given dependency as the given type of dependency with the given port.
+
+`registry::unregister_dep {dep type port}`::
+Unregister the given dependency of the given type as a dependency of the given port.
+
+`registry::write_dep_map {args}`::
+Write changes to the dependency map.
+
+:leveloffset: 1
+include::internals-tests.adoc[]
+:leveloffset: 0

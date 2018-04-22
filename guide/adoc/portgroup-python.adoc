@@ -1,0 +1,136 @@
+[[_reference.portgroup.python]]
+= PortGroup python
+
+PortGroup python allows for efficient porting of python-based open source software.
+
+[[_reference.portgroup.python.keywords]]
+== python PortGroup Specific Keywords
+
+Portfiles using the python PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
+
+python.versions::
+Defines the python versions supported by this port.
+If the port name starts with "`py-`", then a subport will be defined for each version in the list.
+For example, if a port named "`py-foo`" declares ``python.versions 26 27``, subports "`py26-foo`" and "`py27-foo`" will be created, and will depend on python26 and python27 respectively.
++
+If the port name does not start with "`py-`", it is interpreted as an application written in python rather than a python module.
+In this case, no subports are defined, and `python.versions` defaults to the value of ``python.default_version``, which must be set.
+For example, if a port named "`mercurial`" sets ``python.default_version 27``, then `python.versions` will automatically be set to "`27`", and a dependency on python27 will be added.
+
+* Type: required for modules, optional for apps
+* Example:
++
+
+[source]
+----
+python.versions     25 26 27
+----
+
+python.default_version::
+For modules (i.e., name starts with "`py-`"), this sets the subport that will be installed if the user asks to install "`py-foo`" rather than, e.g., "`py26-foo`" or "`py27-foo`".
+If not explicitly set, a reasonable default is chosen from the list in ``python.versions``.
++
+For applications (i.e., name does not start with "`py-`"), this chooses which version of python to use, and must be set.
+It can be changed in variants if desired.
+
+* Type: required for apps, optional for modules
+* Example:
++
+
+[source]
+----
+python.default_version     32
+----
+
+python.link_binaries::
+When "`yes`" (the default), tells the PortGroup to automatically link any executable binaries installed in the bin/ directory within the framework into [path]_${prefix}/bin_.
+
+* Type: optional
+* Example:
++
+
+[source]
+----
+python.link_binaries     no
+----
+
+python.link_binaries_suffix::
+Suffix to add to the names of the links created in [path]_${prefix}/bin_ when [var]``${python.link_binaries}`` is enabled.
+Can be cleared if no suffix is desired.
+
+* Type: optional
+* Default: -[var]``${python.branch}``
+
+python.add_archflags::
+When yes (the default), the PortGroup will automatically try to pass the correct arch-specific flags during build time (via the standard CFLAGS, LDFLAGS, etc environment variables). Set this to "`no`" and set up those variables in `build.env` manually if the default does not work.
+
+* Type: optional
+* Example:
++
+
+[source]
+----
+python.add_archflags     no
+----
+
+[[_reference.portgroup.python.variables]]
+== python PortGroup Specific Variables
+
+When the python PortGroup is declared within a Portfile, the following variables are provided.
+
+python.version::
+The python version in use in the current subport.
+This will be one of the versions listed in ``python.versions``.
+
+python.branch::
+The python version in use in the current subport, in normal dotted notation.
+For example, if `python.version` is "`26`", `python.branch` will be "`2.6`".
+
+python.prefix::
+The prefix in which the current python version is installed.
+For framework builds, this is [path]_${frameworks_dir}/Python.framework/Versions/${python.branch}_, whereas for non-framework builds, it is the same as [var]``${prefix}``.
+
+python.bin::
+The path to the MacPorts Python executable.
+
+python.lib::
+The Python dynamic library path, i.e., [path]_${python.prefix}/Python_ (framework builds) or [path]_${prefix}/lib/libpython2.4.dylib_ (python24).
+
+python.libdir::
+The path to python's lib directory, i.e., [path]_${python.prefix}/lib/python${python.branch}_.
+
+python.include::
+Path to the Python include directory.
+
+python.pkgd::
+Path to the Python site-packages directory.
+(i.e., [path]_${python.prefix}/lib/python${python.branch}/site-packages_).
+
+[[_reference.portgroup.python.sugar]]
+== python PortGroup Sugar
+
+Portfiles using PortGroup python do not need to define the following variables:
+
+categories::
+Default: python
+
+depends_lib::
+Default: port:python[var]``${python.version}``
+
+use_configure::
+Default: no
+
+build.cmd::
+Default: [var]``${python.bin}`` setup.py --no-user-cfg
+
+build.target::
+Default: build
+
+destroot.cmd::
+Default: [var]``${python.bin}`` setup.py --no-user-cfg
+
+destroot.destdir::
+Default: --prefix=[var]``${python.prefix}`` --root=[var]``${destroot}``
+
+pre-destroot::
+Default: creates directory [path]_${destroot}${prefix}/share/doc/${subport}/examples_.

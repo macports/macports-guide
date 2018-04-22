@@ -1,0 +1,68 @@
+[[_reference.portgroup.perl]]
+= PortGroup perl5
+
+PortGroup perl5 allows for efficient porting of perl modules and other perl open source software.
+
+[[_reference.portgroup.perl.keywords]]
+== perl5 PortGroup Specific Keywords
+
+Portfiles using the perl5 PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
+
+perl5.setup::
+This keyword sets the ${distfile} and ${version}.
+
+* Type: required
+* Example:
++
+
+[source]
+----
+perl5.setup          Net-Telnet 3.03
+----
+
+perl5.use_module_build::
+Perl modules are ordinarily assumed to be built with ExtUtils::MakeMaker.
+Use this keyword if a module must be built using Module::Build instead.
+
+* Type: optional
+* Example:
++
+
+[source]
+----
+perl5.use_module_build
+----
+
+[[_reference.portgroup.perl.sugar]]
+== perl5 PortGroup Sugar
+
+Portfiles using PortGroup perl5 do not need to define the following variables:
+
+categories::
+Default: perl
+
+master_sites::
+Default: perl_cpan:${perl5.cpandir}
+
+depends_lib::
+Default: perl5.26
+
+use_configure::
+Default: no
+
+[[_reference.portgroup.perl.variables]]
+== perl5 PortGroup Specific Variables
+
+When the perl5 PortGroup is declared within a Portfile, the following variables are provided during port install.
+
+perl5.version::
+The MacPorts Perl version.
+
+perl5.bin::
+The Perl binary path (i.e., [path]_${prefix}/bin/perl_).
+
+perl5.lib::
+Path to the Perl vendor directory.
+
+perl5.archlib::
+Path to the Perl architecture-dependent modules directory.

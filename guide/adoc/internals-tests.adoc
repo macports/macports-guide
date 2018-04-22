@@ -1,0 +1,206 @@
+[[_internals.tests]]
+= Tests
+
+The MacPorts testing framework uses link:tcltest for its unit tests as well as regression tests.
+The framework was developed during Google Summer of Code 2013 by Marius Coțofană (marius@). 
+
+To keep things simple, each module of MacPorts ( link:macports1.0, link:package1.0, link:port1.0, link:registry2.0 ) has its own [path]_tests/_ directory.
+Each Tcl script in a module (e.g. link:macports.tcl) has its own test script located in the [path]_tests_ directory, with the same name and the '.test' extension (e.g. link:macports.test). Every proc in a script (e.g. ``proc macports::findBinary``) should have its own test proc (e.g. ``test findBinary``) in the corresponding test file.
+Test procs should maintain the order in the original script and should be independent one of another. 
+
+[[_internals.tests.running]]
+== Running tests
+
+Tests can be run only on an installed version of MacPorts (so make sure you have run ``sudo make install``). 
+
+The easiest way to run all the tests, is to use the target in the Makefile. 
+
+[source]
+----
+$ make test
+----
+
+Each [path]_tests/_ directory has a [path]_test.tcl_ file, used by the make target to run all tests and format the output, making it easy to read.
+The script just runs the tests individually, printing the test file name, the total number of tests, number of passed, skipped, failed as well as constraints or errors of failed tests.
+This is one possible output when running [path]_macports.test_: 
+
+----
+Total:31 Passed:31 Failed:0 Skipped:0  macports.test
+----
+
+Many tests need root privileges to run correctly, but will be auto skipped in the other case.
+Constraints are printed just below the final result, together with the number of test cases that require it, as so: 
+
+----
+Total:31 Passed:24 Failed:0 Skipped:7  macports.test
+    Constraint: 7	root
+----
+
+The stack trace of an error that occurs during a test is printed below the constraints (if any). 
+
+The file can be used also to: 
+
+* run all tests: 
++
+
+[source]
+----
+$ tclsh test.tcl
+----
+* get debug info: 
++
+
+[source]
+----
+$ tclsh test.tcl -debug \[0-3\]
+----
+* list individual test files: 
++
+
+[source]
+----
+$ tclsh test.tcl -l
+----
+* run specific test files: 
++
+
+[source]
+----
+$ tclsh test.tcl -t macports.test
+----
+* print help message: 
++
+
+[source]
+----
+$ tclsh test.tcl -h
+----
+
+Specific test cases can be run using the `'-match'` argument for the file that contains the test, from its parent directory. 
+
+[source]
+----
+$ tclsh macports.test -match mportclose
+----
+
+Regression tests can be found in link:tests/test/ and can be run just as unit tests, using `make test` from the parent directory. 
+
+[[_internals.tests.mustknow]]
+== Must know
+
+* regression tests have their own directory, found in link:trunk/base/tests/test
+* each module of MacPorts (port1.0, macports1.0, package1.0) has its own '`tests/`' directory where the test files are located and also additional files needed (Portfile, test.tcl)
+* each file in a module has a corresponding test file (.test extension) in the '`tests/`' directory
+* each proc in a file has a corresponding test case (test proc_name) in the
+* each test case must be independent from each other, so they can be run individually if needed
+* each test must clean all auxiliary files or directories it creates and revert all ports it installs
+* use a single test procedure for each tested proc; sub-test cases should be included in the same body
+* when adding new regression tests, make sure to specify its name in the test_suite list of 'trunk/base/tests/test.tcl'
+* variables used in tests can be set at install-time using the '[module]_test_autoconf.tcl.in' file in each module (macports_autoconf.tcl.in, port_autoconf.tcl.in)
+* for some tests in package1.0, an update of the ports tree is required; this is done automatically if they are run using the 'test' target in the Makefile, with root privileges 
+
+
+[[_internals.tests.sample_file]]
+== Sample file
+
+[source]
+----
+# include required tcltest package and set namespace
+package require tcltest 2
+namespace import tcltest::*
+
+# get absolute path to current ‘tests/’ directory
+set pwd [file normalize $argv0]
+set pwd [eval file join {*}[lrange [file split $pwd] 0 end-1]]
+
+# the macports_fastload.tcl file needs to be sourced so we
+# can directly require packages later on; we can use the autoconf
+# file to get the path to the file
+source ../port_test_autoconf.tcl
+source $macports::autoconf::macports_tcl_dir/macports1.0/macports_fastload.tcl
+package require macports 1.0
+
+# source/require tested/needed files
+# source ../../port1.0/portutil.tcl
+package require portutil 1.0
+
+# use custom macports.conf and sources.conf
+# you need to provide the sources.conf (see additional files) file
+makeDirectory $pwd/tmpdir
+makeDirectory $pwd/tmpdir/share
+makeDirectory $pwd/tmpdir/var/macports/registry
+set fd [open $pwd/tmpdir/macports.conf w+]
+puts $fd "portdbpath $pwd/tmpdir/var/macports"
+puts $fd "prefix $pwd/tmpdir"
+puts $fd "variants_conf $pwd/tmpdir/variants.conf"
+puts $fd "sources_conf $pwd/sources.conf"
+puts $fd "applications_dir $pwd/tmpdir/Applications"
+puts $fd "frameworks_dir $pwd/tmpdir/Library/Frameworks"
+close $fd
+set env(PORTSRC) $pwd/tmpdir/macports.conf
+file link -symbolic $pwd/tmpdir/share/macports $macports::autoconf::prefix/share/macports
+close [open $pwd/tmpdir/variants.conf w+]
+
+# debug options
+# ports_debug and ports_verbose are commented out as default
+# need to be set before ‘mportinit’
+array set ui_options {}
+#set ui_options(ports_debug)   yes
+#set ui_options(ports_verbose) yes
+mportinit ui_options
+
+# if you need to use procs from macports namespace, that are just aliases, you can
+# always source library.tcl (see additional files) which provides a copy macports::worker_init
+# without sub-interpreters; it also sets some important environment variables like
+# os.platform, os.major, os.arch, workpath, destpath, portpath
+# some other option would be to get the $workername from a $mport and use it directly
+
+# additional procs needed for testing go before the actual test cases
+
+
+# test case example
+# the test name must reflect the tested proc (remove namespaces if any)
+# the test description should list specific values from the tested proc on which it depends
+# or the partial cases it tests
+test mportclose {
+    Mport close unit test.
+# this branch is optional and you can use other constraints too
+} -constraints {
+    root
+# the setup branch is optional
+} -setup {
+    set mport [mportopen file://.]
+# please make output as useful as possible (even error cases)
+# all sub-test cases should be part of the body branch
+} -body {
+    if {[catch {mportclose $mport}] != 0} {
+        return "FAIL: cannot run mportclose"
+    }
+    return "Mport close successful."
+# the cleanup branch is optional
+} -cleanup {
+    file delete -force $pwd/work
+} -result "Mport close successful."
+
+
+# print test results
+cleanupTests
+----
+
+[[_internals.tests.addtional_files]]
+== Additional files
+
+* In all tests we use this link:Portfile.
+* This is the link:test.tcl file used to run and parse the output of all the tests in a module.
+* A worker_init copy, without using sub-interpreters link:library.tcl.
+* Example of link:sources.conf.
+* An example of a test file link:macports.test.
+* A link:library.tcl of useful procs in regression testing.
+
+
+[[_internals.tests.resources]]
+== Resources
+
+* link:Tcltest official wiki page
+* link:Getting started with tcltest
+* link:Official tcltest documentation

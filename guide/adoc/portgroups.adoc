@@ -1,0 +1,41 @@
+[[_reference.portgroup.intro]]
+= PortGroup Introduction
+
+PortGroups are simply include files for portfiles.
+They can define as much or as little as a portgroup author feels is necessary to provide a set of definitions or behaviors common to a group of portfiles, in order that those portfiles can be expressed as simply as possible with minimum redundancy.
+
+See the following folder for PortGroup definitions:
+
+[path]_${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/_
+
+A sample listing follows:
+
+
+[source]
+----
+%% ls -1 /opt/local/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/
+----
+----
+active_variants-1.1.tcl
+apache2-1.0.tcl
+app-1.0.tcl
+archcheck-1.0.tcl
+bitbucket-1.0.tcl
+cmake-1.0.tcl
+cmake-1.1.tcl
+compiler_blacklist_versions-1.0.tcl
+compilers-1.0.tcl
+conflicts_build-1.0.tcl
+crossbinutils-1.0.tcl
+crossgcc-1.0.tcl
+cxx11-1.0.tcl
+cxx11-1.1.tcl
+debug-1.0.tcl
+elisp-1.0.tcl
+github-1.0.tcl
+...
+----
+
+The requirements of a minimum portfile using a portgroup varies by portgroup.
+The sections below devoted to each portgroup (or, for portgroups not documented there yet, the comments in the header of the portgroup file itself) should provide guidance on how each portgroup is used.
+Prospective MacPorts developers are also encouraged to examine existing portfiles that use these portgroups.
