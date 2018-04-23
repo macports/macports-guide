@@ -51,7 +51,7 @@ Upgrading a single port can lead to software errors in other ports that have not
 
 Once you are logged into Trac, you may click link:New Ticket and you will be presented with a new ticket window shown in the graphic below.
 Follow the Trac ticket guidelines below to fill out the form.
-If you are reporting a failed port install and a log was mentioned in the error, please use the [label]#I have files to attach to this ticket# checkbox to add that log file to the ticket.
+If you are reporting a failed port install and a log was mentioned in the error, please use the *>I have files to attach to this ticket* checkbox to add that log file to the ticket.
 // <screenshot>
 //         <info>
 //           <title>A new Trac ticket</title>
@@ -83,7 +83,7 @@ Please see below for longer and more detailed explanations.
 | Content
 
 
-|[label]#Summary#
+|**>Summary**
 |
 
 [replaceable]``$port``[replaceable]``$version``[replaceable]``[$variants]``: [replaceable]``short
@@ -91,7 +91,7 @@ Please see below for longer and more detailed explanations.
 
 *Example:* openssl @1.0.1e_1+universal: DTLS handshake error messages with openconnect 
 
-|[label]#Description#
+|**>Description**
 |
                   Describe your problem. Preformatted text (such as terminal
                   output) should be put in ``{{{[replaceable]``three curly
@@ -99,86 +99,86 @@ Please see below for longer and more detailed explanations.
                   amounts of output rather than pasting. Use the preview
                   button! 
 
-|[label]#Type#
+|**>Type**
 |
 // <tbody>
 //                     <row>
-//                       <entry><guimenu>defect</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;defect</emphasis></entry>
 //                       <entry>Bugs, build failures, documentation fixes</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>enhancement</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;enhancement</emphasis></entry>
 //                       <entry>Improving existing work</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>update</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;update</emphasis></entry>
 //                       <entry>Update requests or patch submissions for ports</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>submissions</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;submissions</emphasis></entry>
 //                       <entry>Submission of new <filename>Portfile</filename>s</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>request</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;request</emphasis></entry>
 //                       <entry>Requests for new ports</entry>
 //                     </row>
 //                   </tbody>
 
 
-|[label]#Priority#
+|**>Priority**
 |
-                  Use menu:normal[] or menu:low[]. menu:High[] is reserved for MacPorts developers. 
+                  Use *>normal* or **>low**. *>High* is reserved for MacPorts developers. 
 
-|[label]#Milestone#
+|**>Milestone**
 |Leave empty.
 
-|[label]#Component#
+|**>Component**
 |
 // <tbody>
 //                     <row>
-//                       <entry><guimenu>base</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;base</emphasis></entry>
 //                       <entry>Tickets affecting MacPorts itself</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>guide</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;guide</emphasis></entry>
 //                       <entry>Use for documentation</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>ports</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;ports</emphasis></entry>
 //                       <entry>Tickets affecting specific ports. Remember to set
-//                         the <guilabel>port</guilabel> field!</entry>
+//                         the <emphasis role="strong">&gt;port</emphasis> field!</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>server/hosting</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;server/hosting</emphasis></entry>
 //                       <entry>Use for infrastructure issues</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>website</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;website</emphasis></entry>
 //                       <entry>Enhancements and fixes for the web site</entry>
 //                     </row>
 //                     <row>
-//                       <entry><guimenu>wiki</guimenu></entry>
+//                       <entry><emphasis role="strong">&gt;wiki</emphasis></entry>
 //                       <entry>Enhancements and fixes for the wiki (or just edit
 //                         it directly!)</entry>
 //                     </row>
 //                   </tbody>
 
 
-|[label]#Version#
+|**>Version**
 |The version of MacPorts you are running.
 
-|[label]#Keywords#
+|**>Keywords**
 |``maintainer`` if you are the port's
                   maintainer. `haspatch` if you are attaching
                   a patch. link:Full
                     list. 
 
-|[label]#Port#
+|**>Port**
 |The name of the port affected by this ticket. Separate
                   multiple using spaces. Leave empty for non-port
                   tickets.
 
-|[label]#Owner#/[label]#Cc#
+|**>Owner**/**>Cc**
 |Full email address or GitHub username of the port's
                   maintainer. Run `port info --maintainer [replaceable]``<portname>``` to
                   look this up. Do not add 
@@ -186,16 +186,16 @@ Please see below for longer and more detailed explanations.
  or 
 // <email>openmaintainer@macports.org</email>
 $$.$$ For ports with
-                  multiple maintainers, only put the first maintainer into the [label]#Owner# field and all others in the [label]#Cc# field. You do not need to Cc
+                  multiple maintainers, only put the first maintainer into the *>Owner* field and all others in the *>Cc* field. You do not need to Cc
                   yourself.
 |===
 ====
 
 There are certain conventions used to ensure that Trac tickets convey as much accurate information as possible so problems and contributions may be acted upon efficiently.
 
-* [label]#Summary:#[replaceable]``[port]``[replaceable]``[version]``[replaceable]``[concise description]``
+* *>Summary:*[replaceable]``[port]``[replaceable]``[version]``[replaceable]``[concise description]``
 ** Example: "rrdtool @1.2.23 +python Configure error - build failure"
-* [label]#Description:# All details that might be relevant to someone reading the ticket. Be sure to mention the versions of your operating system and Xcode install. link:Wiki formatting should be used to ensure that text is formatted correctly. Use the Preview button before submitting. If you want to post preformatted text such as a log or terminal output, make sure you use `{{{[replaceable]``$$...$$``}}}` around the text or it could break the page layout. Example:
+* *>Description:* All details that might be relevant to someone reading the ticket. Be sure to mention the versions of your operating system and Xcode install. link:Wiki formatting should be used to ensure that text is formatted correctly. Use the Preview button before submitting. If you want to post preformatted text such as a log or terminal output, make sure you use `{{{[replaceable]``$$...$$``}}}` around the text or it could break the page layout. Example:
 
 ....
 
@@ -208,38 +208,38 @@ Submitters are advised to trim inline pastes and logs to what's really relevant 
 Long output, such as the full log from a port build, should be added as an attachment, not pasted inline.
 See [label]#I have files to attach to this
 ticket# below.
-* [label]#Type:# There are five types of tickets.
-** menu:defect[] - The default; any port/MacPorts build/runtime failures and/or documentation corrections.
-** menu:enhancement[] - Tickets, with or without patches, created to enhance something that isn't failing its intended purpose.
-** menu:update[] - Tickets, with or without patches, involving updating a port to a newer upstream version.
-** menu:submission[] - Tickets created to submit Portfiles for software not currently available in MacPorts. 
-** menu:request[] - Tickets created to request the creation of a new port.
-* [label]#Priority:# Assign a priority level to the ticket.
-** menu:High[] - Reserved for the use of MacPorts team members, as they are the best fit to determine which reports warrant a higher priority over others.
-** menu:Normal[] - The default. For normal port failures, non-critical enhancement requests, non-critical port failures.
-** menu:Low[] - For mostly cosmetic improvements, documentation corrections/improvements, etc.
-** menu:Not set[] - Anything that doesn't fit the categories high, normal, or low.
-* [label]#Milestone:# Leave this blank. MacPorts developers will set this to the version of MacPorts that contains a fix for the ticket when they commit a change. Note that this is only meaningful for changes in MacPorts itself, since changes to ports are continuously provided to users. If the milestone is [label]#MacPorts Future# no version of MacPorts with the fix has been released yet. 
-* [label]#Component:# Set what part of the MacPorts Project the ticket is to be filed against.
-** menu:base[] - Tickets related to MacPorts base code.
-** menu:guide[] - Documentation enhancements and error corrections, or patches to the MacPorts Guide.
-** menu:ports[] - Tickets related to ports.
-** menu:server/hosting[] - For MacPorts hosting & server-side issues.
-** menu:website[] - MacPorts website enhancements and error corrections.
-** menu:wiki[] - MacPorts Wiki enhancements and error corrections.
-* [label]#Version:# Select the MacPorts version you are using when it is applicable.
-* [label]#Keywords:# Type any keywords that might help when searching for tickets. It is not useful to list words here that already appear elsewhere in the ticket. Keywords also serve as tags; for example, use "`tiger`" if reporting a bug that only affects Mac OS X 10.4, "`haspatch`" if a fix is attached to the ticket, "`maintainer`" if you are the port's maintainer, or "`LP64`" if reporting an issue that only affects 64-bit platforms.
+* *>Type:* There are five types of tickets.
+** *>defect* - The default; any port/MacPorts build/runtime failures and/or documentation corrections.
+** *>enhancement* - Tickets, with or without patches, created to enhance something that isn't failing its intended purpose.
+** *>update* - Tickets, with or without patches, involving updating a port to a newer upstream version.
+** *>submission* - Tickets created to submit Portfiles for software not currently available in MacPorts. 
+** *>request* - Tickets created to request the creation of a new port.
+* *>Priority:* Assign a priority level to the ticket.
+** *>High* - Reserved for the use of MacPorts team members, as they are the best fit to determine which reports warrant a higher priority over others.
+** *>Normal* - The default. For normal port failures, non-critical enhancement requests, non-critical port failures.
+** *>Low* - For mostly cosmetic improvements, documentation corrections/improvements, etc.
+** *>Not set* - Anything that doesn't fit the categories high, normal, or low.
+* *>Milestone:* Leave this blank. MacPorts developers will set this to the version of MacPorts that contains a fix for the ticket when they commit a change. Note that this is only meaningful for changes in MacPorts itself, since changes to ports are continuously provided to users. If the milestone is *>MacPorts Future* no version of MacPorts with the fix has been released yet. 
+* *>Component:* Set what part of the MacPorts Project the ticket is to be filed against.
+** *>base* - Tickets related to MacPorts base code.
+** *>guide* - Documentation enhancements and error corrections, or patches to the MacPorts Guide.
+** *>ports* - Tickets related to ports.
+** *>server/hosting* - For MacPorts hosting & server-side issues.
+** *>website* - MacPorts website enhancements and error corrections.
+** *>wiki* - MacPorts Wiki enhancements and error corrections.
+* *>Version:* Select the MacPorts version you are using when it is applicable.
+* *>Keywords:* Type any keywords that might help when searching for tickets. It is not useful to list words here that already appear elsewhere in the ticket. Keywords also serve as tags; for example, use "`tiger`" if reporting a bug that only affects Mac OS X 10.4, "`haspatch`" if a fix is attached to the ticket, "`maintainer`" if you are the port's maintainer, or "`LP64`" if reporting an issue that only affects 64-bit platforms.
 +
 See link:the
 TicketsKeywordGuidelines wiki page for a clickable list of all keywords.
-* [label]#Cc:# Anyone else besides the ticket reporter and assignee who would like to be kept involved in the development of the ticket. Multiple email addresses or GitHub usernames should be separated with a comma and a space (e.g., ``neverpanic, you@example.org, maintainer@macports.org``).
+* *>Cc:* Anyone else besides the ticket reporter and assignee who would like to be kept involved in the development of the ticket. Multiple email addresses or GitHub usernames should be separated with a comma and a space (e.g., ``neverpanic, you@example.org, maintainer@macports.org``).
 +
-When reporting port-related tickets, make sure you add the port maintainers email address or GitHub username to the [label]#Cc:# field so they are notified of the ticket (unless you have commit access, then see [label]#Assign
+When reporting port-related tickets, make sure you add the port maintainers email address or GitHub username to the *>Cc:* field so they are notified of the ticket (unless you have commit access, then see [label]#Assign
 To:# below). You can obtain the email address or GitHub username of the port maintainer by running `port info
 --maintainers [replaceable]``[port]```
-* [label]#Assign To:# Only users with commit access can edit this field. If this is not you, see the section on the menu:Cc[] field above.
+* *>Assign To:* Only users with commit access can edit this field. If this is not you, see the section on the *>Cc* field above.
 +
-For tickets on ports, enter the email address or GitHub username of the port's maintainer (use `port info [replaceable]``[port]``` to find this). If multiple maintainers are listed, enter the first maintainer's email address or GitHub username here and enter the remaining maintainers' email addresses or GitHub usernames in the menu:Cc[] field.
+For tickets on ports, enter the email address or GitHub username of the port's maintainer (use `port info [replaceable]``[port]``` to find this). If multiple maintainers are listed, enter the first maintainer's email address or GitHub username here and enter the remaining maintainers' email addresses or GitHub usernames in the *>Cc* field.
 Exclude the email address 
 +
 // <email>openmaintainer@macports.org</email>
@@ -247,8 +247,8 @@ Exclude the email address
 If the maintainer's email address is 
 // <email>nomaintainer@macports.org</email>
 , leave the field blank.
-* [label]#Port:# For tickets on ports, enter the name of the port (or ports, space-separated, when multiple are affected).
-* [label]#I have files to attach to this ticket:# Use this checkbox to attach files to the ticket immediately after you create it. Or you can attach files later using the [label]#Attach File# button.
+* *>Port:* For tickets on ports, enter the name of the port (or ports, space-separated, when multiple are affected).
+* *>I have files to attach to this ticket:* Use this checkbox to attach files to the ticket immediately after you create it. Or you can attach files later using the *>Attach File* button.
 +
 If the file you are attaching is larger than 256 KiB, please compress it with bzip2 or gzip first to save space on the server and bandwidth for those downloading it, as Trac will not preview files above that size anyway.
 
@@ -332,9 +332,9 @@ where `$portname` is the name of the port you are submitting.
 Please fix any warnings and errors.
 . Either submit the new port through link:a pull request on GitHub...
 . $$...$$or create a Trac ticket.
-.. Set the type to [label]#submission#.
-.. Set the component to [label]#ports#.
-.. Set the [label]#port# field to the name of the new port.
+.. Set the type to **>submission**.
+.. Set the component to **>ports**.
+.. Set the *>port* field to the name of the new port.
 .. Attach the [path]_Portfile_ and any required patchfiles to the ticket.
 . If your ticket or pull request doesn't receive any attention within a few days you may send an email to 
 +
@@ -361,10 +361,10 @@ where `$portname` is the name of the port you modified.
 Please fix any warnings and errors before submitting your changes.
 . Either submit the port update through link:a pull request on GitHub...
 . $$...$$or create a Trac ticket.
-.. Set the type to [label]#enhancement# for miscellaneous enhancements, to [label]#defect# for bug fixes, or to [label]#update# for version updates.
-.. Set the component to [label]#ports#.
-.. Set the [label]#port# field to the name of the port you want to change.
-.. Put the maintainer's email address or GitHub username into the [label]#Cc# field. You can use 
+.. Set the type to *>enhancement* for miscellaneous enhancements, to *>defect* for bug fixes, or to *>update* for version updates.
+.. Set the component to **>ports**.
+.. Set the *>port* field to the name of the port you want to change.
+.. Put the maintainer's email address or GitHub username into the *>Cc* field. You can use 
 +
 [source]
 ----
@@ -514,8 +514,8 @@ If the build completes successfully, run `sudo
 in the directory where you edited the [path]_Portfile_.
 You can inspect the generated unified diff in [path]_change-$portname-maintainer.diff_ if you want.
 . If you are only changing the maintainer, link:file a pull request on GitHub.
-. You may also link:file a new ticket in Trac to change the maintainer, though GitHub pull requests are preferred. Set [label]#type# to [label]#enhancement#. Leave the [label]#milestone# field empty. If you added yourself as co-maintainer, add the other maintainers in the [label]#Cc# field. Finally, fill in the [label]#port# field, set [label]#keywords# to `haspatch` (because you are attaching a patch), check the box that you want to attach files to the ticket and submit. After submission, attach the patch you created in the previous step.
-. If you are also fixing a bug, make a separate commit for that in your pull request, or attach a separate patch for that change to the same ticket. If you are fixing a bug that already has a ticket, attach a patch fixing the bug there and file the maintainer change in a separate ticket (with a separate patch) as discussed above. In general, please create a separate patch for each semantic change. Doing so simplifies reviewing. It enables each independent change to be accepted without worries about conflicts that sometimes arise when several changes are rolled into one patch. Do not worry that you cannot change the [label]#keywords# to `haspatch` on existing tickets.
+. You may also link:file a new ticket in Trac to change the maintainer, though GitHub pull requests are preferred. Set *>type* to **>enhancement**. Leave the *>milestone* field empty. If you added yourself as co-maintainer, add the other maintainers in the *>Cc* field. Finally, fill in the *>port* field, set *>keywords* to `haspatch` (because you are attaching a patch), check the box that you want to attach files to the ticket and submit. After submission, attach the patch you created in the previous step.
+. If you are also fixing a bug, make a separate commit for that in your pull request, or attach a separate patch for that change to the same ticket. If you are fixing a bug that already has a ticket, attach a patch fixing the bug there and file the maintainer change in a separate ticket (with a separate patch) as discussed above. In general, please create a separate patch for each semantic change. Doing so simplifies reviewing. It enables each independent change to be accepted without worries about conflicts that sometimes arise when several changes are rolled into one patch. Do not worry that you cannot change the *>keywords* to `haspatch` on existing tickets.
 . If your pull request or ticket doesn't receive any attention within a few days you may send an email to 
 +
 // <email>macports-dev@lists.macports.org</email>
@@ -575,7 +575,7 @@ A port may be considered abandoned if any of the following apply:
 
 If you wish to initiate the Port Abandonment protocol and optionally volunteer as the new maintainer:
 
-. File a new Trac ticket with the summary line: [Port Abandoned] [label]#portname#.
+. File a new Trac ticket with the summary line: [Port Abandoned] **>portname**.
 . The ticket should be assigned to the maintainer. Non-macports team members should Cc the maintainer.
 . Set the ticket Type to Defect.
 . In the Description field, refer to any unacknowledged ticket(s).

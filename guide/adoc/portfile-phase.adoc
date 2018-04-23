@@ -96,9 +96,9 @@ Instead, use ``depends_lib-append``.
 +
 When a variant requires more or fewer dependencies, distfiles, or patchfiles, when the variant is invoked you want to add or remove items to the appropriate keyword values list set in the global section of the Portfile.
 Use the appropriate keywords, for example:
-** `depends_lib-append` or `depends_lib-delete```depends_lib-replace``
-** `distfiles-append` or `distfiles-delete```distfiles-replace``
-** `patchfiles-append` or `patchfiles-delete```patchfiles-replace``
+** `depends_lib-append` or `depends_lib-delete` or `depends_lib-replace`
+** `distfiles-append` or `distfiles-delete` or `distfiles-replace`
+** `patchfiles-append` or `patchfiles-delete` or `patchfiles-replace`
 
 
 [[_reference.phases.installation.argument_modifiers]]
