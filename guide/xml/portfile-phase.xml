@@ -238,20 +238,20 @@
           <itemizedlist>
             <listitem>
               <para><code>depends_lib-append</code> or
-              <code>depends_lib-delete</code>
+              <code>depends_lib-delete</code> or
               <code>depends_lib-replace</code>
               </para>
             </listitem>
 
             <listitem>
               <para><code>distfiles-append</code> or
-              <code>distfiles-delete</code>
+              <code>distfiles-delete</code> or
               <code>distfiles-replace</code></para>
             </listitem>
 
             <listitem>
               <para><code>patchfiles-append</code> or
-              <code>patchfiles-delete</code>
+              <code>patchfiles-delete</code> or
               <code>patchfiles-replace</code></para>
             </listitem>
           </itemizedlist>
