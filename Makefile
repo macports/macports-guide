@@ -31,10 +31,12 @@ TCLSH    = /usr/bin/tclsh
 XSLTPROC = $(PREFIX)/bin/xsltproc
 XMLLINT  = $(PREFIX)/bin/xmllint
 DBLATEX  = $(PREFIX)/bin/dblatex
+ASCIIDOCTOR = $(PREFIX)/bin/asciidoctor
 
 # Data directories.
 GUIDE = guide
 # Source directories.
+GUIDE_ADOC = $(GUIDE)/adoc
 GUIDE_XML = $(GUIDE)/xml
 # Result directories.
 GUIDE_RESULT         = $(GUIDE)/html
@@ -61,6 +63,14 @@ guide-chunked: GUIDE_OUTDIR = $(GUIDE_RESULT)/chunked
 guide-chunked: GUIDE_XSL = $(GUIDE_XSL_CHUNK)
 guide: guide-xml2html
 guide-chunked:: guide-xml2html
+
+# Experimental adoc input files
+guide-fromadoc: GUIDE_XML = $(GUIDE_ADOC)
+guide-fromadoc: GUIDE_OUTDIR = $(GUIDE_RESULT)/fromadoc
+guide-fromadoc: guide-adoc2xml guide-xml2html
+
+guide-adoc2xml:
+	$(ASCIIDOCTOR) -b docbook $(GUIDE_ADOC)/guide.adoc
 
 # Rules to generate HTML from DocBook XML
 
