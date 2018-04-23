@@ -59,6 +59,10 @@ all: guide guide-chunked
 guide: GUIDE_OUTDIR= $(GUIDE_RESULT)
 guide-chunked: GUIDE_OUTDIR = $(GUIDE_RESULT)/chunked
 guide-chunked: GUIDE_XSL = $(GUIDE_XSL_CHUNK)
+guide: guide-xml2html
+guide-chunked:: guide-xml2html
+
+# Rules to generate HTML from DocBook XML
 
 $(GUIDE)/resources/xsl:
 ifeq ($(UNAME), Linux)
@@ -67,7 +71,7 @@ else
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 endif
 
-guide guide-chunked:: $(GUIDE)/resources/xsl
+guide-xml2html: $(GUIDE)/resources/xsl
 	$(MKDIR) -p $(GUIDE_OUTDIR)
 	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_OUTDIR)/$(STYLESHEET)
 	$(CP) $(GUIDE)/resources/images/* $(GUIDE_OUTDIR)/
