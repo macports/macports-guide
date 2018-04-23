@@ -86,7 +86,7 @@
       will be presented with a new ticket window shown in the graphic below.
       Follow the Trac ticket guidelines below to fill out the form. If you are
       reporting a failed port install and a log was mentioned in the error,
-      please use the <guilabel>I have files to attach to this ticket</guilabel>
+      please use the <emphasis role="strong">>I have files to attach to this ticket</emphasis>
       checkbox to add that log file to the ticket.</para>
 
       <screenshot>
@@ -123,7 +123,7 @@
             </thead>
             <tbody>
               <row>
-                <entry><guilabel>Summary</guilabel></entry>
+                <entry><emphasis role="strong">>Summary</emphasis></entry>
                 <entry>
                   <para>
                     <replaceable>$port</replaceable>
@@ -139,7 +139,7 @@
                 </entry>
               </row>
               <row>
-                <entry><guilabel>Description</guilabel></entry>
+                <entry><emphasis role="strong">>Description</emphasis></entry>
                 <entry>
                   Describe your problem. Preformatted text (such as terminal
                   output) should be put in <literal>{{{<replaceable>three curly
@@ -149,70 +149,70 @@
                 </entry>
               </row>
               <row>
-                <entry><guilabel>Type</guilabel></entry>
+                <entry><emphasis role="strong">>Type</emphasis></entry>
                 <entrytbl cols="2" colsep="0" rowsep="0">
                   <tbody>
                     <row>
-                      <entry><guimenu>defect</guimenu></entry>
+                      <entry><emphasis role="strong">>defect</emphasis></entry>
                       <entry>Bugs, build failures, documentation fixes</entry>
                     </row>
                     <row>
-                      <entry><guimenu>enhancement</guimenu></entry>
+                      <entry><emphasis role="strong">>enhancement</emphasis></entry>
                       <entry>Improving existing work</entry>
                     </row>
                     <row>
-                      <entry><guimenu>update</guimenu></entry>
+                      <entry><emphasis role="strong">>update</emphasis></entry>
                       <entry>Update requests or patch submissions for ports</entry>
                     </row>
                     <row>
-                      <entry><guimenu>submissions</guimenu></entry>
+                      <entry><emphasis role="strong">>submissions</emphasis></entry>
                       <entry>Submission of new <filename>Portfile</filename>s</entry>
                     </row>
                     <row>
-                      <entry><guimenu>request</guimenu></entry>
+                      <entry><emphasis role="strong">>request</emphasis></entry>
                       <entry>Requests for new ports</entry>
                     </row>
                   </tbody>
                 </entrytbl>
               </row>
               <row>
-                <entry><guilabel>Priority</guilabel></entry>
+                <entry><emphasis role="strong">>Priority</emphasis></entry>
                 <entry>
-                  Use <guimenu>normal</guimenu> or <guimenu>low</guimenu>.
-                  <guimenu>High</guimenu> is reserved for MacPorts developers.
+                  Use <emphasis role="strong">>normal</emphasis> or <emphasis role="strong">>low</emphasis>.
+                  <emphasis role="strong">>High</emphasis> is reserved for MacPorts developers.
                 </entry>
               </row>
               <row>
-                <entry><guilabel>Milestone</guilabel></entry>
+                <entry><emphasis role="strong">>Milestone</emphasis></entry>
                 <entry>Leave empty.</entry>
               </row>
               <row>
-                <entry><guilabel>Component</guilabel></entry>
+                <entry><emphasis role="strong">>Component</emphasis></entry>
                 <entrytbl cols="2" colsep="0" rowsep="0">
                   <tbody>
                     <row>
-                      <entry><guimenu>base</guimenu></entry>
+                      <entry><emphasis role="strong">>base</emphasis></entry>
                       <entry>Tickets affecting MacPorts itself</entry>
                     </row>
                     <row>
-                      <entry><guimenu>guide</guimenu></entry>
+                      <entry><emphasis role="strong">>guide</emphasis></entry>
                       <entry>Use for documentation</entry>
                     </row>
                     <row>
-                      <entry><guimenu>ports</guimenu></entry>
+                      <entry><emphasis role="strong">>ports</emphasis></entry>
                       <entry>Tickets affecting specific ports. Remember to set
-                        the <guilabel>port</guilabel> field!</entry>
+                        the <emphasis role="strong">>port</emphasis> field!</entry>
                     </row>
                     <row>
-                      <entry><guimenu>server/hosting</guimenu></entry>
+                      <entry><emphasis role="strong">>server/hosting</emphasis></entry>
                       <entry>Use for infrastructure issues</entry>
                     </row>
                     <row>
-                      <entry><guimenu>website</guimenu></entry>
+                      <entry><emphasis role="strong">>website</emphasis></entry>
                       <entry>Enhancements and fixes for the web site</entry>
                     </row>
                     <row>
-                      <entry><guimenu>wiki</guimenu></entry>
+                      <entry><emphasis role="strong">>wiki</emphasis></entry>
                       <entry>Enhancements and fixes for the wiki (or just edit
                         it directly!)</entry>
                     </row>
@@ -220,11 +220,11 @@
                 </entrytbl>
               </row>
               <row>
-                <entry><guilabel>Version</guilabel></entry>
+                <entry><emphasis role="strong">>Version</emphasis></entry>
                 <entry>The version of MacPorts you are running.</entry>
               </row>
               <row>
-                <entry><guilabel>Keywords</guilabel></entry>
+                <entry><emphasis role="strong">>Keywords</emphasis></entry>
                 <entry><literal>maintainer</literal> if you are the port's
                   maintainer. <literal>haspatch</literal> if you are attaching
                   a patch. <link xlink:href="https://trac.macports.org/wiki/TicketsKeywordGuidelines">Full
@@ -232,13 +232,13 @@
                 </entry>
               </row>
               <row>
-                <entry><guilabel>Port</guilabel></entry>
+                <entry><emphasis role="strong">>Port</emphasis></entry>
                 <entry>The name of the port affected by this ticket. Separate
                   multiple using spaces. Leave empty for non-port
                   tickets.</entry>
               </row>
               <row>
-                <entry><guilabel>Owner</guilabel>/<guilabel>Cc</guilabel></entry>
+                <entry><emphasis role="strong">>Owner</emphasis>/<emphasis role="strong">>Cc</emphasis></entry>
                 <entry>Full email address or GitHub username of the port's
                   maintainer. Run <command>port info --maintainer
                     <replaceable>&lt;portname&gt;</replaceable></command> to
@@ -246,8 +246,8 @@
                   <email>nomaintainer@macports.org</email> or
                   <email>openmaintainer@macports.org</email>. For ports with
                   multiple maintainers, only put the first maintainer into the
-                  <guilabel>Owner</guilabel> field and all others in the
-                  <guilabel>Cc</guilabel> field. You do not need to Cc
+                  <emphasis role="strong">>Owner</emphasis> field and all others in the
+                  <emphasis role="strong">>Cc</emphasis> field. You do not need to Cc
                   yourself.</entry>
               </row>
             </tbody>
@@ -261,7 +261,7 @@
 
       <itemizedlist>
         <listitem>
-          <para><guilabel>Summary:</guilabel>
+          <para><emphasis role="strong">>Summary:</emphasis>
           <replaceable>[port]</replaceable>
           <replaceable>[version]</replaceable> <replaceable>[concise
           description]</replaceable></para>
@@ -275,7 +275,7 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Description:</guilabel> All details that might
+          <para><emphasis role="strong">>Description:</emphasis> All details that might
           be relevant to someone reading the ticket. Be sure to mention
           the versions of your operating system and Xcode install. <link
           xlink:href="https://trac.macports.org/wiki/WikiFormatting">Wiki
@@ -301,124 +301,124 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Type:</guilabel> There are five types of
+          <para><emphasis role="strong">>Type:</emphasis> There are five types of
           tickets.</para>
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>defect</guimenu> - The default; any port/MacPorts
+              <para><emphasis role="strong">>defect</emphasis> - The default; any port/MacPorts
               build/runtime failures and/or documentation corrections.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>enhancement</guimenu> - Tickets, with or without
+              <para><emphasis role="strong">>enhancement</emphasis> - Tickets, with or without
               patches, created to enhance something that isn't failing its
               intended purpose.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>update</guimenu> - Tickets, with or without
+              <para><emphasis role="strong">>update</emphasis> - Tickets, with or without
               patches, involving updating a port to a newer upstream
               version.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>submission</guimenu> - Tickets created to submit
+              <para><emphasis role="strong">>submission</emphasis> - Tickets created to submit
               Portfiles for software not currently available in MacPorts.
               </para>
             </listitem>
 
             <listitem>
-              <para><guimenu>request</guimenu> - Tickets created to request
+              <para><emphasis role="strong">>request</emphasis> - Tickets created to request
               the creation of a new port.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><guilabel>Priority:</guilabel> Assign a priority level to the
+          <para><emphasis role="strong">>Priority:</emphasis> Assign a priority level to the
           ticket.</para>
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>High</guimenu> - Reserved for the use of MacPorts
+              <para><emphasis role="strong">>High</emphasis> - Reserved for the use of MacPorts
               team members, as they are the best fit to determine which
               reports warrant a higher priority over others.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>Normal</guimenu> - The default. For normal port
+              <para><emphasis role="strong">>Normal</emphasis> - The default. For normal port
               failures, non-critical enhancement requests, non-critical port
               failures.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>Low</guimenu> - For mostly cosmetic improvements,
+              <para><emphasis role="strong">>Low</emphasis> - For mostly cosmetic improvements,
               documentation corrections/improvements, etc.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>Not set</guimenu> - Anything that doesn't fit the
+              <para><emphasis role="strong">>Not set</emphasis> - Anything that doesn't fit the
               categories high, normal, or low.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><guilabel>Milestone:</guilabel> Leave this blank. MacPorts
+          <para><emphasis role="strong">>Milestone:</emphasis> Leave this blank. MacPorts
             developers will set this to the version of MacPorts that contains
             a fix for the ticket when they commit a change. Note that this is
             only meaningful for changes in MacPorts itself, since changes to
             ports are continuously provided to users. If the milestone is
-            <guilabel>MacPorts Future</guilabel> no version of MacPorts with
+            <emphasis role="strong">>MacPorts Future</emphasis> no version of MacPorts with
             the fix has been released yet.
           </para>
         </listitem>
 
         <listitem>
-          <para><guilabel>Component:</guilabel> Set what part of the MacPorts
+          <para><emphasis role="strong">>Component:</emphasis> Set what part of the MacPorts
           Project the ticket is to be filed against.</para>
 
           <itemizedlist>
             <listitem>
-              <para><guimenu>base</guimenu> - Tickets related to MacPorts base
+              <para><emphasis role="strong">>base</emphasis> - Tickets related to MacPorts base
               code.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>guide</guimenu> - Documentation enhancements and
+              <para><emphasis role="strong">>guide</emphasis> - Documentation enhancements and
               error corrections, or patches to the MacPorts Guide.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>ports</guimenu> - Tickets related to
+              <para><emphasis role="strong">>ports</emphasis> - Tickets related to
               ports.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>server/hosting</guimenu> - For MacPorts hosting
+              <para><emphasis role="strong">>server/hosting</emphasis> - For MacPorts hosting
               &amp; server-side issues.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>website</guimenu> - MacPorts website enhancements
+              <para><emphasis role="strong">>website</emphasis> - MacPorts website enhancements
               and error corrections.</para>
             </listitem>
 
             <listitem>
-              <para><guimenu>wiki</guimenu> - MacPorts Wiki enhancements and
+              <para><emphasis role="strong">>wiki</emphasis> - MacPorts Wiki enhancements and
               error corrections.</para>
             </listitem>
           </itemizedlist>
         </listitem>
 
         <listitem>
-          <para><guilabel>Version:</guilabel> Select the MacPorts version you
+          <para><emphasis role="strong">>Version:</emphasis> Select the MacPorts version you
           are using when it is applicable.</para>
         </listitem>
 
         <listitem>
-          <para><guilabel>Keywords:</guilabel> Type any keywords that might
+          <para><emphasis role="strong">>Keywords:</emphasis> Type any keywords that might
           help when searching for tickets. It is not useful to list words here
           that already appear elsewhere in the ticket. Keywords also serve as
           tags; for example, use <quote>tiger</quote> if reporting a bug that
@@ -435,7 +435,7 @@
 
         <listitem>
           <para>
-            <guilabel>Cc:</guilabel> Anyone else besides the ticket reporter
+            <emphasis role="strong">>Cc:</emphasis> Anyone else besides the ticket reporter
             and assignee who would like to be kept involved in the development
             of the ticket. Multiple email addresses or GitHub usernames should
             be separated with a comma and a space (e.g., <literal>neverpanic,
@@ -444,7 +444,7 @@
           <para>
             When reporting port-related tickets, make sure you add the port
             maintainers email address or GitHub username to the
-            <guilabel>Cc:</guilabel> field so they are notified of the ticket
+            <emphasis role="strong">>Cc:</emphasis> field so they are notified of the ticket
             (unless you have commit access, then see <guilabel>Assign
               To:</guilabel> below). You can obtain the email address or GitHub
             username of the port maintainer by running <command>port info
@@ -453,9 +453,9 @@
 
         <listitem>
           <para>
-            <guilabel>Assign To:</guilabel> Only users with commit access can
+            <emphasis role="strong">>Assign To:</emphasis> Only users with commit access can
             edit this field. If this is not you, see the section on the
-            <guimenu>Cc</guimenu> field above.</para>
+            <emphasis role="strong">>Cc</emphasis> field above.</para>
 
           <para>
             For tickets on ports, enter the email address or GitHub username of
@@ -464,7 +464,7 @@
             multiple maintainers are listed, enter the first maintainer's email
             address or GitHub username here and enter the remaining
             maintainers' email addresses or GitHub usernames in the
-            <guimenu>Cc</guimenu> field. Exclude the email address
+            <emphasis role="strong">>Cc</emphasis> field. Exclude the email address
             <email>openmaintainer@macports.org</email> if it appears. If the
             maintainer's email address is
             <email>nomaintainer@macports.org</email>, leave the field
@@ -472,16 +472,16 @@
         </listitem>
 
         <listitem>
-          <para><guilabel>Port:</guilabel> For tickets on ports, enter the
+          <para><emphasis role="strong">>Port:</emphasis> For tickets on ports, enter the
           name of the port (or ports, space-separated, when multiple are
           affected).</para>
         </listitem>
 
         <listitem>
-          <para><guilabel>I have files to attach to this ticket:</guilabel>
+          <para><emphasis role="strong">>I have files to attach to this ticket:</emphasis>
           Use this checkbox to attach files to the ticket immediately after
           you create it. Or you can attach files later using the
-          <guilabel>Attach File</guilabel> button.</para>
+          <emphasis role="strong">>Attach File</emphasis> button.</para>
           <para>If the file you are attaching is larger than 256 KiB, please
           compress it with bzip2 or gzip first to save space on the server and
           bandwidth for those downloading it, as
@@ -633,15 +633,15 @@
           <para>...or create a Trac ticket.</para>
           <orderedlist>
             <listitem>
-            <para>Set the type to <guilabel>submission</guilabel>.</para>
+            <para>Set the type to <emphasis role="strong">>submission</emphasis>.</para>
             </listitem>
 
             <listitem>
-            <para>Set the component to <guilabel>ports</guilabel>.</para>
+            <para>Set the component to <emphasis role="strong">>ports</emphasis>.</para>
             </listitem>
 
             <listitem>
-            <para>Set the <guilabel>port</guilabel> field to the name of the new port.</para>
+            <para>Set the <emphasis role="strong">>port</emphasis> field to the name of the new port.</para>
             </listitem>
 
             <listitem>
@@ -694,23 +694,23 @@
           <para>...or create a Trac ticket.</para>
           <orderedlist>
             <listitem>
-              <para>Set the type to <guilabel>enhancement</guilabel> for
-              miscellaneous enhancements, to <guilabel>defect</guilabel> for bug
-              fixes, or to <guilabel>update</guilabel> for version updates.</para>
+              <para>Set the type to <emphasis role="strong">>enhancement</emphasis> for
+              miscellaneous enhancements, to <emphasis role="strong">>defect</emphasis> for bug
+              fixes, or to <emphasis role="strong">>update</emphasis> for version updates.</para>
             </listitem>
 
             <listitem>
-              <para>Set the component to <guilabel>ports</guilabel>.</para>
+              <para>Set the component to <emphasis role="strong">>ports</emphasis>.</para>
             </listitem>
 
             <listitem>
-              <para>Set the <guilabel>port</guilabel> field to the name of the port you want to change.</para>
+              <para>Set the <emphasis role="strong">>port</emphasis> field to the name of the port you want to change.</para>
             </listitem>
 
             <listitem>
             <para>
                 Put the maintainer's email address or GitHub username into the
-                <guilabel>Cc</guilabel> field. You can use
+                <emphasis role="strong">>Cc</emphasis> field. You can use
                 <programlisting><prompt>%%</prompt> <userinput>port info --maintainer $portname</userinput></programlisting>
                 where <userinput>$portname</userinput> is the name of the port you
                 want to modify. Note that
@@ -949,12 +949,12 @@ To use the current port, you must be in a port's directory.</screen>
           <link
               xlink:href="https://trac.macports.org/newticket">file a new ticket in
             Trac</link> to change the maintainer, though GitHub pull requests are preferred.
-            Set <guilabel>type</guilabel> to
-            <guilabel>enhancement</guilabel>. Leave the
-            <guilabel>milestone</guilabel> field empty. If you added yourself
+            Set <emphasis role="strong">>type</emphasis> to
+            <emphasis role="strong">>enhancement</emphasis>. Leave the
+            <emphasis role="strong">>milestone</emphasis> field empty. If you added yourself
             as co-maintainer, add the other maintainers in the
-            <guilabel>Cc</guilabel> field. Finally, fill in the
-            <guilabel>port</guilabel> field, set <guilabel>keywords</guilabel>
+            <emphasis role="strong">>Cc</emphasis> field. Finally, fill in the
+            <emphasis role="strong">>port</emphasis> field, set <emphasis role="strong">>keywords</emphasis>
             to <userinput>haspatch</userinput> (because you are attaching
             a patch), check the box that you want to attach files to the ticket
             and submit. After submission, attach the patch you created in the
@@ -972,7 +972,7 @@ To use the current port, you must be in a port's directory.</screen>
             each independent change to be accepted without worries about
             conflicts that sometimes arise when several changes are rolled into
             one patch. Do not worry that you cannot change the
-            <guilabel>keywords</guilabel> to <userinput>haspatch</userinput> on
+            <emphasis role="strong">>keywords</emphasis> to <userinput>haspatch</userinput> on
             existing tickets.</para>
         </listitem>
 
@@ -1087,7 +1087,7 @@ To use the current port, you must be in a port's directory.</screen>
       <orderedlist>
         <listitem>
           <para>File a new Trac ticket with the summary line: [Port
-          Abandoned] <guilabel>portname</guilabel>.</para>
+          Abandoned] <emphasis role="strong">>portname</emphasis>.</para>
         </listitem>
 
         <listitem>
