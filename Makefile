@@ -53,24 +53,23 @@ GUIDE_XSL_CHUNK = $(GUIDE)/resources/chunk.xsl
 # DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
 
-.PHONY: all guide guide-chunked guide-dblatex clean validate
+.PHONY: all clean guide guide-chunked guide-fromadoc guide-xml2html guide-dblatex validate
 
 all: guide guide-chunked
 
 # Generate the HTML guide using DocBook from the XML sources
-guide: GUIDE_OUTDIR= $(GUIDE_RESULT)
-guide-chunked: GUIDE_OUTDIR = $(GUIDE_RESULT)/chunked
-guide-chunked: GUIDE_XSL = $(GUIDE_XSL_CHUNK)
-guide: guide-xml2html
-guide-chunked:: guide-xml2html
+guide: $(GUIDE)/resources/xsl
+	$(call xml2html,$(GUIDE_XML),$(GUIDE_RESULT),$(GUIDE_XSL))
+
+guide-chunked:: $(GUIDE)/resources/xsl
+	$(call xml2html,$(GUIDE_XML),$(GUIDE_RESULT)/chunked,$(GUIDE_XSL_CHUNK))
 
 # Experimental adoc input files
-guide-fromadoc: GUIDE_XML = $(GUIDE_ADOC)
-guide-fromadoc: GUIDE_OUTDIR = $(GUIDE_RESULT)/fromadoc
-guide-fromadoc: guide-adoc2xml guide-xml2html
-
 guide-adoc2xml:
 	$(ASCIIDOCTOR) -b docbook $(GUIDE_ADOC)/guide.adoc
+
+guide-fromadoc: guide-adoc2xml $(GUIDE)/resources/xsl
+	$(call xml2html,$(GUIDE_ADOC),$(GUIDE_RESULT)/adoc,$(GUIDE_XSL))
 
 # Rules to generate HTML from DocBook XML
 
@@ -81,24 +80,25 @@ else
 	$(LN) -sfh $(DOCBOOK) $(GUIDE)/resources/xsl
 endif
 
-guide-xml2html: $(GUIDE)/resources/xsl
-	$(MKDIR) -p $(GUIDE_OUTDIR)
-	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(GUIDE_OUTDIR)/$(STYLESHEET)
-	$(CP) $(GUIDE)/resources/images/* $(GUIDE_OUTDIR)/
-	$(CP) $(GUIDE)/resources/*.js $(GUIDE_OUTDIR)/
+define xml2html
+	$(MKDIR) -p $(2)
+	$(CP) $(GUIDE)/resources/$(STYLESHEET) $(2)/$(STYLESHEET)
+	$(CP) $(GUIDE)/resources/images/* $(2)/
+	$(CP) $(GUIDE)/resources/*.js $(2)/
 	$(XSLTPROC) --xinclude \
-	    --output $(GUIDE_OUTDIR)/index.html \
-	    $(GUIDE_XSL) $(GUIDE_XML)/guide.xml
+	    --output $(2)/index.html \
+	    $(3) $(1)/guide.xml
 	# Convert all sections (h1-h9) to a link so it's easy to link to them.
 	# If someone knows a better way to do this please change it.
 	$(REINPLACE) \
 	    's|(<h[0-9] [^>]*><a id="([^"]*)"></a>)([^<]*)(</h[0-9]>)|\1<a href="#\2">\3</a>\4|g' \
-	    $(GUIDE_OUTDIR)/index.html
+	    $(2)/index.html
+endef
 
 guide-chunked::
 	# Add the table of contents to every chunked HTML file.
 	# If someone knows a better way to do this please change it.
-	$(TCLSH) toc-for-chunked.tcl $(GUIDE_OUTDIR)
+	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT)/chunked
 
 # Generate the guide as a PDF.
 guide-dblatex: SUFFIX = pdf
