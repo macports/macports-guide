@@ -271,7 +271,7 @@ Found 11 ports.</screen>
                     <term><option>--glob</option></term>
                     <listitem>
                         <para>Treat the given search string as glob search string (i.e., expand wildcards
-                            <option>*</option>, <option>?</option>, and <optional>chars</optional>).
+                            <option>*</option>, <option>?</option>, and <option>[chars]</option>).
                             This is the default behavior.</para>
                     </listitem>
                 </varlistentry>
