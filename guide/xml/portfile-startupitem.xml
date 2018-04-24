@@ -440,12 +440,17 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
     <programlisting><prompt>%%</prompt> <userinput>ls -l /Library/LaunchDaemons</userinput></programlisting>
 
     <screen>org.macports.mysql5.plist -&gt;
-     /opt/local/etc/LaunchDaemons/org.macports.mysql5/org.macports.mysql5.plist</screen>
+<!--     -->/opt/local/etc/LaunchDaemons/org.macports.mysql5/org.macports.mysql5.plist</screen>
 
     <para>For <quote>script</quote> StartupItems, in addition to a .plist
-    file, a wrapper is also created.<programlisting><prompt>%%</prompt> <userinput>ls -l /opt/local/etc/LaunchDaemons/org.macports.mysql5/</userinput></programlisting><screen>-rwxr-xr-x   2 root  wheel  475 Aug  2 14:16 mysql5.wrapper
--rw-r--r--   2 root  wheel  975 Aug  2 14:16 org.macports.mysql5.plist</screen>The
-    wrapper manipulates the script as specified in the startupitem.start and
+        file, a wrapper is also created.</para>
+
+    <programlisting><prompt>%%</prompt> <userinput>ls -l /opt/local/etc/LaunchDaemons/org.macports.mysql5/</userinput></programlisting>
+
+    <screen>-rwxr-xr-x   2 root  wheel  475 Aug  2 14:16 mysql5.wrapper
+<!--     -->-rw-r--r--   2 root  wheel  975 Aug  2 14:16 org.macports.mysql5.plist</screen>
+
+    <para>The wrapper manipulates the script as specified in the startupitem.start and
     startupitem.stop keywords. An example wrapper script snippet is shown
     below.</para>
 
