@@ -5,10 +5,8 @@
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
 <book>
-    <title>
-        <application>MacPorts</application> Guide
-    </title>
     <info>
+        <title><application>MacPorts</application> Guide</title>
         <authorgroup>
             <author>
                 <personname>
