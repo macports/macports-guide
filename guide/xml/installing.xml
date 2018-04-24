@@ -452,19 +452,11 @@
 
                     <para>Condition: If prior to MacPorts installation a <varname>MANPATH</varname> variable exists in
                         a current <filename>.profile</filename> that contains neither the value
-                        <filename>${prefix}/share/man,</filename> nor any empty values, the postflight script sets the
-                        <varname>MANPATH</varname> variable as shown below. Otherwise, the <varname>MANPATH</varname>
-                        variable is omitted.</para>
+                        <filename>${prefix}/share/man,</filename> nor any empty items separated by a colon, the
+                        postflight script sets the <varname>MANPATH</varname> variable as shown below. Otherwise, the
+                        <varname>MANPATH</varname> variable is omitted.</para>
 
                     <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
-
-                    <para>Here are some examples of paths that contain empty values:</para>
-
-                    <simplelist>
-                        <member>/usr/share/man:</member>
-                        <member>:/usr/share/man</member>
-                        <member>/usr/share/man::/usr/X11R6/man</member>
-                    </simplelist>
                 </listitem>
 
                 <listitem>
