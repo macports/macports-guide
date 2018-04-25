@@ -199,6 +199,9 @@ platform darwin 8 powerpc {
       </varlistentry>
     </variablelist>
 
+    <!-- XXX: keep this dummy for the conversion to AsciiDoc using docbookrx -->
+    <para></para>
+
     <note>
       <para>Though a combination of OS version and hardware platform may be
       specified in a single platform statement (e.g., darwin 8 i386), it is not
