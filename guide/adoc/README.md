@@ -45,3 +45,73 @@ During the initial conversion the following warnings are thrown:
     No visitor defined for <glossdiv>! Skipping.
 
 Quite some parts of the guide are not interpreted correctly and might end up being displayed as code rather than actual portion of text.
+
+## TODO
+
+### Incorrectly converted
+
+List of things that are incorrectly converted by docbookrx. These should be
+fixed in docbookrx as they either lose information or affect a lot of
+locations in the sources.
+
+* Internal references have an underscore preprended
+  This would break all links to the guide. As docbookrx does not take
+  configuration parameters, this has to be changed in the visitor directly.
+
+* `<link xlink:href="...">`
+  This is not converted correctly. All external links are broken.
+
+* Missing distinction between `<programlisting><prompt></><userinput></></>`, `<screen>`, and `<programlisting>`
+  They all result in similar [source] blocks at the moment. Based on how they
+  are used in the guide, we should keep the semantics by adding style
+  attributes to AsciiDoc.
+
+      [cmd]
+      ----
+      $ Commands to be typed into a terminal window.
+      ----
+
+      [output]
+      ----
+      Command output to a terminal window.
+      ----
+
+      [source]
+      ----
+      File text.
+      ----
+
+* `<option>foo</option>` produces `[option]``foo`` `
+  This also applies to `<replaceable>`, `<path>`, or `<var>` among others.
+  It seems overly verbose and unnecessary in most places.
+  Backticks alone should be enough, unless we want to apply a specific style to
+  any of these.
+
+### Postprocessing
+
+List of things that need to be fixed manually after running the conversion
+with docbookrx:
+
+* Fix book title
+  Suppress rendering of "MacPorts" in "MacPorts Guide".
+
+* Fix authors
+  Or just remove them, as this list is not exhaustive anyway.
+
+* Fix nested tables in project.adoc
+  docbookrx does not convert nested tables correctly (look for <tbody>).
+  However, nested tables are in fact supported by AsciiDoc, so this can be
+  rescued with manual work.
+
+* Rewrite internals-hier.adoc
+  None of the original hierarchy could be converted. Rewrite this section
+  in AsciiDoc (and maybe also merge it with porthier.7 in base?).
+
+* Rewrite glossary manually or remove it
+  docbookrx does not know about `<glossdiv>`. The glossary only contains
+  two entries, so the usefulness in its current form is doubtful.
+
+* Fix leveloffsets in portfileref.adoc
+  Sometimes our includes start a new section and sometimes they contain
+  content for the same level. There is no way for docbookrx to guess
+  that correctly, so it needs to be fixed manually.
