@@ -26,7 +26,7 @@ DocBook XML sources to the desired output format. You can install them from
 MacPorts with this command:
 
 ```
-$ sudo port install libxml2 libxslt docbook-xsl docbook-xml-5.0
+$ sudo port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0
 ```
 
 ### HTML Output
