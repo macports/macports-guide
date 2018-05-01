@@ -1,8 +1,7 @@
 # $Id$
 
 # Makefile to generate the MacPorts HTML guide pages.
-# The ports 'docbook-xsl', 'docbook-xml' and 'libxslt' have to be installed.
-# For the guide-dblatex target, the 'dblatex' port is also required.
+# See README.md for the list of ports that need to be installed.
 
 # If your MacPorts isn't installed in /opt/local you have to change PREFIX
 # here.
