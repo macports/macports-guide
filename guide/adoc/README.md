@@ -89,9 +89,6 @@ with docbookrx:
 * Fix book title
   Suppress rendering of "MacPorts" in "MacPorts Guide".
 
-* Fix authors
-  Or just remove them, as this list is not exhaustive anyway.
-
 * Fix nested tables in project.adoc
   docbookrx does not convert nested tables correctly (look for <tbody>).
   However, nested tables are in fact supported by AsciiDoc, so this can be
