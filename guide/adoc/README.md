@@ -34,18 +34,15 @@ conversion.
 
 ## Known issues
 
-During the initial conversion the following warnings are thrown:
+During the conversion the following warnings are thrown:
 
-    No visitor defined for <simplelist>! Skipping.
-    No visitor defined for <email>! Skipping.
-    No visitor defined for <optional>! Skipping.
     No visitor defined for <citerefentry>! Skipping.
     No visitor defined for <refentry>! Skipping.
-    No visitor defined for <screenshot>! Skipping.
+    No visitor defined for <tbody>! Skipping.
     No visitor defined for <tbody>! Skipping.
     No visitor defined for <glossdiv>! Skipping.
 
-Quite some parts of the guide are not interpreted correctly and might end up being displayed as code rather than actual portion of text.
+See below how these need to be fixed in manual post-processing.
 
 ## TODO
 
