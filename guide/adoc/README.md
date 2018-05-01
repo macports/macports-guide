@@ -1,8 +1,9 @@
 # AsciiDoc version of the guide
 
-This is a preliminary attempt to convert the guide from DocBook to AsciiDoc.
+This is a work-in-progress attempt to convert the guide from DocBook to AsciiDoc.
 
-The conversion has been done with [docbookrx](https://github.com/asciidoctor/docbookrx):
+The conversion has originally been done with [docbookrx](https://github.com/asciidoctor/docbookrx).
+To handle all elements and special tweaks specific to the MacPorts guide, a [patched version of docbookrx](https://github.com/raimue/docbookrx/tree/macports-guide) is required for the conversion.
 
     docbookrx guide.xml
 
