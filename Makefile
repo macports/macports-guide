@@ -66,7 +66,7 @@ guide-chunked:: $(GUIDE)/resources/xsl
 
 # Experimental adoc input files
 guide-adoc2xml:
-	$(ASCIIDOCTOR) -b docbook $(GUIDE_ADOC)/guide.adoc
+	$(ASCIIDOCTOR) -b docbook5 $(GUIDE_ADOC)/guide.adoc
 
 guide-fromadoc: guide-adoc2xml $(GUIDE)/resources/xsl
 	$(call xml2html,$(GUIDE_ADOC),$(GUIDE_RESULT)/adoc,$(GUIDE_XSL))
