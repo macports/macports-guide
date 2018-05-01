@@ -91,6 +91,10 @@ with docbookrx:
   However, nested tables are in fact supported by AsciiDoc, so this can be
   rescued with manual work.
 
+* Remove trailing whitespace
+  docbookrx leaves some trailing whitespace at the end of lines.
+  This should be cleaned up after the conversion.
+
 * Rewrite internals-hier.adoc
   None of the original hierarchy could be converted. Rewrite this section
   in AsciiDoc (and maybe also merge it with porthier.7 in base?).
