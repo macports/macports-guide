@@ -61,7 +61,6 @@ guide-chunked::
 
 # Experimental adoc input files
 guide-adoc2xml:
-	#$(ASCIIDOCTOR) -rasciidoctor-extensions.rb -b docbook5 $(GUIDE_ADOC)/guide.adoc
 	$(ASCIIDOCTOR) -b docbook5 $(GUIDE_ADOC)/guide.adoc
 
 guide-fromadoc: guide-adoc2xml
