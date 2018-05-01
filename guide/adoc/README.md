@@ -55,10 +55,6 @@ List of things that are incorrectly converted by docbookrx. These should be
 fixed in docbookrx as they either lose information or affect a lot of
 locations in the sources.
 
-* Internal references have an underscore preprended
-  This would break all links to the guide. As docbookrx does not take
-  configuration parameters, this has to be changed in the visitor directly.
-
 * Missing distinction between `<programlisting><prompt></><userinput></></>`, `<screen>`, and `<programlisting>`
   They all result in similar [source] blocks at the moment. Based on how they
   are used in the guide, we should keep the semantics by adding style
