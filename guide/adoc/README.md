@@ -72,12 +72,6 @@ locations in the sources.
       File text.
       ----
 
-* `<option>foo</option>` produces `[option]``foo`` `
-  This also applies to `<replaceable>`, `<path>`, or `<var>` among others.
-  It seems overly verbose and unnecessary in most places.
-  Backticks alone should be enough, unless we want to apply a specific style to
-  any of these.
-
 ### Postprocessing
 
 List of things that need to be fixed manually after running the conversion
@@ -107,3 +101,9 @@ with docbookrx:
   Sometimes our includes start a new section and sometimes they contain
   content for the same level. There is no way for docbookrx to guess
   that correctly, so it needs to be fixed manually.
+
+* `<command>foo</command>` produces `[cmd]``foo`` `,
+  `<filename>/opt/local</filename>` produces `[path]``foo`` `
+  These need to be turned into proper CSS classes, so they can be styled
+  accordingly like in the DocBook version of the guide.
+  Note: all other named literals of DocBook will produce anonymous literals using backticks only.
