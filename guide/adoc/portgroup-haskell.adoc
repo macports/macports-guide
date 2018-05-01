@@ -1,9 +1,9 @@
-[[_reference.portgroup.haskell]]
+[[reference.portgroup.haskell]]
 = PortGroup haskell
 
 PortGroup haskell simplifies the addition of Haskell packages.
 
-[[_reference.portgroup.haskell.keywords]]
+[[reference.portgroup.haskell.keywords]]
 == haskell PortGroup Specific Keywords
 
 Portfiles using the haskell PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
@@ -21,7 +21,7 @@ This keyword sets a number of port variables.
 haskell.setup   digest 0.0.0.2
 ----
 
-[[_reference.portgroup.haskell.sugar]]
+[[reference.portgroup.haskell.sugar]]
 == haskell PortGroup Sugar
 
 Portfiles using PortGroup haskell do not need to define the following variables:

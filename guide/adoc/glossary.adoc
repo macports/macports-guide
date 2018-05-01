@@ -1,10 +1,12 @@
-[[_guide_terms]]
+[[guide-terms]]
 = MacPorts Guide Glossary
 :doctype: book
 :sectnums:
 :toc: left
 :icons: font
 :experimental:
+:idprefix:
+:idseparator: -
 :sourcedir: .
 
 This section defines a number of words which may be new to the reader.

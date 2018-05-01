@@ -1,67 +1,66 @@
-[[_reference.phases]]
+[[reference.phases]]
 = Port Phases
 
-[[_reference.phases.introduction]]
+[[reference.phases.introduction]]
 == Introduction
 
 The MacPorts port installation process has a number of distinct phases that are described in detail in this section.
-The default scripts coded into MacPorts base performs the standard ``configure``, ``make``, and `make
-    install` steps.
-For applications that do not conform to this standard, installation phases may be declared in a Portfile to <<_development.examples.augment,augment>> or <<_development.examples.override,override>> the default behavior as described in the <<_development,Portfile
-    Development>> chapter.
+The default scripts coded into MacPorts base performs the standard [cmd]``configure``, [cmd]``make``, and [cmd]``make
+    install`` steps.
+For applications that do not conform to this standard, installation phases may be declared in a Portfile to <<development.examples.augment,augment>> or <<development.examples.override,override>> the default behavior as described in the <<development,Portfile Development>> chapter.
 
 fetch::
-Fetch the [var]``${distfiles}`` from [var]``${master_sites}`` and place it in [path]_${prefix}/var/macports/distfiles/${name}_.
+Fetch the `${distfiles}` from `${master_sites}` and place it in [path]`${prefix}/var/macports/distfiles/${name}`.
 
 checksum::
-Compare [var]``${checksums}`` specified in a [path]_Portfile_ to the checksums of the fetched ${distfiles}.
+Compare `${checksums}` specified in a [path]`Portfile` to the checksums of the fetched ${distfiles}.
 
 extract::
-Unzip and untar the [var]``${distfiles}`` into the path ${prefix}/var/macports/build/..../work
+Unzip and untar the `${distfiles}` into the path ${prefix}/var/macports/build/..../work
 
 patch::
-Apply optional link:patch files specified in [var]``${patchfiles}`` to modify a port's source code file(s).
+Apply optional https://en.wikipedia.org/wiki/Patch_(Unix)[patch] files specified in `${patchfiles}` to modify a port's source code file(s).
 
 configure::
-Execute [var]``${configure.cmd}`` in [var]``${worksrcpath}``.
+Execute `${configure.cmd}` in ``${worksrcpath}``.
 
 build::
-Execute [var]``${build.cmd}`` in [var]``${worksrcpath}``.
+Execute `${build.cmd}` in ``${worksrcpath}``.
 
 test::
 Execute commands to run test suites bundled with a port, available only for a fraction of ports.
-This is an optional phase, run only if `port test` is executed, and always works with a build from source, not a binary.
+This is an optional phase, run only if [cmd]``port test`` is executed, and always works with a build from source, not a binary.
 A failure is only for the user's information, and does not block a subsequent installation from the build.
 
 destroot::
-Execute the command `make install`[var]``DESTDIR=${destroot}``in [var]``${worksrcpath}``.
+Execute the command [cmd]``make install````DESTDIR=${destroot}``in ``${worksrcpath}``.
 +
 
 
 [NOTE]
 ====
-Using a link:DESTDIR
-            variable is a part of standard GNU coding practices, and this variable must be supported in an application's install routines for MacPorts' destroot phase to work without manual Portfile scripting or source patching.
-Urge developers to fully support [var]``DESTDIR`` in their applications.
+Using a https://www.gnu.org/prep/standards/html_node/DESTDIR.html[DESTDIR
+            variable] is a part of standard GNU coding practices, and this variable must be supported in an application's install routines for MacPorts' destroot phase to work without manual Portfile scripting or source patching.
+Urge developers to fully support `DESTDIR` in their applications.
 ====
 +
 Understanding the destroot phase is critical to understanding MacPorts, because, unlike some package management systems, MacPorts "`stages`" an installation into an intermediate location, not the final file destination.
 MacPorts uses the destroot phase to provide:
 
 * Port uninstalls - a port's files may be cleanly uninstalled because all files and directories are recorded during install.
-* Multiple port versions may be installed on the same host, since a port's files are not directly inserted into [var]``${prefix}`` but rather hard-linked into [var]``${prefix}`` from an intermediate location during a later activation phase.
+* Multiple port versions may be installed on the same host, since a port's files are not directly inserted into `${prefix}` but rather hard-linked into `${prefix}` from an intermediate location during a later activation phase.
 
 +
-Any empty directories in [var]``${destroot}`` upon completion of the destroot phase are removed unless a directory name is placed in the value field of the optional `destroot.keepdirs` keyword.
+Any empty directories in `${destroot}` upon completion of the destroot phase are removed unless a directory name is placed in the value field of the optional `destroot.keepdirs` keyword.
 
 install::
-Archive a port's destrooted files into [path]_${prefix}/var/macports/software_.
-See <<_internals.images,Port Images>> in the <<_internals,MacPorts Internals>> chapter for details.
+Archive a port's destrooted files into [path]`${prefix}/var/macports/software`.
+See <<internals.images,Port Images>> in the <<internals,MacPorts Internals>> chapter for details.
 
 activate::
-Extract the port's files from the archive in [path]_${prefix}/var/macports/software_ to their final installed locations, usually inside [var]``${prefix}``.
+Extract the port's files from the archive in [path]`${prefix}/var/macports/software` to their final installed locations, usually inside ``${prefix}``.
 
-[[_reference.phases.installation]]
+[[reference.phases.installation]]
 == Installation Phase Keywords
 
 MacPorts keywords are used to specify required or optional items within a Portfile, or to override default options used by MacPorts base for individual ports.
@@ -69,7 +68,7 @@ Keywords are to be used within the "`global`" and "`variant`" sections of Portfi
 
 In other words, port phase keywords are not located within port phase declarations, but rather they _refer_ to port phases and set options for those phases, and they take effect whether or not phase declarations have been explicitly defined in a Portfile.
 
-[[_reference.phases.installation.list_modifiers]]
+[[reference.phases.installation.list-modifiers]]
 === Keyword List Modifiers (-append, -delete, -replace, -strsed)
 
 Keyword list modifiers are keywords that end in -append, -delete or -replace.
@@ -77,7 +76,7 @@ Keywords that support list modifiers are identified under appropriate reference 
 
 -append adds a value to the keyword, -delete removes a previously added item.
 -replace takes two arguments and replaces the first value from the keyword with the second value.
--strsed treats the keyword value as a string and filters it through <<_reference.tcl_extensions.strsed,strsed>> using the given pattern.
+-strsed treats the keyword value as a string and filters it through <<reference.tcl-extensions.strsed,strsed>> using the given pattern.
 There is also a deprecated syntax for -replace which takes only one argument and behaves the same as -strsed.
 
 Keyword list modifiers are most frequently used for these three purposes:
@@ -101,32 +100,32 @@ Use the appropriate keywords, for example:
 ** `patchfiles-append` or `patchfiles-delete` or `patchfiles-replace`
 
 
-[[_reference.phases.installation.argument_modifiers]]
+[[reference.phases.installation.argument-modifiers]]
 === Keyword Argument Modifiers (.pre_args / .post_args)
 
 Keywords that support pre_args and post_args are used to assemble command strings together in a row, as described in the reference sections below.
 But it should be noted that all keyword argument modifiers implicitly support keyword list modifiers.
 For example, the keyword `configure.pre_args` also supports `configure.pre_args-append` and ``configure.pre_args-delete``.
 
-[[_reference.phases.fetch]]
+[[reference.phases.fetch]]
 == Fetch Phase Keywords
 
 The list of keywords related to the fetch phase.
 
 master_sites::
-A list of URLs from which a port's [var]``${distfiles}`` may be retrieved.
+A list of URLs from which a port's `${distfiles}` may be retrieved.
 +
 Keyword values for `master_sites` may include predefined site lists known as "`mirrors`", such as sourceforge, gnu, etc.
-The file(s) declared in [var]``${distfiles}`` will be fetched from one of the locations defined in ``master_sites``, while trying to find the best reachable mirror for the user's connection.
+The file(s) declared in `${distfiles}` will be fetched from one of the locations defined in ``master_sites``, while trying to find the best reachable mirror for the user's connection.
 +
-For a complete list of mirrors and their list of sites, see the file [path]_mirror_sites.tcl_ located in [path]__resources/port1.0/fetch/_ in the ports tree.
+For a complete list of mirrors and their list of sites, see the file [path]`mirror_sites.tcl` located in [path]`_resources/port1.0/fetch/` in the ports tree.
 +
 
 
 [NOTE]
 ====
 If a `master_sites` keyword has multiple values, after any mirrors are expanded the list of sites is sorted by ping response times.
-The sites are then tried in sorted order until matching [var]``${distfiles}`` are found.
+The sites are then tried in sorted order until matching `${distfiles}` are found.
 ====
 
 * Default: `none` (but the `macports_distfiles` mirror is always implicitly appended)
@@ -148,7 +147,7 @@ Here the sourceforge, gnu, and freebsd mirrors are used.
 master_sites        sourceforge gnu freebsd
 ----
 +
-When using mirror master_sites, the subdirectory [var]``${name}`` is checked on every mirror.
+When using mirror master_sites, the subdirectory `${name}` is checked on every mirror.
 If the mirror subdirectory does not match ${name}, then you may specify it using after the mirror separated by a colon.
 +
 
@@ -161,7 +160,7 @@ master_sites        sourceforge:widget \
 For ports that must fetch multiple download files from different locations, you must label the files with tags and match the tags to a `distfiles` keyword.
 The format is ``mirror:subdirectory:tag``.
 +
-In the example below, file_one.tar.gz is fetched from sourceforge mirrors in subdirectory [var]``${name}``; file tagtwo.tar.gz is fetched from the gnu mirrors in subdirectory sources.
+In the example below, file_one.tar.gz is fetched from sourceforge mirrors in subdirectory ``${name}``; file tagtwo.tar.gz is fetched from the gnu mirrors in subdirectory sources.
 +
 
 [source]
@@ -174,9 +173,9 @@ distfiles           file_one.tar.gz:tagone \
 ----
 
 master_sites.mirror_subdir::
-Subdirectory to append to all mirror sites for any list specified in [var]``${master_sites}``.
+Subdirectory to append to all mirror sites for any list specified in ``${master_sites}``.
 
-* Default: [var]``${name}``
+* Default: `${name}`
 * Example:
 +
 
@@ -188,7 +187,7 @@ master_sites.mirror_subdir  magic
 patch_sites::
 A list of sites from which a port's patchfiles may be downloaded, where applicable.
 
-* Default: [var]``${master_sites}``
+* Default: `${master_sites}`
 * Example:
 +
 
@@ -198,9 +197,9 @@ patch_sites         ftp://ftp.patchcityrepo.com/pub/magic/patches
 ----
 
 patch_sites.mirror_subdir::
-Subdirectory to append to all mirror sites for any list specified in [var]``${patch_sites}``.
+Subdirectory to append to all mirror sites for any list specified in ``${patch_sites}``.
 
-* Default: [var]``${name}``
+* Default: `${name}`
 * Example:
 +
 
@@ -212,7 +211,7 @@ patch_sites.mirror_subdir   magic
 distname::
 The name of the distribution filename, not including the extract suffix (see below).
 
-* Default: [var]``${name}-${version}``
+* Default: `${name}-${version}`
 * Example:
 +
 
@@ -225,7 +224,7 @@ distfiles::
 The full distribution filename, including the extract suffix.
 Used to specify non-default distribution filenames; this keyword must be specified (and tags used) when a port has multiple download files (see master_sites).
 
-* Default: [var]``${distname}${extract.suffix}``
+* Default: `${distname}${extract.suffix}`
 * Examples:
 +
 
@@ -242,11 +241,11 @@ distfiles           file_one.tar.gz:tagone \
 ----
 
 dist_subdir::
-The last path component of [var]``${distpath}``.
-Override it to store multiple ports' distfiles in the same directory (such as multiple ports providing different versions of the same software), or if a link:stealth
-update has occurred. 
+The last path component of ``${distpath}``.
+Override it to store multiple ports' distfiles in the same directory (such as multiple ports providing different versions of the same software), or if a https://trac.macports.org/wiki/PortfileRecipes#stealth-updates[stealth
+update] has occurred. 
 
-* Default: [var]``${name}``
+* Default: `${name}`
 * Examples:
 +
 
@@ -266,7 +265,7 @@ Sets the path to source directory relative to workpath.
 It can be used if the extracted source directory has a different name then the distfile.
 Also used if the source to be built is in a subdirectory.
 
-* Default: [var]``${distname}``
+* Default: `${distname}`
 * Examples:
 +
 
@@ -281,17 +280,17 @@ worksrcdir          ${name}-src-${version}
 worksrcdir          ${distname}/src
 ----
 
-[[_reference.phases.fetch.advanced]]
+[[reference.phases.fetch.advanced]]
 === Advanced Fetch Options
 
 Some mirrors require special options for a resource to be properly fetched.
 
 fetch.type::
 Change the fetch type.
-This is only necessary if a <<_reference.phases.fetch.bzr,bzr>>, <<_reference.phases.fetch.cvs,cvs>>, <<_reference.phases.fetch.git,git>>, <<_reference.phases.fetch.hg,hg>>, or <<_reference.phases.fetch.svn,svn>> checkout is being used. [option]``standard`` is used for a normal http or ftp fetch using [var]``${distfiles}`` and is used as default.
+This is only necessary if a <<reference.phases.fetch.bzr,bzr>>, <<reference.phases.fetch.cvs,cvs>>, <<reference.phases.fetch.git,git>>, <<reference.phases.fetch.hg,hg>>, or <<reference.phases.fetch.svn,svn>> checkout is being used. `standard` is used for a normal http or ftp fetch using `${distfiles}` and is used as default.
 
-* Default: [option]``standard``
-* Values: [option]``standard``[option]``bzr``[option]``cvs``[option]``git``[option]``hg``[option]``svn``
+* Default: `standard`
+* Values: `standard```bzr````cvs````git````hg````svn``
 * Example:
 +
 
@@ -329,7 +328,7 @@ TODO: add example
 fetch.use_epsv::
 Whether to use EPSV command for FTP transfers.
 
-* Default: [option]``yes``
+* Default: `yes`
 * Example:
 +
 
@@ -341,7 +340,7 @@ fetch.use_epsv      no
 fetch.ignore_sslcert::
 Whether to ignore the host SSL certificate (for HTTPS).
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -350,13 +349,13 @@ Whether to ignore the host SSL certificate (for HTTPS).
 fetch.ignore_sslcert    yes
 ----
 
-[[_reference.phases.fetch.bzr]]
+[[reference.phases.fetch.bzr]]
 === Fetch from BZR
 
-link:Bzr may be used as an alternative method of fetching distribution files using the keywords in this section.
+https://bazaar.canonical.com/en/[Bzr] may be used as an alternative method of fetching distribution files using the keywords in this section.
 However, fetching via bzr may cause non-reproducible builds, so it is strongly discouraged.
 
-The [option]``bzr``<<_reference.phases.fetch.advanced.fetch_type,fetch.type>> is used to fetch source code from a bzr repository.
+The `bzr`<<reference.phases.fetch.advanced.fetch-type,fetch.type>> is used to fetch source code from a bzr repository.
 
 bzr.url::
 This specifies the url from which to fetch files.
@@ -388,13 +387,13 @@ Optional tag for fetching with bzr, this specifies the revision to checkout
 bzr.revision          2209
 ----
 
-[[_reference.phases.fetch.cvs]]
+[[reference.phases.fetch.cvs]]
 === Fetch from CVS
 
-link:CVS may be used as an alternative method of fetching distribution files using the keywords in this section.
+http://www.nongnu.org/cvs/[CVS] may be used as an alternative method of fetching distribution files using the keywords in this section.
 However, fetching via CVS may cause non-reproducible builds, so it is strongly discouraged.
 
-The [option]``cvs``<<_reference.phases.fetch.advanced.fetch_type,fetch.type>> is used to fetch source code from a CVS repository.
+The `cvs`<<reference.phases.fetch.advanced.fetch-type,fetch.type>> is used to fetch source code from a CVS repository.
 
 cvs.root::
 Specify the url from which to fetch files.
@@ -456,13 +455,13 @@ A CVS module from which to check out the code.
 cvs.module          Sources
 ----
 
-[[_reference.phases.fetch.git]]
+[[reference.phases.fetch.git]]
 === Fetch from Git
 
-link:Git may be used as an alternative method of fetching distribution files using the keywords in this section.
+https://git-scm.com/[Git] may be used as an alternative method of fetching distribution files using the keywords in this section.
 However, fetching via Git may cause non-reproducible builds, so it is strongly discouraged.
 
-The [option]``git``<<_reference.phases.fetch.advanced.fetch_type,fetch.type>> is used to fetch source code from a git repository.
+The `git`<<reference.phases.fetch.advanced.fetch-type,fetch.type>> is used to fetch source code from a git repository.
 
 git.url::
 This specifies the url from which to fetch files.
@@ -501,13 +500,13 @@ git.branch             72bf1c8
 git.branch             origin/next
 ----
 
-[[_reference.phases.fetch.hg]]
+[[reference.phases.fetch.hg]]
 === Fetch from Mercurial
 
-link:Mercurial may be used as an alternative method of fetching distribution files using the keywords in this section.
+https://mercurial.selenic.com/[Mercurial] may be used as an alternative method of fetching distribution files using the keywords in this section.
 However, fetching via Mercurial may cause non-reproducible builds, so it is strongly discouraged.
 
-The [option]``hg``<<_reference.phases.fetch.advanced.fetch_type,fetch.type>> is used to fetch source code from a Mercurial repository.
+The `hg`<<reference.phases.fetch.advanced.fetch-type,fetch.type>> is used to fetch source code from a Mercurial repository.
 
 hg.url::
 This specifies the url from which to fetch files.
@@ -547,13 +546,13 @@ hg.tag              v1.3
 hg.tag              ceb884843737
 ----
 
-[[_reference.phases.fetch.svn]]
+[[reference.phases.fetch.svn]]
 === Fetch from Subversion
 
-link:Subversion may be used as an alternative method of fetching distribution files using the keywords in this section.
+https://subversion.apache.org/[Subversion] may be used as an alternative method of fetching distribution files using the keywords in this section.
 However, fetching via Subversion may cause non-reproducible builds, so it is strongly discouraged.
 
-The [option]``svn``<<_reference.phases.fetch.advanced.fetch_type,fetch.type>> is used to fetch source code from an svn repository.
+The `svn`<<reference.phases.fetch.advanced.fetch-type,fetch.type>> is used to fetch source code from an svn repository.
 
 svn.url::
 This specifies the url from which to fetch files.
@@ -598,7 +597,7 @@ An export is preferable because it takes half the disk space, but some software 
 svn.method          checkout
 ----
 
-[[_reference.phases.checksum]]
+[[reference.phases.checksum]]
 == Checksum Phase Keywords
 
 The list of keywords related to the checksum phase.
@@ -630,7 +629,7 @@ checksums           ${distname}${extract.suffix} \
                         sha256  2c3afd16915e9f8eac2351673f8b599f5fd2ff9064d4dfe61f750d72bab740b3
 ----
 
-[[_reference.phases.extract]]
+[[reference.phases.extract]]
 == Extract Phase Keywords
 
 The list of keywords related to the extract phase.
@@ -638,7 +637,7 @@ The list of keywords related to the extract phase.
 extract.asroot::
 This keyword is used to specify that the extract phase should be done as the root user.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -650,7 +649,7 @@ extract.asroot      no
 extract.suffix::
 This keyword is used to specify the extract suffix type.
 
-* Default: [path]_.tar.gz_
+* Default: [path]`.tar.gz`
 * Example:
 +
 
@@ -666,7 +665,7 @@ When invoked, it automatically sets:
   extract.suffix = .7z
   extract.cmd    = 7za
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -682,7 +681,7 @@ When invoked, it automatically sets:
   extract.suffix = .tar.bz2
   extract.cmd    = bzip
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -698,7 +697,7 @@ When invoked, it automatically sets:
   extract.suffix    = .lzma
   extract.cmd       = lzma
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -716,7 +715,7 @@ When invoked, it automatically sets:
   extract.pre_args  = -q
   extract.post_args = "-d ${extract.dir}"
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -732,7 +731,7 @@ When invoked, it automatically sets:
   extract.suffix    = .tar.xz
   extract.cmd       = xz
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -742,10 +741,10 @@ use_xz             yes
 ----
 
 extract.mkdir::
-This keyword is used to specify if the directory [path]_worksrcdir_ is part of the distfile or if it should be created automatically and the distfiles should be extracted there instead.
-This is useful for distfiles with a flat structure which would pollute the [path]_worksrcdir_ with lots of files.
+This keyword is used to specify if the directory [path]`worksrcdir` is part of the distfile or if it should be created automatically and the distfiles should be extracted there instead.
+This is useful for distfiles with a flat structure which would pollute the [path]`worksrcdir` with lots of files.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -755,10 +754,10 @@ extract.mkdir       yes
 ----
 
 extract.only::
-List of files to extract into [var]``${worksrcpath}``.
+List of files to extract into ``${worksrcpath}``.
 Only use if default extract behavior is not correct for your port.
 
-* Default: [var]``${distfiles}``
+* Default: `${distfiles}`
 * Example:
 +
 
@@ -777,7 +776,7 @@ extract.only-delete     foo.tar.gz
 extract.cmd::
 Command to perform extraction.
 
-* Default: `gzip`
+* Default: [cmd]``gzip``
 * Example:
 +
 
@@ -787,9 +786,9 @@ extract.cmd         gunzip
 ----
 
 extract.args::
-Main arguments to [var]``extract.cmd``; additional arguments passed before and after the main arguments.
+Main arguments to ``extract.cmd``; additional arguments passed before and after the main arguments.
 
-* Default: [var]``${distpath}/${distfile}``
+* Default: `${distpath}/${distfile}`
 * Example:
 +
 
@@ -812,7 +811,7 @@ extract.pre_args    xf
 extract.post_args   "| gnutar -x"
 ----
 
-[[_reference.phases.patch]]
+[[reference.phases.patch]]
 == Patch Phase Keywords
 
 The list of keywords related to the patch phase.
@@ -820,7 +819,7 @@ The list of keywords related to the patch phase.
 patch.dir::
 Specify the base path for patch files.
 
-* Default: [var]``${worksrcpath}``
+* Default: `${worksrcpath}`
 * Example:
 +
 
@@ -832,7 +831,7 @@ patch.dir           ${worksrcpath}/util
 patch.cmd::
 Specify the command to be used for patching files.
 
-* Default: `patch`
+* Default: [cmd]``patch``
 * Example:
 +
 
@@ -862,7 +861,7 @@ patchfiles-delete   patch-destdir-variable-fix.diff
 ----
 
 patch.args::
-Main arguments to [var]``patch.cmd``; optional argument modifiers pass arguments before and after the main arguments.
+Main arguments to ``patch.cmd``; optional argument modifiers pass arguments before and after the main arguments.
 
 * Default: none
 * Example:
@@ -887,7 +886,7 @@ patch.pre_args      -p1
 patch.post_args     ???
 ----
 
-[[_reference.phases.configure]]
+[[reference.phases.configure]]
 == Configure Phase Keywords
 
 The list of keywords related to the configure phase.
@@ -897,9 +896,9 @@ For example, MacPorts base sets default `configure.cflags` so you should always 
 
 use_configure::
 Sets if the configure phase should be run.
-Can be used if the port has no [path]_./configure_ script.
+Can be used if the port has no [path]`./configure` script.
 
-* Default: [option]``yes``
+* Default: `yes`
 * Example:
 +
 
@@ -922,7 +921,7 @@ configure.cmd       ./config.sh
 
 configure.env::
 Set environment variables for configure; list modifiers add and delete items from a previous Portfile configure.env keyword, or a default set by MacPorts base.
-If available, it is encouraged to use the predefined options (like <<_reference.phases.configure.cflags,configure.cflags>>) instead of modifying configure.env directly.
+If available, it is encouraged to use the predefined options (like <<reference.phases.configure.cflags,configure.cflags>>) instead of modifying configure.env directly.
 
 * Default: `CFLAGS=-I${prefix}/include LDFLAGS=-L${prefix}/lib`
 * Example:
@@ -1200,15 +1199,15 @@ configure.compiler::
 Select a compiler suite to fill the compiler environment variables.
 All variables/tools a compiler suite can provide are set.
 Manually set variables are not overwritten.
-Keep in mind that not all compiler suites might be available on your platform: [option]``gcc-3.3`` is available on Mac OS X 10.3 and 10.4 PowerPC, [option]``gcc-4.0`` is available on 10.4 and 10.5, [option]``gcc-4.2`` and [option]``llvm-gcc-4.2`` are available on 10.5 and 10.6, and [option]``clang`` is available on 10.6 and later.
+Keep in mind that not all compiler suites might be available on your platform: `gcc-3.3` is available on Mac OS X 10.3 and 10.4 PowerPC, `gcc-4.0` is available on 10.4 and 10.5, `gcc-4.2` and `llvm-gcc-4.2` are available on 10.5 and 10.6, and `clang` is available on 10.6 and later.
 +
 Only use it if a port really needs a different compiler.
 
-* Default: [option]``apple-gcc-4.2`` on Mac OS X 10.4
-* Default: [option]``gcc-4.2`` with Xcode 3.x on Mac OS X 10.5 and 10.6
-* Default: [option]``llvm-gcc-4.2`` with Xcode 4.0 through 4.2 on Mac OS X 10.6 and 10.7
-* Default: [option]``clang`` with Xcode 4.3 and later on OS X 10.7 and later
-* Values: [option]``gcc-3.3``[option]``gcc-4.0``[option]``gcc-4.2``[option]``llvm-gcc-4.2``[option]``clang``[option]``macports-clang-3.3``[option]``macports-clang-3.4``[option]``macports-clang-3.7``[option]``macports-clang-3.8``[option]``macports-clang-3.9``[option]``macports-clang-4.0``[option]``macports-clang-5.0``[option]``macports-clang-6.0``[option]``apple-gcc-4.0``[option]``apple-gcc-4.2``[option]``macports-gcc-4.3``[option]``macports-gcc-4.4``[option]``macports-gcc-4.5``[option]``macports-gcc-4.6``[option]``macports-gcc-4.7``[option]``macports-gcc-4.8``[option]``macports-gcc-4.9``[option]``macports-gcc-5``[option]``macports-gcc-6``[option]``macports-gcc-7``[option]``macports-gcc-8``
+* Default: `apple-gcc-4.2` on Mac OS X 10.4
+* Default: `gcc-4.2` with Xcode 3.x on Mac OS X 10.5 and 10.6
+* Default: `llvm-gcc-4.2` with Xcode 4.0 through 4.2 on Mac OS X 10.6 and 10.7
+* Default: `clang` with Xcode 4.3 and later on OS X 10.7 and later
+* Values: `gcc-3.3```gcc-4.0````gcc-4.2````llvm-gcc-4.2````clang````macports-clang-3.3````macports-clang-3.4````macports-clang-3.7````macports-clang-3.8````macports-clang-3.9````macports-clang-4.0````macports-clang-5.0````macports-clang-6.0````apple-gcc-4.0````apple-gcc-4.2````macports-gcc-4.3````macports-gcc-4.4````macports-gcc-4.5````macports-gcc-4.6````macports-gcc-4.7````macports-gcc-4.8````macports-gcc-4.9````macports-gcc-5````macports-gcc-6````macports-gcc-7````macports-gcc-8``
 * Example:
 +
 
@@ -1256,7 +1255,7 @@ configure.ruby      ${prefix}/bin/ruby
 configure.install::
 Set `INSTALL` flag for selecting an install tool; used for copying files and creating directories.
 
-* Default: [path]_/usr/bin/install_
+* Default: [path]`/usr/bin/install`
 * Example:
 +
 
@@ -1339,7 +1338,7 @@ configure.pre_args  --prefix=${prefix}/share/bro
 configure.post_args OPT="-D__DARWIN_UNIX03"
 ----
 
-[[_reference.phases.configure.universal]]
+[[reference.phases.configure.universal]]
 === Configure Universal
 
 Universal keywords are used to make a port compile on OS X for multiple architectures.
@@ -1433,7 +1432,7 @@ Additional flags to put in the LDFLAGS environment variable when invoking the co
 TODO: add example
 ----
 
-[[_reference.phases.configure.automake_autoconf]]
+[[reference.phases.configure.automake-autoconf]]
 === Automake, Autoconf, and Autoreconf
 
 The list of configure keywords available for ports that need automake and/or autoconf.
@@ -1441,7 +1440,7 @@ The list of configure keywords available for ports that need automake and/or aut
 use_autoreconf::
 Whether or not to use autoreconf
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -1453,7 +1452,7 @@ use_autoreconf      yes
 use_automake::
 Whether or not to use automake.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -1487,9 +1486,9 @@ automake.args       --foreign
 ----
 
 automake.dir::
-Directory in which to run [var]``${automake.cmd}``.
+Directory in which to run ``${automake.cmd}``.
 
-* Default: [var]``${worksrcpath}``
+* Default: `${worksrcpath}`
 * Example:
 +
 
@@ -1501,7 +1500,7 @@ automake.dir        ./src
 use_autoconf::
 Whether or not to use autoconf.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -1535,9 +1534,9 @@ autoconf.args       "-l src/aclocaldir"
 ----
 
 autoconf.dir::
-Directory in which to run [var]``${autoconf.cmd}``.
+Directory in which to run ``${autoconf.cmd}``.
 
-* Default: [var]``${worksrcpath}``
+* Default: `${worksrcpath}`
 * Example:
 +
 
@@ -1546,16 +1545,16 @@ Directory in which to run [var]``${autoconf.cmd}``.
 autoconf.dir        src
 ----
 
-[[_reference.phases.build]]
+[[reference.phases.build]]
 == Build Phase Keywords
 
 The list of keywords related to the build phase.
 
 build.cmd::
-Make command to run in [var]``${worksrcdir}``.
+Make command to run in ``${worksrcdir}``.
 Only use it if you can't use ``build.type``.
 
-* Default: `make`
+* Default: [cmd]``make``
 * Example:
 +
 
@@ -1565,11 +1564,11 @@ build.cmd           scons
 ----
 
 build.type::
-Defines which build software is required and sets [var]``${build.cmd}`` accordingly.
+Defines which build software is required and sets `${build.cmd}` accordingly.
 The available options are BSD Make, GNU Make, and Xcode. 
 
-* Default: [option]``default`` (the default Make on the current platform) 
-* Values: [option]``default``[option]``bsd``[option]``gnu``[option]``xcode``
+* Default: `default` (the default Make on the current platform) 
+* Values: `default```bsd````gnu````xcode``
 * Example:
 +
 
@@ -1579,7 +1578,7 @@ build.type          bsd
 ----
 
 build.args::
-Main arguments to [var]``${build.cmd}``; optional argument modifiers pass arguments before and after the main arguments.
+Main arguments to ``${build.cmd}``; optional argument modifiers pass arguments before and after the main arguments.
 
 * Default: none
 * Example:
@@ -1593,7 +1592,7 @@ build.args          -DNOWARN
 +
 The following argument modifiers are available:
 
-* ``build.pre_args``, defaults to: [var]``${build.target}``
+* ``build.pre_args``, defaults to: `${build.target}`
 * ``build.post_args``, defaults to: none
 * Examples:
 +
@@ -1605,7 +1604,7 @@ build.post_args     CFLAGS_SYS="-DUSE_FREETYPE -DPREFER_FREETYPE"
 ----
 
 build.target::
-Build target to pass to [var]``${build.cmd}``; list modifiers add or delete items from a previous Portfile build.target keyword or the default set by MacPorts base.
+Build target to pass to ``${build.cmd}``; list modifiers add or delete items from a previous Portfile build.target keyword or the default set by MacPorts base.
 
 * Default: `all`
 * Example:
@@ -1630,9 +1629,9 @@ Set environment variables for build; list modifiers add and delete items from a 
 
 use_parallel_build::
 This keyword is for specifying whether or not it is safe for a port to use multiple CPUs or multiple cores in parallel during its build phase.
-If `use_parallel_build` is not set to "`no`" in a given port, the option [option]``-j${build.jobs}`` is passed to [var]``${build.cmd}`` (if [var]``${build.cmd}`` is `make` or ``scons``).
+If `use_parallel_build` is not set to "`no`" in a given port, the option `-j${build.jobs}` is passed to `${build.cmd}` (if `${build.cmd}` is [cmd]``make`` or [cmd]``scons``).
 
-* Default: [option]``yes``
+* Default: `yes`
 * Example:
 +
 
@@ -1643,11 +1642,11 @@ use_parallel_build  no
 
 build.jobs::
 The number of simultaneous jobs to run when parallel build is enabled.
-The default value is based on the variable [var]``buildmakejobs`` in [path]_macports.conf_.
+The default value is based on the variable `buildmakejobs` in [path]`macports.conf`.
 
-* Default: If [var]``buildmakejobs`` is 0, the number of CPU cores in the machine, or the number of GB of physical memory plus one, whichever is less. Otherwise,  the actual value of ``${buildmakejobs}``.
+* Default: If `buildmakejobs` is 0, the number of CPU cores in the machine, or the number of GB of physical memory plus one, whichever is less. Otherwise,  the actual value of ``${buildmakejobs}``.
 
-[[_reference.phases.test]]
+[[reference.phases.test]]
 == Test Phase Keywords
 
 The list of keywords related to the test phase.
@@ -1655,7 +1654,7 @@ The list of keywords related to the test phase.
 test.run::
 Enable running test suites bundled with a port.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 
@@ -1665,9 +1664,9 @@ test.run            yes
 ----
 
 test.cmd::
-Test command to run relative to [var]``${worksrcdir}``.
+Test command to run relative to ``${worksrcdir}``.
 
-* Default: [var]``${build.cmd}``
+* Default: `${build.cmd}`
 * Example:
 +
 
@@ -1677,7 +1676,7 @@ test.cmd            checks.sh
 ----
 
 test.target::
-Test target to pass to [var]``${test.cmd}``.
+Test target to pass to ``${test.cmd}``.
 
 * Default: `test`
 * Example:
@@ -1689,7 +1688,7 @@ test.target         checks
 ----
 
 test.args::
-Main arguments to [var]``test.cmd``; optional argument modifiers pass arguments before and after the main arguments.
+Main arguments to ``test.cmd``; optional argument modifiers pass arguments before and after the main arguments.
 
 * Default: none
 * Example:
@@ -1720,15 +1719,15 @@ Often `DYLD_LIBRARY_PATH` is set here to support testing dynamically linked libr
 test.env       DYLD_LIBRARY_PATH=${worksrcpath}/src/.libs
 ----
 
-[[_reference.phases.destroot]]
+[[reference.phases.destroot]]
 == Destroot Phase Keywords
 
 The list of keywords related to the destroot phase.
 
 destroot.cmd::
-Install command to run relative to [var]``${worksrcdir}``.
+Install command to run relative to ``${worksrcdir}``.
 
-* Default: [var]``${build.cmd}``
+* Default: `${build.cmd}`
 * Example:
 +
 
@@ -1738,7 +1737,7 @@ destroot.cmd        scons
 ----
 
 destroot.args::
-Main arguments to [var]``${destroot.cmd}``; optional argument modifiers pass arguments before and after the main arguments.
+Main arguments to ``${destroot.cmd}``; optional argument modifiers pass arguments before and after the main arguments.
 
 * Default: none
 * Example:
@@ -1752,8 +1751,8 @@ destroot.args       BINDIR=${prefix}/bin
 +
 The following argument modifiers are available:
 
-* ``destroot.pre_args``, defaults to: [var]``${destroot.target}``
-* ``destroot.post_args``, defaults to: [var]``${destroot.destdir}``
+* ``destroot.pre_args``, defaults to: `${destroot.target}`
+* ``destroot.post_args``, defaults to: `${destroot.destdir}`
 * Examples:
 +
 
@@ -1764,7 +1763,7 @@ destroot.post_args  INSTDIR=${destroot}${prefix}
 ----
 
 destroot.target::
-Install target to pass to [var]``${destroot.cmd}``; list modifiers add or delete items from a previous Portfile destroot.target keyword or the default set by MacPorts base.
+Install target to pass to ``${destroot.cmd}``; list modifiers add or delete items from a previous Portfile destroot.target keyword or the default set by MacPorts base.
 
 * Default: `install`
 * Example:
@@ -1783,7 +1782,7 @@ destroot.target-delete  install-commandmode
 ----
 
 destroot.destdir::
-Arguments passed to [var]``${destroot.cmd}`` via [var]``${destroot.post_args}`` to install correctly into the destroot.
+Arguments passed to `${destroot.cmd}` via `${destroot.post_args}` to install correctly into the destroot.
 
 * Default: `DESTDIR=${destroot}`
 * Example:
@@ -1829,12 +1828,12 @@ destroot.keepdirs   ${destroot}${prefix}/var/run \
 ----
 
 destroot.violate_mtree::
-MacPorts tests for compliance to the common directory structure in [var]``${prefix}``.
-If a port is not compliant with the standard, set it to [option]``yes``.
+MacPorts tests for compliance to the common directory structure in ``${prefix}``.
+If a port is not compliant with the standard, set it to ``yes``.
 +
-You can find the macports standard in <<_internals.hierarchy,MacPorts File Hierarchy>> or in the porthier(7) man page.
+You can find the macports standard in <<internals.hierarchy,MacPorts File Hierarchy>> or in the porthier(7) man page.
 +
-If `destroot.violate_mtree` is set to [option]``yes``, the following warning is issued during the installation.
+If `destroot.violate_mtree` is set to ``yes``, the following warning is issued during the installation.
 +
 
 
@@ -1842,11 +1841,11 @@ If `destroot.violate_mtree` is set to [option]``yes``, the following warning is 
 Warning: portname requests to install files outside the common directory structure!
 ----
 +
-This means that the port installed files outside of their normal locations in [var]``${prefix}``.
-These could be files totally outside of [var]``${prefix}``, which could cause problems on your computer, or files inside of [var]``${prefix}`` that are not in a standard location.
-Use `port contents [replaceable]``portname``` to see the location for all files that were installed by a given port.
+This means that the port installed files outside of their normal locations in ``${prefix}``.
+These could be files totally outside of ``${prefix}``, which could cause problems on your computer, or files inside of `${prefix}` that are not in a standard location.
+Use `port contents ``portname``` to see the location for all files that were installed by a given port.
 
-* Default: [option]``no``
+* Default: `no`
 * Example:
 +
 

@@ -1,4 +1,4 @@
-[[_reference.keywords]]
+[[reference.keywords]]
 = Global Keywords
 
 MacPorts keywords are used to specify required or optional items within a Portfile, or to override default options used by MacPorts base for individual ports.
@@ -86,18 +86,10 @@ GitHub usernames start with an `@` symbol.
 Email addresses are preferably listed in the obfuscated form below to hide them from spambots:
 
 * For addresses in domain @macports.org, simply omit the domain name.
-* For addresses in other domains, e.g., 
-+
-// <email>account@example.org</email>
-, use the convention `example.org:account` to specify the address.
+* For addresses in other domains, e.g., mailto:account@example.org[], use the convention `example.org:account` to specify the address.
 
 +
-In the example below, the port is maintained by a GitHub user named neverpanic, and the owners of the two email addresses 
-+
-// <email>jdoe@macports.org</email>
- and 
-// <email>julesverne@example.org</email>
-
+In the example below, the port is maintained by a GitHub user named neverpanic, and the owners of the two email addresses mailto:jdoe@macports.org[] and mailto:julesverne@example.org[]
 +
 
 
@@ -109,10 +101,7 @@ maintainers         @neverpanic \
 ----
 +
 Braces can be used to express that these refer to the same person, for example the GitHub username and an email.
-In the following example, the port is maintained by a GitHub user named jverne, that can also be contacted directly at 
-+
-// <email>julesverne@example.org</email>
-$$.$$
+In the following example, the port is maintained by a GitHub user named jverne, that can also be contacted directly at mailto:julesverne@example.org[].
 +
 
 
@@ -164,7 +153,7 @@ A list of the platforms on which the port has been tested.
 Required, but not interpreted in any way by the software at this time; it is purely informational for users.
 Possible values: `darwin` (= `macosx` or ``puredarwin``), ``macosx``, ``puredarwin``, ``freebsd``, ``linux``, ``sunos``, ``netbsd``.
 In general, it can just be set to ``darwin``.
-(``puredarwin`` is an OS based on Apple's open-source Darwin releases without any of Apple's proprietary bits.) See also [var]``os.platform``. 
+(``puredarwin`` is an OS based on Apple's open-source Darwin releases without any of Apple's proprietary bits.) See also ``os.platform``. 
 +
 
 
@@ -176,7 +165,7 @@ supported_archs::
 The CPU architectures for which this port can be built.
 Archs currently supported by macOS are: i386, ppc, ppc64, x86_64.
 If this option is not set, it is assumed that the port can build for all archs.
-If a port does not install any architecture-specific files, use the special value [option]``noarch``.
+If a port does not install any architecture-specific files, use the special value ``noarch``.
 +
 If the building architecture isn't among supported_archs, port fails with an error message, except when building on x86_64 and supported_archs contains i386 or when building on ppc64 and supported_archs contains ppc, in which case the port will be built in 32-bit mode.
 +

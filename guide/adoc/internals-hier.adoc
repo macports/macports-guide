@@ -1,4 +1,4 @@
-// <refentry xml:id="porthier">
+// <refentry xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="porthier">
 //   <refmeta>
 //     <refentrytitle>PORTHIER</refentrytitle>
 // 

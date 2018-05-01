@@ -4,10 +4,12 @@
 :toc: left
 :icons: font
 :experimental:
+:idprefix:
+:idseparator: -
 :sourcedir: .
 
 [WARNING]
 ====
 This section is outdated and needs to be reworked.
-Please see <<_project.docs>> if you can contribute updated instructions. 
+Please see <<project.docs>> if you can contribute updated instructions. 
 ====

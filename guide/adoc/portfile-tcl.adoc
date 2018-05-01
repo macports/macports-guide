@@ -1,14 +1,14 @@
-[[_reference.tcl_extensions]]
+[[reference.tcl-extensions]]
 = Tcl Extensions & Useful Tcl Commands
 
-A MacPorts Portfile is a Tcl script, so it may contain any arbitrary Tcl code you may learn about in a link:Tcl reference manual.
+A MacPorts Portfile is a Tcl script, so it may contain any arbitrary Tcl code you may learn about in the https://www.tcl.tk/doc/[Tcl documentation].
 However, few authors will use arbitrary Tcl code; the vast majority will use a subset of Tcl commands and a number of Tcl extensions that are coded within MacPorts for performing the most common tasks needed for Portfiles.
 The list below is a list of useful Tcl commands for Portfile development and Tcl extensions provided by MacPorts base.
 
 file::
-The standard Tcl `file` command can be used for a number of operations on files, such as moving, renaming, deleting, or creating directories, among others.
-For a complete list, consult the link:Tcl
-reference manual for the file command, or the Tcl file manpage in the [option]``n`` section of manpages on your machine using `man n file`
+The standard Tcl [cmd]``file`` command can be used for a number of operations on files, such as moving, renaming, deleting, or creating directories, among others.
+For a complete list, consult the https://www.tcl.tk/man/tcl/TclCmd/file.htm[Tcl
+reference manual for the file command], or the Tcl file manpage in the `n` section of manpages on your machine using [cmd]``man n file``
 
 file copy::
 Copy a file.
@@ -17,12 +17,12 @@ file rename::
 Rename a file.
 
 file delete [-force]::
-Remove a file or (with [option]``-force``) a directory and its contents.
+Remove a file or (with ``-force``) a directory and its contents.
 
 file mkdir::
 Create a directory.
 macros::
-For the above operations provided by Tcl's `file` command, MacPorts provides the following shorthands.
+For the above operations provided by Tcl's [cmd]``file`` command, MacPorts provides the following shorthands.
 These should be used in preference to the Tcl commands above, as they may work around certain bugs.
 
 copy::
@@ -42,24 +42,24 @@ Mimics the BSD ln command.
 xinstall::
 xinstall copies files and creates directories; it is intended to be compatible with install(1).
 
-xinstall [-o [replaceable]``owner``] [-g [replaceable]``group``] [-m [replaceable]``mode``] [[replaceable]``file1 file2 ...``] [replaceable]``directory``::
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] [``file1 file2 ...``] `directory`::
 Install the specified file(s) to a destination directory.
 
-xinstall [-o [replaceable]``owner``] [-g [replaceable]``group``] [-m [replaceable]``mode``] [-W [replaceable]``dir``] [[replaceable]``file1 file2 ...``] [replaceable]``directory``::
-Change to [option]``dir`` and install file(s) to a destination directory.
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] [-W ``dir``] [``file1 file2 ...``] `directory`::
+Change to `dir` and install file(s) to a destination directory.
 
-xinstall [-o [replaceable]``owner``] [-g [replaceable]``group``] [-m [replaceable]``mode``] {*}[glob [replaceable]``pattern``] [replaceable]``directory``::
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] {*}[glob ``pattern``] `directory`::
 Install the file(s) matching the glob pattern to a destination directory.
-Note the use of the [option]``{*}`` operator to convert the list returned by `glob` into separate arguments to ``xinstall``.
+Note the use of the `{*}` operator to convert the list returned by [cmd]``glob`` into separate arguments to [cmd]``xinstall``.
 
-xinstall -d [-o [replaceable]``owner``] [-g [replaceable]``group``] [-m [replaceable]``mode``] [replaceable]``directory``::
+xinstall -d [-o ``owner``] [-g ``group``] [-m ``mode``] `directory`::
 Create a directory including parent directories if necessary.
 +
 Defaults:
 
 * owner -
 * group -
-* mode - [option]``0755``
+* mode - `0755`
 
 +
 Examples:
@@ -95,15 +95,15 @@ strsed::
 strsed can be used for string manipulations using regular expressions.
 It supports a small subset of the commands known from sed(1).
 
-strsed [replaceable]``string`` s/[replaceable]``regex``/[replaceable]``replacement``/ ::
-Replaces the first instance of [replaceable]``regex`` with [replaceable]``replacement``.
+strsed `string` s/``regex``/``replacement``/ ::
+Replaces the first instance of `regex` with ``replacement``.
 Refer to re_format(7) for a definition of regular expression syntax.
 
-strsed [replaceable]``string`` g/[replaceable]``regex``/[replaceable]``replacement``/ ::
+strsed `string` g/``regex``/``replacement``/ ::
 The same as the previous format, except all instances of the pattern will be replaced, not only the first (mnemonic: 'g' is for global).
 reinplace::
 Allows text specified by a regular expression to be replaced by new text, in-place (the file will be updated itself, no need to place output into a new file and rename).
- reinplace [-locale [replaceable]``locale``] [-n] [-W [replaceable]``dir``] [--] [replaceable]``command``[replaceable]``file ...``::
+ reinplace [-locale ``locale``] [-n] [-W ``dir``] [--] `command```file ...``::
 Replace text given by the regular expression portion of the command with the replacement text, in all files specified.
 +
 Use -locale to set the locale.
@@ -137,10 +137,10 @@ reinplace "s|@@PREFIX@@|${prefix}|g" ${worksrcpath}/Makefile
 user/group::
 
 
-adduser username [uxml:id=[replaceable]``uid``] [gxml:id=[replaceable]``gid``] [passwd=[replaceable]``passwd``] [realname=[replaceable]``realname``] [home=[replaceable]``home``] [shell=[replaceable]``shell``]::
+adduser username [uxml:id=``uid``] [gxml:id=``gid``] [passwd=``passwd``] [realname=``realname``] [home=``home``] [shell=``shell``]::
 Add a new local user to the system with the specified uid, gid, password, real name, home directory and login shell.
 
-existsuser [replaceable]``username``::
+existsuser `username`::
 Check if a local user exists.
 Returns the uid for the given user, or 0 if the user wasn't found.
 Checking for the root user is not supported because its uid is 0, and it will always exist anyway.
@@ -148,10 +148,10 @@ Checking for the root user is not supported because its uid is 0, and it will al
 nextuid::
 Returns the highest used uid plus one.
 
-addgroup [replaceable]``group`` [gxml:id=[replaceable]``gid``] [passwd=[replaceable]``passwd``] [realname=[replaceable]``realname``] [users=[replaceable]``users``]::
+addgroup `group` [gxml:id=``gid``] [passwd=``passwd``] [realname=``realname``] [users=``users``]::
 Add a new local group to the system, with the specified gid, password, real name, and with a list of users as members.
 
-existsgroup [replaceable]``group``::
+existsgroup `group`::
 Check if a local group exists and return the corresponding gid.
 This can be used with adduser:
 +

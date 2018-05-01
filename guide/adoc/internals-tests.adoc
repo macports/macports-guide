@@ -1,17 +1,17 @@
-[[_internals.tests]]
+[[internals.tests]]
 = Tests
 
-The MacPorts testing framework uses link:tcltest for its unit tests as well as regression tests.
+The MacPorts testing framework uses http://wiki.tcl.tk/1502[tcltest] for its unit tests as well as regression tests.
 The framework was developed during Google Summer of Code 2013 by Marius Coțofană (marius@). 
 
-To keep things simple, each module of MacPorts ( link:macports1.0, link:package1.0, link:port1.0, link:registry2.0 ) has its own [path]_tests/_ directory.
-Each Tcl script in a module (e.g. link:macports.tcl) has its own test script located in the [path]_tests_ directory, with the same name and the '.test' extension (e.g. link:macports.test). Every proc in a script (e.g. ``proc macports::findBinary``) should have its own test proc (e.g. ``test findBinary``) in the corresponding test file.
+To keep things simple, each module of MacPorts ( https://github.com/macports/macports-base/tree/master/src/macports1.0[macports1.0], https://github.com/macports/macports-base/tree/master/src/package1.0[package1.0], https://github.com/macports/macports-base/tree/master/src/port1.0[port1.0], https://github.com/macports/macports-base/tree/master/src/registry2.0[registry2.0] ) has its own [path]`tests/` directory.
+Each Tcl script in a module (e.g. https://github.com/macports/macports-base/blob/master/src/macports1.0/macports.tcl[macports.tcl]) has its own test script located in the [path]`tests` directory, with the same name and the '.test' extension (e.g. https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/macports.test[macports.test]). Every proc in a script (e.g. ``proc macports::findBinary``) should have its own test proc (e.g. ``test findBinary``) in the corresponding test file.
 Test procs should maintain the order in the original script and should be independent one of another. 
 
-[[_internals.tests.running]]
+[[internals.tests.running]]
 == Running tests
 
-Tests can be run only on an installed version of MacPorts (so make sure you have run ``sudo make install``). 
+Tests can be run only on an installed version of MacPorts (so make sure you have run [cmd]``sudo make install``). 
 
 The easiest way to run all the tests, is to use the target in the Makefile. 
 
@@ -20,9 +20,9 @@ The easiest way to run all the tests, is to use the target in the Makefile.
 $ make test
 ----
 
-Each [path]_tests/_ directory has a [path]_test.tcl_ file, used by the make target to run all tests and format the output, making it easy to read.
+Each [path]`tests/` directory has a [path]`test.tcl` file, used by the make target to run all tests and format the output, making it easy to read.
 The script just runs the tests individually, printing the test file name, the total number of tests, number of passed, skipped, failed as well as constraints or errors of failed tests.
-This is one possible output when running [path]_macports.test_: 
+This is one possible output when running [path]`macports.test`: 
 
 ----
 Total:31 Passed:31 Failed:0 Skipped:0  macports.test
@@ -76,19 +76,19 @@ $ tclsh test.tcl -t macports.test
 $ tclsh test.tcl -h
 ----
 
-Specific test cases can be run using the `'-match'` argument for the file that contains the test, from its parent directory. 
+Specific test cases can be run using the [cmd]``'-match'`` argument for the file that contains the test, from its parent directory. 
 
 [source]
 ----
 $ tclsh macports.test -match mportclose
 ----
 
-Regression tests can be found in link:tests/test/ and can be run just as unit tests, using `make test` from the parent directory. 
+Regression tests can be found in https://github.com/macports/macports-base/tree/master/tests/test/[tests/test/] and can be run just as unit tests, using [cmd]``make test`` from the parent directory. 
 
-[[_internals.tests.mustknow]]
+[[internals.tests.mustknow]]
 == Must know
 
-* regression tests have their own directory, found in link:trunk/base/tests/test
+* regression tests have their own directory, found in https://github.com/macports/macports-base/tree/master/tests/test/[trunk/base/tests/test]
 * each module of MacPorts (port1.0, macports1.0, package1.0) has its own '`tests/`' directory where the test files are located and also additional files needed (Portfile, test.tcl)
 * each file in a module has a corresponding test file (.test extension) in the '`tests/`' directory
 * each proc in a file has a corresponding test case (test proc_name) in the
@@ -100,7 +100,7 @@ Regression tests can be found in link:tests/test/ and can be run just as unit te
 * for some tests in package1.0, an update of the ports tree is required; this is done automatically if they are run using the 'test' target in the Makefile, with root privileges 
 
 
-[[_internals.tests.sample_file]]
+[[internals.tests.sample-file]]
 == Sample file
 
 [source]
@@ -187,20 +187,20 @@ test mportclose {
 cleanupTests
 ----
 
-[[_internals.tests.addtional_files]]
+[[internals.tests.addtional-files]]
 == Additional files
 
-* In all tests we use this link:Portfile.
-* This is the link:test.tcl file used to run and parse the output of all the tests in a module.
-* A worker_init copy, without using sub-interpreters link:library.tcl.
-* Example of link:sources.conf.
-* An example of a test file link:macports.test.
-* A link:library.tcl of useful procs in regression testing.
+* In all tests we use this https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/Portfile[Portfile].
+* This is the https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/test.tcl[test.tcl] file used to run and parse the output of all the tests in a module.
+* A worker_init copy, without using sub-interpreters https://github.com/macports/macports-base/blob/master/src/package1.0/tests/library.tcl[library.tcl].
+* Example of https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/sources.conf[sources.conf].
+* An example of a test file https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/macports.test[macports.test].
+* A https://github.com/macports/macports-base/blob/master/tests/test/library.tcl[library.tcl] of useful procs in regression testing.
 
 
-[[_internals.tests.resources]]
+[[internals.tests.resources]]
 == Resources
 
-* link:Tcltest official wiki page
-* link:Getting started with tcltest
-* link:Official tcltest documentation
+* http://wiki.tcl.tk/1502[Tcltest official wiki page]
+* http://web.archive.org/web/20080617153002/www.tclscripting.com/articles/apr06/article1.html[Getting started with tcltest]
+* http://www.tcl.tk/man/tcl8.5/TclCmd/tcltest.htm[Official tcltest documentation]

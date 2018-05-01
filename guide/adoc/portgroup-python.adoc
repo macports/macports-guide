@@ -1,9 +1,9 @@
-[[_reference.portgroup.python]]
+[[reference.portgroup.python]]
 = PortGroup python
 
 PortGroup python allows for efficient porting of python-based open source software.
 
-[[_reference.portgroup.python.keywords]]
+[[reference.portgroup.python.keywords]]
 == python PortGroup Specific Keywords
 
 Portfiles using the python PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
@@ -43,7 +43,7 @@ python.default_version     32
 ----
 
 python.link_binaries::
-When "`yes`" (the default), tells the PortGroup to automatically link any executable binaries installed in the bin/ directory within the framework into [path]_${prefix}/bin_.
+When "`yes`" (the default), tells the PortGroup to automatically link any executable binaries installed in the bin/ directory within the framework into [path]`${prefix}/bin`.
 
 * Type: optional
 * Example:
@@ -55,11 +55,11 @@ python.link_binaries     no
 ----
 
 python.link_binaries_suffix::
-Suffix to add to the names of the links created in [path]_${prefix}/bin_ when [var]``${python.link_binaries}`` is enabled.
+Suffix to add to the names of the links created in [path]`${prefix}/bin` when `${python.link_binaries}` is enabled.
 Can be cleared if no suffix is desired.
 
 * Type: optional
-* Default: -[var]``${python.branch}``
+* Default: -``${python.branch}``
 
 python.add_archflags::
 When yes (the default), the PortGroup will automatically try to pass the correct arch-specific flags during build time (via the standard CFLAGS, LDFLAGS, etc environment variables). Set this to "`no`" and set up those variables in `build.env` manually if the default does not work.
@@ -73,7 +73,7 @@ When yes (the default), the PortGroup will automatically try to pass the correct
 python.add_archflags     no
 ----
 
-[[_reference.portgroup.python.variables]]
+[[reference.portgroup.python.variables]]
 == python PortGroup Specific Variables
 
 When the python PortGroup is declared within a Portfile, the following variables are provided.
@@ -88,25 +88,25 @@ For example, if `python.version` is "`26`", `python.branch` will be "`2.6`".
 
 python.prefix::
 The prefix in which the current python version is installed.
-For framework builds, this is [path]_${frameworks_dir}/Python.framework/Versions/${python.branch}_, whereas for non-framework builds, it is the same as [var]``${prefix}``.
+For framework builds, this is [path]`${frameworks_dir}/Python.framework/Versions/${python.branch}`, whereas for non-framework builds, it is the same as ``${prefix}``.
 
 python.bin::
 The path to the MacPorts Python executable.
 
 python.lib::
-The Python dynamic library path, i.e., [path]_${python.prefix}/Python_ (framework builds) or [path]_${prefix}/lib/libpython2.4.dylib_ (python24).
+The Python dynamic library path, i.e., [path]`${python.prefix}/Python` (framework builds) or [path]`${prefix}/lib/libpython2.4.dylib` (python24).
 
 python.libdir::
-The path to python's lib directory, i.e., [path]_${python.prefix}/lib/python${python.branch}_.
+The path to python's lib directory, i.e., [path]`${python.prefix}/lib/python${python.branch}`.
 
 python.include::
 Path to the Python include directory.
 
 python.pkgd::
 Path to the Python site-packages directory.
-(i.e., [path]_${python.prefix}/lib/python${python.branch}/site-packages_).
+(i.e., [path]`${python.prefix}/lib/python${python.branch}/site-packages`).
 
-[[_reference.portgroup.python.sugar]]
+[[reference.portgroup.python.sugar]]
 == python PortGroup Sugar
 
 Portfiles using PortGroup python do not need to define the following variables:
@@ -115,22 +115,22 @@ categories::
 Default: python
 
 depends_lib::
-Default: port:python[var]``${python.version}``
+Default: port:python``${python.version}``
 
 use_configure::
 Default: no
 
 build.cmd::
-Default: [var]``${python.bin}`` setup.py --no-user-cfg
+Default: `${python.bin}` setup.py --no-user-cfg
 
 build.target::
 Default: build
 
 destroot.cmd::
-Default: [var]``${python.bin}`` setup.py --no-user-cfg
+Default: `${python.bin}` setup.py --no-user-cfg
 
 destroot.destdir::
-Default: --prefix=[var]``${python.prefix}`` --root=[var]``${destroot}``
+Default: --prefix=``${python.prefix}`` --root=``${destroot}``
 
 pre-destroot::
-Default: creates directory [path]_${destroot}${prefix}/share/doc/${subport}/examples_.
+Default: creates directory [path]`${destroot}${prefix}/share/doc/${subport}/examples`.

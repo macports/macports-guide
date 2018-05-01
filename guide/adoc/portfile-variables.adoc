@@ -1,54 +1,54 @@
-[[_reference.variables]]
+[[reference.variables]]
 = Global Variables
 
 Global variables are variables available to any Portfile.
 For a list of additional variables available to ports that are assigned to a MacPorts Portgroup, see portgroup(7).
 
-All of these variables except [var]``prefix`` are read-only!
+All of these variables except `prefix` are read-only!
 
 prefix::
-Installation prefix, set at compile time and displayed in [path]_${prefix}/etc/macports/macports.conf_ --- may be overridden on a per-port basis, for example to install into a wholly-contained subdirectory of ${prefix}, but most ports should have no reason to do so.
+Installation prefix, set at compile time and displayed in [path]`${prefix}/etc/macports/macports.conf` --- may be overridden on a per-port basis, for example to install into a wholly-contained subdirectory of ${prefix}, but most ports should have no reason to do so.
 +
-Default: [path]_/opt/local_
+Default: [path]`/opt/local`
 
 libpath::
 Path to the MacPorts Tcl libraries.
 
 portpath::
 Full path to the Portfile of the port being executed.
-Portfile repositories are defined in the file <<_internals.configuration_files.sources_conf,sources.conf>>.
+Portfile repositories are defined in the file <<internals.configuration-files.sources-conf,sources.conf>>.
 +
-Default: [path]_${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/<category>/<portname>/_
+Default: [path]`${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/<category>/<portname>/`
 
 filesdir::
-Path to files directory relative to [var]``${portpath}``.
+Path to files directory relative to ``${portpath}``.
 +
 Value: `files`
 
 filespath::
 Full path to files directory.
 +
-Value: [var]``${portpath}/${filesdir}``
+Value: `${portpath}/${filesdir}`
 
 workpath::
 Full path to work directory.
 +
-Value: [var]``${portbuildpath}/work``
+Value: `${portbuildpath}/work`
 
 worksrcpath::
 Full path to extracted source code.
 +
-Value: [var]``${workpath}/${worksrcdir}``
+Value: `${workpath}/${worksrcdir}`
 
 destroot::
 Full path into which software will be destrooted.
 +
-Value: [var]``${workpath}/destroot``
+Value: `${workpath}/destroot`
 
 distpath::
 Location to store downloaded distfiles.
 +
-Value: [var]``${portdbpath}/distfiles/${dist_subdir}/``
+Value: `${portdbpath}/distfiles/${dist_subdir}/`
 
 install.user::
 The Unix user at the time of port installation.

@@ -1,4 +1,4 @@
-[[_reference.livecheck]]
+[[reference.livecheck]]
 = Livecheck / Distcheck
 
 Options livecheck and distcheck are especially useful for port maintainers, but others may also find this information valuable.
@@ -8,13 +8,13 @@ Livecheck checks to see if MacPorts can query the developer's download site to d
 livecheck.type::
 Specify what kind of update check to perform.
 +
-Open source mirror site options are to use the project's latest file release from [option]``sourceforge`` or the project's `date_updated` XML tag for [option]``freecode``.
-These options are automatically used if a matching [var]``${master_sites}`` URL is used.
+Open source mirror site options are to use the project's latest file release from `sourceforge` or the project's `date_updated` XML tag for ``freecode``.
+These options are automatically used if a matching `${master_sites}` URL is used.
 +
-Generic download site options are to specify a [option]``moddate`` (modification date of a URL resource), a [option]``regex`` (retrieve the version by applying a regex to a URL resource), [option]``regexm`` (retrieve the version by applying a multi-line regex to a URL resource), [option]``md5`` (compares the md5 sum of a URL resource) or [option]``none`` (no check).
+Generic download site options are to specify a `moddate` (modification date of a URL resource), a `regex` (retrieve the version by applying a regex to a URL resource), `regexm` (retrieve the version by applying a multi-line regex to a URL resource), `md5` (compares the md5 sum of a URL resource) or `none` (no check).
 
-* Default: [option]``sourceforge`` or [option]``googlecode`` if the [var]``${master_sites}`` is one of these, else [option]``freecode``.
-* Values: [option]``freecode``[option]``sourceforge``[option]``googlecode``[option]``moddate``[option]``regex``[option]``regexm``[option]``md5``[option]``none``
+* Default: `sourceforge` or `googlecode` if the `${master_sites}` is one of these, else ``freecode``.
+* Values: `freecode```sourceforge````googlecode````moddate````regex````regexm````md5````none``
 * Examples:
 +
 
@@ -29,7 +29,7 @@ livecheck.name::
 Name of the project for live checks.
 Is only used with freecode, sourceforge
 
-* Default: [var]``${name}`` or the sourceforge, freecode project name if it can be guessed from [var]``${master_sites}``.
+* Default: `${name}` or the sourceforge, freecode project name if it can be guessed from ``${master_sites}``.
 * Example:
 +
 
@@ -43,7 +43,7 @@ Name of the file release for sourceforge checks.
 Use the name of the package release.
 You may use this keyword without `livecheck.version` if you replace the version part of the name with "``(.*)``".
 
-* Default: sourceforge: [var]``${livecheck.name}``
+* Default: sourceforge: `${livecheck.name}`
 * Example:
 +
 
@@ -55,7 +55,7 @@ livecheck.distname  faad2.src
 livecheck.version::
 Version of the project for a check; used for regex-based checks.
 
-* Default: [var]``${version}``
+* Default: `${version}`
 * Example:
 +
 
@@ -68,7 +68,7 @@ livecheck.url::
 URL to query for a check.
 
 * Default:
-** [var]``${homepage}`` or the first hit among the following sites:
+** `${homepage}` or the first hit among the following sites:
 ** `http://freecode.com/projects-xml/${livecheck.name}/${livecheck.name}.xml`
 ** `https://sourceforge.net/api/file/index/project-name/${livecheck.name}/rss`
 ** `https://code.google.com/p/${livecheck.name}/downloads/list`
@@ -111,9 +111,9 @@ Examples are given below.
 
 distcheck.check::
 This option can be used to disable distcheck.
-It specifies what kind of check should be performed on distfiles: [option]``moddate`` (check if the Portfile is older than the distfile) or [option]``none`` (no check).
+It specifies what kind of check should be performed on distfiles: `moddate` (check if the Portfile is older than the distfile) or `none` (no check).
 
-* Default: [option]``moddate``
+* Default: `moddate`
 * Example:
 +
 

@@ -1,4 +1,4 @@
-[[_reference.portgroup.intro]]
+[[reference.portgroup.intro]]
 = PortGroup Introduction
 
 PortGroups are simply include files for portfiles.
@@ -6,7 +6,7 @@ They can define as much or as little as a portgroup author feels is necessary to
 
 See the following folder for PortGroup definitions:
 
-[path]_${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/_
+[path]`${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/`
 
 A sample listing follows:
 
