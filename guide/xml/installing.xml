@@ -5,7 +5,7 @@
 "http://docbook.org/xml/5.0/dtd/docbook.dtd"[
 <!ENTITY macports-version "2.4.3">
 ]>
-<chapter xml:id="installing">
+<chapter xml:id="installing" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Installing MacPorts</title>
 
     <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about

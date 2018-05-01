@@ -6,7 +6,7 @@
 <!ENTITY macports-prev-version "2.4.2">
 <!ENTITY macports-version "2.4.3">
 ]>
-<chapter xml:id="using">
+<chapter xml:id="using" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Using MacPorts</title>
 
     <para>This chapter describes using <command>port</command>, port variants, common tasks and port

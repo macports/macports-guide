@@ -3,7 +3,7 @@
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
 <!-- This section will be hidden by a xsl:template in resources/base.xsl -->
-<chapter xml:id='macros'>
+<chapter xml:id='macros' xmlns:xlink="http://www.w3.org/1999/xlink">
 <title>Macros</title>
 
 <!-- Marks a section as outdated with a reason. -->

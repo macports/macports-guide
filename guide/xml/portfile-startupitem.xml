@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.startupitems">
+<section xml:id="reference.startupitems" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>StartupItems</title>
 
   <para>A StartupItem is a MacPorts facility to run <quote>daemons,</quote> a Unix term for

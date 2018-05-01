@@ -58,9 +58,6 @@ locations in the sources.
   This would break all links to the guide. As docbookrx does not take
   configuration parameters, this has to be changed in the visitor directly.
 
-* `<link xlink:href="...">`
-  This is not converted correctly. All external links are broken.
-
 * Missing distinction between `<programlisting><prompt></><userinput></></>`, `<screen>`, and `<programlisting>`
   They all result in similar [source] blocks at the moment. Based on how they
   are used in the guide, we should keep the semantics by adding style

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<chapter xml:id="reference">
+<chapter xml:id="reference" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Portfile Reference</title>
 
   <para>This chapter serves as a reference for the major elements of a
