@@ -48,7 +48,7 @@ GUIDE_XSL_CHUNK = $(GUIDE)/resources/chunk.xsl
 # DocBook HTML stylesheet for the guide.
 STYLESHEET = docbook.css
 
-.PHONY: all clean guide guide-chunked guide-fromadoc guide-xml2html guide-dblatex validate
+.PHONY: all clean guide guide-chunked guide-fromadoc guide-dblatex validate
 
 all: guide guide-chunked
 
