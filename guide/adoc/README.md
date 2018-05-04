@@ -72,6 +72,14 @@ locations in the sources.
       File text.
       ----
 
+* Some internal references cannot be resolved as the anchor at the target is missing.
+  The `xml:id="id"` should be turned into `[[id]]`.
+
+      Error: no ID for constraint linkend: "reference.keywords.maintainers".
+      Error: no ID for constraint linkend: "reference.tcl-extensions.strsed".
+      Error: no ID for constraint linkend: "reference.phases.fetch.advanced.fetch-type".
+      Error: no ID for constraint linkend: "reference.phases.configure.cflags".
+
 ### Postprocessing
 
 List of things that need to be fixed manually after running the conversion
