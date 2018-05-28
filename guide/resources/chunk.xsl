@@ -1,5 +1,5 @@
 <xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version='1.0'>
-    <xsl:import href="xsl/xhtml/chunk.xsl"/>
+    <xsl:import href="http://docbook.sourceforge.net/release/xsl-ns/current/xhtml/chunk.xsl"/>
     <xsl:include href="base.xsl"/>
     <!-- Include tab switching for chunk and single-page -->
     <xsl:include href="tabs.xsl"/>

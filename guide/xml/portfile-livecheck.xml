@@ -2,7 +2,7 @@
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
-<section xml:id="reference.livecheck">
+<section xml:id="reference.livecheck" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Livecheck / Distcheck</title>
 
   <para>Options livecheck and distcheck are especially useful for port

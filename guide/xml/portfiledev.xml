@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<chapter xml:id="development">
+<chapter xml:id="development" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Portfile Development</title>
 
   <para>A port is a distribution of software that can be compiled and

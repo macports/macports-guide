@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.dependencies">
+<section xml:id="reference.dependencies" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Dependencies</title>
 
   <para>Free and open source software is highly modular, and MacPorts ports

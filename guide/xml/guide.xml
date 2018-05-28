@@ -4,11 +4,9 @@
 <!DOCTYPE book PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
 
-<book>
-    <title>
-        <application>MacPorts</application> Guide
-    </title>
+<book xmlns:xlink="http://www.w3.org/1999/xlink">
     <info>
+        <title><application>MacPorts</application> Guide</title>
         <authorgroup>
             <author>
                 <personname>

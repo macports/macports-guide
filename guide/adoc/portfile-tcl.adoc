@@ -1,0 +1,169 @@
+[[reference.tcl-extensions]]
+= Tcl Extensions & Useful Tcl Commands
+
+A MacPorts Portfile is a Tcl script, so it may contain any arbitrary Tcl code you may learn about in the https://www.tcl.tk/doc/[Tcl documentation].
+However, few authors will use arbitrary Tcl code; the vast majority will use a subset of Tcl commands and a number of Tcl extensions that are coded within MacPorts for performing the most common tasks needed for Portfiles.
+The list below is a list of useful Tcl commands for Portfile development and Tcl extensions provided by MacPorts base.
+
+file::
+The standard Tcl [cmd]``file`` command can be used for a number of operations on files, such as moving, renaming, deleting, or creating directories, among others.
+For a complete list, consult the https://www.tcl.tk/man/tcl/TclCmd/file.htm[Tcl
+reference manual for the file command], or the Tcl file manpage in the `n` section of manpages on your machine using [cmd]``man n file``
+
+file copy::
+Copy a file.
+
+file rename::
+Rename a file.
+
+file delete [-force]::
+Remove a file or (with ``-force``) a directory and its contents.
+
+file mkdir::
+Create a directory.
+macros::
+For the above operations provided by Tcl's [cmd]``file`` command, MacPorts provides the following shorthands.
+These should be used in preference to the Tcl commands above, as they may work around certain bugs.
+
+copy::
+Shorthand for ``file copy``.
+
+move::
+Similar to `file rename` but correctly handles renames that only change the case of a file on a case-insensitive filesystem.
+
+delete::
+Shorthand for ``file delete -force``.
+
+touch::
+Mimics the BSD touch command.
+
+ln::
+Mimics the BSD ln command.
+xinstall::
+xinstall copies files and creates directories; it is intended to be compatible with install(1).
+
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] [``file1 file2 ...``] `directory`::
+Install the specified file(s) to a destination directory.
+
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] [-W ``dir``] [``file1 file2 ...``] `directory`::
+Change to `dir` and install file(s) to a destination directory.
+
+xinstall [-o ``owner``] [-g ``group``] [-m ``mode``] {*}[glob ``pattern``] `directory`::
+Install the file(s) matching the glob pattern to a destination directory.
+Note the use of the `{*}` operator to convert the list returned by [cmd]``glob`` into separate arguments to [cmd]``xinstall``.
+
+xinstall -d [-o ``owner``] [-g ``group``] [-m ``mode``] `directory`::
+Create a directory including parent directories if necessary.
++
+Defaults:
+
+* owner -
+* group -
+* mode - `0755`
+
++
+Examples:
++
+
+
+[source]
+----
+xinstall -m 640 ${worksrcpath}/README \
+   ${destroot}${prefix}/share/doc/${name}
+----
++
+
+[source]
+----
+xinstall -m 640 -W ${worksrcpath}/doc README INSTALL COPY \
+   ${destroot}${prefix}/share/doc/${name}
+----
++
+
+[source]
+----
+xinstall -m 640 {*}[glob ${worksrcpath}/doc/*] \
+   ${destroot}${prefix}/share/doc/${name}
+----
++
+
+[source]
+----
+xinstall -d ${destroot}${prefix}/share/doc/${name}
+----
+strsed::
+strsed can be used for string manipulations using regular expressions.
+It supports a small subset of the commands known from sed(1).
+
+strsed `string` s/``regex``/``replacement``/ ::
+Replaces the first instance of `regex` with ``replacement``.
+Refer to re_format(7) for a definition of regular expression syntax.
+
+strsed `string` g/``regex``/``replacement``/ ::
+The same as the previous format, except all instances of the pattern will be replaced, not only the first (mnemonic: 'g' is for global).
+reinplace::
+Allows text specified by a regular expression to be replaced by new text, in-place (the file will be updated itself, no need to place output into a new file and rename).
+ reinplace [-locale ``locale``] [-n] [-W ``dir``] [--] `command```file ...``::
+Replace text given by the regular expression portion of the command with the replacement text, in all files specified.
++
+Use -locale to set the locale.
+The default locale is ``en_US.UTF-8``.
+For example, `-locale C` will allow a non-UTF-8 file to be modified (which may otherwise give the error "sed: RE error: illegal byte sequence"), but only operating on ASCII characters.
+If you need it to work on non-ASCII characters you need to set a locale with the correct charset for the file, e.g.
+"en_US.ISO8859-1".
++
+-n is passed to sed to suppress echoing result
++
+-W to set a common working directory for multiple files
++
+Use -E to use the extended regular expression style (see re_format(7) for a description of the basic and extended styles)
++
+Use -- to end option processing and allow any further dashes not to be treated as options.
++
+Examples:
++
+
+
+[source]
+----
+reinplace -W ${worksrcpath} "s|/usr/local|${prefix}|g" configure setup.py
+----
++
+
+[source]
+----
+reinplace "s|@@PREFIX@@|${prefix}|g" ${worksrcpath}/Makefile
+----
+user/group::
+
+
+adduser username [uxml:id=``uid``] [gxml:id=``gid``] [passwd=``passwd``] [realname=``realname``] [home=``home``] [shell=``shell``]::
+Add a new local user to the system with the specified uid, gid, password, real name, home directory and login shell.
+
+existsuser `username`::
+Check if a local user exists.
+Returns the uid for the given user, or 0 if the user wasn't found.
+Checking for the root user is not supported because its uid is 0, and it will always exist anyway.
+
+nextuid::
+Returns the highest used uid plus one.
+
+addgroup `group` [gxml:id=``gid``] [passwd=``passwd``] [realname=``realname``] [users=``users``]::
+Add a new local group to the system, with the specified gid, password, real name, and with a list of users as members.
+
+existsgroup `group`::
+Check if a local group exists and return the corresponding gid.
+This can be used with adduser:
++
+
+
+[source]
+----
+addgroup foo
+adduser foo gxml:id=[existsgroup foo]
+----
+
+nextgid::
+Returns the highest used gid plus one.
+External program execution::
+Use only when ....

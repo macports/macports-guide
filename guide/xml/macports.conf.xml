@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="internals.configuration-files">
+<section xml:id="internals.configuration-files" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Configuration Files</title>
 
   <para>The MacPorts configuration files often do not need to be modified for the

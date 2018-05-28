@@ -1,0 +1,631 @@
+[[project]]
+= MacPorts Project
+:doctype: book
+:sectnums:
+:toc: left
+:icons: font
+:experimental:
+:idprefix:
+:idseparator: -
+:sourcedir: .
+
+[[project.tickets]]
+== Using Trac for Tickets
+
+The MacPorts Project uses a system called https://trac.macports.org/[Trac] to file tickets to report bugs and enhancement requests.
+Though anyone may search Trac for tickets, you must have a https://github.com/join[GitHub account] in order to login to https://trac.macports.org/[Trac] to create tickets.
+
+[[project.tickets.prerequisites]]
+=== Before Filing a New Ticket
+
+* Clean and try again
++
+If a build fails or is otherwise interrupted, and you try again, MacPorts tries to pick up where it left off.
+Sometimes this causes new problems, and even if it doesn't, it means that log messages from earlier steps, which can be essential for figuring out why a build failed, are not included in the new log; MacPorts prints "`Skipping completed`" in the log for each previously-completed phase that was skipped.
+Before filing a ticket, `sudo port clean` the port that failed, then try again.
+* Check the problem hotlist
++
+The https://trac.macports.org/wiki/ProblemHotlist[Problem
+Hotlist] contains possible solutions to problems that affect many MacPorts users.
+If a solution to your problem listed there works, don't file a ticket. 
+* Search to see if a Trac ticket has already been filed
++
+Avoid filing duplicate bugs.
+Search for duplicates by: 
+** using the search bar that appears on each page
+** using https://trac.macports.org/search?portsummarysearch=on[the search page]
+** browsing the list of https://trac.macports.org/report[categorized reports]
+** making an advanced search by constructing a https://trac.macports.org/query[custom query]
+* Is the problem an application error and not related to compiling and installing?
++
+In general, application bugs should be reported to the developers of the app ("`upstream`"), not MacPorts.
+An application bug that affects a large number of MacPorts users might merit a MacPorts bug for informational purposes only, but this should be done sparingly. 
+* Is the problem with a 'port upgrade' operation?
++
+If so, try a 'port uninstall ``foo``' and then reinstall.
+You might also want to run 'port -nR upgrade --force ``foo``' to rebuild ports depending upon port ``foo``.
+Note that it is safest and recommended that most users always upgrade with 'port upgrade outdated' to update all ports at once.
+Upgrading a single port can lead to software errors in other ports that have not yet been upgraded. 
+
+
+[[project.tickets.creating]]
+=== Creating Trac Tickets
+
+Once you are logged into Trac, you may click https://trac.macports.org/newticket[New Ticket] and you will be presented with a new ticket window shown in the graphic below.
+Follow the Trac ticket guidelines below to fill out the form.
+If you are reporting a failed port install and a log was mentioned in the error, please use the *I have files to attach to this ticket* checkbox to add that log file to the ticket.
+
+.A new Trac ticket
+image::trac-default.png[screenshot of a new ticket on the Trac system]
+
+
+[[project.tickets.guidelines]]
+=== Trac Ticket Guidelines
+
+This is a short overview of the guidelines for Trac tickets.
+Please see below for longer and more detailed explanations.
+
+.TL;DR
+[TIP]
+====
+[cols="1,1", frame="none", options="header"]
+|===
+| Field
+| Content
+
+
+|**Summary**
+|
+
+`$port```$version````[$variants]``: `short
+                      problem summary`
+
+*Example:* openssl @1.0.1e_1+universal: DTLS handshake error messages with openconnect 
+
+|**Description**
+|
+                  Describe your problem. Preformatted text (such as terminal
+                  output) should be put in ``{{{``three curly
+                      brackets``}}}``. Please attach large
+                  amounts of output rather than pasting. Use the preview
+                  button! 
+
+|**Type**
+|
+// <tbody>
+//                     <row>
+//                       <entry><emphasis role="strong">defect</emphasis></entry>
+//                       <entry>Bugs, build failures, documentation fixes</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">enhancement</emphasis></entry>
+//                       <entry>Improving existing work</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">update</emphasis></entry>
+//                       <entry>Update requests or patch submissions for ports</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">submissions</emphasis></entry>
+//                       <entry>Submission of new <filename>Portfile</filename>s</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">request</emphasis></entry>
+//                       <entry>Requests for new ports</entry>
+//                     </row>
+//                   </tbody>
+
+
+|**Priority**
+|
+                  Use *normal* or **low**. *High* is reserved for MacPorts developers. 
+
+|**Milestone**
+|Leave empty.
+
+|**Component**
+|
+// <tbody>
+//                     <row>
+//                       <entry><emphasis role="strong">base</emphasis></entry>
+//                       <entry>Tickets affecting MacPorts itself</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">guide</emphasis></entry>
+//                       <entry>Use for documentation</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">ports</emphasis></entry>
+//                       <entry>Tickets affecting specific ports. Remember to set
+//                         the <emphasis role="strong">port</emphasis> field!</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">server/hosting</emphasis></entry>
+//                       <entry>Use for infrastructure issues</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">website</emphasis></entry>
+//                       <entry>Enhancements and fixes for the web site</entry>
+//                     </row>
+//                     <row>
+//                       <entry><emphasis role="strong">wiki</emphasis></entry>
+//                       <entry>Enhancements and fixes for the wiki (or just edit
+//                         it directly!)</entry>
+//                     </row>
+//                   </tbody>
+
+
+|**Version**
+|The version of MacPorts you are running.
+
+|**Keywords**
+|``maintainer`` if you are the port's
+                  maintainer. `haspatch` if you are attaching
+                  a patch. https://trac.macports.org/wiki/TicketsKeywordGuidelines[Full
+                    list]. 
+
+|**Port**
+|The name of the port affected by this ticket. Separate
+                  multiple using spaces. Leave empty for non-port
+                  tickets.
+
+|**Owner**/**Cc**
+|Full email address or GitHub username of the port's
+                  maintainer. Run [cmd]``port info --maintainer ``<portname>```` to
+                  look this up. Do not add mailto:nomaintainer@macports.org[] or mailto:openmaintainer@macports.org[]. For ports with
+                  multiple maintainers, only put the first maintainer into the *Owner* field and all others in the *Cc* field. You do not need to Cc
+                  yourself.
+|===
+====
+
+There are certain conventions used to ensure that Trac tickets convey as much accurate information as possible so problems and contributions may be acted upon efficiently.
+
+* *Summary:*``[port]````[version]````[concise description]``
+** Example: "rrdtool @1.2.23 +python Configure error - build failure"
+* *Description:* All details that might be relevant to someone reading the ticket. Be sure to mention the versions of your operating system and Xcode install. https://trac.macports.org/wiki/WikiFormatting[Wiki formatting] should be used to ensure that text is formatted correctly. Use the Preview button before submitting. If you want to post preformatted text such as a log or terminal output, make sure you use `{{{``$$...$$``}}}` around the text or it could break the page layout. Example:
+
+....
+
+{{{
+your error message here
+}}}
+....
++
+Submitters are advised to trim inline pastes and logs to what's really relevant to the report, as otherwise overly large ticket pages can become unmanageable.
+Long output, such as the full log from a port build, should be added as an attachment, not pasted inline.
+See [label]#I have files to attach to this
+ticket# below.
+* *Type:* There are five types of tickets.
+** *defect* - The default; any port/MacPorts build/runtime failures and/or documentation corrections.
+** *enhancement* - Tickets, with or without patches, created to enhance something that isn't failing its intended purpose.
+** *update* - Tickets, with or without patches, involving updating a port to a newer upstream version.
+** *submission* - Tickets created to submit Portfiles for software not currently available in MacPorts. 
+** *request* - Tickets created to request the creation of a new port.
+* *Priority:* Assign a priority level to the ticket.
+** *High* - Reserved for the use of MacPorts team members, as they are the best fit to determine which reports warrant a higher priority over others.
+** *Normal* - The default. For normal port failures, non-critical enhancement requests, non-critical port failures.
+** *Low* - For mostly cosmetic improvements, documentation corrections/improvements, etc.
+** *Not set* - Anything that doesn't fit the categories high, normal, or low.
+* *Milestone:* Leave this blank. MacPorts developers will set this to the version of MacPorts that contains a fix for the ticket when they commit a change. Note that this is only meaningful for changes in MacPorts itself, since changes to ports are continuously provided to users. If the milestone is *MacPorts Future* no version of MacPorts with the fix has been released yet. 
+* *Component:* Set what part of the MacPorts Project the ticket is to be filed against.
+** *base* - Tickets related to MacPorts base code.
+** *guide* - Documentation enhancements and error corrections, or patches to the MacPorts Guide.
+** *ports* - Tickets related to ports.
+** *server/hosting* - For MacPorts hosting & server-side issues.
+** *website* - MacPorts website enhancements and error corrections.
+** *wiki* - MacPorts Wiki enhancements and error corrections.
+* *Version:* Select the MacPorts version you are using when it is applicable.
+* *Keywords:* Type any keywords that might help when searching for tickets. It is not useful to list words here that already appear elsewhere in the ticket. Keywords also serve as tags; for example, use "`tiger`" if reporting a bug that only affects Mac OS X 10.4, "`haspatch`" if a fix is attached to the ticket, "`maintainer`" if you are the port's maintainer, or "`LP64`" if reporting an issue that only affects 64-bit platforms.
++
+See https://trac.macports.org/wiki/TicketsKeywordGuidelines[the
+TicketsKeywordGuidelines wiki page] for a clickable list of all keywords.
+* *Cc:* Anyone else besides the ticket reporter and assignee who would like to be kept involved in the development of the ticket. Multiple email addresses or GitHub usernames should be separated with a comma and a space (e.g., ``neverpanic, you@example.org, maintainer@macports.org``).
++
+When reporting port-related tickets, make sure you add the port maintainers email address or GitHub username to the *Cc:* field so they are notified of the ticket (unless you have commit access, then see [label]#Assign
+To:# below). You can obtain the email address or GitHub username of the port maintainer by running [cmd]``port info
+--maintainers ``[port]````
+* *Assign To:* Only users with commit access can edit this field. If this is not you, see the section on the *Cc* field above.
++
+For tickets on ports, enter the email address or GitHub username of the port's maintainer (use [cmd]``port info ``[port]```` to find this). If multiple maintainers are listed, enter the first maintainer's email address or GitHub username here and enter the remaining maintainers' email addresses or GitHub usernames in the *Cc* field.
+Exclude the email address mailto:openmaintainer@macports.org[] if it appears.
+If the maintainer's email address is mailto:nomaintainer@macports.org[], leave the field blank.
+* *Port:* For tickets on ports, enter the name of the port (or ports, space-separated, when multiple are affected).
+* *I have files to attach to this ticket:* Use this checkbox to attach files to the ticket immediately after you create it. Or you can attach files later using the *Attach File* button.
++
+If the file you are attaching is larger than 256 KiB, please compress it with bzip2 or gzip first to save space on the server and bandwidth for those downloading it, as Trac will not preview files above that size anyway.
+
+
+[[project.github]]
+== Using Git and GitHub
+
+The MacPorts project uses the https://git-scm.com/[Git distributed version
+    control system] to manage the code for the entire project.
+Our master repositories are hosted on https://github.com/[GitHub].
+
+We maintain https://github.com/macports[
+      public repositories] for almost all our project code and documentation, including a GitHub repository for the https://github.com/macports/macports-base[
+        MacPorts system itself], for the https://github.com/macports/macports-ports[MacPorts
+        ports], and https://github.com/macports/macports-guide[even for
+        the guide you are reading right now]. 
+
+If you're not familiar with Git and need an introduction, we recommend the book https://git-scm.com/book/en/v2[Pro Git, by Scott
+      Chacon and Ben Straub].
+The book is available for free online, and is published under a Creative Commons license. 
+
+You should feel free to fork any of our code repositories, make improvements to the code, and contribute them back to us via a GitHub pull request.
+We are grateful for improvements to absolutely everything, including new ports, fixes to ports, improvements to our base software, improvements to our documentation and our web site, or anything else you see. 
+
+The main steps for submitting a pull request are: 
+
+. Make your changes in your own Git repository:
+.. Fork the appropriate repository, say https://github.com/macports/macports-ports[macports-ports].
+.. Create a branch for your changes.
+.. Make your changes.
++
+For changes to ports and code, please follow the information elsewhere in this guide, and test your changes carefully.
++
+Changes to Portfiles should also pass [cmd]``port lint``.
+.. Commit your changes to your branch, making sure to follow the https://trac.macports.org/wiki/CommitMessages[ MacPorts standard for commit messages].
+.. Be sure to rebase your changes so as to minimize the number of commits. Ideally, you should have just one.
++
+(There are exceptions.
+If you have several unrelated fixes, or you're changing multiple packages, etc., you might need more than one commit.
+The point is to minimize them, ideally with one commit per logical change.)
+. Push the change branch to your own GitHub repository.
+. Make a pull request from your branch in your own git repository to the appropriate MacPorts repository.
++
+You can do this on the appropriate GitHub page.
+For example, you can request a pull of a Portfile on https://github.com/macports/macports-ports/pulls[
+the macports-ports repository pull request page].
+. Go through the process of waiting for the CI system to build your new port, receiving feedback from our team, possibly being asked to make changes to your requested pull, and making those changes. (If you are asked for additional changes, please squish them to avoid unnecessary commits.)
+
+We try to process pull requests very quickly.
+If you do not see activity on your request within a few days, please feel free to get in touch with us on the mailto:macports-dev@lists.macports.org[] mailing list to request a review and/or commit.
+Please include a link to the pull request in your email.
+
+[[project.contributing]]
+== Contributing to MacPorts
+
+You may contribute new ports and enhancements of any kind to already existing ports using Trac tickets.
+However, we prefer that you open a pull request on https://github.com/macports/macports-ports/pulls[GitHub], in which case no Trac ticket is required. 
+
+_
+      The GitHub pull request method is strongly preferred over
+      submitting Trac tickets.
+      Submitting a Pull Request will likely result in your
+      contribution being merged into MacPorts much faster, as the
+      workflow is much easier for the maintainers. _
+
+[[project.contributing.new]]
+=== New Ports
+
+Ports are contributed by following these steps.
+See the <<project.tickets,Ticket Submission Guidelines>> for a description of all fields.
+
+. Please run 
++
+[source]
+----
+%% port lint --nitpick $portname
+----
+where `$portname` is the name of the port you are submitting.
+Please fix any warnings and errors.
+. Either submit the new port through https://github.com/macports/macports-ports/pulls[a pull request on GitHub]...
+. $$...$$or create a Trac ticket.
+.. Set the type to **submission**.
+.. Set the component to **ports**.
+.. Set the *port* field to the name of the new port.
+.. Attach the [path]`Portfile` and any required patchfiles to the ticket.
+. If your ticket or pull request doesn't receive any attention within a few days you may send an email to mailto:macports-dev@lists.macports.org[] and request a review and/or commit. Please include a link to the ticket or pull request.
+
+
+[[project.contributing.updates]]
+=== Port Enhancements
+
+Enhancements to existing ports may comprise new functionality for a given port, bug fixes or even simple version updates.
+They should always be contributed as patches against the current [path]`Portfile`.
+See the <<project.tickets,Ticket Submission Guidelines>> for a description of all fields.
+
+. Create a [path]`Portfile` patch with your changes. See <<development,Portfile Development>> for more information on how to edit Portfiles.
+. Please run 
++
+[source]
+----
+%% port lint --nitpick $portname
+----
+where `$portname` is the name of the port you modified.
+Please fix any warnings and errors before submitting your changes.
+. Either submit the port update through https://github.com/macports/macports-ports/pulls[a pull request on GitHub]...
+. $$...$$or create a Trac ticket.
+.. Set the type to *enhancement* for miscellaneous enhancements, to *defect* for bug fixes, or to *update* for version updates.
+.. Set the component to **ports**.
+.. Set the *port* field to the name of the port you want to change.
+.. Put the maintainer's email address or GitHub username into the *Cc* field. You can use 
++
+[source]
+----
+%% port info --maintainer $portname
+----
+where `$portname` is the name of the port you want to modify.
+Note that mailto:openmaintainer@macports.org[] and mailto:nomaintainer@macports.org[] are not real people and should thus not be Cc'd.
+.. Attach your Portfile patch file and any new or changed patch files to the ticket.
+. If your ticket or pull request doesn't receive any attention within a few days you may send an email to mailto:macports-dev@lists.macports.org[] and request a review and/or commit. Please include a link to the ticket or pull request.
+
+
+[[project.contributing.maintaining]]
+=== Becoming a Port Maintainer
+
+MacPorts is always looking for people that want to take care of a certain package.
+If you notice an outdated port, a bug in a port or simply a port without maintainer that you are interested in, feel free to volunteer as maintainer.
+To become a maintainer you need:
+
+* An email address and a GitHub account.
+* A copy of the [path]`Portfile`. Do not worry if you don't know where to find one yet. There's more documentation on that below.
+* An account in the https://trac.macports.org/[MacPorts Trac], preferably with the email address you want to use for your port.
+* Interest in the software you want to maintain and some time.
+
+You do _not_ need:
+
+* Commit access to the MacPorts repository. Instead, you open pull requests in GitHub (or create patches and open tickets in Trac.) You can, however, <<project.membership,apply for commit access>> once you have some experience in maintaining ports. In fact, we would like to encourage you to apply after a few months.
+* Expert knowledge of the software you want to maintain or experience in [path]`Portfile` programming. You can pick those up along the way. Your knowledge about the software you want to maintain is probably more than what most other MacPorts developers have, given the number of ports MacPorts has. Consult <<development>> chapter and <<reference>> on how to write a [path]`Portfile`. If your questions are not answered there, please ask on the mailto:macports-dev@lists.macports.org[] mailing list.
+
+To become the maintainer of a port, first check whether the port already has a maintainer.
+Run 
+[source]
+----
+%% port info --maintainer $portname
+----
+where `$portname` is the name of the port you want to maintain.
+If the output is 
+----
+maintainer:
+----
+the port is unmaintained and you are more than welcome to take it over.
+If the output lists a different email address, you can still co-maintain the port, but you should contact the existing maintainer(s) first. 
+
+Once you have verified that a port is unmaintained or the existing maintainer has invited you to co-maintain the port of your choice, follow these steps to become a maintainer: 
+
+. Locate the port's directory and make a copy. MacPorts can help you locate the directory that contains the [path]`Portfile` by running ``port dir $portname``. Copy this directory to a separate location (so you can easily generate a patch later) that is readable by the macports user. In general, your home directory does not fulfill that requirement, but [path]`/var/tmp` does. 
++
+[source]
+----
+%% cp -r $(port dir $portname) /var/tmp
+----
+Check [path]`/var/tmp` for the new directory.
+In most cases, its name should be equal to the name of the port you want to maintain.
+In those few cases where it is not (i.e., the so-called `subports` feature is used), check the output of `port dir $portname` for the correct name. 
+. Change to the new directory and run `port info` to make sure everything went right. Note that running any port command without a port name tries to use the [path]`Portfile` in the current directory. This is very helpful when testing modifications or new ports, so keep this in mind. 
++
+
+[source]
+----
+%% cd /var/tmp/$portname
+%% port info
+----
++
+If you don't see info output for the port, but an error message instead, it will usually be in the following form:
++
+
+----
+Can't map the URL 'file://.' to a port description file ("couldn't read file "Portfile": permission denied").
+Please verify that the directory and portfile syntax are correct.
+To use the current port, you must be in a port's directory.
+----
++
+Pay attention to the part in the brackets in the first line.
+It will either contain a permission problem (in which case you need to adjust the permissions of your [path]`Portfile` and the folders leading up to it), or a Tcl error message, in case of syntax errors in the [path]`Portfile`.
+Also check that the copy of the working directory is in fact the current working directory in your shell.
+. Open the [path]`Portfile` in your favorite editor and look for the line that starts with ``maintainer``. Delete `nomaintainer` from the line if it exists and add your own GitHub username or email address. For GitHub usernames, prefix your username with an `@` sign. Email addresses should be written in the form ``domain.tld:localpart``. The address is obfuscated to prevent email harvesters from automatically grabbing your address. If you want, you can start fixing bugs in the [path]`Portfile` as well.
++
+At this point, please read <<project.update-policies.nonmaintainer>> and familiarize yourself with the meaning of ``openmaintainer``.
+Consider adding `openmaintainer` to speed up and simplify small updates of your port.
+If you decided to allow minor updates without consultation, add ``openmaintainer``, separated with a space, to the `maintainer` line of the [path]`Portfile`.
++
+Once you are done, save the file and verify the [path]`Portfile` structure using MacPorts' builtin lint check:
++
+
+[source]
+----
+%% port lint --nitpick
+----
++
+You will likely see at least one error:
++
+
+----
+Error: Portfile parent directory tmp does not match primary category $XYZ
+----
++
+You can safely ignore _this_ message.
+It is printed because the copy of the port's directory is not in a directory named after the port's primary category, but in [path]`/var/tmp` instead.
+Please try to address all other warnings and error messages, though.
+If you need help, feel free to continue and add a note to the ticket you will create asking for instructions.
++
+Finally, run `port info` again.
+The maintainers line in the output should now contain your email address or GitHub username.
++
+
+[NOTE]
+====
+If you made changes other than the maintainer line, you might want to test build and installation as well.
+To do that, run `sudo port destroot` in the port's directory.
+If you see
+
+----
+Error: Unable to execute port: Could not open file: /private/var/tmp/somewhere/Portfile
+----
+
+check the permissions of the [path]`Portfile` and all folders above it.
+They must be readable by the `macports` user.
+The easiest way to ensure this is to run
+
+[source]
+----
+%% chmod -R go+rX /var/tmp/$portname
+----
+
+If the port fails to build, see the [path]`main.log` referenced in the error message for details.
+If the build completes successfully, run `sudo
+                port clean` to clean up all leftovers.
+====
+. Create a patch from the changes you made to the [path]`Portfile` and possible related files. To do that, run
++
+
+[source]
+----
+%% diff -uR $(port dir $portname) . > change-$portname-maintainer.diff
+----
++
+in the directory where you edited the [path]`Portfile`.
+You can inspect the generated unified diff in [path]`change-$portname-maintainer.diff` if you want.
+. If you are only changing the maintainer, https://github.com/macports/macports-ports/pulls[file a pull request on GitHub].
+. You may also https://trac.macports.org/newticket[file a new ticket in Trac] to change the maintainer, though GitHub pull requests are preferred. Set *type* to **enhancement**. Leave the *milestone* field empty. If you added yourself as co-maintainer, add the other maintainers in the *Cc* field. Finally, fill in the *port* field, set *keywords* to `haspatch` (because you are attaching a patch), check the box that you want to attach files to the ticket and submit. After submission, attach the patch you created in the previous step.
+. If you are also fixing a bug, make a separate commit for that in your pull request, or attach a separate patch for that change to the same ticket. If you are fixing a bug that already has a ticket, attach a patch fixing the bug there and file the maintainer change in a separate ticket (with a separate patch) as discussed above. In general, please create a separate patch for each semantic change. Doing so simplifies reviewing. It enables each independent change to be accepted without worries about conflicts that sometimes arise when several changes are rolled into one patch. Do not worry that you cannot change the *keywords* to `haspatch` on existing tickets.
+. If your pull request or ticket doesn't receive any attention within a few days you may send an email to mailto:macports-dev@lists.macports.org[] and request a review and/or commit. Please include a link to the pull request or ticket.
+
+Once you are the maintainer for a port, all new pull requests and tickets for this port will be assigned to you.
+You are expected to take a look at these pull requests and tickets, give advice and try to debug problems.
+If you are stuck, do not hesitate to ask on the mailto:macports-dev@lists.macports.org[] list.
+
+[[project.update-policies]]
+== Port Update Policies
+
+Port maintainers normally are given commit privileges to the Git repository so they can make updates to their own ports as described in <<project.membership>>.
+However, The MacPorts Project does not restrict commit privileges for maintainers, so before a person other than a port's maintainer updates a port it is a good practice to inform a port's maintainer.
+See details below.
+
+[[project.update-policies.nonmaintainer]]
+=== Non-Maintainer Port Updates
+
+If you have a port update or bugfix for a port you do not maintain, to respect the rights of the port maintainer you should follow the following guidelines:
+
+. If a port's maintainer is mailto:nomaintainer@macports.org[], you may feel free to make updates and/or take maintainership of the port.
+. If a port's maintainer contains the address mailto:openmaintainer@macports.org[], this means that the author allows minor updates to the port without contacting him first. But permission should still be sought for major changes.
+. Create patch file(s) as necessary, attach them to a Trac ticket, and assign the ticket to the maintainer (or Cc him or her, if you are unable to assign tickets).
+. Wait for a response from the maintainer. The maintainer should apply the patches and close the ticket within 72 hours.
+
+However, for maintained ports without mailto:openmaintainer@macports.org[], there are some conditions under which maintainer permission may be waived:
+
+* If the maintainer does not respond within 72 hours, you or another committer may review the patches and update the port. The log message of this commit must explain that you are taking advantage of maintainer timeout and include a reference to the ticket. If you are not a committer you may send an email to mailto:macports-dev@lists.macports.org[] and request the updates be committed.
+* A port is abandoned by its current maintainer. A port against which a Port Abandoned ticket has been filed (see below) can be updated without contacting the maintainer.
+* A critical port is broken that affects many users.
+
+
+[[project.update-policies.abandonment]]
+=== Port Abandonment
+
+A port may be considered abandoned if any of the following apply:
+
+* A bug has not been acknowledged for more than three weeks after a ticket is filed.
+* All tickets filed against the port have been resolved with no input from the maintainer, after the 72-hour timeout, for a significant period of time (at least three weeks). This needs to involve a reasonable number of tickets; one timeout doesn't make a port abandoned.
+* The listed maintainer address bounces, and no alternate way of contacting the maintainer is known.
+
+If you wish to initiate the Port Abandonment protocol and optionally volunteer as the new maintainer:
+
+. File a new Trac ticket with the summary line: [Port Abandoned] **portname**.
+. The ticket should be assigned to the maintainer. Non-macports team members should Cc the maintainer.
+. Set the ticket Type to Defect.
+. In the Description field, refer to any unacknowledged ticket(s).
+. In the Port field, indicate which port is abandoned.
+. The Port Abandoned ticket may be closed when the new maintainer is assigned, and the original ticket(s) with the updates may be resolved as usual. The former maintainer should be removed from all other tickets on which they were assigned as owner. The Port Abandoned ticket should stay open for the usual 72-hour timeout period, to give the maintainer one last chance to indicate that they have not actually abandoned the port.
+
+
+[[project.docs]]
+== Updating Documentation
+
+[[project.docs.guide]]
+=== Updating the Guide
+
+The sources for this guide are kept in a https://github.com/macports/macports-guide[
+        Git repository on GitHub].
+If you spot any error or outdated information, you are encouraged to submit a pull request following the steps outlined below. 
+
+[[project.docs.guide.one-time]]
+==== Preparing Changes
+
+
+. {empty}
++
+
+[source]
+----
+$ git clone https://github.com/macports/macports-guide.git
+$ cd macports-guide
+$ git remote add username https://github.com/username/macports-guide.git
+----
+. Install the required ports:
++
+
+[source]
+----
+$ sudo port install libxslt docbook-xsl
+----
+
+
+[[project.docs.guide.each-time]]
+==== Proposing a Change
+
+For each change you want to make:
+
+.. Make your changes to the file in the [path]`guide/xml/` directory that corresponds to the section you want to make changes to.
++
+
+[source]
+----
+$ $EDITOR guide/xml/guide.xml
+----
+.. Verify your changes are still valid XML. If the [cmd]``make validate`` command reports errors, fix the XML sources until you see no more error messages
++
+
+[source]
+----
+$ make validate
+----
+.. Convert the guide to HTML and view the new version in your browser.
++
+
+[source]
+----
+$ make guide
+$ open guide/html/index.html
+----
+.. Commit your changes to the local branch and describe your changes in the commit message. See also our wiki page https://trac.macports.org/wiki/CommitMessages[CommitMessages] that explains how to write good commit messages.
++
+
+[source]
+----
+$ git commit -a
+----
+
+
+[[project.membership]]
+== MacPorts Membership
+
+A requirement for a person to become a MacPorts committer is to first become involved and contribute to the project.
+This may be done by having a record of contribution to the project in several of the following ways:
+*** Contributing new ports.
+*** Fixing bugs in existing ports.
+*** Volunteering as a maintainer of non-maintained ports.
+*** Involvement on MacPorts development and/or user support mailing lists.
+*** Contributing with documentation.
+
+To apply for MacPorts commit rights, send a brief email to the PortMgr team at mailto:macports-mgr@lists.macports.org[] entitled "Commit access: ``Your Name``" with the following contents:
+*** a description of your application and why you think you deserve commit rights. Include evidence of contributions to MacPorts as described above; at best add direct links to Trac tickets or Trac searches that make the review easier for the PortMgr team.
+*** your github username. This will be used as the identity the "handle", as part of your ```handle``@macports.org` alias.
+*** a real e-mail address to which you'd like your MacPorts alias to forward.
+
+The PortMgr team will consider all applications and provide an appropriate response as soon as they get to it.
+
+[[project.portmgr]]
+== The PortMgr Team
+
+The MacPorts PortMgr team is the steering group for The MacPorts Project.
+Its membership is usually determined by public elections among project members; the current members of the team can be found on the https://trac.macports.org/wiki/MacPortsDevelopers[MacPorts
+    Developers wiki page].
+
+They are responsible for matters such as:
+*** approving new project members (i.e., granting commit rights);
+*** setting general guidelines for the project;
+*** dispute resolution;
+*** managing the projects infrastructure; and
+*** engineering releases.

@@ -3,9 +3,9 @@
 -->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd"[
-<!ENTITY macports-version "2.4.3">
+<!ENTITY macports-version "2.4.4">
 ]>
-<chapter xml:id="installing">
+<chapter xml:id="installing" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Installing MacPorts</title>
 
     <para>This chapter shows you how to install MacPorts and its prerequisites step-by-step. Note that the section about
@@ -449,19 +449,11 @@
 
                     <para>Condition: If prior to MacPorts installation a <varname>MANPATH</varname> variable exists in
                         a current <filename>.profile</filename> that contains neither the value
-                        <filename>${prefix}/share/man,</filename> nor any empty values, the postflight script sets the
-                        <varname>MANPATH</varname> variable as shown below. Otherwise, the <varname>MANPATH</varname>
-                        variable is omitted.</para>
+                        <filename>${prefix}/share/man,</filename> nor any empty items separated by a colon, the
+                        postflight script sets the <varname>MANPATH</varname> variable as shown below. Otherwise, the
+                        <varname>MANPATH</varname> variable is omitted.</para>
 
                     <programlisting>export MANPATH=/opt/local/share/man:$MANPATH</programlisting>
-
-                    <para>Here are some examples of paths that contain empty values:</para>
-
-                    <simplelist>
-                        <member>/usr/share/man:</member>
-                        <member>:/usr/share/man</member>
-                        <member>/usr/share/man::/usr/X11R6/man</member>
-                    </simplelist>
                 </listitem>
 
                 <listitem>

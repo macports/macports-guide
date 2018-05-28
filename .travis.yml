@@ -3,20 +3,10 @@ dist: trusty
 addons:
   apt:
     packages:
+    - libxml2-utils
     - xsltproc
-    - docbook
-    - docbook-xml
-    - docbook-xsl
+    - docbook-xsl-ns
     - docbook5-xml
-    - libxml2-utils
-    - docbook-xsl-doc-html
-    - docbook-dsssl
-    - docbook-xsl-saxon
-    - docbook-dsssl-doc
-    - doc-base
-    - w3-recs
-    - libxml2-utils
-    - libxml2-utils
 
 script: |
   set -ex

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd">
-<section xml:id="reference.phases">
+<section xml:id="reference.phases" xmlns:xlink="http://www.w3.org/1999/xlink">
   <title>Port Phases</title>
 
   <section xml:id="reference.phases.introduction">
@@ -238,20 +238,20 @@
           <itemizedlist>
             <listitem>
               <para><code>depends_lib-append</code> or
-              <code>depends_lib-delete</code>
+              <code>depends_lib-delete</code> or
               <code>depends_lib-replace</code>
               </para>
             </listitem>
 
             <listitem>
               <para><code>distfiles-append</code> or
-              <code>distfiles-delete</code>
+              <code>distfiles-delete</code> or
               <code>distfiles-replace</code></para>
             </listitem>
 
             <listitem>
               <para><code>patchfiles-append</code> or
-              <code>patchfiles-delete</code>
+              <code>patchfiles-delete</code> or
               <code>patchfiles-replace</code></para>
             </listitem>
           </itemizedlist>
