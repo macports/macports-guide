@@ -453,11 +453,7 @@
 
         <listitem>
           <para>
-            <emphasis role="strong">Assign To:</emphasis> Only users with commit access can
-            edit this field. If this is not you, see the section on the
-            <emphasis role="strong">Cc</emphasis> field above.</para>
-
-          <para>
+            <emphasis role="strong">Assign To:</emphasis>
             For tickets on ports, enter the email address or GitHub username of
             the port's maintainer (use <command>port info
               <replaceable>[port]</replaceable></command> to find this). If
@@ -469,6 +465,10 @@
             maintainer's email address is
             <email>nomaintainer@macports.org</email>, leave the field
             blank.</para>
+
+          <para>
+            Only project members and the reporter of a ticket can edit this field.
+          </para>
         </listitem>
 
         <listitem>
