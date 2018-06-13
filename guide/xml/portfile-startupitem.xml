@@ -24,8 +24,13 @@
   <note>
     <para>The variable <varname>startupitem_type</varname> in
     <filename>${prefix}/etc/macports/macports.conf</filename> may be set to
-    <option>none</option> to globally override all StartupItem keywords found
-    in Portfiles; this prevents StartupItems from being created.</para>
+    <option>none</option> to override the default value of the <varname>startupitem.type</varname>
+    option in Portfiles; this prevents StartupItems from being created.</para>
+    <para>Additionally, the <varname>startupitem_install</varname> variable can be set
+    to <option>no</option> in <filename>macports.conf</filename> to override the default
+    value of the <varname>startupitem.install</varname> option, which will prevent links
+    from being created under <filename>/Library</filename>. This is useful for MacPorts
+    installations that are not used with root privileges.</para>
   </note>
 
   <section xml:id="reference.startupitems.attributes">
@@ -36,6 +41,26 @@
     below).</para>
 
     <variablelist>
+      <varlistentry>
+        <term>startupitem.autostart</term>
+
+        <listitem>
+          <para>Whether to automatically load the StartupItem after activating the port.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.autostart      yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
       <varlistentry>
         <term>startupitem.create</term>
 
@@ -57,21 +82,66 @@
       </varlistentry>
 
       <varlistentry>
-        <term>startupitem.name</term>
+        <term>startupitem.debug</term>
 
         <listitem>
-          <para>Sets the name for the StartupItem. Defaults to the name of the
-          port, so this keyword is usually unnecessary.</para>
+          <para>Enable additional debug logging.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: <varname>${name}</varname></para>
+              <para>Default: <option>no</option></para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.name        dhcpd</programlisting>
+              <programlisting>startupitem.debug      yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.install</term>
+
+        <listitem>
+          <para>Whether to install a link to the StartupItem in the appropriate
+            subdirectory of <filename>/Library</filename> (see
+            <varname>startupitem.location</varname>) so that it can
+            be launched automatically after rebooting.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>yes</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.install        no</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.location</term>
+
+        <listitem>
+          <para>Chooses the subdirectory in which to install the StartupItem. Also
+          affects how it will be loaded: LaunchDaemons must be loaded as root, and
+          only one instance will run for the whole system. LaunchAgents are loaded
+          as a normal user, and one instance per user can run.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <filename>LaunchDaemons</filename></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.location        LaunchAgents</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -123,6 +193,27 @@
       </varlistentry>
 
       <varlistentry>
+        <term>startupitem.name</term>
+
+        <listitem>
+          <para>Sets the name for the StartupItem. Defaults to the name of the
+          port, so this keyword is usually unnecessary.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${name}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.name        dhcpd</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>startupitem.netchange</term>
 
         <listitem>
@@ -142,6 +233,61 @@
           </itemizedlist>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.type</term>
+
+        <listitem>
+          <para>The type of the StartupItem. Supported values are <option>launchd</option> for a macOS
+          <command>launchd</command> .plist, or <option>none</option> for no StartupItem.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>launchd</option> if on macOS and <varname>${startupitem.create}</varname>
+              is true, <option>none</option> otherwise</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.type   launchd</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitems</term>
+
+        <listitem>
+          <para>Used when a port needs to install more than one StartupItem, this option
+          consists of a list where alternating elements represent keys and values. Each
+          key corresponds to one of the <varname>startupitem.*</varname> options, and the
+          following value is associated with it. Each StartupItem defined in the list must
+          specify at least a name. Each other key/value pair is associated with the
+          StartupItem named most recently in the list. Any keys that are not defined for
+          a given StartupItem will use the value of the corresponding <varname>startupitem.*</varname>
+          option.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: none
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitems        name        myport-system \
+                    location    LaunchDaemons \
+                    executable  ${prefix}/sbin/myportd \
+                    name        myport-session \
+                    location    LaunchAgents \
+                    executable  ${prefix}/bin/myport-agent</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
     </variablelist>
   </section>
 
@@ -431,7 +577,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"</programlis
     <para>During port installation a MacPorts StartupItem creates a .plist
     file in <filename>${prefix}/etc/LaunchDaemons/</filename>, and places a
     symbolic link to the .plist file within
-    <filename>/Library/LaunchDaemons/</filename>.</para>
+    <filename>/Library/LaunchDaemons/</filename> if <varname>${startupitem.install}</varname> is true.</para>
 
     <para>For example, the StartupItem for the mysql5 port is
     <filename>org.macports.mysql5.plist</filename>, and it is linked as
