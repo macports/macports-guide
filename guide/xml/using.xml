@@ -119,10 +119,6 @@ Upgrade MacPorts itself and run the sync target
                     </listitem>
                 </varlistentry>
             </variablelist>
-
-            <note>
-                <para>This command will only be available in MacPorts version 2.4 and above.</para>
-            </note>
         </section>
 
         <section xml:id="using.port.reclaim">
@@ -131,11 +127,23 @@ Upgrade MacPorts itself and run the sync target
             <para>The <option>reclaim</option> action attempts to reclaim space by uninstalling inactive ports, and
             removing unnecessary files that were downloaded during the installation process. </para>
 
-            <para><option>reclaim</option> does not accept any switches.</para>
+            <para><option>reclaim</option> accepts switches to configure automatic reminders.
+                If passed, the reclaim process will not be run.</para>
 
-            <note>
-                <para> This command will only be available in MacPorts version 2.4 and above.</para>
-            </note>
+            <variablelist>
+                <varlistentry>
+                    <term><option>--enable-reminders</option></term>
+                    <listitem>
+                        <para>Enable regular reminders to run <command>port <option>reclaim</option></command>.</para>
+                    </listitem>
+                </varlistentry>
+                <varlistentry>
+                    <term><option>--disable-reminders</option></term>
+                    <listitem>
+                        <para>Disable regular reminders to run <command>port <option>reclaim</option></command>.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
         </section>
 
         <section xml:id="using.port.list">
