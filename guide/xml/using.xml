@@ -134,13 +134,13 @@ Upgrade MacPorts itself and run the sync target
                 <varlistentry>
                     <term><option>--enable-reminders</option></term>
                     <listitem>
-                        <para>Enable regular reminders to run <command>port <option>reclaim</option></command>.</para>
+                        <para>Enable regular reminders to run <command>port reclaim</command>.</para>
                     </listitem>
                 </varlistentry>
                 <varlistentry>
                     <term><option>--disable-reminders</option></term>
                     <listitem>
-                        <para>Disable regular reminders to run <command>port <option>reclaim</option></command>.</para>
+                        <para>Disable regular reminders to run <command>port reclaim</command>.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
