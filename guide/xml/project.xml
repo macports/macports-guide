@@ -754,8 +754,7 @@
         <listitem>
           <para>An account in the <link
               xlink:href="https://trac.macports.org/">MacPorts Trac</link>,
-            preferably with the email address you want to use for your
-            port.</para>
+            (you'll log in with your GitHub account).</para>
         </listitem>
         <listitem>
           <para>Interest in the software you want to maintain and some time.</para>
