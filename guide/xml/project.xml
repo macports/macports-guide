@@ -864,13 +864,16 @@ To use the current port, you must be in a port's directory.</screen>
           <para>Open the <filename>Portfile</filename> in your favorite editor
             and look for the line that starts with <option>maintainer</option>.
             Delete <option>nomaintainer</option> from the line if it exists and
-            add your own GitHub username or email address. For GitHub
-            usernames, prefix your username with an <literal>@</literal> sign.
-            Email addresses should be written in the form
-            <userinput>domain.tld:localpart</userinput>. The address is
+            add your own email address and GitHub username, grouped together
+            with curly braces. Email addresses should be written in the form
+            <userinput>domain.tld:localpart</userinput>. (The address is
             obfuscated to prevent email harvesters from automatically grabbing
-            your address. If you want, you can start fixing bugs in the
-            <filename>Portfile</filename> as well.</para>
+            your address.) For GitHub usernames, prefix your username with an
+            <literal>@</literal> sign. For example, if your email address is
+            <literal>julesverne@example.org</literal> and your GitHub username
+            is <literal>jverne</literal>, your entry on the
+            <option>maintainers</option> line should read
+            <literal>{example.org:julesverne @jverne}</literal>.</para>
 
           <para>At this point, please read <xref
               linkend="project.update-policies.nonmaintainer" /> and
