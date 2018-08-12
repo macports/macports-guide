@@ -1200,6 +1200,33 @@ extract.cmd       = lzma
       </varlistentry>
 
       <varlistentry>
+        <term>use_tar</term>
+
+        <listitem>
+            <para>This keyword is for downloads that are uncompressed tar
+            archives. When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix    = .tar
+extract.cmd       = tar
+extract.pre_args  = -xf
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_tar             yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>use_zip</term>
 
         <listitem>
