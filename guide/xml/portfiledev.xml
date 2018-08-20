@@ -241,10 +241,12 @@
 
         <para>The checksums specified in a Portfile are checked with the
         fetched tarball for security. For the best security, use rmd160 
-        and sha256 checksum types.</para>
+        and sha256 checksum types. Checksums should also include the target
+        file's size.</para>
 
         <programlisting>checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                        size    1061530</programlisting>
 
         <para>To find the correct checksums for a port's distribution file,
         follow one of these examples:</para>
@@ -334,7 +336,8 @@ master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
 checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                    size    1061530
 
 depends_lib         path:bin/perl:perl5 \
                     port:tcl \
@@ -831,7 +834,8 @@ Ports failed:                   0</screen>
       begins on in the first line.</para>
 
       <programlisting>checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53</programlisting>
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                        size    1061530</programlisting>
 
       <para>Should a key item such as a phase or variant require braces, the
       opening brace should appear on the same line and the closing brace should
