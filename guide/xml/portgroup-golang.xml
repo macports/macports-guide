@@ -1,0 +1,270 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.golang" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <title>PortGroup golang</title>
+
+  <para>The <code>golang</code> PortGroup allows for efficient porting of
+  Go-based open source software.</para>
+
+  <section xml:id="reference.portgroup.golang.description">
+    <title>Description</title>
+
+    <para>
+      This PortGroup greatly simplifies the porting of software written in Go,
+      especially when the software and its dependencies are hosted on GitHub or
+      Bitbucket.  Provided a project author follows common Go packaging
+      practices, a port can be almost fully configured simply by declaring the
+      package identifier.
+    </para>
+
+    <para>
+      In particular, Go has strict requirements relating to the arrangement of
+      code on the filesystem (GOPATH). This PortGroup handles the construction
+      of the GOPATH for you.
+    </para>
+  </section>
+
+  <section xml:id="reference.portgroup.golang.setup">
+    <title>Setting up the Go package identifier</title>
+
+    <para>
+      The main port configuration is triggered by the usage of the
+      <code>go.setup</code> keyword:
+
+      <programlisting>
+PortGroup           golang 1.0
+go.setup            domain/author/project version [tag_prefix] [tag_suffix]</programlisting>
+    </para>
+
+    <para>
+      By default, the port <code>name</code> will be set to the package name
+      (<code>project</code>) and <code>version</code> will be set to the project
+      <code>version</code>.  The port name can be overridden by using the
+      <code>name</code> keyword.
+    </para>
+
+    <para>
+      The <code>tag_prefix</code> and <code>tag_suffix</code> are optional, and
+      are used to specify a prefix/suffix to use when constructing the tag name.
+      If, for example, the project uses tags such as <code>v1.0.0</code>, then
+      the <code>tag_prefix</code> should be set to <code>v</code>, as in the
+      following example:
+
+      <programlisting>
+go.setup        author project version v</programlisting>
+    </para>
+
+    <para>
+      When the <code>domain</code> is either <code>github.com</code> or
+      <code>bitbucket.org</code>, the appropriate PortGroup will be applied and
+      set up automatically.  See those PortGroups' documentation for details.
+    </para>
+
+    <para>
+      Projects hosted elsewhere can be used, but require additional manual setup.
+    </para>
+  </section>
+
+  <section xml:id="reference.portgroup.golang.dependencies">
+    <title>Setting up dependencies</title>
+
+    <para>
+      The PortGroup provides a keyword to facilitate listing dependencies:
+      <code>go.vendors</code>.  Supply a list of vendors and their versions (git
+      commit hashes) as follows.  This information can usually be found in a
+      lockfile (e.g. <filename>Gopkg.lock</filename>,
+      <filename>glide.lock</filename>) in the upstream code.
+
+      <programlisting>
+go.vendors      example.com/dep1/foo abcdef123456... \
+                example.com/dep2/bar fedcba654321...
+
+checksums_append \
+                ${foo.distfile} \
+                    rmd160 abcdef123456... \
+                    sha256 fedcba654321... \
+                    size   1234 \
+                ${bar.distfile} \
+                    rmd160 abcdef123456... \
+                    sha256 fedcba654321... \
+                    size   4321</programlisting>
+    </para>
+
+    <para>
+      Note that <code>go.vendors</code> cannot be used with dependencies hosted
+      outside of GitHub and Bitbucket.  Such dependencies must be handled
+      manually.
+    </para>
+
+    <para>
+      After the extraction phase, the vendor packages will be placed alongside
+      the main port code as appropriate in the GOPATH.
+    </para>
+  </section>
+
+  <section>
+    <title>Building and destroot</title>
+
+    <para>
+      By default this PortGroup runs <code>go build</code> from the
+      <varname>${worksrcpath}</varname>. Assuming this results in a binary with
+      the same name as the project, and that there are no other files to
+      install, the following is sufficient for the destroot phase:
+
+      <programlisting>
+destroot {
+    xinstall -m 755 ${worksrcpath}/${name} ${destroot}${prefix}/bin/
+}</programlisting>
+
+      Please modify as appropriate for each individual port.
+    </para>
+  </section>
+
+  <section xml:id="reference.portgroup.golang.variables">
+    <title>golang PortGroup Specific Variables</title>
+
+    <para>When the golang PortGroup is declared within a Portfile, the
+    following variables are provided during port install.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>go.bin</term>
+
+        <listitem>
+          <para>The Go binary location.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>go.package</term>
+
+        <listitem>
+          <para>The package identifier of the port,
+          e.g. <code>example.com/author/project</code>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>go.domain, go.author, go.project</term>
+
+        <listitem>
+          <para>The individual parts of <varname>${go.package}</varname>.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>gopath</term>
+
+        <listitem>
+          <para>Default: <varname>${workpath}</varname>/gopath</para>
+
+          <para>The location where source packages will be arranged after the
+          extract phase.</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term><varname>${vendor.project}</varname>.distfile</term>
+
+        <listitem>
+          <para>Default: depends on the vendor package's domain</para>
+
+          <para>The distfile name for a given vendor package supplied to
+          <code>go.vendors</code>. E.g. for the package
+          <code>github.com/foo/bar</code> the variable
+          <varname>${bar.distfile}</varname> will resolve to the distfile
+          obtainable from GitHub. This is intended to be used when supplying
+          checksums.</para>
+        </listitem>
+      </varlistentry>
+
+    </variablelist>
+  </section>
+
+  <section xml:id="reference.portgroup.golang.sugar">
+    <title>golang PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup golang do not need to define the
+    following variables:</para>
+
+    <variablelist>
+
+      <varlistentry>
+        <term>name, version, homepage, distname, master_sites, livecheck.*</term>
+
+        <listitem>
+          <para>Default: see github or bitbucket PortGroups (when project hosted
+          on GitHub or Bitbucket)</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>depends_build</term>
+
+        <listitem>
+          <para>Default: port:go</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>use_configure</term>
+
+        <listitem>
+          <para>Default: no</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>platforms</term>
+
+        <listitem>
+          <para>Default: darwin</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.cmd</term>
+
+        <listitem>
+          <para>Default: <varname>${go.bin}</varname> build</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.args</term>
+
+        <listitem>
+          <para>Default: ""</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.target</term>
+
+        <listitem>
+          <para>Default: ""</para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.env</term>
+
+        <listitem>
+          <para>Default: GOPATH=<varname>${gopath}</varname>
+          CC=<varname>${configure.cc}</varname></para>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>post-extract</term>
+
+        <listitem>
+          <para>Default: arranges the project and vendor source files
+          appropriately in the GOPATH.</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+</section>
