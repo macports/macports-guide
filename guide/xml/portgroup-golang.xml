@@ -72,24 +72,26 @@ go.setup        author project version v</programlisting>
 
     <para>
       The PortGroup provides a keyword to facilitate listing dependencies:
-      <code>go.vendors</code>.  Supply a list of vendors and their versions (git
-      commit hashes) as follows.  This information can usually be found in a
-      lockfile (e.g. <filename>Gopkg.lock</filename>,
-      <filename>glide.lock</filename>) in the upstream code.
+      <code>go.vendors</code>.  Supply a list of vendor package IDs, their
+      versions (git commit hashes, labeled "lock" as in "lockfile"), and their
+      checksums as follows.  The packages and their versions can usually be
+      found in a lockfile (e.g. <filename>Gopkg.lock</filename>,
+      <filename>glide.lock</filename>) in the upstream code.  All checksum types
+      supported by the <code><link
+      linkend="reference.phases.checksum">checksums</link></code> keyword are
+      supported here as well.
 
       <programlisting>
-go.vendors      example.com/dep1/foo abcdef123456... \
-                example.com/dep2/bar fedcba654321...
-
-checksums_append \
-                ${foo.distfile} \
-                    rmd160 abcdef123456... \
-                    sha256 fedcba654321... \
-                    size   1234 \
-                ${bar.distfile} \
-                    rmd160 abcdef123456... \
-                    sha256 fedcba654321... \
-                    size   4321</programlisting>
+go.vendors      example.com/dep1/foo \
+                    lock    abcdef123456... \
+                    rmd160  fedcba654321... \
+                    sha256  bdface246135... \
+                    size    1234 \
+                example.com/dep2/bar \
+                    lock    abcdef123456... \
+                    rmd160  fedcba654321... \
+                    sha256  bdface246135... \
+                    size    4321</programlisting>
     </para>
 
     <para>
@@ -133,6 +135,8 @@ destroot {
         <term>go.bin</term>
 
         <listitem>
+          <para>Default: <varname>${prefix}/bin/go</varname></para>
+
           <para>The Go binary location.</para>
         </listitem>
       </varlistentry>
@@ -166,17 +170,19 @@ destroot {
       </varlistentry>
 
       <varlistentry>
-        <term><varname>${vendor.project}</varname>.distfile</term>
+        <term>goarch</term>
 
         <listitem>
-          <para>Default: depends on the vendor package's domain</para>
+          <para>Default: 386 or amd64, depending on
+          <varname>${build_arch}</varname></para>
+        </listitem>
+      </varlistentry>
 
-          <para>The distfile name for a given vendor package supplied to
-          <code>go.vendors</code>. E.g. for the package
-          <code>github.com/foo/bar</code> the variable
-          <varname>${bar.distfile}</varname> will resolve to the distfile
-          obtainable from GitHub. This is intended to be used when supplying
-          checksums.</para>
+      <varlistentry>
+        <term>goos</term>
+
+        <listitem>
+          <para>Default: <varname>${os.platform}</varname></para>
         </listitem>
       </varlistentry>
 
@@ -220,7 +226,10 @@ destroot {
         <term>platforms</term>
 
         <listitem>
-          <para>Default: darwin</para>
+          <para>Default: darwin freebsd linux</para>
+
+          <para>Go can target these platforms, but individual ports should
+          override this as necessary if only some are actually supported.</para>
         </listitem>
       </varlistentry>
 
@@ -253,6 +262,8 @@ destroot {
 
         <listitem>
           <para>Default: GOPATH=<varname>${gopath}</varname>
+          GOARCH=<varname>${goarch}</varname>
+          GOOS=<varname>${goos}</varname>
           CC=<varname>${configure.cc}</varname></para>
         </listitem>
       </varlistentry>
