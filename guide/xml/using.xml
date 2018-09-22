@@ -28,11 +28,11 @@
             <programlisting><prompt>$</prompt> <userinput>port help selfupdate</userinput></programlisting>
 
             <screen>
-Usage: selfupdate --nosync
+Usage: selfupdate --no-sync
 
 Upgrade MacPorts itself and run the sync target
 
---nosync   Do not run the sync target, i.e., do not update the ports tree.
+--no-sync   Do not run the sync target, i.e., do not update the ports tree.
            Only checks for (and installs, if available) new versions of
            MacPorts.</screen>
         </section>
@@ -84,7 +84,7 @@ Upgrade MacPorts itself and run the sync target
 
             <variablelist>
                 <varlistentry>
-                    <term><option>--nosync</option></term>
+                    <term><option>--no-sync</option></term>
                     <listitem>
                         <para>Only update MacPorts itself, do not update the tree of <filename>Portfile</filename>s.</para>
                     </listitem>
