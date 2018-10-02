@@ -53,7 +53,7 @@ go.setup            domain/author/project version [tag_prefix] [tag_suffix]</pro
       following example:
 
       <programlisting>
-go.setup        author project version v</programlisting>
+go.setup        domain/author/project version v</programlisting>
     </para>
 
     <para>
