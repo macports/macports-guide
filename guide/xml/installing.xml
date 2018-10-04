@@ -165,6 +165,14 @@
                     <variablelist>
                         <varlistentry>
                             <term>
+                                macOS 10.14 Mojave:
+                            </term>
+                            <listitem>
+                                <para><link xlink:href="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.14-Mojave.pkg">MacPorts-&macports-version;-10.14-Mojave.pkg</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
                                 macOS 10.13 High Sierra:
                             </term>
                             <listitem>
@@ -177,14 +185,6 @@
                             </term>
                             <listitem>
                                 <para><link xlink:href="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.12-Sierra.pkg">MacPorts-&macports-version;-10.12-Sierra.pkg</link></para>
-                            </listitem>
-                        </varlistentry>
-                        <varlistentry>
-                            <term>
-                                OS X 10.11 El Capitan:
-                            </term>
-                            <listitem>
-                                <para><link xlink:href="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-10.11-ElCapitan.pkg">MacPorts-&macports-version;-10.11-ElCapitan.pkg</link></para>
                             </listitem>
                         </varlistentry>
                     </variablelist>

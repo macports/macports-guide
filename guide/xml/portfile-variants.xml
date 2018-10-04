@@ -171,9 +171,9 @@
           different tasks depending on the version of Darwin, the core
           operating system underlying macOS.
           <replaceable>version</replaceable> is the major version of Darwin,
-          and can be <literal>17</literal> for macOS High Sierra v10.13,
-          <literal>16</literal> for macOS Sierra v10.12, <literal>15</literal>
-          for OS X El Capitan v10.11, and so on.</para>
+          and can be <literal>18</literal> for macOS Mojave 10.14,
+          <literal>17</literal> for macOS High Sierra 10.13, <literal>16</literal>
+          for macOS Sierra 10.12, and so on.</para>
 
           <itemizedlist>
             <listitem>
