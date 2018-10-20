@@ -500,8 +500,8 @@ See details below.
 If you have a port update or bugfix for a port you do not maintain, to respect the rights of the port maintainer you should follow the following guidelines:
 
 . If a port's maintainer is mailto:nomaintainer@macports.org[], you may feel free to make updates and/or take maintainership of the port.
-. If a port's maintainer contains the address mailto:openmaintainer@macports.org[], this means that the author allows minor updates to the port without contacting him first. But permission should still be sought for major changes.
-. Create patch file(s) as necessary, attach them to a Trac ticket, and assign the ticket to the maintainer (or Cc him or her, if you are unable to assign tickets).
+. If a port's maintainer contains the address mailto:openmaintainer@macports.org[], this means that the author allows minor updates to the port without contacting them first. But permission should still be sought for major changes.
+. Create patch file(s) as necessary, attach them to a Trac ticket, and assign the ticket to the maintainer (or Cc the maintainer, if you are unable to assign tickets).
 . Wait for a response from the maintainer. The maintainer should apply the patches and close the ticket within 72 hours.
 
 However, for maintained ports without mailto:openmaintainer@macports.org[], there are some conditions under which maintainer permission may be waived:

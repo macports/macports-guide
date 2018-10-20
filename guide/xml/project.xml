@@ -1024,15 +1024,15 @@ To use the current port, you must be in a port's directory.</screen>
         <listitem>
           <para>If a port's maintainer contains the address
           <email>openmaintainer@macports.org</email>, this means that the
-          author allows minor updates to the port without contacting him
+          author allows minor updates to the port without contacting them
           first. But permission should still be sought for major
           changes.</para>
         </listitem>
 
         <listitem>
           <para>Create patch file(s) as necessary, attach them to a Trac
-          ticket, and assign the ticket to the maintainer (or Cc him or
-          her, if you are unable to assign tickets).</para>
+          ticket, and assign the ticket to the maintainer (or Cc the
+          maintainer, if you are unable to assign tickets).</para>
         </listitem>
 
         <listitem>
