@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.java" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <title>PortGroup java</title>
+
+  <para>PortGroup java is useful for Java packages.</para>
+
+  <section xml:id="reference.portgroup.java.keywords">
+    <title>java PortGroup Specific Keywords</title>
+
+    <para>Portfiles using the java PortGroup allow for port authors to set
+    the following keywords in addition to the general Portfile keywords.</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>java.version</term>
+
+        <listitem>
+          <para>This keyword indicates that the port requires a Java
+          installation of the specified version. If no such installation can be
+          located, the port will fail at the pre-fetch phase.</para>
+
+          <para>The version string can indicate a specific version
+          or a range with wildcards "+" and "*". Note that Java 8 and
+          earlier are "1.8", etc., while Java 9 and later are "9",
+          etc.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+              <programlisting>java.version    1.8+</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+  <section xml:id="reference.portgroup.java.sugar">
+    <title>java PortGroup Sugar</title>
+
+    <para>Portfiles using PortGroup java do not need to define the
+    following variables:</para>
+
+    <variablelist>
+      <varlistentry>
+        <term>configure.env, build.env, destroot.env</term>
+
+        <listitem>
+          <para>Default: JAVA_HOME=(detected value)</para>
+        </listitem>
+      </varlistentry>
+    </variablelist>
+  </section>
+
+</section>
