@@ -20,7 +20,7 @@
         <listitem>
           <para>This keyword indicates that the port requires a Java
           installation of the specified version. If no such installation
-          can be located, and not fallback option is specified (see below),
+          can be located, and no fallback option is specified (see below),
           the port will fail at the pre-fetch phase.</para>
 
           <para>The version string can indicate a specific version
