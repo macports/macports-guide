@@ -39,6 +39,27 @@
           </itemizedlist>
         </listitem>
       </varlistentry>
+      <varlistentry>
+        <term>java.fallback</term>
+
+        <listitem>
+          <para>This keyword indicates an (optional) port dependency
+          that will be added to the ports 'depends-lib' list in the
+          case a prior installation of java satisfying the requested
+          version can not be found.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+              <programlisting>java.fallback   openjdk10</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
