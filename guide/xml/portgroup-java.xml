@@ -19,8 +19,9 @@
 
         <listitem>
           <para>This keyword indicates that the port requires a Java
-          installation of the specified version. If no such installation can be
-          located, the port will fail at the pre-fetch phase.</para>
+          installation of the specified version. If no such installation
+          can be located, and not fallback option is specified (see below),
+          the port will fail at the pre-fetch phase.</para>
 
           <para>The version string can indicate a specific version
           or a range with wildcards "+" and "*". Note that Java 8 and
@@ -45,7 +46,7 @@
         <listitem>
           <para>This keyword indicates an (optional) port dependency
           that will be added to the ports 'depends-lib' list in the
-          case a prior installation of java satisfying the requested
+          case a prior installation of Java satisfying the requested
           version can not be found.</para>
 
           <itemizedlist>
