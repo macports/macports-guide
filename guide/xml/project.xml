@@ -1024,9 +1024,24 @@ To use the current port, you must be in a port's directory.</screen>
         <listitem>
           <para>If a port's maintainer contains the address
           <email>openmaintainer@macports.org</email>, this means that the
-          author allows minor updates to the port without contacting them
+          author allows minor updates to the port by other committers without
+          contacting them
           first. But permission should still be sought for major
           changes.</para>
+          <para>Committers are expected to investigate as thoroughly as
+          necessary to confirm that an update is in fact minor. Some
+          projects have made quite major changes with only a tiny change
+          to the version number. And of course a committer should always
+          verify that a port not only builds but works correctly after a
+          change, before pushing it.</para>
+          <para>Pull requests for maintained ports should not be merged
+          by anyone other than
+          their creator or the port maintainer until the 72-hour timeout
+          period has passed, even if the port is openmaintainer. This is
+          because the change is either from a non-committer, or from a
+          committer who could have just pushed the change directly, and
+          by opening a PR is signalling a desire to have the change
+          reviewed by the maintainer.</para>
         </listitem>
 
         <listitem>
