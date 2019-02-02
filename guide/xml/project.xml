@@ -575,7 +575,7 @@
       system to build your new port, receiving feedback from our team,
       possibly being asked to make changes to your requested
       pull, and making those changes. (If you are asked for additional
-      changes, please squish them to avoid unnecessary
+      changes, please squash them to avoid unnecessary
       commits.)</para></listitem>
     </orderedlist>
 
