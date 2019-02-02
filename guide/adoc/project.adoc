@@ -277,7 +277,7 @@ The point is to minimize them, ideally with one commit per logical change.)
 You can do this on the appropriate GitHub page.
 For example, you can request a pull of a Portfile on https://github.com/macports/macports-ports/pulls[
 the macports-ports repository pull request page].
-. Go through the process of waiting for the CI system to build your new port, receiving feedback from our team, possibly being asked to make changes to your requested pull, and making those changes. (If you are asked for additional changes, please squish them to avoid unnecessary commits.)
+. Go through the process of waiting for the CI system to build your new port, receiving feedback from our team, possibly being asked to make changes to your requested pull, and making those changes. (If you are asked for additional changes, please squash them to avoid unnecessary commits.)
 
 We try to process pull requests very quickly.
 If you do not see activity on your request within a few days, please feel free to get in touch with us on the mailto:macports-dev@lists.macports.org[] mailing list to request a review and/or commit.
