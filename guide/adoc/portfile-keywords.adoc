@@ -54,6 +54,7 @@ epoch::
 An optional keyword (default value is 0) that must be used when a port is updated to a version that is numerically less than the previous version, for example 1.10 -> 1.2 or 20070928 -> 1.0.
 Some Portfile authors have used large epoch values that look like a date, but there is no reason to do so.
 The epoch is simply an unsigned integer, and the only requirement is that it never be decreased.
+Remember that once set, it can never be removed because it takes precedence over version and revision.
 +
 
 
