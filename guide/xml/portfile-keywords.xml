@@ -80,7 +80,9 @@
         previous version, for example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
         Some Portfile authors have used large epoch values that look like a
         date, but there is no reason to do so. The epoch is simply an unsigned
-        integer, and the only requirement is that it never be decreased.</para>
+        integer, and the only requirement is that it never be decreased. Remember
+        that once set, it can never be removed because it takes precedence over
+        version and revision.</para>
 
         <programlisting>epoch               1</programlisting>
 
