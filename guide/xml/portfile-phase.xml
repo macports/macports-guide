@@ -2542,6 +2542,47 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
         </varlistentry>
 
         <varlistentry>
+          <term>autoreconf.args</term>
+
+          <listitem>
+            <para>Arguments to pass to autoreconf.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <option>--install --verbose</option></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>autoreconf.args       --install --verbose --force</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
+          <term>autoreconf.dir</term>
+
+          <listitem>
+            <para>Directory in which to run
+            <varname>${autoreconf.cmd}</varname>.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: <varname>${worksrcpath}</varname></para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>autoreconf.dir        ./src</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
+        <varlistentry>
           <term>use_automake</term>
 
           <listitem>
