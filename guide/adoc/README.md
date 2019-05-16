@@ -85,19 +85,19 @@ locations in the sources.
 List of things that need to be fixed manually after running the conversion
 with docbookrx:
 
-* Fix book title
+* Fix book title  
   Suppress rendering of "MacPorts" in "MacPorts Guide".
 
-* Fix nested tables in project.adoc
-  docbookrx does not convert nested tables correctly (look for <tbody>).
+* Fix nested tables in project.adoc  
+  docbookrx does not convert nested tables correctly (look for `<tbody>`).
   However, nested tables are in fact supported by AsciiDoc, so this can be
   rescued with manual work.
 
-* Remove trailing whitespace
+* Remove trailing whitespace  
   docbookrx leaves some trailing whitespace at the end of lines.
   This should be cleaned up after the conversion.
 
-* Rewrite internals-hier.adoc
+* Rewrite internals-hier.adoc  
   None of the original hierarchy could be converted. Rewrite this section
   in AsciiDoc (and maybe also merge it with porthier.7 in base?).
 
@@ -105,13 +105,13 @@ with docbookrx:
   docbookrx does not know about `<glossdiv>`. The glossary only contains
   two entries, so the usefulness in its current form is doubtful.
 
-* Fix leveloffsets in portfileref.adoc
+* Fix leveloffsets in portfileref.adoc  
   Sometimes our includes start a new section and sometimes they contain
   content for the same level. There is no way for docbookrx to guess
   that correctly, so it needs to be fixed manually.
 
 * `<command>foo</command>` produces `[cmd]``foo`` `,
-  `<filename>/opt/local</filename>` produces `[path]``foo`` `
+  `<filename>/opt/local</filename>` produces `[path]``foo`` `  
   These need to be turned into proper CSS classes, so they can be styled
   accordingly like in the DocBook version of the guide.
   Note: all other named literals of DocBook will produce anonymous literals using backticks only.
