@@ -89,6 +89,11 @@ github.setup        author project version v</programlisting>
             xlink:href="https://github.com/blog/1302-goodbye-uploads">download</link>.
           </para>
         </listitem>
+        <listitem>
+          <para>
+            Distfile from Github auto-generated archive downloads
+          </para>
+        </listitem>
       </itemizedlist>
     </para>
 
