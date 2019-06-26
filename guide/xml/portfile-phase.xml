@@ -1178,6 +1178,34 @@ extract.cmd    = bzip
       </varlistentry>
 
       <varlistentry>
+        <term>use_lzip</term>
+
+        <listitem>
+          <para>This keyword is for downloads that are compressed using the
+          lzma algorithm. When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix    = .tar.lz
+extract.cmd       = lzip
+extract.pre_args  = -dc
+extract.post_args  = | tar -xf -
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_lzip             yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>use_lzma</term>
 
         <listitem>
