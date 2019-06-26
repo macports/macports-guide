@@ -690,6 +690,24 @@ When invoked, it automatically sets:
 use_bzip2           yes
 ----
 
+use_lzip::
+This keyword is for downloads that are compressed
+using the lzma algorithm.
+When invoked, it automatically sets:
+
+  extract.suffix    = .tar.lz
+  extract.cmd       = lzip
+  extract.pre_args  = -dc
+  extract.post_args = "| tar -xf -"
+
+* Default: `no`
+* Example:
+
+[source]
+----
+use_lzip            yes
+----
+
 use_lzma::
 This keyword is for downloads that are compressed using the lzma algorithm.
 When invoked, it automatically sets:
