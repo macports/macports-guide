@@ -93,6 +93,7 @@ guide-dblatex: SUFFIX = pdf
 guide-dblatex:
 	$(MKDIR) -p $(GUIDE_RESULT_DBLATEX)
 	$(DBLATEX) \
+		-P "latex.encoding=utf8" \
 		--fig-path="$(GUIDE)/resources/images" \
 		--type="$(SUFFIX)" \
 		--param='toc.section.depth=2' \
