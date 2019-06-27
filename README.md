@@ -45,7 +45,7 @@ In addition to the dependencies listed above, the PDF output format also
 requires the `dblatex` port.
 
 ```
-$ sudo port install dblatex
+$ sudo port install texlive-lang-cyrillic dblatex
 ```
 
 To generate a PDF version of the guide, use `make guide-dblatex`.
