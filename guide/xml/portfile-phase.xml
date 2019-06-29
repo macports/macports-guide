@@ -1186,8 +1186,6 @@ extract.cmd    = bzip
 
           <literallayout>extract.suffix    = .tar.lz
 extract.cmd       = lzip
-extract.pre_args  = -dc
-extract.post_args  = | tar -xf -
 
 </literallayout>
 
