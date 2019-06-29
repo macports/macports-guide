@@ -697,8 +697,6 @@ When invoked, it automatically sets:
 
   extract.suffix    = .tar.lz
   extract.cmd       = lzip
-  extract.pre_args  = -dc
-  extract.post_args = "| tar -xf -"
 
 * Default: `no`
 * Example:
