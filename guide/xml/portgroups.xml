@@ -14,7 +14,10 @@
   <para>
     <filename>${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/</filename>
   </para>
-
+  <para>or if you prefer directly in
+  <link xlink:href="https://github.com/macports/macports-ports/tree/master/_resources/port1.0/group">GitHub</link>
+  </para>
+  
   <para>A sample listing follows:</para>
     <para>
       <programlisting><prompt>%%</prompt> <userinput>ls -1 /opt/local/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/</userinput></programlisting>
