@@ -931,7 +931,7 @@ To use the current port, you must be in a port's directory.</screen>
           <para>Create a patch from the changes you made to the
             <filename>Portfile</filename> and possible related files. To do that, run</para>
 
-          <programlisting><prompt>%%</prompt> <userinput>diff -uR $(port dir $portname) . > change-$portname-maintainer.diff</userinput></programlisting>
+          <programlisting><prompt>%%</prompt> <userinput>diff -ru $(port dir $portname) . > change-$portname-maintainer.diff</userinput></programlisting>
 
           <para>in the directory where you edited the
             <filename>Portfile</filename>. You can inspect the generated

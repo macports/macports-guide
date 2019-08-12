@@ -473,7 +473,7 @@ If the build completes successfully, run `sudo
 
 [source]
 ----
-%% diff -uR $(port dir $portname) . > change-$portname-maintainer.diff
+%% diff -ru $(port dir $portname) . > change-$portname-maintainer.diff
 ----
 +
 in the directory where you edited the [path]`Portfile`.
