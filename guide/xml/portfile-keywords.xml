@@ -277,5 +277,29 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry>
+      <term>use_xcode</term>
+
+      <listitem>
+        <para>Available in 2.6.0 and later. By default, it is assumed on
+        macOS that ports will not need tools from Xcode.app unless (1)
+        Command Line Tools aren't installed, (2) you are on an old version
+        of Mac OS X that does not support the xcode-select mechanism, or (3)
+        the port uses <code>build.type xcode</code> or includes the
+        <code>xcode</code> PortGroup. If a port needs to use Xcode (i.e.,
+        xcodebuild) in any way, <code>use_xcode yes</code> should be set or
+        the port should include the xcode PortGroup. The environment
+        variable DEVELOPER_DIR is now exported during all build phases, set
+        to the value of <code>${configure.developer_dir}</code> which may be
+        the directory of Xcode or CLT depending on use_xcode. This means
+        that libxcselect shims (i.e., /usr/bin/clang) will resolve to
+        Xcode/CLT. Build systems that ignore the environment may
+        accidentally use Xcode which will cause a failure in trace mode.
+        </para>
+        <programlisting>use_xcode no</programlisting>
+        <programlisting>use_xcode yes</programlisting>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
