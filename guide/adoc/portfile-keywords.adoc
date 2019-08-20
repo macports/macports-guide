@@ -220,3 +220,22 @@ license_noconflict openssl
 ----
 license_noconflict readline gdbm
 ----
+use_xcode::
+Available in 2.6.0 and later. By default, it is assumed on macOS that ports will not need tools from Xcode.app unless (1) Command Line Tools aren't installed, (2) you are on an old version of Mac OS X that does not support the xcode-select mechanism, or (3) the port uses ``build.type xcode`` or includes the ``xcode`` PortGroup.
+If a port needs to use Xcode (i.e., xcodebuild) in any way, ``use_xcode yes`` should be set or the port should include the xcode PortGroup.
+The environment variable DEVELOPER_DIR is now exported during all build phases, set to the value of ``${configure.developer_dir}`` which may be the directory of Xcode or CLT depending on use_xcode.
+This means that libxcselect shims (i.e., /usr/bin/clang) will resolve to Xcode/CLT.
+Build systems that ignore the environment may accidentally use Xcode which will cause a failure in trace mode.
++
+
+
+[source]
+----
+use_xcode no
+----
++
+
+[source]
+----
+use_xcode yes
+----
