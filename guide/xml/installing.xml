@@ -399,6 +399,18 @@
         <para>If you use a shell other than bash (perhaps tcsh), you may need to adjust the above to fit your shell's
             syntax. Also note that depending on which version of MacPorts you have and which ports you have installed,
             not all of the above paths will exist on your system. This is OK.</para>
+
+        <para>MacPorts also creates at least one user for privilege separation. Leaving it in existence will almost
+        always do no harm, but if you really need to remove it, you can use these commands from an account with
+        admin privileges:</para>
+
+        <programlisting><prompt>$</prompt> <userinput>dscl -p . -delete /Users/macports</userinput>
+<prompt>$</prompt> <userinput>dscl -p . -delete /Groups/macports</userinput></programlisting>
+
+        <para>If you configured MacPorts to use a different username, then of course you should specify it
+        instead of <filename>macports</filename>. Individual ports may create users as well; you can remove them
+        with the same commands, but replacing <filename>macports</filename> with the username you wish to
+        delete.</para>
     </section>
 
     <section xml:id="installing.shell">
