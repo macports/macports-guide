@@ -350,7 +350,7 @@
     </section>
 
     <section xml:id="installing.macports.upgrade">
-        <title>MacPorts Upgrade</title>
+        <title>Upgrade MacPorts</title>
 
         <para>MacPorts base upgrades are performed automatically (when a newer release is available) during a <link
                 linkend="using.port.selfupdate">selfupdate</link> operation. To upgrade a copy of MacPorts that was
@@ -360,57 +360,81 @@
     </section>
 
     <section xml:id="installing.macports.uninstalling">
-        <title>Uninstall</title>
+        <title>Uninstall MacPorts</title>
 
-        <para>Uninstalling MacPorts can be a drastic step, and depending on the issue you are experiencing, you may not
-            need to do so. If you are unsure, ask on the <link
-                xlink:href="https://lists.macports.org/mailman/listinfo/macports-users">macports-users</link> mailing list
-            first.</para>
+        <para>Uninstalling MacPorts is a drastic step and, depending on the issue you are experiencing, you may not need
+            to do so. If you are unsure, ask on the <link
+                xlink:href="https://lists.macports.org/mailman/listinfo/macports-users">macports-users</link> mailing
+            list first. If you are sure you want to uninstall, read on.</para>
 
-        <para>If you need to uninstall MacPorts, and <command>port</command> is functioning, first
-        uninstall all the installed ports by running this command in the Terminal:</para>
+        <section xml:id="installing.macports.uninstalling.ports">
+            <title>Uninstall All Ports</title>
 
-        <programlisting><prompt>$</prompt> <userinput>sudo port -fp uninstall installed</userinput></programlisting>
+            <para>If you want to uninstall MacPorts and the <command>port</command> command is functioning, first
+                uninstall all the installed ports by running this command in the Terminal:</para>
 
-        <para>All that will be left in your installation prefix now will be files that were not registered to any port.
-            This includes configuration files, databases, any files which MacPorts renamed in order to allow a forced
-            installation or upgrade, and the base MacPorts software itself. You may wish to save your configuration
-            files (most are in <filename>$prefix/etc</filename>), databases, or any other unique data by moving it
-            aside.</para>
+            <programlisting><prompt>$</prompt> <userinput>sudo port -fp uninstall installed</userinput></programlisting>
 
-        <para>To remove all remaining traces of MacPorts, run the following command in the Terminal. If you have changed
-            <varname>prefix</varname>, <varname>applications_dir</varname> or <varname>frameworks_dir</varname> from
-            their default values, then replace <filename>/opt/local</filename> with your <varname>prefix</varname>,
-            replace <filename>/Applications/MacPorts</filename> with your <varname>applications_dir</varname>, and/or
-            add your <varname>frameworks_dir</varname> to the list, respectively.</para>
+            <para>All that will be left in your installation prefix now will be files that were not registered to any
+                port. This includes configuration files, databases, any files which MacPorts renamed in order to allow a
+                forced installation or upgrade, and the base MacPorts software itself. You may wish to save your
+                configuration files (most are in <filename>$prefix/etc</filename>), databases, or any other unique data
+                by moving it aside.</para>
 
-        <programlisting><prompt>$</prompt> <userinput>sudo rm -rf \
-        /opt/local \
-        /Applications/DarwinPorts \
-        /Applications/MacPorts \
-        /Library/LaunchDaemons/org.macports.* \
-        /Library/Receipts/DarwinPorts*.pkg \
-        /Library/Receipts/MacPorts*.pkg \
-        /Library/StartupItems/DarwinPortsStartup \
-        /Library/Tcl/darwinports1.0 \
-        /Library/Tcl/macports1.0 \
-        ~/.macports</userinput></programlisting>
+            <para>If the <command>port</command> command is not functioning, you can proceed on to the next steps, but
+                if you had installed any ports that install files to nonstandard locations, those files might not be
+                removed.</para>
+        </section>
 
-        <para>If you use a shell other than bash (perhaps tcsh), you may need to adjust the above to fit your shell's
-            syntax. Also note that depending on which version of MacPorts you have and which ports you have installed,
-            not all of the above paths will exist on your system. This is OK.</para>
+        <section xml:id="installing.macports.uninstalling.users">
+            <title>Remove Users and Groups</title>
 
-        <para>MacPorts also creates at least one user for privilege separation. Leaving it in existence will almost
-        always do no harm, but if you really need to remove it, you can use these commands from an account with
-        admin privileges:</para>
+            <para>When MacPorts is installed, a <filename>macports</filename> macOS user and group are created for
+                privilege separation. If you want to remove them, you can use these commands from an account that has
+                admin privileges:</para>
 
-        <programlisting><prompt>$</prompt> <userinput>dscl -p . -delete /Users/macports</userinput>
-<prompt>$</prompt> <userinput>dscl -p . -delete /Groups/macports</userinput></programlisting>
+            <programlisting><prompt>$</prompt> <userinput>dscl -p . -delete /Users/macports</userinput>
+<!--        --><prompt>$</prompt> <userinput>dscl -p . -delete /Groups/macports</userinput></programlisting>
 
-        <para>If you configured MacPorts to use a different username, then of course you should specify it
-        instead of <filename>macports</filename>. Individual ports may create users as well; you can remove them
-        with the same commands, but replacing <filename>macports</filename> with the username you wish to
-        delete.</para>
+            <para>If you configured MacPorts to use a different user or group name, then specify that instead of
+                <filename>macports</filename>.</para>
+
+            <para>Individual ports may create users and groups as well; you can remove them with the same commands, but
+                replacing <filename>macports</filename> with the user or group name you wish to delete.</para>
+        </section>
+
+        <section xml:id="installing.macports.uninstalling.everything">
+            <title>Remove the Rest of MacPorts</title>
+
+            <para>If you want to remove all remaining traces of MacPorts, run the following command in the Terminal. If
+                you have changed <varname>prefix</varname>, <varname>applications_dir</varname> or
+                <varname>frameworks_dir</varname> from their default values, then replace
+                <filename>/opt/local</filename> with your <varname>prefix</varname>, replace
+                <filename>/Applications/MacPorts</filename> with your <varname>applications_dir</varname>, and/or add
+                your <varname>frameworks_dir</varname> to the list, respectively.</para>
+
+            <para>If you are running macOS 10.15 Catalina or later and have not disabled System Integrity Protection
+                (SIP), you will need to <link linkend="installing.macports.uninstalling.users">remove the
+                    <filename>macports</filename> user</link> first.</para>
+
+            <programlisting><prompt>$</prompt> <userinput>sudo rm -rf \
+<!--        -->    /opt/local \
+<!--        -->    /Applications/DarwinPorts \
+<!--        -->    /Applications/MacPorts \
+<!--        -->    /Library/LaunchDaemons/org.macports.* \
+<!--        -->    /Library/Receipts/DarwinPorts*.pkg \
+<!--        -->    /Library/Receipts/MacPorts*.pkg \
+<!--        -->    /Library/StartupItems/DarwinPortsStartup \
+<!--        -->    /Library/Tcl/darwinports1.0 \
+<!--        -->    /Library/Tcl/macports1.0 \
+<!--        -->    ~/.macports</userinput></programlisting>
+
+            <para>If you use a shell other than bash (perhaps tcsh), you may need to adjust the above to fit your
+                shell's syntax.</para>
+
+            <para>Depending on which version of MacPorts you have and which ports you have installed, not all of the
+                above paths will exist on your system; this is OK.</para>
+        </section>
     </section>
 
     <section xml:id="installing.shell">
