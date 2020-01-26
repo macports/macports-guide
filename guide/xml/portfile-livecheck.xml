@@ -214,6 +214,46 @@ livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
         </itemizedlist>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.ignore_sslcert</term>
+
+      <listitem>
+        <para>Disables verification of the server's SSL certificate.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <option>no</option></para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.ignore_sslcert       yes</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>livecheck.compression</term>
+
+      <listitem>
+        <para>Sets the Accept-Encoding HTTP header in the request and automatically decompresses the server's response.</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>Default: <option>yes</option></para>
+          </listitem>
+
+          <listitem>
+            <para>Example:</para>
+
+            <programlisting>livecheck.compression       no</programlisting>
+          </listitem>
+        </itemizedlist>
+      </listitem>
+    </varlistentry>
   </variablelist>
 
   <para>Distcheck reports whether or not the distfile(s) specified in a
