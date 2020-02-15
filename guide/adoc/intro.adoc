@@ -46,5 +46,5 @@ File text.
 * Other special text types.
 ** A hyperlink: https://en.wikipedia.org/wiki/Spontaneous_combustion[spontaneous combustion].
 ** A file: [path]`/var/log/system.log`.
-** A command: [cmd]``ifconfig``.
-** An option: port `install`
+** A command: [cmd]``+ifconfig+``.
+** An option: port `+install+`

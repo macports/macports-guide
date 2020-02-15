@@ -1,0 +1,44 @@
+[[reference.portgroup.java]]
+= PortGroup java
+
+PortGroup java is useful for Java packages.
+
+[[reference.portgroup.java.keywords]]
+== java PortGroup Specific Keywords
+
+Portfiles using the java PortGroup allow for port authors to set the following keywords in addition to the general Portfile keywords.
+
+java.version::
+This keyword indicates that the port requires a Java installation of the specified version.
+If no such installation can be located, and no fallback option is specified (see below), the port will fail at the pre-fetch phase.
++
+The version string can indicate a specific version or a range with wildcards "+" and "*". Note that Java 8 and earlier are "1.8", etc., while Java 9 and later are "9", etc.
+
+* Type: optional
+* Example:
++
+
+[source]
+----
+java.version    1.8+
+----
+
+java.fallback::
+This keyword indicates an (optional) port dependency that will be added to the ports 'depends-lib' list in the case a prior installation of Java satisfying the requested version can not be found.
+
+* Type: optional
+* Example:
++
+
+[source]
+----
+java.fallback   openjdk10
+----
+
+[[reference.portgroup.java.sugar]]
+== java PortGroup Sugar
+
+Portfiles using PortGroup java do not need to define the following variables:
+
+configure.env, build.env, destroot.env::
+Default: JAVA_HOME=(detected value)

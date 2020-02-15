@@ -82,12 +82,12 @@ categories          net security
 maintainers::
 A port's maintainers are the people who have agreed to take responsibility for keeping the port up-to-date.
 Most ports have only a single maintainer, but some ports have two or more co-maintainers.
-The `maintainers` keyword lists the maintainers' GitHub usernames or email addresses.
-GitHub usernames start with an `@` symbol.
+The `+maintainers+` keyword lists the maintainers' GitHub usernames or email addresses.
+GitHub usernames start with an `+@+` symbol.
 Email addresses are preferably listed in the obfuscated form below to hide them from spambots:
 
 * For addresses in domain @macports.org, simply omit the domain name.
-* For addresses in other domains, e.g., mailto:account@example.org[], use the convention `example.org:account` to specify the address.
+* For addresses in other domains, e.g., mailto:account@example.org[], use the convention `+example.org:account+` to specify the address.
 
 +
 In the example below, the port is maintained by a GitHub user named neverpanic, and the owners of the two email addresses mailto:jdoe@macports.org[] and mailto:julesverne@example.org[]
@@ -114,10 +114,10 @@ maintainers         {@jverne example.org:julesverne}
 
 [NOTE]
 ====
-The address `nomaintainer` designates a port that is not maintained by anybody and may be modified by any committer.
+The address `+nomaintainer+` designates a port that is not maintained by anybody and may be modified by any committer.
 Feel free to claim maintainership of a nomaintainer port if desired.
-The address `openmaintainer` designates a port that has a maintainer who allows minor changes to be committed without his or her prior approval.
-Port maintainers who are not committers are encouraged to add `openmaintainer` to their ports.
+The address `+openmaintainer+` designates a port that has a maintainer who allows minor changes to be committed without his or her prior approval.
+Port maintainers who are not committers are encouraged to add `+openmaintainer+` to their ports.
 ====
 description::
 A one-sentence description of the ported software.
@@ -152,9 +152,9 @@ homepage            https://www.example.org/apps
 platforms::
 A list of the platforms on which the port has been tested.
 Required, but not interpreted in any way by the software at this time; it is purely informational for users.
-Possible values: `darwin` (= `macosx` or ``puredarwin``), ``macosx``, ``puredarwin``, ``freebsd``, ``linux``, ``sunos``, ``netbsd``.
-In general, it can just be set to ``darwin``.
-(``puredarwin`` is an OS based on Apple's open-source Darwin releases without any of Apple's proprietary bits.) See also ``os.platform``.
+Possible values: `+darwin+` (= `+macosx+` or ``+puredarwin+``), ``+macosx+``, ``+puredarwin+``, ``+freebsd+``, ``+linux+``, ``+sunos+``, ``+netbsd+``.
+In general, it can just be set to ``+darwin+``.
+(``+puredarwin+`` is an OS based on Apple's open-source Darwin releases without any of Apple's proprietary bits.) See also ``+os.platform+``. 
 +
 
 
@@ -166,7 +166,7 @@ supported_archs::
 The CPU architectures for which this port can be built.
 Archs currently supported by macOS are: i386, ppc, ppc64, x86_64.
 If this option is not set, it is assumed that the port can build for all archs.
-If a port does not install any architecture-specific files, use the special value ``noarch``.
+If a port does not install any architecture-specific files, use the special value ``+noarch+``.
 +
 If the building architecture isn't among supported_archs, port fails with an error message, except when building on x86_64 and supported_archs contains i386 or when building on ppc64 and supported_archs contains ppc, in which case the port will be built in 32-bit mode.
 +
@@ -185,7 +185,7 @@ supported_archs           noarch
 license::
 The proper format for license consists of the license name, followed by a hyphen and number if indicating a specific version.
 A space should be placed between licenses if there is more than one that applies.
-If an element in the license list is itself a list, it is interpreted as offering a choice of any one of the licenses in the sub-list.
+If an element in the license list is itself a list, it is interpreted as offering a choice of any one of the licenses in the sub-list. 
 +
 If the version number is a "`$$.$$0`" version, the "`$$.$$0`" should be omitted to make the version an integer.
 If the author gives the choice of using a given license or "`any later version`" of it, append a plus sign (+) to the version number.
@@ -206,7 +206,7 @@ license           {freetype GPL}
 license_noconflict::
 By default, it is assumed that ports may use libraries or headers from their dependencies and thus form a derivative work.
 A dependency with an incompatible license thus prevents the port from being distributed in binary form.
-If a dependency with an incompatible license is not used in such a way that a derivative work is formed, or should not prevent binary distribution for any other reason, add its name to this list.
+If a dependency with an incompatible license is not used in such a way that a derivative work is formed, or should not prevent binary distribution for any other reason, add its name to this list. 
 +
 
 
@@ -221,11 +221,12 @@ license_noconflict openssl
 license_noconflict readline gdbm
 ----
 use_xcode::
-Available in 2.6.0 and later. By default, it is assumed on macOS that ports will not need tools from Xcode.app unless (1) Command Line Tools aren't installed, (2) you are on an old version of Mac OS X that does not support the xcode-select mechanism, or (3) the port uses ``build.type xcode`` or includes the ``xcode`` PortGroup.
-If a port needs to use Xcode (i.e., xcodebuild) in any way, ``use_xcode yes`` should be set or the port should include the xcode PortGroup.
-The environment variable DEVELOPER_DIR is now exported during all build phases, set to the value of ``${configure.developer_dir}`` which may be the directory of Xcode or CLT depending on use_xcode.
+Available in 2.6.0 and later.
+By default, it is assumed on macOS that ports will not need tools from Xcode.app unless (1) Command Line Tools aren't installed, (2) you are on an old version of Mac OS X that does not support the xcode-select mechanism, or (3) the port uses `+build.type xcode+` or includes the `+xcode+` PortGroup.
+If a port needs to use Xcode (i.e., xcodebuild) in any way, `+use_xcode yes+` should be set or the port should include the xcode PortGroup.
+The environment variable DEVELOPER_DIR is now exported during all build phases, set to the value of `+${configure.developer_dir}+` which may be the directory of Xcode or CLT depending on use_xcode.
 This means that libxcselect shims (i.e., /usr/bin/clang) will resolve to Xcode/CLT.
-Build systems that ignore the environment may accidentally use Xcode which will cause a failure in trace mode.
+Build systems that ignore the environment may accidentally use Xcode which will cause a failure in trace mode. 
 +
 
 

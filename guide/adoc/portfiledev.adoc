@@ -37,8 +37,8 @@ The main phases you need to be aware of when making a Portfile are these:
 * Build
 * Destroot
 
-The default installation phase behavior performed by the MacPorts base works fine for applications that use the standard [cmd]``configure``, [cmd]``make``, and [cmd]``make
-    install`` steps, which conform to phases configure, build, and destroot respectively.
+The default installation phase behavior performed by the MacPorts base works fine for applications that use the standard [cmd]``+configure+``, [cmd]``+make+``, and [cmd]``+make
+    install+`` steps, which conform to phases configure, build, and destroot respectively.
 For applications that do not conform to this standard behavior, any installation phase may be augmented using <<development.examples.augment,pre- and/or post- phases>>, or even <<development.examples.override,overridden>> or <<development.examples.eliminate,eliminated>>.
 See <<development.examples,Example Portfiles>> below.
 
@@ -50,7 +50,7 @@ For a detailed description of all port phases, see the <<reference.phases,Portfi
 [[development.creating-portfile]]
 == Creating a Portfile
 
-Here we list the individual Portfile components for an application that conforms to the standard [cmd]``configure``, [cmd]``make``, and [cmd]``make install`` steps of most open source application installs.
+Here we list the individual Portfile components for an application that conforms to the standard [cmd]``+configure+``, [cmd]``+make+``, and [cmd]``+make install+`` steps of most open source application installs.
 
 . Modeline
 +
@@ -106,7 +106,7 @@ platforms           darwin
 . Port maintainers
 +
 A port's maintainers are the people who have agreed to take responsibility for keeping the port up-to-date.
-The `maintainers` keyword lists the maintainers' GitHub usernames or email addresses, preferably in the obfuscated form which hides them from spambots.
+The `+maintainers+` keyword lists the maintainers' GitHub usernames or email addresses, preferably in the obfuscated form which hides them from spambots.
 For more, see the full explanation of the <<reference.keywords.maintainers,maintainers keyword>> in the <<reference.keywords,Global Keywords>> section of the <<reference,Portfile Reference>> chapter.
 +
 
@@ -150,12 +150,14 @@ master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
 +
 The checksums specified in a Portfile are checked with the fetched tarball for security.
 For the best security, use rmd160  and sha256 checksum types.
+Checksums should also include the target file's size.
 +
 
 [source]
 ----
 checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                        size    1061530
 ----
 +
 To find the correct checksums for a port's distribution file, follow one of these examples:
@@ -257,7 +259,8 @@ master_sites        https://oss.oetiker.ch/rrdtool/pub/ \
                     ftp://ftp.pucpr.br/rrdtool/
 
 checksums           rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+                    sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                    size    1061530
 
 depends_lib         path:bin/perl:perl5 \
                     port:tcl \
@@ -307,8 +310,8 @@ build {}
 
 [NOTE]
 ====
-Because many software packages do not use ``configure``, a keyword is provided to eliminate the `configure` phase.
-Another exception is the `destroot` phase may not be eliminated.
+Because many software packages do not use ``+configure+``, a keyword is provided to eliminate the `+configure+` phase.
+Another exception is the `+destroot+` phase may not be eliminated.
 See the chapter <<reference,Portfile Reference>> for full information.
 ====
 
@@ -370,7 +373,7 @@ Variant names may contain only the characters A-Z, a-z, and the underscore chara
 Therefore, take care to never use hyphens in variant names.
 ====
 
-In the example variant declaration below, the configure argument `--without-x` is removed and a number of others are appended.
+In the example variant declaration below, the configure argument `+--without-x+` is removed and a number of others are appended.
 
 [source]
 ----
@@ -431,7 +434,7 @@ The default_variant keyword may only be used in the global Portfile section.
 [[development.patches]]
 == Patch Files
 
-Patch files are files created with the Unix command [cmd]``diff`` that are applied using the command [cmd]``patch`` to modify text files to fix bugs or extend functionality.
+Patch files are files created with the Unix command [cmd]``+diff+`` that are applied using the command [cmd]``+patch+`` to modify text files to fix bugs or extend functionality.
 
 [[development.patches.portfile]]
 === Creating Portfile Patches
@@ -447,7 +450,7 @@ Follow the steps below to create Portfile patch files
 %% cp -p Portfile Portfile.orig
 ----
 . Edit the file to make it as you want it to be after it is fetched.
-. Now use the Unix command [cmd]``diff -u ``to create a "`unified`" diff patch file. Put the name of the port in the patchfile, for example, Portfile-rrdtool.diff.
+. Now use the Unix command [cmd]``+diff -u +``to create a "`unified`" diff patch file. Put the name of the port in the patchfile, for example, Portfile-rrdtool.diff.
 +
 
 [source]
@@ -489,8 +492,8 @@ Now you may attach the patch file to a MacPorts Trac ticket for the port author 
 Necessary or useful patches to application source code should generally be sent to the application developer rather than the port author so the modifications may be included in the next version of the application.
 
 Generally speaking, you should create one patch file for each logical change that needs to be applied.
-Patchfile filenames should uniquely distinguish the file and generally be of the form [path]`patch-```<identifier>``[path]`.diff`, where the `identifier` is a reference to the problem or bug it is supposed to solve.
-An example filename would be [path]`patch-```destdir-variable-fix``[path]`.diff`.
+Patchfile filenames should uniquely distinguish the file and generally be of the form [path]`patch-```+<identifier>+``[path]`.diff`, where the `+identifier+` is a reference to the problem or bug it is supposed to solve.
+An example filename would be [path]`patch-```+destdir-variable-fix+``[path]`.diff`.
 
 To create a patch to modify a single file, follow the steps below.
 
@@ -503,7 +506,7 @@ To create a patch to modify a single file, follow the steps below.
 %% cp -p Makefile.in Makefile.in.orig
 ----
 . Edit the file and modify the text to reflect your corrections.
-. Now [cmd]``cd`` to the top-level directory of the unpacked source, and use the Unix command [cmd]``diff -u`` to create a "`unified`" diff patch file.
+. Now [cmd]``+cd+`` to the top-level directory of the unpacked source, and use the Unix command [cmd]``+diff -u+`` to create a "`unified`" diff patch file.
 +
 
 [source]
@@ -512,14 +515,14 @@ To create a patch to modify a single file, follow the steps below.
 %% diff -u src/Makefile.in.orig src/Makefile.in > patch-destdir-variable-fix.diff
 ----
 +
-You should execute [cmd]``diff`` from the top-level directory of the unpacked source code, because during the patch phase MacPorts by default uses the patch argument ``-p0``, which does not strip prefixes with any leading slashes from file names found in the patch file (as opposed to `-p1` that strips one, etc), and any path not relative to the top-level directory of the unpacked source will fail during the patch phase.
+You should execute [cmd]``+diff+`` from the top-level directory of the unpacked source code, because during the patch phase MacPorts by default uses the patch argument ``+-p0+``, which does not strip prefixes with any leading slashes from file names found in the patch file (as opposed to `+-p1+` that strips one, etc), and any path not relative to the top-level directory of the unpacked source will fail during the patch phase.
 +
 
 [NOTE]
 ====
-If you find an existing source file patch you wish to use that contains leading path information (diff was executed from a directory higher than the top-level source directory), you will need to use the <<reference.phases.patch,patch phase keyword>>``patch.pre_args`` to specify a `-px` value for how many prefixes with leading slashes are to be stripped off.
+If you find an existing source file patch you wish to use that contains leading path information (diff was executed from a directory higher than the top-level source directory), you will need to use the <<reference.phases.patch,patch phase keyword>>``+patch.pre_args+`` to specify a `+-px+` value for how many prefixes with leading slashes are to be stripped off.
 ====
-. A patch file that is a "`unified`" diff file is the easiest to interpret by humans and this type should always be used for ports. See the example below where a patch adds `DESTDIR` support to [path]`Makefile.in`.
+. A patch file that is a "`unified`" diff file is the easiest to interpret by humans and this type should always be used for ports. See the example below where a patch adds `+DESTDIR+` support to [path]`Makefile.in`.
 +
 
 [source]
@@ -536,7 +539,7 @@ If you find an existing source file patch you wish to use that contains leading 
 -       cp $(TEXT) $(INSTALL_LIB)/
 +       cp $(TEXT) $(DESTDIR)$(INSTALL_LIB)/
 ----
-. Place the patch [path]`patch-destdir-variable-fix.diff` in the directory [path]`${portpath}/files` and use it in a port using the `patchfiles` keyword. `${portpath}` may be in a local Portfile repository during development, or [path]`files/` may be in a port's `${portpath}` in the global MacPorts repository.
+. Place the patch [path]`patch-destdir-variable-fix.diff` in the directory [path]`${portpath}/files` and use it in a port using the `+patchfiles+` keyword. `+${portpath}+` may be in a local Portfile repository during development, or [path]`files/` may be in a port's `+${portpath}+` in the global MacPorts repository.
 +
 
 [source]
@@ -596,7 +599,7 @@ rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]
 
 [NOTE]
 ====
-The file URL should always appear before the rsync URL so that local Portfiles can be tested that are duplicated in the MacPorts tree, because [cmd]``port`` will always operate on the first Portfile it encounters.
+The file URL should always appear before the rsync URL so that local Portfiles can be tested that are duplicated in the MacPorts tree, because [cmd]``+port+`` will always operate on the first Portfile it encounters.
 ====
 . Place the Portfiles you create inside a directory whose name matches the port, which should in turn be placed inside a directory that reflects the port's primary category (the first category entry in the Portfile). For example, to create the directory for a hypothetical port "`bestevergame`" and to begin editing its Portfile in TextEdit, you can use these commands:
 +
@@ -612,7 +615,7 @@ The file URL should always appear before the rsync URL so that local Portfiles c
 See other sections in the Guide for help writing Portfiles.
 If you've already written the Portfile elsewhere, you can instead copy the Portfile into this directory.
 . If your Portfile needs to apply any patches to the port's source files, create a [path]`files` directory and place the patchfiles in it, and reference the patchfiles in your Portfile, as explained in <<development.patches.source,Creating Source Code Patches>>.
-. After you create or update your Portfile, use [cmd]``portindex`` in the local repository's directory to create or update the index of the ports in your local repository.
+. After you create or update your Portfile, use [cmd]``+portindex+`` in the local repository's directory to create or update the index of the ports in your local repository.
 +
 
 [source]
@@ -679,7 +682,8 @@ Indent the additional lines to the same column that the right side begins on in 
 [source]
 ----
 checksums               rmd160  7bbfce4fecc2a8e1ca081169e70c1a298ab1b75a \
-                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53
+                        sha256  2829fcb7393bac85925090b286b1f9c3cd3fbbf8e7f35796ef4131322509aa53 \
+                        size    1061530
 ----
 
 Should a key item such as a phase or variant require braces, the opening brace should appear on the same line and the closing brace should be on its own line.
@@ -695,7 +699,7 @@ variant mysql5 description {Enable support for MySQL 5} {
 ----
 
 Frequently multiple items are necessary in the second column.
-For example, to set multiple source download locations, multiple `master_sites` must be defined.
+For example, to set multiple source download locations, multiple `+master_sites+` must be defined.
 Unless the second column items are few and short you should place each additional item on a new line and separate lines with a backslash.
 Indent the lines after the first line to make it clear the items are second column values and also to emphasize the unity of the block.
 
@@ -729,7 +733,7 @@ TODO: Set variables so changing paths may be done in one place; use them anytime
 [[development.practices.rename-replace-port]]
 === Renaming or replacing a port
 
-If there is the need to replace a port with another port or a renaming is necessary for some reason, the port should be marked as ``replaced_by``.
+If there is the need to replace a port with another port or a renaming is necessary for some reason, the port should be marked as ``+replaced_by+``.
 
 As an illustration of a typical workflow the port "`skrooge-devel`" shall be taken.
 This port had been used for testing new versions of skrooge, but it turned out to have become unnecessary due to the fact that skrooge's developers currently prefer a distribution via port "`skrooge`" instead. 
@@ -781,23 +785,23 @@ depends_lib-append  port:kdelibs4 \
                     port:oxygen-icons
 ----
 
-The following steps have to be taken to ensure a smooth transition for a MacPorts user updating his local installation using ``sudo port upgrade``:
+The following steps have to be taken to ensure a smooth transition for a MacPorts user updating his local installation using ``+sudo port upgrade+``:
 
-. add the line `replaced_by foo` where foo is the port this one is replaced by; when a user upgrades this port, MacPorts will instead install the replacement port
+. add the line `+replaced_by foo+` where foo is the port this one is replaced by; when a user upgrades this port, MacPorts will instead install the replacement port
 +
 
 [source]
 ----
 replaced_by         skrooge
 ----
-. increase the version, revision, or epoch, so that users who have this port installed will get notice in `port outdated` that they should upgrade it and trigger the above process
+. increase the version, revision, or epoch, so that users who have this port installed will get notice in `+port outdated+` that they should upgrade it and trigger the above process
 +
 
 [source]
 ----
 revision            1
 ----
-. clear distfiles (have a line reading only ``distfiles``) so that no distfile is downloaded for this stub port
+. clear distfiles (have a line reading only ``+distfiles+``) so that no distfile is downloaded for this stub port
 +
 
 [source]
@@ -812,7 +816,7 @@ distfiles
 ----
 livecheck.type      none
 ----
-. add a pre-configure block with a `ui_error` and `return -code error` explaining to users who try to install this port that the port has been replaced
+. add a pre-configure block with a `+ui_error+` and `+return -code error+` explaining to users who try to install this port that the port has been replaced
 +
 
 [source]
@@ -942,7 +946,7 @@ For details have a look at the PortGroup's source code in [path]`${prefix}/var/m
 
 [NOTE]
 ====
-`replaced_by` can be specified before or after the `PortGroup` line.
+`+replaced_by+` can be specified before or after the `+PortGroup+` line.
 ====
 
 [[development.practices.removing-port]]

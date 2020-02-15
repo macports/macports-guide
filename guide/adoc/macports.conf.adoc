@@ -47,7 +47,7 @@ portdbformat::
 Formerly selected the storage type to use for the MacPorts registry: flat or sqlite.
 Currently, only sqlite can be used.
 +
-Default: `sqlite`
+Default: `+sqlite+`
 
 build_arch::
 The machine architecture for which to build in normal use.
@@ -55,9 +55,9 @@ Options include: ppc, i386, ppc64, x86_64
 +
 Default: 
 +
-(Snow Leopard and later) `x86_64` or `i386` depending on hardware
+(Snow Leopard and later) `+x86_64+` or `+i386+` depending on hardware
 +
-(Leopard/Tiger) `i386` or `ppc` depending on hardware
+(Leopard/Tiger) `+i386+` or `+ppc+` depending on hardware
 
 applications_dir::
 Directory in which ports will install native macOS application bundles.
@@ -79,7 +79,7 @@ Controls whether ports are built from source or downloaded as pre-built archives
 Setting to 'always' will never use archives, 'never' will always try to use an archive and fail if one is not available.
 'ifneeded' will try to fetch an archive and fall back to building from source if that isn't possible.
 +
-Default: `ifneeded`
+Default: `+ifneeded+`
 
 portarchivetype::
 Format of archives in which to store port images.
@@ -92,17 +92,17 @@ Default: [path]`tbz2`
 configureccache::
 Use ccache (C/C++ compiler cache) - see https://ccache.samba.org/
 +
-Default: `no`
+Default: `+no+`
 
 configuredistcc::
 Use distcc (distributed compiler) - see https://distcc.samba.org/
 +
-Default: `no`
+Default: `+no+`
 
 configurepipe::
 Use pipes rather than intermediate files when compiling C/C++/etc
 +
-Default: `yes`
+Default: `+yes+`
 
 buildnicevalue::
 Lowered scheduling priority (0-20) to use for make when building ports.
@@ -118,7 +118,7 @@ Default: 0
 portautoclean::
 Set whether to automatically execute "`clean`" after "`install`" of ports.
 +
-Default: `yes`
+Default: `+yes+`
 
 rsync_server::
 Rsync server from which to fetch MacPorts sources.
@@ -185,24 +185,24 @@ Options for MacPorts Universal Binaries (+universal variant)
 universal_archs::
 The machine architectures to use for +universal variant (multiple entries must be space delimited). Options include: ppc, i386, ppc64, x86_64
 +
-Default: `x86_64 i386` (``ppc
-i386`` for 10.5 and earlier)
+Default: `+x86_64 i386+` (``+ppc
+i386+`` for 10.5 and earlier)
 
 Options for StartupItems
 
 startupitem_type::
-Options for generated startup items, though this may be overridden by the `startupitem.type` Portfile key.
+Options for generated startup items, though this may be overridden by the `+startupitem.type+` Portfile key.
 Options are "`default`" option, "`SystemStarter`", "`launchd`", or "`none`".
 For an empty or "`default`" option, a startupitem type appropriate to the platform is used; if "`none`", no port startupitems are installed.
 +
-Default: `default`
+Default: `+default+`
 
 startupitem_install::
 Create system-level symlinks to generated StartupItems.
 If set to "`no`", symlinks will not be created; otherwise, symlinks will be placed in [path]`/Library/LaunchDaemons` or [path]`/Library/LaunchAgents` as appropriate.
 This setting only applies when building ports from source.
 +
-Default: `yes`
+Default: `+yes+`
 
 Other options
 
@@ -222,12 +222,12 @@ Default: yes
 [[internals.configuration-files.sources-conf]]
 == sources.conf
 
-This file enables rsync synchronization of the default ports tree with the MacPorts rsync server when either of the commands [cmd]``port
-    selfupdate`` or [cmd]``port sync`` are run.
+This file enables rsync synchronization of the default ports tree with the MacPorts rsync server when either of the commands [cmd]``+port
+    selfupdate+`` or [cmd]``+port sync+`` are run.
 
 Default: [path]`rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]`
 
-Optional local repositories are enabled using a file url: `file:///path/to/localportsrepository`
+Optional local repositories are enabled using a file url: `+file:///path/to/localportsrepository+`
 
 [[internals.configuration-files.variants-conf]]
 == variants.conf

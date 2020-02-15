@@ -1,20 +1,20 @@
 [[reference.portgroup.xcode]]
 = PortGroup xcode
 
-`PortGroup xcode` allows for efficient porting of Xcode-based opensource software.
-A minimum Portfile for `PortGroup
-  xcode` uses defaults for the configuration, build, and destroot phases.
+`+PortGroup xcode+` allows for efficient porting of Xcode-based opensource software.
+A minimum Portfile for `+PortGroup
+  xcode+` uses defaults for the configuration, build, and destroot phases.
 It also defines some values for Xcode-based software.
 
-Using `PortGroup xcode` is a way to make your port able to tolerate Xcode version updates because the PortGroup is tested against all supported macOS and Xcode versions.
+Using `+PortGroup xcode+` is a way to make your port able to tolerate Xcode version updates because the PortGroup is tested against all supported macOS and Xcode versions.
 
 [[reference.portgroup.xcode.keywords]]
 == xcode PortGroup Specific Keywords
 
-Portfiles using `PortGroup xcode` allow for port authors to set the following keywords in addition to the general Portfile keywords.
+Portfiles using `+PortGroup xcode+` allow for port authors to set the following keywords in addition to the general Portfile keywords.
 
 xcode.project::
-The path relative to `${build.dir}` and `${destroot.dir}` of the Xcode project.
+The path relative to `+${build.dir}+` and `+${destroot.dir}+` of the Xcode project.
 If unset, Xcode Tools should be able to determine it automatically.
 It usually succeeds if there is only a single project in the directory.
 
@@ -32,7 +32,7 @@ xcode.configuration::
 Project configuration/buildstyle to use.
 
 * Type: optional
-* Default: `Deployment`
+* Default: `+Deployment+`
 * Example:
 +
 
@@ -42,7 +42,7 @@ xcode.configuration Main
 ----
 
 xcode.target::
-If present, it overrides `build.target` and ``destroot.target``.
+If present, it overrides `+build.target+` and ``+destroot.target+``.
 
 * Type: optional
 * Default: none
@@ -71,10 +71,10 @@ xcode.build.settings FRAMEWORK_SEARCH_PATHS=${frameworks_dir}
 xcode.destroot.type::
 Type of project that will be installed.
 This tells the PortGroup xcode how to destroot the project.
-Correct values are `application` and ``framework``.
+Correct values are `+application+` and ``+framework+``.
 
 * Type: optional
-* Default: `application`
+* Default: `+application+`
 * Example:
 +
 
@@ -87,7 +87,7 @@ xcode.destroot.path::
 Where to install the build product.
 
 * Type: optional
-* Default: [path]`${frameworks_dir}` or [path]`${applications_dir}` depending on ``xcode.destroot.type``.
+* Default: [path]`${frameworks_dir}` or [path]`${applications_dir}` depending on ``+xcode.destroot.type+``.
 
 xcode.destroot.settings::
 Additional settings passed to the xcodebuild tool during the destroot phase.
@@ -108,14 +108,14 @@ Settings passed to the xcodebuild tool when the +universal variant is selected.
 These settings should be in the X=Y form.
 
 * Type: optional
-* Default: `ARCHS="${universal_archs}" MACOSX_DEPLOYMENT_TARGET=${universal_target}`
+* Default: `+ARCHS="${universal_archs}" MACOSX_DEPLOYMENT_TARGET=${universal_target}+`
 
 xcode.universal.sdk::
 SDK to use when the +universal variant is selected.
 The argument may be an absolute path to an SDK, or the canonical name of an SDK.
 
 * Type: optional
-* Default: `${universal_sysroot}`
+* Default: `+${universal_sysroot}+`
 
 [[reference.portgroup.xcode.sugar]]
 == xcode PortGroup Sugar
@@ -145,20 +145,20 @@ See
 
 
 build.cmd::
-Default: ``${xcodebuildcmd}``.
+Default: ``+${xcodebuildcmd}+``.
 
 build.target::
 Default: ""
 +
-This variable will be ignored if `xcode.target` is set.
+This variable will be ignored if `+xcode.target+` is set.
 
 build.args::
-Default: `build`
+Default: `+build+`
 
 destroot.cmd::
-Default: `${xcodebuildcmd}`
+Default: `+${xcodebuildcmd}+`
 
 destroot.target::
 Default: ""
 +
-This variable will be ignored if `xcode.target` is set.
+This variable will be ignored if `+xcode.target+` is set.

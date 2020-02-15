@@ -9,27 +9,27 @@ For example, you may not uninstall a port that is a library dependency for anoth
 Likewise, if you run the fetch target for a port, only the fetch dependencies will be installed first, so they should be all that is needed for that target.
 
 depends_fetch::
-The list of dependencies to check before phases ``fetch``, ``checksum``, ``extract``, ``patch``, ``configure``, ``build``, ``destroot``, ``install``, and ``package``.
+The list of dependencies to check before phases ``+fetch+``, ``+checksum+``, ``+extract+``, ``+patch+``, ``+configure+``, ``+build+``, ``+destroot+``, ``+install+``, and ``+package+``.
 Fetch dependencies are needed to download the distfiles for a port, and are not needed at all once the software is installed.
 
 depends_extract::
-The list of dependencies to check before phases ``extract``, ``patch``, ``configure``, ``build``, ``destroot``, ``install``, and ``package``.
+The list of dependencies to check before phases ``+extract+``, ``+patch+``, ``+configure+``, ``+build+``, ``+destroot+``, ``+install+``, and ``+package+``.
 Extract dependencies are needed to unpack a port's distfiles into the work directory, and are not needed at all once the software is installed.
 
 depends_build::
-The list of dependencies to check before phases ``configure``, ``build``, ``destroot``, ``install``, and ``package``.
+The list of dependencies to check before phases ``+configure+``, ``+build+``, ``+destroot+``, ``+install+``, and ``+package+``.
 Build dependencies are needed when software is being built, but not needed at all once it is installed.
 
 depends_lib::
-The list of dependencies to check before phases ``configure``, ``build``, ``destroot``, ``install``, and ``package``.
+The list of dependencies to check before phases ``+configure+``, ``+build+``, ``+destroot+``, ``+install+``, and ``+package+``.
 Library dependencies are needed both at build time (for headers and libraries to link against) and at run time.
 
 depends_test::
-The list of dependencies to check before phase ``test``.
-Test dependencies are only needed when the port enables testing (i.e. ``test.run            yes``). 
+The list of dependencies to check before phase ``+test+``.
+Test dependencies are only needed when the port enables testing (i.e. ``+test.run            yes+``). 
 
 depends_run::
-The list of dependencies to check before phases ``destroot``, ``install``, and ``package``.
+The list of dependencies to check before phases ``+destroot+``, ``+install+``, and ``+package+``.
 Run dependencies are needed when the software is run, but not to compile it.
 
 [[reference.dependencies.types]]
@@ -53,17 +53,17 @@ depends_run         port:apache2 port:php5
 ----
 
 File dependencies should only be used if one of the reasons listed above applies.
-There are three types: `bin` for programs, `lib` for libraries, and `path` for any installed file.
-File dependencies are specified in the form: ``<type>``:``<filespec>``:``<port>``.
+There are three types: `+bin+` for programs, `+lib+` for libraries, and `+path+` for any installed file.
+File dependencies are specified in the form: ``+<type>+``:``+<filespec>+``:``+<port>+``.
 
-For `bin` dependencies, `<filespec>` is the name of a program in a bin directory like [path]`${prefix}/bin`, /usr/bin, /bin, and the associated sbin directories.
+For `+bin+` dependencies, `+<filespec>+` is the name of a program in a bin directory like [path]`${prefix}/bin`, /usr/bin, /bin, and the associated sbin directories.
 
-For `lib` dependencies, `<filespec>` is the name of a library (but without its extension) in a lib directory like [path]`${prefix}/lib`, /usr/lib, /lib, some Framework directories, and those found in environment variables like DYLD_LIBRARY_PATH.
+For `+lib+` dependencies, `+<filespec>+` is the name of a library (but without its extension) in a lib directory like [path]`${prefix}/lib`, /usr/lib, /lib, some Framework directories, and those found in environment variables like DYLD_LIBRARY_PATH.
 
-For `path` dependencies, `<filespec>` is the complete absolute path to the file, or more usually, when the file is inside [path]`${prefix}`, it is specified relative to [path]`${prefix}`.
-Since `path` dependencies are the only ones which would find files only in an absolute path or a path inside [path]`${prefix}` they are - in cases when a port needs to be more restrictive - often used instead of `bin` and `lib` dependencies .
+For `+path+` dependencies, `+<filespec>+` is the complete absolute path to the file, or more usually, when the file is inside [path]`${prefix}`, it is specified relative to [path]`${prefix}`.
+Since `+path+` dependencies are the only ones which would find files only in an absolute path or a path inside [path]`${prefix}` they are - in cases when a port needs to be more restrictive - often used instead of `+bin+` and `+lib+` dependencies .
 
-Note that the `<port>` specified is only installed if the specified library, binary, or file is not found.
+Note that the `+<port>+` specified is only installed if the specified library, binary, or file is not found.
 See the examples below:
 
 [source]

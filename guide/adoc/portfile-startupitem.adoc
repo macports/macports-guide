@@ -3,14 +3,17 @@
 
 A StartupItem is a MacPorts facility to run "`daemons,`" a Unix term for programs that run continuously in the background, rather than under the direct control of a user; for example, mail servers, network listeners, etc.
 Ports that use StartupItem keywords create scripts for https://developer.apple.com/macosx/launchd.html[launchd], which is the Apple facility introduced with Mac OS X 10.4 to replace xinetd for starting and managing daemons.
-To support [cmd]``launchd``, a program named [cmd]``daemondo`` is provided by MacPorts base that serves as an adapter between [cmd]``launchd`` and daemons ("`executable`" StartupItems) or traditional Unix startup scripts that start daemons ("`script`" StartupItems).
+To support [cmd]``+launchd+``, a program named [cmd]``+daemondo+`` is provided by MacPorts base that serves as an adapter between [cmd]``+launchd+`` and daemons ("`executable`" StartupItems) or traditional Unix startup scripts that start daemons ("`script`" StartupItems).
 
 There are three categories of StartupItem keywords.
 Those that trigger StartupItem creation and logging, those that specify attributes of "`executable`" StartupItems, and those that specify attributes of "`script`" StartupItems.
 
 [NOTE]
 ====
-The variable `startupitem_type` in [path]`${prefix}/etc/macports/macports.conf` may be set to `none` to globally override all StartupItem keywords found in Portfiles; this prevents StartupItems from being created.
+The variable `+startupitem_type+` in [path]`${prefix}/etc/macports/macports.conf` may be set to `+none+` to override the default value of the `+startupitem.type+` option in Portfiles; this prevents StartupItems from being created.
+
+Additionally, the `+startupitem_install+` variable can be set to `+no+` in [path]`macports.conf` to override the default value of the `+startupitem.install+` option, which will prevent links from being created under [path]`/Library`.
+This is useful for MacPorts installations that are not used with root privileges.
 ====
 
 [[reference.startupitems.attributes]]
@@ -18,10 +21,22 @@ The variable `startupitem_type` in [path]`${prefix}/etc/macports/macports.conf` 
 
 The keywords in this section may be used with either "`executable`" or "`script`" StartupItems (see below).
 
+startupitem.autostart::
+Whether to automatically load the StartupItem after activating the port.
+
+* Default: `+no+`
+* Example:
++
+
+[source]
+----
+startupitem.autostart      yes
+----
+
 startupitem.create::
 Trigger the creation of a StartupItem.
 
-* Default: `no`
+* Default: `+no+`
 * Example:
 +
 
@@ -30,17 +45,42 @@ Trigger the creation of a StartupItem.
 startupitem.create      yes
 ----
 
-startupitem.name::
-Sets the name for the StartupItem.
-Defaults to the name of the port, so this keyword is usually unnecessary.
+startupitem.debug::
+Enable additional debug logging.
 
-* Default: `${name}`
+* Default: `+no+`
 * Example:
 +
 
 [source]
 ----
-startupitem.name        dhcpd
+startupitem.debug      yes
+----
+
+startupitem.install::
+Whether to install a link to the StartupItem in the appropriate subdirectory of [path]`/Library` (see ``+startupitem.location+``) so that it can be launched automatically after rebooting.
+
+* Default: `+yes+`
+* Example:
++
+
+[source]
+----
+startupitem.install        no
+----
+
+startupitem.location::
+Chooses the subdirectory in which to install the StartupItem.
+Also affects how it will be loaded: LaunchDaemons must be loaded as root, and only one instance will run for the whole system.
+LaunchAgents are loaded as a normal user, and one instance per user can run.
+
+* Default: [path]`LaunchDaemons`
+* Example:
++
+
+[source]
+----
+startupitem.location        LaunchAgents
 ----
 
 startupitem.logfile::
@@ -60,7 +100,7 @@ startupitem.logevents::
 Control whether or not to log events to the log file.
 If logevents is set, events with timestamps are logged to the logfile.
 
-* Default: `no`
+* Default: `+no+`
 * Example:
 +
 
@@ -69,10 +109,23 @@ If logevents is set, events with timestamps are logged to the logfile.
 startupitem.logevents   yes
 ----
 
+startupitem.name::
+Sets the name for the StartupItem.
+Defaults to the name of the port, so this keyword is usually unnecessary.
+
+* Default: `+${name}+`
+* Example:
++
+
+[source]
+----
+startupitem.name        dhcpd
+----
+
 startupitem.netchange::
 Cause the daemon to be restarted when a change in network state is detected.
 
-* Default: `no`
+* Default: `+no+`
 * Example:
 +
 
@@ -81,16 +134,50 @@ Cause the daemon to be restarted when a change in network state is detected.
 startupitem.netchange   yes
 ----
 
+startupitem.type::
+The type of the StartupItem.
+Supported values are `+launchd+` for a macOS [cmd]``+launchd+`` .plist, or `+none+` for no StartupItem.
+
+* Default: `+launchd+` if on macOS and `+${startupitem.create}+` is true, `+none+` otherwise
+* Example:
++
+
+[source]
+----
+startupitem.type   launchd
+----
+
+startupitems::
+Used when a port needs to install more than one StartupItem, this option consists of a list where alternating elements represent keys and values.
+Each key corresponds to one of the `+startupitem.*+` options, and the following value is associated with it.
+Each StartupItem defined in the list must specify at least a name.
+Each other key/value pair is associated with the StartupItem named most recently in the list.
+Any keys that are not defined for a given StartupItem will use the value of the corresponding `+startupitem.*+` option.
+
+* Default: none
+* Example:
++
+
+[source]
+----
+startupitems        name        myport-system \
+                    location    LaunchDaemons \
+                    executable  ${prefix}/sbin/myportd \
+                    name        myport-session \
+                    location    LaunchAgents \
+                    executable  ${prefix}/bin/myport-agent
+----
+
 [[reference.startupitems.executable]]
 == Executable StartupItems
 
-Daemons run continuously, so monitoring the health of daemon processes and restarting them if they die is an important StartupItems' feature. "`Executable`" StartupItems are preferred over "`script`" StartupItems because [cmd]``daemondo`` launches the daemon __directly__, rather than _indirectly_ via a script, and therefore it automatically knows how to monitor a daemon process and restart it if it dies.
+Daemons run continuously, so monitoring the health of daemon processes and restarting them if they die is an important StartupItems' feature. "`Executable`" StartupItems are preferred over "`script`" StartupItems because [cmd]``+daemondo+`` launches the daemon __directly__, rather than _indirectly_ via a script, and therefore it automatically knows how to monitor a daemon process and restart it if it dies.
 Daemons used with "`executable`" StartupItems may be programs or scripts (shell, perl, python, etc.) as long as the script _itself_ is the daemon, rather than merely what launches the daemon.
 In the latter case "`script`" StartupItems are to be used.
 
 [NOTE]
 ====
-Since "`script`" and "`executable`" are mutually exclusive StartupItem types, the `startupitem.executable` keyword may not be used in a Portfile that uses any keywords listed in the <<reference.startupitems.script,Script StartupItems section>>.
+Since "`script`" and "`executable`" are mutually exclusive StartupItem types, the `+startupitem.executable+` keyword may not be used in a Portfile that uses any keywords listed in the <<reference.startupitems.script,Script StartupItems section>>.
 ====
 
 startupitem.executable::
@@ -102,7 +189,7 @@ It may have multiple arguments, but they must be appropriate for a call to exec;
 [NOTE]
 ====
 Some daemons "`daemonize`" by detaching themselves from the controlling tty before sending themselves to the background, thus making themselves a child of the original process.
-A daemon to be started with `startupitem.executable` must not be allowed to do this or daemondo will think the process has died and start multiple instances.
+A daemon to be started with `+startupitem.executable+` must not be allowed to do this or daemondo will think the process has died and start multiple instances.
 Often daemons have a command switch to run in the foreground, and this method should be used for daemons that detach.
 ====
 
@@ -148,13 +235,13 @@ generates a .plist file with these tags:
 [[reference.startupitems.script]]
 == Script StartupItems
 
-StartupItems of type "`script`" create a wrapper during port installation for [cmd]``daemondo`` that will be used to launch a daemon startup script present in an application's source distribution (MacPorts does not create daemon startup scripts) for daemons that require a script.
+StartupItems of type "`script`" create a wrapper during port installation for [cmd]``+daemondo+`` that will be used to launch a daemon startup script present in an application's source distribution (MacPorts does not create daemon startup scripts) for daemons that require a script.
 
 [NOTE]
 ====
-"`Executable`" StartupItems are the preferred type since "`script`" StartupItems launch daemons __indirectly__, and this requires that port authors use the `startupitem.pidfile` keyword so that [cmd]``daemondo`` can check this pid file to see is a daemon process has died and restart it.
+"`Executable`" StartupItems are the preferred type since "`script`" StartupItems launch daemons __indirectly__, and this requires that port authors use the `+startupitem.pidfile+` keyword so that [cmd]``+daemondo+`` can check this pid file to see is a daemon process has died and restart it.
 Any time a script (or an executable) itself serves as a daemon, use the "`executable`" StartupItem type so daemondo will launch it directly and track its health automatically.
-Additionally, since "`script`" and "`executable`" are mutually exclusive StartupItem types, the `startupitem.executable` keyword may not be used in a Portfile that uses "`script`" StartupItem keywords.
+Additionally, since "`script`" and "`executable`" are mutually exclusive StartupItem types, the `+startupitem.executable+` keyword may not be used in a Portfile that uses "`script`" StartupItem keywords.
 ====
 
 A typical snippet of a startup script that may be used with a "`script`" StartupItem is shown below.
@@ -174,7 +261,7 @@ case "$1" in
 
 startupitem.start::
 Specify a shell script to start, stop, and restart the daemon.
-In the absence of ``startupitem.restart``, the daemon will be restarted by taking the stop action, followed by the start action.
+In the absence of ``+startupitem.restart+``, the daemon will be restarted by taking the stop action, followed by the start action.
 
 * Default: none
 * Examples:
@@ -194,7 +281,7 @@ startupitem.restart     "${prefix}/share/mysql/mysql.server restart"
 Wrap the stop, start, and restart values in quotes so they will be placed in the wrapper tagged as a single element.
 ====
 startupitem.init::
-Shell code that will be executed prior to any of the options ``startupitem.start``, `startupitem.stop` and ``startupitem.restart``.
+Shell code that will be executed prior to any of the options ``+startupitem.start+``, `+startupitem.stop+` and ``+startupitem.restart+``.
 
 * Default: none
 * Example:
@@ -206,21 +293,21 @@ startupitem.init        BIN=${prefix}/sbin/bacula-fd
 ----
 
 startupitem.pidfile::
-This keyword must be defined properly for [cmd]``daemondo`` to be able to monitor daemons launched via "`script`" StartupItems and restart them if they die.
+This keyword must be defined properly for [cmd]``+daemondo+`` to be able to monitor daemons launched via "`script`" StartupItems and restart them if they die.
 It specifies two things: a process id (PID) file handling method, and a pidfile name and path.
 
 * {empty}
 +
 +
-Default: `none
-${prefix}/var/run/${name}.pid`
+Default: `+none
+${prefix}/var/run/${name}.pid+`
 +
 +
 Default: [none] | [[path]`${prefix}/var/run/${name}.pid`]
 * {empty}
 +
 +
-Values [none auto manual clean] [``/path/to/pidfile``]
+Values [none auto manual clean] [``+/path/to/pidfile+``]
 * Example:
 +
 
@@ -233,24 +320,24 @@ startupitem.pidfile     auto ${prefix}/var/run/${name}.pidfile
 +
 PID file handling options:
 
-* `none` - daemondo will not create or track a PID file, so it won't know when a daemon dies.
-* `auto` - The started process is expected to create a PID file that contains the PID of the running daemon; daemondo then reads the PID from the file and tracks the process. The started process must delete the PID file if this is necessary.
-* `clean` - The started process is expected to create a PID file that contains the PID of the running daemon; daemondo then reads the PID from the file and tracks the process, and deletes the PID file if it detects the daemon has died.
-* `manual` - This option should only be used if an "`executable`" StartupItem could be used (daemondo launches a daemon directly) _and_ a port author wants a PID file written for some special use. A PID file is not needed to detect process death for daemons launched directly by daemondo. As with executable StartupItems, daemondo remembers the PID of the launched process and tracks it automatically.
+* `+none+` - daemondo will not create or track a PID file, so it won't know when a daemon dies.
+* `+auto+` - The started process is expected to create a PID file that contains the PID of the running daemon; daemondo then reads the PID from the file and tracks the process. The started process must delete the PID file if this is necessary.
+* `+clean+` - The started process is expected to create a PID file that contains the PID of the running daemon; daemondo then reads the PID from the file and tracks the process, and deletes the PID file if it detects the daemon has died.
+* `+manual+` - This option should only be used if an "`executable`" StartupItem could be used (daemondo launches a daemon directly) _and_ a port author wants a PID file written for some special use. A PID file is not needed to detect process death for daemons launched directly by daemondo. As with executable StartupItems, daemondo remembers the PID of the launched process and tracks it automatically.
 
 [[reference.startupitems.launchd]]
 == Loading / Unloading StartupItems into launchd
 
 A port with a StartupItem places a link to a .plist file for the port's daemon within [path]`/Library/LaunchDaemons/`.
 A .plist file is an XML file; MacPorts installs .plist files tagged as "`disabled`" for the sake of security.
-You may enable a startup script (tag the.plist file as "`enabled`") and load it into [cmd]``launchd`` with a single command as shown.
+You may enable a startup script (tag the.plist file as "`enabled`") and load it into [cmd]``+launchd+`` with a single command as shown.
 
 [source]
 ----
 %% sudo launchctl load -w /Library/LaunchDaemons/org.macports.mysql5.plist
 ----
 
-You may stop a running startup script, disable it (tag the.plist file as "`disabled`"), and unload it from [cmd]``launchd`` with a single command as shown.
+You may stop a running startup script, disable it (tag the.plist file as "`disabled`"), and unload it from [cmd]``+launchd+`` with a single command as shown.
 
 [source]
 ----
@@ -260,7 +347,7 @@ You may stop a running startup script, disable it (tag the.plist file as "`disab
 [[reference.startupitems.internals]]
 == StartupItem Internals
 
-During port installation a MacPorts StartupItem creates a .plist file in [path]`${prefix}/etc/LaunchDaemons/`, and places a symbolic link to the .plist file within [path]`/Library/LaunchDaemons/`.
+During port installation a MacPorts StartupItem creates a .plist file in [path]`${prefix}/etc/LaunchDaemons/`, and places a symbolic link to the .plist file within [path]`/Library/LaunchDaemons/` if `+${startupitem.install}+` is true.
 
 For example, the StartupItem for the mysql5 port is [path]`org.macports.mysql5.plist`, and it is linked as shown.
 

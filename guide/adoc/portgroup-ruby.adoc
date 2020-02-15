@@ -18,7 +18,7 @@ ruby.lib::
 Path to the Ruby vendorlibdir directory (i.e., [path]`${prefix}/lib/ruby/vendor_ruby/${ruby.version}`)
 
 ruby.arch::
-The name for the Ruby architecture-dependent directory name (i.e., ``i686-darwin8.10.1``).
+The name for the Ruby architecture-dependent directory name (i.e., ``+i686-darwin8.10.1+``).
 
 ruby.archlib::
 Path to the Ruby vendor archdir (i.e., [path]`${ruby.lib}/${ruby.arch}`).

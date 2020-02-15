@@ -8,6 +8,8 @@ See the following folder for PortGroup definitions:
 
 [path]`${prefix}/var/macports/sources/rsync.macports.org/macports/release/tarballs/ports/_resources/port1.0/group/`
 
+or if you prefer directly in https://github.com/macports/macports-ports/tree/master/_resources/port1.0/group[GitHub] .
+
 A sample listing follows:
 
 

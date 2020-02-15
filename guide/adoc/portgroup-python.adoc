@@ -11,11 +11,11 @@ Portfiles using the python PortGroup allow for port authors to set the following
 python.versions::
 Defines the python versions supported by this port.
 If the port name starts with "`py-`", then a subport will be defined for each version in the list.
-For example, if a port named "`py-foo`" declares ``python.versions 26 27``, subports "`py26-foo`" and "`py27-foo`" will be created, and will depend on python26 and python27 respectively.
+For example, if a port named "`py-foo`" declares ``+python.versions 26 27+``, subports "`py26-foo`" and "`py27-foo`" will be created, and will depend on python26 and python27 respectively.
 +
 If the port name does not start with "`py-`", it is interpreted as an application written in python rather than a python module.
-In this case, no subports are defined, and `python.versions` defaults to the value of ``python.default_version``, which must be set.
-For example, if a port named "`mercurial`" sets ``python.default_version 27``, then `python.versions` will automatically be set to "`27`", and a dependency on python27 will be added.
+In this case, no subports are defined, and `+python.versions+` defaults to the value of ``+python.default_version+``, which must be set.
+For example, if a port named "`mercurial`" sets ``+python.default_version 27+``, then `+python.versions+` will automatically be set to "`27`", and a dependency on python27 will be added.
 
 * Type: required for modules, optional for apps
 * Example:
@@ -28,7 +28,7 @@ python.versions     25 26 27
 
 python.default_version::
 For modules (i.e., name starts with "`py-`"), this sets the subport that will be installed if the user asks to install "`py-foo`" rather than, e.g., "`py26-foo`" or "`py27-foo`".
-If not explicitly set, a reasonable default is chosen from the list in ``python.versions``.
+If not explicitly set, a reasonable default is chosen from the list in ``+python.versions+``.
 +
 For applications (i.e., name does not start with "`py-`"), this chooses which version of python to use, and must be set.
 It can be changed in variants if desired.
@@ -55,14 +55,14 @@ python.link_binaries     no
 ----
 
 python.link_binaries_suffix::
-Suffix to add to the names of the links created in [path]`${prefix}/bin` when `${python.link_binaries}` is enabled.
+Suffix to add to the names of the links created in [path]`${prefix}/bin` when `+${python.link_binaries}+` is enabled.
 Can be cleared if no suffix is desired.
 
 * Type: optional
-* Default: -``${python.branch}``
+* Default: -``+${python.branch}+``
 
 python.add_archflags::
-When yes (the default), the PortGroup will automatically try to pass the correct arch-specific flags during build time (via the standard CFLAGS, LDFLAGS, etc environment variables). Set this to "`no`" and set up those variables in `build.env` manually if the default does not work.
+When yes (the default), the PortGroup will automatically try to pass the correct arch-specific flags during build time (via the standard CFLAGS, LDFLAGS, etc environment variables). Set this to "`no`" and set up those variables in `+build.env+` manually if the default does not work.
 
 * Type: optional
 * Example:
@@ -80,15 +80,15 @@ When the python PortGroup is declared within a Portfile, the following variables
 
 python.version::
 The python version in use in the current subport.
-This will be one of the versions listed in ``python.versions``.
+This will be one of the versions listed in ``+python.versions+``.
 
 python.branch::
 The python version in use in the current subport, in normal dotted notation.
-For example, if `python.version` is "`26`", `python.branch` will be "`2.6`".
+For example, if `+python.version+` is "`26`", `+python.branch+` will be "`2.6`".
 
 python.prefix::
 The prefix in which the current python version is installed.
-For framework builds, this is [path]`${frameworks_dir}/Python.framework/Versions/${python.branch}`, whereas for non-framework builds, it is the same as ``${prefix}``.
+For framework builds, this is [path]`${frameworks_dir}/Python.framework/Versions/${python.branch}`, whereas for non-framework builds, it is the same as ``+${prefix}+``.
 
 python.bin::
 The path to the MacPorts Python executable.
@@ -115,22 +115,22 @@ categories::
 Default: python
 
 depends_lib::
-Default: port:python``${python.version}``
+Default: port:python``+${python.version}+``
 
 use_configure::
 Default: no
 
 build.cmd::
-Default: `${python.bin}` setup.py --no-user-cfg
+Default: `+${python.bin}+` setup.py --no-user-cfg
 
 build.target::
 Default: build
 
 destroot.cmd::
-Default: `${python.bin}` setup.py --no-user-cfg
+Default: `+${python.bin}+` setup.py --no-user-cfg
 
 destroot.destdir::
-Default: --prefix=``${python.prefix}`` --root=``${destroot}``
+Default: --prefix=``+${python.prefix}+`` --root=``+${destroot}+``
 
 pre-destroot::
 Default: creates directory [path]`${destroot}${prefix}/share/doc/${subport}/examples`.
