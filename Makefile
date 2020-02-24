@@ -66,6 +66,9 @@ guide-adoc2xml:
 guide-fromadoc: guide-adoc2xml
 	$(call xml2html,$(GUIDE_ADOC),$(GUIDE_RESULT)/adoc,$(GUIDE_XSL))
 
+guide-chunked-fromadoc:: guide-adoc2xml
+	$(call xml2html,$(GUIDE_ADOC),$(GUIDE_RESULT)/adoc/chunked,$(GUIDE_XSL_CHUNK))
+
 # Rules to generate HTML from DocBook XML
 
 define xml2html
@@ -87,6 +90,11 @@ guide-chunked::
 	# Add the table of contents to every chunked HTML file.
 	# If someone knows a better way to do this please change it.
 	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT)/chunked
+
+guide-chunked-fromadoc::
+	# Add the table of contents to every chunked HTML file.
+	# If someone knows a better way to do this please change it.
+	$(TCLSH) toc-for-chunked.tcl $(GUIDE_RESULT)/adoc/chunked
 
 # Generate the guide as a PDF.
 guide-dblatex: SUFFIX = pdf
