@@ -393,8 +393,8 @@
                 privilege separation. If you want to remove them, you can use these commands from an account that has
                 admin privileges:</para>
 
-            <programlisting><prompt>$</prompt> <userinput>dscl -p . -delete /Users/macports</userinput>
-<!--        --><prompt>$</prompt> <userinput>dscl -p . -delete /Groups/macports</userinput></programlisting>
+            <programlisting><prompt>$</prompt> <userinput>sudo dscl . -delete /Users/macports</userinput>
+<!--        --><prompt>$</prompt> <userinput>sudo dscl . -delete /Groups/macports</userinput></programlisting>
 
             <para>If you configured MacPorts to use a different user or group name, then specify that instead of
                 <filename>macports</filename>.</para>
