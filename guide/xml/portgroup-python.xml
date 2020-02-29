@@ -287,9 +287,9 @@
     </variablelist>
   </section>
   <section xml:id="reference.portgroup.python.test">
-    <title>python Port test tips</title>
+    <title>python PortGroup test tips</title>
 
-    <para>To add a test import of the built package, the following template may be useful</para>
+    <para> If the python package has some unit tests, then the following template may be useful.</para>
 
     <programlisting>if {${name} ne ${subport}} {
 <!--     -->
@@ -298,7 +298,21 @@
 <!--     -->    }
 <!--     -->
 <!--     -->    test.run        yes
-<!--     -->    test.cmd        ${python.bin} -c '${python.rootname}'
+<!--     -->    test.cmd        ${build.cmd}
+<!--     -->    test.target     test
+<!--     -->
+<!--     -->}</programlisting>
+
+    <para>To simply add a test import of the built package, the following template may be useful.</para>
+
+    <programlisting>if {${name} ne ${subport}} {
+<!--     -->
+<!--     -->    pre-test {
+<!--     -->        test.env    PYTHONPATH=[glob -nocomplain ${worksrcpath}/build/lib*]
+<!--     -->    }
+<!--     -->
+<!--     -->    test.run        yes
+<!--     -->    test.cmd        ${python.bin} -c 'import ${python.rootname}'
 <!--     -->    test.target
 <!--     -->
 <!--     -->}</programlisting>
