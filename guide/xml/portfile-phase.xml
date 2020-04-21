@@ -2127,8 +2127,10 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
           available on 10.5 and 10.6, and <option>clang</option> is available
           on 10.6 and later.</para>
 
-          <para>Only use it if a port really needs a different
-          compiler.</para>
+          <para>Only use it if a port really needs a specific different
+          compiler. In many situations, the requirements system described in the <link
+          xlink:href="https://trac.macports.org/wiki/CompilerSelection">CompilerSelection</link>
+          page on the wiki is more flexible.</para>
 
           <itemizedlist>
             <listitem>
