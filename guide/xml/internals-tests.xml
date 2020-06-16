@@ -21,7 +21,7 @@
     <link xlink:href="https://github.com/macports/macports-base/blob/master/src/macports1.0/tests/macports.test">macports.test</link>).
     Every proc in a script (e.g. <code>proc macports::findBinary</code>) should have its own test proc
     (e.g. <code>test findBinary</code>) in the corresponding test file. Test procs should maintain the order in the
-    original script and should be independent one of another.
+    original script and should be independent of one another.
     </para>
 
     <section xml:id="internals.tests.running">
