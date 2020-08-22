@@ -1018,6 +1018,62 @@ Warning: no license set
                 </varlistentry>
             </variablelist>
         </section>
+
+        <section xml:id="using.port.load">
+            <title>port load</title>
+
+            <para>Some ports install software that is meant to run as a daemon. Or in other words, a long-running
+                    background process.</para>
+
+            <para>Examples of this are database servers like MySQL or PostgreSQL.</para>
+
+            <para>On macOS, <command>launchd</command> is primarily responsible for starting, stopping, and
+                    managing long-running services.</para>
+
+            <para>Ports that want to run daemon processes can install their own <filename>.plist</filename> file(s)
+                    into <command>launchd</command>. These files will allow <command>launchd</command> to start and
+                    manage the port's daemon processes.</para>
+
+            <para>So once a port is installed, the <option>load</option> action can be used to do the above
+                    and activate the port's <command>launchd</command> service(s):</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port load prometheus</userinput></programlisting>
+
+            <screen>
+---&gt;  Loading startupitem 'prometheus' for prometheus</screen>
+
+            <para>Now the port's service(s) should be running in <command>launchd</command>. This can be verified with
+                    the <command>launchctl</command> command:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo launchctl list | grep macports</userinput></programlisting>
+
+            <screen>
+49119   0       org.macports.prometheus</screen>
+
+            <para>To stop the daemon service and mark it as disabled for <command>launchd</command>, use 
+                    the <link linkend="using.port.unload"><command>port unload</command></link> command.</para>
+
+        </section>
+
+        <section xml:id="using.port.unload">
+            <title>port unload</title>
+
+            <para>As discussed in the <link linkend="using.port.load"><command>port load</command></link> section, the
+                    <command>port load</command> command can be used to install and activate a port's daemon service(s) in
+                    <command>launchd</command>.</para>
+
+            <para>The <option>unload</option> action reverses this.</para>
+
+            <para><command>port unload</command> will stop the port's daemon processes, and mark the port's service
+                    <filename>.plist</filename> as disabled:</para>
+
+            <programlisting><prompt>$ </prompt><userinput>sudo port unload prometheus</userinput></programlisting>
+
+            <screen>
+---&gt;  Unloading startupitem 'prometheus' for prometheus</screen>
+
+            <para>The port's service(s) should no longer be present in <command>launchctl list</command>.</para>
+        </section>
     </section>
 
     <section xml:id="using.variants">
