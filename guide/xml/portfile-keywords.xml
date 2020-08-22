@@ -323,13 +323,52 @@
       <term>platforms</term>
 
       <listitem>
-        <para>A list of the platforms on which the port has been tested.
-	Required, but not interpreted in any way by the software at this time; it is purely informational for users.
-	Possible values: <code>darwin</code> (= <code>macosx</code> or <code>puredarwin</code>), <code>macosx</code>,
-	<code>puredarwin</code>, <code>freebsd</code>, <code>linux</code>, <code>sunos</code>, <code>netbsd</code>.
-	In general, it can just be set to <code>darwin</code>. (<code>puredarwin</code> is an OS based on Apple's
-	open-source Darwin releases without any of Apple's proprietary bits.) See also <varname>os.platform</varname>.
-	</para>
+        <para>A list of the platforms on which the port is expected to work.
+        Required, but not interpreted in any way by MacPorts at this time; it is
+        purely informational for users. Possible values:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para><literal>darwin</literal> (equivalent to specifying both
+            <literal>macosx</literal> and <literal>puredarwin</literal>)</para>
+          </listitem>
+          <listitem>
+            <para><literal>macosx</literal> (macOS as distributed by
+            Apple)</para>
+          </listitem>
+          <listitem>
+            <para><literal>puredarwin</literal> (the open-source Darwin OS
+            without Apple's proprietary components)</para>
+          </listitem>
+          <listitem>
+            <para><literal>freebsd</literal></para>
+          </listitem>
+          <listitem>
+            <para><literal>linux</literal></para>
+          </listitem>
+          <listitem>
+            <para><literal>netbsd</literal></para>
+          </listitem>
+          <listitem>
+            <para><literal>openbsd</literal></para>
+          </listitem>
+          <listitem>
+            <para><literal>solaris</literal></para>
+          </listitem>
+          <listitem>
+            <para><literal>sunos</literal></para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Ports for software that does not require macOS-specific features
+        should use <literal>darwin</literal>. Most ports use this value on the
+        presumption that they would work on Pure Darwin, even if that has not
+        been attempted. Ports for software that is known to require
+        macOS-specific features should set this to <literal>macosx</literal>.
+        Including the xcode portgroup will set this to <literal>macosx</literal>
+        automatically.</para>
+
+        <para>See also <varname>os.platform</varname>.</para>
 
         <programlisting>platforms           darwin</programlisting>
       </listitem>
