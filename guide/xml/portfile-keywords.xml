@@ -72,14 +72,92 @@
       <term>revision</term>
 
       <listitem>
-        <para>Optional keyword (default is 0) that is used to track port
-        revisions. It should not be incremented for port revisions unless it
-        would benefit users to upgrade an installed port, and cleared when the
-        port is updated to a newer version.</para>
+        <para>An optional integer (the default is <literal>0</literal>) that is
+        incremented when a port is updated independently of the version of the
+        software. The revision line usually follows the version line.</para>
 
-        <para>It should be used if a bug in the Portfile was found and all
-        installations of this port have to be updated. If the change only
-        affects new installations, there is no need to increase it.</para>
+        <para>In Portfiles that have subports, it is often appropriate for each
+        subport (including the main port) to have a separate revision line.
+        (This does not usually apply to Portfiles for Perl, PHP, Python, or Ruby
+        modules which create numerous similar subports for the same version of
+        the software.)</para>
+
+        <para>It is recommended to set the revision in all ports, even if the
+        revision is 0. This makes it easier for other developers to see where to
+        increase the revision in your port, should that need arise. This is
+        especially helpful for Portfiles that have subports.</para>
+
+        <para>When increasing the revision in a Portfile with subports, consider
+        carefully which of the subports (possibly including the main port) need
+        to have their revisions increased.</para>
+
+        <para>When increasing the revision in a Portfile that does not have any
+        revision lines yet, take a moment to check if the Portfile has
+        subports.</para>
+
+        <para>Just like when a port's version increases, a port is considered
+        outdated when its revision increases. To avoid causing users to rebuild
+        ports unnecessarily, don't increase the revision unless doing so would
+        result in a change for users who already have the ports
+        installed.</para>
+
+        <para>Some examples of situations in which a port's revision should be
+        increased:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>changing configure arguments or build flags or any other
+            change that will cause the installed files to be different</para>
+          </listitem>
+          <listitem>
+            <para>installing additional files, such as documentation, or
+            removing any files which had previously been installed</para>
+          </listitem>
+          <listitem>
+            <para>changing the names or locations of any installed files</para>
+          </listitem>
+          <listitem>
+            <para>adding a dependency to depends_lib or depends_run</para>
+          </listitem>
+          <listitem>
+            <para>a library dependency's install_name has changed</para>
+          </listitem>
+          <listitem>
+            <para>removing a variant that a user might have installed</para>
+          </listitem>
+          <listitem>
+            <para>adding a variant name to default_variants</para>
+          </listitem>
+        </itemizedlist>
+
+        <para>Some examples of situations in which a port's revision should not
+        be increased:</para>
+
+        <itemizedlist>
+          <listitem>
+            <para>fixing a build failure</para>
+          </listitem>
+          <listitem>
+            <para>adding a dependency to depends_fetch, depends_extract,
+            depends_build, or depends_test</para>
+          </listitem>
+          <listitem>
+            <para>setting or changing the port's license</para>
+          </listitem>
+          <listitem>
+            <para>adding a new non-default variant</para>
+          </listitem>
+          <listitem>
+            <para>removing a variant name from default_variants</para>
+          </listitem>
+          <listitem>
+            <para>changing comments or whitespace in the Portfile</para>
+          </listitem>
+          <listitem>
+            <para>any other change to the Portfile that does not change the
+            files it installs</para>
+          </listitem>
+        </itemizedlist>
 
         <programlisting>revision            1</programlisting>
       </listitem>
