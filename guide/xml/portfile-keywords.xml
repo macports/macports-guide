@@ -422,8 +422,8 @@
         supported_archs contains ppc, in which case the port will be built in
         32-bit mode.</para>
 
-        <programlisting>supported_archs           i386 ppc</programlisting>
-        <programlisting>supported_archs           noarch</programlisting>
+        <programlisting>supported_archs     i386 ppc</programlisting>
+        <programlisting>supported_archs     noarch</programlisting>
       </listitem>
     </varlistentry>
 
@@ -448,8 +448,8 @@
         just leave out the version number entirely since it implies all
         versions.</para>
 
-        <programlisting>license           GPL-3</programlisting>
-        <programlisting>license           {freetype GPL}</programlisting>
+        <programlisting>license             GPL-3</programlisting>
+        <programlisting>license             {freetype GPL}</programlisting>
       </listitem>
     </varlistentry>
 
@@ -465,8 +465,8 @@
         work is formed, or should not prevent binary distribution for any
         other reason, add its name to this list.
         </para>
-        <programlisting>license_noconflict openssl</programlisting>
-        <programlisting>license_noconflict readline gdbm</programlisting>
+        <programlisting>license_noconflict  openssl</programlisting>
+        <programlisting>license_noconflict  readline gdbm</programlisting>
       </listitem>
     </varlistentry>
 
@@ -489,8 +489,8 @@
         Xcode/CLT. Build systems that ignore the environment may
         accidentally use Xcode which will cause a failure in trace mode.
         </para>
-        <programlisting>use_xcode no</programlisting>
-        <programlisting>use_xcode yes</programlisting>
+        <programlisting>use_xcode           no</programlisting>
+        <programlisting>use_xcode           yes</programlisting>
       </listitem>
     </varlistentry>
 
