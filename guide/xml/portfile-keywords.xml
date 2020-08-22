@@ -48,7 +48,21 @@
       <term>version</term>
 
       <listitem>
-        <para>The version of the ported software.</para>
+        <para>The version of the software. Version numbers are often dotted
+        decimals, though some projects may use other formats.</para>
+
+        <para>The version keyword should adhere as closely as possible to the
+        format used by the upstream project (e.g., as reported by a program's
+        <literal>-v</literal> or <literal>--version</literal> flag or on the
+        project's web site), omitting any preceding <literal>v</literal> or
+        other extraneous characters that are not part of the version number.
+        Especially, the version should not be misformatted merely to accommodate
+        an unusual distfile name. For example, if the distfile name is
+        <literal>foo-v1_2_3.tar.gz</literal> and the project reports its version
+        as <literal>v1.2.3</literal>, the version keyword should be set to
+        <literal>1.2.3</literal> and distname should be overridden as needed
+        (ideally by transforming the version using a procedure such as
+        <code>string map</code>).</para>
 
         <programlisting>version             1.23.45</programlisting>
       </listitem>
