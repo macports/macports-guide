@@ -302,9 +302,20 @@
       <term>homepage</term>
 
       <listitem>
-        <para>Port application's homepage.</para>
+        <para>The software's primary web site.</para>
 
-        <programlisting>homepage            https://www.example.org/apps</programlisting>
+        <para>Usually the homepage should be a URL that does not redirect to
+        another URL. For example, if an http URL redirects to an https URL, list
+        the https URL. Or if a URL without a trailing slash redirects to the URL
+        with the trailing slash, list the URL with the trailing slash. If the
+        project advertises a short URL that redirects to a longer URL, it is
+        acceptable to list the short URL despite the redirect.</para>
+
+        <para>When the homepage is just a hostname with no path component, don't
+        include a trailing slash.</para>
+
+        <programlisting>homepage            https://www.example.org/apps/</programlisting>
+        <programlisting>homepage            https://www.example.com</programlisting>
       </listitem>
     </varlistentry>
 
