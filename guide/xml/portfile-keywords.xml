@@ -279,9 +279,9 @@
       <term>description</term>
 
       <listitem>
-        <para>A one-sentence description of the ported software.</para>
+        <para>A short sentence fragment describing the software.</para>
 
-        <programlisting>description         A classic shooter arcade game.</programlisting>
+        <programlisting>description         a classic shooter arcade game</programlisting>
       </listitem>
     </varlistentry>
 
@@ -289,12 +289,44 @@
       <term>long_description</term>
 
       <listitem>
-        <para>A long description of the ported software. Break long lines with
-        escaped newlines.</para>
+        <para>One or more sentences describing the software.</para>
 
-        <programlisting>long_description    A classic shooter arcade game derived from \
+        <para>The long description can be based on a description provided by the
+        upstream project (e.g., in its readme or on its web site) but avoid
+        repeating information already present elsewhere in the Portfile, such as
+        the software's license (see the <varname>license</varname> keyword) or
+        the platforms on which it runs (see the <varname>platforms</varname>
+        keyword), and avoid including information irrelevant to a MacPorts user,
+        such as compilation instructions or other steps the Portfile has already
+        performed for the user. More specific usage instructions are best left
+        to the <varname>notes</varname> keyword.</para>
+
+        <para>If a port provides a program that is different from the port name,
+        it can be a good idea to include the program name in the long
+        description so that a user could find it by searching.</para>
+
+        <para>Long descriptions are usually a single paragraph. MacPorts will
+        word-wrap long lines to the terminal width as needed. Break long lines
+        with escaped newlines for better legibility within the Portfile. If
+        literal newlines need to be displayed to the user, they can be inserted
+        using <literal>\n</literal>. Place the <literal>\n</literal> at the
+        beginning of the next line, not at the end of the previous line. To
+        create a new paragraph, insert two newlines.</para>
+
+        <para>Sometimes the port's name and short description are reused as part
+        of the long description. When referencing the
+        <varname>description</varname> keyword (or any other list keyword with
+        more than one item), it should be preceded with the expand
+        operator.</para>
+
+        <programlisting>long_description    ${name} is {*}${description} derived from \
                     the game alien-munchers.  Not suitable for \
                     children under two years old.</programlisting>
+        <programlisting>long_description    foobar provides the following programs: \
+                    \n \
+                    \n* foo, a lorem ipsum utility \
+                    \n* bar, a high-performance amet consectetur \
+                    \n* baz, an eiusmod tempor converter</programlisting>
       </listitem>
     </varlistentry>
 
