@@ -167,21 +167,40 @@
       <term>epoch</term>
 
       <listitem>
-        <para>An optional keyword (default value is 0) that must be used when
-        a port is updated to a version that is numerically less than the
-        previous version, for example 1.10 -&gt; 1.2 or 20070928 -&gt; 1.0.
-        Some Portfile authors have used large epoch values that look like a
-        date, but there is no reason to do so. The epoch is simply an unsigned
-        integer, and the only requirement is that it never be decreased. Remember
-        that once set, it can never be removed because it takes precedence over
-        version and revision.</para>
+        <para>An optional integer (the default is <literal>0</literal>) that
+        must be increased when a port is updated to a version that appears
+        (according to the <code>vercmp</code> procedure's version number
+        comparison algorithm) to be less than the previous version. For example,
+        updating from <literal>2.0-rc1</literal> to <literal>2.0</literal>, or
+        from <literal>1.10</literal> to <literal>1.2</literal>, or from
+        <literal>20070928</literal> to <literal>1.0</literal>.</para>
+
+        <para>The purpose of increasing the epoch is to cause MacPorts to
+        consider a port to be outdated, even if that wouldn't otherwise be the
+        case due to the specific version numbers. Don't set the epoch unless
+        it's required. In most ports, the version number advances according to
+        the normal dotted-decimal sequence, so most ports will never have a need
+        to set the epoch.</para>
+
+        <para>Some Portfile authors have used large epoch values that look like
+        dates in YYYYMMDD format (e.g., <literal>20091231</literal>). When it is
+        necessary to increase the epoch in such ports, the new epoch can be set
+        to the current date. It is not recommended to use this format when
+        adding an epoch to a port that does not already have one; instead, just
+        set the epoch to <literal>1</literal>, and when needing to increase an
+        existing small epoch, increase it by 1.</para>
 
         <programlisting>epoch               1</programlisting>
 
         <note>
-          <para>An epoch is not needed for most ports. If a port's version
-          numbers advance in normal dotted-decimal sequence, there is no reason
-          to add an epoch.</para>
+          <para>A port's epoch can never be decreased. Removing the epoch from
+          the port would decrease it to its default value of
+          <literal>0</literal>, so once added to a port the epoch can also never
+          be removed. When adding an epoch, take extra care to ensure that it is
+          necessary, since a mistakenly added epoch cannot be undone. In
+          Portfiles that have subports with different software versions,
+          consider whether the epoch needs to be increased in all subports or
+          only in some of them.</para>
         </note>
       </listitem>
     </varlistentry>
