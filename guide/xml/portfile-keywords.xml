@@ -64,6 +64,13 @@
         (ideally by transforming the version using a procedure such as
         <code>string map</code>).</para>
 
+        <para>When updating the version of a port that installs a dynamic
+        library, check (by examining the second line of output from the
+        <userinput>otool -L</userinput> command run on the library before and
+        after upgrading) whether its install name has changed. If it has,
+        increase the revision of every port that links with the library to
+        rebuild it with the new library.</para>
+
         <programlisting>version             1.23.45</programlisting>
       </listitem>
     </varlistentry>
