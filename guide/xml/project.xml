@@ -1147,14 +1147,57 @@ To use the current port, you must be in a port's directory.</screen>
         encouraged to submit a pull request following the steps outlined below.
       </para>
 
+      <para>
+        We use a triangular workflow to carry changes from contributors to the
+        project. You get the latest guide source code from the main repository
+        on GitHub, updating your own "cloned" copy of the repository on your
+        workstation. You make changes on your workstation, in a Git branch. You
+        push the Git branch with your changes to your "forked" copy of the
+        repository in your own GitHub account. Then GitHub helps turn that
+        branch into a "pull request". MacPorts developers can review and
+        discuss the pull request with you, and finally decide whether to
+        accept it. This workflow is described in GitHub's guide,
+        <link xlink:href="https://guides.github.com/activities/forking/">
+        <citetitle>Forking Projects</citetitle></link>.
+      </para>
+
       <section xml:id="project.docs.guide.one-time">
-        <title>Preparing Changes</title>
+        <title>Setting Up the Parts of the Workflow</title>
+
+        <para>Follow these one-time steps to set up the parts of the workflow.</para>
 
         <procedure>
           <step>
-            <programlisting><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-guide.git</userinput>
+            <para>With your web browser, log in to GitHub.
+            Go to this guide's main Git repository at
+            <link xlink:href="https://github.com/macports/macports-guide" />.</para>
+          </step>
+
+          <step>
+            <para>Fork your own copy of the main guide repository.
+            Click the <guibutton>Fork</guibutton> button, at the top-right of
+            the repository window.
+            A dialogue may appear: "Where should we fork macports-guide?"
+            Select your GitHub username. A message appears,
+            "Forking macports/macports-base. It should only take a few seconds."
+            Then GitHub moves you to a page labelled,
+            "<replaceable>username</replaceable>/macports-guide, forked from
+            macports/macports-guide".
+            This page shows your "forked" copy of the repository, in your
+            own GitHub account.
+            </para>
+          </step>
+
+          <step>
+            <para>On your workstation's command line, clone a copy of
+            the main guide repository. Start in a directory which can contain
+            the working directory for your local "clone" copy.</para>
+
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+            --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-guide.git</userinput>
 <!--        --><prompt>$</prompt> <userinput>cd macports-guide</userinput>
-<!--        --><prompt>$</prompt> <userinput>git remote add <replaceable>username</replaceable> https://github.com/<replaceable>username</replaceable>/macports-guide.git</userinput></programlisting>
+<!--        --><prompt>$</prompt> <userinput>git remote add <replaceable>username</replaceable> https://github.com/<replaceable>username</replaceable>/macports-guide.git</userinput>
+<!--     --></programlisting>
           </step>
 
           <step>
@@ -1168,40 +1211,149 @@ To use the current port, you must be in a port's directory.</screen>
       <section xml:id="project.docs.guide.each-time">
         <title>Proposing a Change</title>
 
-        <para>For each change you want to make:</para>
+        <para>For each change you want to make, follow these steps through the
+        triangular workflow. In general, for one pass through this workflow,
+        make only one change or set of related changes, in one area of
+        the documentation.
+        When changing different things, it is preferable to propose separate
+        pull requests.</para>
 
         <procedure>
+          <step>
+            <para>From your workstation's command line, within your local
+            repository directory, switch to your <literal>master</literal>
+            branch. Then, pull the latest contents of the master repository
+            to make your repository current.</para>
+
+      <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>cd macports-guide</userinput>
+<!--       --><prompt>$</prompt> <userinput>git checkout master</userinput>
+<!--       --><prompt>$</prompt> <userinput>git pull origin</userinput>
+<!--     --></programlisting>
+          </step>
+
+          <step>
+            <para>Create a Git branch off the <literal>master</literal> branch
+            to hold your changes. The <replaceable>branch-name</replaceable> is
+            a concise string which describes the effect of your change. Generally,
+            use words of ASCII letters and digits, separated by underscore
+            <literal>'_'</literal> or dash <literal>'-'</literal>,
+            e.g. <userinput>clarify_branch_creation_steps</userinput>.
+            (See <link xlink:href="https://git-scm.com/docs/git-check-ref-format">
+            <citetitle>git check-ref-format</citetitle></link> for detailed
+            limitations.)
+            If your change fixes a Trac ticket, include the ticket number in
+            the branch name, e.g. <userinput>configure-compiler-60331</userinput>.
+            </para>
+
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>git checkout -b <replaceable>branch-name</replaceable></userinput>
+<!--     --></programlisting>
+          </step>
+
           <step>
             <para>Make your changes to the file in the
               <filename>guide/xml/</filename> directory that corresponds to the
               section you want to make changes to.</para>
 
-            <programlisting><prompt>$</prompt> <userinput>$EDITOR guide/xml/<replaceable>guide.xml</replaceable></userinput></programlisting>
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>$EDITOR guide/xml/<replaceable>guide.xml</replaceable></userinput>
+<!--     --></programlisting>
           </step>
 
           <step>
             <para>Verify your changes are still valid XML.
             If the <command>make validate</command> command reports
             errors, fix the XML sources until you see no more error
-            messages</para>
+            messages.</para>
 
-            <programlisting><prompt>$</prompt> <userinput>make validate</userinput></programlisting>
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>make validate</userinput>
+<!--     --></programlisting>
           </step>
 
           <step>
-            <para>Convert the guide to HTML and view the new version in your
-            browser.</para>
+            <para>Convert the guide to HTML, and proofread the new version in
+            your browser.</para>
 
-            <programlisting><prompt>$</prompt> <userinput>make guide</userinput>
-<prompt>$</prompt> <userinput>open guide/html/index.html</userinput></programlisting>
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>make guide</userinput>
+<!--       --><prompt>$</prompt> <userinput>open guide/html/index.html</userinput>
+<!--     --></programlisting>
           </step>
 
           <step>
             <para>Commit your changes to the local branch and describe your
-            changes in the commit message. See also our wiki page <link
-            xlink:href="https://trac.macports.org/wiki/CommitMessages">CommitMessages</link>
-          that explains how to write good commit messages.</para>
-            <programlisting><prompt>$</prompt> <userinput>git commit -a</userinput></programlisting>
+            changes in the commit message. See also our wiki page, <link
+            xlink:href="https://trac.macports.org/wiki/CommitMessages">
+            <citetitle>CommitMessages</citetitle></link>,
+            which explains how to write good commit messages.</para>
+
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>git commit -a</userinput>
+<!--     --></programlisting>
+          </step>
+
+          <step>
+            <para>Push your local branch to your fork of the guide's repository
+            on GitHub. <replaceable>username</replaceable> is your GitHub
+            user name, under which your fork resides.</para>
+
+            <programlisting><!-- [use comments to make programlisting ignore indents]
+           --><prompt>$</prompt> <userinput>git push <replaceable>username</replaceable></userinput>
+<!--     --></programlisting>
+          </step>
+
+          <step>
+            <para>Next, turn your branch into a "pull request" (PR) on GitHub.
+            </para>
+
+            <para>With your web browser, go to this guide's main Git repository
+            at <link xlink:href="https://github.com/macports/macports-guide" />.
+            </para>
+
+            <para>GitHub will likely show you a message that a branch on your 
+            forked repo, with your <replaceable>branch-name</replaceable>, "had 
+            recent pushes". There is a green button, 
+            <guibutton>Compare &amp; pull request</guibutton>. Push this button.
+            </para>
+
+            <para>If GitHub does not show you that message, create the pull request
+            yourself. Click on the "Pull requests" tab. Click on the green button,
+            <guibutton>New pull request</guibutton>. The page changes to say
+            "Compare changes", and there are a pair of buttons,
+            "base: master" and "compare: master".
+            Click on the "compare: master" button, on the right. A dialogue
+            appears, "Choose a head ref".
+            Type your GitHub username, followed by colon <literal>':'</literal>.
+            The two buttons become four, with the rightmost button reading "compare:".
+            Click on the "compare:" button. The list of your branches appears.
+            Click on the branch which you want to turn into a pull request.
+            A green <guibutton>Create pull request</guibutton> button
+            appears, slightly further down the page. Click on this button.
+            </para>
+
+            <para>A dialogue appears. The first line of your commit message
+            is in the title, and the rest of your commit message is in the body.
+            Edit these as necessary, then confirm.  Your pull request now
+            appears in the list of pull requests.</para>
+          </step>
+
+          <step>
+            <para>Now, monitor your GitHub account for messages.
+            MacPorts developers may comments and discussion about your pull
+            request. Respond to comments as necessary.</para>
+
+            <para>You may want to modify your proposed change. Modify it by
+            repeating the "make your changes" step above, and all the subsequent
+            steps through pushing your branch to your fork on GitHub.
+            GitHub will incorporate changes to your fork into the pull request.
+            </para>
+          </step>
+
+          <step>
+            <para>Once the MacPorts developers are satisfied with your pull
+            request, they will merge it with the main guide respository.</para>
           </step>
         </procedure>
       </section>
