@@ -47,7 +47,9 @@
           <para>This keyword indicates an (optional) port dependency
           that will be added to the ports 'depends-lib' list in the
           case a prior installation of Java satisfying the requested
-          version can not be found.</para>
+          version can not be found. It is recommended that only an
+          LTS version of Java be specified as the fallback, as
+          non-LTS versions are only supported for 6 months.</para>
 
           <itemizedlist>
             <listitem>
@@ -56,7 +58,7 @@
 
             <listitem>
               <para>Example:</para>
-              <programlisting>java.fallback   openjdk10</programlisting>
+              <programlisting>java.fallback   openjdk17</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
