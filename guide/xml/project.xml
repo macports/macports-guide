@@ -144,8 +144,11 @@
                   Describe your problem. Preformatted text (such as terminal
                   output) should be put in <literal>{{{<replaceable>three curly
                       brackets</replaceable>}}}</literal>. Please attach large
-                  amounts of output rather than pasting. Use the preview
-                  button!
+                  amounts of output rather than pasting. 
+                  Link to GitHub commits with links like
+                  <literal>[changeset:<replaceable>bd5d680…</replaceable>/macports-ports
+                  <replaceable>commit bd5d680</replaceable>]</literal>.
+                  Use the preview button!
                 </entry>
               </row>
               <row>
@@ -277,10 +280,25 @@
         <listitem>
           <para><emphasis role="strong">Description:</emphasis> All details that might
           be relevant to someone reading the ticket. Be sure to mention
-          the versions of your operating system and Xcode install. <link
+          the versions of your operating system and Xcode install. </para>
+          
+          <para>Use <link
           xlink:href="https://trac.macports.org/wiki/WikiFormatting">Wiki
-          formatting</link> should be used to ensure that text is formatted
-          correctly. Use the Preview button before submitting. If you want to
+          formatting</link> to ensure that text is formatted correctly. 
+          Link to GitHub commits with 
+          <literal>[changeset:<replaceable>GithubSHA</replaceable>/macports-ports 
+          <replaceable>optional link text</replaceable>]</literal>. 
+          For example, for a GitHub commit with URL 
+          <link xlink:href="https://github.com/macports/macports-ports/commit/bd5d6800828a3dcda1b65f3999fa748a365b168e">
+          https://github.com/macports/macports-ports/commit/bd5d6800828a3dcda1b65f3999fa748a365b168e</link>, 
+          put <literal>[changeset:bd5d6800828a3dcda1b65f3999fa748a365b168e/macports-ports
+          commit bd5d680]</literal> in the description. It becomes the link,  
+          <link xlink:href="https://trac.macports.org/changeset/bd5d6800828a3dcda1b65f3999fa748a365b168e/macports-ports">
+          commit bd5d680</link>. See <link 
+          xlink:href="https://trac.macports.org/wiki/TracLinks#LinkstoMacPortsonGitHub">
+          TracLinks#LinkstoMacPortsonGitHub</link> for details.</para>
+          
+          <para>Use the Preview button before submitting. If you want to
           post preformatted text such as a log or terminal output, make sure
           you use <literal>{{{<replaceable>...</replaceable>}}}</literal>
           around the text or it could break the page layout. Example:</para>
