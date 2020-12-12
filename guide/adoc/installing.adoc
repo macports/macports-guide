@@ -178,6 +178,7 @@ This example will create [path]`/opt/mports/macports-base` containing everything
 $ mkdir -p /opt/mports
 $ cd /opt/mports
 $ git clone https://github.com/macports/macports-base.git
+$ cd macports-base
 $ git checkout v2.6.2  # skip this if you want to use the development version
 ----
 . Build and Install MacPorts
