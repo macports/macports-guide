@@ -273,6 +273,7 @@
                     <programlisting><prompt>$</prompt> <userinput>mkdir -p /opt/mports</userinput>
 <!--                --><prompt>$</prompt> <userinput>cd /opt/mports</userinput>
 <!--                --><prompt>$</prompt> <userinput>git clone https://github.com/macports/macports-base.git</userinput>
+<!--                --><prompt>$</prompt> <userinput>cd macports-base</userinput>
 <!--                --><prompt>$</prompt> <userinput>git checkout v&macports-version;  # skip this if you want to use the development version</userinput></programlisting>
 
                 </listitem>
