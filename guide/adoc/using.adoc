@@ -469,6 +469,27 @@ Pass this flag, if you want to avoid running this step, for example if you want 
 By default, each port you install using the `+install+` explicitly (contrary to ports installed as a dependency of a different port) is marked as "`requested`".
 If you want MacPorts to treat a port you installed manually as if it was automatically installed as a dependency (e.g., if a dependency failed to build and you re-tried installing the dependency only), pass this flag.
 
+[[using.port.notes]]
+=== port notes
+
+The `+notes+` action is used to display any notes that a port's author included. These can contain
+anything, but by convention are brief, and typically contain quick start steps for configuring and
+using the port, pitfalls to watch out for, or other information that users should be aware of.
+These same notes are also displayed after installing a port. Many ports have no notes. More
+extensive documentation can often be found at a port's homepage, or in its installed files.
+
+[source]
+----
+$ port notes xinit
+----
+
+----
+
+--->  xinit has the following notes:
+  To use MacPorts' X11 as the default server, install xorg-server, log out, and
+  log back in.
+----
+
 [[using.port.clean]]
 === port clean
 

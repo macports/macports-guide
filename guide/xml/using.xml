@@ -550,6 +550,25 @@ apache2 has the variants:
             </variablelist>
         </section>
 
+        <section xml:id="using.port.notes">
+            <title>port notes</title>
+
+            <para>The <option>notes</option> action is used to display any notes that a port's author
+            included. These can contain anything, but by convention are brief, and typically contain quick
+            start steps for configuring and using the port, pitfalls to watch out for, or other
+            information that users should be aware of. These same notes are also displayed after installing a port.
+            Many ports have no notes. More extensive documentation can often be found at a port's
+            homepage, or in its installed files.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port notes xinit</userinput></programlisting>
+
+            <screen>
+--->  xinit has the following notes:
+  To use MacPorts' X11 as the default server, install xorg-server, log out, and
+  log back in.</screen>
+
+        </section>
+
         <section xml:id="using.port.clean">
             <title>port clean</title>
 
