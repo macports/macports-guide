@@ -1407,7 +1407,9 @@ Default value is based on ``+${configure.universal_archs}+``.
 +
 (Intel Tiger / Leopard) `+-arch i386 -arch ppc+`
 +
-(Snow Leopard and later) `+-arch x86_64 -arch i386+`
+(Snow Leopard through High Sierra) `+-arch x86_64 -arch i386+`
++
+(Big Sur and later) `+-arch arm64 -arch x86_64+`
 * Example:
 +
 
@@ -1442,7 +1444,9 @@ Default value is based on ``+${configure.universal_archs}+``.
 +
 (Intel Tiger / Leopard) `+-arch i386 -arch ppc+`
 +
-(Snow Leopard and later) `+-arch x86_64 -arch i386+`
+(Snow Leopard through High Sierra) `+-arch x86_64 -arch i386+`
++
+(Big Sur and later) `+-arch arm64 -arch x86_64+`
 * Example:
 +
 
@@ -1460,7 +1464,9 @@ Additional flags to put in the LDFLAGS environment variable when invoking the co
 +
 (Intel Tiger / Leopard) `+-arch i386 -arch ppc+`
 +
-(Snow Leopard and later) `+-arch x86_64 -arch i386+`
+(Snow Leopard through High Sierra) `+-arch x86_64 -arch i386+`
++
+(Big Sur and later) `+-arch arm64 -arch x86_64+`
 * Example:
 +
 

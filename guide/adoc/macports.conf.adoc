@@ -51,11 +51,11 @@ Default: `+sqlite+`
 
 build_arch::
 The machine architecture for which to build in normal use.
-Options include: ppc, i386, ppc64, x86_64
+Options include: arm64, i386, ppc, ppc64, x86_64
 +
 Default: 
 +
-(Snow Leopard and later) `+x86_64+` or `+i386+` depending on hardware
+(Snow Leopard and later) `+arm64+`, `+x86_64+` or `+i386+` depending on hardware
 +
 (Leopard/Tiger) `+i386+` or `+ppc+` depending on hardware
 
@@ -183,10 +183,10 @@ Default: rebuild
 Options for MacPorts Universal Binaries (+universal variant)
 
 universal_archs::
-The machine architectures to use for +universal variant (multiple entries must be space delimited). Options include: ppc, i386, ppc64, x86_64
+The machine architectures to use for +universal variant (multiple entries must be space delimited). Options include: arm64, i386, ppc, ppc64, x86_64
 +
-Default: `+x86_64 i386+` (``+ppc
-i386+`` for 10.5 and earlier)
+Default: `+arm64 x86_64+` for macOS 11 and later, `+x86_64 i386+` for 10.6 through 10.13, ``+ppc
+i386+`` for 10.5 and earlier
 
 Options for StartupItems
 

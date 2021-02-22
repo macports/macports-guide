@@ -96,10 +96,10 @@
 
         <listitem>
           <para>The machine architecture for which to build in normal use.
-          Options include: ppc, i386, ppc64, x86_64</para>
+          Options include: arm64, i386, ppc, ppc64, x86_64</para>
 
           <para>Default: </para>
-          <para>(Snow Leopard and later) <option>x86_64</option> or <option>i386</option> depending on hardware</para>
+          <para>(Snow Leopard and later) <option>arm64</option>, <option>x86_64</option> or <option>i386</option> depending on hardware</para>
           <para>(Leopard/Tiger) <option>i386</option> or <option>ppc</option> depending on hardware</para>
         </listitem>
       </varlistentry>
@@ -352,11 +352,12 @@
 
         <listitem>
           <para>The machine architectures to use for +universal variant
-          (multiple entries must be space delimited). Options include: ppc,
-          i386, ppc64, x86_64</para>
+          (multiple entries must be space delimited). Options include: arm64,
+          i386, ppc, ppc64, x86_64</para>
 
-          <para>Default: <option>x86_64 i386</option> (<option>ppc
-          i386</option> for 10.5 and earlier)</para>
+          <para>Default: <option>arm64 x86_64</option> for macOS 11 and later,
+          <option>x86_64 i386</option> for 10.6 through 10.13, <option>ppc
+          i386</option> for 10.5 and earlier</para>
         </listitem>
       </varlistentry>
     </variablelist>
