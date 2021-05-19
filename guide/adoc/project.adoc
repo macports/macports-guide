@@ -87,8 +87,10 @@ Please see below for longer and more detailed explanations.
                   Describe your problem. Preformatted text (such as terminal
                   output) should be put in ``+{{{``+three curly
                       brackets+``}}}+``. Please attach large
-                  amounts of output rather than pasting. Use the preview
-                  button! 
+                  amounts of output rather than pasting. 
+                  Link to GitHub commits with links like 
+                  ``[changeset:``bd5d680…``/macports-ports`` commit bd5d680``]``.
+                  Use the preview button! 
 
 |**Type**
 |
@@ -182,8 +184,19 @@ There are certain conventions used to ensure that Trac tickets convey as much ac
 
 * *Summary:*``+[port]+````+[version]+````+[concise description]+``
 ** Example: "rrdtool @1.2.23 +python Configure error - build failure"
-* *Description:* All details that might be relevant to someone reading the ticket. Be sure to mention the versions of your operating system and Xcode install. https://trac.macports.org/wiki/WikiFormatting[Wiki formatting] should be used to ensure that text is formatted correctly. Use the Preview button before submitting. If you want to post preformatted text such as a log or terminal output, make sure you use `+{{{``+$$...$$+``}}}+` around the text or it could break the page layout. Example:
-
+* *Description:* All details that might be relevant to someone reading the ticket. Be sure to mention the versions of your operating system and Xcode install. 
+** Use https://trac.macports.org/wiki/WikiFormatting[Wiki formatting] to ensure that text is formatted correctly. 
+Link to GitHub commits with ``[changeset:``GithubSHA``/macports-ports``
+optional link text``]``. 
+For example, for a GitHub commit with URL 
+https://github.com/macports/macports-ports/commit/bd5d6800828a3dcda1b65f3999fa748a365b168e, 
+put ``[changeset:bd5d6800828a3dcda1b65f3999fa748a365b168e/macports-ports
+commit bd5d680]`` in the description. It becomes the link,  
+https://trac.macports.org/changeset/bd5d6800828a3dcda1b65f3999fa748a365b168e/macports-ports[commit bd5d680]. See 
+https://trac.macports.org/wiki/TracLinks#LinkstoMacPortsonGitHub[TracLinks#LinkstoMacPortsonGitHub] for details.
++
+** Use the Preview button before submitting. If you want to post preformatted text such as a log or terminal output, make sure you use `+{{{``+$$...$$+``}}}+` around the text or it could break the page layout. Example:
++
 ....
 
 {{{
