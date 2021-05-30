@@ -563,7 +563,7 @@ $ git remote add username https://github.com/username/macports-guide.git
 
 [source]
 ----
-$ sudo port install libxslt docbook-xsl
+$ sudo port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0
 ----
 
 
