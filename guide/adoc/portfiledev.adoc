@@ -968,7 +968,16 @@ See the https://build.macports.org/builders[list
         of builders] to find out which platforms these currently are.
 
 If a build error occurred for a port its maintainer will be informed via an email so that problems which did not surface on the maintainer's machine will not go unnoticed.
-Port maintainers will find the https://build.macports.org/waterfall[waterfall] and the https://build.macports.org/builders[builders] views most useful since they give information about the build status and offer the possibility to build one's port(s) on specific builders.
 
 Thus the buildbot helps to keep MacPorts consistent on various macOS versions, i.e., a maintainer does not need access to these versions anymore in order to assure that the port(s) maintained build without problems.
 Currently only the default port variants will be built and kept.
+
+The web page at https://build.macports.org/[build.macports.org] offers several views of the recent builds and of their success.
+Port maintainers will find the https://build.macports.org/waterfall[waterfall] and the https://build.macports.org/builders[builders] views most useful since they give information about the build status and offer the possibility to build one's port(s) on specific builders.
+
+Also, a web page at https://ports.macports.org/[ports.macports.org] provides an alternate view of buildbot activity. 
+Enter the name of the port you are interested in. 
+That takes you to a summary page, which shows the success or failure of the last recorded build on each OS version. 
+See the "Port Health" indicators near the top.
+Click on those indicators to to see a description of the latest build on build.macports.org. 
+Click the Build Information tab to see all recorded builds.
