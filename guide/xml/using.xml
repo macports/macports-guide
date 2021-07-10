@@ -17,7 +17,8 @@
 
         <para><command>port</command> is the main utility used to interact with MacPorts. It is
             used to update <filename>Portfile</filename>s and the MacPorts infrastructure, and install and manage
-            ports.</para>
+            ports. Note that not all actions are listed here; see <link
+            xlink:href="https://man.macports.org/port.1.html#_user_actions">port(1)</link> for the full list.</para>
 
         <section xml:id="using.port.help">
             <title>port help</title>
