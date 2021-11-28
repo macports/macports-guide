@@ -141,8 +141,8 @@
       <term>os.arch</term>
 
       <listitem>
-        <para>The hardware architecture -- either <quote>powerpc</quote> or
-        <quote>i386</quote>.</para>
+        <para>The hardware architecture -- either <quote>powerpc</quote>,
+        <quote>i386</quote>, or <quote>arm</quote>.</para>
       </listitem>
     </varlistentry>
 
