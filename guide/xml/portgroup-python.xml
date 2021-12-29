@@ -27,10 +27,10 @@
           created, and will depend on python26 and python27 respectively.</para>
           <para>If the port name does not start with <quote>py-</quote>, it is interpreted
           as an application written in python rather than a python module. In
-          this case, no subports are defined, and <code>python.versions</code> defaults to
-          the value of <code>python.default_version</code>, which must be set. For example,
+          this case, no subports are defined, and <varname>python.versions</varname> defaults to
+          the value of <varname>python.default_version</varname>, which must be set. For example,
           if a port named <quote>mercurial</quote> sets <code>python.default_version 27</code>, then
-          <code>python.versions</code> will automatically be set to <quote>27</quote>, and a dependency
+          <varname>python.versions</varname> will automatically be set to <quote>27</quote>, and a dependency
           on python27 will be added.</para>
 
           <itemizedlist>
@@ -52,7 +52,7 @@
           <para>For modules (i.e., name starts with <quote>py-</quote>), this sets the
           subport that will be installed if the user asks to install <quote>py-foo</quote>
           rather than, e.g., <quote>py26-foo</quote> or <quote>py27-foo</quote>. If not explicitly set, a
-          reasonable default is chosen from the list in <code>python.versions</code>.</para>
+          reasonable default is chosen from the list in <varname>python.versions</varname>.</para>
           <para>For applications (i.e., name does not start with <quote>py-</quote>), this chooses
           which version of python to use, and must be set. It can be changed
           in variants if desired.</para>
@@ -64,7 +64,87 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>python.default_version     32</programlisting>
+              <programlisting>python.default_version     39</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>python.pep517</term>
+
+        <listitem>
+          <para>If set to <quote>yes</quote>, the port will be built as per
+          <link xlink:href="https://www.python.org/dev/peps/pep-0517/">PEP 517</link>.
+          Dependencies on appropriate front end tools will be added
+          automatically. This is supported when using Python 3.6 or later.</para>
+          <para>If set to <quote>no</quote>, the port will be built with the
+          traditional distutils/setuptools <code>setup.py</code> commands.</para>
+          <para>New ports should set this to <quote>yes</quote> if possible. The default
+          may change to <quote>yes</quote> in the future.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+                <para>Default: no</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.pep517     yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>python.pep517_backend</term>
+
+        <listitem>
+          <para>This can be set to the name of the PEP 517 build back-end used by the port.
+          If <varname>python.pep517</varname> is set to <quote>yes</quote>, dependencies on the
+          ports that provide the specified back-end will be added automatically.
+          Currently supported values are <quote>setuptools</quote>, <quote>flit</quote>,
+          and <quote>poetry</quote>. Clearing this option or setting it to an
+          unsupported value will result in no back-end dependencies being added.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+                <para>Default: setuptools</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.pep517_backend     flit</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>python.add_dependencies</term>
+
+        <listitem>
+          <para>If set to <quote>yes</quote>, a dependency on a python interpreter will
+          be added as per <varname>python.version</varname>, and if <varname>python.pep517</varname>
+          is also set to <quote>yes</quote>, dependencies on appropriate front- and back-end
+          tools will also be added.</para>
+          <para>If set to <quote>no</quote>, the portgroup will not add any dependencies,
+          and all required dependencies need to be declared in the Portfile.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+                <para>Default: yes</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.add_dependencies     no</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -248,7 +328,8 @@
         <term>build.cmd</term>
 
         <listitem>
-          <para>Default: <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
+          <para>Default (<code>python.pep517 no</code>): <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
+          <para>Default (<code>python.pep517 yes</code>): <varname>${python.bin}</varname> -m build --wheel --no-isolation --outdir <varname>${workpath}</varname></para>
         </listitem>
       </varlistentry>
 
@@ -256,7 +337,8 @@
         <term>build.target</term>
 
         <listitem>
-          <para>Default: build</para>
+          <para>Default (<code>python.pep517 no</code>): build</para>
+          <para>Default (<code>python.pep517 yes</code>): (empty)</para>
         </listitem>
       </varlistentry>
 
@@ -264,7 +346,8 @@
         <term>destroot.cmd</term>
 
         <listitem>
-          <para>Default: <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
+          <para>Default (<code>python.pep517 no</code>): <varname>${python.bin}</varname> setup.py --no-user-cfg</para>
+          <para>Default (<code>python.pep517 yes</code>): <varname>${python.bin}</varname> -m install --verbose</para>
         </listitem>
       </varlistentry>
 
@@ -272,7 +355,8 @@
         <term>destroot.destdir</term>
 
         <listitem>
-          <para>Default: --prefix=<varname>${python.prefix}</varname> --root=<varname>${destroot}</varname></para>
+          <para>Default (<code>python.pep517 no</code>): --prefix=<varname>${python.prefix}</varname> --root=<varname>${destroot}</varname></para>
+          <para>Default (<code>python.pep517 yes</code>): --destdir <varname>${destroot}</varname></para>
         </listitem>
       </varlistentry>
 
