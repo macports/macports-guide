@@ -103,7 +103,7 @@ strsed `+string+` g/``+regex+``/``+replacement+``/ ::
 The same as the previous format, except all instances of the pattern will be replaced, not only the first (mnemonic: 'g' is for global).
 reinplace::
 Allows text specified by a regular expression to be replaced by new text, in-place (the file will be updated itself, no need to place output into a new file and rename).
- reinplace [-locale ``+locale+``] [-n] [-W ``+dir+``] [--] `+command+```+file ...+``::
+ reinplace [-locale ``+locale+``] [-n] [-W ``+dir+``] [--] `+command+```+file [``+file2 ...+``]::
 Replace text given by the regular expression portion of the command with the replacement text, in all files specified.
 +
 Use -locale to set the locale.
