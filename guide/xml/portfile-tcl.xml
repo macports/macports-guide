@@ -278,7 +278,8 @@
               [-n]
               [-W <replaceable>dir</replaceable>]
               [--] <replaceable>command</replaceable>
-              <replaceable>file ...</replaceable>
+              <replaceable>file</replaceable>
+              [<replaceable>file2 ...</replaceable>]
             </term>
 
             <listitem>
