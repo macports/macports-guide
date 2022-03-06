@@ -504,7 +504,7 @@ distfiles           file_one.tar.gz:tagone \
 
         <listitem>
           <para>Sets the path to source directory relative to workpath. It can
-          be used if the extracted source directory has a different name then
+          be used if the extracted source directory has a different name than
           the distfile. Also used if the source to be built is in a
           subdirectory.</para>
 
