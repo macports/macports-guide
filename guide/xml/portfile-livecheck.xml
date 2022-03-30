@@ -53,7 +53,7 @@
           <listitem>
             <para>Examples:</para>
 
-            <programlisting>livecheck.type     regex
+            <programlisting>livecheck.type      regex
 livecheck.url       ${homepage}
 livecheck.regex     "Generally Available (\\d+(?:\\.\\d+)*)"</programlisting>
           </listitem>
