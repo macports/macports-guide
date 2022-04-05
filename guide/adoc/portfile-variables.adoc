@@ -48,7 +48,7 @@ Value: `+${workpath}/destroot+`
 distpath::
 Location to store downloaded distfiles.
 +
-Value: `+${portdbpath}/distfiles/${dist_subdir}/+`
+Value: `+${portdbpath}/distfiles/${dist_subdir}+`
 
 install.user::
 The Unix user at the time of port installation.

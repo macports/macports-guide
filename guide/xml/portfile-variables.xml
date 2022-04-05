@@ -107,7 +107,7 @@
         <para>Location to store downloaded distfiles.</para>
 
         <para>Value:
-        <varname>${portdbpath}/distfiles/${dist_subdir}/</varname></para>
+        <varname>${portdbpath}/distfiles/${dist_subdir}</varname></para>
       </listitem>
     </varlistentry>
 
