@@ -105,8 +105,8 @@
           If <varname>python.pep517</varname> is set to <quote>yes</quote>, dependencies on the
           ports that provide the specified back-end will be added automatically.
           Currently supported values are <quote>setuptools</quote>, <quote>flit</quote>,
-          and <quote>poetry</quote>. Clearing this option or setting it to an
-          unsupported value will result in no back-end dependencies being added.</para>
+          <quote>poetry</quote>, and <quote>hatch</quote>. Clearing this option or setting it
+          to an unsupported value will result in no back-end dependencies being added.</para>
 
           <itemizedlist>
             <listitem>
