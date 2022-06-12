@@ -124,6 +124,32 @@
         </listitem>
       </varlistentry>
       <varlistentry>
+        <term>python.test_framework</term>
+
+        <listitem>
+          <para>This can be set to the name of testing framework used by the port.
+          If <varname>test.run</varname> is set to <quote>yes</quote>, dependencies on
+          the port that provides the specified framework will be added automatically.
+          Currently supported values are <quote>pytest</quote>, <quote>nose</quote>,
+          and <quote>unittest</quote>. Clearing this option or setting it to an
+          unsupported value will result in no framework dependency being added.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+            <listitem>
+                <para>Default: pytest</para>
+            </listitem>
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>python.test_framework     nose</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
         <term>python.add_dependencies</term>
 
         <listitem>
