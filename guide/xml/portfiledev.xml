@@ -598,10 +598,11 @@ variant sqlite description {Build sqlite support} {
       <para>Generally speaking, you should create one patch file for each
       logical change that needs to be applied. Patchfile filenames should
       uniquely distinguish the file and generally be of the form
-      <filename>patch-</filename><replaceable>&lt;identifier&gt;</replaceable><filename>.diff</filename>,
+      <replaceable>&lt;identifier&gt;</replaceable><filename>.diff</filename>
+      or <replaceable>&lt;identifier&gt;</replaceable><filename>.patch</filename>,
       where the <replaceable>identifier</replaceable> is a reference to the
       problem or bug it is supposed to solve. An example filename would be
-      <filename>patch-</filename><replaceable>destdir-variable-fix</replaceable><filename>.diff</filename>.</para>
+      <replaceable>destdir-variable-fix</replaceable><filename>.diff</filename>.</para>
 
       <para>To create a patch to modify a single file, follow the steps
       below.</para>
@@ -627,7 +628,7 @@ variant sqlite description {Build sqlite support} {
           to create a <quote>unified</quote> diff patch file.</para>
 
           <programlisting><prompt>%%</prompt> <userinput>cd ~/Downloads/foo-1.34</userinput>
-<prompt>%%</prompt> <userinput>diff -u src/Makefile.in.orig src/Makefile.in &gt; patch-destdir-variable-fix.diff</userinput></programlisting>
+<prompt>%%</prompt> <userinput>diff -u src/Makefile.in.orig src/Makefile.in &gt; destdir-variable-fix.diff</userinput></programlisting>
 
           <para>You should execute <command>diff</command> from
           the top-level directory of the unpacked source code, because during
@@ -670,7 +671,7 @@ variant sqlite description {Build sqlite support} {
 
         <listitem>
           <para>Place the patch
-          <filename>patch-destdir-variable-fix.diff</filename> in the directory
+          <filename>destdir-variable-fix.diff</filename> in the directory
           <filename>${portpath}/files</filename> and use it in a port using
           the <code>patchfiles</code> keyword. <varname>${portpath}</varname>
           may be in a local Portfile repository during development, or
@@ -678,7 +679,7 @@ variant sqlite description {Build sqlite support} {
           <varname>${portpath}</varname> in the global MacPorts
           repository.</para>
 
-          <programlisting>patchfiles          patch-destdir-variable-fix.diff</programlisting>
+          <programlisting>patchfiles          destdir-variable-fix.diff</programlisting>
         </listitem>
       </orderedlist>
     </section>

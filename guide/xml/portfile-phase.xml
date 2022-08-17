@@ -1501,11 +1501,11 @@ extract.post_args   "| gnutar -x"</programlisting>
             <listitem>
               <para>Example:</para>
 
-              <programlisting>patchfiles          patch-destdir-variable-fix.diff \
+              <programlisting>patchfiles          destdir-variable-fix.diff \
                     patch-source.c.diff</programlisting>
 
               <programlisting>patchfiles-append   patch-configure.diff
-patchfiles-delete   patch-destdir-variable-fix.diff</programlisting>
+patchfiles-delete   destdir-variable-fix.diff</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
