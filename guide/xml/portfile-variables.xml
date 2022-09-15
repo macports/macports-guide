@@ -160,7 +160,7 @@
 
       <listitem>
         <para>Endianness of the processor -- either <quote>big</quote> (on
-        PowerPC systems) or <quote>little</quote> (on Intel systems).</para>
+        PowerPC systems) or <quote>little</quote> (on Intel and Apple Silicon systems).</para>
       </listitem>
     </varlistentry>
 
