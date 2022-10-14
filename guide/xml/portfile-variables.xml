@@ -192,6 +192,24 @@
     </varlistentry>
 
     <varlistentry>
+      <term>xcodeversion</term>
+
+      <listitem>
+        <para>The installed version of Xcode, if any (e.g.,
+        <quote>14.0.1</quote>).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>xcodecltversion</term>
+
+      <listitem>
+        <para>(Added: MacPorts 2.8) The installed version of the Command Line
+        Tools for Xcode, if any (e.g., <quote>14.0.0.0.1.1661618636</quote>).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
       <term>universal_possible</term>
 
       <listitem>
