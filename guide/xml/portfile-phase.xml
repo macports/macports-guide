@@ -587,6 +587,26 @@ svn.revision        2100</programlisting>
           </listitem>
         </varlistentry>
 
+         <varlistentry>
+          <term>fetch.user_agent</term>
+
+          <listitem>
+            <para>User-Agent string to send when fetching the resource.</para>
+
+            <itemizedlist>
+              <listitem>
+                <para>Default: MacPorts/x.y.z libcurl/x.y.z</para>
+              </listitem>
+
+              <listitem>
+                <para>Example:</para>
+
+                <programlisting>fetch.user_agent    Mozilla/5.0</programlisting>
+              </listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+
         <varlistentry>
           <term>fetch.password</term>
 
