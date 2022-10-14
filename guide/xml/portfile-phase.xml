@@ -1864,24 +1864,42 @@ configure.cppflags-delete   -I${prefix}/lib/db44</programlisting>
       </varlistentry>
 
       <varlistentry>
-        <term>configure.macosx_deployment_target</term>
-
-        <term>configure.macosx_deployment_target-append</term>
-
-        <term>configure.macosx_deployment_target-delete</term>
+        <term>configure.sdk_version</term>
 
         <listitem>
-          <para>TODO: add description</para>
+          <para>The version of the macOS SDK to build against.</para>
 
           <itemizedlist>
             <listitem>
-              <para>Default: ???</para>
+              <para>Default: ${macos_version_major}</para>
             </listitem>
 
             <listitem>
               <para>Example:</para>
 
-              <programlisting>TODO: add example</programlisting>
+              <programlisting>configure.sdk_version 10.13</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>configure.sdkroot</term>
+
+        <listitem>
+          <para>The path to the macOS SDK to build against.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: (empty) (10.14 and older with Command Line Tools installed, if ${configure.sdk_version} == ${macos_version_major})</para>
+              <para>Default: /Library/Developer/CommandLineTools/SDKs/MacOSX${configure.sdk_version}.sdk (later macOS with Command Line Tools)</para>
+              <para>Default: ${developer_dir}/Platforms/MacOSX.platform/Developer/SDKs/MacOSX${configure.sdk_version}.sdk (macOS without Command Line Tools)</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.sdkroot</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
