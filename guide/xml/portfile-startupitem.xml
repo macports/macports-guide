@@ -82,6 +82,26 @@
       </varlistentry>
 
       <varlistentry>
+        <term>startupitem.custom_file</term>
+
+        <listitem>
+          <para>(Added: MacPorts 2.8) Path to a file to use as a StartupItem, instead of creating one.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>(empty)</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.custom_file      ${worksrcpath}/mydaemon.plist</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>startupitem.debug</term>
 
         <listitem>
