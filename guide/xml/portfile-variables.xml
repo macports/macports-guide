@@ -190,5 +190,15 @@
         <quote>12</quote> for Monterey or <quote>10.15</quote> for Catalina).</para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>universal_possible</term>
+
+      <listitem>
+        <para>Boolean value indicating whether it is possible to build universal binaries
+        given the configured SDK and universal_archs and the port's supported_archs.</para>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
