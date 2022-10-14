@@ -172,5 +172,23 @@
         <quote>12</quote> for Darwin 12.x).</para>
       </listitem>
     </varlistentry>
+
+    <varlistentry>
+      <term>macos_version</term>
+
+      <listitem>
+        <para>The full macOS version number of the host operating system, if applicable (e.g.,
+        <quote>10.15.7</quote>).</para>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>macos_version_major</term>
+
+      <listitem>
+        <para>The major macOS version number of the host operating system, if applicable (e.g.,
+        <quote>12</quote> for Monterey or <quote>10.15</quote> for Catalina).</para>
+      </listitem>
+    </varlistentry>
   </variablelist>
 </section>
