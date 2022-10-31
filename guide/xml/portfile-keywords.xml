@@ -425,7 +425,7 @@
         each comparison operator in the specifier is applied to <code>${os.version}</code>
         as the left operand and the listed version as the right operand. If any of the
         comparisons evaluate to false, then the default value of <code>known_fail</code>
-        is changed to <literal>yes</literal>.
+        is changed to <literal>yes</literal>.</para>
 
         <para>Possible operators are: <code>&lt;</code>, <code>&lt;=</code>,
         <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>.
