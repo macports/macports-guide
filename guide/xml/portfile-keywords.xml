@@ -481,7 +481,7 @@
       <term>use_xcode</term>
 
       <listitem>
-        <para>Available in 2.6.0 and later. By default, it is assumed on
+        <para>(Added: MacPorts 2.6.0) By default, it is assumed on
         macOS that ports will not need tools from Xcode.app unless (1)
         Command Line Tools aren't installed, (2) you are on an old version
         of Mac OS X that does not support the xcode-select mechanism, or (3)
