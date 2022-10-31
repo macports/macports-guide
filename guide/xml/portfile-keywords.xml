@@ -363,8 +363,9 @@
 
       <listitem>
         <para>A list of the platforms on which the port is expected to work.
-        Required, but not interpreted in any way by MacPorts at this time; it is
-        purely informational for users. Possible values:</para>
+        Defaults to <literal>darwin</literal> if not set. Consists of a list of
+        platform specifiers, each of which is at minimum a platform name and
+        may also include version information. Possible platform names are:</para>
 
         <itemizedlist>
           <listitem>
@@ -399,17 +400,63 @@
           </listitem>
         </itemizedlist>
 
-        <para>Ports for software that does not require macOS-specific features
-        should use <literal>darwin</literal>. Most ports use this value on the
+        <para>A platform specifier that is just a platform name is purely
+        informational for users; it is displayed in the output of <code>port info</code>
+        but has no other effect.
+        Ports for software that does not require macOS-specific features
+        can generally use the default value of <literal>darwin</literal>. Most
+        ports use this value on the
         presumption that they would work on Pure Darwin, even if that has not
         been attempted. Ports for software that is known to require
-        macOS-specific features should set this to <literal>macosx</literal>.
-        Including the xcode portgroup will set this to <literal>macosx</literal>
+        macOS-specific features should use <literal>macosx</literal>.
+        Including the xcode portgroup will change the default to <literal>macosx</literal>
         automatically.</para>
 
         <para>See also <varname>os.platform</varname>.</para>
 
-        <programlisting>platforms           darwin</programlisting>
+        <programlisting>platforms           macosx freebsd</programlisting>
+
+        <para>(Added: MacPorts 2.8.0) A platform specifier can also be a list, where
+        the first element is a platform name and subsequent elements are pairs of
+        comparison operators and versions. This indicates the version ranges of each
+        platform that the port works on.</para>
+
+        <para>If a platform specifier's name matches <code>${os.platform}</code>, then
+        each comparison operator in the specifier is applied to <code>${os.version}</code>
+        as the left operand and the listed version as the right operand. If any of the
+        comparisons evaluate to false, then the default value of <code>known_fail</code>
+        is changed to <literal>yes</literal>.
+
+        <para>Possible operators are: <code>&lt;</code>, <code>&lt;=</code>,
+        <code>&gt;</code>, <code>&gt;=</code>, <code>==</code>, <code>!=</code>.
+        The <code>==</code> and <code>!=</code> operators support globbing. The rest
+        of the operators compare as per the <code>vercmp</code> command.
+        </para>
+
+        <para>Examples:</para>
+        <para>A port that works on Darwin 12 and later:</para>
+        <programlisting>platforms           {darwin &gt;= 12}</programlisting>
+
+        <para>A port that works on Darwin versions between 10 and 19 inclusive:</para>
+        <programlisting>platforms           {darwin &gt;= 10 &lt;20}</programlisting>
+
+        <para>A port that works on Darwin versions between 10 and 19 but not
+            version 12.x:</para>
+        <programlisting>platforms           {darwin &gt;= 10 != 12.* &lt;20}</programlisting>
+
+        <para>The special value <literal>any</literal> can also be used to indicate that
+        a port will install identical files across platforms or platform versions. This can
+        help to reduce the number of binary archives that have to be built. In most cases,
+        this is only applicable to ports that don't install any architecture-specific
+        files.</para>
+
+        <para>Ports that install identical files on any platform should use:</para>
+        <programlisting>platforms           any</programlisting>
+
+        <para>Ports that install identical files on any Darwin version, but may install
+        different files on other platforms, should use:</para>
+        <programlisting>platforms           {darwin any}</programlisting>
+
       </listitem>
     </varlistentry>
 
@@ -498,6 +545,24 @@
         </para>
         <programlisting>use_xcode           no</programlisting>
         <programlisting>use_xcode           yes</programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>known_fail</term>
+
+      <listitem>
+        <para>Setting this option to <code>yes</code> indicates that the
+        port is known not to work. Users will be told this and asked for
+        confirmation if they attempt to install it, and the Buildbot and
+        GitHub Actions will not attempt to build it.</para>
+        <para>Don't set this option conditionally on the basis of
+        anything that can change dynamically, such as <code>$build_arch</code>
+        or <code>$xcodeversion</code>, since it will be
+        recorded in the static PortIndex. If a port works only on certain
+        OS versions, use the <code>platforms</code> option to indicate
+        this rather than setting <code>known_fail</code> directly.</para>
+        <programlisting>known_fail           yes</programlisting>
       </listitem>
     </varlistentry>
 
