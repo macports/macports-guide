@@ -438,11 +438,11 @@
         <programlisting>platforms           {darwin &gt;= 12}</programlisting>
 
         <para>A port that works on Darwin versions between 10 and 19 inclusive:</para>
-        <programlisting>platforms           {darwin &gt;= 10 &lt;20}</programlisting>
+        <programlisting>platforms           {darwin &gt;= 10 &lt; 20}</programlisting>
 
         <para>A port that works on Darwin versions between 10 and 19 but not
             version 12.x:</para>
-        <programlisting>platforms           {darwin &gt;= 10 != 12.* &lt;20}</programlisting>
+        <programlisting>platforms           {darwin &gt;= 10 != 12.* &lt; 20}</programlisting>
 
         <para>The special value <literal>any</literal> can also be used to indicate that
         a port will install identical files across platforms or platform versions. This can
