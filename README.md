@@ -12,6 +12,15 @@ policies.
 When a new MacPorts X.Y.0 is released, the release-X.Y branch will be merged to
 master to make the documentation available.
 
+## Content List
+
+Provides the **content list** for _better readability_ of and _improved access_ to this folder 
+structure, including but not limited, to the  `adoc` folder particularily. For comparison to the 
+well known and established sections of the [HTML guide](https://guide.macports.org) provided
+from the sources of this repository.
+
+More information at: [File: CONTENT.md](CONTENT.md) - _(WIP)_
+
 ## Building
 
 To generate  the guide, clone the macports-guide repository:
