@@ -524,7 +524,7 @@
       </listitem>
     </varlistentry>
 
-    <varlistentry>
+    <varlistentry xml:id="reference.keywords.use_xcode">
       <term>use_xcode</term>
 
       <listitem>

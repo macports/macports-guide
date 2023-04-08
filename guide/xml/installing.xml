@@ -32,12 +32,16 @@
         <section xml:id="installing.xcode.mavericks">
             <title>Install Xcode on OS X 10.9 or Later</title>
 
-            <para>Download the latest version of Xcode <link
-                    xlink:href="https://developer.apple.com/downloads/index.action">from the Apple developer website</link> or
-                get it <link xlink:href="https://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
-                    Store</link>.</para>
+            <para>(Optional) Download the latest version of Xcode <link
+            xlink:href="https://developer.apple.com/downloads/index.action">from the Apple developer website</link> or
+            get it <link xlink:href="https://itunes.apple.com/us/app/xcode/id497799835">using the Mac App
+            Store</link>.</para>
+            
+            <para>A few ports require a full Xcode installation to use, but most don’t 
+            (read the description of the <link linkend="reference.keywords.use_xcode">use_xcode keyword</link> for specifics).
+            If you are OK with being unable to use these ports, you do not need to install Xcode.</para>
 
-            <para>Once you have Xcode installed, open a terminal, run <userinput>xcode-select --install</userinput>, and
+            <para>Next, open a terminal, run <userinput>xcode-select --install</userinput>, and
                 click the Install button to install the required command line developer tools. Don't worry if you see
                 a message telling you the software cannot be installed because it is not currently available from the
                 Software Update Server. This usually means you already have the latest version installed. You can also
