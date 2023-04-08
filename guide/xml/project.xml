@@ -1160,7 +1160,7 @@ To use the current port, you must be in a port's directory.</screen>
           <step>
             <para>Install the required ports:</para>
 
-            <programlisting><prompt>$</prompt> <userinput>sudo port install libxslt docbook-xsl</userinput></programlisting>
+            <programlisting><prompt>$</prompt> <userinput>sudo port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0</userinput></programlisting>
           </step>
         </procedure>
       </section>
