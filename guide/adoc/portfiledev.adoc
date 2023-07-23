@@ -713,7 +713,24 @@ destroot.keepdirs    ${destroot}${prefix}/var/run \
 [[development.practices.dont-overwrite]]
 === Don't Overwrite Config Files
 
-TODO:
+For packages that use a configuration file, it's generally desirable to not overwrite user-changes in the config file when performing an upgrade or reinstall.
+
+[source]
+----
+post-destroot {
+    # Move conf file to sample so it does not get overwritten
+    file rename ${destroot}${prefix}/etc/apcupsd/apcupsd.conf \
+                ${destroot}${prefix}/etc/apcupsd/apcupsd.conf.sample
+}
+
+post-activate {
+   # Create initial conf file if needed
+   if {![file exists ${prefix}/etc/apcupsd/apcupsd.conf]} {
+      file copy ${prefix}/etc/apcupsd/apcupsd.conf.sample \
+                ${prefix}/etc/apcupsd/apcupsd.conf
+   }
+}
+----
 
 [[development.practices.install-docs]]
 === Install Docs and Examples

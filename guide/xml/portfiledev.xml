@@ -865,7 +865,22 @@ Ports failed:                   0</screen>
     <section xml:id="development.practices.dont-overwrite">
       <title>Don't Overwrite Config Files</title>
 
-      <para>TODO:</para>
+      <para>For packages that use a configuration file, it's generally desirable to not overwrite user-changes in the config file when performing an upgrade or reinstall.</para>
+
+        <programlisting>post-destroot {
+    # Move conf file to sample so it does not get overwritten
+    file rename ${destroot}${prefix}/etc/apcupsd/apcupsd.conf \
+                ${destroot}${prefix}/etc/apcupsd/apcupsd.conf.sample
+}
+
+post-activate {
+    # Create initial conf file if needed
+    if {![file exists ${prefix}/etc/apcupsd/apcupsd.conf]} {
+        file copy ${prefix}/etc/apcupsd/apcupsd.conf.sample \
+                  ${prefix}/etc/apcupsd/apcupsd.conf
+    }
+}</programlisting>
+
     </section>
 
     <section xml:id="development.practices.install-docs">
