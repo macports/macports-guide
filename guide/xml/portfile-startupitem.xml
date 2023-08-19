@@ -277,6 +277,46 @@
       </varlistentry>
 
       <varlistentry>
+        <term>startupitem.user</term>
+
+        <listitem>
+          <para>(Added: MacPorts 2.7) Run the daemon via the specified user.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>none</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.user   my_daemon_user</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>startupitem.group</term>
+
+        <listitem>
+          <para>(Added: MacPorts 2.7) Run the daemon via the specified group.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>none</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.group   my_daemon_group</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>startupitems</term>
 
         <listitem>
