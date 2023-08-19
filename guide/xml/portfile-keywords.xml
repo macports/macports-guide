@@ -585,5 +585,43 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry>
+      <term>installs_libs</term>
+
+      <listitem>
+        <para>By default, it is assumed that ports may install libraries or
+        headers that can be incorporated into their dependents. If this is
+        not the case, set <code>installs_libs</code> to <code>no</code>. This
+        means that this port's dependents need not check that it is installed
+        for the same architectures as them; that it is permissible to
+        distribute binaries of the dependents even if their licenses conflict
+        with the license of this port; and that updates to this port can never
+        result in broken dynamic linking in its dependents.</para>
+        <programlisting>installs_libs        no</programlisting>
+      </listitem>
+    </varlistentry>
+
+    <varlistentry>
+      <term>add_users</term>
+
+      <listitem>
+        <para>Consists of a list of usernames and settings. At appropriate
+        times during the port installation process, a user will be created for
+        each username with the corresponding settings.</para>
+        <para>Settings are of the form <code>name=value</code>. A setting
+        applies to the username that appeared most recently before it in the
+        list.</para>
+        <para>Applicable options are: <code>group</code>, <code>gid</code>
+        (may be used instead of <code>group</code>), <code>passwd</code>,
+        <code>realname</code>, <code>home</code>, and <code>shell</code>.</para>
+        <programlisting>add_users            squid \
+                    group=squid \
+                    realname=Squid\ Proxy \
+                    home=${prefix}/var/squid</programlisting>
+        <programlisting>add_users            user1 group=mygroup \
+                    user2 group=mygroup</programlisting>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
