@@ -1198,6 +1198,32 @@ extract.cmd    = bzip
       </varlistentry>
 
       <varlistentry>
+        <term>use_dmg</term>
+
+        <listitem>
+          <para>This keyword is for downloads that are packaged as a
+          DMG file. When invoked, it automatically sets:</para>
+
+          <literallayout>extract.suffix    = .dmg
+extract.cmd       = hdiutil
+
+</literallayout>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <option>no</option></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>use_dmg              yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>use_lzip</term>
 
         <listitem>
