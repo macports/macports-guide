@@ -566,5 +566,24 @@
       </listitem>
     </varlistentry>
 
+    <varlistentry>
+      <term>macosx_deployment_target</term>
+
+      <listitem>
+        <para>The macOS release to target.</para>
+        <para>During the configure phase, environment variable
+        <code>MACOSX_DEPLOYMENT_TARGET</code> is set to the specified
+        value.</para>
+        <para>This option is also used when building binary packages,
+        via <code>port pkg</code>, <code>port mpkg</code>,
+        <code>port dmg</code>, and <code>port mdmg</code>.
+        Specifically, MacPorts will create a package/DMG that is
+        compatible with the desired macOS release. In addition, it is
+        used to set version-related metadata for the Apple installer
+        package, including <code>allowed-os-versions</code>.</para>
+        <programlisting>macosx_deployment_target 10.8</programlisting>
+      </listitem>
+    </varlistentry>
+
   </variablelist>
 </section>
