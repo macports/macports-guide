@@ -614,11 +614,11 @@
         <para>Applicable options are: <code>group</code>, <code>gid</code>
         (may be used instead of <code>group</code>), <code>passwd</code>,
         <code>realname</code>, <code>home</code>, and <code>shell</code>.</para>
-        <programlisting>add_users            squid \
+        <programlisting>add_users           squid \
                     group=squid \
                     realname=Squid\ Proxy \
                     home=${prefix}/var/squid</programlisting>
-        <programlisting>add_users            user1 group=mygroup \
+        <programlisting>add_users           user1 group=mygroup \
                     user2 group=mygroup</programlisting>
       </listitem>
     </varlistentry>
