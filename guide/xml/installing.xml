@@ -169,6 +169,14 @@
                     <variablelist>
                         <varlistentry>
                             <term>
+                                macOS 14 Sonoma:
+                            </term>
+                            <listitem>
+                                <para><link xlink:href="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-14-Sonoma.pkg">MacPorts-&macports-version;-14-Sonoma.pkg</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
                                 macOS 13 Ventura:
                             </term>
                             <listitem>
