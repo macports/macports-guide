@@ -494,8 +494,8 @@
             environment manually using the rules as a guide.</para>
 
         <para>Depending on your shell and which configuration files already exist, the installer may use
-            <filename>.profile</filename>, <filename>.bash_login</filename>, <filename>.bash_profile</filename>,
-            <filename>.tcshrc</filename>, or <filename>.cshrc</filename>.</para>
+            <filename>.zprofile</filename>, <filename>.profile</filename>, <filename>.bash_login</filename>, 
+            <filename>.bash_profile</filename>, <filename>.tcshrc</filename>, or <filename>.cshrc</filename>.</para>
 
         <section xml:id="installing.shell.postflight">
             <title>The Postflight Script</title>
