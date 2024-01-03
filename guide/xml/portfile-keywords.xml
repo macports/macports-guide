@@ -454,8 +454,13 @@
         <programlisting>platforms           any</programlisting>
 
         <para>Ports that install identical files on any Darwin version, but may install
-        different files on other platforms, should use:</para>
+        different files on other platforms (or don't work on other platforms), should use:</para>
         <programlisting>platforms           {darwin any}</programlisting>
+
+        <para>It is possible to combine <literal>any</literal> with version ranges. A
+        port that only works on Darwin 17 or later and installs identical files regardless
+        of the Darwin version would do this:</para>
+        <programlisting>platforms           {darwin any >= 17}</programlisting>
 
       </listitem>
     </varlistentry>
