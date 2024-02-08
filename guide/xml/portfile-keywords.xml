@@ -108,8 +108,8 @@
         result in a change for users who already have the ports
         installed.</para>
 
-        <para>Some examples of situations in which a port's revision should be
-        increased:</para>
+        <para>Some examples of situations in which a port's revision
+        should usually be increased:</para>
 
         <itemizedlist>
           <listitem>
@@ -124,7 +124,7 @@
             <para>changing the names or locations of any installed files</para>
           </listitem>
           <listitem>
-            <para>adding a dependency to depends_lib or depends_run</para>
+            <para>adding a dependency that causes the installed files to be different</para>
           </listitem>
           <listitem>
             <para>a library dependency's install_name has changed</para>
@@ -138,7 +138,7 @@
         </itemizedlist>
 
         <para>Some examples of situations in which a port's revision should not
-        be increased:</para>
+        usually be increased:</para>
 
         <itemizedlist>
           <listitem>
@@ -146,7 +146,18 @@
           </listitem>
           <listitem>
             <para>adding a dependency to depends_fetch, depends_extract,
-            depends_build, or depends_test</para>
+            depends_patch, depends_build, or depends_test</para>
+          </listitem>
+          <listitem>
+            <para>adding a direct dependency on a port that was
+            already an indirect dependency</para>
+          </listitem>
+          <listitem>
+            <para>changing a dependency's type, e.g. from depends_lib
+            to depends_build</para>
+          </listitem>
+          <listitem>
+            <para>removing a dependency that is not used</para>
           </listitem>
           <listitem>
             <para>setting or changing the port's license</para>
