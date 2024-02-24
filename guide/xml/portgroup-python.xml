@@ -87,7 +87,7 @@
               <para>Type: optional</para>
             </listitem>
             <listitem>
-                <para>Default: no</para>
+                <para>Default: yes (for Python 3.7+)</para>
             </listitem>
             <listitem>
               <para>Example:</para>
