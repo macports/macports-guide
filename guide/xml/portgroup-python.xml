@@ -76,18 +76,19 @@
           <para>If set to <quote>yes</quote>, the port will be built as per
           <link xlink:href="https://www.python.org/dev/peps/pep-0517/">PEP 517</link>.
           Dependencies on appropriate front end tools will be added
-          automatically. This is supported when using Python 3.6 or later.</para>
+          automatically. This is supported when using Python 3.6 or later, though
+          the supporting module ports for 3.6 and other EOL Python versions may
+          be removed in future.</para>
           <para>If set to <quote>no</quote>, the port will be built with the
           traditional distutils/setuptools <code>setup.py</code> commands.</para>
-          <para>New ports should set this to <quote>yes</quote> if possible. The default
-          may change to <quote>yes</quote> in the future.</para>
 
           <itemizedlist>
             <listitem>
               <para>Type: optional</para>
             </listitem>
             <listitem>
-                <para>Default: yes (for Python 3.7+)</para>
+                <para>Default (Python >= 3.7): yes</para>
+                <para>Default (Python <= 3.6): no</para>
             </listitem>
             <listitem>
               <para>Example:</para>
@@ -105,7 +106,8 @@
           If <varname>python.pep517</varname> is set to <quote>yes</quote>, dependencies on the
           ports that provide the specified back-end will be added automatically.
           Currently supported values are <quote>setuptools</quote>, <quote>flit</quote>,
-          <quote>poetry</quote>, and <quote>hatch</quote>. Clearing this option or setting it
+          <quote>poetry</quote>, <quote>hatch</quote>, <quote>maturin</quote>, and
+          <quote>meson</quote>. Clearing this option or setting it
           to an unsupported value will result in no back-end dependencies being added.</para>
 
           <itemizedlist>
