@@ -1108,7 +1108,8 @@ To use the current port, you must be in a port's directory.</screen>
         <itemizedlist>
         <listitem><para>A bug has not been acknowledged for more than three weeks
             after a ticket is filed.</para></listitem>
-        <listitem><para>All tickets filed against the port have been resolved
+        <listitem><para>All tickets (and/or pull requests) filed against the port
+            have been resolved
             with no input from the maintainer, after the 72-hour timeout,
             for a significant period of time (at least three weeks). This
             needs to involve a reasonable number of tickets; one timeout
