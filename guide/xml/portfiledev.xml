@@ -516,6 +516,92 @@ variant sqlite description {Build sqlite support} {
     </section>
   </section>
 
+  <section xml:id="development.subport">
+    <title>Subports</title>
+
+    <para>MacPorts subports are a way of declaring multiple related ports in a
+    single Portfile. It is especially helpful to use subports when the
+    related ports share variables or keywords, because they can be declared
+    in the shared part of the Portfile and used by each subport.</para>
+
+    <section xml:id="development.subport.declarations">
+      <title>Subport Declarations</title>
+
+      <para>subport <emphasis>name</emphasis> <emphasis>body</emphasis></para>
+
+      <para>The subport declaration causes MacPorts to define an additional port,
+      with the <emphasis>name</emphasis> given by the declaration. The keywords
+      for the subport are those in the global section of the Portfile, and those
+      in the brace-enclosed <emphasis>body</emphasis>.</para>
+    </section>
+
+    <section xml:id="development.subport.examples">
+      <title>Subport Examples</title>
+
+      <para>For example, if a Portfile contains:</para>
+
+      <programlisting>
+Portfile                   1.0
+
+name                       example
+
+depends_lib                aaa
+configure.args             --bbb
+
+subport example-sub1 {
+    depends_lib-append     ccc
+    configure.args         --ddd
+}
+
+subport example-sub2 {
+    depends_lib-append     eee
+    configure.args-append  --fff
+}</programlisting>
+
+      <para>MacPorts will produce the same results as if there were three
+      Portfiles:</para>
+
+      <programlisting>
+Portfile                   1.0
+
+name                       example
+
+depends_lib                aaa
+configure.args             --bbb</programlisting>
+
+      <programlisting>
+Portfile                   1.0
+
+name                       example-sub1
+
+depends_lib                aaa
+depends_lib-append         ccc
+configure.args             --ddd</programlisting>
+
+      <programlisting>
+Portfile                   1.0
+
+name                       example-sub2
+
+depends_lib                aaa
+depends_lib-append         eee
+configure.args             --bbb
+configure.args-append      --fff</programlisting>
+    </section>
+
+    <section xml:id="development.subport.tips">
+      <title>Subport Tips</title>
+
+      <para>Because MacPorts treats each subport as a separate port declaration,
+      each subport will have its own, independent phases: fetch, configure,
+      build, destroot, install, activate, etc. However, because the subports
+      share the global declaration part, all the subports will by default
+      share the same dist_subdir. This means that MacPorts only needs to fetch
+      the distfiles once, and the remaining subports can reuse the
+      distfiles.</para>
+    </section>
+  </section>
+
   <section xml:id="development.patches">
     <title>Patch Files</title>
 

@@ -23,6 +23,9 @@
   <xi:include href="portfile-variants.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
+  <xi:include href="portfile-subports.xml"
+              xmlns:xi="http://www.w3.org/2001/XInclude" />
+
   <xi:include href="portfile-tcl.xml"
               xmlns:xi="http://www.w3.org/2001/XInclude" />
 
