@@ -565,6 +565,10 @@ subport example-sub2 {
 Portfile                   1.0
 
 name                       example
+# Note: For the parent port, 'subport' has the same value as 'name'.
+# Also, one cannot override the subport name; it's shown here merely
+# to illustrate what the value is set to, for the given context.
+#subport                   example
 
 depends_lib                aaa
 configure.args             --bbb</programlisting>
@@ -572,7 +576,9 @@ configure.args             --bbb</programlisting>
       <programlisting>
 Portfile                   1.0
 
-name                       example-sub1
+name                       example
+# Value for 'subport' shown here for illustration purposes only; see note above.
+#subport                   example-sub1
 
 depends_lib                aaa
 depends_lib-append         ccc
@@ -581,7 +587,9 @@ configure.args             --ddd</programlisting>
       <programlisting>
 Portfile                   1.0
 
-name                       example-sub2
+name                       example
+# Value for 'subport' shown here for illustration purposes only; see note above.
+#subport                   example-sub2
 
 depends_lib                aaa
 depends_lib-append         eee

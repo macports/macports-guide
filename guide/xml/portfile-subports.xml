@@ -5,13 +5,13 @@
   <title>Subports</title>
 
   <para>The subport declaration causes MacPorts to define an additional port,
-  with the <literal>name</literal> given by the declaration. The keywords
+  with the <emphasis>name</emphasis> given by the declaration. The keywords
   for the subport are those in the global section of the Portfile, and those
-  in the brace-enclosed <literal>body</literal>.</para>
+  in the brace-enclosed <emphasis>body</emphasis>.</para>
 
   <variablelist>
     <varlistentry>
-      <term>subport <replaceable>name</replaceable> <replaceable>body</replaceable></term>
+      <term>subport name body</term>
 
       <listitem>
         <para>Example:</para>
@@ -34,16 +34,16 @@ subport example-sub2 {
     configure.args-append  --fff
 }</programlisting>
       </listitem>
-
-      <listitem>
-        <para>Because MacPorts treats each subport as a separate port declaration,
-        each subport will have its own, independent phases: fetch, configure,
-        build, destroot, install, activate, etc. However, because the subports
-        share the global declaration part, all the subports will by default
-        share the same dist_subdir. This means that MacPorts only needs to fetch
-        the distfiles once, and the remaining subports can reuse the
-        distfiles.</para>
-      </listitem>
     </varlistentry>
   </variablelist>
+
+  <note>
+    <para>Because MacPorts treats each subport as a separate port declaration,
+    each subport will have its own, independent phases: fetch, configure,
+    build, destroot, install, activate, etc. However, because the subports
+    share the global declaration part, all the subports will by default
+    share the same dist_subdir. This means that MacPorts only needs to fetch
+    the distfiles once, and the remaining subports can reuse the
+    distfiles.</para>
+  </note>
 </section>
