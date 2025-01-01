@@ -75,7 +75,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.create      yes</programlisting>
+              <programlisting>startupitem.create         yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -95,7 +95,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.custom_file      ${worksrcpath}/mydaemon.plist</programlisting>
+              <programlisting>startupitem.custom_file    ${worksrcpath}/mydaemon.plist</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -115,7 +115,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.debug      yes</programlisting>
+              <programlisting>startupitem.debug          yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -161,7 +161,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.location        LaunchAgents</programlisting>
+              <programlisting>startupitem.location       LaunchAgents</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -184,7 +184,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.logfile     ${prefix}/var/log/mydaemon.log</programlisting>
+              <programlisting>startupitem.logfile        ${prefix}/var/log/mydaemon.log</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -206,7 +206,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.logevents   yes</programlisting>
+              <programlisting>startupitem.logevents      yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -227,7 +227,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.name        dhcpd</programlisting>
+              <programlisting>startupitem.name           dhcpd</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -248,7 +248,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.netchange   yes</programlisting>
+              <programlisting>startupitem.netchange      yes</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -270,7 +270,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.type   launchd</programlisting>
+              <programlisting>startupitem.type           launchd</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -290,7 +290,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.user   my_daemon_user</programlisting>
+              <programlisting>startupitem.user           my_daemon_user</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -310,7 +310,7 @@
             <listitem>
               <para>Example:</para>
 
-              <programlisting>startupitem.group   my_daemon_group</programlisting>
+              <programlisting>startupitem.group          my_daemon_group</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
