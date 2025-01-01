@@ -191,6 +191,27 @@
       </varlistentry>
 
       <varlistentry>
+        <term>startupitem.logfile.stderr</term>
+
+        <listitem>
+          <para>Path to a logfile for capturing standard error output from
+          the StartupItem.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${startupitem.logfile}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>startupitem.logfile.stderr ${prefix}/var/log/mydaemon-stderr.log</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
         <term>startupitem.logevents</term>
 
         <listitem>
