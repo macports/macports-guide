@@ -91,27 +91,55 @@ github.setup        author project version v</programlisting>
         </listitem>
         <listitem>
           <para>
-            Distfile from Github auto-generated archive downloads
+            Distfile from Github legacy auto-generated tarball downloads
           </para>
         </listitem>
       </itemizedlist>
     </para>
 
     <para>
-      The default behaviour of the portgroup is using GitHub automatically
-      generated distfile from a <code>git</code> commit or tag.  However, the
-      best practice should be using a GitHub release.
+      The default behaviour of the portgroup is to use GitHub releases.
+      However, not all projects offer releases, so it may be necessary to
+      instead use an automatically generated distfile from a
+      <code>git</code> commit or tag.
     </para>
   </section>
 
-  <section xml:id="reference.portgroup.github.distfile">
+  <section xml:id="reference.portgroup.github.releases">
+    <title>Distfile from a GitHub release</title>
+
+    <para>
+      The <code>github</code> portgroup allows maintainers to easily configure
+      the distfiles when the project uses GitHub releases.  A release is the
+      best distfile candidate, and project maintainers should be encouraged to
+      use them.  To enable this feature, the following keyword should be used:
+
+      <programlisting>
+github.tarball_from releases</programlisting>
+
+      By default, the <code>github</code> portgroup sets <code>distname</code>
+      to:
+
+      <programlisting>
+distname            ${github.project}-${github.version}</programlisting>
+
+      However, GitHub does not enforce any rule for release distfiles, so port
+      maintainers may need to override the <code>distname</code> as they would
+      do for other ports.
+    </para>
+  </section>
+
+  <section xml:id="reference.portgroup.github.archive">
     <title>Distfile from tag or commit</title>
 
     <para>
-      The default behaviour of the <code>github</code> portgroup is leveraging
+      The <code>github</code> portgroup can leverage
       GitHub's ability to create a distfile from a <code>git</code> tag or
       commit.  In this case, the <code>distname</code> is irrelevant and should
-      not be set.
+      not be set. To enable this feature, the following keyword should be used:
+
+      <programlisting>
+github.tarball_from archive</programlisting>
     </para>
 
     <para>
@@ -129,30 +157,6 @@ github.setup        author project version v</programlisting>
       <programlisting>
 github.setup        someone someproject 0ff25277c3842598d919cd3c73d60768
 version             20140401</programlisting>
-    </para>
-  </section>
-
-  <section xml:id="reference.portgroup.github.releases">
-    <title>Distfile from a GitHub release</title>
-
-    <para>
-      The <code>github</code> portgroup allows maintainers to easily configure
-      the distfiles when the project uses GitHub releases.  A release is the
-      best distfile candidate, and project maintainers should be encouraged to
-      use them.  To enable this feature, the following keyword must be used:
-
-      <programlisting>
-github.tarball_from releases</programlisting>
-
-      By default, the <code>github</code> portgroup sets <code>distname</code>
-      to:
-
-      <programlisting>
-distname            ${github.project}-${github.version}</programlisting>
-
-      However, GitHub does not enforce any rule for release distfiles, so port
-      maintainers may need to override the <code>distname</code> as they would
-      do for other ports.
     </para>
   </section>
 
@@ -179,16 +183,20 @@ github.tarball_from downloads</programlisting>
     </para>
   </section>
 
-  <section xml:id="reference.portgroup.github.archive">
-    <title>Distfile from GitHub archive downloads</title>
+  <section xml:id="reference.portgroup.github.distfile">
+    <title>Distfile from GitHub legacy tarball downloads</title>
 
     <para>
-      Further still, many Github projects have automatically-generated archive
-      URLs that can be used for downloading distfiles.  This can be enabled via
-      <code>archive</code> as follows:
+      Some ports still use GitHub's older automatically-generated tarball
+      URLs that can be used for downloading distfiles.  This is deprecated
+      since the contents of the tarballs can change in some circumstances,
+      such as when the account name of the repository owner changes, and
+      this causes checksum mismatches. This mechanism should not be used in
+      new ports, and existing ports should switch away from it when they are
+      updated to a newer version.
 
       <programlisting>
-github.tarball_from archive</programlisting>
+github.tarball_from tarball</programlisting>
 
     </para>
   </section>
