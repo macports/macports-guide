@@ -169,6 +169,14 @@
                     <variablelist>
                         <varlistentry>
                             <term>
+                                macOS 15 Sequoia:
+                            </term>
+                            <listitem>
+                                <para><link xlink:href="https://github.com/macports/macports-base/releases/download/v&macports-version;/MacPorts-&macports-version;-15-Sequoia.pkg">MacPorts-&macports-version;-15-Sequoia.pkg</link></para>
+                            </listitem>
+                        </varlistentry>
+                        <varlistentry>
+                            <term>
                                 macOS 14 Sonoma:
                             </term>
                             <listitem>
