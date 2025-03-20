@@ -1,0 +1,72 @@
+name: "Build & deploy MacPorts Guide"
+
+on:
+  push:
+    branches:
+      - master
+    paths-ignore:
+      - '.github/**'
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    name: Build and deploy Guide
+    concurrency:
+      group: mirror-${{ github.ref }}
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout macports-guide
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          path: guide
+          show-progress: false
+
+      - name: Bootstrap MacPorts
+        run: . ports/.github/workflows/bootstrap.sh
+
+      - name: Install dependencies
+        run: |
+          set -eu
+          # Add MacPorts paths to $PATH for the
+          # subsequent steps.
+          echo "/opt/local/bin" >> $GITHUB_PATH
+          echo "/opt/local/sbin" >> $GITHUB_PATH
+
+          echo "Installing dependencies..."
+          sudo port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0
+          echo "Done installing dependencies."
+
+      - name: Build Guide
+        run: |
+          set -eu
+
+          echo "Validating Guide source..."
+          make -C guide validate
+          echo "Building Guide HTML..."
+          make -C guide all
+          echo "Done building Guide."
+
+      - name: Deploy Guide
+        env:
+          #GUIDE_SSH_HOST: ${{ secrets.GUIDE_SSH_HOST }}
+          #GUIDE_SSH_HOSTKEY: ${{ secrets.GUIDE_SSH_HOSTKEY }}
+          #GUIDE_SSH_USER: ${{ secrets.GUIDE_SSH_USER }}
+          #GUIDE_SSH_KEY: ${{ secrets.GUIDE_SSH_KEY }}
+          
+        run: |
+          set -eu
+
+          #echo "$GUIDE_SSH_KEY" > ssh_key
+          #chmod 0600 ssh_key
+          #echo "$GUIDE_SSH_HOSTKEY" > ssh_known_hosts
+
+          #export RSYNC_RSH="ssh -l $GUIDE_SSH_USER -i ssh_key -oUserKnownHostsFile=ssh_known_hosts"
+          #echo "Uploading Guide HTML"
+          echo "Placeholder for Uploading Guide HTML"
+          ls -R guide/guide/html
+          #rsync -avz --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:guide/"
+          #rm -f ssh_key ssh_known_hosts
