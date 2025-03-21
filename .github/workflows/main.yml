@@ -51,7 +51,7 @@ jobs:
           echo "Done building Guide."
 
       - name: Deploy Guide
-        env:
+        #env:
           #GUIDE_SSH_HOST: ${{ secrets.GUIDE_SSH_HOST }}
           #GUIDE_SSH_HOSTKEY: ${{ secrets.GUIDE_SSH_HOSTKEY }}
           #GUIDE_SSH_USER: ${{ secrets.GUIDE_SSH_USER }}
