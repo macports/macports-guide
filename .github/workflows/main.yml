@@ -14,7 +14,7 @@ jobs:
   build:
     name: Build and deploy Guide
     concurrency:
-      group: mirror-${{ github.ref }}
+      group: guide-${{ github.ref }}
     runs-on: macos-latest
 
     steps:
@@ -68,5 +68,5 @@ jobs:
           #echo "Uploading Guide HTML"
           echo "Placeholder for Uploading Guide HTML"
           ls -R guide/guide/html
-          #rsync -avz --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:guide/"
+          #rsync -avzhC --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:guide/"
           #rm -f ssh_key ssh_known_hosts
