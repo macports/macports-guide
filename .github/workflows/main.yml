@@ -37,7 +37,7 @@ jobs:
           echo "/opt/local/sbin" >> $GITHUB_PATH
 
           echo "Installing dependencies..."
-          sudo port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0
+          sudo /opt/local/bin/port install libxml2 libxslt docbook-xsl-ns docbook-xml-5.0
           echo "Done installing dependencies."
 
       - name: Build Guide
