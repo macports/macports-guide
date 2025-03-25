@@ -4,8 +4,6 @@ on:
   push:
     branches:
       - master
-    paths-ignore:
-      - '.github/**'
 
 permissions:
   contents: read
@@ -69,5 +67,5 @@ jobs:
 
           export RSYNC_RSH="ssh -l $GUIDE_SSH_USER -i ssh_key -oUserKnownHostsFile=ssh_known_hosts"
           echo "Uploading Guide HTML"
-          rsync -avzhC --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:./"
+          rsync -avzhC --progress --delay-update --delete-delay ./guide/guide/html/ "${GUIDE_SSH_HOST}:./"
           rm -f ssh_key ssh_known_hosts
