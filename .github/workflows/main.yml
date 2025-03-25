@@ -53,22 +53,21 @@ jobs:
           echo "Done building Guide."
 
       - name: Deploy Guide
-        #env:
-          #GUIDE_SSH_HOST: ${{ secrets.GUIDE_SSH_HOST }}
-          #GUIDE_SSH_HOSTKEY: ${{ secrets.GUIDE_SSH_HOSTKEY }}
-          #GUIDE_SSH_USER: ${{ secrets.GUIDE_SSH_USER }}
-          #GUIDE_SSH_KEY: ${{ secrets.GUIDE_SSH_KEY }}
+        env:
+          GUIDE_SSH_HOST: ${{ secrets.GUIDE_SSH_HOST }}
+          GUIDE_SSH_HOSTKEY: ${{ secrets.GUIDE_SSH_HOSTKEY }}
+          GUIDE_SSH_USER: ${{ secrets.GUIDE_SSH_USER }}
+          GUIDE_SSH_KEY: ${{ secrets.GUIDE_SSH_KEY }}
           
         run: |
           set -eu
 
-          #echo "$GUIDE_SSH_KEY" > ssh_key
-          #chmod 0600 ssh_key
-          #echo "$GUIDE_SSH_HOSTKEY" > ssh_known_hosts
+          touch ssh_key
+          chmod 0600 ssh_key
+          echo "$GUIDE_SSH_KEY" > ssh_key
+          echo "$GUIDE_SSH_HOSTKEY" > ssh_known_hosts
 
-          #export RSYNC_RSH="ssh -l $GUIDE_SSH_USER -i ssh_key -oUserKnownHostsFile=ssh_known_hosts"
-          #echo "Uploading Guide HTML"
-          echo "Placeholder for Uploading Guide HTML"
-          ls -R guide/guide/html
-          #rsync -avzhC --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:guide/"
-          #rm -f ssh_key ssh_known_hosts
+          export RSYNC_RSH="ssh -l $GUIDE_SSH_USER -i ssh_key -oUserKnownHostsFile=ssh_known_hosts"
+          echo "Uploading Guide HTML"
+          rsync -avzhC --progress ./guide/guide/html/ "${GUIDE_SSH_HOST}:./"
+          rm -f ssh_key ssh_known_hosts
