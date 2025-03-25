@@ -26,7 +26,7 @@ jobs:
       - name: Bootstrap MacPorts
         env:
             MP_CI_RELEASE: ${{ vars.MP_CI_RELEASE }}
-        run: . ports/.github/workflows/bootstrap.sh
+        run: . guide/.github/workflows/bootstrap.sh
 
       - name: Install dependencies
         run: |
