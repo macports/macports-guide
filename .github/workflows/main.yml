@@ -54,9 +54,9 @@ jobs:
         env:
           GUIDE_SSH_HOST: ${{ secrets.GUIDE_SSH_HOST }}
           GUIDE_SSH_HOSTKEY: ${{ secrets.GUIDE_SSH_HOSTKEY }}
-          GUIDE_SSH_USER: ${{ secrets.GUIDE_SSH_USER }}
+          GUIDE_SSH_USER: ${{ vars.GUIDE_SSH_USER }}
           GUIDE_SSH_KEY: ${{ secrets.GUIDE_SSH_KEY }}
-          
+
         run: |
           set -eu
 
