@@ -26,7 +26,12 @@
           <para>Fetch the <varname>${distfiles}</varname> from
           <varname>${master_sites}</varname> and place it in
           <filename>${prefix}/var/macports/distfiles/${name}</filename>.</para>
-        </listitem>
+
+          <para>Do not fetch anything outside the fetch phase if at all possible.
+          We don't disallow it entirely because there are (unfortunately) some
+          build systems that will not work that way.  When available, use
+          source-provided controls to prevent unexpected remote fetching.</para>
+	</listitem>
       </varlistentry>
 
       <varlistentry>
