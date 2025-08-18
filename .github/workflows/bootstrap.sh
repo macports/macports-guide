@@ -79,6 +79,8 @@ begingroup "Configuring MacPorts"
 source /opt/local/share/macports/setupenv.bash
 # CI is not interactive
 echo "ui_interactive no" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
+# Prefer hosts close to github
+echo "preferred_hosts mirror.fcix.net github.com *.github.com" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
 # Also try downloading archives from the private server
 echo "archive_site_local https://packages-private.macports.org/:tbz2" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
 endgroup
