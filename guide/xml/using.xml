@@ -447,6 +447,66 @@ Maintainers:          cal@macports.org</screen>
 
         </section>
 
+        <section xml:id="using.port.rdeps">
+            <title>port rdeps</title>
+
+            <para>The <option>rdeps</option> action is like <option>deps</option>, but operates recursively.
+            That is, each of the ports that the given port depends on is listed, and then for each of those
+            ports, its dependencies are listed, and so on. Unlike <option>deps</option>, the output is also
+            not split into sections for each dependency type, each port is simply listed on its own line
+            with a level of indentation indicating how many levels deep the dependency occurs.</para>
+
+            <programlisting><prompt>$ </prompt><userinput>port rdeps gettext</userinput></programlisting>
+
+            <screen>The following ports are dependencies of gettext @0.22.5_0:
+<!--        -->  ncurses
+<!--        -->  gettext-tools-libs
+<!--        -->    libiconv
+<!--        -->      gperf
+<!--        -->    libtextstyle
+<!--        -->    gettext-runtime</screen>
+
+            <para><option>rdeps</option> accepts four switches:</para>
+
+            <variablelist>
+                <varlistentry>
+                    <term><option>--full</option></term>
+                    <listitem>
+                        <para>Normally, each distinct port is only shown in the output once. This option
+                            instead prints a line for every dependency encountered in a full traversal of
+                            the dependency graph. Beware, this can produce extremely large amounts of
+                            output for some ports.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--index</option></term>
+                    <listitem>
+                        <para>Do not read the <filename>Portfile</filename> to determine dependencies. Instead, rely on
+                            the information cached in the port index. Note that (despite specifying them), this option
+                            will ignore any effects of variants. It is, however, much faster.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-build</option></term>
+                    <listitem>
+                        <para>Exclude dependencies only required at build time, i.e., fetch, extract, patch,
+                            and build dependencies.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-test</option></term>
+                    <listitem>
+                        <para>Exclude test dependencies.</para>
+                    </listitem>
+                </varlistentry>
+            </variablelist>
+
+        </section>
+
+
         <section xml:id="using.port.variants">
             <title>port variants</title>
 
