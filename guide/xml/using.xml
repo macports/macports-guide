@@ -399,9 +399,9 @@ Maintainers:          cal@macports.org</screen>
         <section xml:id="using.port.deps">
             <title>port deps</title>
 
-            <para>The <option>deps</option> action lists the dependencies of a port. Dependencies are the packages are
-                required by a port at runtime (library and runtime dependencies) or required to install it (build,
-                fetch, and extract dependencies).</para>
+            <para>The <option>deps</option> action lists the dependencies of a port. Dependencies are the packages
+                required by a port at runtime (library and runtime dependencies) or required to build it (build,
+                fetch, extract, and patch dependencies), or required to run its test suite (test dependencies).</para>
 
             <programlisting><prompt>$ </prompt><userinput>port deps apache2</userinput></programlisting>
 
@@ -417,7 +417,7 @@ Maintainers:          cal@macports.org</screen>
             <screen>Full Name: apache2 @2.2.27_0+openldap+preforkmpm
 <!--        -->Library Dependencies: apr, apr-util, expat, openssl, pcre, perl5, zlib, openldap</screen>
 
-            <para><option>deps</option> accepts two switches:</para>
+            <para><option>deps</option> accepts three switches:</para>
 
             <variablelist>
                 <varlistentry>
@@ -432,8 +432,15 @@ Maintainers:          cal@macports.org</screen>
                 <varlistentry>
                     <term><option>--no-build</option></term>
                     <listitem>
-                        <para>Exclude dependencies only required at build time, i.e., fetch, extract, and build
-                            dependencies.</para>
+                        <para>Exclude dependencies only required at build time, i.e., fetch, extract, patch,
+                            and build dependencies.</para>
+                    </listitem>
+                </varlistentry>
+
+                <varlistentry>
+                    <term><option>--no-test</option></term>
+                    <listitem>
+                        <para>Exclude test dependencies.</para>
                     </listitem>
                 </varlistentry>
             </variablelist>
