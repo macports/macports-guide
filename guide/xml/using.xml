@@ -3,8 +3,8 @@
 -->
 <!DOCTYPE chapter PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
 "http://docbook.org/xml/5.0/dtd/docbook.dtd"[
-<!ENTITY macports-prev-version "2.11.6">
-<!ENTITY macports-version "2.12.0">
+<!ENTITY macports-prev-version "2.12.0">
+<!ENTITY macports-version "2.12.1">
 ]>
 <chapter xml:id="using" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>Using MacPorts</title>
