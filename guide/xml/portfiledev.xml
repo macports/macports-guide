@@ -448,9 +448,9 @@ variant sqlite description {Build sqlite support} {
 }</programlisting>
 
       <note>
-        <para>Variant names may contain only the characters A-Z, a-z, and the
-        underscore character <quote>_</quote>. Therefore, take care to never
-        use hyphens in variant names.</para>
+        <para>Variant names may contain only the characters A-Z, a-z,
+        0-9, underscore <quote>_</quote>, and period <quote>.</quote>. 
+        Therefore, take care to never use hyphens in variant names.</para>
       </note>
 
       <para>In the example variant declaration below, the configure argument
