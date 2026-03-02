@@ -20,8 +20,9 @@
     <code>default_variants</code> (see below).</para>
 
     <note>
-      <para>Variant names may contain only letters, numbers and underscore
-      characters. In particular, the hyphen is not a valid character in
+      <para>Variant names may contain only the characters A-Z, a-z,
+      0-9, underscore <quote>_</quote>, and period <quote>.</quote>. 
+      In particular, the hyphen is not a valid character in
       variant names because it would conflict with the notation for deselecting
       a variant.</para>
     </note>
