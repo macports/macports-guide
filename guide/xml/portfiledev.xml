@@ -23,15 +23,15 @@
     <title>Portfile Introduction</title>
 
     <para>A MacPorts Portfile is a <link
-    xlink:href="https://en.wikipedia.org/wiki/Tcl">Tcl</link> script that usually
-    contains only the simple keyword/value combinations and Tcl extensions as
-    described in the <link linkend="reference">Portfile Reference</link>
-    chapter, though it may also contain arbitrary Tcl code. Every port has a
-    corresponding Portfile, but Portfiles do not completely define a port's
-    installation behavior since MacPorts base has default port installation
-    characteristics coded within it. Therefore Portfiles need only specify
-    required options, though some ports may require non-default
-    options.</para>
+    xlink:href="https://en.wikipedia.org/wiki/Tcl_(programming_language)">
+    Tcl</link> script that usually contains only the simple keyword/value
+    combinations and Tcl extensions as described in the <link
+    linkend="reference">Portfile Reference</link> chapter, though it may also
+    contain arbitrary Tcl code. Every port has a corresponding Portfile, but
+    Portfiles do not completely define a port's installation behavior since
+    MacPorts base has default port installation characteristics coded within it.
+    Therefore Portfiles need only specify required options, though some ports
+    may require non-default options.</para>
 
     <para>A common way for Portfiles to augment or override MacPorts base
     default installation phase characteristics is by using
