@@ -826,7 +826,7 @@ configure.args-append      --fff</programlisting>
         <para>Insert a URL pointing to your local repository location before
         the rsync URL as shown.</para>
 
-        <programlisting>file:///Users/julesverne/ports
+        <programlisting>file:///Users/julesverne/ports [nosync]
 rsync://rsync.macports.org/macports/release/tarballs/ports.tar [default]
 </programlisting>
 
