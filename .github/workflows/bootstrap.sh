@@ -78,7 +78,7 @@ begingroup "Installing MacPorts"
 # Set up config files to prevent the postflight script from spending a
 # lot of time running selfupdate.
 sudo mkdir -p /opt/local/etc/macports
-sudo cp ./ports/.github/workflows/macports.conf /opt/local/etc/macports
+sudo cp ./guide/.github/workflows/macports.conf /opt/local/etc/macports
 sudo chown root:wheel /opt/local/etc/macports/macports.conf
 sudo chmod 0644 /opt/local/etc/macports/macports.conf
 echo "https://github.com/macports/macports-base/releases/tag/v${MACPORTS_VERSION}" > ./RELEASE_URL
