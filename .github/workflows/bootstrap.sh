@@ -15,18 +15,29 @@ endgroup() {
     printtag "endgroup"
 }
 
-MACPORTS_VERSION=${MP_CI_RELEASE:-2.10.5}
+MACPORTS_VERSION=${MP_CI_RELEASE:-2.12.6}
 
 OS_MAJOR=$(uname -r | cut -f 1 -d .)
 OS_ARCH=$(uname -p)
 
-MACPORTS_FILENAME=MacPorts-${MACPORTS_VERSION}-${OS_MAJOR}.tar.bz2
+case "$OS_MAJOR" in
+    25)
+        macosvers=26
+        macosname=Tahoe
+        ;;
+    *)
+        echo "Unknown macOS version"
+        exit 1
+        ;;
+esac
+
+MACPORTS_FILENAME=MacPorts-${MACPORTS_VERSION}-${macosvers}-${macosname}.pkg
 
 begingroup "Fetching files"
 # Download resources in background ASAP but use later.
 # Use /usr/bin/curl so that we don't use Homebrew curl.
 echo "Fetching MacPorts..."
-/usr/bin/curl -fsSLO "https://github.com/macports/macports-ci-files/releases/download/v${MACPORTS_VERSION}/${MACPORTS_FILENAME}" &
+/usr/bin/curl -fsSLO "https://github.com/macports/macports-base/releases/download/v${MACPORTS_VERSION}/${MACPORTS_FILENAME}" &
 curl_mpbase_pid=$!
 endgroup
 
@@ -55,21 +66,28 @@ endgroup
 
 begingroup "Selecting Xcode version"
 case "$OS_MAJOR" in
-    22) sudo xcode-select --switch /Applications/Xcode_14.3.1.app/Contents/Developer
+    23) sudo xcode-select --switch /Applications/Xcode_16.2.app/Contents/Developer
         ;;
-    23) sudo xcode-select --switch /Applications/Xcode_15.4.app/Contents/Developer
+    25) sudo xcode-select --switch /Applications/Xcode_26.4.app/Contents/Developer
         ;;
 esac
 endgroup
 
 
 begingroup "Installing MacPorts"
-# Install MacPorts built by https://github.com/macports/macports-base/tree/master/.github
+# Set up config files to prevent the postflight script from spending a
+# lot of time running selfupdate.
+sudo mkdir -p /opt/local/etc/macports
+sudo cp ./ports/.github/workflows/macports.conf /opt/local/etc/macports
+sudo chown root:wheel /opt/local/etc/macports/macports.conf
+sudo chmod 0644 /opt/local/etc/macports/macports.conf
+echo "https://github.com/macports/macports-base/releases/tag/v${MACPORTS_VERSION}" > ./RELEASE_URL
+echo "release_version_urls file://${PWD}/RELEASE_URL" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
+# Install MacPorts
 if ! wait $curl_mpbase_pid; then
     echo "Fetching base failed: $?"
 fi
-echo "Extracting..."
-sudo tar -xpf "${MACPORTS_FILENAME}" -C /
+sudo installer -package "${MACPORTS_FILENAME}" -target /
 rm -f "${MACPORTS_FILENAME}"
 endgroup
 
@@ -77,20 +95,4 @@ endgroup
 begingroup "Configuring MacPorts"
 # Set PATH for portindex
 source /opt/local/share/macports/setupenv.bash
-# CI is not interactive
-echo "ui_interactive no" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
-# Prefer hosts close to github
-echo "preferred_hosts mirror.fcix.net github.com *.github.com" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
-# Also try downloading archives from the private server
-echo "archive_site_local https://packages-private.macports.org/:tbz2" | sudo tee -a /opt/local/etc/macports/macports.conf >/dev/null
-endgroup
-
-
-begingroup "Running postflight"
-# Create macports user
-sudo /opt/local/libexec/macports/postflight/postflight
-endgroup
-
-begingroup "Syncing ports tree"
-sudo /opt/local/bin/port sync
 endgroup
