@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE section PUBLIC "-//OASIS//DTD DocBook XML V5.0//EN"
+"http://docbook.org/xml/5.0/dtd/docbook.dtd">
+<section xml:id="reference.portgroup.node" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <title>PortGroups <code>npm</code> and <code>bun</code> — Node.js and Bun</title>
+
+  <para>The <code>npm</code> and <code>bun</code> PortGroups install packages
+  from the npm registry (<filename>registry.npmjs.org</filename>) with
+  <code>npm install -g</code> and <code>bun install -g</code> respectively.
+  Both fetch the same <filename>${distname}${extract.suffix}</filename> tarball
+  and expose its <code>bin</code> entries in <filename>${prefix}/bin</filename>,
+  but they differ in runtime, dependency handling, and lifecycle-script trust.
+  Ports that declare <code>engines.bun</code> or ship a
+  <code>#!/usr/bin/env bun</code> shebang must use <code>bun</code>;
+  the <code>npm</code> PortGroup wraps bins with Node and cannot run them.
+  All other JavaScript CLIs should use <code>npm</code>.</para>
+
+  <section xml:id="reference.portgroup.node.choosing">
+    <title>Choosing a PortGroup</title>
+    <itemizedlist>
+      <listitem><para><code>npm</code> — wraps bins with <code>node</code>,
+      requires <code>nodejs</code> at runtime, runs lifecycle scripts via <code>npm</code>.</para></listitem>
+      <listitem><para><code>bun</code> — native <code>bun</code> runtime
+      (<code>#!/usr/bin/env bun</code>), destroots to
+      <filename>${prefix}/lib/bun/${name}</filename> with relative symlinks
+      into <filename>${prefix}/bin</filename>, so two <code>bun</code> ports can coexist.
+      Network is required at destroot to resolve the dependency tree; only the top-level
+      tarball is checksummed (matches <code>npm-1.0</code>).</para></listitem>
+    </itemizedlist>
+  </section>
+
+  <!-- NPM -->
+
+  <section xml:id="reference.portgroup.npm">
+    <title>PortGroup <code>npm</code></title>
+
+    <para>Installs an npm package globally. The PortGroup imitates
+    <code>npm install -g</code> by passing the fetched tarball directly
+    (<code>extract.only</code>; no extraction) and installing with
+    <code>--global --prefix=${destroot}${prefix}</code>.</para>
+
+    <section xml:id="reference.portgroup.npm.usage">
+      <title>Usage</title>
+      <programlisting>PortSystem          1.0
+PortGroup           npm 1.0
+
+name                my-cli
+version             1.2.3
+npm.rootname        @scope/my-cli   # defaults to ${name} if omitted
+
+checksums           rmd160  ... \
+                    sha256  ... \
+                    size    ...</programlisting>
+    </section>
+
+    <section xml:id="reference.portgroup.npm.keywords">
+      <title><code>npm</code> Keywords</title>
+      <variablelist>
+        <varlistentry>
+          <term>npm.rootname</term>
+          <listitem>
+            <para>Npm package name, including scope if any (e.g.
+            <code>@scope/pkg</code>). Defaults to <varname>${name}</varname>.
+            <code>master_sites</code> is
+            <code>https://registry.npmjs.org/${npm.rootname}/-/</code> and
+            <code>distname</code> is <code>${npm.rootname}-${version}</code>
+            (scoped names are unscoped via <code>[file tail]</code> only for the
+            distfile).</para>
+            <itemizedlist>
+              <listitem><para>Type: optional, defaults to <varname>${name}</varname></para></listitem>
+              <listitem><para>Example: <programlisting>npm.rootname        @babel/core</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>npm.nodejs_version</term>
+          <listitem>
+            <para>Node.js version to depend on. Maps to
+            <code>path:bin/node:nodejs${npm.nodejs_version}</code> in
+            <varname>depends_lib</varname>.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>22</code></para></listitem>
+              <listitem><para>Example: <programlisting>npm.nodejs_version  20</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>npm.version</term>
+          <listitem>
+            <para>npm version to depend on. Maps to
+            <code>path:bin/npm:npm${npm.version}</code> in
+            <varname>depends_build</varname>.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>10</code></para></listitem>
+              <listitem><para>Example: <programlisting>npm.version         10</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>npm.add_dependencies</term>
+          <listitem>
+            <para>When <code>yes</code> (default), adds
+            <code>path:bin/node:nodejs${npm.nodejs_version}</code> to
+            <varname>depends_lib</varname> and
+            <code>path:bin/npm:npm${npm.version}</code> to
+            <varname>depends_build</varname> via
+            <code>port::register_callback</code>. Disable only if the Portfile
+            manages Node/npm deps manually.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>yes</code></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section xml:id="reference.portgroup.npm.sugar">
+      <title>Sugar</title>
+      <variablelist>
+        <varlistentry><term>master_sites, distname, extract.suffix, livecheck.*</term>
+          <listitem><para>Set from <varname>npm.rootname</varname>; <code>extract.suffix .tgz</code>,
+          <code>livecheck.url https://registry.npmjs.org/${npm.rootname}/latest</code>
+          with regex <code>\"version\":\"([^\"]+)\"</code>. Only the top-level
+          tarball is checksummed; its dependencies are fetched at destroot.</para></listitem>
+        </varlistentry>
+        <varlistentry><term>use_configure / build</term>
+          <listitem><para><code>use_configure no</code>, <code>build {}</code>;
+          destroot runs <code>npm install --global --prefix=${destroot}${prefix}</code> in <varname>${workpath}</varname>.</para></listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+  </section>
+
+  <!-- BUN -->
+
+  <section xml:id="reference.portgroup.bun">
+    <title>PortGroup <code>bun</code></title>
+
+    <para>Installs a package from the npm registry with
+    <code>bun install -g</code>. For CLIs that declare
+    <code>engines.bun</code> and ship <code>#!/usr/bin/env bun</code>,
+    the <code>npm</code> PortGroup cannot be used because it wraps bins with Node.</para>
+
+    <para>Destroot layout: <filename>${prefix}/lib/bun/${name}</filename>
+    (<varname>BUN_INSTALL_GLOBAL_DIR</varname>) with bins linked into
+    <filename>${prefix}/bin</filename> (<varname>BUN_INSTALL_BIN</varname>)
+    as relative symlinks, so destroot paths do not leak and two
+    <code>bun</code> ports can be active together. Cache at
+    <filename>${workpath}/.bun-cache</filename>.</para>
+
+    <section xml:id="reference.portgroup.bun.usage">
+      <title>Usage</title>
+      <programlisting>PortSystem          1.0
+PortGroup           bun 1.0
+
+name                oh-my-pi
+version             18.0.11
+bun.rootname        @oh-my-pi/pi-coding-agent
+
+checksums           rmd160  ... \
+                    sha256  ... \
+                    size    ...
+
+# optional
+bun.version                 1.3.0   # floor on bun runtime (engines.bun)
+bun.trusted_dependencies    sharp esbuild
+bun.minimum_release_age     259200  # seconds, default 3 days, 0 to disable
+bun.add_dependencies        yes</programlisting>
+    </section>
+
+    <section xml:id="reference.portgroup.bun.keywords">
+      <title><code>bun</code> Keywords</title>
+      <variablelist>
+        <varlistentry>
+          <term>bun.rootname</term>
+          <listitem>
+            <para>Npm package name, including scope (e.g.
+            <code>@oh-my-pi/pi-coding-agent</code>). Defaults to
+            <varname>${name}</varname>. <code>master_sites</code> is
+            <code>https://registry.npmjs.org/${bun.rootname}/-/</code>,
+            <code>distname</code> is <code>[file tail ${bun.rootname}]-${version}</code>
+            (scoped prefix stripped; no need to set <varname>distname</varname> manually),
+            <code>extract.suffix .tgz</code>. Livecheck mirrors <code>npm</code>:
+            <code>https://registry.npmjs.org/${bun.rootname}/latest</code>.</para>
+            <itemizedlist>
+              <listitem><para>Type: required if package name differs from <varname>${name}</varname></para></listitem>
+              <listitem><para>Example: <programlisting>bun.rootname        @scope/pkg</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bun.version</term>
+          <listitem>
+            <para>Minimum <code>bun</code> runtime version (floor). MacPorts ships
+            a single <code>devel/bun</code> port today; this keyword lets a port
+            honor <code>engines.bun</code> without a later PortGroup bump.
+            Checked in <code>pre-fetch</code> (if <code>${prefix}/bin/bun</code>
+            already exists) and again in <code>pre-destroot</code> where
+            <varname>depends_lib</varname> guarantees it is present. If
+            <varname>bun.minimum_release_age</varname> &gt; 0, the floor is
+            implicitly at least <code>1.3.0</code> (when
+            <code>--minimum-release-age</code> was introduced).</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>{}</code> (no check)</para></listitem>
+              <listitem><para>Example: <programlisting>bun.version         1.3.0</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bun.trusted_dependencies</term>
+          <listitem>
+            <para>List of dependency package names whose lifecycle scripts
+            (<code>postinstall</code>, <code>prepare</code>, etc.) bun may run.
+            Unlike <code>npm</code>, <code>bun</code> runs <emphasis>no</emphasis>
+            lifecycle scripts unless the package is trusted. The PortGroup always
+            writes a <filename>package.json</filename> with
+            <code>trustedDependencies</code> that <emphasis>replaces</emphasis>
+            bun's default allowlist (<code>src/install/lockfile.rs</code> falls back
+            to <code>default-trusted-dependencies.txt</code> only when the field
+            is absent) — deliberate so the set of scripts does not shift when
+            <code>devel/bun</code> updates. Every dependency that needs a script,
+            including ones a stock <code>bun install -g</code> would trust
+            (e.g. <code>sharp</code>), must be listed here. The destroot runs
+            with <code>--verbose</code>, so blocked scripts are named in the log.</para>
+            <para>The PortGroup always trusts <varname>${bun.rootname}</varname>
+            itself, because the install is from a local tarball and bun requires
+            an explicit trust for non-registry sources.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>{}</code></para></listitem>
+              <listitem><para>Example: <programlisting>bun.trusted_dependencies    sharp esbuild</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bun.minimum_release_age</term>
+          <listitem>
+            <para>Supply-chain delay for registry-resolved dependencies
+            (not the checksummed top-level tarball, which is a local file).
+            Destroot passes <code>bun install --minimum-release-age=${bun.minimum_release_age}</code>
+            (bun ≥ 1.3) so versions published more recently than this window are
+            skipped. It does <emphasis>not</emphasis> checksum those dependencies
+            and is <emphasis>not</emphasis> a lockfile. If an <emphasis>exact</emphasis>
+            pin in the registry is newer than the window, destroot fails rather
+            than floating.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional, non-negative integer seconds</para></listitem>
+              <listitem><para>Default: <code>259200</code> (3 days)</para></listitem>
+              <listitem><para>Set <code>0</code> to disable; raise to harden</para></listitem>
+              <listitem><para>Example: <programlisting>bun.minimum_release_age     0</programlisting></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+        <varlistentry>
+          <term>bun.add_dependencies</term>
+          <listitem>
+            <para>When <code>yes</code> (default), adds
+            <code>path:bin/bun:bun</code> to <varname>depends_lib</varname>
+            (the shebang is <code>#!/usr/bin/env bun</code>, so bun is a
+            library dep and covers destroot; also installed for the
+            <code>configure</code> phase). Disable only if the Portfile manages
+            the <code>bun</code> dependency manually.</para>
+            <itemizedlist>
+              <listitem><para>Type: optional</para></listitem>
+              <listitem><para>Default: <code>yes</code></para></listitem>
+            </itemizedlist>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section xml:id="reference.portgroup.bun.sugar">
+      <title>Sugar and Phases</title>
+      <variablelist>
+        <varlistentry><term>master_sites, distname, extract.suffix, livecheck.*</term>
+          <listitem><para>Derived from <varname>bun.rootname</varname> as above;
+          <code>livecheck.regex \"version\":\"([^\"]+)\"</code> on
+          <code>.../${bun.rootname}/latest</code>.</para></listitem>
+        </varlistentry>
+        <varlistentry><term>extract.only / use_configure / build</term>
+          <listitem><para><code>extract.only</code> — tarball is passed to
+          <code>bun install</code> directly (extracting would create a symlink
+          that is removed). <code>use_configure no</code>, <code>build {}</code>.
+          Compiler blacklists/whitelists do not apply.</para></listitem>
+        </varlistentry>
+        <varlistentry><term>destroot</term>
+          <listitem>
+            <para>Creates <filename>${prefix}/lib/bun/${name}</filename> and
+            <filename>${prefix}/bin</filename>, writes a private
+            <filename>package.json</filename> with
+            <code>trustedDependencies</code>, then:</para>
+            <programlisting>env BUN_INSTALL_GLOBAL_DIR=... BUN_INSTALL_BIN=... BUN_INSTALL_CACHE_DIR=... \
+  bun install -g --verbose [--minimum-release-age=N] ${distpath}/${distfile}</programlisting>
+            <para>Fails if <filename>${prefix}/bin</filename> is empty (package
+            has no <code>bin</code> field or its bins are created by a
+            lifecycle script, which runs too late to be linked — see header
+            limitation).</para>
+          </listitem>
+        </varlistentry>
+      </variablelist>
+    </section>
+
+    <section xml:id="reference.portgroup.bun.notes">
+      <title>Notes</title>
+      <itemizedlist>
+        <listitem><para>Only the top-level tarball is checksummed; the
+        dependency tree is fetched from <code>registry.npmjs.org</code> at
+        destroot — same as <code>npm-1.0</code>.</para></listitem>
+        <listitem><para>Relative symlinks are written, so destroot paths do not
+        leak into the image.</para></listitem>
+        <listitem><para>For local testing: <code>port lint</code> and
+        <code>sudo port -vst install</code>; <code>bun --version</code> should
+        satisfy <varname>bun.version</varname>.</para></listitem>
+      </itemizedlist>
+    </section>
+  </section>
+
+</section>
