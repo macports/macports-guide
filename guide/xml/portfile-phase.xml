@@ -1367,10 +1367,10 @@ extract.cmd       = xz
 
         <listitem>
           <para>This keyword is used to specify if the directory
-          <filename>worksrcdir</filename> is part of the distfile or if it
+          <varname>${worksrcdir}</varname> is part of the distfile or if it
           should be created automatically and the distfiles should be
           extracted there instead. This is useful for distfiles with a flat
-          structure which would pollute the <filename>worksrcdir</filename>
+          structure which would pollute the <varname>${worksrcdir}</varname>
           with lots of files.</para>
 
           <itemizedlist>
@@ -1396,7 +1396,7 @@ extract.cmd       = xz
 
         <listitem>
           <para>List of files to extract into
-          <varname>${worksrcpath}</varname>. Only use if default extract
+          <varname>${extract.dir}</varname>. Only use if default extract
           behavior is not correct for your port.</para>
 
           <itemizedlist>
@@ -1483,6 +1483,27 @@ extract.post_args   "| gnutar -x"</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>extract.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${extract.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${workpath}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>extract.dir         ${worksrcpath}</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
@@ -1492,26 +1513,6 @@ extract.post_args   "| gnutar -x"</programlisting>
     <para>The list of keywords related to the patch phase.</para>
 
     <variablelist>
-      <varlistentry>
-        <term>patch.dir</term>
-
-        <listitem>
-          <para>Specify the base path for patch files.</para>
-
-          <itemizedlist>
-            <listitem>
-              <para>Default: <varname>${worksrcpath}</varname></para>
-            </listitem>
-
-            <listitem>
-              <para>Example:</para>
-
-              <programlisting>patch.dir           ${worksrcpath}/util</programlisting>
-            </listitem>
-          </itemizedlist>
-        </listitem>
-      </varlistentry>
-
       <varlistentry>
         <term>patch.cmd</term>
 
@@ -1606,6 +1607,27 @@ patchfiles-delete   destdir-variable-fix.diff</programlisting>
 
               <programlisting>patch.pre_args      -p1
 patch.post_args     ???</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>patch.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${patch.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${worksrcpath}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>patch.dir           ${worksrcpath}/util</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -2476,6 +2498,27 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>configure.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${configure.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${worksrcpath}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>configure.dir       ${worksrcpath}/src</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
 
     <section xml:id="reference.phases.configure.universal">
@@ -2857,7 +2900,7 @@ configure.post_args OPT="-D__DARWIN_UNIX03"</programlisting>
         <term>build.cmd</term>
 
         <listitem>
-          <para>Make command to run in <varname>${worksrcdir}</varname>. Only
+          <para>Make command to run in <varname>${build.dir}</varname>. Only
           use it if you can't use <literal>build.type</literal>.</para>
 
           <itemizedlist>
@@ -3054,6 +3097,26 @@ build.target-delete     compat</programlisting>
         </listitem>
       </varlistentry>
 
+      <varlistentry>
+        <term>build.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${build.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${worksrcpath}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>build.dir           ${worksrcpath}/src</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
@@ -3088,7 +3151,7 @@ build.target-delete     compat</programlisting>
 
         <listitem>
           <para>Test command to run relative to
-          <varname>${worksrcdir}</varname>.</para>
+          <varname>${test.dir}</varname>.</para>
 
           <itemizedlist>
             <listitem>
@@ -3192,6 +3255,27 @@ build.target-delete     compat</programlisting>
           </itemizedlist>
         </listitem>
       </varlistentry>
+
+      <varlistentry>
+        <term>test.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${test.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${build.dir}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>test.dir            ${worksrcpath}/test</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
     </variablelist>
   </section>
 
@@ -3206,7 +3290,7 @@ build.target-delete     compat</programlisting>
 
         <listitem>
           <para>Install command to run relative to
-          <varname>${worksrcdir}</varname>.</para>
+          <varname>${destroot.dir}</varname>.</para>
 
           <itemizedlist>
             <listitem>
@@ -3409,6 +3493,27 @@ destroot.target-delete  install-commandmode</programlisting>
               <para>Example:</para>
 
               <programlisting>destroot.violate_mtree      yes</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>destroot.dir</term>
+
+        <listitem>
+          <para>Directory in which to run
+          <varname>${destroot.cmd}</varname>.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <varname>${build.dir}</varname></para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+
+              <programlisting>destroot.dir        ${worksrcpath}/src</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
