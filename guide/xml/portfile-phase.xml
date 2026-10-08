@@ -3046,9 +3046,26 @@ build.target-delete     compat</programlisting>
           <itemizedlist>
             <listitem>
               <para>Default: If <varname>buildmakejobs</varname> is 0, the
-              number of CPU cores in the machine, or the number of GB of
-              physical memory plus one, whichever is less. Otherwise, 
-              the actual value of <literal>${buildmakejobs}</literal>.</para>
+              number of CPU cores in the machine, or (MiB of physical memory /
+              <varname>${build.mem_per_job}</varname>) + 1, whichever is less.
+              Otherwise, the actual value of <literal>${buildmakejobs}</literal>.</para>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+
+      <varlistentry>
+        <term>build.mem_per_job</term>
+
+        <listitem>
+          <para>The amount of memory expected to be required by
+          each additional parallel build job, in MiB. This is used to
+          limit the default value of <varname>${build.jobs}</varname>
+          to avoid exceeding available memory.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Default: <literal>1024</literal></para>
             </listitem>
           </itemizedlist>
         </listitem>
