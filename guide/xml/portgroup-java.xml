@@ -24,7 +24,7 @@
           the port will fail at the pre-fetch phase.</para>
 
           <para>The version string can indicate a specific version
-          or a range with wildcards "+" and "*". Note that Java 8 and
+          or a range with wildcards "+", "*", and "-". Note that Java 8 and
           earlier are "1.8", etc., while Java 9 and later are "9",
           etc.</para>
 
@@ -36,6 +36,7 @@
             <listitem>
               <para>Example:</para>
               <programlisting>java.version    1.8+</programlisting>
+              <programlisting>java.version    17-21</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
@@ -45,8 +46,8 @@
 
         <listitem>
           <para>This keyword indicates an (optional) port dependency
-          that will be added to the ports 'depends-lib' list in the
-          case a prior installation of Java satisfying the requested
+          that will, by default (see below), be added to the port's depends_lib
+          list in the case a prior installation of Java satisfying the requested
           version can not be found. It is recommended that only an
           LTS version of Java be specified as the fallback, as
           non-LTS versions are only supported for 6 months.</para>
@@ -58,7 +59,33 @@
 
             <listitem>
               <para>Example:</para>
-              <programlisting>java.fallback   openjdk17</programlisting>
+              <programlisting>java.fallback   openjdk25</programlisting>
+            </listitem>
+          </itemizedlist>
+        </listitem>
+      </varlistentry>
+      <varlistentry>
+        <term>java.deptypes</term>
+
+        <listitem>
+          <para>This keyword indicates the type(s) of port dependencies the
+          specified Java installation should be considered as. For each
+          dependency type in the list (e.g., build, test), the specified
+          fallback port will be added to the corresponding depends_*
+          list.</para>
+
+          <itemizedlist>
+            <listitem>
+              <para>Type: optional</para>
+            </listitem>
+
+            <listitem>
+              <para>Default: lib</para>
+            </listitem>
+
+            <listitem>
+              <para>Example:</para>
+              <programlisting>java.deptypes   lib test</programlisting>
             </listitem>
           </itemizedlist>
         </listitem>
