@@ -627,6 +627,23 @@
     <!-- Should we have similar sections about committing to base sources and
     documentation, or alternatively add this to the following? -->
 
+    <tip>
+      <title>Dockhand</title>
+      <para><application>Dockhand</application> is an optional, third-party tool
+        for the pull request workflow described here. It prepares new ports and
+        port updates on Git branches in your <literal>macports-ports</literal>
+        checkout, refreshes checksums and Go or Cargo dependency lists, builds the
+        port in a clean macOS virtual machine, GitHub Actions or your local prefix,
+        and opens a pull request from your fork.
+      </para>
+
+      <para><application>Dockhand</application> is maintained outside the
+        MacPorts project; install it with <command>sudo port install dockhand</command>
+        and see its <link xlink:href="https://github.com/herbygillot/dockhand">documentation</link>
+        for usage and for reporting problems.
+      </para>
+    </tip>
+
     <section xml:id="project.contributing.new">
       <title>New Ports</title>
 
