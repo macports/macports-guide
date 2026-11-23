@@ -29,7 +29,6 @@ archcheck-1.0.tcl
 bitbucket-1.0.tcl
 cmake-1.0.tcl
 cmake-1.1.tcl
-compiler_blacklist_versions-1.0.tcl
 compilers-1.0.tcl
 conflicts_build-1.0.tcl
 crossbinutils-1.0.tcl
