@@ -64,5 +64,8 @@
 
     <xi:include href="portgroup-xcode.xml"
                 xmlns:xi="http://www.w3.org/2001/XInclude" />
+
+    <xi:include href="portgroup-node.xml"
+                xmlns:xi="http://www.w3.org/2001/XInclude" />
   </section>
 </chapter>
